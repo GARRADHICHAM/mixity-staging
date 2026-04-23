@@ -1,0 +1,427 @@
+{% extends "base.html" %}
+{% load static %}
+{% load i18n %}
+{% load l10n %}
+{% load format_number %}
+{% load get_item %}
+
+{% block content %}
+{% comment %} Download graphs images button {% endcomment %}
+{% if request.user.is_staff and evaluation %}
+    <div class="structure-detail__tabs w-100 d-flex justify-content-center align-items-center">
+{#        <a class="structure-detail__button button--pink" href="{% url 'evaluation_create_report' evaluation.id %}">#}
+{#            {% blocktrans trimmed %}Accéder aux graphiques{% endblocktrans %}#}
+{#        </a>#}
+{#        <a class="structure-detail__button button--primary-light" href="{% url 'evaluation_update_thumbnails' evaluation.id %}">#}
+{#            {% blocktrans trimmed %}Accéder aux miniatures{% endblocktrans %}#}
+{#        </a>#}
+    </div>
+
+    <span style="display: none" line_id="2" class="txt_line">{{ entity.entity_level.structure.siret }}</span>
+    <span style="display: none" line_id="3" class="txt_line">{{ entity.entity_level.structure.num_tva_intracom }}</span>
+    <span style="display: none" line_id="4" class="txt_line">{{ entity.entity_level.structure.duns }}</span>
+    {% with owner=entity.entity_level.structure.get_first_owner %}
+        <span style="display: none" line_id="10" class="txt_line">{{ owner.first_name }} {{ owner.last_name }}</span>
+        <span style="display: none" line_id="11" class="txt_line">{{ owner.gender }}</span>
+        <span style="display: none" line_id="12" class="txt_line">{{ owner.first_name }}</span>
+        <span style="display: none" line_id="13" class="txt_line">{{ owner.last_name }}</span>
+        <span style="display: none" line_id="14" class="txt_line">{{ owner.email }}</span>
+    {% endwith %}
+    <span style="display: none" line_id="15" prefix="\n" class="txt_line">{{ subcategories_count }}</span>
+{% endif %}
+
+{% comment %} Tabs that only appears for campus to swap between global, collaborator and student footprints {% endcomment %}
+{% if evaluation.sheet.type.slug == "mixity_evaluation_campus" %}
+    <section class="container--nopadding">
+        <div class="nav nav-tabs d-flex justify-content-center">
+            <a class="nav-link {% if target_name == "all" %}active{% endif %} text-center col-lg-2 col-md-5 col-12"
+                id="nav-home-tab"
+                href="{% url 'scoring:detail_public_subscription' slug=evaluation.entity.slug subscription_type=evaluation.subscription.subscription_type.slug target="all" %}"
+                role="tab"><span class="mxt--h4">{% blocktrans trimmed %}Global{% endblocktrans %}</span></a>
+            {% for target_slug, target_label in target_displays.items %}
+                <a class="nav-link {% if target_name == target_slug %}active{% endif %} text-center col-lg-2 col-md-5 col-12"
+                    id="nav-home-tab"
+                    href="{% url 'scoring:detail_public_subscription' slug=evaluation.entity.slug subscription_type=evaluation.subscription.subscription_type.slug target=target_slug %}"
+                    role="tab"><span class="mxt--h4">{{ target_label }}</span></a>
+            {% endfor %}
+        </div>
+    </section>
+<!-- Filters Tabs for human evaluations in public and private page -->
+{# {% elif evaluation.is_human and not is_private %} #}
+{#     <section class="container--nopadding"> #}
+{#         <div class="nav nav-tabs d-flex justify-content-center"> #}
+{#             <a class="nav-link {% if not current_human_filter %}active{% endif %} text-center col-lg-2 col-md-5 col-12" #}
+{#                href="{% url 'structure:detail_evaluation' entity=entity.slug version=version type=type %}" #}
+{#                role="tab"><span class="mxt--h4">{% blocktrans trimmed %}Global{% endblocktrans %}</span></a> #}
+{#             {% for human_filter_slug,human_filter_label in human_filters.items %} #}
+{#                 <a class="nav-link {% if current_human_filter == human_filter_slug %}active{% endif %} text-center col-lg-2 col-md-5 col-12" #}
+{#                    href="{% url 'structure:detail_filtered_evaluation' entity=entity.slug version=version type=type target=human_filter_slug %}" #}
+{#                    role="tab"><span class="mxt--h4">{% blocktrans trimmed %}{{ human_filter_label }}{% endblocktrans %}</span></a> #}
+{#             {% endfor %} #}
+{#         </div> #}
+{#     </section> #}
+{# {% elif evaluation.is_human and is_private %} #}
+{#     <section class="container--nopadding"> #}
+{#         <div class="nav nav-tabs d-flex justify-content-center"> #}
+{#             <a class="nav-link {% if not current_human_filter %}active{% endif %} text-center col-lg-2 col-md-5 col-12" #}
+{#                href="{% url 'structure:detail_evaluation' entity=entity.slug version=version type=type %}" #}
+{#                role="tab"><span class="mxt--h4">{% blocktrans trimmed %}Global{% endblocktrans %}</span></a> #}
+{#             {% for human_filter_slug,human_filter_label in human_filters.items %} #}
+{#                 <a class="nav-link {% if current_human_filter == human_filter_slug %}active{% endif %} text-center col-lg-2 col-md-5 col-12" #}
+{#                    href="{% url 'structure:detail_filtered_evaluation' entity=entity.slug version=version type=type target=human_filter_slug %}" #}
+{#                    role="tab"><span class="mxt--h4">{% blocktrans trimmed %}{{ human_filter_label }}{% endblocktrans %}</span></a> #}
+{#             {% endfor %} #}
+{#         </div> #}
+{#     </section> #}
+{% endif %}
+
+{% comment %} Structure informations section {% endcomment %}
+<div id="summary_company" class="pdf_element">
+    <section class="col col--2 container--nopadding">
+        <article class="p-2">
+            {% comment %} Show structure logo {% endcomment %}
+            {% if entity.entity_level.structure.has_logo %}
+                <div class="public__image noradius">
+                    <div class="public__image noradius">
+                        <img src="{{ entity.entity_level.structure.get_logo_url }}" alt="Logo"/>
+                    </div>
+                </div>
+            {% endif %}
+            <div class="text-start">
+                <h1 line_id=0 prefix="RAPPORT " class="txt_line profile__title">
+                {% firstof entity.entity_level.structure.commercial_name entity.entity_level.structure.juridic_name %}
+                </h1>
+                <div class="company__details col">
+                    {% if entity.entity_level.structure.website %}
+                        <a href="{{ entity.entity_level.structure.website }}" target="_blank" style="text-decoration:none;">
+                            <span class="color-text-primary-light">
+                                <i class="fas fa-link"></i> {{ entity.entity_level.structure.get_website_display }}<br/>
+                            </span>
+                        </a>
+                    {% endif %}
+
+                    {% if entity.entity_level.structure.business_line %}
+                        <span class="txt_line" line_id=7>{{ entity.entity_level.structure.get_business_line_display }}</span>
+                    {% endif %}
+                </div>
+
+                {% comment %} Show structure description {% endcomment %}
+                {% if entity.entity_level.structure.description %}
+                    <h3>{% blocktrans trimmed %}Descriptif de l'activité :{% endblocktrans %}</h3>
+                    <p>{{ entity.entity_level.structure.description|linebreaks }}</p>
+                {% endif %}
+
+                {% if entity.entity_level.structure.creation_year %}
+                    <span>
+                        <strong>{% blocktrans trimmed %}Année de création :{% endblocktrans %}</strong>
+                        <span class="txt_line" line_id=4>{{ entity.entity_level.structure.creation_year|unlocalize }}</span>
+                    </span>
+                    <br>
+                {% endif %}
+
+                {% if evaluation and evaluation.get_workforce_from_evaluation %}
+                    <span>
+                        <strong>{% blocktrans trimmed %}Effectif :{% endblocktrans %}</strong>
+                        <span class="txt_line" line_id=6 suffix=" salariés">{% simple_number value=evaluation.get_workforce_from_evaluation %}</span>
+                    </span>
+                    <br>
+                {% elif entity.entity_level.structure.worforce %}
+                    <span>
+                        <strong>{% blocktrans trimmed %}Effectif :{% endblocktrans %}</strong>
+                        <span class="txt_line" line_id=6 suffix=" salariés">{% simple_number value=entity.entity_level.structure.worforce %}</span>
+                    </span>
+                    <br>
+                {% endif %}
+
+                {% if entity.entity_level.structure.turnover_value %}
+                    <span>
+                        <strong>{% blocktrans trimmed %}CA :{% endblocktrans %}</strong>
+                        <span class="txt_line" line_id=5 prefix="CA ">
+                            {% currency value=entity.entity_level.structure.turnover_value currency_symbol=entity.entity_level.structure.turnover_currency %}
+                        </span>
+                    </span>
+                    <br>
+                {% endif %}
+
+                <div class="mt-4">
+{#                    <a class="button button--circle button--primary" href="{% url 'search' %}"> {% trans 'Rechercher une autre structure' %}</a>#}
+
+                    {% if evaluation.pdf_sheet %}
+                        <a class="button button--circle button--pink" href="{{evaluation.pdf_sheet.url}}">
+                            <img src="{% static 'img/pdf.png' %}"/> {% trans 'Télécharger le PDF' %}
+                        </a>
+                    {% endif %}
+
+{#                    {% if evaluation and evaluation.is_validated_by_admin %}#}
+{#                        <a class="button button--circle button--secondary" href="{% url 'compare' evaluation.pk %}">{% trans 'Comparer' %}</a>#}
+{##}
+{#                        {% if evaluation.get_share_url %}#}
+{#                            <a class="button button--circle button--primary" href="{{ evaluation.get_share_url }}" target="_blank" download>#}
+{#                                {% trans 'Partager' %}#}
+{#                            </a>#}
+{#                        {% endif %}#}
+{#                    {% endif %}#}
+                </div>
+
+                {% if group_structures and group_structures.0 %}
+                    <br/>
+                    <h2 class="title--h2">{% blocktrans trimmed %}Evaluations du même groupe{% endblocktrans %}</h2>
+
+                    {% for st in group_structures %}
+                        {% if st.has_logo %}
+                            <a href="{% url 'scoring:detail_public' st.get_main_entity.slug %}">
+                                <img alt="{% firstof st.commercial_name st.juridic_name %}" src="{{ st.get_logo_url }}" style="height: 50px; width: auto" />
+                            </a>
+                        {% else %}
+                            <a href="{% url 'scoring:detail_public' st.get_main_entity.slug %}">{% firstof st.commercial_name st.juridic_name %}</a>
+                        {% endif %}
+                    {% endfor %}
+
+                {% endif %}
+            </div>
+        </article>
+
+        <article class="align-self-center">
+            {% include 'includes/radar.html' with evaluation=evaluation %}
+            {% if evaluation.custom_comment %}
+                <div class="custom_comment">
+                    {{ evaluation.custom_comment|safe }}
+                </div>
+            {% endif %}
+        </article>
+    </section>
+
+    {% comment %} Testimony section {% endcomment %}
+    {% if entity.entity_level.structure.commitment %}
+        <section id="testimony_company" class="bg--gradient-primary-light">
+            <article class="container--nopadding">
+                <h1 class="title--h1" style="padding:0;margin: 0;margin-bottom: 0.5em;">{% blocktrans trimmed %}Témoignage{% endblocktrans %}</h1>
+                <div class="col col--3 bg--white padding testimony" style="align-content: center; grid-template-columns: auto 1fr auto!important;">
+                    <span class="begin-mark">"</span>
+                    <div class="citation" style="text-align: left;">{{ entity.entity_level.structure.commitment|linebreaks }}</div>
+                    <span class="end-mark">"</span>
+                </div>
+            </article>
+        </section>
+    {% endif %}
+
+    {% comment %} Labels section {% endcomment %}
+    {% if entity.entity_level.structure.labels.all %}
+        <section class="container--nopadding" style="margin-bottom:2em;">
+            <h1 class="title--h1">{% blocktrans trimmed %}Labels et certifications{% endblocktrans %}</h1>
+            <article class="labels_certif d-flex flex-wrap flex-row justify-content-center">
+                {% for label in entity.entity_level.structure.labels.all %}
+                    <img alt="{{ label.name }}" class="label_img image--md" src="{{ label.image_url }}">
+                {% endfor %}
+            </article>
+        </section>
+    {% endif %}
+
+    {% comment %}  indicators section {% endcomment %}
+    {% if evaluation.is_validated_by_admin or evaluation.is_validated_by_user and request.user.is_staff %}
+        <section class="container--nopadding">
+            <p class="title--h1">{% blocktrans trimmed %}Principaux indicateurs diversité et inclusion{% endblocktrans %}</p>
+            <div class="row flex-column flex-md-row">
+                {% if evaluation.is_category_evaluation %}
+                    {% for subsc in score_category.get_scorecategory_detail %}
+                        <div class="col">
+                            <h2 class="progress__title" style="color: {{ score_category.category.color }}">
+                                {% trans subsc.0 %}
+                            </h2>
+                            <div class="progress">
+                                <div class="progress-bar progress-bar--{{ score_category.category.slug }}" role="progressbar" style="width: {{ subsc.1|floatformat:'0'}}%" aria-valuenow="{{ subsc.1|floatformat:'0'}}" aria-valuemin="0" aria-valuemax="100">
+                                    <span class="progress-bar--percentage">{% percentage value=subsc.1 %}</span>
+                                </div>
+                            </div>
+                    </div>
+                {% endfor %}
+                <!-- update scores for human evaluations if a filter is selected -->
+                {% elif current_human_filter %}
+                    {% for sc in filters_scores_categories %}
+                        {% for sc_key,sc_value in sc.items %}
+                            <div class="col mb-3">
+                                <h2 class="progress__title">{% trans sc_key %}</h2>
+                                <div class="progress">
+                                    <div class="progress-bar progress-bar--{{ sc_value.slug }}" role="progressbar" style="width: {{ sc_value.display_score|floatformat:'0'}}%" aria-valuenow="{{ sc_value.display_score|floatformat:'0'}}" aria-valuemin="0" aria-valuemax="100">
+                                        <span class="progress-bar--percentage">{% percentage value=sc_value.display_score %}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% endfor %}
+                {% else %}
+                    {% for sc in scores_categories %}
+                        <div class="col mb-3">
+                            <h2 class="progress__title" style="color: {{ sc.category.color }}">{% trans sc.category.name %}</h2>
+                            <div class="progress">
+                                <div class="progress-bar progress-bar--{{ sc.category.slug }}" role="progressbar" style="width: {{ sc.display_value|floatformat:'0'}}%" aria-valuenow="{{ sc.display_value|floatformat:'0'}}" aria-valuemin="0" aria-valuemax="100">
+                                    <span class="progress-bar--percentage">{% percentage value=sc.display_value %}</span>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </section>
+    {% endif %}
+</div>
+{% if evaluation.sheet.type.slug == "mixitany_start" %}
+    <section class="container--nopadding scorecategory pdf_element" id="sc__qqchiffres">
+
+        <p class="txt_line title--h1 mb-5" style="color:#8888e2">
+            {% blocktrans trimmed %}Quelques chiffres{% endblocktrans %}
+        </p>
+
+        <hr style="color: #8888e2;border: none;border-top: 5px solid #8888e2; margin-top:0;">
+        {% for sc in scores_categories %}
+            <div class="items_container" style="justify-content: center; ">
+                {% with 'includes/'|add:sc.category.slug|add:sc.evaluation.sheet.type.suffix_company_sheet|add:'_detail.html' as cat_template %}
+                    {% include cat_template with cat=sc.category %}
+                {% endwith %}
+            </div>
+        {% endfor %}
+    </section>
+{% endif %}
+{% comment %} Indicators section {% endcomment %}
+{% if evaluation.is_validated_by_admin or evaluation.is_validated_by_user and request.user.is_staff and evaluation.global_score %}
+    {% if evaluation.sheet.type.slug == 'evaluation_collaborateurs_360' %}
+        <section class="container--nopadding scorecategory pdf_element" id="sc__collaborator_criteria">
+            {% include 'includes/human_criteria_detail.html' %}
+        </section>
+    {% endif %}
+    {% for sc in scores_categories %}
+        <section class="container--nopadding pdf_element" id="sc__{{ sc.category.slug }}">
+            <p line_id=17 prefix="\n\n\n" suffix="\n" class="txt_line title--h1" style="color: {{ sc.category.color }}; margin-bottom: 0.3em;">{% trans sc.category.name %}</p>
+            <hr style="color: {{ sc.category.color }};border: none;border-top: 5px solid {{ sc.category.color }}; margin-top:0;">
+            {% comment %} Score category {% endcomment %}
+            <div class="scores-container">
+                <div class="score-item">
+                    <h2 class="title--h2">{% blocktrans trimmed %}Score Mixity{% endblocktrans %}</h2>
+                    <div>
+                        <div class="d-inline-flex align-items-center">
+                            <div class="indic-score" style="background-color: {{ sc.category.color }};"></div>
+                            <strong> {{ entity }}</strong>
+                        </div>
+                        <br>
+                        <div class="d-inline-flex align-items-center">
+                            <div class="indic-score" style="background-color: #863C63;"></div>
+                            <span> {% blocktrans trimmed %}Score moyen dans mon secteur{% endblocktrans %}</span>
+                        </div>
+                        <br>
+                        <div class="d-inline-flex align-items-center">
+                            <div class="indic-score" style="background-color: #95B9C1;"></div>
+                            <span> {% blocktrans trimmed %}Score moyen dans toutes les entreprises{% endblocktrans %}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="score-item">
+                    <article>
+                        <div class="d-flex justify-content-center">
+                        <!-- Update mean score and display value in business line if a filter is selected -->
+                        {% if current_human_filter %}
+                            {% simple_number filters_display_score|get_item:sc.category.name as i18n_value %}
+                            {% include 'includes/indicators/circular_plot.html' with percent_inner=i18n_value|floatformat:"0" percent=filters_mean_score_business_line|get_item:sc.category.name|floatformat:'0' percent_outter=filters_mean_score|get_item:sc.category.name|floatformat:'0' color=sc.category.color is_score_category=True id=sc.category.id|stringformat:'i'|add:"category" %}
+                        {% else %}
+                            {% simple_number sc.display_value as i18n_value %}
+                            {% include 'includes/indicators/circular_plot.html' with percent_inner=i18n_value|floatformat:"0" percent=sc.get_mean_score_in_business_line|floatformat:'0' percent_outter=sc.get_mean_score|floatformat:'0' color=sc.category.color is_score_category=True id=sc.category.id|stringformat:'i'|add:"category" %}
+                        {% endif %}
+                        </div>
+                    </article>
+                </div>
+                <div class="score-item d-flex align-items-center justify-content-center">
+                    {% if sc.sibling != None and not sc.is_evolution_delta_hidden %}
+                        <div class="evol-score" style="color: {{ sc.category.color }}">
+                            <div class="title-score">
+                                <span>
+                                {% with year=sc.sibling.evaluation.modified_by_user_date|date:"Y" %}
+                                    {% blocktrans trimmed %}Evolution depuis {{ year }}{% endblocktrans %}
+                                {% endwith %}
+                                </span>
+                            </div>
+                            <div class="evol-percent">
+                                <span>{% points current_year=sc.value last_year=sc.sibling.value delta=sc.evolution_delta|substract:sc.sibling.evolution_delta show_evolution=True %}</span>
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+
+            {% if evaluation.sheet.type.slug == 'evaluation_collaborateurs_360' and nb_collaborator_with_filter <= nb_collaborator_with_filter_min %}
+                <div style="text-align: -webkit-center; margin: 50px 0">
+                    <div class="item_pb item_s50 item_c stretched_item">
+                        <h3 line_id=17 suffix=" : ' }} %" class="txt_line  content-strong" style="margin:auto;">{% blocktrans trimmed %}Le nombre de répondants (f/h/nb) dans cette catégorie n'est pas assez important pour visualiser les résultats{% endblocktrans %}</h3>
+                    </div>
+                </div>
+            </div>
+        {% else %}
+            {% comment %} Indicators {% endcomment %}
+            {% if evaluation.sheet.type.slug != "mixity_start" %}
+                <h2 class="title--h2 mb-5">{% blocktrans trimmed %}Quelques chiffres{% endblocktrans %}</h2>
+
+                {% with 'includes/'|add:sc.category.slug|add:sc.evaluation.sheet.type.suffix_company_sheet|add:'_detail.html' as cat_template %}
+                    {% include cat_template with cat=sc.category %}
+                {% endwith %}
+
+
+                <p class="content padding margin text-end">
+                    {% blocktrans trimmed %}*ND = Non disponible{% endblocktrans %}
+                </p>
+                {% if sc.category.slug == "cultural_diversity" and collaborators_statistics %}
+
+                    {% include "includes/namsor_indicator_container.html" with collaborators_statistics=collaborators_statistics %}
+
+                {% endif %}
+            {% endif %}
+        {% endif %}
+
+            {% comment %} Strengths, Weaknesses and Aims section {% endcomment %}
+            <div class="row">
+                <article class="swa_container">
+                    {% include "includes/strengths_weaknesses_and_aims.html" %}
+                </article>
+            </div>
+        </section>
+    {% endfor %}
+{% else %}
+    {% for sc in scores_categories %}
+        {% with 'includes/'|add:sc.category.slug|add:'_detail.html' as cat_template %}
+            <section class="container--nopadding" style="margin-bottom:2em;">
+                <p class="title--h1" style="color: {{ sc.category.color }}; margin-bottom: 0.3em;">{{ sc.category.name }}</p>
+                <hr class="mt-0" style="color: {{ sc.category.color }};border-top: 5px solid {{ sc.category.color }}">
+
+                {% include cat_template with cat=sc.category %}
+
+                {% if sc.detail %}
+                    <article class="bg--blue-light padding" style="border-radius: 15px;">
+                        <h3 class="content-strong">{% blocktrans trimmed %}Zoom sur une bonne pratique{% endblocktrans %}</h3>
+                        <p class="content">{{ sc.detail|linebreaksbr }}</p>
+                    </article>
+                {% endif %}
+                <p class="content-light">{% blocktrans trimmed %}*ND = Non disponible{% endblocktrans %}</p>
+            </section>
+        {% endwith %}
+    {% endfor %}
+{% endif %}
+
+{% comment %} Bottom buttons section {% endcomment %}
+{#<section class="container--nopadding" style="margin-bottom:2em;text-align: center;">#}
+{#    <a class="button button--circle button--primary" href="{% url 'search' %}">{% trans 'Rechercher une autre structure' %}</a>#}
+{#    {% if evaluation and evaluation.is_validated_by_admin %}#}
+{#        <a class="button button--circle button--secondary" href="{% url 'compare' evaluation.pk %}">{% trans 'Comparer cette empreinte' %}</a>#}
+{#        {% if evaluation.get_share_url %}#}
+{#            <a class="button button--circle button--primary" href="{{ evaluation.get_share_url }}" target="_blank" download>{% trans 'Partager' %}</a>#}
+{#        {% elif evaluation and not evaluation.is_validated_by_user and evaluation.public_display %}#}
+{#            <a class="btn btn-secondary" href="{% url 'contact' %}">{% trans 'Contacter Mixity' %}</a>#}
+{#        {% endif %}#}
+{#    {% endif %}#}
+{#</section>#}
+
+{% if evaluation and not evaluation.is_validated_by_user and evaluation.public_display %}
+    <section class="banner--pink">
+        <p style="color: white;" class="content-strong text-center">
+            {% blocktrans trimmed %}Datas collectées par Mixity - année 2019{% endblocktrans %}
+        </p>
+    </section>
+{% endif %}
+
+{% endblock %}

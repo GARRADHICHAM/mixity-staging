@@ -1,0 +1,63 @@
+{% load i18n %}
+
+
+<div id="validationModal" class="modal" style="z-index:1040">
+    <div class="modal-content">
+        <div id="header" style="text-align:center">
+            <span class="close" id="closeValidationModal" style="float:right; font-size:3em;">&times;</span>
+            <h2>{% blocktrans trimmed %}Valider son questionnaire{% endblocktrans %}</h2>
+            <p><i class="fas fa-exclamation-triangle"></i> {% blocktrans trimmed %}Attention{% endblocktrans %} <i class="fas fa-exclamation-triangle"></i></p>
+        </div>
+        <p>{% blocktrans trimmed %}Toute validation est définitive{% endblocktrans %}</p>
+        <p>{% blocktrans trimmed %}Vous pouvez télécharger un récapitulatif en format excel pour vérifier les réponses avant de
+            valider définitivement le questionnaire et générer votre empreinte.{% endblocktrans %}</p>
+        <form action="" method="post" class="form" enctype="multipart/form-data">
+              {% csrf_token %}
+              {{ form.as_p }}
+                <div class="row mt-5">
+                        <div class="col-md-4 py-1 d-grid">
+                            <a id="back" style="margin-block:auto" class="btn btn-secondary">{% trans 'Retour' %}</a>
+                        </div>
+                    {% if evaluation.get_questions_sheet_url %}
+                        <div class="col-md-4 py-1 d-grid">
+                            <a download href="{{ evaluation.get_questions_sheet_url }}" class="btn btn-primary">
+                            {% trans 'Télécharger votre récapitulatif' %}</a>
+                        </div>
+                    {% endif %}
+                        <div class="col-md-4 py-1 d-grid">
+                            <input type="submit" value="{% trans 'Valider votre évaluation' %}" class="btn btn-primary"/>
+                        </div>
+                </div>
+        </form>
+    </div>
+</div>
+<script type='text/javascript'>
+    $(document).ready(function () {
+        // Get the modal
+        var modal = document.getElementById("validationModal");
+        // Get the button that opens the modal
+        var btn = document.getElementById("validationModalBtn");
+        // Get the <span> element that closes the modal
+        var span = document.getElementById("closeValidationModal");
+        // Get the <span> element that closes the modal
+        var back = document.getElementById("back");
+        // When the user clicks on the button, open the modal
+        btn.onclick = function () {
+            modal.style.display = "flex";
+        }
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function () {
+            modal.style.display = "none";
+        }
+        // When the user clicks on Retour, close the modal
+        back.onclick = function () {
+            modal.style.display = "none";
+        }
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    });
+</script>

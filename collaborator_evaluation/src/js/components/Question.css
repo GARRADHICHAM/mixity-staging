@@ -1,0 +1,35 @@
+.question-container p {
+    margin-block-start: 0em;
+    margin-block-end: 1em;
+    font-size: 23px;
+    line-height: 150%;
+    margin-bottom: 2em;
+}
+
+.item-enter,
+.item-appear {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-100%);
+}
+
+.item-enter-active,
+.item-appear-active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    transition: all 500ms;
+}
+
+.item-exit {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.item-exit-active {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(200%);
+    transition: all 500ms;
+}

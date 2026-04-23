@@ -1,0 +1,108 @@
+// Legacy override (to remove)
+
+.card {
+    border: unset;
+}
+a:hover {
+  color: unset;
+}
+p {
+  margin-top: revert;
+  margin-bottom: revert;
+}
+h1, h2 {
+    margin-bottom: revert;
+    font-weight: revert;
+}
+hr {
+    opacity: revert;
+}
+h3 {
+    font-size: revert;
+}
+
+// New override UX/UI for bootstrap 5
+.nav-link {
+    color: var(--color-primary-dark) !important;
+}
+
+.navbar {
+    .nav-link {
+        &:active, &:focus, &:hover {
+            color: var(--color-primary-light) !important;
+        }
+
+        &.active {
+            font-weight: bold;
+        }
+    }
+}
+
+.nav-tabs {
+    border: none !important;
+
+    .nav-link {
+        &:active,&.active {
+            border-bottom-color: var(--color-pink) !important;
+            border-width: 0 0 3px 0;
+            color: var(--color-pink) !important;
+        }
+        &:hover,&:focus {
+            color: var(--color-pink-hover) !important;
+        }
+    }
+}
+
+.color--primary-disabled .nav-link {
+    color: var(--color-primary-disabled) !important;
+
+    &:active, &:focus, &:hover {
+        color: var(--color-primary-light) !important;
+    }
+}
+
+.dropdown-item.active {
+    background-color: var(--color-secondary) !important;
+}
+
+// Begin special multicolumns dropdown used in header
+
+.dropdown-menu {
+	min-width: 250px;
+}
+.dropdown-menu.columns-2 {
+	min-width: 550px;
+}
+.dropdown-menu.columns-3 {
+	min-width: 850px;
+}
+.dropdown-menu li a {
+	padding: 5px 15px;
+	font-weight: 300;
+}
+.multi-column-dropdown {
+	list-style: none;
+  margin: 0px;
+  padding: 0px;
+}
+.multi-column-dropdown li a {
+	display: block;
+	clear: both;
+	line-height: 1.428571429;
+	color: #333;
+	white-space: normal;
+}
+.multi-column-dropdown li a:hover {
+	text-decoration: none;
+	color: #262626;
+	background-color: #999;
+}
+
+@media (max-width: 992px) {
+	.dropdown-menu.multi-column {
+		min-width: 250px !important;
+		overflow-x: hidden;
+	}
+}
+
+// End special multicolumns dropdown used in header

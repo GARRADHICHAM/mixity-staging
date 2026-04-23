@@ -1,0 +1,6 @@
+.collapsed> .adp-connection-status-arrow {
+        transform: rotate(180deg);
+}
+.adp-connection-status-arrow {
+        transition: transform .5s ease-in-out;
+}

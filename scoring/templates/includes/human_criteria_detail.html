@@ -1,0 +1,89 @@
+{% load l10n %}
+{% load i18n %}
+{% load percentage %}
+{% load format_number %}
+{% load computed_answer %}
+{% load substract %}
+{% load human_filter %}
+
+    <!--   Human Filters Form -->
+{#     <div class="btn-group" style="float:right"> #}
+{#         <a class="dropdown-toggle btn button--circle button--primary" style="display:initial" id="dropdownMenuClickableInside" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false"> #}
+{#             {% blocktrans trimmed %}Afficher les filtres{% endblocktrans %} #}
+{#         </a> #}
+{#         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuClickableInside"> #}
+{#             {% include 'includes/collaborator_criteria_choice_form.html' with form=form %} #}
+{#         </ul> #}
+{#     </div> #}
+    <!--   Human Filters Form Tooltip -->
+{#     <div class="mxt-icon--32 icon-circle-info tooltip" style="float:right;padding-right: 1%"> #}
+{#         <h5 class="tooltip__text" style="width: 50vw"> #}
+{#             {% blocktrans trimmed %}Vous pouvez sélectionner ci-dessous, les répondants (f/h/nb) dont vous souhaitez afficher les résultats.<br/> #}
+{#                 Vous pouvez sélectionner un ou plusieurs critères.<br/> #}
+{#                 Une fois les critères sélectionnés et validés, la page se recharge avec les résultats souhaités.<br/> #}
+{#                 À savoir : Afin de garantir l'anonymat des répondants (f/h/nb), il est nécessaire d'avoir un nombre de répondant minimum pour visualiser les réponses.{% endblocktrans %} #}
+{#         </h5> #}
+{#     </div> #}
+
+    <!--   Human Filters Form Output -->
+    <h3 class="mxt--large-bold" style="margin-bottom: 1.5em;">{% blocktrans trimmed %}Caractéristiques des collaborateurs (f/h/nb){% endblocktrans %}</h3>
+
+    <div class="items_container" style="justify-content: center; align-items: stretch">
+        <!--   Collaborators Total Block -->
+        {% if evaluation.answer_count %}
+            <div class="item_pb item_s1 item_c stretched_item">
+                <h3 class="content-strong">
+                    {% blocktrans trimmed %}Total de répondants{% endblocktrans %}
+                </h3>
+                {% include 'includes/indicators/number_icon.html' with value=nb_collaborator_with_filter icon_name="people" on_top=True icon_size="220px" %}
+            </div>
+        {% endif %}
+        <!--   Collaborators Age Block -->
+        {% computed_human_collaborator evaluation 'age' collaborators_queryset nb_collaborator_with_filter as ages %}
+        <div class="item_pb item_s1 item_c stretched_item">
+            <h3 line_id=17 class="txt_line  content-strong">{% blocktrans trimmed %}Répartition des répondants (f/h/nb) par âges{% endblocktrans %}</h3>
+            <div class="d-flex justify-content-center">
+                {% include 'includes/indicators/pie_multiple_percent.html' with border_color="#EBEAEA" blank_color="#e9ecef" legend1=ages.0.0.label legend2=ages.0.1.label legend3=ages.0.2.label legend4=ages.0.3.label color1="#FF7070" color2="#863C63" color3="#8888E2" color4="#5B7899" value1=ages.0.0.value|floatformat:'0' value2=ages.0.1.value|floatformat:'0' value3=ages.0.2.value|floatformat:'0' value4=ages.0.3.value|floatformat:'0' color=cat.color id=evaluation.id|floatformat:'0'|add:"age" small=1%}
+            </div>
+        </div>
+        <!--   Collaborators Gender Block -->
+        {% computed_human_collaborator evaluation 'civility' collaborators_queryset nb_collaborator_with_filter as civility %}
+        <div class="item_pb item_s1 item_c stretched_item">
+            <h3 line_id=17 class="txt_line content-strong" prefix="\n">
+                {% blocktrans trimmed %}Répartition des répondants (f/h/nb) par genres{% endblocktrans %}
+            </h3>
+            {% include 'includes/indicators/pie_multiple_percent.html' with color1='#FF7070' value1=civility.0.0.value color2="#863C63" value2=civility.0.1.value color3="#8888E2" value3=civility.0.2.value color4="#5B7899" value4=civility.0.3.value legend1=civility.0.0.label legend2=civility.0.1.label legend3=civility.0.2.label legend4=civility.0.3.label id=evaluation.id|stringformat:'i'|add:"civility" %}
+        </div>
+        <!--   Collaborators Status Block for Campus Only -->
+        {% if evaluation.is_campus %}
+            {% computed_human_collaborator evaluation 'status' collaborators_queryset nb_collaborator_with_filter as status %}
+            <div class="item_pb item_s1 item_c stretched_item">
+                <h3 line_id=17 class="txt_line content-strong">
+                    {% blocktrans trimmed %}Répartition des répondants (f/h/nb) par status{% endblocktrans %}
+                </h3>
+                {% include 'includes/indicators/pie_multiple_percent.html' with color1='#FF7070' value1=status.0.0.value color2="#863C63" value2=status.0.1.value color3="#8888E2" value3=status.0.2.value color4="#95B9C1" value4=status.0.3.value color5="#5B7899" value5=status.0.4.value legend1=status.0.0.label legend2=status.0.1.label legend3=status.0.2.label legend4=status.0.3.label legend5=status.0.4.label id=evaluation.id|stringformat:'i'|add:"status" %}
+            </div>
+        {% endif %}
+
+        <!--   Collaborators Human Criteria Block -->
+        {% for criteria in human_criteria %}
+            {% computed_criteria criteria nb_collaborator_with_filter as criteria_values %}
+            {% if criteria_values.0 %}
+                <div class="item_pb item_s1 item_c stretched_item">
+                    <h3 class="txt_line content-strong" style="margin:auto;">{% blocktrans trimmed %}Répartition des répondants (f/h/nb) par{% endblocktrans %} {{ criteria }}</h3>
+                    {% include 'includes/indicators/split_repartition_json.html' with round=True orange_count=0 data=criteria_values.1 color="#423C6B" big=True id=criteria.id|add:forloop.counter %}
+                </div>
+            {% else %}
+                <div class="item_pb items_container" style="width: 92%">
+                    <div class="item_s1 item_c stretched_item" style="width: 100%; margin-bottom: 0">
+                        <h3 class="txt_line content-strong" style="margin:auto;">{% blocktrans trimmed %}Répartition des répondants (f/h/nb) par{% endblocktrans %} {{ criteria }}</h3>
+                    </div>
+                    {% for value in criteria_values.1 %}
+                        <div class="item_pb item_s1 item_c stretched_item">
+                            {% include 'includes/indicators/split_repartition_json.html' with round=True orange_count=0 data=value color="#423C6B" big=True id=criteria.id|add:forloop.counter %}
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>

@@ -1,0 +1,8 @@
+{% extends "base_email.html" %}
+{% load i18n static %}
+
+{% block content %}
+<tr>
+    <td>{% blocktrans trimmed %}Votre email a bien été validé.{% endblocktrans %}</td>
+</tr>
+{% endblock %}

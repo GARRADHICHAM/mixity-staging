@@ -1,0 +1,194 @@
+{% load i18n %}
+
+
+<div class="items_container" style="justify-content: center; align-items: stretch">
+    {% with answer=answer_20213085 answer2=answer_20213086 %}
+        {% if answer %}
+        <div class="item_pb item_s1 item_c">
+            <h3 line_id=17 suffix=" : {{ answer.value|floatformat:'0' }} %" class="txt_line content-strong">
+                {% blocktrans trimmed %}Nombre de nationalités dans l'entreprise{% endblocktrans %}
+            </h3>
+            <div style="display: flex;justify-content: center; flex-wrap: wrap;width: 100%">
+            {% include 'includes/indicators/number_icon.html' with value=answer.value icon_name="earth" %}
+            {% include 'includes/indicators/split_repartition.html' with answer=answer2 color=cat.color %}
+            </div>
+            {% if answer_20213085.perimeter %}
+                <div class="perimeter-indicator">
+                    <span>
+                        {% trans answer_20213085.perimeter %}
+                    </span>
+                </div>
+            {% endif %}
+            {% if answer_20213086.perimeter %}
+                <div class="perimeter-indicator">
+                    <span>
+                        {% trans answer_20213086.perimeter %}
+                    </span>
+                </div>
+            {% endif %}
+        </div>
+        {% endif %}
+    {% endwith %}
+    {% with answer=answer_20213087 answer2=answer_20213088 %}
+        {% if answer %}
+        <div class="item_pb item_s1 item_c">
+            <h3 line_id=17 suffix=" : {{ answer.value|floatformat:'0' }} %" class="txt_line content-strong">
+                {{ answer.question.label }}
+            </h3>
+            <div style="display: flex;justify-content: center; flex-wrap: wrap;width: 100%">
+            {% include 'includes/indicators/number_icon.html' with value=answer.value icon_name="earth" %}
+            {% include 'includes/indicators/split_repartition.html' with answer=answer2 color=cat.color %}
+            </div>
+            {% if answer_20213087.perimeter %}
+                <div class="perimeter-indicator">
+                    <span>
+                        {% trans answer_20213087.perimeter %}
+                    </span>
+                </div>
+            {% endif %}
+            {% if answer_20213088.perimeter %}
+                <div class="perimeter-indicator">
+                    <span>
+                        {% trans answer_20213088.perimeter %}
+                    </span>
+                </div>
+            {% endif %}
+        </div>
+        {% endif %}
+    {% endwith %}
+    {% with answer=answer_20213089 answer2=answer_20213090 %}
+        {% if answer %}
+            <div class="item_pb item_s1 item_c">
+                <h3 line_id=17 suffix=" : {{ answer.value|floatformat:'0' }} %" class="txt_line content-strong">
+                    {{ answer.question.label }}
+                </h3>
+                <div style="display: flex;justify-content: center; flex-wrap: wrap;width: 100%">
+                    {% include 'includes/indicators/number_icon.html' with value=answer.value icon_name="earth" %}
+                    {% include 'includes/indicators/split_repartition.html' with answer=answer2 color=cat.color %}
+                </div>
+                {% if answer_20213089.perimeter %}
+                    <div class="perimeter-indicator">
+                        <span>
+                            {% trans answer_20213089.perimeter %}
+                        </span>
+                    </div>
+                {% endif %}
+                {% if answer_20213090.perimeter %}
+                    <div class="perimeter-indicator">
+                        <span>
+                            {% trans answer_20213090.perimeter %}
+                        </span>
+                    </div>
+                {% endif %}
+            </div>
+        {% endif %}
+    {% endwith %}
+    {% with answer=answer_202130851 %}
+        {% if answer %}
+        <div class="item_pb item_s1 item_c">
+            <h3 line_id=17 suffix=" : {{ answer.value|floatformat:'0' }} %" class="txt_line content-strong">
+                {% blocktrans trimmed %}Nombre d'éthnies dans l'entreprise{% endblocktrans %}
+            </h3>
+            <div style="display: flex;justify-content: center; flex-wrap: wrap;width: 100%">
+            {% include 'includes/indicators/number_icon.html' with value=answer.value icon_name="people1" icon_size="100px" %}
+            </div>
+                {% if answer_202130851.perimeter %}
+                    <div class="perimeter-indicator">
+                        <span>
+                            {% trans answer_202130851.perimeter %}
+                        </span>
+                    </div>
+                {% endif %}
+        </div>
+        {% endif %}
+    {% endwith %}
+    {% with answer=answer_202130871 %}
+        {% if answer %}
+            <div class="item_pb item_s1 item_c">
+                <h3 line_id=17 suffix=" : {{ answer.value|floatformat:'0' }} %" class="txt_line content-strong">
+                    {% blocktrans trimmed %}Nombre d'éthnies dans le conseil d'administration{% endblocktrans %}
+                </h3>
+                <div style="display: flex;justify-content: center; flex-wrap: wrap;width: 100%">
+                    {% include 'includes/indicators/number_icon.html' with value=answer.value icon_name="people1" icon_size="100px" %}
+                </div>
+                {% if answer_202130871.perimeter %}
+                    <div class="perimeter-indicator">
+                        <span>
+                            {% trans answer_202130871.perimeter %}
+                        </span>
+                    </div>
+                {% endif %}
+            </div>
+        {% endif %}
+    {% endwith %}
+    {% with answer=answer_202130891 %}
+        {% if answer %}
+            <div class="item_pb item_s1 item_c">
+                <h3 line_id=17 suffix=" : {{ answer.value|floatformat:'0' }} %" class="txt_line content-strong">
+                    {% blocktrans trimmed %}Nombre d'éthnies au Comex ou Codir{% endblocktrans %}
+                </h3>
+                <div style="display: flex;justify-content: center; flex-wrap: wrap;width: 100%">
+                    {% include 'includes/indicators/number_icon.html' with value=answer.value icon_name="people1" icon_size="100px" %}
+                </div>
+                {% if answer_202130891.perimeter %}
+                    <div class="perimeter-indicator">
+                        <span>
+                            {% trans answer_202130891.perimeter %}
+                        </span>
+                    </div>
+                {% endif %}
+            </div>
+        {% endif %}
+    {% endwith %}
+    {% with answer=answer_20213091 %}
+        {% if answer %}
+            <div class="item_pb item_s1 item_c stretched_item">
+                <h3 line_id=17 suffix=" : {{ answer.value|floatformat:'0' }} %" class="txt_line  content-strong" style="margin:auto;">{% blocktrans trimmed %}Taux de recrutement des stagiaires et alternants (f/h/nb) issues des quartiers prioritaires de la politique de la ville{% endblocktrans %}</h3>
+                <div class="d-flex justify-content-center">
+                    {% include 'includes/indicators/circular_plot.html' with last_year_value=answer.sibling_value border_color="#EBEAEA" blank_color="#e9ecef" percent_inner=answer.value|floatformat:'1' percent=answer.get_mean_score_in_business_line|floatformat:'0' percent_outter=answer.get_mean_score|floatformat:'0' color=cat.color id=answer.id %}
+                </div>
+                {% if answer_20213091.perimeter %}
+                    <div class="perimeter-indicator">
+                        <span>
+                            {% trans answer_20213091.perimeter %}
+                        </span>
+                    </div>
+                {% endif %}
+            </div>
+        {% endif %}
+    {% endwith %}
+    {% with answer=answer_20213092 %}
+        {% if answer %}
+            <div class="item_pb item_s1 item_c stretched_item">
+                <h3 line_id=17 suffix=" : {{ answer.value|floatformat:'0' }} %" class="txt_line  content-strong" style="margin:auto;">{% blocktrans trimmed %}Taux de cadres (f/h/nb) diplomés d'un cursus universitaire public ou semi-public{% endblocktrans %}</h3>
+                <div class="d-flex justify-content-center">
+                    {% include 'includes/indicators/circular_plot.html' with last_year_value=answer.sibling_value border_color="#EBEAEA" blank_color="#e9ecef" percent_inner=answer.value|floatformat:'1' percent=answer.get_mean_score_in_business_line|floatformat:'0' percent_outter=answer.get_mean_score|floatformat:'0' color=cat.color id=answer.id %}
+                </div>
+                {% if answer_20213092.perimeter %}
+                    <div class="perimeter-indicator">
+                        <span>
+                            {% trans answer_20213092.perimeter %}
+                        </span>
+                    </div>
+                {% endif %}
+            </div>
+        {% endif %}
+    {% endwith %}
+    {% with answer=answer_20213097 %}
+        {% if answer %}
+            <div class="item_pb item_s1 item_c stretched_item">
+                <h3 line_id=17 suffix=" : {{ answer.value|floatformat:'0' }}" class="txt_line  content-strong">
+                    {% blocktrans trimmed %}Nombre d'employés (f/h/nb) impliqués dans le mentorat ou de bénévoles dans des associations à but non lucratif abordant des questions éthniques ou socials{% endblocktrans %}
+                </h3>
+                {% include 'includes/indicators/number_icon.html' with color=cat.color value=answer.value last_year_value=answer.sibling_value last_year=answer.sibling_year icon_name="megaphone_international" %}
+                {% if answer_20213097.perimeter %}
+                    <div class="perimeter-indicator">
+                        <span>
+                            {% trans answer_20213097.perimeter %}
+                        </span>
+                    </div>
+                {% endif %}
+            </div>
+        {% endif %}
+    {% endwith %}
+</div>

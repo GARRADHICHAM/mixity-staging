@@ -1,0 +1,74 @@
+{% load i18n %}
+{% load static %}
+
+<!-------- Adding solution to favorites confirmation message -------->
+<div id="fav_solution_success_msg" class="alert alert-success" role="alert" style="display: none">
+    {% blocktrans trimmed %}La solution a bien été ajoutée ou supprimée de vos favoris{% endblocktrans %}
+</div>
+<div id="fav_solution_failure_msg" class="alert alert-danger" role="alert" style="display: none">
+    {% blocktrans trimmed %}Une erreur est survenue, veuillez réessayer{% endblocktrans %}
+</div>
+
+<section class="content py-5">
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        {% for solution in solutions %}
+            <div class="col">
+                <div class="card h-100">
+                    <h5 class="card-title text-center"><strong>{{ solution.title }}</strong></h5>
+                    {% if solution.photo_url == "default" %}
+                        <img class="card-img-top" src="{% static 'solvers_catalog/solution.jpg' %}" alt="Solution thumbnail">
+                    {% else %}
+                        <img class="card-img-top" src="{{solution.photo_url}}" alt="Solution thumbnail">
+                    {% endif %}
+                    <div class="card-body">
+                        <p class="card-text">{{ solution.summary }}</p>
+                    </div>
+                    <div class="card-content">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item"><strong>{% blocktrans trimmed %}Catégorie{% endblocktrans %}: </strong>{{ solution.categories }}</li>
+                            <li class="list-group-item"><strong>{% blocktrans trimmed %}Sous catégorie{% endblocktrans %}: </strong>{{ solution.subcategories }}</li>
+                            <li class="list-group-item"><strong>{% blocktrans trimmed %}Mots clés{% endblocktrans %}: </strong>
+                                {% for keyword in solution.keywords.all %}
+                                    {{ keyword }}
+                                    {% if forloop.counter < solution.keywords.count %}
+                                        -
+                                    {% endif %}
+                                {% endfor %}
+                            </li>
+                            {% if manage_solutions %}
+                                <li class="list-group-item">
+                                    <div class="d-flex justify-content-between padding-horizontal-2">
+                                        <a href="{% url 'dashboard:solver:update_solution' slug=structure.slug id=solution.id %}" class="btn btn-primary">{% blocktrans trimmed %}Modifier{% endblocktrans %}</a>
+                                        <a href="{% url 'dashboard:solver:delete_solution' slug=structure.slug id=solution.id %}" class="btn btn-primary">{% blocktrans trimmed %}Supprimer{% endblocktrans %}</a>
+                                    </div>
+                                </li>
+                            {% endif %}
+                            {% if fav_solutions %}
+                                <li class="list-group-item">
+                                    <div class="text-center">
+                                        {% if solution.id in fav_solutions_id %}
+                                            <button id="fav_solution_{{ solution.id }}" class="btn btn-primary" onclick='act_favorites("DELETE","{{ solution.id }}")'>{% blocktrans trimmed %}Supprimer des favoris{% endblocktrans %}</button>
+                                        {% else %}
+                                            <button id="fav_solution_{{ solution.id }}" class="btn btn-primary" onclick='act_favorites("ADD","{{ solution.id }}")'>{% blocktrans trimmed %}Ajouter aux favoris{% endblocktrans %}</button>
+                                        {% endif %}
+                                    </div>
+                                </li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                    <div class="card-footer bg-white">
+                        <div class="text-center">
+                            <a href="{% url 'dashboard:solver:details_solution' slug=structure.slug id=solution.id %}" class="btn btn-primary">{% blocktrans trimmed %}En savoir plus{% endblocktrans %}</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</section>
+
+<!------Using HTML as a Proxy t avoid mixing template language and javascript----->
+<meta id="fav-solution-slug" data-slug="{{structure.slug}}">
+
+<!------Importing fav_solution Function -->
+<script src="{% static 'dist/js/act-favorites.js' %}"></script>

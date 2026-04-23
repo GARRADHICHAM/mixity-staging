@@ -1,0 +1,44 @@
+{% load i18n %}
+{% load l10n %}
+{% load static %}
+{% load substract %}
+{% load format_number %}
+
+
+<div style="display:flex; justify-content:center; align-items:center; flex-wrap:wrap; margin-top:10px; width:100%;">
+    {% firstof icon_name 'megaphone' as icon_name %}
+    {% comment %} blocktrans use to translate alt img {% endcomment %}
+    {% blocktrans asvar alt_icon %}Icone {{ icon_name }}{% endblocktrans %}
+
+    {% with img_src="img/"|add:icon_name|add:".png" %}
+    {% if on_top %}
+    <div style="width:100%; text-align:center">
+        <img alt="{{ alt_icon }}" src="{% static img_src %}" style="width:{% firstof icon_size '82px' %}" />
+    </div>
+    {% else %}
+    <div>
+        <img alt="{{ alt_icon }}" src="{% static img_src %}" style="width:{% firstof icon_size '82px' %}" />
+    </div>
+    {% endif %}
+    {% endwith %}
+
+    <div style="text-align: center;">
+        <span style="font-family:Cousine; font-size:{% firstof font_size '72px' %}; color:{{ color }};">
+            {% if currency_symbol %}
+            &nbsp;{% currency value=value currency_symbol=currency_symbol %}{% if on_top %}&nbsp;{% endif %}
+            {% else %}
+            &nbsp;{% simple_number value=value %}{% if on_top %}&nbsp;{% endif %}
+            {% endif %}
+        </span>
+     </div>
+</div>
+
+{% if color and last_year_value and value %}
+<div style="display: flex;justify-content: center;margin-top:10px">
+    <div class="progress_evol" style="color: {{ color }}">
+        <span style="color: black"> vs {{ last_year|unlocalize }} :</span>
+        {% if value < last_year_value %}▼{% elif value > last_year_value %}▲{% else %}={% endif %}
+        {{ value|substract:last_year_value|floatformat:'0' }}
+    </div>
+</div>
+{% endif %}

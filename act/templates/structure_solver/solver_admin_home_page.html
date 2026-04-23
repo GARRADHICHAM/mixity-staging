@@ -1,0 +1,19 @@
+{% extends "base_dashboard.html" %}
+{% load i18n %}
+{% load static %}
+
+{% block content %}
+    <div class="col py-3 bg-gradient-multicolor">
+        <div class="row">
+            <article class="col-12 p-3">
+                <header class="text-center">
+                    <h1 class="title--h1">{% blocktrans trimmed %}Vos solutions{% endblocktrans %}</h1>
+                    <a href="{% url 'dashboard:solver:add_solution' structure.slug %}" class="btn button--circle button--primary">
+                        <i class="fas fa-plus"></i> {% blocktrans trimmed %}Proposer une nouvelle solution{% endblocktrans %}
+                    </a>
+                </header>
+                {% include 'includes/solutions_list.html' with manage_solutions=True %}
+            </article>
+        </div>
+    </div>
+{% endblock %}

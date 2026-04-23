@@ -1,0 +1,58 @@
+{% load i18n %}
+
+
+{% if action_url and url_params %}
+  <form action="{% url action_url url_params %}" method="{{method|default:'get'}}" class="form" enctype="{{enctype|default:'multipart/form-data'}}">
+{% elif action_url %}
+  <form action="{% url action_url %}" method="{{method|default:'get'}}" class="form" enctype="{{enctype|default:'multipart/form-data'}}">
+{% else %}
+  <form action="" method="{{method|default:'get'}}" class="form" enctype="{{enctype|default:'multipart/form-data'}}">
+{% endif %}
+{% if method|lower == "post" %}
+  {% csrf_token %}
+{% endif %}
+    {{ form.media }}
+  {% for field in form %}
+    <div class="field" id="field_{{field.id_for_label}}">
+      {{ field.errors }}
+      <label class="field__label">{{ field.label_tag }} <span class="field__label__help">{% if not field.field.required %}{% blocktrans trimmed %}(optionnel){% endblocktrans %}{% endif %}</span></label>
+      {{ field }}
+      {% if field.help_text %}
+        <div class="help">{{ field.help_text|safe }}</div>
+      {% endif %}
+    </div>
+  {% endfor %}
+  {% if button_secondary %}
+
+<div class="col col--3" style="margin-top: 2em;">
+  <div>
+    <br>
+    <a href="javascript:history.go(-1)" class="button button--secondary-dark button--circle">{% blocktrans trimmed %}Page
+        précédente{% endblocktrans %}</a>
+  </div>
+  <div>
+    <br>
+    <button id="submit_btn" class="btn btn-secondary" type="submit">{% trans submit %}</button>
+  </div>
+</div>
+
+  {% elif button_default %}
+<div class="col col--1" style="margin-top: 2em;">
+    <button id="submit_btn" class="btn btn-secondary" type="submit">{% trans submit %}</button>
+</div>
+  {% else %}
+<div class="col col--1" style="margin-top: 2em;">
+
+    <button id="submit_btn" class="btn btn-secondary" type="submit">{% trans submit %}</button>
+</div>
+  {% endif %}
+</form>
+<script>
+    document.getElementById("submit_btn").addEventListener('click', function() {
+        dataLayer.push({
+        'event':'VirtualPageview',
+        'virtualPageURL':'/demo/ok/',
+        'virtualPageTitle' : 'Demande de démo OK'
+        });
+    })
+</script>

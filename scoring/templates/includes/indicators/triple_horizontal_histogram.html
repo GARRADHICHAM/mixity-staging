@@ -1,0 +1,54 @@
+{% load i18n %}
+{% load format_number %}
+
+
+<div style="display: flex; width: 100%; flex-wrap: wrap">
+    <div style="display: flex; flex-direction: column; align-items: start; padding-left: 10px; width: 100%; margin-top: 10px;">
+        <div id="div_first_{{ id }}" style="min-width:45px;margin-bottom: 5px;display:flex; justify-content:center; height:34px; background-color: {{ first_color }}; align-items: center;">
+            <div>
+                <span id="span_first_{{ id }}" style="font-size: 24px; color: white; font-family: Cousine;">{% percentage first_value %}</span>
+            </div>
+        </div>
+
+        <div id="div_second_{{ id }}" style="min-width:45px;margin-bottom: 5px;display:flex; justify-content:center; height:34px; background-color: {{ second_color }}; align-items: center;">
+            <div>
+                <span id="span_second_{{ id }}" style="font-size: 24px; color: white; font-family: Cousine;">{% percentage second_value %}</span>
+            </div>
+        </div>
+        <div id="div_third_{{ id }}" style="min-width:45px;margin-bottom: 5px;display:flex; justify-content:center; height:34px; background-color: {{ third_color }}; align-items: center;">
+            <div>
+                <span id="span_third_{{ id }}" style="font-size: 24px; color: white; font-family: Cousine;">{% percentage third_value %}</span>
+            </div>
+        </div>
+    </div>
+    <div style="display: flex; justify-content: space-between; width: 100%;">
+        <div class="legend_element">
+            <div style="background-color:{{ first_color }};" class="dot"></div>
+            <span>&nbsp;{{ first_label }}</span>
+        </div>
+        <div class="legend_element">
+            <div style="background-color:{{ second_color }};" class="dot"></div>
+            <span>&nbsp;{{ second_label }}</span>
+        </div>
+        <div class="legend_element">
+            <div style="background-color:{{ third_color }};" class="dot"></div>
+            <span>&nbsp;{{ third_label }}</span>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        let first_width, second_width, third_width;
+        first_width = {% simple_number first_value|default:0 %};
+        second_width = {% simple_number second_value|default:0 %};
+        third_width = {% simple_number third_value|default:0 %};
+        let max_val = Math.max(first_width, second_width, third_width);
+        if(max_val > 0)
+        {
+            document.getElementById("div_first_{{ id }}").style.width = (100 * first_width / max_val).toString() + "%"
+            document.getElementById("div_second_{{ id }}").style.width = (100 * second_width / max_val).toString() + "%"
+            document.getElementById("div_third_{{ id }}").style.width = (100 * third_width / max_val).toString() + "%"
+        }
+    });
+</script>

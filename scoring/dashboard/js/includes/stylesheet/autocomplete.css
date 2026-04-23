@@ -1,0 +1,47 @@
+
+  input {
+    border: 1px solid #999;
+    padding: 0.5rem;
+    width: 300px;
+  }
+  
+  .no-suggestions {
+    color: #999;
+    padding: 0.5rem;
+  }
+  
+  .suggestions {
+    border: 1px solid #999;
+    border-top-width: 0;
+    list-style: none;
+    margin-top: 0;
+    max-height: 143px;
+    z-index: 9999;
+    overflow-y: auto;
+    padding-left: 0;
+    position: absolute;
+
+    width: calc(300px + 1rem);
+  }
+  
+  .suggestions li {
+    padding: 0.5rem;
+    background-color: #fff;
+  }
+  
+  .suggestion-active {
+    color: #000;
+    /* add bold */
+    font-weight: 700;
+    background-color: #bfff9f;
+  }
+  .suggestions li:hover {
+    background-color: #222222;
+    color: #ccc;
+    cursor: pointer;
+    font-weight: 700;
+  }
+  
+  .suggestions li:not(:last-of-type) {
+    border-bottom: 1px solid #999;
+  }

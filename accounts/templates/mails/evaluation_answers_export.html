@@ -1,0 +1,12 @@
+{% extends "base_email.html" %}
+{% load i18n static %}
+
+{% block content %}
+<tr>
+    <td>
+        <h1>
+            Votre export pour l'évaluation {{ evaluation.entity.name }} ({{ evaluation.id }}) est terminé !
+        </h1>
+    </td>
+</tr>
+{% endblock %}

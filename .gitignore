@@ -1,0 +1,69 @@
+# Python
+*.pyc
+__pycache__
+*.egg-info
+*.mo
+*~
+.mypy_cache
+
+# DJANGO local settings
+/src/mixity/settings/local.py
+
+# Docker local settings
+/.env
+/mixity/settings/.env
+/docker.env
+/netrc
+/cdc
+docker-compose.override.yml
+
+# DB
+*.dump
+
+# IDE settings
+.vscode
+.idea
+.~lock*
+.DS_Store
+
+# Virtualenv
+/venv/
+/.tox
+
+
+*.retry
+/src/mixity/settings/local.py
+
+# src/**/*-temp
+src/**/*.csv
+/local/
+!/local/regen.sh
+
+# celery
+/celerybeat-schedule.db
+/celerybeat.pid
+
+# JS
+node_modules
+/theme/node_modules/
+/src/**/dist
+
+/src/shared
+
+# medias
+mixity/mediafiles
+
+# diagram
+*.dot
+
+# Tests
+.coverage
+.coverage-html/
+.smart_testing/
+
+#pg_dump/load
+db_saves
+db_saves/*
+
+venv/
+.env

@@ -1,0 +1,11 @@
+{% load format_number i18n %}
+        <div style="">
+            <strong style="margin-right: 10px; font-size: 1.2em; white-space: nowrap; color: {{ color }}">
+            {% trans category_name %}
+            </strong>
+            <h2 class="progress">
+                <div class="progress-bar progress-bar--{{ category_slug }}" role="progressbar" style="width: 50%; background:#b3bbbd" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+                    <span style="margin-left: 10px; margin-right: 10px;"></span>
+                </div>
+            </h2>
+        </div>

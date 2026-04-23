@@ -1,0 +1,81 @@
+.namsor_img {
+    height: 30px; 
+    width: 30px;
+    margin-bottom: 2vh;
+}
+
+.namsor_icon {
+    height: 25px; 
+    width: 25px;
+}
+
+.n_left_column {
+    width: 64.5%;
+    @media screen and (max-width: 768px) {
+        height: fit-content;
+        padding-bottom: 100%;
+    }
+}
+
+.n_right_column {
+    width: 30%;
+}
+
+.n_left_column,
+.n_right_column {
+    @media screen and (max-width: 1024px) {
+        width: 100%;
+    }
+}
+
+.namsor_bg {
+    background-image: url("/static/img/background/namsor_bg.svg");
+    background-size: 100%;
+    background-position: center 50vh;
+    background-repeat: no-repeat;
+    @media screen and (max-width: 768px) {
+        background-position: center bottom;
+    }
+}
+
+.namsor_span {
+    font-family: 'Be Vietnam', sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+    color: #532582;
+    margin-left: -10px;
+}
+
+.namsor_modal>.modal-dialog {
+    border: 10px solid;
+    border-image-slice: 1;
+    border-width: 5px;
+    border-image-source: linear-gradient(135deg, rgba(250,187,32,1) 0%, rgba(239,131,24,1) 20%, rgba(167,68,159,1) 50%, rgba(83,37,130,1) 100%);
+    //border-image-source: linear-gradient(135deg, rgba(250,187,32,1) 0%, rgba(250,187,32,1) 15%, rgba(239,131,24,1) 15%, rgba(239,131,24,1) 35%, rgba(167,68,159,1) 35%, rgba(167,68,159,1) 60%, rgba(83,37,130,1) 60%, rgba(83,37,130,1) 100%);
+}
+
+.modal-content {
+    border-radius: 0;
+    border: none;
+}
+
+.modal-lg {
+    @media screen and (min-width: 1400px) {
+        max-width: 1200px;
+    }
+}
+
+.button_nasmor {
+    font-size: .7rem;
+    height: 40px;
+}
+
+.button_nasmor_csv {
+    height: 45px;
+}
+
+.namsor_btn_disabled {
+    pointer-events: none;
+    color: #D2D2D2 !important;
+    border-color: #E4E4E4 !important;
+}

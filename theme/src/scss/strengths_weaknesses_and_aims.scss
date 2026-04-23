@@ -1,0 +1,89 @@
+@import '_variables';
+
+.swa_container {
+    display: flex; 
+    justify-content: space-between; 
+    flex-wrap: wrap;
+}
+
+.strenght,
+.weakness {
+    &_container {
+        width: 48.6%;
+    }
+}
+.aim {
+    width: 100%;
+    &_container {
+        max-width: 100%;
+    }
+    &_title {
+        padding: 0;
+    }
+    &_answer {
+        &_col {
+            width: 90%;
+            padding: 0;
+            @media screen and (min-width: $md) {
+                width: 50%;
+            }
+        }
+    }
+    &_category {
+        &_title {
+            margin: 2rem 0 1rem .3rem !important;
+            padding: 0; 
+            font-weight: 600 !important;
+            text-align: left !important;
+            @media screen and (min-width: $md) {
+                margin: 2rem 0 1rem .4rem !important;;
+            }
+        }
+    }
+}
+.strenght,
+.weakness,
+.aim {
+    &_answer {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        width: 90%;
+        @media screen and (min-width: $md) {
+            width: 93%;
+        }
+        &_container {
+            align-content: flex-start;
+            align-items: flex-start;
+            @media screen and (min-width: $md) {
+                margin-left: .8rem !important;
+            }
+        }
+    }
+}
+
+.icon {
+    max-width: 10%;
+    padding: .1rem .25rem 0 .5rem;
+    @media screen and (min-width: $md) {
+        max-width: 7%;
+        padding: .1rem .3rem 0;
+    }
+}
+
+.recommended {
+    width: 84%;
+    margin-left: 16%;
+    padding: 1rem 0 2rem;
+    @media screen and (min-width: $md) {
+        width: 89%;
+        margin-left: 11%;
+    }
+    &_title {
+        font-size: 1rem;
+    }
+    &_answer {
+        font-size: .8rem;
+        padding-top: .5rem;
+    }
+}

@@ -1,0 +1,7 @@
+@import '_variables';
+
+.square:after {
+    content: "";
+    display: block;
+    padding-bottom: 100%;
+}

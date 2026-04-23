@@ -1,0 +1,328 @@
+{% load l10n %}
+{% load i18n %}
+{% load format_number %}
+
+
+<div class="items_container" style="justify-content: center; align-items: stretch">
+    <div class="items_container w-100 justify-content-center">
+
+        {% if target_name == "all" or target_name == "collaborator" %}
+
+            {% with answer=answer_20220114 %}
+                {% if answer %}
+                    <div class="item_pb item_s1 item_c stretched_item">
+                        <h3 line_id=17 suffix=" : {{ answer.value|floatformat:'0' }} %" class="txt_line  content-strong" style="margin:auto;">{% blocktrans trimmed %}Taux de personnes en situation de handicap visible et invisible au sein de l’organisation.{% endblocktrans %}</h3>
+                        <div class="d-flex justify-content-center">
+                            {% include 'includes/indicators/circular_plot.html' with last_year_value=answer.sibling_value border_color="#EBEAEA" blank_color="#e9ecef" percent_inner=answer.ratio_value|floatformat:'2' percent=answer.get_mean_score_in_business_line|floatformat:'0' percent_outter=answer.get_mean_score|floatformat:'0' color=cat.color id=answer.id small=0 %}
+                        </div>
+                        {% if answer.perimeter %}
+                            <div class="perimeter-indicator">
+                                <span>
+                                    {% trans answer.perimeter %}
+                                </span>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+
+            {% with answer=answer_20220117 %}
+                {% if answer %}
+                    <div class="item_pb item_s1 item_c stretched_item">
+                        <h3 line_id=17 suffix=" : {{ answer.value|floatformat:'0' }} %" class="txt_line  content-strong" style="margin:auto;">{% blocktrans trimmed %}Taux de personnes en situation de handicap recrutées dans les 12 derniers mois{% endblocktrans %}</h3>
+                        <div class="d-flex justify-content-center">
+                            {% include 'includes/indicators/circular_plot.html' with last_year_value=answer.sibling_value border_color="#EBEAEA" blank_color="#e9ecef" percent_inner=answer.ratio_value|floatformat:'1' percent=answer.get_mean_score_in_business_line|floatformat:'0' percent_outter=answer.get_mean_score|floatformat:'0' color=cat.color id=answer.id small=0 %}
+                        </div>
+                        {% if answer.perimeter %}
+                            <div class="perimeter-indicator">
+                                <span>
+                                    {% trans answer.perimeter %}
+                                </span>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+
+            {% with answer=answer_20220115 color_2="#2C4BA7" color_3="#8888E2" label_1=_("Femme") label_2=_("Homme") label_3=_("Non-binaire") %}
+                {% if answer %}
+                    <div class="item_pb item_s3">
+                        <div style="display: flex;justify-content: space-between">
+                            <div>
+                                <h3 line_id=17 class="txt_line content-strong" prefix="\n" style="text-align: left;">
+                                    {% blocktrans trimmed %}Répartition des personnes en situations de handicap dans l'entreprise{% endblocktrans %}
+                                </h3>
+                            </div>
+                            <div class="legend_container" style="width: auto">
+                                <div class="legend_element"><div class="dot" style="background-color:{{ cat.color }};"></div> <span>&nbsp;{{ label_1 }}</span></div>
+                                <div class="legend_element"><div class="dot" style="background-color:{{ color_2 }};"></div> <span>&nbsp;{{ label_2 }}</span></div>
+                                <div class="legend_element"><div class="dot" style="background-color:{{ color_3 }};"></div> <span>&nbsp;{{ label_3 }}</span></div>
+                            </div>
+                        </div>
+                        {% include 'includes/indicators/repartition_chart.html' with answer=answer color_1=cat.color color_2=color_2 color_3=color_3 label_1=label_1 label_2=label_2 label_3=label_3 %}
+                        {% if answer.perimeter %}
+                            <div class="perimeter-indicator">
+                                <span>
+                                    {% trans answer.perimeter %}
+                                </span>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+
+            {% with answer=answer_20220120 %}
+                {% if answer %}
+                    <div class="item_pb item_s1 stretched_item item_c">
+                        <h3 class="content-strong">
+                            {% blocktrans trimmed %}Pourcentage et montant des achats annuels € HT consacrés aux achats auprès de structures du secteur du travail protégé et adapté (STPA){% endblocktrans %}
+                        </h3>
+                        <div class="d-flex flex-column justify-content-center">
+                            <div>
+                                {% include 'includes/indicators/number_icon.html' with currency_symbol=answer.currency_symbol value=answer.value color=cat.color font_size="30px" icon_name="money" %}
+                            </div>
+                            <div>
+                                <h5 class="content-strong">
+                                    {% percentage answer.ratio_value as value %}
+                                    {% blocktrans trimmed %}soit <span style="color:{{ cat.color }};">{{ value }}</span> des achats{% endblocktrans %}
+                                </h5>
+                            </div>
+                            <div class="sales-indicator">
+                                <span style="font-size: 1.5em; font-family: Cousine; font-weight: normal; color:#95B9C1">● {% percentage answer.get_mean_score_in_business_line %}</span>
+                                <span style="font-size: 1.5em; font-family: Cousine; font-weight: normal; color:#863C63">&nbsp;&nbsp;● {% percentage answer.get_mean_score %}</span>
+                            </div>
+                        </div>
+                        {% if answer.perimeter %}
+                            <div class="perimeter-indicator">
+                                <span>
+                                    {% trans answer.perimeter %}
+                                </span>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+
+            {% with answer1=answer_20220122 answer2=answer_20220137 %}
+                {% if answer1 and answer2 %}
+                    <div class="item_pb item_s1">
+                        <h3 line_id=17 suffix=" : {{ answer1.value|floatformat:'0' }} %" style="margin-bottom:10px" class="txt_line  content-strong">
+                            {% blocktrans trimmed %}Taux d'accessibilité ...{% endblocktrans %}
+                        </h3>
+                        {% with label_1=_("... des sites de l'entreprise (tous établissements France et siège France)") label_2=_("...  des sites web de référence de l'entreprise")  %}
+                            {% include 'includes/indicators/double_horizontal_histogram.html' with answer_1=answer1 answer_2=answer2 label_1=label_1 label_2=label_2 color=cat.color %}
+                        {% endwith %}
+                        {% if answer1.perimeter %}
+                            <div class="perimeter-indicator">
+                                <span>
+                                    {% trans answer1.perimeter %}
+                                </span>
+                            </div>
+                        {% endif %}
+                        {% if answer2.perimeter %}
+                            <div class="perimeter-indicator">
+                                <span>
+                                    {% trans answer2.perimeter %}
+                                </span>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+
+            {% with answer=answer_20220141 %}
+                {% if answer %}
+                    <div class="item_pb item_s1 item_c stretched_item">
+                        <h3 line_id=17 suffix=" : {{ answer.value }}" class="txt_line  content-strong">
+                            {% blocktrans trimmed %}Nombre d'ateliers, conférences, prises de paroles, témoignages pour les collaborateurs (f/h/nb) sur le handicap qui ont eu lieu sur les 12 derniers mois{% endblocktrans %}
+                        </h3>
+                        {% include 'includes/indicators/number_icon.html' with color=cat.color value=answer.value last_year_value=answer.sibling_value last_year=answer.sibling_year %}
+                        {% if answer.perimeter %}
+                            <div class="perimeter-indicator">
+                                <span>
+                                    {% trans answer.perimeter %}
+                                </span>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+
+            {% with answer=answer_20220142 %}
+                {% if answer %}
+                    <div class="item_pb item_s1 item_c">
+                        <h3 line_id=17 suffix=" : {{ answer.ratio_value|floatformat:'0' }} %" class="txt_line content-strong">
+                            {% blocktrans trimmed %}Taux de salariés (f/h/nb) ayant suivi dans l'année un dispositif de sensibilisation et/ou de formation avec mention des stéréotypes liés au handicap {% endblocktrans %}
+                        </h3>
+                        <div class="d-flex justify-content-center">
+                            {% include 'includes/indicators/half_circular_plot.html' with last_year_value=answer.sibling_value border_color="#EBEAEA" blank_color="#e9ecef" percent_inner=answer.ratio_value|floatformat:'1' percent=answer.get_mean_score_in_business_line|floatformat:'0' percent_outter=answer.get_mean_score|floatformat:'0' color=cat.color id=answer.id small=1 %}
+                        </div>
+                        {% if answer.perimeter %}
+                            <div class="perimeter-indicator">
+                                <span>
+                                    {% trans answer.perimeter %}
+                                </span>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+        {% endif %}
+
+
+        {% if target_name == "all" or target_name == "student" %}
+
+            {% with answer=answer_20221048 %}
+                {% if answer %}
+                    <div class="item_pb item_s3">
+                        <div style="display: flex;justify-content: space-between; margin-bottom: 10px">
+                            <h3 line_id=17 class="txt_line content-strong" prefix="\n" style="text-align: left;">
+                                {% blocktrans trimmed %}Pour accompagner les étudiants (f/h/nb) en situation d'handicap l'établissement à mis en place ...{% endblocktrans %}
+                            </h3>
+                        </div>
+                        <div class="row">
+                            {% with subanswers=answer.subanswers.all %}
+                                <div class="col">
+                                    {% for subanswer in subanswers %}
+                                        {% if subanswer.value >= 0.5 %}
+                                            <div class="existing-line"><span style="color:{{cat.color }}; font-size: 30pt">✓</span><span style="font-weight: 600"> {{subanswer.subquestion.label}}</span></div><br/>
+                                        {% endif %}
+                                    {% endfor %}
+                                </div>
+                                <div class="col">
+                                    {% for subanswer in subanswers %}
+                                        {% if subanswer.value < 0.5 and subanswer.subquestion.label != "Autres" %}
+                                            <div class="existing-line"><span style="color:{{cat.color }}; font-size: 30pt">✗</span><span style="font-weight: 600"> {{subanswer.subquestion.label}}</span></div><br/>
+                                        {% endif %}
+                                    {% endfor %}
+                                </div>
+                            {% endwith %}
+                        </div>
+                    </div>
+                {% endif %}
+            {% endwith %}
+
+            {% with answer=answer_20221047 %}
+                {% if answer %}
+                    <div class="item_pb item_s3 item_c">
+                        <h3 class="content-strong">
+                            {{ answer.question.label }}
+                        </h3>
+                        <div class="d-flex justify-content-center">
+                            {% include 'includes/indicators/number_icon.html' with value=answer.value currency_symbol=answer.currency_symbol icon_name="money" icon_size="160px" font_size="57px" %}
+                        </div>
+                        {% if answer.perimeter %}
+                            <div class="perimeter-indicator">
+                                <span>
+                                    {% trans answer.perimeter %}
+                                </span>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+
+            {% with answer=answer_20221058 %}
+                {% if answer %}
+                    <div class="item_pb item_s1 item_c stretched_item">
+                        <h3 line_id=17 suffix=" : {{ answer.value }}" class="txt_line  content-strong">
+                            {% blocktrans trimmed %}Nombre d'ateliers, conférences, prises de paroles, témoignages pour les étudiants (f/h/nb) sur le handicap qui ont eu lieu sur les 12 derniers mois{% endblocktrans %}
+                        </h3>
+                        {% include 'includes/indicators/number_icon.html' with color=cat.color value=answer.value last_year_value=answer.sibling_value last_year=answer.sibling_year %}
+                        {% if answer.perimeter %}
+                            <div class="perimeter-indicator">
+                                <span>
+                                    {% trans answer.perimeter %}
+                                </span>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+
+            {% with answer=answer_20221059 %}
+                {% if answer %}
+                    <div class="item_pb item_s1 item_c">
+                        <h3 line_id=17 suffix=" : {{ answer.ratio_value|floatformat:'0' }} %" class="txt_line content-strong">
+                            {% blocktrans trimmed %}Taux d'étudiants (f/h/nb) ayant suivi dans l'année un dispositif de sensibilisation et/ou de formation avec mention des stéréotypes liés au handicap {% endblocktrans %}
+                        </h3>
+                        <div class="d-flex justify-content-center">
+                            {% include 'includes/indicators/half_circular_plot.html' with last_year_value=answer.sibling_value border_color="#EBEAEA" blank_color="#e9ecef" percent_inner=answer.ratio_value|floatformat:'1' percent=answer.get_mean_score_in_business_line|floatformat:'0' percent_outter=answer.get_mean_score|floatformat:'0' color=cat.color id=answer.id small=1 %}
+                        </div>
+                        {% if answer.perimeter %}
+                            <div class="perimeter-indicator">
+                                <span>
+                                    {% trans answer.perimeter %}
+                                </span>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+
+            {% with answer=answer_202210451 %}
+                {% if answer %}
+                    <div class="item_pb item_s1 item_c stretched_item">
+                        <h3 line_id=17 suffix=" : {{ answer.value|floatformat:'0' }} %" class="txt_line  content-strong" style="margin:auto;">{% blocktrans trimmed %}Taux d'étudiants (f/h/nb) en situation de handicap au sein de l'établissement{% endblocktrans %}</h3>
+                        <div class="d-flex justify-content-center">
+                            {% include 'includes/indicators/circular_plot.html' with last_year_value=answer.sibling_value border_color="#EBEAEA" blank_color="#e9ecef" percent_inner=answer.value|floatformat:'2' percent=answer.get_mean_score_in_business_line|floatformat:'0' percent_outter=answer.get_mean_score|floatformat:'0' color=cat.color id=answer.id small=0 %}
+                        </div>
+                        {% if answer.perimeter %}
+                            <div class="perimeter-indicator">
+                                <span>
+                                    {% trans answer.perimeter %}
+                                </span>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+
+            {% with answer=answer_202210452 color_2="#2C4BA7" color_3="#8888E2" label_1=_("Femme") label_2=_("Homme") label_3=_("Non-binaire") %}
+                {% if answer %}
+                    <div class="item_pb item_s3">
+                        <div style="display: flex;justify-content: space-between">
+                            <div>
+                                <h3 line_id=17 class="txt_line content-strong" prefix="\n" style="text-align: left;">
+                                    {% blocktrans trimmed %}Répartition des étudiants handicapés (f/h/nb) par genre {% endblocktrans %}
+                                </h3>
+                            </div>
+                            <div class="legend_container" style="width: auto">
+                                <div class="legend_element"><div class="dot" style="background-color:{{ cat.color }};"></div> <span>&nbsp;{{ label_1 }}</span></div>
+                                <div class="legend_element"><div class="dot" style="background-color:{{ color_2 }};"></div> <span>&nbsp;{{ label_2 }}</span></div>
+                                <div class="legend_element"><div class="dot" style="background-color:{{ color_3 }};"></div> <span>&nbsp;{{ label_3 }}</span></div>
+                            </div>
+                        </div>
+                        {% include 'includes/indicators/repartition_chart_ratio.html' with answer=answer color_1=cat.color color_2=color_2 color_3=color_3 label_1=label_1 label_2=label_2 label_3=label_3 %}
+                        {% if answer.perimeter %}
+                            <div class="perimeter-indicator">
+                                <span>
+                                    {% trans answer.perimeter %}
+                                </span>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+        {% endif %}
+
+        {% with answer=answer_20221045 %}
+                {% if answer %}
+                    <div class="item_pb item_s1 item_c stretched_item">
+                        <h3 line_id=17 suffix=" : {{ answer.value }}" class="txt_line  content-strong">
+                            {% blocktrans trimmed %}Nombre d'aménagements spécifiques mis en place dans l'année{% endblocktrans %}
+                        </h3>
+                        {% include 'includes/indicators/number_icon.html' with color=cat.color value=answer.value last_year_value=answer.sibling_value last_year=answer.sibling_year %}
+                        {% if answer.perimeter %}
+                            <div class="perimeter-indicator">
+                                <span>
+                                    {% trans answer.perimeter %}
+                                </span>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+
+    </div>
+</div>

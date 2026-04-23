@@ -1,0 +1,53 @@
+@import '_variables';
+
+.testimony {
+    p {
+        /*line-height: 25px; */
+    }
+
+    article {
+        margin-right: 10px;
+        margin-left: 10px;
+    }
+}
+
+@media ($sm-screen) {
+
+    .testimony {
+        p {
+            /*line-height: 25px; */
+            font-size: 0.9em;
+        }
+
+        .citation {
+            margin: auto;
+            text-align: center;
+            font-weight: 500;
+            font-size: 1.2em;
+        }
+
+        .begin-mark {
+            font-size: 4em;
+            line-height: 0.5em;
+            color: #8888e2;
+            place-self: baseline;
+        }
+
+        .end-mark {
+            line-height: 0.5em;
+            font-size: 4em;
+            color: #8888e2;
+            place-self: end;
+        }
+
+        span {
+            /*line-height: 35px; */
+        }
+
+        article {
+            margin-right: 100px;
+            margin-left: 100px;
+        }
+    }
+
+}

@@ -1,0 +1,15 @@
+{% extends "base_email.html" %}
+{% load i18n static %}
+
+{% block content %}
+    <tr>
+        <td>
+            <h1>Un utilisateur s'est inscrit sur mixity!</h1>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Utilisateur : {{ email }}
+        </td>
+    </tr>
+{% endblock %}

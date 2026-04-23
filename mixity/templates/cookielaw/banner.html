@@ -1,0 +1,29 @@
+{% load i18n static %}
+
+<div class="modal" id="CookielawBanner" data-reveal>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <h3>{% blocktrans trimmed %}Utilisation des cookies sur Mixity.co{% endblocktrans %}</h3>
+                <p>
+                    {% blocktrans trimmed %}Nous utilisons les cookies afin de fournir les services et fonctionnalités proposés
+                    sur notre site
+                    et d’améliorer l’expérience de nos utilisateurs. Les cookies sont des données qui sont téléchargées
+                    ou stockées sur votre ordinateur ou sur tout autre appareil. Si vous acceptez l’utilisation des
+                    cookies, vous pourrez toujours la désactiver ultérieurement. Si vous supprimez ou désactivez nos
+                    cookies, vous pourriez rencontrer des interruptions ou des problèmes d’accès au
+                    site.{% endblocktrans %}
+                    <br>
+                </p>
+                    <a href="#!" id="cookie_accept" class="button button--circle button--primary-light">{% blocktrans trimmed %}J'accepte{% endblocktrans %}</a>
+
+               <!--<div class="text-right">
+                    <a class="btn btn-primary"
+                       href="javascript:Cookielaw.createCookielawCookie();$('#CookielawBanner').modal('hide');">{% trans "COOKIE_INFO_OK" %}</a>
+                </div>-->
+            </div>
+
+        </div>
+
+    </div>
+</div>

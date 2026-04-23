@@ -1,0 +1,8 @@
+{% load times %}
+{% load format_number %}
+<div style="position:relative;display: grid; width: 76%; min-width:200px; grid-template-columns: 10% 10% 10% 10% 10% 10% 10% 10% 10% 10%;">
+    {% for i in 100|times %}
+        <div class="square" style="background: {% if forloop.counter0 < value|floatformat:"0"|to_int %}{{color}}{% else %}#cdcdcd{% endif %}; margin: 1px"></div>
+    {% endfor %}
+    <div style=" display:flex; justify-content:center; align-items:center;font-size: 1.5em; font-family: Cousine; font-weight: normal; color:{{color}};background:#e9ecefde; border-radius:200px; position: absolute; top: 35%; left:35%; width: 30%; height: 30%;"><div>{% percentage value=value %}</div></div>
+</div>

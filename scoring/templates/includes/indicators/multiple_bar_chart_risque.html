@@ -1,0 +1,67 @@
+{% load i18n %}
+{% load l10n %}
+{% load static %}
+{% load format_number %}
+
+
+<!-- Create a div where the graph will take place -->
+{% localize off %}
+<div id="bar_chart_container_{{id}}" style="width:100%; display: flex; flex-direction: column;position:relative; margin-top:18px; align-items:center">
+    <div id="bar_chart_{{id}}" style="display:flex; justify-content: center; align-items: flex-end; width: 100%; margin-bottom:10px; flex-wrap: wrap">
+    </div>
+
+</div>
+
+{% block scripts %}
+<script type="application/javascript">
+    function bar_chart_{{id}}() {
+        let bar_chart = document.getElementById("bar_chart_{{id}}")
+        let values = [{{ value1 }}+0, {{ value2 }}+0, {{ value3 }}+0, {{ value4 }}+0, {{ value5 }}+0]
+        let colors = ["{{ color1 }}", "{{ color2 }}", "{{ color3 }}", "{{ color4 }}", "{{ color5 }}"]
+        for(let i=0; i < values.length; i++){
+            if(colors[i] !== "")
+                bar_chart.innerHTML += "<div style=' width:20%;background-color:" + colors[i]+"; height: "+(2+values[i] * 2 / 4).toString() + "vh'></div>"
+        }
+
+        for(let i=0; i < values.length; i++){
+            if(colors[i] !== "") {
+                let label = ">"
+                let width = 12;
+                let plus="text-align:left;"
+                if(i === 0) {
+                    label = "{{ label1 }}"
+                    width = 32
+                } else if(i === values.length -1) {
+                    label = "{{ label2 }}"
+                    width = 32
+                    plus = "text-align:right;"
+                } else if(i === 2) {
+                    plus = "text-align:center;"
+                } else if(i === 3) {
+                    plus = "text-align:right;"
+                }
+
+                bar_chart.innerHTML += "<div style='"+ plus +" margin-top:5px; width:"+ width +"%; color:" + colors[i] + ";'>"+ label + "</div>"
+            }
+        }
+
+        for(let i=0; i < values.length; i++){
+            if(colors[i] !== "") {
+                bar_chart.innerHTML += "<div style=' z-index:2; margin-top:5px;width:20%; display:flex; justify-content:center;color:" + colors[i] + ";'><div style='background: " + colors[i] + "; width:15px; height:15px;border-radius:20px'></div> </div>"
+            }
+        }
+        bar_chart.innerHTML += "<div style=' position:absolute; bottom:42px;width:80%; background: black;height:2px'></div>"
+
+
+        for(let i=0; i < values.length; i++){
+            if(colors[i] !== "") {
+                bar_chart.innerHTML += "<div style=' margin-top:5px;width:20%; display:flex; justify-content:center;color:" + colors[i] + ";'>"+ Math.round(values[i]).toString() +" %</div>"
+            }
+        }
+
+    }
+    bar_chart_{{id}}();
+
+</script>
+{% endblock %}
+{% endlocalize %}

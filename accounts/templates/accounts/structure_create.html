@@ -1,0 +1,22 @@
+{% extends "base-sign-in.html" %}
+{% load i18n static %}
+{% block content %}
+{% csrf_token %}
+{% load settings_value %}
+
+{% get_current_language as LANGUAGE_CODE %}
+{% get_available_languages as LANGUAGES %}
+{% get_language_info_list for LANGUAGES as languages %}
+{% settings_value "ENABLED_WEBSITE_LANGUAGES" as ENABLED_WEBSITE_LANGUAGES %}
+
+<script>
+    const csrftoken = document.querySelector(
+        "[name=csrfmiddlewaretoken]"
+    ).value;
+    var language_code = '{{LANGUAGE_CODE}}'
+    var languages = JSON.parse("{{languages|safe}}".replace(/False/g, "0").replace(/True/g, "1").replace(/'/g, '"'))
+    var enabled_website_languages = {{ENABLED_WEBSITE_LANGUAGES|safe}}
+</script>
+<div id="dashboard_create_structure" class="col p-0"></div>
+<script src="/static/dist/js/dashboardcreatestructurecomponents-1.0.0.js"></script>
+{% endblock %}

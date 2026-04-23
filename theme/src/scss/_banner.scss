@@ -1,0 +1,81 @@
+@import '_variables';
+
+.banner {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    min-height: 4em;
+    max-height: 40px;
+
+    &--secondary {
+        background: var(--color-secondary);
+    }
+
+    &--primary {
+        background: var(--color-primary);
+        color: white;
+    }
+
+    &--pink {
+        background: var(--color-pink-hover);
+        color: white;
+    }
+
+    &__content {
+        padding-left: 2em;
+        padding-right: 2em;
+        text-align: center;
+    }
+}
+
+@media ($sm-screen) {
+    .banner {
+        grid-template-columns: auto auto;
+        grid-template-rows: auto;
+
+        .button {
+            height: 100%;
+        }
+    }
+}
+
+/* IE compatibility */
+.banner>* {
+    align-self: center;
+}
+
+/* Promotionnal banner in Home Page */
+.promotionnal_banner_l,
+.promotionnal_banner_s {
+    position: relative;
+    top: 0;
+    padding: 8px 3%;
+    background-color:#1AC6AD;
+    color: #181b3d;
+    z-index: 1036;
+    p {
+        margin: 0;
+        font-size: 1rem;
+    }
+}
+
+.promotionnal_banner_l {
+    display: none;
+}
+
+.promotionnal_banner_s {
+    display: block;
+}
+
+.promotionnal_banner_link {
+    text-decoration: none;
+}
+
+@media screen and (min-width: $md) {
+    .promotionnal_banner_l {
+        display: block;
+    }
+    .promotionnal_banner_s {
+        display: none;
+    }
+}

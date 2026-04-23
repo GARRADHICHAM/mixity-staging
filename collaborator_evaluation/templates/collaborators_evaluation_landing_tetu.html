@@ -1,0 +1,125 @@
+{% extends "base-minimal.html" %}
+{% load i18n static %}
+
+
+{% block content %}
+
+  <section class="mxt-container">
+  <img alt="Image collaboration Mixity x Tetu" style="height: auto;width: 30%; max-width: 500px;margin: auto; display: block;" src="{% static 'img/logo-tetu.png' %}">
+      <div class="col col--2">
+          <article>
+              <h1 class="title--h1" style="font-style: normal; font-weight: 600; font-size: 32px; line-height: 44px;">
+                  {% if object.is_validated_by_user %}
+                      L'évaluation Mixity Human est terminée. L'équipe Mixity communiquera les résultats à votre entreprise dans les plus brefs délais.
+                  {% else %}
+                      Avec Têtu Connect et Mixity, Participez à l’évaluation de votre entreprise sur l’inclusion des personnes LGBTQIA+.
+                  {% endif %}
+              </h1>
+              <h2 class="color--pink title--h2">
+                Ensemble, faisons progresser la diversité et l’inclusion dans les organisations.
+              </h2>
+              {% if not object.is_validated_by_user %}
+                  <a style="float: left; margin-top: 2em;" class="btn btn-primary" href="{{ object.collaborator_fill_url }}">Commencer l'évaluation</a>
+              {% endif %}
+          </article>
+          <article class="mxt-row">
+            <img alt="Image de fond accueil" style="width:100%" src="{% static 'img/mixity-lgbt-questionnaire.png' %}">
+          </article>
+      </div>
+  </section>
+  <section class="mxt-container bg--secondary">
+    <article class="bg--secondary">
+  <div class="col col--23-13 bg--white" style="justify-items: center; align-items: center;">
+    <div class="bg--white" style="padding: 2em;">
+      <h2 class="title--h2" style="display: flex;
+   align-items:center;justify-self: baseline;"><img class="" alt="Icone RGPD" src="{{ object.structure.get_logo_url }}" style="max-width: 8em;padding-right: 1em;"/><span> {{ object.structure }} s’engage avec Têtu Connect et Mixity pour l’inclusion des personnes LGBTQIA+ dans le réseau France. </span></h2>
+
+      <p class="color--primary-light content-strong">L’inclusion, c’est avant tout prendre en compte toutes les voix de l’entreprise. C’est la raison pour laquelle nous vous invitons à participer à l’évaluation du sentiment d’inclusion des personnes LGBTQIA+ dans votre organisation. Votre voix compte, nous avons besoin de vous pour mieux comprendre comment nous adressons cet enjeu de marque employeur et comment progresser demain, ensemble, avec vous.</p>
+      <div class="bg--white" style="padding-top: 4em;">
+    {% if LANGUAGE_CODE == "fr" %}
+    <h2 class="title--h2">Une innovation technologique soutenue par </h2>
+      <div>
+          <div class="d-flex flex-wrap" style="justify-content:flex-start;align-items:top">
+
+            <div style="width:100%;max-width:273px;margin-right:40px;" ><img src="{% static 'img/logo_ministere_egalite.svg' %}" alt="Ministère chargé de l'égalité entre les femmes et les hommes, de la diversité et de l'égalité des chances" />
+         </div>
+            <div style="width:100%;max-width:440px;margin-top:8px;"> <img  src="{% static 'img/gouv.png' %}" alt="Ministère du Travail / Haut commissariat à l'inclusion dans l'emploi et à l'engagement des entreprise" />
+           </div>
+          </div>
+          </div>
+          {% endif %}
+  </div>
+  </div>
+    <img alt="Image empreinte LGBT" style="width:80%" src="{% static 'img/empreinte_lgbt.png' %}">
+    </div>
+      </article>
+
+  </section>
+
+    {% if not object.is_validated_by_user %}
+
+        <section class="mxt-container bg--white">
+            <article>
+                <h2 class="title--h2">Comment contribuer à l’évaluation ?</h2>
+                <div class="col col--4 row--2 text-center justify-content-center align-items-center" style="row-gap: 0;">
+
+                    <img class="grid-row-1 image--md" src="{% static 'img/accord_lgbt.png' %}" alt="" style="-ms-grid-column: 1; -ms-grid-row: 1;"/>
+                    <p class="grid-row--2 content" style="-ms-grid-column: 1; -ms-grid-row: 2;">Vous accédez au questionnaire en ligne. Nous sollicitons votre accord préalable en début de questionnaire pour participer à l’évaluation et notamment pour recueillir votre avis.</p>
+
+                    <img class="grid-row-1 image--md" src="{% static 'img/questions_lgbt.png' %}" alt="" style="-ms-grid-column: 3; -ms-grid-row: 1;"/>
+                    <p class="grid-row--2 content" style="-ms-grid-column: 3; -ms-grid-row: 2;">Vous répondez en une fois aux questions qui vous seront proposées directement en ligne via le lien ci-dessous.</p>
+
+                    <img class="grid-row-1 image--md" src="{% static 'img/empreinte_lgbt_q.png' %}" alt="" style="-ms-grid-column: 5; -ms-grid-row: 1;"/>
+                    <p class="grid-row--2 content" style="-ms-grid-column: 5; -ms-grid-row: 2;">Une fois vos réponses validées, Mixity génère automatiquement l’empreinte LGBTQIA+ de l’entreprise et ses principaux indicateurs de mesure.</p>
+                    <img class="grid-row-1 image--md" src="{% static 'img/dashboard_lgbt.png' %}" alt="" style="-ms-grid-column: 7; -ms-grid-row: 1;"/>
+                    <p class="grid-row--2 content" style="-ms-grid-column: 7; -ms-grid-row: 2;">Têtu Connect délivrera ensuite une analyse détaillée des résultats à votre entreprise. Celle-ci s’engage à partager avec vous les enseignements de l’évaluation.</p>
+                </div>
+            </article>
+        </section>
+
+        {% include 'includes/RGPD-tetu.html' %}
+
+
+        <section class="mxt-container bg--white">
+            <article class="text-center">
+                <a class="btn btn-primary" href="{{ object.collaborator_fill_url }}">Commencer l'évaluation</a>
+            </article>
+            <article class="col col--2">
+                <div>
+                    <p class="content-strong">Objectifs  de l’évaluation</p>
+                    <div style="text-align:left;" class="content-light mxt-row">
+                        <p>L’évaluation du sentiment d’inclusion des collaborateurs LGBTQIA+ dans l’entreprise a pour objectifs de :</p>
+                        <p style="margin: 0 0 10px 0;"><span><i style="font-size: 1.1rem;" class="fas fa-caret-right"></i> recueillir les perceptions et le vécu des salariés (f/h/nb) sur leur vision de l’inclusion des personnes LGBTQIA+ dans l’entreprise</span>
+                        </p>
+                        <p style="margin: 0 0 10px 0;"><span><i style="font-size: 1.3rem;" class="fas fa-caret-right"></i> évaluer leur appréhension du phénomène et leur degré de connaissance du sujet</span>
+                        </p>
+                        <p style="margin: 0 0 10px 0;"><span><i style="font-size: 1.3rem;" class="fas fa-caret-right"></i> identifier les représentations et stéréotypes à l’origine de possibles discriminations</span>
+                        </p>
+                        <p style="margin: 0 0 10px 0;"><span><i style="font-size: 1.3rem;" class="fas fa-caret-right"></i> identifier les suggestions de bonnes pratiques proposées par les collaborateur.rices de l’entreprise.</span>
+                        </p>
+                        <p>Les résultats feront l’objet d’un rapport détaillé remis par Têtu Connect à l’entreprise à l’issue du traitement des données fournies à Têtu Connect par Mixity.</p>
+
+                    </div>
+                </div>
+                <div>
+                    <p class="content-strong">Charte d’utilisation des données</p>
+                    <div style="text-align:left;" class="content-light mxt-row">
+                        <p>Dans le cadre de l’évaluation réalisée ici par Mixity, et pour assurer l’anonymat, le questionnaire ne comprend :</p>
+                        <p style="margin: 0 0 10px 0;"><span><i style="font-size: 1.1rem;" class="fas fa-caret-right"></i> aucune collecte des noms et prénoms, de l’adresse précise (adresse postale ou électronique), du numéro de téléphone, du lieu et de la date de naissance</span>
+                        </p>
+                        <p style="margin: 0 0 10px 0;"><span><i style="font-size: 1.3rem;" class="fas fa-caret-right"></i> aucun numéro d’ordre sur le questionnaire renvoyant à une table de correspondance avec l’identité de la personne interrogée</span>
+                        </p>
+
+                        <p>Mixity confirme qu’aucune identification des individus n’est possible à partir du recoupement des questions posées dans le questionnaire (exemple : questions sur le métier, la fonction, l’âge) et qu’aucun recoupement n’est fait avec d’autres fichiers.</p>
+                    </div>
+                </div>
+            </article>
+        </section>
+        <section class="container bg--white">
+            <article class="text-center">
+                <a class="btn btn-secondary" href="https://www.mixity.co/contact/">Poser une question</a>
+            </article>
+        </section>
+    {% endif %}
+
+{% endblock %}

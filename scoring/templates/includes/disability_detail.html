@@ -1,0 +1,374 @@
+{% load i18n %}
+{% load percentage %}
+{% load format_number %}
+
+
+<div class="items_container" style="justify-content: center; align-items: stretch">
+    {% if answer_33 %}
+        <div class="item_pb item_s1 item_c stretched_item">
+            <h3 line_id=17 suffix=" : {{ answer_33.value|floatformat:'0' }} %" class="txt_line  content-strong" style="margin:auto;">{% blocktrans trimmed %}Taux de personnes en situation de handicap au sein de l’organisation.{% endblocktrans %}</h3>
+            <div class="d-flex justify-content-center">
+                {% include 'includes/indicators/circular_plot.html' with last_year_value=answer_33.sibling_value border_color="#EBEAEA" blank_color="#e9ecef" percent_inner=answer_33.value|floatformat:'1' percent=answer_33.get_mean_score_in_business_line|floatformat:'0' percent_outter=answer_33.get_mean_score|floatformat:'0' color=cat.color id=answer_33.id small=0 %}
+            </div>
+            {% if answer_33.perimeter %}
+                <div class="perimeter-indicator">
+                    <span>
+                        {% trans answer_33.perimeter %}
+                    </span>
+                </div>
+            {% endif %}
+        </div>
+    {% endif %}
+
+    {% if answer_34 %}
+        <div class="item_pb item_s1 item_c stretched_item">
+            <h3 line_id=17 suffix=" : {{ answer_34.value|floatformat:'0' }} %" class="txt_line  content-strong" style="margin:auto;">{% blocktrans trimmed %}Taux d’emploi indirect, incluant les contrats conclus avec une structure adaptée ou avec un travailleur indépendant handicapé.{% endblocktrans %}</h3>
+            <div class="d-flex justify-content-center">
+                {% include 'includes/indicators/circular_plot.html' with last_year_value=answer_34.sibling_value border_color="#EBEAEA" blank_color="#e9ecef" percent_inner=answer_34.value|floatformat:'1' percent=answer_34.get_mean_score_in_business_line|floatformat:'0' percent_outter=answer_34.get_mean_score|floatformat:'0' color=cat.color id=answer_34.id small=0 %}
+            </div>
+            {% if answer_34.perimeter %}
+                <div class="perimeter-indicator">
+                    <span>
+                        {% trans answer_34.perimeter %}
+                    </span>
+                </div>
+            {% endif %}
+        </div>
+    {% endif %}
+
+    {% if answer_411 or answer_401 %}
+        <div class="item_s3 items_container" style="width: 100%; justify-content: center; align-items: stretch">
+            {% if answer_411 %}
+                <div class="item_pb item_s1 item_c stretched_item">
+                    <h3 line_id=17 suffix=" : {{ answer_411.value|floatformat:'0' }} %" class="txt_line  content-strong">
+                        {% blocktrans trimmed %}Croissance du nombre de personnes en situation de handicap depuis 3 ans{% endblocktrans %}
+                    </h3>
+                    {% include 'includes/indicators/percent_evol.html' with value=answer_411.value color=cat.color %}
+                    {% if answer_411.perimeter %}
+                        <div class="perimeter-indicator">
+                            <span>
+                                {% trans answer_411.perimeter %}
+                            </span>
+                        </div>
+                    {% endif %}
+                </div>
+            {% endif %}
+            {% if answer_401 %}
+                <div class="item_pb item_s1 stretched_item">
+                    <h3 line_id=17 suffix=" : {{ answer_401.value|floatformat:'0' }} €" class="txt_line  content-strong">
+                        {% blocktrans trimmed %}Montant annuel HT consacré aux achats auprès de structures du secteur du travail protégé et adapté (STPA){% endblocktrans %}
+                    </h3>
+                    {% include 'includes/indicators/number_detail.html' with value=answer_401.value last_year_value=answer_401.sibling_value color=cat.color year=answer_401.evaluation.sheet.year last_year=answer_401.sibling_year %}
+                    {% if answer_401.perimeter %}
+                        <div class="perimeter-indicator">
+                            <span>
+                                {% trans answer_401.perimeter %}
+                            </span>
+                        </div>
+                    {% endif %}
+                </div>
+            {% endif %}
+        </div>
+    {% endif %}
+
+    <div class="items_container item_s3" style="justify-content: center;width: 100%">
+        {% if answer_511 %}
+            <div class="item_pb item_s1 item_c">
+                <h3 line_id=17 suffix=" : {{ answer_511.value|floatformat:'0' }} %" class="txt_line  content-strong" style="margin:auto;">{% blocktrans trimmed %}Taux d'accessibilité du site web de référence : Evaluation portant sur{% endblocktrans %} <a target="_blank" href="{{ answer_511.evaluation.entity.entity_level.structure.website }}">{{ answer_511.evaluation.entity.entity_level.structure.website }}</a></h3>
+                <div class="d-flex justify-content-center">
+                    {% include 'includes/indicators/circular_plot.html' with last_year_value=answer_511.sibling_value border_color="#EBEAEA" blank_color="#e9ecef" percent_inner=answer_511.value|floatformat:'1' percent=answer_511.get_mean_score_in_business_line|floatformat:'0' percent_outter=answer_511.get_mean_score|floatformat:'0' color=cat.color id=answer_511.id small=0 %}
+                </div>
+                {% if answer_511.perimeter %}
+                    <div class="perimeter-indicator">
+                        <span>
+                            {% trans answer_511.perimeter %}
+                        </span>
+                    </div>
+                {% endif %}
+            </div>
+        {% endif %}
+
+        {% if answer_571 %}
+            <div class="item_pb item_s1 item_c">
+                <h3 line_id=17 suffix=" : {{ answer_571.value|floatformat:'0' }} %" class="txt_line  content-strong" style="margin:auto;">{% blocktrans trimmed %}Taux d'accessibilité des sites de l'entreprise (tous établissements France et siège France dont vous êtes propriétaire) en pourcentage.{% endblocktrans %}</h3>
+                <div class="d-flex justify-content-center">
+                    {% include 'includes/indicators/circular_plot.html' with last_year_value=answer_571.sibling_value border_color="#EBEAEA" blank_color="#e9ecef" percent_inner=answer_571.value|floatformat:'1' percent=answer_571.get_mean_score_in_business_line|floatformat:'0' percent_outter=answer_571.get_mean_score|floatformat:'0' color=cat.color id=answer_571.id small=0 %}
+                </div>
+                {% if answer_571.perimeter %}
+                    <div class="perimeter-indicator">
+                        <span>
+                            {% trans answer_571.perimeter %}
+                        </span>
+                    </div>
+                {% endif %}
+            </div>
+        {% endif %}
+    </div>
+
+    {%  if answer_412 %}
+        <div class="item_pb item_s2">
+            {% with text=_("Taux de personnes en situation de handicap chez les fournisseurs directs et indirects") %}
+                {% include 'includes/indicators/number.html' with number=answer_412.value|floatformat:0 number_last=1 color=cat.color text=text %}
+            {% endwith %}
+            {% if answer_412.perimeter %}
+                <div class="perimeter-indicator">
+                    <span>
+                        {% trans answer_412.perimeter %}
+                    </span>
+                </div>
+            {% endif %}
+        </div>
+    {% endif  %}
+
+    {% if answer_20214076 %}
+        <div class="item_pb item_s1 item_c stretched_item">
+            <h3 line_id=17 suffix=" : {{ answer_20214076.value|floatformat:'0' }} %" class="txt_line  content-strong" style="margin:auto;">{% blocktrans trimmed %}Taux de personnes en situation de handicap visible et invisible au sein de l’organisation.{% endblocktrans %}</h3>
+            <div class="d-flex justify-content-center">
+                {% include 'includes/indicators/circular_plot.html' with last_year_value=answer_20214076.sibling_value border_color="#EBEAEA" blank_color="#e9ecef" percent_inner=answer_20214076.ratio_value|floatformat:'2' percent=answer_20214076.get_mean_score_in_business_line|floatformat:'0' percent_outter=answer_20214076.get_mean_score|floatformat:'0' color=cat.color id=answer_20214076.id small=0 %}
+            </div>
+            {% if answer_20214076.perimeter %}
+                <div class="perimeter-indicator">
+                    <span>
+                        {% trans answer_20214076.perimeter %}
+                    </span>
+                </div>
+            {% endif %}
+        </div>
+    {% endif %}
+
+    {% if answer_20215058 %}
+        <div class="item_pb item_s1 item_c stretched_item">
+            <h3 line_id=17 suffix=" : {{ answer_20215058.value|floatformat:'0' }} %" class="txt_line  content-strong" style="margin:auto;">{% blocktrans trimmed %}Taux de personnes en situation de handicap visible et invisible au sein de l’organisation.{% endblocktrans %}</h3>
+            <div class="d-flex justify-content-center">
+                {% include 'includes/indicators/circular_plot.html' with last_year_value=answer_20215058.sibling_value border_color="#EBEAEA" blank_color="#e9ecef" percent_inner=answer_20215058.ratio_value|floatformat:'2' percent=answer_20215058.get_mean_score_in_business_line|floatformat:'0' percent_outter=answer_20215058.get_mean_score|floatformat:'0' color=cat.color id=answer_20215058.id small=0 %}
+            </div>
+            {% if answer_20215058.perimeter %}
+                <div class="perimeter-indicator">
+                    <span>
+                        {% trans answer_20215058.perimeter %}
+                    </span>
+                </div>
+            {% endif %}
+        </div>
+    {% endif %}
+
+    {% if answer_20214079 %}
+        <div class="item_pb item_s1 item_c stretched_item">
+            <h3 line_id=17 suffix=" : {{ answer_20214079.value|floatformat:'0' }} %" class="txt_line  content-strong" style="margin:auto;">{% blocktrans trimmed %}Taux de personnes en situation de handicap recrutées dans les 12 derniers mois{% endblocktrans %}</h3>
+            <div class="d-flex justify-content-center">
+                {% include 'includes/indicators/circular_plot.html' with last_year_value=answer_20214079.sibling_value border_color="#EBEAEA" blank_color="#e9ecef" percent_inner=answer_20214079.ratio_value|floatformat:'1' percent=answer_20214079.get_mean_score_in_business_line|floatformat:'0' percent_outter=answer_20214079.get_mean_score|floatformat:'0' color=cat.color id=answer_20214079.id small=0 %}
+            </div>
+             {% if answer_20214079.perimeter %}
+                <div class="perimeter-indicator">
+                    <span>
+                        {% trans answer_20214079.perimeter %}
+                    </span>
+                </div>
+            {% endif %}
+       </div>
+    {% endif %}
+
+    {% if answer_20215061 %}
+        <div class="item_pb item_s1 item_c stretched_item">
+            <h3 line_id=17 suffix=" : {{ answer_20215061.value|floatformat:'0' }} %" class="txt_line  content-strong" style="margin:auto;">{% blocktrans trimmed %}Taux de personnes en situation de handicap recrutées dans les 12 derniers mois{% endblocktrans %}</h3>
+            <div class="d-flex justify-content-center">
+                {% include 'includes/indicators/circular_plot.html' with last_year_value=answer_20215061.sibling_value border_color="#EBEAEA" blank_color="#e9ecef" percent_inner=answer_20215061.ratio_value|floatformat:'1' percent=answer_20215061.get_mean_score_in_business_line|floatformat:'0' percent_outter=answer_20215061.get_mean_score|floatformat:'0' color=cat.color id=answer_20215061.id small=0 %}
+            </div>
+            {% if answer_20215061.perimeter %}
+                <div class="perimeter-indicator">
+                    <span>
+                        {% trans answer_20215061.perimeter %}
+                    </span>
+                </div>
+            {% endif %}
+        </div>
+    {% endif %}
+
+    {% if answer_202140761 %}
+        {% with color_2="#2C4BA7" color_3="#8888E2" label_1=_("Femme") label_2=_("Homme") label_3=_("Non-binaire") %}
+            <div class="item_pb item_s3">
+                <div style="display: flex;justify-content: space-between">
+                    <div>
+                        <h3 line_id=17 class="txt_line content-strong" prefix="\n" style="text-align: left;">
+                            {% blocktrans trimmed %}Répartition des personnes en situations de handicap dans l'entreprise{% endblocktrans %}
+                        </h3>
+                    </div>
+                    <div class="legend_container" style="width: auto">
+                        <div class="legend_element"><div class="dot" style="background-color:{{ cat.color }};"></div> <span>&nbsp;{{ label_1 }}</span></div>
+                        <div class="legend_element"><div class="dot" style="background-color:{{ color_2 }};"></div> <span>&nbsp;{{ label_2 }}</span></div>
+                        <div class="legend_element"><div class="dot" style="background-color:{{ color_3 }};"></div> <span>&nbsp;{{ label_3 }}</span></div>
+                    </div>
+                </div>
+                {% include 'includes/indicators/repartition_chart_ratio.html' with answer=answer_202140761 color_1=cat.color color_2=color_2 color_3=color_3 label_1=label_1 label_2=label_2 label_3=label_3 %}
+                {% if answer_202140761.perimeter %}
+                    <div class="perimeter-indicator">
+                        <span>
+                            {% trans answer_202140761.perimeter %}
+                        </span>
+                    </div>
+                {% endif %}
+            </div>
+        {% endwith %}
+    {% endif %}
+
+    {% if answer_202140821 %}
+        <div class="item_pb item_s1 stretched_item item_c">
+            <h3 class="content-strong">
+                {% blocktrans trimmed %}Pourcentage et montant des achats annuels € HT consacrés aux achats auprès de structures du secteur du travail protégé et adapté (STPA){% endblocktrans %}
+            </h3>
+            <div class="d-flex flex-column justify-content-center">
+                <div>
+                    {% include 'includes/indicators/number_icon.html' with currency_symbol=answer_202140821.currency_symbol value=answer_202140821.value color=cat.color font_size="30px" icon_name="money" %}
+                </div>
+                <div>
+                    <h5 class="content-strong">
+                        {% with color=cat.color %}
+                            {% percentage answer_202140821.ratio_value as value %}
+                            {% blocktrans trimmed %}soit <span style="color:{{ color }};">{{ value }}</span> des achats{% endblocktrans %}
+                        {% endwith %}
+                    </h5>
+                </div>
+                <div class="sales-indicator">
+                    <span style="font-size: 1.5em; font-family: Cousine; font-weight: normal; color:#95B9C1">● {% percentage answer_202140821.get_mean_score %}</span>
+                    <span style="font-size: 1.5em; font-family: Cousine; font-weight: normal; color:#863C63">&nbsp;&nbsp;● {% percentage answer_202140821.get_mean_score_in_business_line %}</span>
+                </div>
+            </div>
+            {% if answer_202140821.perimeter %}
+                <div class="perimeter-indicator">
+                    <span>
+                        {% trans answer_202140821.perimeter %}
+                    </span>
+                </div>
+            {% endif %}
+        </div>
+    {% endif %}
+
+    {% if answer_20215063 %}
+        <div class="item_pb item_s1 stretched_item item_c">
+            <h3 class="content-strong">
+                {% blocktrans trimmed %}Pourcentage et montant des achats annuels € HT consacrés aux achats auprès de structures du secteur du travail protégé et adapté (STPA){% endblocktrans %}
+            </h3>
+            <div class="d-flex flex-column justify-content-center">
+                <div>
+                    {% include 'includes/indicators/number_icon.html' with currency_symbol=answer_20215063.currency_symbol value=answer_20215063.value color=cat.color font_size="30px" icon_name="money" %}
+                </div>
+                <div>
+                    <h5 class="content-strong">
+                        {% with color=cat.color %}
+                            {% percentage answer_20215063.ratio_value as value %}
+                            {% blocktrans trimmed %}soit <span style="color:{{ color }};">{{ value }}</span> des achats{% endblocktrans %}
+                        {% endwith %}
+                    </h5>
+                </div>
+                <div class="sales-indicator">
+                    <span style="font-size: 1.5em; font-family: Cousine; font-weight: normal; color:#95B9C1">● {% percentage answer_20215063.get_mean_score %}</span>
+                    <span style="font-size: 1.5em; font-family: Cousine; font-weight: normal; color:#863C63">&nbsp;&nbsp;● {% percentage answer_20215063.get_mean_score_in_business_line %}</span>
+                </div>
+            </div>
+            {% if answer_20215063.perimeter %}
+                <div class="perimeter-indicator">
+                    <span>
+                        {% trans answer_20215063.perimeter %}
+                    </span>
+                </div>
+            {% endif %}
+        </div>
+    {% endif %}
+
+    {% if answer_20214084 and answer_20214100 %}
+        <div class="item_pb item_s1">
+            <h3 line_id=17 suffix=" : {{ answer_20214084.value|floatformat:'0' }} %" style="margin-bottom:10px" class="txt_line  content-strong">
+                {% blocktrans trimmed %}Taux d'accessibilité ...{% endblocktrans %}
+            </h3>
+            {% with label_1=_("... des sites de l'entreprise (tous établissements France et siège France)") label_2=_("...  des sites web de référence de l'entreprise")  %}
+                {% include 'includes/indicators/double_horizontal_histogram.html' with answer_1=answer_20214084 answer_2=answer_20214100 label_1=label_1 label_2=label_2 color=cat.color %}
+            {% endwith %}
+            {% if answer_20214084.perimeter %}
+                <div class="perimeter-indicator">
+                    <span>
+                        {% trans answer_20214084.perimeter %}
+                    </span>
+                </div>
+            {% endif %}
+            {% if answer_20214100.perimeter %}
+                <div class="perimeter-indicator">
+                    <span>
+                        {% trans answer_20214100.perimeter %}
+                    </span>
+                </div>
+            {% endif %}
+        </div>
+    {% endif %}
+
+    {% if answer_20215065 and answer_20215066 %}
+        <div class="item_pb item_s1">
+            <h3 line_id=17 suffix=" : {{ answer_20215065.value|floatformat:'0' }} %" style="margin-bottom:10px" class="txt_line  content-strong">
+                {% blocktrans trimmed %}Taux d'accessibilité ...{% endblocktrans %}
+            </h3>
+            {% with label_1=_("... des sites de l'entreprise (tous établissements France et siège France)") label_2=_("...  des sites web de référence de l'entreprise")  %}
+                {% include 'includes/indicators/double_horizontal_histogram.html' with answer_1=answer_20215065 answer_2=answer_20215066 label_1=label_1 label_2=label_2 color=cat.color %}
+            {% endwith %}
+            {% if answer_20215065.perimeter %}
+                <div class="perimeter-indicator">
+                    <span>
+                        {% trans answer_20215065.perimeter %}
+                    </span>
+                </div>
+            {% endif %}
+            {% if answer_20215066.perimeter %}
+                <div class="perimeter-indicator">
+                    <span>
+                        {% trans answer_20215066.perimeter %}
+                    </span>
+                </div>
+            {% endif %}
+        </div>
+    {% endif %}
+
+    {% if answer_20214104 or answer_20215074 %}
+        <div class="item_pb item_s1 item_c">
+            {% if answer_20214104 %}
+                <h3 line_id=17 suffix=" : {{ answer_20214104.ratio_value|floatformat:'0' }} %" class="txt_line content-strong">
+                    {% blocktrans trimmed %}Taux de salariés (f/h/nb) ayant suivi dans l'année un dispositif de sensibilisation et/ou de formation avec mention des stéréotypes liés au handicap {% endblocktrans %}
+                </h3>
+                <div class="d-flex justify-content-center">
+                    {% include 'includes/indicators/half_circular_plot.html' with last_year_value=answer_20214104.sibling_value border_color="#EBEAEA" blank_color="#e9ecef" percent_inner=answer_20214104.ratio_value|floatformat:'1' percent=answer_20214104.get_mean_score_in_business_line|floatformat:'0' percent_outter=answer_20214104.get_mean_score|floatformat:'0' color=cat.color id=answer_20214104.id small=1 %}
+                </div>
+            {% elif answer_20215074 %}
+                <h3 line_id=17 suffix=" : {{ answer_20215074.ratio_value|floatformat:'0' }} %" class="txt_line content-strong">
+                    {% blocktrans trimmed %}Taux de salariés (f/h/nb) ayant suivi dans l'année un dispositif de sensibilisation et/ou de formation avec mention des stéréotypes liés au handicap {% endblocktrans %}
+                </h3>
+                {% include 'includes/indicators/half_circular_plot.html' with last_year_value=answer_20215074.sibling_value border_color="#EBEAEA" blank_color="#e9ecef" percent_inner=answer_20215074.ratio_value|floatformat:'1' percent=answer_20215074.get_mean_score_in_business_line|floatformat:'0' percent_outter=answer_20215074.get_mean_score|floatformat:'0' color=cat.color id=answer_20215074.id small=1 %}
+            {% endif %}
+            {% if answer_20214104.perimeter %}
+                <div class="perimeter-indicator">
+                    <span>
+                        {% trans answer_20214104.perimeter %}
+                    </span>
+                </div>
+            {% endif %}
+            {% if answer_20215074.perimeter %}
+                <div class="perimeter-indicator">
+                    <span>
+                        {% trans answer_20215074.perimeter %}
+                    </span>
+                </div>
+            {% endif %}
+        </div>
+    {% endif %}
+
+    {%  if answer_10033 %}
+        <div class="item_pb item_s2">
+            {% with text=_("Nombre d'employés ayant bénéficié d’un dispositif ou d'une formation sur les stéréotypes liés au handicap visible et/ou invisible") %}
+                {% include 'includes/indicators/number.html' with number=answer_10033.value|floatformat:0 number_last=1 color=cat.color text=text %}
+            {% endwith %}
+            {% if answer_10033.perimeter %}
+                <div class="perimeter-indicator">
+                    <span>
+                        {% trans answer_10033.perimeter %}
+                    </span>
+                </div>
+            {% endif %}
+        </div>
+    {% endif %}
+</div>

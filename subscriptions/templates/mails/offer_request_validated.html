@@ -1,0 +1,21 @@
+{% extends "base_email.html" %}
+{% load i18n static allow_evaluation %}
+
+{% block content %}
+    <tr>
+        <td><h1>{% blocktrans trimmed %}Félicitations, votre offre {{ subscription_label }} est validée.{% endblocktrans %}</h1></td>
+    </tr>
+    <tr>
+        <td>
+            {% blocktrans trimmed %}
+            Votre organisation fait désormais partie de la communauté Mixity. Merci pour votre engagement en faveur de
+            la diversité et de l'inclusion. Vous pouvez dès à présent créer votre évaluation en vous connectant sur Mixity.co.
+            {% endblocktrans %}
+        </td>
+    </tr>
+    <tr>
+        <td align="center">
+            <a class="button" href="{{ evaluation_url }}">{% trans "Créer votre empreinte Mixity" %}</a>
+        </td>
+    </tr>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends "base_email.html" %}
+{% load i18n static %}
+
+{% block content %}
+<tr>
+  <td><h1>Un paiement a été effectué pour {{ structure.juridic_name }}</h1></td>
+</tr>
+<tr>
+  <td>
+    <div style="margin-bottom: 21px;"><a style="background: #18ffc3;padding: 13px;border-radius: 21px;text-decoration: none;color: #181b3d;font-weight: bold;" href="{{ protocol }}://{{ domain }}{{ invoice_url }}">{% blocktrans trimmed %}Accéder à la facture{% endblocktrans %}</a></div>
+  </td>
+</tr>
+{% endblock %}

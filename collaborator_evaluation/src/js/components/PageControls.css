@@ -1,0 +1,27 @@
+.page-controls {
+  margin-top: 10em;
+  padding-left: 5em;
+}
+
+.page-control-buttons {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.button-previous {
+  font-size: 0.8em;
+}
+
+.button-next {
+  font-size: 0.9em;
+  font-weight: bold;
+}
+
+.page-control-button {
+  margin-left: 2em;
+}
+
+.page-controls-button-container {
+  display: flex;
+  justify-content: flex-end;
+}

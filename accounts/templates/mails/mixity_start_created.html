@@ -1,0 +1,31 @@
+{% extends "base_email.html" %}
+{% load i18n static %}
+
+{% block content %}
+<tr>
+  <td><h1>{% trans "Bienvenue sur la version d’essai de Mixity Start, l’évaluation de vos pratiques pour débuter votre politique de diversité et d’inclusion !" %}</h1></td>
+</tr>
+<tr>
+  <td>
+    {% blocktrans trimmed %}
+    Vous avez choisi d’évaluer la dimension égalité professionnelle entre les femmes et les hommes/handicap.
+    {% endblocktrans %}<br/><br/>
+    {% blocktrans trimmed %}
+    Cette version gratuite est un extrait qui vous permettra de découvrir l’outil et ses résultats.
+    {% endblocktrans %}<br/><br/><br/>
+    <div style="margin-bottom: 21px;"><a style="background: #18ffc3;padding: 13px;border-radius: 21px;text-decoration: none;color: #181b3d;font-weight: bold;" href="{{ evaluation_url }}">{% blocktrans trimmed %}Commencer mon évaluation{% endblocktrans %}</a></div><br/>
+    {% blocktrans trimmed %}
+    La version complète de Mixity Start vous donne accès à l'évaluation de votre politique diversité et inclusion sur l'ensemble des dimensions Mixity (égalité professionnelle entre les femmes et les hommes, handicap, multiculturel et social, multigénérationnel et orientation sexuelle et/ou identité de genre), aux indicateurs et au recommandations pour construire vos plans d'actions dans une approche globale et transversale.
+    {% endblocktrans %}<br/><br/>
+    {% blocktrans trimmed %}
+    Vous pourrez à tout moment de votre essai, souscrire à l’offre complète pour accéder à l’ensemble de l’outil.
+    {% endblocktrans %}<br/><br/>
+    {% blocktrans trimmed %}
+        Notre équipe est à votre disposions pour répondre à vos questions tout au long de votre évaluation. à votre disposition pour répondre à vos <a href="mailto:contact@mixity.co">questions</a>.
+    {% endblocktrans %}<br/><br/>
+    {% blocktrans trimmed %}
+    L’équipe Mixity
+    {% endblocktrans %}
+  </td>
+</tr>
+{% endblock %}

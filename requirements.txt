@@ -1,0 +1,117 @@
+# djangos
+django==3.2.23
+django-address==0.2.8
+django-allauth==0.51.0
+django-autocomplete-light==3.8.2
+django-celery-beat==2.2.1
+django-classy-tags==4.1.0
+django-constance==2.8.0
+django-countries==7.2.1
+django-debug-toolbar==3.2.4
+django-extensions==3.1.5
+django-filter==21.1
+django-formtools==2.3
+django-json-widget==1.1.1
+django-localflavor==3.1
+django-modeltranslation==0.17.7
+django-multiselectfield==0.1.12
+django-picklefield==3.0.1
+django-recaptcha==2.0.6
+django-simple-email-confirmation==0.70
+django-timezone-field==4.2.3
+djangorestframework==3.12.4
+
+# Utils
+magicattr==0.1.6
+uuid==1.30
+
+setuptools
+wheel>=0.36.0
+
+pytz==2021.3
+requests==2.26.0
+requests-oauthlib==1.0.0
+django-redis==5.0.0
+
+# excel sheets
+openpyxl==3.0.10
+lxml
+
+# mails
+ua-parser==0.10.0
+django-sesame==2.4
+django-premailer==0.2.0
+django-sendgrid-v5==1.1.2
+
+# bdd
+psycopg2==2.9.9
+psycopg2-binary==2.9.9
+
+# images
+cloudinary==1.28.1
+django-cloudinary-storage==0.3.0
+
+# webserver
+# uwsgi==2.0.23
+django-heroku==0.3.1
+whitenoise==5.3.0
+
+sentry-sdk==1.10.1
+
+# cookies law
+django-cookie-law==2.1.1
+
+# traitement dates
+jours-feries-france>=0.7
+
+# i18n
+python-gettext==4.1
+polib==1.1.1
+fast-i18n @ git+https://gitlab.com/jeremymarc/fast-i18n@0.0.1
+
+# Admin
+django-tinymce==3.3.0
+
+# Monitoring
+newrelic~=10.1.0
+
+# Stripe
+stripe
+
+# PDF generator
+reportlab
+pytest-playwright~=0.4.3
+PyPDF2~=2.12.1
+
+# Hubspot demo form
+hubspot-api-client~=4.0.6
+
+# Jobs
+rq~=1.16.2
+django_rq~=2.10.2
+
+# ORM damage control
+django-seal~=1.4.4
+django-zen-queries~=2.1.0
+
+# Debug (should not be in production, but staging requires it for now)
+django-debug-toolbar==3.2.4
+
+# Configuration
+python-decouple~=3.8
+
+#Statistics
+pandas==2.2
+
+#ADP
+pycryptodome==3.18.0
+distinctipy==1.2.2
+
+# Cryptography
+cryptography==42.0.7
+
+# Open AI
+openai==1.44.1
+
+# Pdf
+playwright==1.49.0

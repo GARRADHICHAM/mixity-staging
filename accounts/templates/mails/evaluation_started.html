@@ -1,0 +1,18 @@
+{% extends "base_email.html" %}
+{% load i18n static %}
+
+{% block title %}
+{% blocktrans trimmed %}Votre évaluation Human a commencé.{% endblocktrans %}
+{% endblock %}
+
+{% block content %}
+<tr>
+  <td>{% blocktrans trimmed %}Bonjour,<br>Cliquez sur le lien suivant pour commencer l'évaluation sur
+      Mixity.{% endblocktrans %}</td>
+</tr>
+<tr>
+  <td align="center">
+    <a class="button" href="{{ evaluation_url }}">{% blocktrans trimmed %}Commencer l'évaluation{% endblocktrans %}</a>
+  </td>
+</tr>
+{% endblock %}

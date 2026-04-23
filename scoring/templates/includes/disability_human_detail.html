@@ -1,0 +1,105 @@
+{% load i18n %}
+{% load percentage %}
+{% load format_number %}
+
+
+<div class="items_container" style="justify-content: center; align-items: stretch">
+
+    {% with answer=answer_2021019 %}
+        {% if answer %}
+            <div class="item_pb item_s1 item_c stretched_item">
+                <h3 line_id=17 suffix=" : ' }} %" class="txt_line content-strong" style="margin:auto;">{% blocktrans trimmed %}Taux de perception du handicap comme frein à l'embauche{% endblocktrans %}</h3>
+                <div class="d-flex justify-content-center">
+                    {% computed_answer evaluation  answer '{"type":"rate_choice", "combine":"0,1"}' collaborators_queryset as results %}
+                    {% include 'includes/indicators/half_circular_plot.html' with border_color="#EBEAEA" blank_color="#e9ecef" legend1=_("Femmes") legend2=_('Hommes') legend3=_('Non-binaires') percent_inner=results.0.0.combined_value percent=results.1.0.combined_value percent_outter=results.2.0.combined_value color=cat.color id=answer.id small=0 %}
+                </div>
+            </div>
+        {% endif %}
+    {% endwith %}
+    {% with answer=answer_2021057 %}
+        {% if answer %}
+            <div class="item_pb item_s1 item_c stretched_item">
+                <h3 line_id=17 suffix=" : ' }} %" class="txt_line  content-strong" style="margin:auto;">{% blocktrans trimmed %}Taux de répondants (f/h/nb) estimant qu'il soit facile pour un étudiant en situation de handicap d'être scolarisé dans l'établissement{% endblocktrans %}</h3>
+                <div class="d-flex justify-content-center">
+                    {% computed_answer evaluation  answer '{"type":"rate_choice"}' collaborators_queryset as results %}
+                    {% include 'includes/indicators/half_circular_plot.html' with border_color="#EBEAEA" blank_color="#e9ecef" legend1=_("Femmes") legend2=_('Hommes') legend3=_('Non-binaires') percent_inner=results.0.0.value percent=results.1.0.value percent_outter=results.2.0.value color=cat.color id=answer.id small=0 %}
+                </div>
+            </div>
+        {% endif %}
+    {% endwith %}
+
+    {% with answer1=answer_2021020 answer2=answer_2021022 %}
+        <div class="items_container item_s1 item_c item_pb">
+            <h3 class="content-strong padding-vertical-2">
+                {% blocktrans trimmed %}Taux de répondants (f/h/nb) estimant...{% endblocktrans %}
+            </h3>
+            {% if answer1 %}
+                <div class="">
+                    <h3 line_id=17 suffix=" : {{ answer1.value|floatformat:'0' }} %" style="margin-bottom:10px" class="txt_line  content-strong">
+                        {% blocktrans trimmed %}... avoir été sensibilisé sur le handicap visible et/ou invisible, durant les 24 derniers mois{% endblocktrans %}
+                    </h3>
+                    {% computed_answer evaluation  answer1 '{"type":"rate_choice"}' collaborators_queryset as results %}
+                    {% include 'includes/indicators/single_horizontal_histogram_json.html' with value=results.0.0.value mean_score_in_business_line=results.1.0.value mean_score=results.2.0.value color=cat.color %}
+                </div>
+            {% endif %}
+            {% if answer2 %}
+                <div class="" style="">
+                    <h3 line_id=17 suffix=" : {{ answer1.value|floatformat:'0' }} %" style="margin-bottom:10px;" class="txt_line  content-strong">
+                        {% blocktrans trimmed %}... qu'il est facile de parler de son handicap dans l'organisation{% endblocktrans %}
+                    </h3>
+                    {% computed_answer evaluation  answer2 '{"type":"rate_choice", "combine":"0,1"}' collaborators_queryset as results %}
+                    {% include 'includes/indicators/single_horizontal_histogram_json.html' with value=results.0.0.combined_value mean_score_in_business_line=results.1.0.combined_value mean_score=results.2.0.combined_value color="#2C4BA7" %}
+                </div>
+            {% endif %}
+        </div>
+    {% endwith %}
+
+    {% with answer=answer_2021021 %}
+        {% if answer %}
+            <div class="item_pb item_s1 item_c stretched_item">
+                <h3 line_id=17 suffix=" : ' }} %" class="txt_line  content-strong" style="margin:auto;">{% blocktrans trimmed %}Niveau de connaissance de supports de communication et/ou d'actions de soutien menés par l'organisation sur le handicap{% endblocktrans %}</h3>
+                <div class="d-flex justify-content-center">
+                    {% computed_answer evaluation  answer '{"type":"rate_choice"}' collaborators_queryset as results %}
+                    {% include 'includes/indicators/circular_plot.html' with border_color="#EBEAEA" blank_color="#e9ecef" legend1=_("Femmes") legend2=_('Hommes') legend3=_('Non-binaires') percent_inner=results.0.0.value percent=results.1.0.value percent_outter=results.2.0.value color=cat.color id=answer.id small=0 %}
+                </div>
+            </div>
+        {% endif %}
+    {% endwith %}
+
+    {% with answer=answer_2021023 %}
+        {% if answer %}
+            <div class="item_pb item_s1 item_c stretched_item">
+                <h3 line_id=17 suffix=" : ' }} %" class="txt_line  content-strong" style="margin:auto;">{% blocktrans trimmed %}Taux de répondants (f/h/nb) estimant que l'environnement de l'organisation peut s'adapter à tout type de handicap{% endblocktrans %}</h3>
+                <div style="display: flex;justify-content: center; width: 100%; flex-wrap: wrap">
+                    {% computed_answer evaluation  answer '{"type":"rate_choice", "combine":"0,1"}' collaborators_queryset as results %}
+                    {% include 'includes/indicators/squares.html' with value=results.0.0.combined_value color=cat.color id=answer.id %}
+                    {% if display_mean_score %}
+                        <div style="display: flex; flex-wrap: wrap; min-width: 100%; justify-content: center">
+                            {% include 'includes/indicators/donut.html' with percent_inner=results.1.0.combined_value color="#863C63" blank_color="#e9ecef" id=answer.id|stringformat:"i"|add:"_" %}
+                            {% include 'includes/indicators/donut.html' with percent_inner=results.2.0.combined_value color="#95B9C1" blank_color="#e9ecef" id=answer.id|stringformat:"i"|add:"__" %}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        {% endif %}
+    {% endwith %}
+
+    {% with answer=answer_2021024 %}
+        {% if answer %}
+            <div class="item_pb item_s1 item_c stretched_item">
+                <h3 line_id=17 suffix=" : ' }} %" class="txt_line  content-strong" style="margin:auto;">{% blocktrans trimmed %}Taux de répondants (f/h/nb) estimant que les personnes en situation de maladie chronique sont accompagnées par l'organisation{% endblocktrans %}</h3>
+                <div style="display: flex;justify-content: center; width: 100%; flex-wrap: wrap">
+                    {% computed_answer evaluation  answer '{"type":"rate_choice", "combine":"0,1"}' collaborators_queryset as results %}
+                    {% include 'includes/indicators/squares.html' with value=results.0.0.combined_value color=cat.color id=answer.id %}
+                    {% if display_mean_score %}
+                        <div style="display: flex; flex-wrap: wrap; min-width: 100%; justify-content: center">
+                            {% include 'includes/indicators/donut.html' with percent_inner=results.1.0.combined_value color="#863C63" blank_color="#e9ecef" id=answer.id|stringformat:"i"|add:"_" %}
+                            {% include 'includes/indicators/donut.html' with percent_inner=results.2.0.combined_value color="#95B9C1" blank_color="#e9ecef" id=answer.id|stringformat:"i"|add:"__" %}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        {% endif %}
+    {% endwith %}
+
+</div>

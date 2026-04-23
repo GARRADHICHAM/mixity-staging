@@ -1,0 +1,18 @@
+{% include 'mails/mail_header.html' %}
+{% load i18n %}
+
+{% blocktrans trimmed %}
+<p>Bonjour,<br/>
+Vous avez souhaité réaliser votre empreinte Mixity, mais vous n’avez pas terminé votre questionnaire. <br/>
+Votre évaluation vous attend ! <br/>
+Nous sommes toujours disponibles pour vous accompagner dans cette démarche engagée.<br/>
+</p>
+{% endblocktrans %}
+
+<div style="display:flex; width: 100%;">
+  <a href="{{ evaluation_url }}"
+    style="margin-right:5px; padding: 10px 10px;text-decoration: none;background: #18ffc3;border-radius: 40px;color: #000000;">{% trans "Accéder à votre évaluation" %}</a>
+  <a href="mailto:contact@mixity.co"
+    style="padding: 10px 10px;text-decoration: none;background: #0baca2;border-radius: 40px;color: #fff;">{% trans "Nous contacter" %}</a>
+</div>
+{% include 'mails/mail_footer.html' %}

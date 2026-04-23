@@ -1,0 +1,231 @@
+input[type=text],
+input[type=password],
+input[type=email],
+input[type=date],
+input[type=tel],
+input[type=number],
+input[type=url],
+textarea,
+select {
+    // border-radius: 0.25rem;
+    // padding: .563em 1em;
+    // font-size: 1em;
+    // width: 100%;
+    // box-sizing: border-box;
+    // font: inherit;
+}
+
+input, select, textarea {
+    background-color: var(--color-grey-light);
+    border: none;
+    border-bottom: solid 1px var(--color-primary-light);
+    width: 100%;
+    font-size: 1em;
+    padding: 0.5em;
+
+    &:focus:not(:disabled), &:active {
+        outline: 0;
+        border-color: var(--color-primary-light);
+        box-shadow: 0 0 0 0.25rem rgba(var(--color-primary), 25%);
+    }
+
+    &:hover:not(:disabled) {
+        outline: 0;
+        border-color: var(--color-primary-light);
+        box-shadow: 0 0 0 0.25rem rgba(var(--color-primary), 25%);
+    }
+
+    &:checked {
+        background-color: var(--color-primary);
+        border-color: var(--color-primary);
+    }
+}
+
+input[type=checkbox] {
+    appearance: none;
+    width: 1px;
+    height: 1px;
+    margin-right: 0.2em;
+    border: solid 1px var(--color-primary-light);
+}
+
+input[type=radio] {
+    appearance: none;
+    border-radius: 50%;
+    width: 1em;
+    height: 1em;
+    margin-right: 0.2em;
+    border: solid 1px var(--color-primary-light);
+}
+
+select {
+    // appearance: none;
+    // background: var(--color-grey-light) url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3e%3cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e") no-repeat right .75rem center/8px 10px;
+
+    &[multiple] {
+        background: var(--color-grey-light);
+    }
+}
+
+#field_>label:first-of-type,
+#field_>label:last-of-type {
+    vertical-align: top;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+
+    input[type=submit],
+    input[type=button],
+    .button {
+        margin: auto 0 auto auto;
+        padding: 0.3em;
+    }
+
+    /* custom form for label */
+    #id_labels {
+        width: 50%;
+        vertical-align: sub;
+        box-sizing: border-box;
+        padding: .563em 1em;
+        display: inline-block;
+        text-align: start;
+
+    }
+
+    ol, ul {
+        list-style: none;
+        padding-left: O !important;
+    }
+}
+
+.multi_answer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+
+.field>.col>div {
+    min-width: 118px;
+}
+
+.table_form {
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+    tbody * {
+        margin: 0;
+        padding: 0;
+    }
+
+    textarea {
+        border: none;
+        padding: 5px;
+        resize: none;
+    }
+
+    td,
+    th {
+        border: 1px black solid;
+    }
+
+    th {
+        background: #ececec;
+    }
+
+}
+
+
+.field {
+    position: relative;
+    display: block;
+    margin-bottom: 1em;
+
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 1em;
+
+        label {
+            width: 100%;
+            height: 2em;
+
+            &:hover, &:active, &:focus {
+                color: var(--color-primary-light);
+                cursor: pointer;
+            }
+        }
+    }
+
+    &__label {
+        display: inline-block;
+        margin-bottom: .25em;
+        margin-top: .5em;
+        font-weight: 600;
+        color: var(--color-primary);
+        width: 100%;
+
+        &__help {
+            color: var(--color-grey);
+            font-weight: 300;
+            font-size: .875em;
+        }
+    }
+
+    input[type=text],
+    input[type=password],
+    input[type=email],
+    input[type=date],
+    input[type=tel],
+    input[type=url],
+    input[type=number],
+    textarea,
+    select {
+        width: 100%;
+        box-sizing: border-box;
+        font: inherit;
+    }
+
+    input[type=number] {
+        max-width: 100px;
+    }
+
+    .help {
+        font-size: .875em;
+        color: var(--color-primary);
+    }
+
+    .help-bubble {
+        font-size: .875em;
+        color: var(--color-primary);
+        background-color: var(--color-grey-light);
+        border-radius: 30px;
+    }
+
+    .captcha {
+        max-width: 100px;
+    }
+}
+
+
+/* important for django-adress plugin */
+#address_components {
+    display: inline;
+}
+
+form.form.multistep .field input[type=number] {
+    max-width: 100%;
+}
+
+.form {
+    &-check {
+        &-input {
+            margin-right: .5rem !important;
+        }
+        &-label {
+            line-height: normal;
+        }
+    }
+}

@@ -1,0 +1,8 @@
+{% load format_number %}
+
+
+<div class="d-flex justify-content-center">
+    <div style="border-radius: 35px; border:1px solid {{ color }}; padding: 4px 20px; font-size:33.6pt;margin-top: 10px;">
+        <span><span style="color: {{ color }};">{% percentage value=value show_evolution=True %}</span></span>
+    </div>
+</div>

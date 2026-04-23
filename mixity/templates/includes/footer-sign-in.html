@@ -1,0 +1,37 @@
+{% load i18n %}
+{% load static %}
+
+
+<footer class="container pb-2">
+    <div class="row text-white d-flex align-items-center">
+        <div class="col-md-6 order-md-2">
+            <div class="float-md-end">
+                <ul class="nav mxt--h3">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% if LANGUAGE_CODE == 'fr' %}https://www.linkedin.com/company/mixity-co/{% else %}https://www.linkedin.com/company/mixity-international/{% endif %}" target="_blank" title="Linkedin">
+                            <i class="bi bi-linkedin" style="color: #FFFFFF; margin: 0; padding: 0;"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://www.instagram.com/mixity_co/?hl=fr" target="_blank" title="Instagram">
+                            <i class="bi bi-instagram" style="color: #FFFFFF; margin: 0; padding: 0;"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% if LANGUAGE_CODE == 'fr' %}https://twitter.com/Mixity_co{% else %}https://twitter.com/EnMixity{% endif %}" target="_blank" title="Twitter">
+                            <i class="bi bi-twitter" style="color: #FFFFFF; margin: 0; padding: 0;"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://www.facebook.com/Mixity.co/" target="_blank" title="Facebook">
+                            <i class="bi bi-facebook" style="color: #FFFFFF; margin: 0; padding: 0;"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-6 mxt--small order-md-1 align-middle" style="font-size: 12px;">
+            {% blocktrans trimmed %}© Copyright Mixity 2023. Tous droits réservés.{% endblocktrans %}
+        </div>
+    </div>
+</footer>

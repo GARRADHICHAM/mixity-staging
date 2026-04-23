@@ -1,0 +1,63 @@
+{
+  "personalNames": [
+    {
+      "script": "LATIN",
+      "id": "85dd5f48-b9e1-4019-88ce-ccc7e56b763f",
+      "firstName": "Keith",
+      "lastName": "Haring",
+      "raceEthnicityAlt": "AI_AN",
+      "raceEthnicity": "W_NL",
+      "score": 7.104050454229515,
+      "raceEthnicitiesTop": [
+        "W_NL",
+        "AI_AN",
+        "B_NL",
+        "A",
+        "PI",
+        "HL"
+      ],
+      "probabilityCalibrated": 0.7271969971540807,
+      "probabilityAltCalibrated": 0.8701551006716921
+    },
+
+    {
+      "script": "LATIN",
+      "id": "85dd5f48-b9e1-4019-88ce-ccc7e56b763e",
+      "firstName": "Cathy",
+      "lastName": "Haring",
+      "raceEthnicityAlt": "B_NL",
+      "raceEthnicity": "A",
+      "score": 7.104050454229515,
+      "raceEthnicitiesTop": [
+        "W_NL",
+        "AI_AN",
+        "B_NL",
+        "A",
+        "PI",
+        "HL"
+      ],
+      "probabilityCalibrated": 0.7271969971540807,
+      "probabilityAltCalibrated": 0.8701551006716921
+    },
+
+    {
+      "script": "LATIN",
+      "id": "85dd5f48-b9e1-4019-88ce-ccc7e56b763e",
+      "firstName": "Baba",
+      "lastName": "Haring",
+      "raceEthnicityAlt": "B_NL",
+      "raceEthnicity": "A",
+      "score": 7.104050454229515,
+      "raceEthnicitiesTop": [
+        "W_NL",
+        "AI_AN",
+        "B_NL",
+        "A",
+        "PI",
+        "HL"
+      ],
+      "probabilityCalibrated": 0.6071969971540807,
+      "probabilityAltCalibrated": 0.8701551006716921
+    }
+  ]
+}

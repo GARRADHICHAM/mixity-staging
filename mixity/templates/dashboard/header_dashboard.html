@@ -1,0 +1,112 @@
+{% load i18n %}
+{% load static %}
+{% load currencies %}
+{% load settings_value %}
+
+{% get_current_language as LANGUAGE_CODE %}
+{% get_available_languages as LANGUAGES %}
+{% get_language_info_list for LANGUAGES as languages %}
+{% get_currency_list as CURRENCIES %}
+{% settings_value "ENABLED_WEBSITE_LANGUAGES" as ENABLED_WEBSITE_LANGUAGES %}
+
+<header>
+    <!-- Main menu -->
+    <nav id="dashboard_header" class="navbar navbar-expand-xl border-bottom p-0 text" style="margin-left:18%; height: 68px;"> <!-- sticky-top -->
+        <div class="container-fluid">
+            <div class="offcanvas offcanvas-end" style="z-index:1" tabindex="-1" id="offcanvasNavbar">
+                <!-- Menu items -->
+                <div class="offcanvas-body position-relative align-items-center">
+                    <!-- General items -->
+                    <ul class="navbar-nav justify-content-start position-absolute" style="left:0; margin-left: 3%;">
+                        <li class="nav-item">
+                            <div class="flex-row gap-3 mxt--small">
+                                {{ current_app }} / <strong>{{ current_page }}</strong>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav position-absolute" style="gap: 30px; right:0; margin-right: 3%;">
+                        <!-- Languages dropdown list -->
+                        <li class="nav-item dropdown">
+                            <a class="header-dropdown-toggle no-react mxt--small pe-5" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <span class="icon-flag-{{ LANGUAGE_CODE }}"></span>
+                                {{ LANGUAGE_CODE|title }}
+                            </a>
+                            <ul class="dropdown-menu">
+                                {% for language in languages %}
+                                    {% comment %}Last part is temporary while spanish translations are missing{% endcomment %}
+                                    {% if language.code != LANGUAGE_CODE and language.code in ENABLED_WEBSITE_LANGUAGES %}
+                                        <li>
+                                            <a style="cursor: pointer;" class="dropdown-item" onclick="languageSelectorFunction('{{ language.code }}')">
+                                                <span class="icon-flag-{{ language.code }}"></span>
+                                                {{ language.name|capfirst }} ({{ language.code|title }})
+                                            </a>
+                                        </li>
+                                    {% endif %}
+                                {% endfor %}
+                            </ul>
+                        </li>
+                        <!-- My account dropdown list-->
+                        <li class="nav-item">
+                            <a class="header-dropdown-toggle no-react mxt--small" style="text-decoration: none" href="#" id="offcanvasNavbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                {% blocktrans trimmed %}Mon compte{% endblocktrans %}
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a class="dropdown-item" href="{% url 'dashboard:account:update_profile' %}">
+                                        <div class="d-inline-block">
+                                            {% blocktrans trimmed %}Mon profil{% endblocktrans %}
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="{% url 'user:logout' %}">
+                                        <div class="d-inline-block">
+                                            {% blocktrans trimmed %}Se déconnecter{% endblocktrans %}
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- End Menu -->
+</header>
+<!-- End Header -->
+
+<!-- Messages -->
+{% if messages %}
+    <div class="messages">
+        {% for message in messages %}
+            <div class="message message--{{ message.level_tag }}">{{ message|safe }}</div>
+        {% endfor %}
+    </div>
+{% endif %}
+
+{% block scripts %}
+<script>
+    $("#dropdownLanguageMenuButton").click(function () {
+        $("#dropdownLanguageMenuButton").focus();
+    });
+
+    $("#dropdownCurrencyMenuButton").click(function () {
+        $("#dropdownCurrencyMenuButton").focus();
+    });
+
+    function languageSelectorFunction(languageCode) {
+        //Set cookie language
+        document.cookie = "language_code=" + languageCode + "; path=/;";
+        //Refresh page
+        window.location.reload(true)
+    }
+
+    function currencySelectorFunction(currencyCode) {
+        //Set cookie currency
+        document.cookie = "currency_code=" + currencyCode + "; path=/;";
+        //Refresh page
+        window.location.reload(true)
+    }
+</script>
+{% endblock %}

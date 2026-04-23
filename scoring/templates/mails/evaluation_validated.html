@@ -1,0 +1,41 @@
+{% extends "base_email.html" %}
+{% load i18n static %}
+
+{% block content %}
+<tr>
+  <td><h1>{% trans "Félicitations, votre évaluation a été validée !" %}</h1></td>
+</tr>
+<tr>
+  <td>
+    {% blocktrans trimmed %}
+    Merci pour votre engagement en faveur de la diversité et de l'inclusion.
+    Votre empreinte est désormais disponible sur votre compte administrateur sur <a href="https://www.mixity.co">www.mixity.co</a>
+    {% endblocktrans %}
+  </td>
+</tr>
+<tr>
+  <td>
+    {% blocktrans trimmed %}
+    Nous reviendrons vers vous dès que votre fiche entreprise avec vos scores détaillés et vos
+    indicateurs sera disponible sur votre compte administrateur.
+    {% endblocktrans %}
+  </td>
+</tr>
+{%  if diffusion %}
+<tr>
+  <td>
+    {% blocktrans trimmed %}
+    La publication de votre fiche entreprise sur Mixity sera activée un fois que nos équipes auront pu
+    échanger avec vous sur vos scores et indicateurs de diversité & inclusion.
+    {% endblocktrans %}
+  </td>
+</tr>
+{% endif %}
+<tr>
+  <td>
+    {% blocktrans trimmed %}
+    Pour contacter l'équipe support : <span style="color: #10ACAB">support@mixity.co</span>
+    {% endblocktrans %}
+  </td>
+</tr>
+{% endblock %}

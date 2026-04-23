@@ -1,0 +1,123 @@
+/* Tooltip container */
+.tooltip {
+    position: relative;
+    display: inline-block;
+    z-index: 50;
+    opacity: 1;
+    &__dashboard {
+        position: absolute;
+        top: 2rem;
+        right: 1.5rem;
+        &__no-subscription {
+            position: absolute;
+            top: 2rem;
+            right: 1.5rem;
+        }
+        &__scores {
+            position: relative;
+            top: .3rem;
+            right: 1.5rem;
+        }
+    }
+    /* Tooltip icon */
+    &__icon {
+        width: 30px;
+        height: 30px;
+        border-radius: 20px;
+        background-color: transparent;
+        border: 2px solid var(--color-primary);
+        font-size: 1.2rem;
+        font-weight: 600;
+        line-height: 1.6rem;
+        color: var(--color-primary);
+        text-align: center;
+        &:hover {
+            background-color: var(--color-primary);
+            color: white;
+        }
+    }
+    &__icon:hover {
+        background-color: var(--color-primary);
+        color: white;
+    }
+    /* Tooltip text */
+    &__text {
+        /* Position the tooltip text */
+        position: absolute;
+        top: -10px;
+        right: 50px;
+        /* General properties of the tooltip text */
+        width: 500px;
+        visibility: hidden;
+        background-color: white;
+        border: 0.1px, solid, var(--color-secondary-contrast);
+        color: var(--color-primary);
+        text-align: center;
+        font-size: 1.2rem;
+        line-height: 1.8rem;
+        padding: 1.5rem;
+        border-radius: 6px;
+        z-index: 1000;
+        /* Fade in tooltip */
+        opacity: 0;
+        transition: opacity 0.3s;
+        @media screen and (max-width: 768px) {
+            /* Position the tooltip text */
+            right: -120px;
+            /* General properties of the tooltip text */
+            width: 300px;
+            padding: 1.2rem;
+        }
+    }
+}
+
+/* Tooltip arrow */
+.tooltip .tooltip__text::after {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    top: 8px;
+    right: -20px;
+    margin-top: 0px;
+    height: 0;
+    width: 0;
+    border-bottom: 16px solid transparent;
+    border-left: 20px solid var(--color-secondary-contrast);
+    border-top: 16px solid transparent;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s;
+    @media screen and (max-width: 768px) {
+        top: -10%;
+        left: 51%;
+        border-bottom: 15px solid var(--color-secondary-contrast);
+        border-right: 12px solid transparent;
+        border-left: 12px solid transparent;
+        border-top: none;
+    }
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltip__text,
+.tooltip:hover .tooltip__text::after {
+    z-index: 1000;
+    visibility: visible;
+    opacity: 1;
+}
+
+.custom_tooltip {
+    height: 30px;
+    width: 30px;
+    border: 2px solid var(--color-primary);
+    border-radius: 50%;
+    color: var(--color-primary);
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 600;
+    line-height: 1.6rem;
+}
+
+.custom_tooltip:hover {
+    background-color: var(--color-primary);
+    color: white;
+}

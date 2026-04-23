@@ -1,0 +1,15 @@
+.slider-multiple {
+    padding: 0 100px;
+    border-bottom: 1px solid #E6E8EC
+}
+
+.slider-multiple>.slick-list {
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.slider-multiple {
+    @media screen and (max-width: 1200px) {
+        padding: 0 0;
+    }
+}

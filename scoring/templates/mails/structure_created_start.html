@@ -1,0 +1,27 @@
+{% extends "base_email.html" %}
+{% load i18n static %}
+
+{% block content %}
+<tr>
+  <td><h1>{% trans "Félicitations, vous pouvez désormais créer votre empreinte Mixity Start !" %}</h1></td>
+</tr>
+<tr>
+  <td>
+    {% trans "Votre organisme fait désormais partie de la communauté Mixity. Merci pour votre engagement en faveur de la diversité et de l'inclusion. Vous pouvez dès à présent créer votre évaluation en vous connectant sur Mixity.co" %}
+  </td>
+</tr>
+
+<tr>
+  <td style="text-align: center;">
+
+  <a href="{{ structure_url }}"
+    style="margin-right:5px; padding: 10px 10px;text-decoration: none;background: #18ffc3;border-radius: 40px;color: #000000;">{% trans "Accéder à votre évaluation" %}</a>
+  </td>
+</tr>
+
+<tr>
+  <td>
+    {% blocktrans trimmed %}Pour contacter l'équipe support : <span style="color: #10ACAB">support@mixity.co</span>{% endblocktrans %}
+  </td>
+</tr>
+{% endblock %}

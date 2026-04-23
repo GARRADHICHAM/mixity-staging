@@ -1,0 +1,1716 @@
+mixity_evaluation_campus,équivalent 2021,,Collaborateurs ,,MBS = 330 ETP + 50 externes,,"Moins de 250
+entre 250 et 1000
+Plus de 1000",,,,Je sais pas si je score,,commentaires,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+QUESTION_ID,,ORDER_STAT_SUBCATEGORY,CATEGORY,SUBCATEGORY,TARGET,THEME,QUESTION_LABEL,ASK_MORE_BOOLEAN,HELP_TEXT,ANSWER_CHOICES_FR,SUBQUESTIONS_FR,MARK,,WEIGHT,QUESTION_TYPE,PUBLIC_DISPLAY_DEFAULT,SUBQUESTIONS_TYPE,EMPTY_ANSWER_MARK,STRENGTHS_FR,STRENGTHS,WEAKNESSES_FR,WEAKNESSES,SUBQUESTIONS_CHOICES_FR,SUBQUESTIONS_POINTS,MANDATORY_TAGS,FORBIDDEN_TAGS,AGGREGATE_MODE,,,,,,,,,,,,,,,,,,,,
+20220001,,,Transversal,Gouvernance,collaborator,,Votre établissement d'enseignement est ,,,"Public;
+Semi-public;
+Privé",,,,0,qcm,1,,3,,,,,,,,no_general,,,,,,,,,,,,,,,,,,,,,
+20220002,20214082,1,Transversal,Gouvernance,collaborator,,Le budget annuel global de l'établissement scolaire,,,,,,,0,valeur,1,,3,,,,,,,,no_general,,,,,,,,,,,,,,,,,,,,,
+20220003,20214002,2,Transversal,Gouvernance,collaborator,,L'effectif total de l'établissement scolaire : ,,"Le calcul de l'effectif de l'entreprise se fonde sur le nombre de salariés (f/h/nb) liés par un contrat de travail au 31/12, tous établissement confondus. Sont exclus de ce calcul les personnes en alternances (contrat d'apprentissage ou de professionnalisation), les stagiaires, les dirigeants en statut de travailleurs non-salariés (f/h/nb), les personnes en contrat unique d'insertion (CUI) ou contrat d'accompagnement (CAE).",,"Nombre de femmes;
+Nombre d'hommes;
+Nombre de personnes non-binaires;
+Nombre de personnes ne souhaitant pas se déclarer",,,0,subquestions,1,valeur,3,,,,,,,,no_general,,,,,,,,,,,,,,,,,,,,,
+20220004,,3,Transversal,Gouvernance,collaborator,,Répartition de l'effectif parmi les enseignants qualifiés professionnels,,,,"Nombre de femmes;
+Nombre d'hommes;
+Nombre de personnes non-binaires;
+Nombre de personnes ne souhaitant pas se déclarer",,,0,subquestions,1,valeur,3,,,,,,,,no_general,,,,,,,,,,,,,,,,,,,,,
+20220005,,4,Transversal,Gouvernance,collaborator,,Répartition de l'effectif parmi les enseignants qualifiés chercheurs,,,,"Nombre de femmes;
+Nombre d'hommes;
+Nombre de personnes non-binaires;
+Nombre de personnes ne souhaitant pas se déclarer",,,0,subquestions,1,valeur,3,,,,,,,,no_general,,,,,,,,,,,,,,,,,,,,,
+20220006,,5,Transversal,Gouvernance,collaborator,,Répartition de l'effectif parmi les employés administratifs,,,,"Nombre de femmes;
+Nombre d'hommes;
+Nombre de personnes non-binaires;
+Nombre de personnes ne souhaitant pas se déclarer",,,0,subquestions,1,valeur,3,,,,,,,,no_general,,,,,,,,,,,,,,,,,,,,,
+20220007,,6,Transversal,Gouvernance,collaborator,,Répartition de l'effectif parmi les intervenants externes,,,,"Nombre de femmes;
+Nombre d'hommes;
+Nombre de personnes non-binaires;
+Nombre de personnes ne souhaitant pas se déclarer",,,0,subquestions,1,valeur,3,,,,,,,,no_general,,,,,,,,,,,,,,,,,,,,,
+20220008,20214007,7,Transversal,Gouvernance,collaborator,,Nombre de personnes au Conseil d'Administration,,,,,,,0,valeur,1,,3,,,,,,,,no_general,,,,,,,,,,,,,,,,,,,,,
+20220009,20214008,8,Transversal,Gouvernance,collaborator,,Nombre de personnes au Comex ou Codir,,,,,,,0,valeur,1,,3,,,,,,,,no_general,,,,,,,,,,,,,,,,,,,,,
+20220010,202140081,9,Transversal,Gouvernance,collaborator,,Nombre de cadres dirigeants (f/h/nb),,,,,,,0,valeur,1,,3,,,,,,,,no_general,,,,,,,,,,,,,,,,,,,,,
+20220011,202140082,10,Transversal,Gouvernance,collaborator,,Nombre de managers (f/h/nb),,,,,,,0,valeur,1,,3,,,,,,,,no_general,,,,,,,,,,,,,,,,,,,,,
+20220012,20214009,11,Transversal,Gouvernance,collaborator,,Nombre de personnes en charge du recrutement,,,,,,,0,valeur,1,,3,,,,,,,,no_general,,,,,,,,,,,,,,,,,,,,,
+20220013,20214010,12,Transversal,Gouvernance,collaborator,,Nombre de personnes en charge des achats,,,,,,,0,valeur,1,,3,,,,,,,,no_general,,,,,,,,,,,,,,,,,,,,,
+20220014,20214011,13,Transversal,Gouvernance,collaborator,,Nombre de personnes recrutées dans les 12 derniers mois,,,CDD;CDI;Interim,,,,0,valeur,1,,3,,,,,,,,no_general,,,,,,,,,,,,,,,,,,,,,
+20220015,20214012,14,Transversal,Gouvernance,collaborator,,Nombre de personnes en stage et alternance dans l'établissement scolaire,,,,,,,0,valeur,1,,3,,,,,,,,no_general,,,,,,,,,,,,,,,,,,,,,
+20220016,20214013,15,Transversal,Gouvernance,collaborator,,Nombre de personnes recrutées en stage et alternance dans les 12 derniers mois,,,,,,,0,valeur,1,,3,,,,,,,,no_general,,,,,,,,,,,,,,,,,,,,,
+20220017,,,Transversal,Gouvernance,collaborator,,Il existe une stratégie Diversité et Inclusion avec un plan d'actions et des indicateurs de pilotage.,1,,"Rien; En cours de réflexion, action à planifier; Action planifiée dans les 6 à 12 prochains mois; Ce dispostif existe mais n'est pas encore formalisé; Ce dispositif est formalisé mais necessite d'être renforcé ou élargit; Ce dispositif est formalisé depuis plusieurs années et suivi dans une démarche d'amélioration continue",,0;1;2;3;4;5,,"1,5",qcm,1,,3,,,,,,,,no_general,,,,,,,,,,,,,,,,,,,,,
+20220018,,,Transversal,Gouvernance,collaborator,,Il existe un comité Diversité et Inclusion qui participe à la construction et au pilotage de la politique Diversité et Inclusion pour les collaborateurs (f/h/nb),1,,"Aucune case cochée;
+1 cases cochée;
+2 cases cochées;
+3 cases cochées","Budget dédié;
+Membre du comex impliqué;
+Des étudiants sont impliqués dans cette instance",0;3;4;5,,"1,5",subquestions_qcm_0_1_2_3,1,multiple_qcm,3,,,,,,,,no_general,,,,,,,,,,,,,,,,,,,,,
+20220019,20214155,,Transversal,Gouvernance,collaborator,,Il existe un groupe d'employés ressources ouverts aux collaborateurs et enseignants afin d'échanger sur les sujets de diversité et d'inclusion qui intègre les sujets suivants :,1,"Se fédérer autours de valeurs communes, proposer des idées,  faire vivre la politique d'inclusion par les collaborateurs (f/h/nb)","Aucune case cochée;
+1 cases cochée;
+2 cases cochées;
+3 cases cochées;
+4 cases cochées;
+5 cases cochées","Égalité entre les femmes et les hommes;
+Handicap;
+Multiculturel;
+Multigénérationnel;
+LGBT+",0;1;2;3;4;5,,1,subquestions_qcm_0_1_2_3_4_5,1,multiple_qcm,3,,,,,,,,no_general,,,,,,,,,,,,,,,,,,,,,
+20220020,20214001,,Transversal,Gouvernance,collaborator,,"L'entreprise est signataire d'une convention, charte spécifique, labellisation favorisant la non-discrimination et l'égalité des chances. ",1,,"Rien;C'est en cours de réflexion, action à planifier;Oui, d'une charte ou d'un label externe; Une charte interne est en cours de création ou signature;Oui, d'une charte ou d'un accord interne;Oui, d'une charte interne et externe ",,0;1;3;3;4;5,,"1,5",qcm,1,,3,,,,,,,,no_general,,,,1,,,,,,,,,,,,,,,,,
+20220021,20214014,,Transversal,Gouvernance,collaborator,,Les membres de la direction générale s’engagent visiblement pour la promotion de la diversité et de l'inclusion dans l'établissement scolaire,1,,"Rien; En cours de réflexion, action à planifier; Action planifiée dans les 6 à 12 prochains mois; Ce dispostif existe mais n'est pas encore formalisé; Ce dispositif est formalisé mais necessite d'être renforcé ou élargit; Ce dispositif est formalisé depuis plusieurs années et suivi dans une démarche d'amélioration continue",,0;1;2;3;4;5,,1,qcm,1,,3,,,,,,,,no_general,,,,,,,,,,,,,,,,,,,,,
+20220022,20214016,16,Transversal,Gouvernance,collaborator,,Nombre  d'employés et intervenants (f/h/nb) ayant répondu à un sondage sur la politique Diversité et l'Inclusion de l'établissement scolaire dans les 24 derniers mois,1,,"0 %;
+1 à 10% ;
+10 à 30% ;
+30 à 40%;
+40 à 50% ;
+Plus de 50%",,0;1;2;3;4;5,,1,"valeur_json_{
+        ""mode"": ""ratio-questions"",
+        ""questions"": [
+                ""20220003_0"",
+                ""20220003_1"",
+                ""20220003_2"",
+                ""20220003_3""
+        ],
+        ""range"": [
+                0,
+                0.1,
+                0.3,
+                0.4,
+                0.5,
+                1
+        ],
+        ""attributionmode"": ""range""
+}",1,,3,,,,,,,,no_general,,,,,,,,,,,,,,,,,,,,,
+20220023,20214017,17,Transversal,Gouvernance,collaborator,,Nombre d'employés et intervenants (f/h/nb) interrogés qui estiment que l'établissement scolaire est engagé sur la Diversité et Inclusion dans les 24 derniers mois,,,"0%;
+0 à 20% ;
+20 à 40% ;
+40 à 60% ;
+60 à 80% ;
+80 à 100%",,0;1;2;3;4;5,,1,"valeur_json_{
+	""mode"": ""ratio-questions"",
+	""questions"": [
+		""20220022""
+	],
+	""range"": [
+		0,
+		0.2,
+		0.4,
+		0.6,
+		0.8,
+		1
+	],
+	""attributionmode"": ""range""
+}",1,,3,,,,,,,,no_general,,,,,,,,,,,,,,,,,,,,,
+20220024,20214018,,Transversal,Gouvernance,collaborator,,"Nombre de rapports sur les indicateurs de performance D&I présentés en réunion de Direction (Comex, Codir, ...)",1,,0 fois dans l'année;1 fois dans l'année; 2 fois dans l'année; Plus de 2 fois dans l'année,,0;3;4;5,,1,qcm,1,,3,,,,,,,,no_general,,,,,,,,,,,,,,,,,,,,,
+20220025,20214019,,Transversal,Sensibilisation,collaborator,,"Dans ses démarches publicitaires et commerciales, l'établissement scolaire a un dispositif qui assure la non-discrimination et la représentation inclusive de la société.",1,,"Aucune case cochée;
+1 cases cochée;
+2 cases cochées;
+3 cases cochées;
+4 cases cochées","Mise en place d'un guide regroupant les principes d'une communication inclusive;
+Mise en place d'une validation des communication en accord avec les principes d'inclusion;
+Analyse ponctuelle des communications pour identifier les récurrences de stéréotypes;
+Sous-titrages des principales communications",0;2;3;4;5,,1,subquestions_qcm_0_1_2_3_4,1,multiple_qcm,3,,,,,,,,no_general,,,,,,,,,,,,,,,,,,,,,
+20220026,,,Transversal,Sensibilisation,collaborator,,"L'établissement scolaire a mis en place un dispositif de prévention pour lutter contre toutes les formes de violence sur ses différents sites y compris le harcèlement verbal, physique et sexuel",1,,"Aucune case cochée;
+1 cases cochée;
+2 cases cochées;
+3 cases cochées;
+4 cases cochées","L'établissement scolaire a mis en place un dispositif de lanceur d'alerte au sein de l'établissement scolaire;
+L'établissement scolaire suit un processus bien défini et clairement documenté pour déposer des plaintes pour toutes les questions relatives à la discrimination;
+L'établissement a mis en place des actions de sensibilisation;
+Dispositfs d'évaluation des enseignants par les étudiants sur une attitude d'enseignement inclusive",0;2;3;4;5,,"1,5",subquestions_qcm_0_1_2_3_4,1,multiple_qcm,3,,,,,,,,no_general,,,,,,,,,,,,,,,,,,,,,
+20220027,20214021,,Transversal,Gouvernance,collaborator,,L'établissement scolaire a intégré l’implication des partenaires sociaux dans la définition et le suivi de sa politique de diversité et inclusion,1,,"Rien; En cours de réflexion, action à planifier; Action planifiée dans les 6 à 12 prochains mois; Ce dispostif existe mais n'est pas encore formalisé; Ce dispositif est formalisé mais necessite d'être renforcé ou élargit; Ce dispositif est formalisé depuis plusieurs années et suivi dans une démarche d'amélioration continue",,0;1;2;3;4;5,,1,qcm,1,,3,,,,,,,,no_general,,,,,,,,,,,,,,,,,,,,,
+20220028,20214022,,Transversal,Gouvernance,collaborator,,"L'établissement scolaire incite ses parties prenantes (fournisseurs, prestataires, et sous-traitants) à s'engager en faveur de la diversité et de l'inclusion par l'intermédiaire : (plusieurs réponses possibles)",1,,Aucune case cochée;Une case cochée;Deux cases cochées ou plus,"d'un audit;
+d'une charte;
+d'un cahier des charges",0;3;5,,1,subquestions_qcm_0_1_3,1,multiple_qcm,3,,,,,,,,no_general,,,,,,,,,,,,,,,,,,,,,
+20220029,20214023,18,Transversal,Sensibilisation,collaborator,,Nombre de personnes en charge des achats ayant suivi un parcours de formation aux achats inclusifs dans les deux dernières années,,,0 %; 1 à 10% ; 10 à 30% ; 30 à 40% ; 40% à 50% ; Plus de 50%,,0;1;2;3;4;5,,1,"valeur_json_{
+	""mode"": ""ratio-questions"",
+	""questions"": [
+		""20220013""
+	],
+	""range"": [
+		0,
+		0.1,
+		0.3,
+		0.4,
+		0.5,
+		1
+	],
+	""attributionmode"": ""range""
+}",1,,3,,,,,,,,no_general,,,,,,,,,,,,,,,,,,,,,
+20220030,20214027,19,Transversal,Sensibilisation,collaborator,,Nombre de managers ayant suivi un parcours de formation à la lutte contre les discriminations dans les 2 dernières années. ,,Managers et cadres de direction (f/h/nb),0 %; 1 à 10% ; 10 à 30% ; 30 à 40% ; 40% à 50% ; Plus de 50%,,0;1;2;3;4;5,,"1,5","valeur_json_{
+        ""mode"": ""ratio-questions"",
+        ""questions"": [
+                ""20220011"",""20220010""
+        ],
+        ""range"": [
+                0,
+                0.1,
+                0.3,
+                0.4,
+                0.5,
+                1
+        ],
+        ""attributionmode"": ""range""
+}",1,,3,,,,,,,,no_general,,,,,,,,,,,,,,,,,,,,,
+20220031,20214027,20,Transversal,Sensibilisation,collaborator,,Nombre d'enseignants ayant suivi un parcours de formation à la lutte contre les discriminations dans les 2 dernières années. ,,,0 % ; 1 à 10% ; 10 à 30% ; 30 à 40% ; 40% à 50% ; Plus de 50%,,0;1;2;3;4;5,,1,"valeur_json_{
+        ""mode"": ""ratio-questions"",
+        ""questions"": [
+                ""20220004_0"",
+                ""20220004_1"",
+                ""20220004_2"",
+                ""20220004_3"",
+                ""20220005_0"",
+                ""20220005_1"",
+                ""20220005_2"",
+                ""20220005_3""
+        ],
+
+        ""range"": [
+                0,
+                0.1,
+                0.3,
+                0.4,
+                0.5,
+                1
+        ],
+        ""attributionmode"": ""range""
+}",1,,3,,,,,,,,no_general,,,,,,,,,,,,,,,,,,,,,
+20220032,20214029,21,Transversal,Sensibilisation,collaborator,,Nombre de personnes en charge du recrutement ayant suivi un parcours de formation à la lutte contre les discriminations dans le recrutement dans les 2 dernières années. ,,,0 % ; 1 à 10% ; 10 à 30% ; 30 à 40% ; 40% à 50% ; Plus de 50%,,0;1;2;3;4;5,,"1,5","valeur_json_{
+  ""mode"": ""ratio-questions"",
+  ""questions"": [
+    ""20220012""
+  ],
+  ""range"": [
+    0,
+0.1,
+    0.3,
+    0.4,
+    0.5,
+1
+  ],
+  ""attributionmode"": ""range""
+}",1,,3,,,,,,,,no_general,,,,,,,,,,,,,,,,,,,,,
+20220033,20214015,,Transversal,Sensibilisation,collaborator,,L'établissement scolaire organise un temps dédié sur les sujets de la diversité et de l'inclusion (jours ou semaine de la diversité).,1,"Actions ou événements interne pour sensibiliser, communiquer et échanger sur le sujet.","Aucune case cochée;
+1 cases cochée;
+2 cases cochées;
+3 cases cochées;
+4 cases cochées;
+5 ou 6 cases cochées","E-learning;
+Conférences; projection de contenu;
+Jeux, animation, ateliers;
+Affichage, production de contenu;
+Évenements (sportifs, culturels...);
+Séminaire (demi-journée ou journée dédiée)",0;1;2;3;4;5,,1,subquestions_qcm_0_1_2_3_4_6,1,multiple_qcm,3,,,,,,,,no_general,,,,,,,,,,,,,,,,,,,,,
+20220034,20214030,22,Transversal,Sensibilisation,collaborator,,Nombre de nouveaux collaborateurs (f/h/nb) arrivés dans l'établissement scolaire sensibilisés à l'inclusion et la non-discrimination dans les 6 mois suivant le recrutement.,,,0 % ; 1 à 10% ; 10 à 30% ; 30 à 40% ; 40% à 50% ; Plus de 50%,,0;1;2;3;4;5,,1,"valeur_json_{
+  ""mode"": ""ratio-questions"",
+  ""questions"": [
+    ""20220014""
+  ],
+  ""range"": [
+    0,
+0.1,
+    0.3,
+    0.4,
+    0.5,
+1
+  ],
+  ""attributionmode"": ""range""
+}
+",1,,3,,,,,,,,no_general,,,,,,,,,,,,,,,,,,,,,
+20220035,,22,Transversal,Carrière,collaborator,,Montant d'investissement externe total pour le developpement de carrière des collaborateurs (f/h/nb) dans les 12 derniers mois,,,,,,,0,valeur,1,,3,,,,,,,,no_general,,,,,,,,,,,,,,,,,,,,,
+20220036,20214032,,Transversal,Gouvernance,collaborator,,L'établissement scolaire communique spécifiquement sur ses engagements en matière de diversité et inclusion :,1,,"Aucune case cochée;
+1 cases cochée;
+2 cases cochées;
+3 cases cochées;
+4 cases cochées","Ses engagements diversité et inclusion;
+Ses objectifs et/ou son plan d'actions;
+Ses principales actions D&I;
+Ses principaux indicateurs",0;2;3;4;5,,1,subquestions_qcm_0_1_2_3_4,1,multiple_qcm,3,,,,,,,,no_general,,,,,,,,,,,,,,,,,,,,,
+20220037,20214032,,Transversal,Gouvernance,collaborator,,L'établissement scolaire communique ses engagements en matière de diversité et inclusion dans...,,,"Aucune case cochée;
+1 cases cochée;
+2 cases cochées;
+3 cases cochées;
+4 ou 5 cases cochées;
+6 ou 7 cases cochées","Le rapport d'activités;
+Les brochures, programmes et cursus;
+Le site internet;
+Le site intranet;
+Les pages carrière du site internet;
+Des conférences et interviews;
+Les réseaux sociaux",0;1;2;3;4;5,,1,subquestions_qcm_0_1_2_3_5_7,1,multiple_qcm,3,,,,,,,,no_general,,,,,,,,,,,,,,,,,,,,,
+20220038,,23,Transversal,Carrière,collaborator,,Rapport entre les rémunérations du premier décile et du neuvième décile,,Rapport Interdécile = D9/D1,,"Pour les enseignants ;
+Pour les chercheurs;
+Pour le personnel administratif",,,0,subquestions,1,valeur,3,,,,,,,,no_general,,,,,,,,,,,,,,,,,,,,,
+20220039,,24,Transversal,Carrière,collaborator,,Ratio d'équité (entre le montant moyen des 10 plus hautes rémunérations et la rémunération moyenne des salariés (f/h/nb)),,"Moyenne des 10 plus hautes = Somme des 10 plus hautes / 10
+ Moyenne salariés = Somme des rémunérations / Nbre de rému
+ Ratio = Moyenne des 10 plus hautes / Moyenne salariés",,,,,0,valeur,1,,3,,,,,,,,no_general,,,,,,,,,,,,,,,,,,,,,
+20220040,20214035,,Transversal,Recrutement,collaborator,,Il existe des outils afin de garantir un recrutement neutre et sans biais pour les enseignants et collaborateurs (f/h/nb).,,,"Aucune case cochée;
+1 cases cochée;
+2 cases cochées;
+3 ou 4 cases cochées;
+5 ou 6 cases cochées;
+7 ou 8 cases cochées","Dispositif de CV anonyme;
+Grille d'analyse des CV;
+Guide du recrutement;
+Dispositif de recrutement sans CV;
+Modèle d'offre d'emploi inclusive;
+Référentiel de compétences de l'établissement scolaire;
+Guide d'entretien inclusif;
+Utilisations d'outils ou algorithmes controlés pour selectionner les candidats (f/h/nb)
+",0;1;2;3;4;5,,1,subquestions_qcm_0_1_2_4_6_8,1,multiple_qcm,3,,,,,,,,no_general,,,,,,,,,,,,,,,,,,,,,
+20220041,20214035,,Transversal,Recrutement,collaborator,,L'établissement scolaire a mis en place un dispositif d'identification et de correction des biais de recrutement.,,,"Aucune case cochée;
+1 cases cochée;
+2 cases cochée;
+3 cases cochées","Testing CV;
+Analyse ponctuelle des candidats (f/h/nb) sélectionnés pour un entretien;
+Analyse des offres d'emplois diffusées
+",0;3;4;5,,1,subquestions_qcm_0_1_2_3,1,multiple_qcm,3,,,,,,,,no_general,,,,,,,,,,,,,,,,,,,,,
+20220042,20214034,,Transversal,Recrutement,collaborator,,"Lors des différentes phases de pré-recrutement, l'établissement scolaire communique clairement sur les valeurs de diversité et d'inclusion.",,,"Rien; En cours de réflexion, action à planifier; Action planifiée dans les 6 à 12 prochains mois; Ce dispostif existe mais n'est pas encore formalisé; Ce dispositif est formalisé mais necessite d'être renforcé ou élargit; Ce dispositif est formalisé depuis plusieurs années et suivi dans une démarche d'amélioration continue",,0;1;2;3;4;5,,1,qcm,1,,3,,,,,,,,no_general,,,,,,,,,,,,,,,,,,,,,
+20220043,,,Transversal,Qualité de vie au travail,collaborator,,Il existe des actions ou dispositifs pour soutenir les collaborateurs et enseignants (f/h/nb) sur les enjeux de santé mentale,1,,"Rien; En cours de réflexion, action à planifier; Action planifiée dans les 6 à 12 prochains mois; Ce dispostif existe mais n'est pas encore formalisé; Ce dispositif est formalisé mais necessite d'être renforcé ou élargit; Ce dispositif est formalisé depuis plusieurs années et suivi dans une démarche d'amélioration continue",,0;1;2;3;4;5,,"0,5",qcm,1,,3,,,,,,,,no_general,,,,,,,,,,,,,,,,,,,,,
+20220224,,,Transversal,Gouvernance,collaborator,,Il existe un bilan régulier des discriminations existantes dans l'organisation,,,"Rien; En cours de réflexion, action à planifier; Action planifiée dans les 6 à 12 prochains mois; Ce dispostif existe mais n'est pas encore formalisé; Ce dispositif est formalisé mais necessite d'être renforcé ou élargit; Ce dispositif est formalisé depuis plusieurs années et suivi dans une démarche d'amélioration continue",,0;1;2;3;4;5,,1,qcm,1,,3,,,,,,,,no_lgbt,,,,,,,,,,,,,,,,,,,,,
+20220044,20214037,,Transversal,Qualité de vie au travail,collaborator,,L'entreprise favorise l'équilibre vie pro/vie perso et prend en compte les situations des collaborateurs (f/h/nb) en adaptant l'organisation de leur travail : (plusieurs réponses possibles),1,,"Aucune case cochée;
+1 cases cochée;
+2 cases cochée;
+3 cases cochées;
+4 cases cochées;
+5 ou 6 cases cochées","Mise en place d'accord en faveur de la parentalité;
+Signature d'une charte parentalité (Parental act, Parental Challenge, Charte de la parentalité...);
+Souplesse dans les horaires de travail;
+Horaires de réunions cadrées;
+Autorisations d'absences pour les futurs parents;
+Dispositif de don de RTT et télétravail facilité",0;1;2;3;4;5,,1,subquestions_qcm_0_1_2_3_4_6,1,multiple_qcm,3,,,,,,,,no_general,,,,,,,,,,,,,,,,,,,,,
+20220045,,,Transversal,Qualité de vie au travail,collaborator,,L'entreprise favorise une culture managériale et une communication inclusive pour les parents ,,,"Aucune case cochée;
+1 cases cochée;
+2 cases cochée;
+3 cases cochées;
+4 cases cochées;
+5 ou 6 cases cochées","Communication interne règulière sur les dispositifs existants (espace intrant dédié, guide de la parentalité...);
+Entretien pré et postcongés parentaux entre collaborateurs et managers (f/h/nb);
+Formation des managers (f/h/nb);
+Conférences et ateliers pour les collbaorateurs (f/h/nb);
+Existence d'une ou plusieurs personnes ressources sur le sujet;
+Organisations d'événements dédiés (family days...)",0;1;2;3;4;5,,"0,5",subquestions_qcm_0_1_2_3_4_6,1,multiple_qcm,3,,,,,,,,no_general,,,,,,,,,,,,,,,,,,,,,
+20220046,,,Transversal,Qualité de vie au travail,collaborator,,Existence de dispositifs et services pour soutenir l'équilibre des temps de vie des parents (f/h/nb),1,,"Aucune case cochée;
+1 cases cochée;
+2 cases cochée;
+3 cases cochées;
+4 cases cochées;
+5 ou 6 cases cochées","Places réservées dans un réseau de crèches;
+Mutuelle avantageuse pour les familles;
+Bonification des droits à congé (pour enfant malade, maternité et paternité);
+Aménagements et adaptations du poste de travail pour les femmes enceintes;
+Service de conciergerie;
+Coaching parental",0;1;2;3;4;5,,1,subquestions_qcm_0_1_2_3_4_6,1,multiple_qcm,3,,,,,,,,no_general,,,,,,,,,,,,,,,,,,,,,
+20220047,20214038,25,Transversal,Qualité de vie au travail,collaborator,,Répartition des parents et des aidants (f/h/nb) au sein de l'établissement scolaire.,,,,Nombre de parents avec des enfants à charge;Nombre d'aidants (f/h/nb) soutenant un proche en perte d'autonomie;Nombre de non aidants (f/h/nb),,,0,subquestions,1,valeur,3,,,,,,,,no_general,,,,,,,,,,,,,,,,,,,,,
+20220048,20214038,,Transversal,Qualité de vie au travail,collaborator,,Existence de dispositifs et services pour soutenir l'équilibre des temps de vie des aidants (f/h/nb),1,,"Aucune case cochée;
+1 cases cochée;
+2 cases cochée;
+3 cases cochées;
+4 cases cochées;
+5 cases cochées","Existence d'un accord, d'une politique ou d'un plan d'actions en faveur de l'accompagnement des aidants;
+Communication claire sur les dispositifs internes et externes en faveur des personnes aidantes (newsletter, espace intranet dédié aux aidants (f/h/nb), guide des aidants, etc...);
+Organisation de conférences et ateliers sur les aidants (f/h/nb) et les pathologies de leurs proches ou d'un groupe de parole;
+Intégration du sujet au sein de la formation des managers;
+Mise en place de dispositifs et d'actions spécifiques (dons de RTT, souplesse des horaires de travail, autorisation d'absence, télétravail...)",0;1;2;3;4;5,,"0,5",subquestions_qcm_0_1_2_3_4_5,1,multiple_qcm,3,,,,,,,,no_general,,,,,,,,,,,,,,,,,,,,,
+20220049,20213022,,Transversal,Gouvernance,collaborator,,L'établissement scolaire a fait l'objet d'un jugement judiciaire ou d'une décision officielle concernant une discrimination ou harcelement à l'encontre de tout employé au cours des 24 derniers mois.,,,"Aucune case cochée;
+1 cases cochée;
+2 cases cochée;
+3 cases cochées","Niveau établissement scolaire;
+Niveau employés et sanctionné en interne;
+Niveau employés et condamné devant la justice",5;2;1;0,,"0,5",subquestions_qcm_0_1_2_3,1,multiple_qcm,3,,,,,,,,no_general,,,,,,,,,,,,,,,,,,,,,
+20220050,20213023,,Transversal,Gouvernance,collaborator,,L'établissement scolaire a fait l'objet d'un jugement judiciaire ou d'une décision officielle concernant des pratiques contraires à l'éthique dans son marketing et sa publicité,,,Oui;Non,,0;5,,"0,5",qcm,1,,3,,,,,,,,no_general,,,,,,,,,,,,,,,,,,,,,
+20220051,,26,Transversal,Qualité de vie au travail,collaborator,,Taux de rotation du personnel (turn-over),,"Taux de turnover = [(Nombre de départs au cours de l’année N + Nombre d’arrivées au cours de l’année N)/2] / Effectif au 1er janvier de l’année N (ne pas compatbaliliser les remplacement de congés maternité, second parent et parentalité)
+Autre calcul : (départ en nombre de personne durant l'année / effectif moyen)   effectif moyen = (nombre de personne J1 + nombre de personne j 365) /2",Moins de 5% ; Entre 5 et 7% ; Entre 7 et 10% ; Entre 10 et 15% ; Entre 15 et 20% ; Plus de 20%,1;2;3;4;5,5;4;3;2;1;0,,"0,5",pourcentage_5_7_10_15_20_100,1,,3,,,,,,,,no_general,,,,,,,,,,,,,,,,,,,,,
+,,,52,,,,,,,,,,,32,,,,3,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+20220052,,27,Genre,Gouvernance,collaborator,,Répartition des femmes par ethnies dans l'établissement scolaire,,,,,,Ethnies,0,valeur,1,,3,,,,,,,ethnicity_allowed,no_gender,,,,,,,,,,,,,,,,,,,,,
+20220053,20213025,28,Genre,Gouvernance,collaborator,,Répartition des personnes Blanches par genre dans l'établissement scolaire,,,,,,Ethnies,0,valeur,1,,3,,,,,,,ethnicity_allowed,no_gender,,,,,,,,,,,,,,,,,,,,,
+20220054,202130251,29,Genre,Gouvernance,collaborator,,Répartition des personnes Noires par genre dans l'établissement scolaire,,,,,,Ethnies,0,valeur,1,,3,,,,,,,ethnicity_allowed,no_gender,,,,,,,,,,,,,,,,,,,,,
+20220055,202130251,30,Genre,Gouvernance,collaborator,,Répartition des personnes Asiatiques par genre dans l'établissement scolaire,,,,,,Ethnies,0,valeur,1,,3,,,,,,,ethnicity_allowed,no_gender,,,,,,,,,,,,,,,,,,,,,
+20220056,202130252,31,Genre,Gouvernance,collaborator,,Répartition des personnes issues de Minorités ethniques par genre dans l'établissement scolaire,,,,,,Ethnies,0,valeur,1,,3,,,,,,,ethnicity_allowed,no_gender,,,,,,,,,,,,,,,,,,,,,
+20220057,20213026,32,Genre,Gouvernance,collaborator,,Répartition des personnes Noires ou Afro-Américaines par genre dans l'établissement scolaire,,,,,,Ethnies,0,valeur,1,,3,,,,,,,ethnicity_allowed,no_gender,,,,,,,,,,,,,,,,,,,,,
+20220058,20213028,33,Genre,Gouvernance,collaborator,,Répartition des personnes Hispaniques ou Latino-Américaines par genre dans l'établissement scolaire,,,,,,Ethnies,0,valeur,1,,3,,,,,,,ethnicity_allowed,no_gender,,,,,,,,,,,,,,,,,,,,,
+20220059,20213029,34,Genre,Gouvernance,collaborator,,Répartition des personnes multi-ethniques par genre dans l'établissement scolaire,,,,,,Ethnies,0,valeur,1,,3,,,,,,,ethnicity_allowed,no_gender,,,,,,,,,,,,,,,,,,,,,
+20220060,20213030,35,Genre,Gouvernance,collaborator,,Répartition des personnes natives d'Hawaï ou d'autres régions du Pacifique par genre dans l'établissement scolaire,,,,,,Ethnies,0,valeur,1,,3,,,,,,,ethnicity_allowed,no_gender,,,,,,,,,,,,,,,,,,,,,
+20220061,20213030,36,Genre,Gouvernance,collaborator,,Répartition des personnes natives d'Alaska ou Amérindiennes ou d'autres régions du Pacifique par genre dans l'établissement scolaire,,,,,,Ethnies,0,valeur,1,,3,,,,,,,ethnicity_allowed,no_gender,,,,,,,,,,,,,,,,,,,,,
+20220062,20213034,37,Genre,Carrière,collaborator,,Nombre de femmes au sein du COMEX si existant ou CODIR,,,Entre 0 et 10% ; Entre 10 et 20% ; Entre 20 et 30% ; Entre 30 et 40% ; Entre 40% et 60%; Entre 60% et 70%; Entre 70% et 80%; Entre 80% et 90%; Entre 90% et 100%,,1;2;3;4;5;4;3;2;1,,"1,5","valeur_json_{
+	""mode"": ""ratio-questions"",
+	""questions"": [
+		""20220009""
+	],
+	""range"": [
+		0.1,
+		0.2,
+		0.3,
+		0.4,
+		0.6,
+		0.7,
+		0.8,
+		0.9,
+		1
+	],
+	""attributionmode"": ""range""
+}",1,,3,,,,,,,,no_gender,,,,,,,,,,,,,,,,,,,,,
+20220063,20213035,38,Genre,Carrière,collaborator,,Répartition par ethnies dans le Comex,,In this field enter the percentage of women executive by ethnies out of all women executive,,,,Ethnies,0,valeur,1,,3,,,,,,,ethnicity_allowed,no_gender,,,,,,,,,,,,,,,,,,,,,
+20220064,20213035,39,Genre,Carrière,collaborator,,Répartition par ethnies dans le Comex,,In this field enter the percentage of women executive by ethnies out of all women executive,,,,Ethnies,0,valeur,1,,3,,,,,,,ethnicity_allowed,no_gender,,,,,,,,,,,,,,,,,,,,,
+20220065,20213032,40,Genre,Gouvernance,collaborator,,Nombre de femmes au sein du Conseil d'Administration ,,,Entre 0 et 10% ; Entre 10 et 20% ; Entre 20 et 30% ; Entre 30 et 40% ; Entre 40% et 60%; Entre 60% et 70%; Entre 70% et 80%; Entre 80% et 90%; Entre 90% et 100%,,1;2;3;4;5;4;3;2;1,,1,"valeur_json_{
+  ""mode"": ""ratio-questions"",
+  ""questions"": [
+    ""20220008""
+  ],
+  ""range"": [
+    0.1,
+    0.2,
+    0.3,
+    0.4,
+    0.6,
+    0.7,
+    0.8,
+    0.9,
+1
+  ],
+  ""attributionmode"": ""range""
+}",1,,3,,,,,,,,no_gender,,,,,,,,,,,,,,,,,,,,,
+20220066,20213033,41,Genre,Gouvernance,collaborator,,Répartition par ethnies dans le Conseil d'Administration,,In this field enter the percentage of women by ethnies out of all women in the Board of Directors,,,,Ethnies,0,valeur,1,,3,,,,,,,ethnicity_allowed,no_gender,,,,,,,,,,,,,,,,,,,,,
+20220067,202130321,42,Genre,Gouvernance,collaborator,,Répartition par ethnies dans le Conseil d'Administration,,In this field enter the percentage of women by ethnies out of all women in the Board of Directors,,,,Ethnies,0,valeur,1,,3,,,,,,,ethnicity_allowed,no_gender,,,,,,,,,,,,,,,,,,,,,
+20220068,20213036,43,Genre,Carrière,collaborator,,Nombre de femmes cadres directrices dans l'établissement scolaire,,,Entre 0 et 10% ; Entre 10 et 20% ; Entre 20 et 30% ; Entre 30 et 40% ; Entre 40% et 60%; Entre 60% et 70%; Entre 70% et 80%; Entre 80% et 90%; Entre 90% et 100%,,1;2;3;4;5;4;3;2;1,,"1,5","valeur_json_{
+  ""mode"": ""ratio-questions"",
+  ""questions"": [
+    ""20220010""
+  ],
+  ""range"": [
+    0.1,
+    0.2,
+    0.3,
+    0.4,
+    0.6,
+    0.7,
+    0.8,
+    0.9,
+1
+  ],
+  ""attributionmode"": ""range""
+}",1,,3,,,,,,,,no_gender,,,,,,,,,,,,,,,,,,,,,
+20220069,20213037,44,Genre,Carrière,collaborator,,Répartition par ethnies des cadres directrices dans l'établissement scolaire,,In this field enter the percentage of women Senior Managers by ethnies out of all women Senior Managers,,,,Ethnies,0,valeur,1,,3,,,,,,,ethnicity_allowed,no_gender,,,,,,,,,,,,,,,,,,,,,
+20220070,202130361,45,Genre,Carrière,collaborator,,Répartition par ethnies des cadres directrices dans l'établissement scolaire,,In this field enter the percentage of women Senior Managers by ethnies out of all women Senior Managers,,,,Ethnies,0,valeur,1,,3,,,,,,,ethnicity_allowed,no_gender,,,,,,,,,,,,,,,,,,,,,
+20220071,202130362,46,Genre,Carrière,collaborator,,Nombre de femmes managers dans l'établissement scolaire,,,Entre 0 et 10% ; Entre 10 et 20% ; Entre 20 et 30% ; Entre 30 et 40% ; Entre 40% et 60%; Entre 60% et 70%; Entre 70% et 80%; Entre 80% et 90%; Entre 90% et 100%,,1;2;3;4;5;4;3;2;1,,"1,5","valeur_json_{
+  ""mode"": ""ratio-questions"",
+  ""questions"": [
+    ""20220011""
+  ],
+  ""range"": [
+    0.1,
+    0.2,
+    0.3,
+    0.4,
+    0.6,
+    0.7,
+    0.8,
+    0.9,
+1
+  ],
+  ""attributionmode"": ""range""
+}",1,,3,,,,,,,,no_gender,,,,,,,,,,,,,,,,,,,,,
+20220072,202130363,47,Genre,Carrière,collaborator,,Répartition par ethnies des femmes managers dans l'établissement scolaire,,In this field enter the percentage of women Managers by ethnies out of all women Senior Managers,,,,Ethnies,0,valeur,1,,3,,,,,,,ethnicity_allowed,no_gender,,,,,,,,,,,,,,,,,,,,,
+20220073,202130364,48,Genre,Carrière,collaborator,,Répartition par ethnies des femmes managers dans l'établissement scolaire,,In this field enter the percentage of women Managers by ethnies out of all women Senior Managers,,,,Ethnies,0,valeur,1,,3,,,,,,,ethnicity_allowed,no_gender,,,,,,,,,,,,,,,,,,,,,
+20220074,,49,Genre,Recrutement,collaborator,,Nombre de femmes parmi les enseignants (f/h/nb).,,,Entre 0 et 10% ; Entre 10 et 20% ; Entre 20 et 30% ; Entre 30 et 40% ; Entre 40% et 60%; Entre 60% et 70%; Entre 70% et 80%; Entre 80% et 90%; Entre 90% et 100%,,1;2;3;4;5;4;3;2;1,,1,"valeur_json_{
+	""mode"": ""ratio-questions"",
+	""questions"": [
+		""20220004_0"",
+		""20220004_1"",
+		""20220004_2"",
+		""20220004_3"",
+		""20220005_0"",
+		""20220005_1"",
+		""20220005_2"",
+		""20220005_3""
+	],
+	""range"": [
+		0.1,
+		0.2,
+		0.3,
+		0.4,
+		0.6,
+		0.7,
+		0.8,
+		0.9,
+		1
+	],
+	""attributionmode"": ""range""
+}",1,,3,,,,,,,,no_gender,,,,,,,,,,,,,,,,,,,,,
+20220075,,50,Genre,Recrutement,collaborator,,Répartition par ethnies des femmes enseignantes dans l'établissement scolaire,,,,,,Ethnies,0,valeur,1,,3,,,,,,,ethnicity_allowed,no_gender,,,,,,,,,,,,,,,,,,,,,
+20220076,,51,Genre,Recrutement,collaborator,,Répartition par ethnies des femmes enseignantes dans l'établissement scolaire,,,,,,Ethnies,0,valeur,1,,3,,,,,,,ethnicity_allowed,no_gender,,,,,,,,,,,,,,,,,,,,,
+20220077,,52,Genre,Recrutement,collaborator,,Nombre de femmes parmi les enseignants qualifiés chercheurs (f/h/nb).,,,Entre 0 et 10% ; Entre 10 et 20% ; Entre 20 et 30% ; Entre 30 et 40% ; Entre 40% et 60%; Entre 60% et 70%; Entre 70% et 80%; Entre 80% et 90%; Entre 90% et 100%,,1;2;3;4;5;4;3;2;1,,1,"valeur_json_{
+	""mode"": ""ratio-questions"",
+	""questions"": [
+		""20220005_0"",
+		""20220005_1"",
+		""20220005_2"",
+		""20220005_3""
+	],
+	""range"": [
+		0.1,
+		0.2,
+		0.3,
+		0.4,
+		0.6,
+		0.7,
+		0.8,
+		0.9,
+		1
+	],
+	""attributionmode"": ""range""
+}",1,,3,,,,,,,,no_gender,,,,,,,,,,,,,,,,,,,,,
+20220078,,53,Genre,Recrutement,collaborator,,Répartition par ethnies des femmes chercheuses dans l'établissement scolaire,,,,,,Ethnies,0,valeur,1,,3,,,,,,,ethnicity_allowed,no_gender,,,,,,,,,,,,,,,,,,,,,
+20220079,,54,Genre,Recrutement,collaborator,,Répartition par ethnies des femmes chercheuses dans l'établissement scolaire,,,,,,Ethnies,0,valeur,1,,3,,,,,,,ethnicity_allowed,no_gender,,,,,,,,,,,,,,,,,,,,,
+20220080,même que 202140761 mais en rouge,55,Genre,Recrutement,collaborator,,Répartition par genre des personnes recrutées dans les 12 derniers mois,,,,"Nombre de femmes;
+Nombre d'hommes;
+Nombre de personnes non-binaires;
+Nombre de personnes ne souhaitant pas se déclarer",,,0,subquestions,1,valeur,3,,,,,,,,no_gender,,,,,,,,,,,,,,,,,,,,,
+202200811,20214053,55,Genre,Carrière,collaborator,,Ecart entre la part des femmes et celle des hommes augmentés,,,Moins de -15% ; Entre -15 et -10% ; Entre -10 et -5% ; Entre -5 et -3% ; Entre -3 et -1% ; Entre -1 et 0% ; Entre 0 et 1% ; Entre 1 et 3% ; Entre 3 et 5% ; Entre 5 et 10% ; Entre 10 et 15% ; Plus de 15% ,,0;1;2;3;4;5;5;4;3;2;1;0,,0,pourcentagecroissance_-15_-10_-5_-3_-1_0_1_3_5_10_15_100,,,,,,,,,,,no_gender,,,,,,,,,,,,,,,,,,,,,
+202200812,20214054,55,Genre,Carrière,collaborator,,Ecart entre la part des femmes promues et celles des hommes promus ,,,Moins de -15% ; Entre -15 et -10% ; Entre -10 et -5% ; Entre -5 et -3% ; Entre -3 et -1% ; Entre -1 et 0% ; Entre 0 et 1% ; Entre 1 et 3% ; Entre 3 et 5% ; Entre 5 et 10% ; Entre 10 et 15% ; Plus de 15% ,,0;1;2;3;4;5;5;4;3;2;1;0,,0,pourcentagecroissance_-15_-10_-5_-3_-1_0_1_3_5_10_15_100,,,,,,,,,,,no_gender,,,,,,,,,,,,,,,,,,,,,
+202200813,20214050,55,Genre,Carrière,collaborator,,Nombre de femmes dans les 10 plus hautes rémunérations,,,0%; 10% ; 20%; 30% ; 40%; 50% ; 60% ; 70% ; 80% ; 90%;100%,,0 ; 1 ; 2 ; 3 ; 4 ; 5 ; 4 ; 3 ; 2 ; 1 ; 0,,0,valeur_0_1_2_3_4_5_6_7_8_9_10,,,,,,,,,,,no_gender,,,,,,,,,,,,,,,,,,,,,
+20220081,A voir avec Nico après,56,Genre,Carrière,collaborator,,Renseignez vos notes à l'index d'égalité femmes-hommes :,,,,"Note globale;
+Note de l'écart de rémunération;
+Note l'écart de promotion;
+Note de l'écart d'augmentation;
+Note des 10 plus hautes rémunération;
+Note du retour de congé maternité",,,0,subquestions,1,valeur,3,,,,,,,,no_gender,,,,,,,,,,,,,,,,,,,,,
+20220083,20214045,,Genre,Gouvernance,collaborator,,L'établissement scolaire a mis en place un accord d'établissement scolaire sur l'égalité professionnelle entre les femmes et les hommes,,,"Rien; En cours de réflexion, action à planifier; Action planifiée dans les 6 à 12 prochains mois; Ce dispostif existe mais n'est pas encore formalisé; Ce dispositif est formalisé mais necessite d'être renforcé ou élargit; Ce dispositif est formalisé depuis plusieurs années et suivi dans une démarche d'amélioration continue",,0;1;2;3;4;5,,1,qcm,1,,3,,,,,,,,no_gender,,,,,,,,,,,,,,,,,,,,,
+20220084,20214046,,Genre,Carrière,collaborator,,L'établissement scolaire a mis en place et/ou soutient un réseau au féminin / mixité / au masculin au sein de son organisation.,,,"Rien; En cours de réflexion, action à planifier; Action planifiée dans les 6 à 12 prochains mois; Ce dispostif existe mais n'est pas encore formalisé; Ce dispositif est formalisé mais necessite d'être renforcé ou élargit; Ce dispositif est formalisé depuis plusieurs années et suivi dans une démarche d'amélioration continue",,0;1;2;3;4;5,,1,qcm,1,,3,,,,,,,,no_gender,,,,,,,,,,,,,,,,,,,,,
+20220085,20214047,58,Genre,Carrière,collaborator,,"Ecart de rémunération effective entre les femmes et les hommes à poste, famille de fonction et âge comparables pour l'ensemble de l'école",,,Moins de -10% ; Entre -10 et -5% ; Entre -5 et -3% ; Entre -3 et -1% ; Entre -1 et 0% ; Entre 0 et 1% ; Entre 1 et 3% ; Entre 3 et 5% ; Entre 5 et 10% ; Plus de 10% ,,1;2;3;4;5;5;4;3;2;1,,"1,5",pourcentagecroissance_-10_-5_-3_-1_0_1_3_5_10_100,1,,3,,,,,,,,no_gender,,,,,,,,,,,,,,,,,,,,,
+202200851,20214047,58,Genre,Carrière,collaborator,,"Ecart de rémunération effective entre les femmes et les hommes à poste, famille de fonction et âge comparables pour les collaborateurs (f/h/nb)",,,Moins de -10% ; Entre -10 et -5% ; Entre -5 et -3% ; Entre -3 et -1% ; Entre -1 et 0% ; Entre 0 et 1% ; Entre 1 et 3% ; Entre 3 et 5% ; Entre 5 et 10% ; Plus de 10% ,,1;2;3;4;5;5;4;3;2;1,,1,pourcentagecroissance_-10_-5_-3_-1_0_1_3_5_10_100,1,,3,,,,,,,,no_gender,,,,,,,,,,,,,,,,,,,,,
+202200852,20214047,58,Genre,Carrière,collaborator,,"Ecart de rémunération effective entre les femmes et les hommes à poste, famille de fonction et âge comparables pour les enseignants (f/h/nb)",,,Moins de -10% ; Entre -10 et -5% ; Entre -5 et -3% ; Entre -3 et -1% ; Entre -1 et 0% ; Entre 0 et 1% ; Entre 1 et 3% ; Entre 3 et 5% ; Entre 5 et 10% ; Plus de 10% ,,1;2;3;4;5;5;4;3;2;1,,1,pourcentagecroissance_-10_-5_-3_-1_0_1_3_5_10_100,1,,3,,,,,,,,no_gender,,,,,,,,,,,,,,,,,,,,,
+202200853,20214047,58,Genre,Carrière,collaborator,,"Ecart de rémunération effective entre les femmes et les hommes à poste, famille de fonction et âge comparables pour les enseignants qualifiés chercheurs (f/h/nb)",,,Moins de -10% ; Entre -10 et -5% ; Entre -5 et -3% ; Entre -3 et -1% ; Entre -1 et 0% ; Entre 0 et 1% ; Entre 1 et 3% ; Entre 3 et 5% ; Entre 5 et 10% ; Plus de 10% ,,1;2;3;4;5;5;4;3;2;1,,1,pourcentagecroissance_-10_-5_-3_-1_0_1_3_5_10_100,1,,3,,,,,,,,no_gender,,,,,,,,,,,,,,,,,,,,,
+,20213040,59,Genre,Carrière,collaborator,,Répartition par ethnies des écarts de rémunération,,"In this field enter the gap between women and men on shifts, job families, and comparable ages (in percentage) by ethnies",,,,,0,valeur,1,,3,,,,,,,ethnicity_allowed,no_gender,,,,,,,,,,,,,,,,,,,,,
+,20213040,60,Genre,Carrière,collaborator,,Répartition par ethnies des écarts de rémunération,,"In this field enter the gap between women and men on shifts, job families, and comparable ages (in percentage) by ethnies",,,,,0,valeur,1,,3,,,,,,,ethnicity_allowed,no_gender,,,,,,,,,,,,,,,,,,,,,
+20220088,même que 20214048 mais avec cadre de direction,61,Genre,Carrière,collaborator,,Ecart de rémunération chez les cadres dirigeants entre les femmes et les hommes,,,Moins de -10% ; Entre -10 et -5% ; Entre -5 et -3% ; Entre -3 et -1% ; Entre -1 et 0% ; Entre 0 et 1% ; Entre 1 et 3% ; Entre 3 et 5% ; Entre 5 et 10% ; Plus de 10% ,,1;2;3;4;5;5;4;3;2;1,,1,pourcentagecroissance_-10_-5_-3_-1_0_1_3_5_10_100,1,,3,,,,,,,,no_gender,,,,,,,,,,,,,,,,,,,,,
+20220089,20214048,62,Genre,Carrière,collaborator,,Ecart de rémunération chez les managers entre les femmes et les hommes,,,Moins de -10% ; Entre -10 et -5% ; Entre -5 et -3% ; Entre -3 et -1% ; Entre -1 et 0% ; Entre 0 et 1% ; Entre 1 et 3% ; Entre 3 et 5% ; Entre 5 et 10% ; Plus de 10% ,,1;2;3;4;5;5;4;3;2;1,,1,pourcentagecroissance_-10_-5_-3_-1_0_1_3_5_10_100,1,,3,,,,,,,,no_gender,,,,,,,,,,,,,,,,,,,,,
+20220090,20214049,63,Genre,Carrière,collaborator,,Ecart de rémunération chez les salariés (f/h/nb) non-managers entre les femmes et les hommes,,,Moins de -10% ; Entre -10 et -5% ; Entre -5 et -3% ; Entre -3 et -1% ; Entre -1 et 0% ; Entre 0 et 1% ; Entre 1 et 3% ; Entre 3 et 5% ; Entre 5 et 10% ; Plus de 10% ,,1;2;3;4;5;5;4;3;2;1,,1,pourcentagecroissance_-10_-5_-3_-1_0_1_3_5_10_100,1,,3,,,,,,,,no_gender,,,,,,,,,,,,,,,,,,,,,
+20220091,20215040,,Genre,Carrière,collaborator,,"L'établissement scolaire a instauré une politique de transparence des grilles de salaires (grilles spécifiques hors convention collectives, règles internes salariales)",,,"Rien; En cours de réflexion, action à planifier; Action planifiée dans les 6 à 12 prochains mois; Ce dispostif existe mais n'est pas encore formalisé; Ce dispositif est formalisé mais necessite d'être renforcé ou élargit; Ce dispositif est formalisé depuis plusieurs années et suivi dans une démarche d'amélioration continue",,0;1;2;3;4;5,,"0,5",qcm,1,,3,,,,,,,,no_gender,,,,,,,,,,,,,,,,,,,,,
+20220092,20214051,64,Genre,Carrière,collaborator,,Taux de femmes dans les 10% de postes à plus hautes rémunérations,,,Entre 0 et 10% ; Entre 10 et 20% ; Entre 20 et 30% ; Entre 30 et 40% ; Entre 40% et 60%; Entre 60% et 70%; Entre 70% et 80%; Entre 80% et 90%; Entre 90% et 100%,,1;2;3;4;5;4;3;2;1,,1,pourcentage_10_20_30_40_60_70_80_90_100,1,,3,,,,,,,,no_gender,,,,,,,,,,,,,,,,,,,,,
+20220093,20214052,,Genre,Gouvernance,collaborator,,"Mise en place d’un pilotage précis des écarts de rémunérations, augmentations, promotions et formations individuelles par genre (f/h/nb) ",1,,"Rien; En cours de réflexion, action à planifier; Action planifiée dans les 6 à 12 prochains mois; Ce dispostif existe mais n'est pas encore formalisé; Ce dispositif est formalisé mais necessite d'être renforcé ou élargit; Ce dispositif est formalisé depuis plusieurs années et suivi dans une démarche d'amélioration continue",,0;1;2;3;4;5,,1,qcm,1,,3,,,,,,,,no_gender,,,,,,,,,,,,,,,,,,,,,
+20220094,20214056,,Genre,Carrière,collaborator,,Mise en place d'un programme de mentoring pour aider les femmes dans leur évolution de carrière,1,,"Aucune case cochée;
+1 cases cochée;
+2 cases cochée;
+3 cases cochées;
+4 cases cochées","Mise à disposition de séance de coaching professionnel;
+Bilan de compétences et entretiens de carrière;
+Dispositif de mentorat;
+Mise en avant de rôles modèles féminin",0;2;3;4;5,,"1,5",subquestions_qcm_0_1_2_3_4,1,multiple_qcm,3,,,,,,,,no_gender,,,,,,,,,,,,,,,,,,,,,
+20220095,20214058,65,Genre,Carrière,collaborator,,Ecart entre le nombre d'hommes et de femmes formés dans les 12 derniers mois,,,Moins de -10% ; Entre -10 et -5% ; Entre -5 et -3% ; Entre -3 et -1% ; Entre -1 et 0% ; Entre 0 et 1% ; Entre 1 et 3% ; Entre 3 et 5% ; Entre 5 et 10% ; Plus de 10% ,,1;2;3;4;5;5;4;3;2;1,,1,pourcentagecroissance_-10_-5_-3_-1_0_1_3_5_10_100,1,,3,,,,,,,,no_gender,,,,,,,,,,,,,,,,,,,,,
+20220096,20214059,66,Genre,Carrière,collaborator,,Ecart en heures de formation attribuées aux hommes et aux femmes dans les 12 derniers mois,,,Moins de -10% ; Entre -10 et -5% ; Entre -5 et -3% ; Entre -3 et -1% ; Entre -1 et 0% ; Entre 0 et 1% ; Entre 1 et 3% ; Entre 3 et 5% ; Entre 5 et 10% ; Plus de 10% ,,1;2;3;4;5;5;4;3;2;1,,1,pourcentagecroissance_-10_-5_-3_-1_0_1_3_5_10_100,1,,3,,,,,,,,no_gender,,,,,,,,,,,,,,,,,,,,,
+20220097,20214060,67,Genre,Recrutement,collaborator,,Pourcentage de Femmes - Hommes - Non binaires dans les fonctions ventes/commerciales/service client,,,Femmes + non binaire entre 40 et 60%;Femmes + non binaire entre 20 et 40% ou entre 60 et 80%;Femmes + non binaire  entre 0 et 20% ou entre 80 et 100%,Pourcentage de femmes;Pourcentage d'hommes; Pourcentage de personnes non-binaires,5 ; 3 ; 1,au choix de l'établissement parmi 6 familles de métiers à choisir dans un menu déroulant,"0,5",subquestions,1,pourcentage,3,,,,,,,,no_gender,,,,,,,,,,,,,,,,,,,,,
+202200971,20214060,67,Genre,Recrutement,collaborator,,"Pourcentage de Femmes - Hommes - Non binaires dans les métiers techniques et informatiques (métiers du web, de l'informatique, techniciens, ingénieurs, opérateurs et agents spécialisés)",,,Femmes + non binaire entre 40 et 60%;Femmes + non binaire entre 20 et 40% ou entre 60 et 80%;Femmes + non binaire  entre 0 et 20% ou entre 80 et 100%,Pourcentage de femmes;Pourcentage d'hommes; Pourcentage de personnes non-binaires,5 ; 3 ; 1,au choix de l'établissement parmi 6 familles de métiers à choisir dans un menu déroulant,"0,5",subquestions,1,pourcentage,3,,,,,,,,no_gender,,,,,,,,,,,,,,,,,,,,,
+202200972,20214060,67,Genre,Recrutement,collaborator,,"Pourcentage de Femmes - Hommes - Non binaires dans les métiers support (administration, ressources humaines, achats, communication, marketing, logistique, risque, audit, finance)",,,Femmes + non binaire entre 40 et 60%;Femmes + non binaire entre 20 et 40% ou entre 60 et 80%;Femmes + non binaire  entre 0 et 20% ou entre 80 et 100%,Pourcentage de femmes;Pourcentage d'hommes; Pourcentage de personnes non-binaires,5 ; 3 ; 1,au choix de l'établissement parmi 6 familles de métiers à choisir dans un menu déroulant,"0,5",subquestions,1,pourcentage,3,,,,,,,,no_gender,,,,,,,,,,,,,,,,,,,,,
+202200973,20214060,67,Genre,Recrutement,collaborator,,Pourcentage de Femmes - Hommes - Non binaires dans les métiers ...,,,Femmes + non binaire entre 40 et 60%;Femmes + non binaire entre 20 et 40% ou entre 60 et 80%;Femmes + non binaire  entre 0 et 20% ou entre 80 et 100%,Pourcentage de femmes;Pourcentage d'hommes; Pourcentage de personnes non-binaires,5 ; 3 ; 1,au choix de l'établissement parmi 6 familles de métiers à choisir dans un menu déroulant,"0,5",subquestions,1,pourcentage,3,,,,,,,,no_gender,,,,,,,,,,,,,,,,,,,,,
+202200974,20214060,67,Genre,Recrutement,collaborator,,Pourcentage de Femmes - Hommes - Non binaires dans les métiers ...,,,Femmes + non binaire entre 40 et 60%;Femmes + non binaire entre 20 et 40% ou entre 60 et 80%;Femmes + non binaire  entre 0 et 20% ou entre 80 et 100%,Pourcentage de femmes;Pourcentage d'hommes; Pourcentage de personnes non-binaires,5 ; 3 ; 1,au choix de l'établissement parmi 6 familles de métiers à choisir dans un menu déroulant,"0,5",subquestions,1,pourcentage,3,,,,,,,,no_gender,,,,,,,,,,,,,,,,,,,,,
+20220098,20214063,,Genre,Recrutement,collaborator,,"L'établissement scolaire a défini des actions et des objectifs pour recruter des femmes ou des hommes dans les métiers dits ""non mixtes"" de l'organisation",,,"Aucune case cochée;
+1 cases cochée;
+2 cases cochée;
+3 cases cochées;
+4 cases cochées;
+5 et 6 cases cochées","Campagne de recrutement dédiée;
+Travail avec des partenaires spécialisés sur le sujet;
+Des objectifs de mixité des métiers sont inclus dans un accord égalité;
+Les engagements de l'établissement scolaires sont clairement exprimés dans le processus de recrutement;
+Les offres d'emplois et selection des candidats sont effectués par au minimum un homme et une femme;
+La majorité des recruteurs (f/h/nb) ont été formés au stéréotypes de genre",0;1;2;3;4;5,,1,subquestions_qcm_0_1_2_3_4_6,1,multiple_qcm,3,,,,,,,,no_gender,,,,,,,,,,,,,,,,,,,,,
+20220099,20214064,68,Genre,Carrière,collaborator,,Ecart entre les femmes et les hommes en temps partiels,,,Moins de -50%; Entre -50% et -30%; Entre -30% et -15%; Entre -15% et -5%; Entre -5% et 0%; Entre 0 et 5% ; Entre 5 et 15% ; Entre 15 et 30% ; Entre 30 et 50% ; Plus de 50%,,1;2;3;4;5;5;4;3;2;1,,0,pourcentagecroissance_-50_-30_-15_-5_0_5_15_30_50_100,1,,3,,,,,,,,no_gender,,,,,,,,,,,,,,,,,,,,,
+20220100,20213060,69,Genre,Qualité de vie au travail,collaborator,,Nombre de congé maternité minimum - en jours - dans la legislation de votre région,,,,,,,0,valeur,1,,3,,,,,,,ethnicity_allowed,no_gender;fr,,,,,,,,,,,,,,,,,,,,,
+20220101,20213061,70,Genre,Qualité de vie au travail,collaborator,,Nombre de congé maternité minimum - en jours - dans votre établissement scolaire,,Congé maternité payé minimum pour le premier enfant = congé légal payé + politique de l'entreprise (jours supplémentaires si existants),Minimum paid leave of the country ; Between 1 and 21 days above the minimum paid leave ; More than 22 days over the minimum paid leave,,3;4;5,,1,valeur_relative_20220100_0_22,1,,3,,,,,,,,no_gender;fr,,,,,,,,,,,,,,,,,,,,,
+20220102,20213062,71,Genre,Qualité de vie au travail,collaborator,,Nombre de congé second parent minimum - en jours - dans la legislation de votre région,,,,,,,0,valeur,1,,3,,,,,,,ethnicity_allowed,no_gender;fr,,,,,,,,,,,,,,,,,,,,,
+202201021,20213063,71,Genre,Qualité de vie au travail,collaborator,,Nombre de congé second parent minimum - en jours - dans votre établissement scolaire,,Congé minimum second parent payé pour le premier enfant = congé légal payé + politique de l'entreprise (jours supplémentaires si existants),Minimum paid leave of the country ; Between 1 and 21 days above the minimum paid leave ; More than 22 days over the minimum paid leave,,3;4;5,,1,valeur_relative_20220102_0_22,1,,3,,,,,,,,no_gender;fr,,,,,,,,,,,,,,,,,,,,,
+20220103,20214065,72,Genre,Qualité de vie au travail,collaborator,,Nombre de jours du congé du second parent,,,28 jours;Entre 29 jours et 35 jours;Plus de 35 jours ,,3;4;5,,"0,5",valeur_28_35,1,,3,,,,,,,,no_gender,,,,,,,,,,,,,,,,,,,,,
+20220104,20214066,73,Genre,Qualité de vie au travail,collaborator,,Pourcentage de second parent prenant leur congé parental,,En dehors des sept jours obligatoires,Moins de 30%;Entre 30 et 50%;Entre 50 et 75%;Entre 75 et 95%;Entre 95 et 99%; 100%,,0;1;2;3;4;5,,"0,5",pourcentage_30_50_75_95_99_100,1,,3,,,,,,,,no_gender,,,,,,,,,,,,,,,,,,,,,
+20220105,20214067,,Genre,Qualité de vie au travail,collaborator,,Existence de dispositifs pour sensibiliser les seconds parents à la prise de leur congé d'accueil de l'enfant,1,,"Rien; En cours de réflexion, action à planifier; Action planifiée dans les 6 à 12 prochains mois; Ce dispostif existe mais n'est pas encore formalisé; Ce dispositif est formalisé mais necessite d'être renforcé ou élargit; Ce dispositif est formalisé depuis plusieurs années et suivi dans une démarche d'amélioration continue",,0;1;2;3;4;5,,"0,5",qcm,1,,3,,,,,,,,no_gender,,,,,,,,,,,,,,,,,,,,,
+20220106,,,Genre,Qualité de vie au travail,collaborator,,Mise à disposition de biens de première necessité à l'attention des collaborateurs (f/h/nb),1,,"Rien; En cours de réflexion, action à planifier; Action planifiée dans les 6 à 12 prochains mois; Ce dispostif existe mais n'est pas encore formalisé; Ce dispositif est formalisé mais necessite d'être renforcé ou élargit; Ce dispositif est formalisé depuis plusieurs années et suivi dans une démarche d'amélioration continue",,0;1;2;3;4;5,,"0,5",qcm,1,,3,,,,,,,,no_gender,,,,,,,,,,,,,,,,,,,,,
+20220107,20214069,74,Genre,Sensibilisation,collaborator,,Nombre d'employés (f/h/nb) sensibilisés aux stéréotypes de genre et aux propos et comportements sexistes et sexuelles dans les 24 derniers mois,,,0 %; 1 à 10% ; 10 à 20% ; 20 à 40% ; 40 à 50% ; Plus de 50%,,0;1;2;3;4;5,,"1,5","valeur_json_{
+  ""mode"": ""ratio-questions"",
+  ""questions"": [
+    ""20220003_0"",
+    ""20220003_1"",
+    ""20220003_2"",
+""20220003_3""
+  ],
+  ""range"": [
+    0,
+0.1,
+    0.2,
+    0.4,
+    0.5,
+1
+  ],
+  ""attributionmode"": ""range""
+}
+",1,valeur,3,,,,,,,,no_gender,,,,,,,,,,,,,,,,,,,,,
+20220108,même que 20214069,75,Genre,Sensibilisation,collaborator,,Nombre de managers (f/h/nb) ayant suivi une formation aux stéréotypes de genre et aux propos et comportements sexistes et sexuelles dans les 24 derniers mois,,Managers et cadres de direction (f/h/nb),"0%;
+0 et 20% ;
+20 et 40% ;
+40 et 60% ;
+60 et 80% ;
+80 et 100%",,0;1;2;3;4;5,,"1,5","valeur_json_{
+  ""mode"": ""ratio-questions"",
+  ""questions"": [
+    ""20220011"",""20220010""
+  ],
+  ""range"": [
+    0,
+0.2,
+    0.4,
+    0.6,
+    0.8,
+1
+  ],
+  ""attributionmode"": ""range""
+}",1,,3,,,,,,,,no_gender,,,,,,,,,,,,,,,,,,,,,
+20220109,20214070,,Genre,Sensibilisation,collaborator,,L'établissement scolaire a déployé une communication interne et/ou externe sur l’égalité professionnelle femmes-hommes (supports de communication web et print)  ?  ,1,,"Rien; En cours de réflexion, action à planifier; Action planifiée dans les 6 à 12 prochains mois; Ce dispostif existe mais n'est pas encore formalisé; Ce dispositif est formalisé mais necessite d'être renforcé ou élargit; Ce dispositif est formalisé depuis plusieurs années et suivi dans une démarche d'amélioration continue",,0;1;2;3;4;5,,"0,5",qcm,1,,3,,,,,,,,no_gender,,,,,,,,,,,,,,,,,,,,,
+20220110,20214071,,Genre,Gouvernance,collaborator,,"L'établissement scolaire soutient une ou plusieurs association.s ou fondation.s favorisant l'égalité femmes-hommes dans les organisations (adhésion, financement, mécénat de compétence, dons en nature, soutien en communication) ",1,,"Rien; En cours de réflexion, action à planifier; Action planifiée dans les 6 à 12 prochains mois; Ce dispostif existe mais n'est pas encore formalisé; Ce dispositif est formalisé mais necessite d'être renforcé ou élargit; Ce dispositif est formalisé depuis plusieurs années et suivi dans une démarche d'amélioration continue",,0;1;2;3;4;5,,1,qcm,1,,3,,,,,,,,no_gender,,,,,,,,,,,,,,,,,,,,,
+20220111,20214072,,Genre,Recrutement,collaborator,,"Existence d'un dispositif pour encourager les managers et personnes en charge du recrutement à présenter une part de femmes et d’hommes parmi les candidats retenus, qui reflète (à compétences, expériences et profils équivalents) au moins celle relevée dans les candidatures reçues. ",,,"Rien; En cours de réflexion, action à planifier; Action planifiée dans les 6 à 12 prochains mois; Ce dispostif existe mais n'est pas encore formalisé; Ce dispositif est formalisé mais necessite d'être renforcé ou élargit; Ce dispositif est formalisé depuis plusieurs années et suivi dans une démarche d'amélioration continue",,0;1;2;3;4;5,,1,qcm,1,,3,,,,,,,,no_gender,,,,,,,,,,,,,,,,,,,,,
+,,,70,,,,,,,,,,,36,,,,3,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+20220112,20214075,,Handicap,Gouvernance,collaborator,,Votre établissement scolaire est-elle concernée par (plusieurs réponses possibles) : ,,,Aucune case cochée;Une case cochée ou plus,Un accord agréé relatif à l'emploi des travailleurs handicapés;Un accord (non agréé) relatif à l'emploi des travailleurs handicapés;Un accord intégrant la thématique de l'emploi des travailleurs handicapés;Une convention avec l'Agefiph,3;5,,1,subquestions_qcm_0_1,1,multiple_qcm,3,,,,,,,,no_disability,,,,,,,,,,,,,,,,,,,,,
+20220113,202140762,76,Handicap,Recrutement,collaborator,,Renseignez l'effectif d'assujetissement à l'Obligation d'Emploi des Travailleurs Handicapés (OETH),,"Pour déterminer l’assujettissement à l’OETH et le niveau d’obligation
+d’emploi de l’entreprise, l’Urssaf détermine l’effectif moyen annuel OETH
+(EMA OETH), considéré au 31 décembre de l’année N et calculé sur la base
+de la moyenne des effectifs déterminés chaque mois au titre
+de cette même année civile N.
+
+Exceptions :
+Personnes intérimaires, mises à disposition ou portées
+Stagiaires de la formation professionnelle en alternance
+Apprentis
+Salariés sous contrat de professionnalisation
+Salariés en contrat aidé",,,,,0,valeur,1,,3,,,,,,,,no_disability,,,,,,,,,,,,,,,,,,,,no_disability,sum
+20220114,20214076,77,Handicap,Recrutement,collaborator,,Nombre total de Bénéficiaires de l'Obligation d'Emploi des Travailleurs Handicapés,,,0%;Entre 0 et 1%; Entre 1 et 2%Entre 2 et 4%;Entre 4 et 6%;Entre 6 et 8 % ; Plus de 8%,,0;1;2;3;4;5,,"1,5","valeur_json_{ ""mode"": ""ratio-questions"", ""questions"": [ ""20220113"" ], ""range"": [ 0, 0.01, 0.02, 0.04, 0.06, 0.08 , 1 ], ""attributionmode"": ""range"" }",1,,3,,,,,,,,no_disability,,,,,,,,,,,,,,,,,,,,,
+20220115,202140761,78,Handicap,Recrutement,collaborator,,Répartition des personnes en situation de handicap dans l'établissement scolaire,,,,"Nombre de femmes;
+Nombre d'hommes;
+Nombre de personnes non-binaires;
+Nombre de personnes ne souhaitant pas se déclarer",,,0,subquestions,1,valeur,3,,,,,,,,no_disability,,,,,,,,,,,,,,,,,,,,,
+20220116,,,Handicap,Gouvernance,collaborator,,L'entreprise a au moins...,,,"Aucune case cochée;
+1 cases cochée;
+2 cases cochée;
+3 cases cochées","une personne référente en équivalent temps plein sur le sujet du handicap;
+un réseau de référents engagé sur le sujet;
+une commission handicap",0;3;4;5,,"1,5",subquestions_qcm_0_1_2_3,1,multiple_qcm,3,,,,,,,,no_disability,,,,,,,,,,,,,,,,,,,,,
+20220117,20214079,79,Handicap,Recrutement,collaborator,,Nombre de personnes en situation de handicap recrutées dans les 12 derniers mois,,,0%;Entre 0 et 0.5%; Entre 0.5 et 1%;Entre 1 et 2%;Entre 2 et 4%;Plus de 4%,,0;1;2;3;4;5,,1,"valeur_json_
+{ ""mode"": ""ratio-questions"",
+""questions"": [
+""20220014"",
+""20220016"" ],
+""range"": [
+0,
+0.005,
+0.01,
+0.02,
+0.04,
+1
+],
+""attributionmode"": ""range""
+}",1,,3,,,,,,,,no_disability,,,,,,,,,,,,,,,,,,,,,
+20220118,20214081,,Handicap,Gouvernance,collaborator,,Existence d'un ou plusieurs diagnostics concernant le handicap dans les 5 dernières années.,,,"Rien; En cours de réflexion, action à planifier; Action planifiée dans les 6 à 12 prochains mois; Ce dispostif existe mais n'est pas encore formalisé; Ce dispositif est formalisé mais necessite d'être renforcé ou élargit; Ce dispositif est formalisé depuis plusieurs années et suivi dans une démarche d'amélioration continue",,0;1;2;3;4;5,,1,qcm,1,,3,,,,,,,,no_disability,,,,,,,,,,,,,,,,,,,,,
+20220119,20214082,80,Handicap,Gouvernance,collaborator,,Montant total des achats annuel € HT de l'établissement scolaire,,,,,,,0,valeur,1,,3,,,,,,,,no_disability,,,,,,,,,,,,,,,,,,,,,
+20220120,202140821,81,Handicap,Gouvernance,collaborator,,Montant annuel € HT consacré aux achats auprès de structures du secteur du travail protégé et/ou adapté et montant total des achats ,,,,,,,0,"valeur_json_{ ""mode"": ""ratio-questions"", ""questions"": [ ""20220119"" ]}",1,,3,,,,,,,,no_disability,,,,,,,,,,,,,,,,,,,,,
+20220121,20214083,,Handicap,Gouvernance,collaborator,,L'établissement scolaire a développé des partenariats avec ses sous-traitants pour réaliser de la co-traitance avec le secteur du travail protégé et adapté (STPA),,,"Rien; En cours de réflexion, action à planifier; Action planifiée dans les 6 à 12 prochains mois; Ce dispostif existe mais n'est pas encore formalisé; Ce dispositif est formalisé mais necessite d'être renforcé ou élargit; Ce dispositif est formalisé depuis plusieurs années et suivi dans une démarche d'amélioration continue",,0;1;2;3;4;5,,1,qcm,1,,3,,,,,,,,no_disability,,,,,,,,,,,,,,,,,,,,,
+20220122,20214084,82,Handicap,Qualité de vie au travail,collaborator,,Taux d'accessibilité des sites de l'établissement scolaire (tous établissements France et siège France dont vous êtes propriétaire) en pourcentage.,,,Moins de 30%;Entre 30 et 50%;Entre 50 et 70%;Entre 70 et 85%;Entre 85 et 95%; Entre 95 et 100%,,0;1;2;3;4;5,,1,pourcentage_30_50_70_85_95_100,1,,3,,,,,,,,no_disability,,,,,,,,,,,,,,,,,,,,,
+20220123,20214085,,Handicap,Sensibilisation,collaborator,,L'établissement scolaire a mis en place un dispositif pour sensibiliser et/ou accompagner les collaborateurs (f/h/nb) sur le sujet des maladies chroniques.,1,,"Rien; En cours de réflexion, action à planifier; Action planifiée dans les 6 à 12 prochains mois; Ce dispostif existe mais n'est pas encore formalisé; Ce dispositif est formalisé mais necessite d'être renforcé ou élargit; Ce dispositif est formalisé depuis plusieurs années et suivi dans une démarche d'amélioration continue",,0;1;2;3;4;5,,"0,5",qcm,1,,3,,,,,,,,no_disability,,,,,,,,,,,,,,,,,,,,,
+20220124,20214086,,Handicap,Gouvernance,collaborator,,L'établissement scolaire a organisé un processus d'alerte des arrêts maladies longs ou répétés au sein de l'organisation.,,,"Rien; En cours de réflexion, action à planifier; Action planifiée dans les 6 à 12 prochains mois; Ce dispostif existe mais n'est pas encore formalisé; Ce dispositif est formalisé mais necessite d'être renforcé ou élargit; Ce dispositif est formalisé depuis plusieurs années et suivi dans une démarche d'amélioration continue",,0;1;2;3;4;5,,1,qcm,1,,3,,,,,,,,no_disability,,,,,,,,,,,,,,,,,,,,,
+20220125,20214087,,Handicap,Gouvernance,collaborator,,L' établissement scolaire suit les données relatives aux avis d’inaptitudes.,,,"Rien; En cours de réflexion, action à planifier; Action planifiée dans les 6 à 12 prochains mois; Ce dispostif existe mais n'est pas encore formalisé; Ce dispositif est formalisé mais necessite d'être renforcé ou élargit; Ce dispositif est formalisé depuis plusieurs années et suivi dans une démarche d'amélioration continue",,0;1;2;3;4;5,,"0,5",qcm,1,,3,,,,,,,,no_disability,,,,,,,,,,,,,,,,,,,,,
+20220126,20214088,,Handicap,Qualité de vie au travail,collaborator,,L' établissement scolaire mène des actions en coordination avec la médecine du travail ou des partenaires externes pour réduire le risque de perte d’emploi pour raisons de santé.,1,,"Rien; En cours de réflexion, action à planifier; Action planifiée dans les 6 à 12 prochains mois; Ce dispostif existe mais n'est pas encore formalisé; Ce dispositif est formalisé mais necessite d'être renforcé ou élargit; Ce dispositif est formalisé depuis plusieurs années et suivi dans une démarche d'amélioration continue",,0;1;2;3;4;5,,"0,5",qcm,1,,3,,,,,,,,no_disability,,,,,,,,,,,,,,,,,,,,,
+20220127,20214089,,Handicap,Qualité de vie au travail,collaborator,,L'établissement scolaire a prévu un dispositif ou est en capacité d'adapter l'environnement de travail et faciliter le reclassement d'un salarié (f/h/nb) ayant un problème de santé au travail.,,,"Rien; En cours de réflexion, action à planifier; Action planifiée dans les 6 à 12 prochains mois; Ce dispostif existe mais n'est pas encore formalisé; Ce dispositif est formalisé mais necessite d'être renforcé ou élargit; Ce dispositif est formalisé depuis plusieurs années et suivi dans une démarche d'amélioration continue",,0;1;2;3;4;5,,"1,5",qcm,1,,3,,,,,,,,no_disability,,,,,,,,,,,,,,,,,,,,,
+20220128,20214090,83,Handicap,Qualité de vie au travail,collaborator,,Nombre de reclassement ou d'adaptation de l'environnement de travail réussis,,,,,,,0,valeur,1,,3,,,,,,,,no_disability,,,,,,,,,,,,,,,,,,,,,
+20220129,20214091,,Handicap,Qualité de vie au travail,collaborator,,Le temps partiel et ou le télétravail pour les personnes en situation de handicap sont des pratiques courantes dans l'établissement scolaire,,,"Rien; En cours de réflexion, action à planifier; Action planifiée dans les 6 à 12 prochains mois; Ce dispostif existe mais n'est pas encore formalisé; Ce dispositif est formalisé mais necessite d'être renforcé ou élargit; Ce dispositif est formalisé depuis plusieurs années et suivi dans une démarche d'amélioration continue",,0;1;2;3;4;5,,"0,5",qcm,1,,3,,,,,,,,no_disability,,,,,,,,,,,,,,,,,,,,,
+20220130,20214092,,Handicap,Recrutement,collaborator,,"En phase de recrutement, existence d'une démarche pro-active pour trouver des candidats (f/h/nb) en situation de handicap ",1,,"Rien; En cours de réflexion, action à planifier; Action planifiée dans les 6 à 12 prochains mois; Ce dispostif existe mais n'est pas encore formalisé; Ce dispositif est formalisé mais necessite d'être renforcé ou élargit; Ce dispositif est formalisé depuis plusieurs années et suivi dans une démarche d'amélioration continue",,0;1;2;3;4;5,,"1,5",qcm,1,,3,,,,,,,,no_disability,,,,,,,,,,,,,,,,,,,,,
+20220131,20214093,,Handicap,Recrutement,collaborator,,Le service RH et les personnes en charge des recrutements connaissent les services et associations en charge de l'insertion des demandeurs d'emploi en situation de handicap,1,,Oui;Non,,1;5,,1,qcm,1,,3,,,,,,,,no_disability,,,,,,,,,,,,,,,,,,,,,
+20220132,20214094,,Handicap,Recrutement,collaborator,,Votre établissement scolaire a-t-il participé dans les 12 derniers mois à un salon de recrutement ou à un forum emploi dédié aux personnes en situation de handicap ? ,1,,Oui;Non,,1;5,,1,qcm,1,,3,,,,,,,,no_disability,,,,,,,,,,,,,,,,,,,,,
+20220133,20214096,,Handicap,Recrutement,collaborator,,L'établissement scolaire a mis en place des stages / contrats en alternance pour les personnes en situation de handicap,,,"Rien; En cours de réflexion, action à planifier; Action planifiée dans les 6 à 12 prochains mois; Ce dispostif existe mais n'est pas encore formalisé; Ce dispositif est formalisé mais necessite d'être renforcé ou élargit; Ce dispositif est formalisé depuis plusieurs années et suivi dans une démarche d'amélioration continue",,0;1;2;3;4;5,,1,qcm,1,,3,,,,,,,,no_disability,,,,,,,,,,,,,,,,,,,,,
+20220134,20214097,,Handicap,Recrutement,collaborator,,Les offres sont diffusées sur des sites spécialisés et/ou auprès de partenaires spécialisés sur le recrutement de personnes en situation de handicap,,,"Rien; En cours de réflexion, action à planifier; Action planifiée dans les 6 à 12 prochains mois; Ce dispostif existe mais n'est pas encore formalisé; Ce dispositif est formalisé mais necessite d'être renforcé ou élargit; Ce dispositif est formalisé depuis plusieurs années et suivi dans une démarche d'amélioration continue",,0;1;2;3;4;5,,1,qcm,1,,3,,,,,,,,no_disability,,,,,,,,,,,,,,,,,,,,,
+20220135,20214098,,Handicap,Sensibilisation,collaborator,,Existence d'une communication interne et/ou externe sur l'établissement scolaire sur le sujet du handicap ,,,"Aucune case cochée;
+1 cases cochée;
+2 cases cochée;
+3 cases cochées;
+4 cases cochées","Modalité d'accueil;
+Capacité à adapter l'environnement de travail;
+Existence de dispositif spécifique;
+Engagements et plan d'actions",0;2;3;4;5,,1,subquestions_qcm_0_1_2_3_4,1,multiple_qcm,3,,,,,,,,no_disability,,,,,,,,,,,,,,,,,,,,,
+20220136,20214099,,Handicap,Sensibilisation,collaborator,,"Les actions de sensibilisation intègrent la prévention du handicap des salariés (risques professionnels, facteurs de risques des maladies chroniques : sédentarité, alimentation, addictions)",1,,"Rien; En cours de réflexion, action à planifier; Action planifiée dans les 6 à 12 prochains mois; Ce dispostif existe mais n'est pas encore formalisé; Ce dispositif est formalisé mais necessite d'être renforcé ou élargit; Ce dispositif est formalisé depuis plusieurs années et suivi dans une démarche d'amélioration continue",,0;1;2;3;4;5,,1,qcm,1,,3,,,,,,,,no_disability,,,,,,,,,,,,,,,,,,,,,
+20220137,20214100,84,Handicap,Qualité de vie au travail,collaborator,,Taux d'accessibilité des sites web de référence de l'établissement scolaire en pourcentage :,,,Moins de 60%;Entre 60 et 70%;Entre 80 et 90%;Entre 90 et 95%;Entre 95 et 100% ,,1;2;3;4;5,,"0,5",pourcentage_60_70_80_90_95_100,1,,3,,,,,,,,no_disability,,,,,,,,,,,,,,,,,,,,,
+20220138,20214101,,Handicap,Sensibilisation,collaborator,,"L'établissement scolaire a développé des partenariats avec des associations externes spécialisées sur le handicap (adhésion, financement, mécénat de compétence, dons en nature, soutien en communication)",,,"Rien; En cours de réflexion, action à planifier; Action planifiée dans les 6 à 12 prochains mois; Ce dispostif existe mais n'est pas encore formalisé; Ce dispositif est formalisé mais necessite d'être renforcé ou élargit; Ce dispositif est formalisé depuis plusieurs années et suivi dans une démarche d'amélioration continue",,0;1;2;3;4;5,,1,qcm,1,,3,,,,,,,,no_disability,,,,,,,,,,,,,,,,,,,,,
+20220139,20214102,,Handicap,Gouvernance,collaborator,,L'établissement scolaire a au moins une fois dans l'année été impliquée dans une manifestation externe sur la thématique handicap ,,,"Rien; En cours de réflexion, action à planifier; Action planifiée dans les 6 à 12 prochains mois; Ce dispostif existe mais n'est pas encore formalisé; Ce dispositif est formalisé mais necessite d'être renforcé ou élargit; Ce dispositif est formalisé depuis plusieurs années et suivi dans une démarche d'amélioration continue",,0;1;2;3;4;5,,1,qcm,1,,3,,,,,,,,no_disability,,,,,,,,,,,,,,,,,,,,,
+20220140,20214103,,Handicap,Gouvernance,collaborator,,Tous les responsables (f/h/nb) de services de l'établissement scolaire sont informés de l'obligation légale et savent où se situe l'établissement scolaire sur le sujet,,,"Rien; En cours de réflexion, action à planifier; Action planifiée dans les 6 à 12 prochains mois; Ce dispostif existe mais n'est pas encore formalisé; Ce dispositif est formalisé mais necessite d'être renforcé ou élargit; Ce dispositif est formalisé depuis plusieurs années et suivi dans une démarche d'amélioration continue",,0;1;2;3;4;5,,1,qcm,1,,3,,,,,,,,no_disability,,,,,,,,,,,,,,,,,,,,,
+20220141,même que 20214175 mais en bleu handicap,85,Handicap,Sensibilisation,collaborator,,"Nombre d'ateliers, conférences, prise de parole, témoignage sur le handicap dans les 12 derniers mois :",,,Aucun;Au moins un;Entre deux et trois;Plus de quatre,,0;3;4;5,,1,valeur_0_1_3_4,1,,3,,,,,,,,no_disability,,,,,,,,,,,,,,,,,,,,,
+20220142,20214104,86,Handicap,Sensibilisation,collaborator,,Nombre de personnes (f/h/nb) ayant suivi dispositif de sensibilisation et/ou de formation avec mention des stéréotypes liés au handicap visible et invisible dans les 24 derniers mois,,,0 %; 1 à 20% ; 20 à 40% ; 40 à 50% ; Plus de 50%,,0;2;3;4;5,,"1,5","valeur_json_{
+  ""mode"": ""ratio-questions"",
+  ""questions"": [
+    ""20220003_0"",
+    ""20220003_1"",
+    ""20220003_2"",
+""20220003_3""
+  ],
+  ""range"": [
+    0,
+    0.2,
+    0.4,
+    0.5,
+1
+  ],
+  ""attributionmode"": ""range""
+}
+",1,,3,,,,,,,,no_disability,,,,,,,,,,,,,,,,,,,,,
+20220143,20214105,,Handicap,Gouvernance,collaborator,,L'établissement scolaire informe les salariés (f/h/nb) sur les mesures existantes en faveur du maintien dans l’emploi ,,,"Rien; En cours de réflexion, action à planifier; Action planifiée dans les 6 à 12 prochains mois; Ce dispostif existe mais n'est pas encore formalisé; Ce dispositif est formalisé mais necessite d'être renforcé ou élargit; Ce dispositif est formalisé depuis plusieurs années et suivi dans une démarche d'amélioration continue",,0;1;2;3;4;5,,1,qcm,1,,3,,,,,,,,no_disability,,,,,,,,,,,,,,,,,,,,,
+,,,32,,,,,,,,,,,27,,,,3,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+20220144,20214106,,Origines,Gouvernance,collaborator,,"Un diagnostic sur la politique diversité multiculturelle (origines culturelle, sociale) a été réalisé soit en interne soit par une structure extérieure.
+",,"Audit sur la politique diversité sociale et culturelle (actions, process, remontée d'informations)","Aucune case cochée;
+1 cases cochée;
+2 cases cochée;
+3 cases cochées;
+4 cases cochées;
+5 cases cochées","Sur les pratiques de recrutement;
+Sur les candidatures reçues;
+Sur les recrutements;
+Sur l'effectif de l'établissement scolaire;
+Sur les enseignants",0;1;2;3;4;5,,1,subquestions_qcm_0_1_2_3_4_5,1,multiple_qcm,3,,,,,,,,no_ethnicity,,,,,,,,,,,,,,,,,,,,,
+20220145,20214107,87,Origines,Recrutement,collaborator,,Nombre de nationalités dans l'effectif total ,,,,,,,0,valeur,1,,3,,,,,,,,no_ethnicity,,,,,,,,,,,,,,,,,,,,,
+20220146,,88,Origines,Recrutement,collaborator,,"Si c'est pertinent, indiquez le nombre total d'ethnies présentes dans l'établissement scolaire",,,,,,Ethnies,0,valeur,1,,3,,,,,,,ethnicity_allowed,no_ethnicity,,,,,,,,,,,,,,,,,,,,,
+20220147,,89,Origines,Recrutement,collaborator,,Répartition par ethnies dans l'établissement scolaire,,,,,,Ethnies,0,valeur,1,,3,,,,,,,ethnicity_allowed,no_ethnicity,,,,,,,,,,,,,,,,,,,,,
+20220148,,90,Origines,Recrutement,collaborator,,Répartition par ethnies dans l'établissement scolaire,,,,,,Ethnies,0,valeur,1,,3,,,,,,,ethnicity_allowed,no_ethnicity,,,,,,,,,,,,,,,,,,,,,
+20220150,20214108,91,Origines,Carrière,collaborator,,"Nombre de nationalités dans le Conseil d'Administration.
+",,,1;2 ;3;4 ou plus,,1;3;4;5,,1,valeur_1_2_3,1,,3,,,,,,,,no_ethnicity,,,,,,,,,,,,,,,,,,,,,
+20220151,,92,Origines,Carrière,collaborator,,"Si c'est pertinent, indiquez le nombre total d'ethnies présentes au sein du Conseil d'Administration",,,,,,Ethnies,0,valeur,1,,3,,,,,,,ethnicity_allowed,no_ethnicity,,,,,,,,,,,,,,,,,,,,,
+20220152,,93,Origines,Carrière,collaborator,,Répartition par ethnies dans le Conseil d'Administration,,,,,,Ethnies,0,valeur,1,,3,,,,,,,ethnicity_allowed,no_ethnicity,,,,,,,,,,,,,,,,,,,,,
+20220153,,94,Origines,Carrière,collaborator,,Répartition par ethnies dans le Conseil d'Administration,,,,,,Ethnies,0,valeur,1,,3,,,,,,,ethnicity_allowed,no_ethnicity,,,,,,,,,,,,,,,,,,,,,
+20220154,20214109,95,Origines,Carrière,collaborator,,"Nombre de nationalités dans le COMEX ou CODIR
+",,,1;2 ;3;4 ou plus,,1;3;4;5,,1,valeur_1_2_3,1,,3,,,,,,,,no_ethnicity,,,,,,,,,,,,,,,,,,,,,
+20220155,,96,Origines,Carrière,collaborator,,"Si c'est pertinent, indiquez le nombre total d'ethnies présentes au sein du Comex ou Codir",,,,,,Ethnies,0,valeur,1,,3,,,,,,,ethnicity_allowed,no_ethnicity,,,,,,,,,,,,,,,,,,,,,
+20220156,,97,Origines,Carrière,collaborator,,Répartition par ethnies dans le Comex ou Codir,,,,,,Ethnies,0,valeur,1,,3,,,,,,,ethnicity_allowed,no_ethnicity,,,,,,,,,,,,,,,,,,,,,
+20220157,,98,Origines,Carrière,collaborator,,Répartition par ethnies dans le Comex ou Codir,,,,,,Ethnies,0,valeur,1,,3,,,,,,,ethnicity_allowed,no_ethnicity,,,,,,,,,,,,,,,,,,,,,
+20220158,même que 202141092,99,Origines,Carrière,collaborator,,Nombre de personnes ayant une nationalité autre que Française chez les enseignants (f/h/nb),,,"0%;
+Moins de 2%;
+Entre 2 et 4;
+Entre 4 et 6%;
+Entre 6 et 8%;
+Plus de 8%",,0;1;2;3;4;5,,1,"valeur_json_{
+	""mode"": ""ratio-questions"",
+	""questions"": [
+		""20220004_0"",
+		""20220004_1"",
+		""20220004_2"",
+		""20220004_3"",
+		""20220005_0"",
+		""20220005_1"",
+		""20220005_2"",
+		""20220005_3""
+	],
+	""range"": [
+		0,
+		0.02,
+		0.04,
+		0.06,
+		0.08,
+		1
+	],
+	""attributionmode"": ""range""
+}",1,,3,,,,,,,,no_ethnicity,,,,,,,,,,,,,,,,,,,,,
+20220159,202141092,100,Origines,Carrière,collaborator,,Nombre de personnes ayant une nationalité autre que Française chez les collaborateurs (f/h/nb),,,"0%;
+Moins de 2%;
+Entre 2 et 4;
+Entre 4 et 6%;
+Entre 6 et 8%;
+Plus de 8%",,0;1;2;3;4;5,,1,"valeur_json_{
+	""mode"": ""ratio-questions"",
+	""questions"": [
+		""20220003_0"", ""20220003_1"", ""20220003_2"", ""20220003_3""
+	],
+	""range"": [
+		0,
+		0.02,
+		0.04,
+		0.06,
+		0.08,
+		1
+	],
+	""attributionmode"": ""range""
+}",1,,3,,,,,,,,no_ethnicity,,,,,,,,,,,,,,,,,,,,,
+20220160,20214029,101,Origines,Recrutement,collaborator,,Nombre de personnes en charge du recrutement ayant un suivi un parcours de formation au recrutement inclusif sur les enjeux culturels et sociaux.,,,0 %; 1 à 20% ; 20 à 40% ; 40 à 50% ; Plus de 50%,,0;2;3;4;5,,"1,5","valeur_json_{
+	""mode"": ""ratio-questions"",
+	""questions"": [
+		""20220012""
+	],
+	""range"": [
+		0,
+		0.2,
+		0.4,
+		0.5,
+		1
+	],
+	""attributionmode"": ""range""
+}",1,,3,,,,,,,,no_ethnicity,,,,,,,,,,,,,,,,,,,,,
+20220161,,,Origines,Carrière,collaborator,,"Existence d'un programme de référencement qui profite aux groupes sous-représentés pour la construction de carrière, les promotions internes...",1,"Programmes de mentoring;
+Process de promotion interne intégrant l'ouverture aux profils sous-représentés;
+Règle de promotion claire et transparente...","Rien; En cours de réflexion, action à planifier; Action planifiée dans les 6 à 12 prochains mois; Ce dispostif existe mais n'est pas encore formalisé; Ce dispositif est formalisé mais necessite d'être renforcé ou élargit; Ce dispositif est formalisé depuis plusieurs années et suivi dans une démarche d'amélioration continue",,0;1;2;3;4;5,,1,qcm,1,,3,,,,,,,,no_ethnicity,,,,,,,,,,,,,,,,,,,,,
+20220162,20214110,,Origines,Recrutement,collaborator,,L'établissement scolaire a mis en place des actions de recrutement et des objectifs ciblant des candidats (f/h/nb) résidant dans des quartiers prioritaires de la ville.,1,,"Rien; En cours de réflexion, action à planifier; Action planifiée dans les 6 à 12 prochains mois; Ce dispostif existe mais n'est pas encore formalisé; Ce dispositif est formalisé mais necessite d'être renforcé ou élargit; Ce dispositif est formalisé depuis plusieurs années et suivi dans une démarche d'amélioration continue",,0;1;2;3;4;5,,"1,5",qcm,1,,3,,,,,,,,no_ethnicity,,,,,,,,,,,,,,,,,,,,,
+20220163,20214110,,Origines,Recrutement,collaborator,,L'établissement scolaire a mis en place des actions de recrutement ciblant des candidats (f/h/nb) résidant dans des Zones de Revitalisation Rurale,1,,"Rien; En cours de réflexion, action à planifier; Action planifiée dans les 6 à 12 prochains mois; Ce dispostif existe mais n'est pas encore formalisé; Ce dispositif est formalisé mais necessite d'être renforcé ou élargit; Ce dispositif est formalisé depuis plusieurs années et suivi dans une démarche d'amélioration continue",,0;1;2;3;4;5,,"1,5",qcm,1,,3,,,,,,,,no_ethnicity,,,,,,,,,,,,,,,,,,,,,
+20220164,20214111,102,Origines,Recrutement,collaborator,,Nombre de recrutements de personnes (f/h/nb) résidant dans des QPV (Quartiers Prioritaires de la Ville),,"<a target=""_blank"" href=""https://sig.ville.gouv.fr/"">Carte des Quartiers Prioritaires de la politique de la Ville</a>
+<a target=""https://www.observatoire-des-territoires.gouv.fr/kiosque/zonage-les-zones-de-revitalisation-rurale-zrr"">Carte des Zones de Revitalisation Rurale</a>",0%;Moins de 2%;Entre 2 et 4%;Entre 4 et 6%;Entre 6 et 10%;Plus de 10%,,0;1;2;3;4;5,,1,"valeur_json_{
+	""mode"": ""ratio-questions"",
+	""questions"": [
+		""20220014""
+	],
+	""range"": [
+		0,
+		0.02,
+		0.04,
+		0.06,
+		0.1,
+		1
+	],
+	""attributionmode"": ""range""
+}",1,,3,,,,,,,,no_ethnicity,,,,,,,,,,,,,,,,,,,,,
+20220165,20214111,103,Origines,Recrutement,collaborator,,Nombre de recrutements de personnes (f/h/nb) résidant dans les ZRR (Zones de Revitalisation Rurale),,,0%;Moins de 2%;Entre 2 et 4%;Entre 4 et 6%;Entre 6 et 10%;Plus de 10%,,0;1;2;3;4;5,,1,"valeur_json_{
+	""mode"": ""ratio-questions"",
+	""questions"": [
+		""20220014""
+	],
+	""range"": [
+		0,
+		0.02,
+		0.04,
+		0.06,
+		0.1,
+		1
+	],
+	""attributionmode"": ""range""
+}",1,,3,,,,,,,,no_ethnicity,,,,,,,,,,,,,,,,,,,,,
+20220166,20214112,104,Origines,Recrutement,collaborator,,Nombre de stagiaires et alternants résidant dans des QPV (Quartiers Prioritaires de la Ville),,"<a target=""_blank"" href=""https://sig.ville.gouv.fr/"">Carte des Quartiers Prioritaires de la politique de la Ville</a>
+<a target=""https://www.observatoire-des-territoires.gouv.fr/kiosque/zonage-les-zones-de-revitalisation-rurale-zrr"">Carte des Zones de Revitalisation Rurale</a>",0%;Moins de 2%;Entre 2 et 4%;Entre 4 et 6%;Entre 6 et 10%;Plus de 10%,,0;1;2;3;4;5,,1,"valeur_json_{
+	""mode"": ""ratio-questions"",
+	""questions"": [
+		""20220015""
+	],
+	""range"": [
+		0,
+		0.02,
+		0.04,
+		0.06,
+		0.1,
+		1
+	],
+	""attributionmode"": ""range""
+}",1,,3,,,,,,,,no_ethnicity,,,,,,,,,,,,,,,,,,,,,
+20220167,20214112,105,Origines,Recrutement,collaborator,,Nombre de stagiaires et alternants résidant dans des ZRR (Zones de Revitalisation Rurale),,,0%;Moins de 2%;Entre 2 et 4%;Entre 4 et 6%;Entre 6 et 10%;Plus de 10%,,0;1;2;3;4;5,,1,"""valeur_json_{
+	""mode"": ""ratio-questions"",
+	""questions"": [
+		""20220015""
+	],
+	""range"": [
+		0,
+		0.02,
+		0.04,
+		0.06,
+		0.1,
+		1
+	],
+	""attributionmode"": ""range""
+}",1,,3,,,,,,,,no_ethnicity,,,,,,,,,,,,,,,,,,,,,
+20220168,20214113,106,Origines,Gouvernance,collaborator,,Nombre de stagiaires de 3ème accueillient dans l'établissement scolaire,,,,,,,0,valeur,1,,3,,,,,,,,no_ethnicity,,,,,,,,,,,,,,,,,,,,,
+202201681,,106,Origines,Gouvernance,collaborator,,Nombre de stagiaires de 3ème accueillient issus du Réseau d'Education Prioritaire (REP et REP+),,,"0%;
+Entre 0 et 10%;
+Entre 10 et 30%;
+Entre 30 et 40%;
+Entre 40 et 50%;
+Plus de 50 %",,0;1;2;3;4;5,,1,"""valeur_json_{
+  ""mode"": ""ratio-questions"",
+  ""questions"": [
+    ""20220168""
+  ],
+  ""range"": [
+    0,
+0.10,
+    0.30,
+    0.40,
+0.5,
+1],
+  ""attributionmode"": ""range""
+}",1,,3,,,,,,,,no_ethnicity,,,,,,,,,,,,,,,,,,,,,
+20220169,20214114,107,Origines,Recrutement,collaborator,,Pourcentage de cadres (f/h/nb) diplomés d'un cursus universitaire public ou semi-public,,Public semi-public ou privé,0%;Moins de 15% de cadres issus d'un établissement d'enseignement supérieur public ou semi-public;Entre 15 et 25%;Entre 25 et 35%;Entre 35 et 45%;Plus de 45%,,0;1;2;3;4;5,,"0,5",pourcentage_0_15_25_35_45_100,1,,3,,,,,,,,no_ethnicity,,,,,,,,,,,,,,,,,,,,,
+20220171,,,Origines,Carrière,collaborator,,Il existe une grille de rémunération différente en fonction des types d'établissements où les employés ont obtenu leurs diplomes,,,Non;Oui pour les adminitrateurs; Oui pour les enseignants; Oui pour tous les postes,,0;3;3;5,,"0,5",qcm,1,,3,,,,,,,,no_ethnicity,,,,,,,,,,,,,,,,,,,,,
+20220172,20214115,,Origines,Recrutement,collaborator,,"L'établissement scolaire a instauré des dispositifs spécifiques avec des partenaires de l'emploi, associations, fondations... pour le recrutement de candidats fragilisés ou éloignés de l'emploi.",1,,"Rien; En cours de réflexion, action à planifier; Action planifiée dans les 6 à 12 prochains mois; Ce dispostif existe mais n'est pas encore formalisé; Ce dispositif est formalisé mais necessite d'être renforcé ou élargit; Ce dispositif est formalisé depuis plusieurs années et suivi dans une démarche d'amélioration continue",,0;1;2;3;4;5,,1,qcm,1,,3,,,,,,,,no_ethnicity,,,,,,,,,,,,,,,,,,,,,
+20220173,20214116,,Origines,Recrutement,collaborator,,L'établissement scolaire a mis en place des partenariats avec des associations et/ou organisations qui oeuvrent pour l'insertion dans l'emploi des personnes réfugiées et nouveaux entrants.,1,,"Rien; En cours de réflexion, action à planifier; Action planifiée dans les 6 à 12 prochains mois; Ce dispostif existe mais n'est pas encore formalisé; Ce dispositif est formalisé mais necessite d'être renforcé ou élargit; Ce dispositif est formalisé depuis plusieurs années et suivi dans une démarche d'amélioration continue",,0;1;2;3;4;5,,"0,5",qcm,1,,3,,,,,,,,no_ethnicity,,,,,,,,,,,,,,,,,,,,,
+20220174,20214117,,Origines,Recrutement,collaborator,,"Lors de recrutements, une démarche pro-active existe pour trouver des candidats (f/h/nb) issus de la diversité d'origine culturelle et/ou sociale.",,,"Rien; En cours de réflexion, action à planifier; Action planifiée dans les 6 à 12 prochains mois; Ce dispostif existe mais n'est pas encore formalisé; Ce dispositif est formalisé mais necessite d'être renforcé ou élargit; Ce dispositif est formalisé depuis plusieurs années et suivi dans une démarche d'amélioration continue",,0;1;2;3;4;5,,"1,5",qcm,1,,3,,,,,,,,no_ethnicity,,,,,,,,,,,,,,,,,,,,,
+20220175,20214118,,Origines,Recrutement,collaborator,,Les offres sont diffusées sur des sites spécialisés et/ou auprès de partenaires spécialisés dans le recrutement de personnes issues de la diversité d'origine culturelle et/ou sociale. ,,,"Rien; En cours de réflexion, action à planifier; Action planifiée dans les 6 à 12 prochains mois; Ce dispostif existe mais n'est pas encore formalisé; Ce dispositif est formalisé mais necessite d'être renforcé ou élargit; Ce dispositif est formalisé depuis plusieurs années et suivi dans une démarche d'amélioration continue",,0;1;2;3;4;5,,1,qcm,1,,3,,,,,,,,no_ethnicity,,,,,,,,,,,,,,,,,,,,,
+20220176,20214119,,Origines,Recrutement,collaborator,,L'établissement scolaire suit le taux de réponses aux candidatures (spontanées et/ou réponses aux offres d'emplois de l'établissement scolaire) en suivant la répartition par lieu de résidence.,,,"Aucune case cochée;
+1 cases cochée;
+2 cases cochée;
+3 cases cochées;
+4 cases cochées","Employés et/ou candidats retenus pour un entretien vivant dans les QPV et ZRR;
+Étude sur les prénoms des employés et candidats retenus pour un entretien;
+Testing CV sur le critère culturel;
+Suivi des types de diplomes des cadres de l'établissement scolaire",0;2;3;4;5,,"0,5",subquestions_qcm_0_1_2_3_4,1,multiple_qcm,3,,,,,,,,no_ethnicity,,,,,,,,,,,,,,,,,,,,,
+20220177,20214120,,Origines,Qualité de vie au travail,collaborator,,"L’établissement scolaire définit le management des pratiques religieuses dans l’environnement professionnel (règlement intérieur, guide interne du management...)",1,,"Aucune case cochée;
+1 cases cochée;
+2 cases cochée;
+3 cases cochées;
+4 cases cochées","Guide à destination des managers;
+Actions de sensibilisation;
+Existence d'une personne formée sur les sujets pour accompagner les managers (f/h/nb);
+Mise à disposition d'ajustement nécéssaire à la pratique des collaborateurs (f/h/nb)",0;2;3;4;5,,1,subquestions_qcm_0_1_2_3_4,1,multiple_qcm,3,,,,,,,,no_ethnicity,,,,,,,,,,,,,,,,,,,,,
+20220178,20214121,,Origines,Qualité de vie au travail,collaborator,,"Existence au sein de l'établissement scolaire d'au moins une personne référente à même d'écouter ou d'apporter un soutien spécifique à un salarié (f/h/nb) sur des sujets liés à la discrimination (origines sociales, culturelles...) si nécessaire ",,,"Rien; En cours de réflexion, action à planifier; Action planifiée dans les 6 à 12 prochains mois; Ce dispostif existe mais n'est pas encore formalisé; Ce dispositif est formalisé mais necessite d'être renforcé ou élargit; Ce dispositif est formalisé depuis plusieurs années et suivi dans une démarche d'amélioration continue",,0;1;2;3;4;5,,"1,5",qcm,1,,3,,,,,,,,no_ethnicity,,,,,,,,,,,,,,,,,,,,,
+20220179,,,Origines,Sensibilisation,collaborator,,L'établissement scolaire organise des temps forts pour partager et célébrer la culture de l'ensemble des collaborateurs (f/h/nb),1,,"Rien; En cours de réflexion, action à planifier; Action planifiée dans les 6 à 12 prochains mois; Ce dispostif existe mais n'est pas encore formalisé; Ce dispositif est formalisé mais necessite d'être renforcé ou élargit; Ce dispositif est formalisé depuis plusieurs années et suivi dans une démarche d'amélioration continue",,0;1;2;3;4;5,,"0,5",qcm,1,,3,,,,,,,,no_ethnicity,,,,,,,,,,,,,,,,,,,,,
+20220180,même que 20213097 de international,109,Origines,Qualité de vie au travail,collaborator,,Nombre d'employés impliqués dans le mentorat ou de bénévoles dans des organisations à but non lucratif abordant des questions ethniques ou sociales,,Sur le temps de travail,,,,,0,valeur,1,,3,,,,,,,,no_ethnicity,,,,,,,,,,,,,,,,,,,,,
+20220181,20214122,,Origines,Sensibilisation,collaborator,,"L'établissement scolaire a développé des partenariats avec des associations externes spécialisées sur la diversité d'origine culturelle et/ou sociale (adhésion, financement, mécénat de compétence, dons en nature, soutien en communication). ",1,,"Rien; En cours de réflexion, action à planifier; Action planifiée dans les 6 à 12 prochains mois; Ce dispostif existe mais n'est pas encore formalisé; Ce dispositif est formalisé mais necessite d'être renforcé ou élargit; Ce dispositif est formalisé depuis plusieurs années et suivi dans une démarche d'amélioration continue",,0;1;2;3;4;5,,1,qcm,1,,3,,,,,,,,no_ethnicity,,,,,,,,,,,,,,,,,,,,,
+20220182,20214123,,Origines,Sensibilisation,collaborator,,L'établissement scolaire a au moins une fois dans l'année été impliquée dans une manifestation externe sur la thématique diversité d'origine culturelle et/ou sociale ,,,"Rien; En cours de réflexion, action à planifier; Action planifiée dans les 6 à 12 prochains mois; Ce dispostif existe mais n'est pas encore formalisé; Ce dispositif est formalisé mais necessite d'être renforcé ou élargit; Ce dispositif est formalisé depuis plusieurs années et suivi dans une démarche d'amélioration continue",,0;1;2;3;4;5,,1,qcm,1,,3,,,,,,,,no_ethnicity,,,,,,,,,,,,,,,,,,,,,
+20220183,20214124,,Origines,Sensibilisation,collaborator,,"Existence de documents internes pour sensibiliser à la lutte contre les propos discriminatoires, notamment sur les origines culturelles et/ou sociales.",,,"Rien; En cours de réflexion, action à planifier; Action planifiée dans les 6 à 12 prochains mois; Ce dispostif existe mais n'est pas encore formalisé; Ce dispositif est formalisé mais necessite d'être renforcé ou élargit; Ce dispositif est formalisé depuis plusieurs années et suivi dans une démarche d'amélioration continue",,0;1;2;3;4;5,,"0,5",qcm,1,,3,,,,,,,,no_ethnicity,,,,,,,,,,,,,,,,,,,,,
+20220184,,,Origines,Gouvernance,collaborator,,"L'établissement scolaire a engagé une réflexion autour de la promotion de la diversité de culture ou d'origine dans ses relations extérieures (fournisseurs, prestataires, sous-traitants, etc.)",,,"Rien; En cours de réflexion, action à planifier; Action planifiée dans les 6 à 12 prochains mois; Ce dispostif existe mais n'est pas encore formalisé; Ce dispositif est formalisé mais necessite d'être renforcé ou élargit; Ce dispositif est formalisé depuis plusieurs années et suivi dans une démarche d'amélioration continue",,0;1;2;3;4;5,,"1,5",qcm,1,,3,,,,,,,,no_ethnicity,,,,,,,,,,,,,,,,,,,,,
+20220185,même que 202140821 mais en vert,110,Origines,Gouvernance,collaborator,,"Montant des achats effectués dans des des structures d’insertion par l’activité économique (l’association intermédiaire (AI), l’établissement scolaire de travail temporaire d’insertion (ETTI) et les ateliers et chantiers d’insertion (ACI), Entreprise d'Insertion (EI)...)",,,,,,,0,"valeur_json_{ ""mode"": ""ratio-questions"", ""questions"": [ ""20220119"" ]}",1,,3,,,,,,,,no_ethnicity,,,,,,,,,,,,,,,,,,,,,
+,,,41,,,,,,,,,,,28,,,,3,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+20220186,20214125,,Générations,Gouvernance,collaborator,,"Existence d'une politique ""intergénérationnelle"" au sein de l'établissement scolaire et/ou d'un accord d'établissement scolaire",,,"Rien; En cours de réflexion, action à planifier; Action planifiée dans les 6 à 12 prochains mois; Ce dispostif existe mais n'est pas encore formalisé; Ce dispositif est formalisé mais necessite d'être renforcé ou élargit; Ce dispositif est formalisé depuis plusieurs années et suivi dans une démarche d'amélioration continue",,0;1;2;3;4;5,,"1,5",qcm,1,,3,,,,,,,,no_generations,,,,,,,,,,,,,,,,,,,,,
+20220187,20214126,111,Générations,Recrutement,collaborator,,Nombre de personnes pour chaque génération au sein de votre établissement scolaire pour l'ensemble du personnel,,,,"< 26 ans;
+entre 26 et 39 ans ;
+entre 40 et 54 ans ;
+> 55 ans",,,0,"subquestions_json_{ ""mode"": ""ratio-questions"", ""questions"": [ ""20220003_0"", ""20220003_1"", ""20220003_2"" , ""20220003_3"" ]}",1,valeur,3,,,,,,,,no_generations,,,,,,,,,,,,,,,,,,,,,
+202201871,20214126,111,Générations,Recrutement,collaborator,,Nombre de personnes pour chaque génération au sein de votre établissement scolaire pour les collaborateurs (f/h/nb),,,,"< 26 ans;
+entre 26 et 39 ans ;
+entre 40 et 54 ans ;
+> 55 ans",,,0,subquestions,1,valeur,3,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+202201872,20214126,111,Générations,Recrutement,collaborator,,Nombre de personnes pour chaque génération au sein de votre établissement scolaire pour les enseignants (f/h/nb),,,,"< 26 ans;
+entre 26 et 39 ans ;
+entre 40 et 54 ans ;
+> 55 ans",,,0,subquestions,1,valeur,3,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+202201873,20214126,111,Générations,Recrutement,collaborator,,Nombre de personnes pour chaque génération au sein de votre établissement scolaire pour les enseignants qualifiés chercheurs (f/h/nb),,,,"< 26 ans;
+entre 26 et 39 ans ;
+entre 40 et 54 ans ;
+> 55 ans",,,0,subquestions,1,valeur,3,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+20220188,20214127,112,Générations,Recrutement,collaborator,,Nombre de personne de moins de 30 ans dans l'effectif de l'établissement scolaire,,,"0%;
+Moins de 5%;
+Entre 5 et 10%;
+Entre 10 et 20%;
+Entre 20 et 30%;
+Entre 30 et 70%;
+Entre 70 et 80%;
+Entre 80 et 90%;
+Entre 90 et 95%;
+Entre 95 et 100%;
+100%",,0;1;2;3;4;5;4;3;2;1;0,,1,"valeur_json_{
+	""mode"": ""ratio-questions"",
+	""questions"": [
+		""20220003_0"",
+		""20220003_1"",
+		""20220003_2"",
+		""20220003_3""
+	],
+	""range"": [
+		0,
+		0.05,
+		0.1,
+		0.2,
+		0.3,
+		0.7,
+		0.8,
+		0.9,
+		0.95,
+		0.999,
+		1
+	],
+	""attributionmode"": ""range""
+}",1,,3,,,,,,,,no_generations,,,,,,,,,,,,,,,,,,,,,
+20220189,20214128,114,Générations,Recrutement,collaborator,,Age moyen dans l'effectif de l'établissement scolaire,,,,,,,0,valeur,1,,3,,,,,,,,no_generations,,,,,,,,,,,,,,,,,,,,,
+20220190,,113,Générations,Recrutement,collaborator,,Nombre de personnes de plus de 45 ans dans l'effectif de l'établissement scolaire,,,"0%;
+Moins de 5%;
+Entre 5 et 10%;
+Entre 10 et 20%;
+Entre 20 et 30%;
+Entre 30 et 70%;
+Entre 70 et 80%;
+Entre 80 et 90%;
+Entre 90 et 95%;
+Entre 95 et 100%;
+100%",,0;1;2;3;4;5;4;3;2;1;0,,1,"valeur_json_{
+	""mode"": ""ratio-questions"",
+	""questions"": [
+		""20220003_0"",
+		""20220003_1"",
+		""20220003_2"",
+		""20220003_3""
+	],
+	""range"": [
+		0,
+		0.05,
+		0.1,
+		0.2,
+		0.3,
+		0.7,
+		0.8,
+		0.9,
+		0.95,
+		0.999,
+		1
+	],
+	""attributionmode"": ""range""
+}",1,,3,,,,,,,,no_generations,,,,,,,,,,,,,,,,,,,,,
+20220191,20214128,115,Générations,Recrutement,collaborator,,Age moyen au Conseil d'Administration,,,,,,,0,valeur,1,,3,,,,,,,,no_generations,,,,,,,,,,,,,,,,,,,,,
+20220192,20214129,116,Générations,Recrutement,collaborator,,Age moyen des personnes au Comex ou Codir,,,,,,,0,valeur,1,,3,,,,,,,,no_generations,,,,,,,,,,,,,,,,,,,,,
+20220193,20214130,117,Générations,Recrutement,collaborator,,Age moyen des managers (f/h/nb),,Managers et cadres de direction (f/h/nb),,,,,0,valeur,1,,3,,,,,,,,no_generations,,,,,,,,,,,,,,,,,,,,,
+20220194,"même que les, autres et en dessous",118,Générations,Recrutement,collaborator,,Age moyen des enseignants (f/h/nb),,,,,,,0,valeur,1,,3,,,,,,,,no_generations,,,,,,,,,,,,,,,,,,,,,
+20220195,20214131,,Générations,Gouvernance,collaborator,,L'établissement scolaire a défini des scénarios de gestion des départs / arrivées du personnel en fonction des spécificités de votre pyramide des âges pour les 3 à 5 ans à venir ,,,"Rien; En cours de réflexion, action à planifier; Action planifiée dans les 6 à 12 prochains mois; Ce dispostif existe mais n'est pas encore formalisé; Ce dispositif est formalisé mais necessite d'être renforcé ou élargit; Ce dispositif est formalisé depuis plusieurs années et suivi dans une démarche d'amélioration continue",,0;1;2;3;4;5,,"0,5",qcm,1,,3,,,,,,,,no_generations,,,,,,,,,,,,,,,,,,,,,
+20220196,,,Générations,Carrière,collaborator,,Existence de dispositif pour favoriser la reconversion professionnelle,,"Etudiant = VAE - Conatct avec des organismes qui peuvent orienter les VAE - Abondement du CPF supplémentaire pour certaines formation pour les reprises d'études - Pour les collaborateurs  = Benéficier des formations des collaborateurs par la formation propsé par l'établissement
+Y'a t'il accompagnement en financement pour les personne sen recherche de formation","Rien; En cours de réflexion, action à planifier; Action planifiée dans les 6 à 12 prochains mois; Ce dispostif existe mais n'est pas encore formalisé; Ce dispositif est formalisé mais necessite d'être renforcé ou élargit; Ce dispositif est formalisé depuis plusieurs années et suivi dans une démarche d'amélioration continue",,0;1;2;3;4;5,,"0,5",qcm,1,,3,,,,,,,,no_generations,,,,,,,,,,,,,,,,,,,,,
+20220197,20214132,,Générations,Carrière,collaborator,,Existence d'une étude interne pour définir quelles sont les tranches d'âge des collaborateurs qui détiennent les compétences clés de l'établissement scolaire ,,,"Rien; En cours de réflexion, action à planifier; Action planifiée dans les 6 à 12 prochains mois; Ce dispostif existe mais n'est pas encore formalisé; Ce dispositif est formalisé mais necessite d'être renforcé ou élargit; Ce dispositif est formalisé depuis plusieurs années et suivi dans une démarche d'amélioration continue",,0;1;2;3;4;5,,"0,5",qcm,1,,3,,,,,,,,no_generations,,,,,,,,,,,,,,,,,,,,,
+20220198,20214134,,Générations,Carrière,collaborator,,"Existence d'un dispositif de transmission des savoirs ""critiques"" au sein de l'établissement scolaire",,,"Rien; En cours de réflexion, action à planifier; Action planifiée dans les 6 à 12 prochains mois; Ce dispostif existe mais n'est pas encore formalisé; Ce dispositif est formalisé mais necessite d'être renforcé ou élargit; Ce dispositif est formalisé depuis plusieurs années et suivi dans une démarche d'amélioration continue",,0;1;2;3;4;5,,"0,5",qcm,1,,3,,,,,,,,no_generations,,,,,,,,,,,,,,,,,,,,,
+20220199,20214135,,Générations,Recrutement,collaborator,,L'établissement scolaire a mis en place une politique active de recrutement des seniors (plus de 50 ans),,,"Rien; En cours de réflexion, action à planifier; Action planifiée dans les 6 à 12 prochains mois; Ce dispostif existe mais n'est pas encore formalisé; Ce dispositif est formalisé mais necessite d'être renforcé ou élargit; Ce dispositif est formalisé depuis plusieurs années et suivi dans une démarche d'amélioration continue",,0;1;2;3;4;5,,1,qcm,1,,3,,,,,,,,no_generations,,,,,,,,,,,,,,,,,,,,,
+20220200,20214136,119,Générations,Recrutement,collaborator,,Nombre de recrutement de seniors de plus de 50 ans (contrats de travail) dans les 12 derniers mois,,,"0%;
+Entre 0 et 1%;
+Entre 1 et 5%;
+Entre 5 et 10%;
+Entre 10 et 15%;
+Plus de 15%",,0;1;2;3;4;5,,1,"valeur_json_{
+	""mode"": ""ratio-questions"",
+	""questions"": [
+		""20220014""
+	],
+	""range"": [
+		0,
+		0.01,
+		0.05,
+		0.1,
+		0.15,
+		1
+	],
+	""attributionmode"": ""range""
+}",1,,3,,,,,,,,no_generations,,,,,,,,,,,,,,,,,,,,,
+20220201,20214137,,Générations,Recrutement,collaborator,,Votre établissement scolaire a mis en place une politique de recrutement d’apprentis (f/h/nb) par l'intermédiaire de : (plusieurs réponses possibles),,,"Aucune case cochée;
+1 cases cochée;
+2 cases cochée;
+3 cases cochées;
+4 cases cochées","Partenariat avec des établissements d'enseignement;
+Participation à un forum d'emploi dédié;
+Diffusion des offres sur des sites spécialisés;
+Objectifs chiffrés de recrutement",0;2;3;4;5,,"1,5",subquestions_qcm_0_1_2_3_4,1,multiple_qcm,3,,,,,,,,no_generations,,,,,,,,,,,,,,,,,,,,,
+20220203,20214138,121,Générations,Recrutement,collaborator,,Nombre de recrutement concernant les jeunes de moins de 26 ans (CDD/CDI) comparé à l'ensemble des contrats de travail,,,"0%;
+Entre 0 et 1%;
+Entre 1 et 5%;
+Entre 5 et 10%;
+Entre 10 et 15%;
+Plus de 15%",,0;1;2;3;4;5,,"1,5","valeur_json_{
+	""mode"": ""ratio-questions"",
+	""questions"": [
+		""20220014""
+	],
+	""range"": [
+		0,
+		0.01,
+		0.05,
+		0.1,
+		0.15,
+		1
+	],
+	""attributionmode"": ""range""
+}",1,,3,,,,,,,,no_generations,,,,,,,,,,,,,,,,,,,,,
+20220204,20214139,122,Générations,Recrutement,collaborator,,Pourcentage de recrutement issu de stage et de l'alternance (contrat d'apprentissage et/ou contrat professionnel) parmi les recrutements de moins de 30 ans ,,,"0%;
+Entre 0 et 1%;
+Entre 1 et 5%;
+Entre 5 et 10%;
+Entre 10 et 20%;
+Plus de 20%",,0;1;2;3;4;5,,1,pourcentage_0_1_5_10_20_100,1,,3,,,,,,,,no_generations,,,,,,,,,,,,,,,,,,,,,
+20220205,20214141,,Générations,Carrière,collaborator,,Il existe des objectifs chiffrés de maintien dans l'emploi des salariés (f/h/nb) de plus de 55 ans ,,,"Rien; En cours de réflexion, action à planifier; Action planifiée dans les 6 à 12 prochains mois; Ce dispostif existe mais n'est pas encore formalisé; Ce dispositif est formalisé mais necessite d'être renforcé ou élargit; Ce dispositif est formalisé depuis plusieurs années et suivi dans une démarche d'amélioration continue",,0;1;2;3;4;5,,"0,5",qcm,1,,3,,,,,,,,no_generations,,,,,,,,,,,,,,,,,,,,,
+20220206,20214142,123,Générations,Recrutement,collaborator,,Nombre de managers et cadres de direction (f/h/nb) de moins de 45 ans (inférieur ou égal à 45 ans) au sein de l'établissement scolaire,,,"0%;
+Moins de 5%;
+Entre 5 et 10%;
+Entre 10 et 20%;
+Entre 20 et 30%;
+Plus de 30%",,0;1;2;3;4;5,,"0,5","valeur_json_{
+  ""mode"": ""ratio-questions"",
+  ""questions"": [
+    ""20220010"",""20220011""
+  ],
+  ""range"": [
+    0,
+0.05,
+    0.1,
+0.2,
+0.3,
+1],
+  ""attributionmode"": ""range""
+}",1,,3,,,,,,,,no_generations,,,,,,,,,,,,,,,,,,,,,
+20220207,20214143,,Générations,Carrière,collaborator,,Existence d'un dispositif de tutorat multigénérationnel au sein de l'établissement scolaire (mentoring et/ou tutorat contrats d'alternance),1,,"Rien; En cours de réflexion, action à planifier; Action planifiée dans les 6 à 12 prochains mois; Ce dispostif existe mais n'est pas encore formalisé; Ce dispositif est formalisé mais necessite d'être renforcé ou élargit; Ce dispositif est formalisé depuis plusieurs années et suivi dans une démarche d'amélioration continue",,0;1;2;3;4;5,,1,qcm,1,,3,,,,,,,,no_generations,,,,,,,,,,,,,,,,,,,,,
+20220208,20214146,,Générations,Carrière,collaborator,,L’établissement scolaire a-t-il développé une culture de formation tout au long de la vie ?,,Capacité à explorer les besoins et anticiper les tendances afin de permettre aux collaborateurs (f/h/nb) d'être toujours dans une démarche de formation aux nouvelles compétences,"Rien; En cours de réflexion, action à planifier; Action planifiée dans les 6 à 12 prochains mois; Ce dispostif existe mais n'est pas encore formalisé; Ce dispositif est formalisé mais necessite d'être renforcé ou élargit; Ce dispositif est formalisé depuis plusieurs années et suivi dans une démarche d'amélioration continue",,0;1;2;3;4;5,,"1,5",qcm,1,,3,,,,,,,,no_generations,,,,,,,,,,,,,,,,,,,,,
+20220209,20214147,124,Générations,Carrière,collaborator,,Nombre de personnes de plus de 55 ans formées dans les 12 derniers mois,,,"0%;
+Moins de 5%;
+Moins de 10%;
+Moins de 20%;
+Moins de 30%;
+Plus de 30%",,0;1;2;3;4;5,,1,"valeur_json_{
+  ""mode"": ""ratio-questions"",
+  ""questions"": [
+    ""20220187_3""
+  ],
+  ""range"": [
+    0,
+0.05,
+    0.1,
+0.2,
+0.3,
+1 ],
+  ""attributionmode"": ""range""
+}",1,,3,,,,,,,,no_generations,,,,,,,,,,,,,,,,,,,,,
+20220210,20214148,125,Générations,Carrière,collaborator,,Nombre de personnes de moins de 30 ans formées dans les 12 derniers mois,,,"0%;
+Moins de 5%;
+Moins de 10%;
+Moins de 20%;
+Moins de 30%;
+Plus de 30%",,0;1;2;3;4;5,,1,"valeur_json_{
+  ""mode"": ""ratio-questions"",
+  ""questions"": [
+    ""20220188""
+  ],
+  ""range"": [
+    0,
+0.05,
+    0.1,
+0.2,
+0.3,
+1 ],
+  ""attributionmode"": ""range""
+}",1,,3,,,,,,,,no_generations,,,,,,,,,,,,,,,,,,,,,
+20220211,20214149,126,Générations,Carrière,collaborator,,Nombre de personnes formées dans les 12 derniers mois,,,"0%;
+Moins de 5%;
+Moins de 10%;
+Moins de 20%;
+Moins de 30%;
+Plus de 30%",,0;1;2;3;4;5,,"1,5","valeur_json_{
+  ""mode"": ""ratio-questions"",
+  ""questions"": [
+    ""20220003_0"",  ""20224002_1"",  ""20224002_2"", ""20220003_3""
+  ],
+  ""range"": [
+    0,
+0.05,
+    0.1,
+0.2,
+0.3,
+1 ],
+  ""attributionmode"": ""range""
+}",1,,3,,,,,,,,no_generations,,,,,,,,,,,,,,,,,,,,,
+20220212,,127,Générations,Carrière,collaborator,,Nombre annuel d’heures de formation,,,,,,,0,valeur,1,,3,,,,,,,,no_generations,,,,,,,,,,,,,,,,,,,,,
+20220213,,,Générations,Carrière,collaborator,,Existence d'entretiens de seconde partie de carrière pour les personnes de plus de 45 ans,,,"Rien; En cours de réflexion, action à planifier; Action planifiée dans les 6 à 12 prochains mois; Ce dispostif existe mais n'est pas encore formalisé; Ce dispositif est formalisé mais necessite d'être renforcé ou élargit; Ce dispositif est formalisé depuis plusieurs années et suivi dans une démarche d'amélioration continue",,0;1;2;3;4;5,,1,qcm,1,,3,,,,,,,,no_generations,,,,,,,,,,,,,,,,,,,,,
+20220214,Voir après avec Nico,128,Générations,Qualité de vie au travail,collaborator,,Taux d'absentéisme des collaborateurs (f/h/nb),,,"Moins de 3%;
+Entre 3 et 6%;
+Entre 6 et 9%;
+Entre 9 et 12%;
+Entre 12 et 15%;
+Plus de 15%",,5;4;3;2;1;0,,1,pourcentage_3_6_9_12_15_100,1,,3,,,,,,,,no_generations,,,,,,,,,,,,,,,,,,,,,
+20220215,20214151,129,Générations,Qualité de vie au travail,collaborator,,Taux d'absentéisme des collaborateurs (f/h/nb) seniors de plus de 55 ans,,,"Moins de 3%;
+Entre 3 et 6%;
+Entre 6 et 9%;
+Entre 9 et 12%;
+Entre 12 et 15%;
+Plus de 15%",,5;4;3;2;1;0,,1,pourcentage_3_6_9_12_15_100,1,,3,,,,,,,,no_generations,,,,,,,,,,,,,,,,,,,,,
+20220216,20214152,,Générations,Qualité de vie au travail,collaborator,,Existence d'un dispositif pour réduire le taux d'absentéisme et notamment des seniors ,,,"Rien; En cours de réflexion, action à planifier; Action planifiée dans les 6 à 12 prochains mois; Ce dispostif existe mais n'est pas encore formalisé; Ce dispositif est formalisé mais necessite d'être renforcé ou élargit; Ce dispositif est formalisé depuis plusieurs années et suivi dans une démarche d'amélioration continue",,0;1;2;3;4;5,,1,qcm,1,,3,,,,,,,,no_generations,,,,,,,,,,,,,,,,,,,,,
+20220217,20214153,,Générations,Qualité de vie au travail,collaborator,,Existence d'une politique d'aménagement du travail notamment pour les personnes de plus de 55 ans,,,"Aucune case cochée;
+1 cases cochée;
+2 cases cochée;
+3 cases cochées;
+4 cases cochées ;
+5 cases cochées","Existence d'un plan seniors;
+Dispositif spécifique d'aménagement de temps de travail;
+Politique d'adaptation des postes;
+Dispositif de temps partiel;
+Dispositif de transition retraite",0;1;2;3;4;5,,"1,5",subquestions_qcm_0_1_2_3_4_5,1,multiple_qcm,3,,,,,,,,no_generations,,,,,,,,,,,,,,,,,,,,,
+20220218,20214154,,Générations,Qualité de vie au travail,collaborator,,"Votre établissement scolaire a-t-elle mis en place une politique de mécénat de compétences en lien avec des associations, notamment dans le cadre d'un accord d'établissement scolaire ou d'un dispositif temps partiel seniors ? ",1,,"Rien; En cours de réflexion, action à planifier; Action planifiée dans les 6 à 12 prochains mois; Ce dispostif existe mais n'est pas encore formalisé; Ce dispositif est formalisé mais necessite d'être renforcé ou élargit; Ce dispositif est formalisé depuis plusieurs années et suivi dans une démarche d'amélioration continue",,0;1;2;3;4;5,,1,qcm,1,,3,,,,,,,,no_generations,,,,,,,,,,,,,,,,,,,,,
+,,,35,,,,,,,,,,,25,,,,3,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+20220219,,,LGBTQIA+,Gouvernance,collaborator,,Il existe un plan d'actions avec des indicateurs de suivi en faveur de l'inclusion des personnes LGBT+,1,,"Rien; En cours de réflexion, action à planifier; Action planifiée dans les 6 à 12 prochains mois; Ce dispostif existe mais n'est pas encore formalisé; Ce dispositif est formalisé mais necessite d'être renforcé ou élargit; Ce dispositif est formalisé depuis plusieurs années et suivi dans une démarche d'amélioration continue",,0;1;2;3;4;5,,"1,5",qcm,1,,3,,,,,,,,no_lgbt,,,,,,,,,,,,,,,,,,,,,
+,20220220,,LGBTQIA+,Gouvernance,collaborator,,L'établissement scolaire communique au moins une fois par an sur les engagements et la politique de l'établissement scolaire sur les sujets LGBT+.,,en double avec la 20220234,Oui; Non,,5;0,,1,qcm,1,,3,,,,,,,,no_lgbt,,,,,,,,,,,,,,,,,,,,,
+20220221,20214159,,LGBTQIA+,Sensibilisation,collaborator,,"L'établissement scolaire a mis en place une démarche de mécénat ou de soutien auprès d’organisations représentatives des personnes LGBT+.
+",,,"Rien; En cours de réflexion, action à planifier; Action planifiée dans les 6 à 12 prochains mois; Ce dispostif existe mais n'est pas encore formalisé; Ce dispositif est formalisé mais necessite d'être renforcé ou élargit; Ce dispositif est formalisé depuis plusieurs années et suivi dans une démarche d'amélioration continue",,0;1;2;3;4;5,,"1,5",qcm,1,,3,,,,,,,,no_lgbt,,,,,,,,,,,,,,,,,,,,,
+20220222,20214160,,LGBTQIA+,Gouvernance,collaborator,,Existence d'un dispositif de sanction si l'organisation venait à être confrontée à des propos ou attitudes homophobes et transphobes,,,"Rien; En cours de réflexion, action à planifier; Action planifiée dans les 6 à 12 prochains mois; Ce dispostif existe mais n'est pas encore formalisé; Ce dispositif est formalisé mais necessite d'être renforcé ou élargit; Ce dispositif est formalisé depuis plusieurs années et suivi dans une démarche d'amélioration continue",,0;1;2;3;4;5,,1,qcm,1,,3,,,,,,,,no_lgbt,,,,,,,,,,,,,,,,,,,,,
+20220223,,,LGBTQIA+,Gouvernance,collaborator,,Il existe un dispositif de remonté de discrimination envers les personnes LGBT+ au sein de l'établissement scolaire,,,"Rien; En cours de réflexion, action à planifier; Action planifiée dans les 6 à 12 prochains mois; Ce dispostif existe mais n'est pas encore formalisé; Ce dispositif est formalisé mais necessite d'être renforcé ou élargit; Ce dispositif est formalisé depuis plusieurs années et suivi dans une démarche d'amélioration continue",,0;1;2;3;4;5,,1,qcm,1,,3,,,,,,,,no_lgbt,,,,,,,,,,,,,,,,,,,,,
+20220225,20214161,,LGBTQIA+,Qualité de vie au travail,collaborator,,Existence au sein de l'établissement scolaire d'au moins une personne référente à même d'écouter ou d'apporter un soutien spécifique à un salarié (f/h/nb) sur les sujets d'orientation sexuelle / identité et expression du genre si nécessaire ,,,"Rien; En cours de réflexion, action à planifier; Action planifiée dans les 6 à 12 prochains mois; Ce dispostif existe mais n'est pas encore formalisé; Ce dispositif est formalisé mais necessite d'être renforcé ou élargit; Ce dispositif est formalisé depuis plusieurs années et suivi dans une démarche d'amélioration continue",,0;1;2;3;4;5,,"1,5",qcm,1,,3,,,,,,,,no_lgbt,,,,,,,,,,,,,,,,,,,,,
+20220226,,,LGBTQIA+,Gouvernance,collaborator,,L'établissement scolaire prend en compte les personnes non-binaires ou qui ne souhaitent pas se déclarer dans les processus RH,,,Oui;Non,,5;3,,1,qcm,1,,3,,,,,,,,no_lgbt,,,,,,,,,,,,,,,,,,,,,
+20220227,20214162,,LGBTQIA+,Gouvernance,collaborator,,"En cas de mobilité géographique, la prise en compte d'un couple pacsé est la même que pour un couple marié du même sexe",1,,"Rien; En cours de réflexion, action à planifier; Action planifiée dans les 6 à 12 prochains mois; Ce dispostif existe mais n'est pas encore formalisé; Ce dispositif est formalisé mais necessite d'être renforcé ou élargit; Ce dispositif est formalisé depuis plusieurs années et suivi dans une démarche d'amélioration continue",,0;1;2;3;4;5,,1,qcm,1,,3,,,,,,,,no_lgbt,,,,,,,,,,,,,,,,,,,,,
+20220228,20214163,,LGBTQIA+,Gouvernance,collaborator,,"Dans le régime de mutuelle et prévoyance, la définition de la famille prend en compte les couples pacsés du même sexe  ",,,"Rien; En cours de réflexion, action à planifier; Action planifiée dans les 6 à 12 prochains mois; Ce dispostif existe mais n'est pas encore formalisé; Ce dispositif est formalisé mais necessite d'être renforcé ou élargit; Ce dispositif est formalisé depuis plusieurs années et suivi dans une démarche d'amélioration continue",,0;1;2;3;4;5,,"0,5",qcm,1,,3,,,,,,,,no_lgbt,,,,,,,,,,,,,,,,,,,,,
+20220229,20214164,,LGBTQIA+,Gouvernance,collaborator,,Les avantages du Comité Social et Économique (C.S.E) sont identiques pour les personnes mariées et pacsées du même sexe ,,,"Rien; En cours de réflexion, action à planifier; Action planifiée dans les 6 à 12 prochains mois; Ce dispostif existe mais n'est pas encore formalisé; Ce dispositif est formalisé mais necessite d'être renforcé ou élargit; Ce dispositif est formalisé depuis plusieurs années et suivi dans une démarche d'amélioration continue",,0;1;2;3;4;5,,1,qcm,1,,3,,,,,,,,no_lgbt,,,,,,,,,,,,,,,,,,,,,
+20220230,,,LGBTQIA+,Gouvernance,collaborator,,"D'une manière générale, la direction générale de l'établissement scolaire et les services RH sont sensibles à l'inclusion des personnes LGBT+ au sein de leur établissement scolaire",1,"Changer de prénom; pronom neutres, prise en comtpe non-binaire ou ne pas déclarer, changer de genre","Rien; En cours de réflexion, action à planifier; Action planifiée dans les 6 à 12 prochains mois; Ce dispostif existe mais n'est pas encore formalisé; Ce dispositif est formalisé mais necessite d'être renforcé ou élargit; Ce dispositif est formalisé depuis plusieurs années et suivi dans une démarche d'amélioration continue",,0;1;2;3;4;5,,1,qcm,1,,3,,,,,,,,no_lgbt,,,,,,,,,,,,,,,,,,,,,
+20220231,20214165,,LGBTQIA+,Recrutement,collaborator,,"L'établissement scolaire a participé au moins une fois dans l'année à un événement de recrutement autour des publics LGBT+ (forum emplois, job dating...)",,,"Rien; En cours de réflexion, action à planifier; Action planifiée dans les 6 à 12 prochains mois; Ce dispostif existe mais n'est pas encore formalisé; Ce dispositif est formalisé mais necessite d'être renforcé ou élargit; Ce dispositif est formalisé depuis plusieurs années et suivi dans une démarche d'amélioration continue",,0;1;2;3;4;5,,"0,5",qcm,1,,3,,,,,,,,no_lgbt,,,,,,,,,,,,,,,,,,,,,
+20220232,20214166,,LGBTQIA+,Sensibilisation,collaborator,,Existe-t-il des documents ou contenus internes pour sensibiliser à la lutte contre les propos ou les attitudes homophobes et transphobes ? ,1,,"Rien; En cours de réflexion, action à planifier; Action planifiée dans les 6 à 12 prochains mois; Ce dispostif existe mais n'est pas encore formalisé; Ce dispositif est formalisé mais necessite d'être renforcé ou élargit; Ce dispositif est formalisé depuis plusieurs années et suivi dans une démarche d'amélioration continue",,0;1;2;3;4;5,,1,qcm,1,,3,,,,,,,,no_lgbt,,,,,,,,,,,,,,,,,,,,,
+20220233,,,LGBTQIA+,Gouvernance,collaborator,,L'établissement scolaire communique sur les engagements et la politique de l'établissement scolaire sur les sujets LGBT+.,1,,Pas de communication; Au moins une fois; Deux fois; Trois fois ou plus,,0;3;4;5,,1,qcm,1,,3,,,,,,,,no_lgbt,,,,,,,,,,,,,,,,,,,,,
+20220234,20214168,130,LGBTQIA+,Sensibilisation,collaborator,,Nombre de prises de paroles médiatiques dans les 12 derniers mois comprenant les sujets LGBT+,,,Pas de prise de parole; Au moins une fois; Deux ou trois fois; Plus de quatre fois,,0;3;4;5,,1,valeur_0_1_3_4,1,,3,,,,,,,,no_lgbt,,,,,,,,,,,,,,,,,,,,,
+20220235,20214169,131,LGBTQIA+,Sensibilisation,collaborator,,Nombre de communication diffusées sur les réseaux sociaux comprenant les sujets LGBT+ dans les 12 derniers mois,,,Pas de communication; Au moins une fois; Deux ou trois fois; Quatre ou cinq fois; Plus de cinq fois,,0;2;3;4;5,,1,valeur_0_1_3_5,1,,3,,,,,,,,no_lgbt,,,,,,,,,,,,,,,,,,,,,
+20220236,20214170,,LGBTQIA+,Sensibilisation,collaborator,,L'établissement scolaire a au moins une fois dans l'année été impliqué dans une manifestation externe (en présentiel ou distanciel) faisant référence explicitement à l'orientation sexuelle / identité et expression du genre ,,"Organisations de conférences, groupes de discussion",Oui;Non,,5;0,,1,qcm,1,,3,,,,,,,,no_lgbt,,,,,,,,,,,,,,,,,,,,,
+20220237,20214171,132,LGBTQIA+,Sensibilisation,collaborator,,Nombre d'actions menées sur l'année avec des associations,,,Pas d'actions; Au moins une; Deux ou trois; Quatre fois ou plus,,0;3;4;5,,1,valeur_0_1_3_5,1,,3,,,,,,,,no_lgbt,,,,,,,,,,,,,,,,,,,,,
+20220238,,,LGBTQIA+,Gouvernance,collaborator,,L'établissement scolaire utilise la notion d'écriture inclusive ou épicène,,"Écriture épicène : Méthode de rédaction qui remplace le genre par des formulations neutres (exemple : les lectrices et lecteurs par le lectorat)
+Ecriture inclusive : Méthode de rédaction qui intègre le genre féminin au même niveau que le genre masculin par le point médiant par exemple (exemple : les lecteurs·rice·s)","Rien; En cours de réflexion, action à planifier; Action planifiée dans les 6 à 12 prochains mois; Ce dispostif existe mais n'est pas encore formalisé; Ce dispositif est formalisé mais necessite d'être renforcé ou élargit; Ce dispositif est formalisé depuis plusieurs années et suivi dans une démarche d'amélioration continue",,0;1;2;3;4;5,,1,qcm,1,,3,,,,,,,,no_lgbt,,,,,,,,,,,,,,,,,,,,,
+20220239,20214172,,LGBTQIA+,Qualité de vie au travail,collaborator,,Existence au sein de l'établissement scolaire d'un dispositif spécifique et ou d'une démarche de sensibilisation des managers et personnels RH pour accompagner le coming out professionnel des personnes LGBT+ ? ,,,"Rien; En cours de réflexion, action à planifier; Action planifiée dans les 6 à 12 prochains mois; Ce dispostif existe mais n'est pas encore formalisé; Ce dispositif est formalisé mais necessite d'être renforcé ou élargit; Ce dispositif est formalisé depuis plusieurs années et suivi dans une démarche d'amélioration continue",,0;1;2;3;4;5,,"0,5",qcm,1,,3,,,,,,,,no_lgbt,,,,,,,,,,,,,,,,,,,,,
+20220240,20214173,,LGBTQIA+,Sensibilisation,collaborator,,Existence au sein de l'établissement scolaire d'un programme ou dispositif visant à mettre en avant des rôles modèles LGBT+,,,"Rien; En cours de réflexion, action à planifier; Action planifiée dans les 6 à 12 prochains mois; Ce dispostif existe mais n'est pas encore formalisé; Ce dispositif est formalisé mais necessite d'être renforcé ou élargit; Ce dispositif est formalisé depuis plusieurs années et suivi dans une démarche d'amélioration continue",,0;1;2;3;4;5,,"0,5",qcm,1,,3,,,,,,,,no_lgbt,,,,,,,,,,,,,,,,,,,,,
+20220241,20214174,133,LGBTQIA+,Sensibilisation,collaborator,,"Nombre de salariés (f/h/nb) sensibilisés au sujet LGBT+ dans l'établissement scolaire: ateliers, conférences, prises de parole, témoignages...",,,"0%;
+0 et 10% ;
+10 et 30% ;
+30 et 40% ;
+40 et 50% ;
+Plus de 50%",,0;1;2;3;4;5,,"1,5","valeur_json_{
+  ""mode"": ""ratio-questions"",
+  ""questions"": [
+    ""20220003_0"",  ""20220003_1"",  ""20220003_2"", ""20220003_3""
+  ],
+  ""range"": [
+0,
+0.1,
+0.3,
+0.4,
+0.5,
+1
+  ],
+  ""attributionmode"": ""range""
+}",1,valeur,3,,,,,,,,no_lgbt,,,,,,,,,,,,,,,,,,,,,
+20220242,Même que 20214174,134,LGBTQIA+,Sensibilisation,collaborator,,Nombre de managers (f/h/nb) ayant suivi une sensibilisation aux stéréotypes liés à l'orientation sexuelle et à l'identité de genre.,,Managers et cadres de direction (f/h/nb),"0%;
+0 et 10% ;
+10 et 30% ;
+30 et 40% ;
+40 et 50% ;
+Plus de 50%",,0;1;2;3;4;5,,"1,5","valeur_json_{
+        ""mode"": ""ratio-questions"",
+        ""questions"": [
+                ""20220011"", ""20220010""
+        ],
+        ""range"": [
+                0,
+                0.1,
+                0.3,
+                0.4,
+                0.5,
+                1
+        ],
+        ""attributionmode"": ""range""
+}",1,,3,,,,,,,,no_lgbt,,,,,,,,,,,,,,,,,,,,,
+20220243,20214175,135,LGBTQIA+,Sensibilisation,collaborator,,"Nombre d'ateliers, conférences, prises de paroles, témoignages sur le sujet LGBT+ qui ont eu lieu sur les 12 derniers mois : ",,,Aucun;Au moins un;Entre deux et cinq;Plus de cinq,,0;3;4;5,,1,valeur_0_1_5,1,,3,,,,,,,,no_lgbt,,,,,,,,,,,,,,,,,,,,,
+20220244,,,LGBTQIA+,Qualité de vie au travail,collaborator,,Existence de dispositifs spécifiques pour favoriser l'accueil d'un enfant pour un collaborateur (f/h/nb),,"Égalité d'accès aux congés parentaux quel que soit le genre du collaborateurs (f/h/nb), congés supplémentaires en cas d'adoption...","Rien; En cours de réflexion, action à planifier; Action planifiée dans les 6 à 12 prochains mois; Ce dispostif existe mais n'est pas encore formalisé; Ce dispositif est formalisé mais necessite d'être renforcé ou élargit; Ce dispositif est formalisé depuis plusieurs années et suivi dans une démarche d'amélioration continue",,0;1;2;3;4;5,,"0,5",qcm,1,,3,,,,,,,,no_lgbt,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,25,,,,3,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,3,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,3,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,3,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,3,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,3,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,3,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,3,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,Etudiants,,,,,,,,,,,,,,,3,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,Catégories,,collaborator/student,,Les questions,,,Liste des choix de réponses,,,Commentaires,,,,,3,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+20221001,20214002,136,Transversal,Recrutement,student,,Répartition de l'effectif parmi les étudiants,,,,"Nombre de femmes;
+Nombre d'hommes;
+Nombre de personnes non-binaires;
+Nombre de personnes ne souhaitant pas se déclarer",,,0,subquestions,1,valeur,3,,,,,,,,no_general,,,,,,,,,,,,,,,,,,,,,
+20221003,,138,Transversal,Recrutement,student,,Nombre d'étudiants accueillis dans les 12 derniers mois,,,,,,,0,valeur,1,,3,,,,,,,,no_general,,,,,,,,,,,,,,,,,,,,,
+20221007,,142,Transversal,Carrière,student,,Nombre de personnes en stage et alternance parmi les étudiants (f/h/nb),,,,,,,0,valeur,1,,3,,,,,,,,no_general,,,,,,,,,,,,,,,,,,,,,
+20221008,,,Transversal,Gouvernance,student,,Il existe une stratégie Diversité et Inclusion avec un plan d'actions et des indicateurs de pilotage.,,,"Rien; En cours de réflexion, action à planifier; Action planifiée dans les 6 à 12 prochains mois; Ce dispostif existe mais n'est pas encore formalisé; Ce dispositif est formalisé mais necessite d'être renforcé ou élargit; Ce dispositif est formalisé depuis plusieurs années et suivi dans une démarche d'amélioration continue",,0;1;2;3;4;5,,"1,5",qcm,1,,3,,,,,,,,no_general,,,,,,,,,,,,,,,,,,,,,
+20221009,,,Transversal,Gouvernance,student,,Il existe une instance Diversité et Inclusion qui participe à la construction et au pilotage de la politique Diversité et Inclusion pour les étudiants.,,,"0 case cochée;
+1 case cochée;
+2 cases cochées;
+3 cases cochées","Budget dédié (hors évaluation);
+Membre du comex impliqué;
+Équivalent temps-plein",0;3;4;5,,"1,5",subquestions_qcm_0_1_2_3,1,multiple_qcm,3,,,,,,,,no_general,,,,,,,,,,,,,,,,,,,,,
+20221010,20214016,143,Transversal,Gouvernance,student,,Nombre d'étudiants (f/h/nb) ayant répondu à un sondage sur la politique Diversité et l'Inclusion de l'établissement scolaire dans les 24 derniers mois,,,"0 %;
+1 à 10% ;
+10 à 20% ;
+20 à 30% ;
+30 à 50% ;
+Plus de 50%",,0;1;2;3;4;5,,1,"valeur_json_{
+  ""mode"": ""ratio-questions"",
+  ""questions"": [
+    ""20221001_0"", ""20221001_1"", ""20221001_2"", ""20221001_3""
+  ],
+  ""range"": [
+    0,
+    0.1,
+0,2,
+0.3,
+0.5,
+1 ],
+  ""attributionmode"": ""range""
+}",1,,3,,,,,,,,no_general,,,,,,,,,,,,,,,,,,,,,
+20221011,20214017,144,Transversal,Gouvernance,student,,Nombre d'étudiants (f/h/nb) interrogés qui estiment que l'établissement scolaire est engagé sur la Diversité et Inclusion dans les 24 derniers mois,,,"0%;
+0 à 20% ;
+20 à 40% ;
+40 à 60% ;
+60 à 80% ;
+80 à 100%",,0;1;2;3;4;5,,1,"valeur_json_{
+	""mode"": ""ratio-questions"",
+	""questions"": [
+		""20221010""
+	],
+	""range"": [
+		0,
+		0.2,
+		0.4,
+		0.6,
+		0.8,
+		1
+	],
+	""attributionmode"": ""range""
+}",1,,3,,,,,,,,no_general,,,,,,,,,,,,,,,,,,,,,
+20221012,,,Transversal,Qualité de vie au travail,student,,Il existe un ou plusieurs groupes pour permettre aux étudiants afin d'échanger sur les sujets de diversité et d'inclusion.,,,"Rien; En cours de réflexion, action à planifier; Action planifiée dans les 6 à 12 prochains mois; Ce dispostif existe mais n'est pas encore formalisé; Ce dispositif est formalisé mais necessite d'être renforcé ou élargit; Ce dispositif est formalisé depuis plusieurs années et suivi dans une démarche d'amélioration continue",,0;1;2;3;4;5,,1,qcm,1,,3,,,,,,,,no_general,,,,,,,,,,,,,,,,,,,,,
+20221013,,,Transversal,Carrière,student,,"Dans le cadre de son programme de recherche, l'établissement mène des projets en faveur de la diversité et de l'inclusion",1,,"Rien; En cours de réflexion, action à planifier; Action planifiée dans les 6 à 12 prochains mois; Ce dispostif existe mais n'est pas encore formalisé; Ce dispositif est formalisé mais necessite d'être renforcé ou élargit; Ce dispositif est formalisé depuis plusieurs années et suivi dans une démarche d'amélioration continue",,0;1;2;3;4;5,,"0,5",qcm,1,,3,,,,,,,,no_general,,,,,,,,,,,,,,,,,,,,,
+20221014,,,Transversal,Qualité de vie au travail,student,,"L'établissement scolaire a mis en place un dispositif de prévention pour lutter contre toutes les formes de violence sur ses différents sites y compris le harcèlement verbal, physique et sexuel",,,"0 case cochée;
+1 case cochée;
+2 cases cochées;
+3 cases cochées;
+4 cases cochées","L'établissement scolaire a mis en place un dispositif de lanceur d'alerte au sein de l'établissement scolaire;
+L'établissement scolaire suit un processus bien défini et clairement documenté pour déposer des plaintes pour toutes les questions relatives à la discrimination;
+Des actions de sensibiliation sont régulièrement déployées;
+Dispositfs d'évaluation des enseignants par les étudiants sur une attitude d'enseignement inclusive",0;2;3;4;5,,1,subquestions_qcm_0_1_2_3_4,1,multiple_qcm,3,,,,,,,,no_general,,,,,,,,,,,,,,,,,,,,,
+20221015,,,Transversal,Recrutement,student,,L'établissement met en place des concours spécifiques pour favoriser l'égalité des chances et lutter contre la discrimination,,,"Rien; En cours de réflexion, action à planifier; Action planifiée dans les 6 à 12 prochains mois; Ce dispostif existe mais n'est pas encore formalisé; Ce dispositif est formalisé mais necessite d'être renforcé ou élargit; Ce dispositif est formalisé depuis plusieurs années et suivi dans une démarche d'amélioration continue",,0;1;2;3;4;5,,1,qcm,1,,3,,,,,,,,no_general,,,,,,,,,,,,,,,,,,,,,
+20221017,20214023,146,Transversal,Carrière,student,,Pourcentage de personnes au sein des direction des stages et alternance ayant suivi un parcours de formation à la lutte contre les discriminations dans les 2 dernières années. ,,Les personnes qui accompagnent les étudiants qui cherchent des stages et alternances.,"0%;
+Entre 0 et 10%;
+Entre 10 et 30%;
+Entre 30 et 40%;
+Entre 40 et 50%;
+Plus de 50%",,0;1;2;3;4;5,,1,pourcentage_0_10_30_40_50_100,1,,3,,,,,,,,no_general,,,,,,,,,,,,,,,,,,,,,
+202210171,,146,Transversal,Recrutement,student,100% MBS,Pourcentage des membres du jury d'admission formés à la lutte contre les dicriminations dans les 2 dernières années.,,,"0%;
+Entre 0 et 10%;
+Entre 10 et 30%;
+Entre 30 et 40%;
+Entre 40 et 50%;
+Plus de 50%",,0;1;2;3;4;5,,1,pourcentage_0_10_30_40_50_100,,,3,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+202210172,,146,Transversal,Qualité de vie au travail,student,Magali,Pourcentage des personnes qui accompagnent les étudiants (f/h/nb) dans leur scolarité ont été formées à la diversité et à l'inclusion.,,Personnes qui accompagnent les étudiants (f/h/nb) au quotidien,"0%;
+Entre 0 et 10%;
+Entre 10 et 30%;
+Entre 30 et 40%;
+Entre 40 et 50%;
+Plus de 50%",,0;1;2;3;4;5,,1,pourcentage_0_10_30_40_50_100,,,3,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+20221018,20214023,147,Transversal,Qualité de vie au travail,student,,Nombre d'étudiants ayant suivi un parcours de sensibilisation à la non-discrimination dans les 2 dernières années. ,,,"0%;
+Entre 0 et 10%;
+Entre 10 et 30%;
+Entre 30 et 40%;
+Entre 40 et 50%;
+Plus de 50%",,0;1;2;3;4;5,,"1,5","valeur_json_{
+  ""mode"": ""ratio-questions"",
+  ""questions"": [
+    ""20221001_0"", ""20221001_1"", ""20221001_2"", ""20221001_3""
+  ],
+  ""range"": [
+    0,
+0.1,
+    0.3,
+    0.4,
+    0.5,
+1],
+  ""attributionmode"": ""range""
+}",1,,3,,,,,,,,no_general,,,,,,,,,,,,,,,,,,,,,
+20221019,,,Transversal,Qualité de vie au travail,student,,L'établissement scolaire met en place des actions de sensibilisation à la non-discrimination et à l'inclusion,,,"0 case cochée;
+1 case cochée;
+2 cases cochées;
+3 cases cochées;
+4 cases cochées;
+5 cases cochées","E-learning;
+Conférences; projection de contenu;
+Jeux, animation, ateliers;
+Affichage, production de contenu;
+Évenements (sportifs, culturels...)
+",0;1;2;3;4;5,,1,subquestions_qcm_0_1_2_3_4_5,1,multiple_qcm,3,,,,,,,,no_general,,,,,,,,,,,,,,,,,,,,,
+20221103,,,Transversal,Gouvernance,student,,Il existe un bilan régulier des discriminations existantes dans l'organisation,,,"Rien; En cours de réflexion, action à planifier; Action planifiée dans les 6 à 12 prochains mois; Ce dispostif existe mais n'est pas encore formalisé; Ce dispositif est formalisé mais necessite d'être renforcé ou élargit; Ce dispositif est formalisé depuis plusieurs années et suivi dans une démarche d'amélioration continue",,0;1;2;3;4;5,,"1,5",qcm,1,,3,,,,,,,,no_lgbt,,,,,,,,,,,,,,,,,,,,,
+20221020,,,Transversal,Qualité de vie au travail,student,,L'établissement scolaire organise un temps dédié sur les sujets de la diversité et de l'inclusion (jours ou semaine de la diversité).,,,"Rien; En cours de réflexion, action à planifier; Action planifiée dans les 6 à 12 prochains mois; Ce dispostif existe mais n'est pas encore formalisé; Ce dispositif est formalisé mais necessite d'être renforcé ou élargit; Ce dispositif est formalisé depuis plusieurs années et suivi dans une démarche d'amélioration continue",,0;1;2;3;4;5,,1,qcm,1,,3,,,,,,,,no_general,,,,,,,,,,,,,,,,,,,,,
+20221021,,148,Transversal,Carrière,student,,Pourcentage de cours dédiés dans le curriculum ou nombre d'heures de cours sur les sujets D&I si pas de cours dédiés,,,,,,,0,Pourcentage,1,,3,,,,,,,,no_general,,,,,,,,,,,,,,,,,,,,,
+20221022,,,Transversal,Gouvernance,student,,L'établissement scolaire communique spécifiquement sur ses engagements en matière de diversité et inclusion. ,,,"0 case cochée;
+1 case cochée;
+2 cases cochées;
+3 cases cochées;
+4 cases cochées","L'établissement scolaire communique ses engagements diversité et inclusion;
+Ses objectifs et/ou son plan d'actions;
+ses principales actions D&I;
+Ses principaux indicateurs",0;2;3;4;5,,"0,5",subquestions_qcm_0_1_2_3_4,1,multiple_qcm,3,,,,,,,,no_general,,,,,,,,,,,,,,,,,,,,,
+20221023,,,Transversal,Gouvernance,student,,L'établissement scolaire communique spécifiquement sur ses engagements en matière de diversité et inclusion dans...,,,"Aucune case cochée;
+1 cases cochée;
+2 cases cochées;
+3 et 4 cases cochées ;
+5 et 6 cases cochées;
+7 cases cochées","Rapport d'activités;
+Les brochures, programmes et cursus;
+Site internet;
+Pages carrière du site internet;
+Site intranet;
+Conférences et interviews;
+Réseaux sociaux",0;1;2;3;4;5,,"0,5",subquestions_qcm_0_1_2_3_5_7,1,multiple_qcm,3,,,,,,,,no_general,,,,,,,,,,,,,,,,,,,,,
+20221024,,,Transversal,Qualité de vie au travail,student,,Les associations en lien avec le sport sont impliquées en faveur de la diversité et de l'inclusion,,"Bulle d'aide : Mixité, handisport,  lutte contre l'homophobie","Rien; En cours de réflexion, action à planifier; Action planifiée dans les 6 à 12 prochains mois; Ce dispostif existe mais n'est pas encore formalisé; Ce dispositif est formalisé mais necessite d'être renforcé ou élargit; Ce dispositif est formalisé depuis plusieurs années et suivi dans une démarche d'amélioration continue",,0;1;2;3;4;5,,"0,5",qcm,1,,3,,,,,,,,no_general,,,,,,,,,,,,,,,,,,,,,
+20221029,Indicateurs,,Transversal,Recrutement,student,,Il existe des outils afin de garantir un recrutement neutre et sans biais pour les étudiants (f/h/nb).,,,"0 case cochée;
+1 case cochée;
+2 cases cochées;
+3 cases cochées ;
+4 cases cochées ;
+5 cases cochées","Grille de selection sur des compétences;
+Méthodologie définie (grille transparente, process établi et commun) ;
+Adresses anonymes ;
+Candidatures anonymes;
+Concours écrit",0;1;2;3;4;5,,1,subquestions_qcm_0_1_2_3_4_5,1,multiple_qcm,3,,,,,,,,no_general,,,,,,,,,,,,,,,,,,,,,
+20221030,,,Transversal,Recrutement,student,,"Lors des différentes phases de pré-recrutement, l'établissement scolaire communique clairement sur les valeurs de diversité et d'inclusion.",,,"Rien; En cours de réflexion, action à planifier; Action planifiée dans les 6 à 12 prochains mois; Ce dispostif existe mais n'est pas encore formalisé; Ce dispositif est formalisé mais necessite d'être renforcé ou élargit; Ce dispositif est formalisé depuis plusieurs années et suivi dans une démarche d'amélioration continue",,0;1;2;3;4;5,,1,qcm,1,,3,,,,,,,,no_general,,,,,,,,,,,,,,,,,,,,,
+20221031,,,Transversal,Qualité de vie au travail,student,,Il existe des actions ou dispositifs pour soutenir les étudiants (f/h/nb) sur les enjeux de santé mentale,,,"Rien; En cours de réflexion, action à planifier; Action planifiée dans les 6 à 12 prochains mois; Ce dispostif existe mais n'est pas encore formalisé; Ce dispositif est formalisé mais necessite d'être renforcé ou élargit; Ce dispositif est formalisé depuis plusieurs années et suivi dans une démarche d'amélioration continue",,0;1;2;3;4;5,,1,qcm,1,,3,,,,,,,,no_general,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,21,,,,3,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+20221032,,153,Genre,Recrutement,student,,Nombre de femmes parmi les étudiants (f/h/nb).,,,"0%;
+Entre 0 et 10% ;
+Entre 10 et 20% ;
+Entre 20 et 30% ;
+Entre 30 et 40% ;
+Entre 40% et 60%;
+Entre 60% et 70%;
+Entre 70% et 80%;
+Entre 80% et 90%;
+Entre 90% et 100%;
+100%",,0;1;2;3;4;5;4;3;2;1;0,,1,"valeur_json_{
+  ""mode"": ""ratio-questions"",
+  ""questions"": [
+    ""20221001_0"", ""20221001_1"", ""20221001_2"", ""20221001_3""
+  ],
+  ""range"": [
+0,
+0.1,
+0.2,
+0.3,
+0.4,
+0.6,
+0.7,
+0.8,
+0.9,
+0.999,
+1
+   ],
+  ""attributionmode"": ""range""
+}",1,,3,,,,,,,,no_gender,,,,,,,,,,,,,,,,,,,,,
+20221033,,154,Genre,Recrutement,student,,Répartition par ethnies des étudiantes dans l'établissement scolaire,,,,,,Ethnies,0,valeur,1,,3,,,,,,,ethnicity_allowed,no_gender,,,,,,,,,,,,,,,,,,,,,
+20221034,,155,Genre,Recrutement,student,,Répartition par ethnies des étudiantes dans l'établissement scolaire,,,,,,Ethnies,0,valeur,1,,3,,,,,,,ethnicity_allowed,no_gender,,,,,,,,,,,,,,,,,,,,,
+20221035,,156,Genre,Recrutement,student,,Répartition par genre des étudiants (f/h/nb) admis dans les 12 derniers mois,,,,"Nombre de femmes;
+Nombre d'hommes;
+Nombre de personnes non-binaires;
+Nombre de personnes ne souhaitant pas se déclarer",,,0,"subquestions_json_{ ""mode"": ""ratio-questions"", ""questions"": [ ""20221035_0"", ""20221035_1"", ""20221035_2"" ]}",1,valeur,3,,,,,,,,no_gender,,,,,,,,,,,,,,,,,,,,,
+20221026,,156,Genre,Qualité de vie au travail,student,,Pourcentage de femmes au sein des postes clés du bureau des étudiants,,,"0%;
+Entre 0 et 10% ;
+Entre 10 et 20% ;
+Entre 20 et 30% ;
+Entre 30 et 40% ;
+Entre 40% et 60%;
+Entre 60% et 70%;
+Entre 70% et 80%;
+Entre 80% et 90%;
+Entre 90% et 100%;
+100%",,0;1;2;3;4;5;4;3;2;1;0,,1,pourcentage_0_10_20_30_40_60_70_80_90_100,1,,3,,,,,,,,no_general,,,,,,,,,,,,,,,,,,,,,
+20221028,20214042,156,Genre,Qualité de vie au travail,student,,Pourcentage de femmes au sein des postes clés du bureau des sports,,,"0%;
+Entre 0 et 10% ;
+Entre 10 et 20% ;
+Entre 20 et 30% ;
+Entre 30 et 40% ;
+Entre 40% et 60%;
+Entre 60% et 70%;
+Entre 70% et 80%;
+Entre 80% et 90%;
+Entre 90% et 100%;
+100%",,0;1;2;3;4;5;4;3;2;1;0,,1,pourcentage_0_10_20_30_40_60_70_80_90_100,1,,3,,,,,,,,no_general,,,,,,,,,,,,,,,,,,,,,
+20221036,,,Genre,Qualité de vie au travail,student,,L'établissement scolaire a mis en place et/ou soutient un réseau au féminin / mixité / au masculin pour les étudiants (f/h/nb).,,,"Rien; En cours de réflexion, action à planifier; Action planifiée dans les 6 à 12 prochains mois; Ce dispostif existe mais n'est pas encore formalisé; Ce dispositif est formalisé mais necessite d'être renforcé ou élargit; Ce dispositif est formalisé depuis plusieurs années et suivi dans une démarche d'amélioration continue",,0;1;2;3;4;5,,1,qcm,1,,3,,,,,,,,no_gender,,,,,,,,,,,,,,,,,,,,,
+20221037,,,Genre,Qualité de vie au travail,student,,Mise en place d'un programme de mentoring pour aider les étudiants (f/h/nb),,,"0 case cochée;
+1 case cochée;
+2 cases cochées;
+3 cases cochées","Accompagnement pour les étudiants en situation de handicap;
+Mentorat pour les étudiants en faveur de la mixité;
+Programmes en faveur de l'égalité des chances (création de réseaux, mentorat...)",0;3;4;5,,1,subquestions_qcm_0_1_2_3,1,multiple_qcm,3,,,,,,,,no_gender,,,,,,,,,,,,,,,,,,,,,
+20221038,,,Genre,Qualité de vie au travail,student,,Mise à disposition de biens de première necessité à l'attention des collaborateurs et étudiants (f/h/nb).,,,"Rien; En cours de réflexion, action à planifier; Action planifiée dans les 6 à 12 prochains mois; Ce dispostif existe mais n'est pas encore formalisé; Ce dispositif est formalisé mais necessite d'être renforcé ou élargit; Ce dispositif est formalisé depuis plusieurs années et suivi dans une démarche d'amélioration continue",,0;1;2;3;4;5,,"0,5",qcm,1,,3,,,,,,,,no_gender,,,,,,,,,,,,,,,,,,,,,
+20221039,20214069,157,Genre,Qualité de vie au travail,student,,Nombre d'étudiants (f/h/nb) sensibilisés aux stéréotypes de genre et aux propos et comportements sexistes et sexuelles dans les 12 derniers mois.,,,0%;Moins de 10%;Entre 10 et 30%;Entre 30 et 40%;Entre 40 et 50%;Plus de 50%,,0;1;2;3;4;5,,"1,5","valeur_json_{
+  ""mode"": ""ratio-questions"",
+  ""questions"": [
+    ""20221001_0"",  ""20221001_1"",  ""20221001_2"",""20221001_3""
+  ],
+  ""range"": [
+    0,
+    0.1,
+    0.3,
+    0.4,
+0.5,
+1 ],
+  ""attributionmode"": ""range""
+}",1,,3,,,,,,,,no_gender,,,,,,,,,,,,,,,,,,,,,
+20221040,,,Genre,Gouvernance,student,,L'établissement scolaire a déployé une communication interne et/ou externe sur l’égalité professionnelle femmes-hommes (supports de communication web et print)  ?  ,,,"Rien; En cours de réflexion, action à planifier; Action planifiée dans les 6 à 12 prochains mois; Ce dispostif existe mais n'est pas encore formalisé; Ce dispositif est formalisé mais necessite d'être renforcé ou élargit; Ce dispositif est formalisé depuis plusieurs années et suivi dans une démarche d'amélioration continue",,0;1;2;3;4;5,,1,qcm,1,,3,,,,,,,,no_gender,,,,,,,,,,,,,,,,,,,,,
+20221041,,,Genre,Recrutement,student,,Il existe un dispositif pour garantir la mixité dans les promotions et fillières non-mixtes.,,,"0 case cochée;
+1 case cochée;
+2 cases cochées;
+3 cases cochées;
+4 cases cochées;
+5 cases cochées","Communication spécifique en faveur de la mixité;
+Programme porte ouverte en faveur de la mixité;
+Prise de parole dans les médias;
+Interventions dans les établissements scolaires;
+La majorité des personnes en charge des admissions (f/h/nb) ont été formés au stéréotypes de genre",0;1;2;3;4;5,,"1,5",subquestions_qcm_0_1_2_3_4_5,1,multiple_qcm,3,,,,,,,,no_gender,,,,,,,,,,,,,,,,,,,,,
+20221042,20221042,158,Genre,Recrutement,student,,Répartition par genre au sein de la filière ....,1,,,"Pourcentage de femmes;
+Pourcentage d'hommes;
+Pourcentage de personnes non-binaires;
+Pourcentage de personnes ne souhaitant pas se déclarer",,Laisser en champs libre comme pour la répartition F/H au sein des métiers,"0,5",subquestions,1,pourcentage,3,,,,,,,,no_gender,,,,,,,,,,,,,,,,,,,,,
+202210421,20221042,158,Genre,Recrutement,student,,Répartition par genre au sein de la filière ....,1,,,"Pourcentage de femmes;
+Pourcentage d'hommes;
+Pourcentage de personnes non-binaires;
+Pourcentage de personnes ne souhaitant pas se déclarer",,Laisser en champs libre comme pour la répartition F/H au sein des métiers,"0,5",subquestions,1,pourcentage,3,,,,,,,,no_gender,,,,,,,,,,,,,,,,,,,,,
+202210422,20221042,158,Genre,Recrutement,student,,Répartition par genre au sein de la filière ....,1,,,"Pourcentage de femmes;
+Pourcentage d'hommes;
+Pourcentage de personnes non-binaires;
+Pourcentage de personnes ne souhaitant pas se déclarer",,Laisser en champs libre comme pour la répartition F/H au sein des métiers,"0,5",subquestions,1,pourcentage,3,,,,,,,,no_gender,,,,,,,,,,,,,,,,,,,,,
+202210423,20221042,158,Genre,Recrutement,student,,Répartition par genre au sein de la filière ....,1,,,"Pourcentage de femmes;
+Pourcentage d'hommes;
+Pourcentage de personnes non-binaires;
+Pourcentage de personnes ne souhaitant pas se déclarer",,Laisser en champs libre comme pour la répartition F/H au sein des métiers,"0,5",subquestions,1,pourcentage,3,,,,,,,,no_gender,,,,,,,,,,,,,,,,,,,,,
+202210424,20221042,158,Genre,Recrutement,student,,Répartition par genre au sein de la filière ....,1,,,"Pourcentage de femmes;
+Pourcentage d'hommes;
+Pourcentage de personnes non-binaires;
+Pourcentage de personnes ne souhaitant pas se déclarer",,Laisser en champs libre comme pour la répartition F/H au sein des métiers,"0,5",subquestions,1,pourcentage,3,,,,,,,,no_gender,,,,,,,,,,,,,,,,,,,,,
+202210425,20221042,158,Genre,Recrutement,student,,Répartition par genre au sein de la filière ....,1,,,"Pourcentage de femmes;
+Pourcentage d'hommes;
+Pourcentage de personnes non-binaires;
+Pourcentage de personnes ne souhaitant pas se déclarer",,Laisser en champs libre comme pour la répartition F/H au sein des métiers,"0,5",subquestions,1,pourcentage,3,,,,,,,,no_gender,,,,,,,,,,,,,,,,,,,,,
+202210426,,,Genre,Recrutement,student,,Répartition par genre des primo-entrants en première année,,,,"Pourcentage de femmes;
+Pourcentage d'hommes;
+Pourcentage de personnes non-binaires;
+Pourcentage de personnes ne souhaitant pas se déclarer",,,"0,5",subquestions,,pourcentage,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+202210427,,,Genre,Recrutement,student,,Répartition par genre des primo-entrants en quatrième année,,,,"Pourcentage de femmes;
+Pourcentage d'hommes;
+Pourcentage de personnes non-binaires;
+Pourcentage de personnes ne souhaitant pas se déclarer",,,"0,5",subquestions,,pourcentage,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+202210428,,,Genre,Carrière,student,,Taux d'obtention du diplôme de troisième année,,,,"Pour les femmes ;
+Pour les hommes ;
+Pour les personnes non-binaires ;
+Pour les personnes ne souhaitant pas répondre",,,0,subquestions,,pourcentage,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+202210429,,,Genre,Carrière,student,,Taux d'obtention du diplôme de cinquième année,,,,"Pour les femmes ;
+Pour les hommes ;
+Pour les personnes non-binaires ;
+Pour les personnes ne souhaitant pas répondre",,,0,subquestions,,pourcentage,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+202210443,20221043,159,Genre,Recrutement,student,,Écart entre les taux d'insertion des femmes et des hommes à la délivrance du diplôme.,,Écart d'insertion = Taux d'insertion des hommes - Taux d'insertion des femmes,Moins de -10% ; Entre -10 et -5% ; Entre -5 et -3% ; Entre -3 et -1% ; Entre -1 et 0% ; Entre 0 et 1% ; Entre 1 et 3% ; Entre 3 et 5% ; Entre 5 et 10% ; Plus de 10% ,,1;2;3;4;5;5;4;3;2;1,Laisser en champs libre comme pour la répartition F/H au sein des métiers,"0,5",pourcentagecroissance_-10_-5_-3_-1_0_1_3_5_10_100,1,,3,,,,,,,,no_gender,,,,,,,,,,,,,,,,,,,,,
+202210444,20221043,159,Genre,Recrutement,student,,Écart entre les taux de cadres hommes et femmes à la délivrance du diplome,,Écart entre les taux de cadres = Taux de cadres hommes - Taux de cadres femmes,Moins de -10% ; Entre -10 et -5% ; Entre -5 et -3% ; Entre -3 et -1% ; Entre -1 et 0% ; Entre 0 et 1% ; Entre 1 et 3% ; Entre 3 et 5% ; Entre 5 et 10% ; Plus de 10% ,,1;2;3;4;5;5;4;3;2;1,,"0,5",pourcentagecroissance_-10_-5_-3_-1_0_1_3_5_10_100,1,,3,,,,,,,,no_gender,,,,,,,,,,,,,,,,,,,,,
+202210442,A voir avec Nico,160,Genre,Carrière,student,,Écart de rémunération brute annuelle moyenne entre les femmes et les hommes pour les premiers emplois,,,Moins de -10% ; Entre -10 et -5% ; Entre -5 et -3% ; Entre -3 et -1% ; Entre -1 et 0% ; Entre 0 et 1% ; Entre 1 et 3% ; Entre 3 et 5% ; Entre 5 et 10% ; Plus de 10% ,,1;2;3;4;5;5;4;3;2;1,,"0,5",pourcentagecroissance_-10_-5_-3_-1_0_1_3_5_10_100,1,,3,,,,,,,,no_gender,,,,,,,,,,,,,,,,,,,,,
+20221044,A voir avec Nico,160,Genre,Carrière,student,,Écart de rémunération brute annuelle moyenne entre les femmes et les hommes pour les premiers emplois pour les cadres,,,Moins de -10% ; Entre -10 et -5% ; Entre -5 et -3% ; Entre -3 et -1% ; Entre -1 et 0% ; Entre 0 et 1% ; Entre 1 et 3% ; Entre 3 et 5% ; Entre 5 et 10% ; Plus de 10% ,,1;2;3;4;5;5;4;3;2;1,,"0,5",pourcentagecroissance_-10_-5_-3_-1_0_1_3_5_10_100,1,,3,,,,,,,,no_gender,,,,,,,,,,,,,,,,,,,,,
+202210441,A voir avec Nico,160,Genre,Carrière,student,,Écart de rémunération brute annuelle moyenne entre les femmes et les hommes pour les premiers emplois pour les non-cadres,,,Moins de -10% ; Entre -10 et -5% ; Entre -5 et -3% ; Entre -3 et -1% ; Entre -1 et 0% ; Entre 0 et 1% ; Entre 1 et 3% ; Entre 3 et 5% ; Entre 5 et 10% ; Plus de 10% ,,1;2;3;4;5;5;4;3;2;1,,"0,5",pourcentagecroissance_-10_-5_-3_-1_0_1_3_5_10_100,1,,3,,,,,,,,no_gender,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,16,,23,,3,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+202210451,,160,Handicap,Recrutement,student,,Taux d'étudiants en situation de handicap au sein de l'établissement,,,,,,,"1,5","pourcentage_0_0,5_1_2_3_100",1,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+202210452,,160,Handicap,Recrutement,student,,Répartition des étudiants handicapés (f/h/nb) par genre,,,,"Pourcentage de femmes;
+Pourcentage d'hommes;
+Pourcentage de personnes non-binaires;
+Pourcentage de personnes ne souhaitant pas se déclarer",,,0,"subquestions_json_{ ""mode"": ""ratio-questions"", ""questions"": [ ""202210452_0"", ""202210452_1"", ""202210452_2"" ]}",1,pourcentage,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+20221045,,161,Handicap,Recrutement,student,,Nombre d'aménagement spécifique mis en place dans l'année,,"Besoin d'aménagement spécifique consentie (ajustement pour les examens, ",,,,,0,valeur,1,,3,,,,,,,,no_disability,,,,,,,,,,,,,,,,,,,,,
+20221046,,,Handicap,Qualité de vie au travail,student,,L'établissement scolaire met en place des aménagements spécifiques pour les étudiants (f/h/nb) avec...,,,"Rien; En cours de réflexion, action à planifier; Action planifiée dans les 6 à 12 prochains mois; Ce dispostif existe mais n'est pas encore formalisé; Ce dispositif est formalisé mais necessite d'être renforcé ou élargit; Ce dispositif est formalisé depuis plusieurs années et suivi dans une démarche d'amélioration continue",,0;1;2;3;4;5,,1,qcm,1,,3,,,,,,,,no_disability,,,,,,,,,,,,,,,,,,,,,
+20221047,,162,Handicap,Qualité de vie au travail,student,,Le budget provisionné alloué aux aménagements spécifiques à destination des étudiants,,,,,,,0,valeur,1,,3,,,,,,,,no_disability,,,,,,,,,,,,,,,,,,,,,
+20221048,,,Handicap,Gouvernance,student,,L'entreprise a au moins...,,,"0 case cochée;
+1 case cochée;
+2 cases cochées;
+3 cases cochées;
+4 cases cochées","une personne référente en équivalent temps plein sur le sujet du handicap;
+un réseau de référents engagé sur le sujet;
+une commission handicap",0;2;3;4;5,,1,subquestions_qcm_0_1_2_3_4,1,multiple_qcm,3,,,,,,,,no_disability,,,,,,,,,,,,,,,,,,,,,
+20221049,,,Handicap,Qualité de vie au travail,student,,L'établissement scolaire a organisé un processus d'alerte des arrêts maladies longs ou répétés au sein de l'organisation.,,,"Rien; En cours de réflexion, action à planifier; Action planifiée dans les 6 à 12 prochains mois; Ce dispostif existe mais n'est pas encore formalisé; Ce dispositif est formalisé mais necessite d'être renforcé ou élargit; Ce dispositif est formalisé depuis plusieurs années et suivi dans une démarche d'amélioration continue",,0;1;2;3;4;5,,1,qcm,1,,3,,,,,,,,no_disability,,,,,,,,,,,,,,,,,,,,,
+20221050,,,Handicap,Qualité de vie au travail,student,,L' établissement scolaire suit les données relatives aux avis d’inaptitudes.,,,"Rien; En cours de réflexion, action à planifier; Action planifiée dans les 6 à 12 prochains mois; Ce dispostif existe mais n'est pas encore formalisé; Ce dispositif est formalisé mais necessite d'être renforcé ou élargit; Ce dispositif est formalisé depuis plusieurs années et suivi dans une démarche d'amélioration continue",,0;1;2;3;4;5,,"0,5",qcm,1,,3,,,,,,,,no_disability,,,,,,,,,,,,,,,,,,,,,
+20221051,,,Handicap,Recrutement,student,,Il existe un dispositif pour attirer et accueillir des étudiants en situation de handicap,1,"Actions pour promouvoir la politique handicap de l'établissement scolaire afin de sourcer des étudiants handicapés (f/h/nb)
+","Rien; En cours de réflexion, action à planifier; Action planifiée dans les 6 à 12 prochains mois; Ce dispostif existe mais n'est pas encore formalisé; Ce dispositif est formalisé mais necessite d'être renforcé ou élargit; Ce dispositif est formalisé depuis plusieurs années et suivi dans une démarche d'amélioration continue",,0;1;2;3;4;5,,1,qcm,1,,3,,,,,,,,no_disability,,,,,,,,,,,,,,,,,,,,,
+20221052,,,Handicap,Qualité de vie au travail,student,,L'établissement scolaire accompagne les associations étudiantes pour favoriser la diversité et l'inclusion,,,"Rien; En cours de réflexion, action à planifier; Action planifiée dans les 6 à 12 prochains mois; Ce dispostif existe mais n'est pas encore formalisé; Ce dispositif est formalisé mais necessite d'être renforcé ou élargit; Ce dispositif est formalisé depuis plusieurs années et suivi dans une démarche d'amélioration continue",,0;1;2;3;4;5,,1,qcm,1,,3,,,,,,,,no_disability,,,,,,,,,,,,,,,,,,,,,
+20221053,,,Handicap,Carrière,student,,L'établissement scolaire ou le réseau des diplomés est capable d'accompagner les étudiants en situation de handicap jusqu'à l'insertion professionnelle,,,"Rien; En cours de réflexion, action à planifier; Action planifiée dans les 6 à 12 prochains mois; Ce dispostif existe mais n'est pas encore formalisé; Ce dispositif est formalisé mais necessite d'être renforcé ou élargit; Ce dispositif est formalisé depuis plusieurs années et suivi dans une démarche d'amélioration continue",,0;1;2;3;4;5,,1,qcm,1,,3,,,,,,,,no_disability,,,,,,,,,,,,,,,,,,,,,
+20221054,,,Handicap,Carrière,student,,Existence d'un suivi pédagogique pour les étudiants en situation de handicap dans l'établissement scolaire,,,"Rien; En cours de réflexion, action à planifier; Action planifiée dans les 6 à 12 prochains mois; Ce dispostif existe mais n'est pas encore formalisé; Ce dispositif est formalisé mais necessite d'être renforcé ou élargit; Ce dispositif est formalisé depuis plusieurs années et suivi dans une démarche d'amélioration continue",,0;1;2;3;4;5,,"1,5",qcm,1,,3,,,,,,,,no_disability,,,,,,,,,,,,,,,,,,,,,
+202210551,,163,Handicap,Carrière,student,,Taux d'étudiants qui mène à terme,,,,,,,0,pourcentage,1,,3,,,,,,,,no_disability,,,,,,,,,,,,,,,,,,,,,
+20221055,,163,Handicap,Carrière,student,,Taux d'étudiants en situation de handicap qui mène à terme,,,,,0;1;2;3;4;5,,1,pourcentage_relative_202210551_-15_-10_-5_0_100,1,,3,,,,,,,,no_disability,,,,,,,,,,,,,,,,,,,,,
+20221056,,164,Handicap,Carrière,student,,Nombre d'heures consacrées au soutien pédagogique et administratif des étudiants en situation de handicap,,,,,,,0,valeur,1,,3,,,,,,,,no_disability,,,,,,,,,,,,,,,,,,,,,
+20221057,20214100,165,Handicap,Carrière,student,,Taux d'accessibilité du site intranet de l'établissement scolaire en pourcentage :,,,,,0;1;2;3;4;5,,"0,5",pourcentage,1,,3,,,,,,,,no_disability,,,,,,,,,,,,,,,,,,,,,
+20221058,même que 20214175 mais en bleu handicap,166,Handicap,Qualité de vie au travail,student,,"Nombre d'ateliers, conférences, prise de parole, témoignage sur le handicap dans les 12 derniers mois :",,,Aucun;Au moins un;Entre deux et trois; Entre trois et cinq ;Plus de cinq,,0;2;3;4;5,,1,valeur_0_1_2_3_5,1,,3,,,,,,,,no_disability,,,,,,,,,,,,,,,,,,,,,
+20221059,20214104,167,Handicap,Qualité de vie au travail,student,,Nombre d'étudiants (f/h/nb) ayant suivi dans l'année un dispositif de sensibilisation et/ou de formation avec mention des stéréotypes liés au handicap visible et invisible,,,0%;Moins de 10%;Entre 10 et 30%;Entre 30 et 40%;Entre 40 et 50%;Plus de 50%,,0;1;2;3;4;5,,"1,5","valeur_json_{
+  ""mode"": ""ratio-questions"",
+  ""questions"": [
+    ""20221001_0"",  ""20221001_1"",  ""20221001_2"",""20221001_3""
+  ],
+  ""range"": [
+    0,
+    0.1,
+    0.3,
+    0.4,
+0.5,
+1 ],
+  ""attributionmode"": ""range""
+}",1,,3,,,,,,,,no_disability,,,,,,,,,,,,,,,,,,,,,
+20221060,,,Handicap,Carrière,student,,L'établissement scolaire informe les étudiants (f/h/nb) sur les mesures existantes en faveur de l'accompagnement pendant les études et durant l'insertion professionnelle ,,,"Rien; En cours de réflexion, action à planifier; Action planifiée dans les 6 à 12 prochains mois; Ce dispostif existe mais n'est pas encore formalisé; Ce dispositif est formalisé mais necessite d'être renforcé ou élargit; Ce dispositif est formalisé depuis plusieurs années et suivi dans une démarche d'amélioration continue",,0;1;2;3;4;5,,1,qcm,1,,3,,,,,,,,no_disability,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,13,,,,3,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+20221061,,,Origines,Gouvernance,student,,"Il existe un diagnostic sur la politique diversité multiculturelle (origines culturelle, sociale, trajectoire de réussite au regard de l'origine sociale) a été réalisé soit en interne soit par une structure extérieure.
+",,,"0 case cochée;
+1 case cochée;
+2 cases cochées;
+3 cases cochées ;
+4 cases cochées
+","Sur les pratiques d'admissions;
+Sur les dossiers reçues;
+Sur les étudiants ;
+Sur les trajectoires de réussite des cursus d'enseignement",0;2; 3;4;5,,1,subquestions_qcm_0_1_2_3_4,1,multiple_qcm,3,,,,,,,,no_ethnicity,,,,,,,,,,,,,,,,,,,,,
+20221062,20214107,168,Origines,Recrutement,student,,Nombre de nationalités parmi les étudiants,,,,,,,0,valeur,1,,3,,,,,,,,no_ethnicity,,,,,,,,,,,,,,,,,,,,,
+20221063,,169,Origines,Recrutement,student,,"Si c'est pertinent, indiquez le nombre total d'ethnies présentes dans l'établissement scolaire",,,,,,Ethnies,0,valeur,1,,3,,,,,,,ethnicity_allowed,no_ethnicity,,,,,,,,,,,,,,,,,,,,,
+20221064,,170,Origines,Recrutement,student,,Répartition par ethnies dans l'établissement scolaire,,,,,,Ethnies,0,valeur,1,,3,,,,,,,ethnicity_allowed,no_ethnicity,,,,,,,,,,,,,,,,,,,,,
+20221065,,171,Origines,Recrutement,student,,Répartition par ethnies dans l'établissement scolaire,,,,,,Ethnies,0,valeur,1,,3,,,,,,,ethnicity_allowed,no_ethnicity,,,,,,,,,,,,,,,,,,,,,
+20221066,202141091,172,Origines,Recrutement,student,,Nombre de personnes ayant une nationalité autre que Française au sein des étudiants,,,"0%;
+Entre 0 et 2%;
+Entre 2 et 4;
+Entre 4 et 6%;
+Entre 6 et 8%;
+Plus de 8%",,0;1;2;3;4;5,,1,"valeur_json_{
+  ""mode"": ""ratio-questions"",
+  ""questions"": [
+    ""20221001_0"",  ""20221001_1"",  ""20221001_2"",""20221001_3""
+  ],
+  ""range"": [
+    0,
+    0.02,
+    0.04,
+    0.06,
+0.08,
+1 ],
+  ""attributionmode"": ""range""
+}",1,,3,,,,,,,,no_ethnicity,,,,,,,,,,,,,,,,,,,,,
+20221067,,173,Origines,Recrutement,student,,Taux d'étudiants boursiers (bourse sur critères sociaux) dans l'établissement,,"Hors bourse interne, sur le public éligible : hors étudiants en alternance (contrat de professionalisation et apprentissage) et étudiants internationaux.","Plus de 30% en dessous la moyenne du pays;
+Entre 30 et 20 en dessous la moyenne du pays;
+Entre 20 et 10 en dessous la moyenne du pays;
+Entre 10 et 5 en dessous la moyenne du pays;
+Au moins égal à la moyenne du pays;
+Supérieur à la moyenne du pays",,0;1;2;3;4;5,,1,pourcentage_relative_country_scholarshipstudent_-30_-20_-10_-5_0_100,1,,3,,,,,,,,no_ethnicity,,,,,,,,,,,,,,,,,,,,,
+202210671,,174,Origines,Recrutement,student,,Taux d'étudiants boursiers (bourse sur critères sociaux) dans l'établissement par échelon,,,,"échelon 0 ;
+échelon 1 ;
+échelon 2 ;
+échelon 3 ;
+échelon 4 ;
+échelon 5 ;
+échelon 6 ;
+échelon 7
+",,,0,subquestions,1,pourcentage,3,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+20221068,,174,Origines,Recrutement,student,,Taux d'étudiants boursiers (bourse sur critères sociaux) accueillis dans les 12 derniers mois au sein de l'établissement,,"Hors bourse interne, sur le public éligible : hors étudiants en alternance (contrat de professionalisation et apprentissage) et étudiants internationaux.","Plus de 30% en dessous la moyenne du pays;
+Entre 30 et 20 en dessous la moyenne du pays;
+Entre 20 et 10 en dessous la moyenne du pays;
+Entre 10 et 5 en dessous la moyenne du pays;
+Au moins égal à la moyenne du pays;
+Supérieur à la moyenne du pays",,0;1;2;3;4;5,,1,pourcentage_relative_country_scholarshipstudent_-30_-20_-10_-5_0_100,1,,3,,,,,,,,no_ethnicity,,,,,,,,,,,,,,,,,,,,,
+20221069,,,Origines,Gouvernance,student,,L'établissement scolaire possède un dispositif de bourse interne,,,"Rien; En cours de réflexion, action à planifier; Action planifiée dans les 6 à 12 prochains mois; Ce dispostif existe mais n'est pas encore formalisé; Ce dispositif est formalisé mais necessite d'être renforcé ou élargit; Ce dispositif est formalisé depuis plusieurs années et suivi dans une démarche d'amélioration continue",,0;1;2;3;4;5,,1,qcm,1,,3,,,,,,,,no_ethnicity,,,,,,,,,,,,,,,,,,,,,
+20221070,,175,Origines,Gouvernance,student,,Nombre d'étudiants ayant obtenu une bourse spécifique de l'établissement,,,,,,,0,"valeur_json_{
+  ""mode"": ""ratio-questions"",
+  ""questions"": [
+    ""20221001_0"",  ""20221001_1"",  ""20221001_2"",""20221001_3""
+  ],
+  ""range"": [],
+  ""attributionmode"": ""range""
+}",1,,3,,,,,,,,no_ethnicity,,,,,,,,,,,,,,,,,,,,,
+20221071,,176,Origines,Carrière,student,,Taux de réussite des étudiants,,,,"Boursiers;
+Non boursier ;
+Total",,,0,subquestions,1,pourcentage,3,,,,,,,,no_ethnicity,,,,,,,,,,,,,,,,,,,,,
+20221072,,177,Origines,Carrière,student,,Taux de rétention des étudiants,,,,"Boursiers;
+Non boursier ;
+Total",,,0,subquestions,1,pourcentage,3,,,,,,,,no_ethnicity,,,,,,,,,,,,,,,,,,,,,
+20221073,,178,Origines,Recrutement,student,,Nombre d'étudiants ayant obtenu une bourse spécifique accueillis dans les 12 derniers mois au sein de l'établissement,,,,,,,0,valeur,1,,3,,,,,,,,no_ethnicity,,,,,,,,,,,,,,,,,,,,,
+20221074,,179,Origines,Recrutement,student,,Nombre d'établissement de provenance des candidats (f/h/nb),,Académie d'obtention du bac,,,,,0,valeur,1,,3,,,,,,,,no_ethnicity,,,,,,,,,,,,,,,,,,,,,
+20221076,,181,Origines,Recrutement,student,,Taux d'étudiants ayant obtenu le bac dans un lycée situé en QPV (Quartiers Prioritaires de la Ville),,,,,,,0,pourcentage,1,,3,,,,,,,,no_ethnicity,,,,,,,,,,,,,,,,,,,,,
+20221077,,182,Origines,Recrutement,student,,Nombre de partenariat avec des lycées en QPV (Quartiers Prioritaires de la Ville),,,"0;
+Au moins un;
+Entre 2 et 5;
+Entre 5 et 10;
+Entre 10 et 15;
+Plus de 15",,0;1;2;3;4;5,,1,valeur_0_1_5_10_15,1,,3,,,,,,,,no_ethnicity,,,,,,,,,,,,,,,,,,,,,
+20221078,20214112,183,Origines,Recrutement,student,,Nombre d'étudiant résidant dans une Zone de Revitalisation Rurale (ZRR),,,"0%;
+Entre 0 et 3%;
+Entre 3 et 6%;
+Entre 6 et 9%;
+Entre 9 et 12%;
+Plus de 12%",,0;1;2;3;4;5,,1,"valeur_json_{
+  ""mode"": ""ratio-questions"",
+  ""questions"": [
+    ""20221001_0"",  ""20221001_1"",  ""20221001_2"",""20221001_3""
+  ],
+  ""range"": [
+    0,
+    0.023,
+    0.06,
+    0.09,
+0.12,
+1 ],
+  ""attributionmode"": ""range""
+}",1,,3,,,,,,,,no_ethnicity,,,,,,,,,,,,,,,,,,,,,
+202210781,20214112,183,Origines,Recrutement,student,,Nombre d'étudiant résidant dans un QPV (Quartiers Prioritaires de la Ville),,,"0%;
+Entre 0 et 3%;
+Entre 3 et 6%;
+Entre 6 et 9%;
+Entre 9 et 12%;
+Plus de 12%",,0;1;2;3;4;5,,1,"valeur_json_{
+  ""mode"": ""ratio-questions"",
+  ""questions"": [
+    ""20221001_0"",  ""20221001_1"",  ""20221001_2"",""20221001_3""
+  ],
+  ""range"": [
+    0,
+    0.023,
+    0.06,
+    0.09,
+0.12,
+1 ],
+  ""attributionmode"": ""range""
+}",1,,3,,,,,,,,no_ethnicity,,,,,,,,,,,,,,,,,,,,,
+202210782,,,Origines,Carrière,student,,"Il existe un parcours pédagogique axé autour des compétences comportementales (dépassement de soi, auto-censure...)",,,"Rien; En cours de réflexion, action à planifier; Action planifiée dans les 6 à 12 prochains mois; Ce dispostif existe mais n'est pas encore formalisé; Ce dispositif est formalisé mais necessite d'être renforcé ou élargit; Ce dispositif est formalisé depuis plusieurs années et suivi dans une démarche d'amélioration continue",,0;1;2;3;4;5,,1,qcm,1,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+20221079,,,Origines,Recrutement,student,,Une démarche de simpification de la procédure et de la durée du concours a été réalisée pour une plus grande accessibilité,,,"Rien; En cours de réflexion, action à planifier; Action planifiée dans les 6 à 12 prochains mois; Ce dispostif existe mais n'est pas encore formalisé; Ce dispositif est formalisé mais necessite d'être renforcé ou élargit; Ce dispositif est formalisé depuis plusieurs années et suivi dans une démarche d'amélioration continue",,0;1;2;3;4;5,,1,qcm,1,,3,,,,,,,,no_ethnicity,,,,,,,,,,,,,,,,,,,,,
+20221080,20214023 mais en vert,184,Origines,Carrière,student,,Pourcentage de personnes en charge du parcours pédagogique ayant un suivi un parcours de formation au recrutement inclusif sur les enjeux culturels et sociaux.,,,,,0;1;2;3;4;5,,1,pourcentage_0_10_30_40_50_100,1,,3,,,,,,,,no_ethnicity,,,,,,,,,,,,,,,,,,,,,
+20221081,,,Origines,Recrutement,student,,L'établissement scolaire a mis en place des actions de recrutement et des objectifs ciblant des étudiants (f/h/nb) résidant dans des quartiers prioritaires de la ville.,,,"Rien; En cours de réflexion, action à planifier; Action planifiée dans les 6 à 12 prochains mois; Ce dispostif existe mais n'est pas encore formalisé; Ce dispositif est formalisé mais necessite d'être renforcé ou élargit; Ce dispositif est formalisé depuis plusieurs années et suivi dans une démarche d'amélioration continue",,0;1;2;3;4;5,,1,qcm,1,,3,,,,,,,,no_ethnicity,,,,,,,,,,,,,,,,,,,,,
+20221082,,,Origines,Recrutement,student,,L'établissement scolaire a mis en place des actions de recrutement ciblant des étudiants (f/h/nb) résidant dans des Zones de Revitalisation Rurale,,,"Rien; En cours de réflexion, action à planifier; Action planifiée dans les 6 à 12 prochains mois; Ce dispostif existe mais n'est pas encore formalisé; Ce dispositif est formalisé mais necessite d'être renforcé ou élargit; Ce dispositif est formalisé depuis plusieurs années et suivi dans une démarche d'amélioration continue",,0;1;2;3;4;5,,1,qcm,1,,3,,,,,,,,no_ethnicity,,,,,,,,,,,,,,,,,,,,,
+20221083,,,Origines,Recrutement,student,,L'établissement scolaire a un dispositif pour favoriser l'accueil des étudiants réfugiés et nouveaux entrants (f/h/nb),,"Personnes réfugiées, demandeurs d'asile...","Rien; En cours de réflexion, action à planifier; Action planifiée dans les 6 à 12 prochains mois; Ce dispostif existe mais n'est pas encore formalisé; Ce dispositif est formalisé mais necessite d'être renforcé ou élargit; Ce dispositif est formalisé depuis plusieurs années et suivi dans une démarche d'amélioration continue",,0;1;2;3;4;5,,1,qcm,1,,3,,,,,,,,no_ethnicity,,,,,,,,,,,,,,,,,,,,,
+20221084,,,Origines,Recrutement,student,,Il existe un dispositif pour attirer et accueillir des étudiants issus de la diversité d'origine culturelle et sociale,,,"Rien; En cours de réflexion, action à planifier; Action planifiée dans les 6 à 12 prochains mois; Ce dispostif existe mais n'est pas encore formalisé; Ce dispositif est formalisé mais necessite d'être renforcé ou élargit; Ce dispositif est formalisé depuis plusieurs années et suivi dans une démarche d'amélioration continue",,0;1;2;3;4;5,,1,qcm,1,,3,,,,,,,,no_ethnicity,,,,,,,,,,,,,,,,,,,,,
+20221085,,,Origines,Recrutement,student,,Il existe des frais de dossier pour candidater dans une formation de l'établissement,,,"Il existe des frais pour l'ensemble des formations;
+Il existe des frais pour quelques formations spécifiques;
+Il n'existe pas de frais d'examen de dossier",,0;2;5,,1,qcm,1,,3,,,,,,,,no_ethnicity,,,,,,,,,,,,,,,,,,,,,
+20221086,,,Origines,Qualité de vie au travail,student,,"Existence au sein de l'établissement scolaire d'au moins une personne référente à même d'écouter ou d'apporter un soutien spécifique à un étudiant (f/h/nb) sur des sujets liés à la discrimination (origines sociales, culturelles...) si nécessaire ",,,"Rien; En cours de réflexion, action à planifier; Action planifiée dans les 6 à 12 prochains mois; Ce dispostif existe mais n'est pas encore formalisé; Ce dispositif est formalisé mais necessite d'être renforcé ou élargit; Ce dispositif est formalisé depuis plusieurs années et suivi dans une démarche d'amélioration continue",,0;1;2;3;4;5,,1,qcm,1,,3,,,,,,,,no_ethnicity,,,,,,,,,,,,,,,,,,,,,
+20221087,,,Origines,Qualité de vie au travail,student,,L'établissement scolaire organise des temps forts pour partager et célébrer la culture de l'ensemble des collaborateurs et étudiants (f/h/nb),,,"Rien; En cours de réflexion, action à planifier; Action planifiée dans les 6 à 12 prochains mois; Ce dispostif existe mais n'est pas encore formalisé; Ce dispositif est formalisé mais necessite d'être renforcé ou élargit; Ce dispositif est formalisé depuis plusieurs années et suivi dans une démarche d'amélioration continue",,0;1;2;3;4;5,,1,qcm,1,,3,,,,,,,,no_ethnicity,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,18,,,,3,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+20221088,,,Générations,Gouvernance,student,,L'établissement scolaire favorise la représentation de toutes les générations au sein de ses communications sur les programmes pour les étudiants (f/h/nb),,,"Rien; En cours de réflexion, action à planifier; Action planifiée dans les 6 à 12 prochains mois; Ce dispostif existe mais n'est pas encore formalisé; Ce dispositif est formalisé mais necessite d'être renforcé ou élargit; Ce dispositif est formalisé depuis plusieurs années et suivi dans une démarche d'amélioration continue",,0;1;2;3;4;5,,1,qcm,1,,3,,,,,,,,no_generations,,,,,,,,,,,,,,,,,,,,,
+20221089,20214126,185,Générations,Recrutement,student,,Répartition des étudiants par âge au sein de votre établissement scolaire,,,,"Moins de 26 ans ;
+Entre 26 et 39 ans ;
+Entre 40 et 54 ans ;
+Plus de 55 ans",,,0,"subquestions_json_{
+  ""mode"": ""ratio-questions"",
+  ""questions"": [
+    ""20221001_0"",  ""20221001_1"",  ""20221001_2"",""20221001_3""
+  ]}",1,valeur,3,,,,,,,,no_generations,,,,,,,,,,,,,,,,,,,,,
+20221090,,,Générations,Qualité de vie au travail,student,,Existence de formation à distance pour les personnes en formation continue,,,"Rien; En cours de réflexion, action à planifier; Action planifiée dans les 6 à 12 prochains mois; Ce dispostif existe mais n'est pas encore formalisé; Ce dispositif est formalisé mais necessite d'être renforcé ou élargit; Ce dispositif est formalisé depuis plusieurs années et suivi dans une démarche d'amélioration continue",,0;1;2;3;4;5,,1,qcm,1,,3,,,,,,,,no_generations,,,,,,,,,,,,,,,,,,,,,
+20221091,,,Générations,Carrière,student,,"Existence d'un suivi spécifique pour accompagner les personnes en renconversion, reprise d'études...",,,"Rien; En cours de réflexion, action à planifier; Action planifiée dans les 6 à 12 prochains mois; Ce dispostif existe mais n'est pas encore formalisé; Ce dispositif est formalisé mais necessite d'être renforcé ou élargit; Ce dispositif est formalisé depuis plusieurs années et suivi dans une démarche d'amélioration continue",,0;1;2;3;4;5,,1,qcm,1,,3,,,,,,,,no_generations,,,,,,,,,,,,,,,,,,,,,
+20221092,,,Générations,Carrière,student,,Existence de dispositif de formation pour les personnes de plus de 45 ans,,,"Rien; En cours de réflexion, action à planifier; Action planifiée dans les 6 à 12 prochains mois; Ce dispostif existe mais n'est pas encore formalisé; Ce dispositif est formalisé mais necessite d'être renforcé ou élargit; Ce dispositif est formalisé depuis plusieurs années et suivi dans une démarche d'amélioration continue",,0;1;2;3;4;5,,1,qcm,1,,3,,,,,,,,no_generations,,,,,,,,,,,,,,,,,,,,,
+20221093,,,Générations,Carrière,student,,Existence de dispositifs d’accompagnement dédiées pour les personnes seniors,,"(Accompagnement au financement, développement du projet professionnel/de reconversion)","Rien; En cours de réflexion, action à planifier; Action planifiée dans les 6 à 12 prochains mois; Ce dispostif existe mais n'est pas encore formalisé; Ce dispositif est formalisé mais necessite d'être renforcé ou élargit; Ce dispositif est formalisé depuis plusieurs années et suivi dans une démarche d'amélioration continue",,0;1;2;3;4;5,,1,qcm,1,,3,,,,,,,,no_generations,,,,,,,,,,,,,,,,,,,,,
+20221094,,186,Générations,Gouvernance,student,,Age moyen sur les programmes d’Executive Education,,Formation continue,,,,,0,valeur,1,,3,,,,,,,,no_generations,,,,,,,,,,,,,,,,,,,,,
+20221095,,,Générations,Carrière,student,,Existence de dispositifs en terme de formation continue dans l'établissement,,"VAE : Acquisition d'une certification professionnelle en faisant reconnaite son expérience
+VES : Obtention d'un diplôme délivré au nom de l'état pas un établissement d'enseignement supérieur en capitalisant sur ses acquis de formation
+VAP : Accès aux différents niveaux de formation post-baccalauréat dispensées par un établissement en valorisant ses acquis professionnels","Aucune case cochée;
+1 à 2 cases cochées;
+3 à 4 cases cochées;
+5 à 6 cases cochées;
+7 à 8 cases cochées ;
+9 cases cochées","Validation des acquis de l'expérience (VAE);
+Validation des études supérieures (VES);
+Validation des acquis professionnels (VEP);
+Stage;
+Formation courte;
+Formation du soir;
+Formation en alternance;
+Reprise d'étude dans des formations inititales;
+Diplome d'accès aux études supérieures",0;1;2;3;4;5,,1,subquestions_qcm_0_2_4_6_8_9,1,multiple_qcm,3,,,,,,,,no_generations,,,,,,,,,,,,,,,,,,,,,
+20221096,,,Générations,Recrutement,student,,"L'établissement suit les taux d'accès à l'emploi des personnes diplomés par genre, age et formations",,,"Rien; En cours de réflexion, action à planifier; Action planifiée dans les 6 à 12 prochains mois; Ce dispostif existe mais n'est pas encore formalisé; Ce dispositif est formalisé mais necessite d'être renforcé ou élargit; Ce dispositif est formalisé depuis plusieurs années et suivi dans une démarche d'amélioration continue",,0;1;2;3;4;5,,1,qcm,1,,3,,,,,,,,no_generations,,,,,,,,,,,,,,,,,,,,,
+20221097,,187,Générations,Recrutement,student,,"Sur les programmes diplômants, quel est le taux de reclassement/placement des populations seniors ?",,,,,,,0,pourcentage,1,,3,,,,,,,,no_generations,,,,,,,,,,,,,,,,,,,,,
+20221098,,,Générations,Recrutement,student,,Il existe des partenariats avec les établissements d'emploi pour mettre en avant les formations continues existantes,,,"Rien; En cours de réflexion, action à planifier; Action planifiée dans les 6 à 12 prochains mois; Ce dispostif existe mais n'est pas encore formalisé; Ce dispositif est formalisé mais necessite d'être renforcé ou élargit; Ce dispositif est formalisé depuis plusieurs années et suivi dans une démarche d'amélioration continue",,0;1;2;3;4;5,,1,qcm,1,,3,,,,,,,,no_generations,,,,,,,,,,,,,,,,,,,,,
+20221099,,,Générations,Gouvernance,student,,Il existe un communication claire sur les offres de formation continue dans l'établissement,,,"Aucune case cochée;
+1 case cochée;
+2 cases cochées;
+3 cases cochées;
+4 cases cochées ;
+5 cases cochées ou plus","Page dédiée sur le site internet;
+Catalogue des formations disponibles;
+Référent visible et disponible;
+Modalités et dispostifs d'accès explicites;
+Campagne d'information sur l'existence de la formation continue
+",0;1;2;3;4;5,,1,subquestions_qcm_0_1_2_3_4_5,1,multiple_qcm,3,,,,,,,,no_generations,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,9,,,,3,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+20221100,,,LGBTQIA+,Gouvernance,student,,L'établissement scolaire soutient ou est partenaire d'un réseau d'étudiants LGBT+,,,"Rien; En cours de réflexion, action à planifier; Action planifiée dans les 6 à 12 prochains mois; Ce dispostif existe mais n'est pas encore formalisé; Ce dispositif est formalisé mais necessite d'être renforcé ou élargit; Ce dispositif est formalisé depuis plusieurs années et suivi dans une démarche d'amélioration continue",,0;1;2;3;4;5,,"1,5",qcm,1,,3,,,,,,,,no_lgbt,,,,,,,,,,,,,,,,,,,,,
+20221101,,,LGBTQIA+,Gouvernance,student,,Existence d'un dispositif de sanction si l'organisation venait à être confrontée à des propos ou attitudes homophobes et transphobes,,,"Rien; En cours de réflexion, action à planifier; Action planifiée dans les 6 à 12 prochains mois; Ce dispostif existe mais n'est pas encore formalisé; Ce dispositif est formalisé mais necessite d'être renforcé ou élargit; Ce dispositif est formalisé depuis plusieurs années et suivi dans une démarche d'amélioration continue",,0;1;2;3;4;5,,1,qcm,1,,3,,,,,,,,no_lgbt,,,,,,,,,,,,,,,,,,,,,
+20221102,,,LGBTQIA+,Qualité de vie au travail,student,,Il existe un dispositif de remonté de discrimination envers les personnes LGBT+ au sein de l'établissement scolaire,,,"Rien; En cours de réflexion, action à planifier; Action planifiée dans les 6 à 12 prochains mois; Ce dispostif existe mais n'est pas encore formalisé; Ce dispositif est formalisé mais necessite d'être renforcé ou élargit; Ce dispositif est formalisé depuis plusieurs années et suivi dans une démarche d'amélioration continue",,0;1;2;3;4;5,,1,qcm,1,,3,,,,,,,,no_lgbt,,,,,,,,,,,,,,,,,,,,,
+20221104,,,LGBTQIA+,Qualité de vie au travail,student,,Existence au sein de l'établissement scolaire d'au moins une personne référente à même d'écouter ou d'apporter un soutien spécifique à un étudiant (f/h/nb) sur les sujets d'orientation sexuelle / identité et expression du genre si nécessaire ,,,"Rien; En cours de réflexion, action à planifier; Action planifiée dans les 6 à 12 prochains mois; Ce dispostif existe mais n'est pas encore formalisé; Ce dispositif est formalisé mais necessite d'être renforcé ou élargit; Ce dispositif est formalisé depuis plusieurs années et suivi dans une démarche d'amélioration continue",,0;1;2;3;4;5,,"1,5",qcm,1,,3,,,,,,,,no_lgbt,,,,,,,,,,,,,,,,,,,,,
+20221105,,,LGBTQIA+,Gouvernance,student,,L'établissement scolaire prend en compte les personnes non-binaires ou qui ne souhaitent pas se déclarer dans les processus RH,,,Oui;Non,,5;3,,1,qcm,1,,3,,,,,,,,no_lgbt,,,,,,,,,,,,,,,,,,,,,
+20221106,,,LGBTQIA+,Qualité de vie au travail,student,,Existe-t-il des documents ou contenus internes pour sensibiliser à la lutte contre les propos ou les attitudes homophobes et transphobes ? ,,,"Rien; En cours de réflexion, action à planifier; Action planifiée dans les 6 à 12 prochains mois; Ce dispostif existe mais n'est pas encore formalisé; Ce dispositif est formalisé mais necessite d'être renforcé ou élargit; Ce dispositif est formalisé depuis plusieurs années et suivi dans une démarche d'amélioration continue",,0;1;2;3;4;5,,"0,5",qcm,1,,3,,,,,,,,no_lgbt,,,,,,,,,,,,,,,,,,,,,
+20221107,,,LGBTQIA+,Qualité de vie au travail,student,,L'établissement scolaire a au moins une fois dans l'année été impliqué dans une manifestation externe (en présentiel ou distanciel) faisant référence explicitement à l'orientation sexuelle / identité et expression du genre ,,,Oui;Non,,5;0,,1,qcm,1,,3,,,,,,,,no_lgbt,,,,,,,,,,,,,,,,,,,,,
+20221108,20214171,188,LGBTQIA+,Qualité de vie au travail,student,,Nombre d'actions étudiantes menées sur l'année avec des associations,,,Pas d'actions; Au moins une; Deux ; Trois; Plus de trois,,0;2;3;4;5,,1,valeur_0_1_2_3,1,,3,,,,,,,,no_lgbt,,,,,,,,,,,,,,,,,,,,,
+20221109,,,LGBTQIA+,Qualité de vie au travail,student,,Existence au sein de l'établissement scolaire d'un dispositif spécifique et ou d'une démarche de sensibilisation des personnes en charge des étudiants pour accompagner le coming out des étudiants LGBT+ ? ,,,"Rien; En cours de réflexion, action à planifier; Action planifiée dans les 6 à 12 prochains mois; Ce dispostif existe mais n'est pas encore formalisé; Ce dispositif est formalisé mais necessite d'être renforcé ou élargit; Ce dispositif est formalisé depuis plusieurs années et suivi dans une démarche d'amélioration continue",,0;1;2;3;4;5,,"0,5",qcm,1,,3,,,,,,,,no_lgbt,,,,,,,,,,,,,,,,,,,,,
+20221110,,,LGBTQIA+,Gouvernance,student,,Existence au sein de l'établissement scolaire d'un programme ou dispositif visant à mettre en avant des rôles modèles LGBT+,,,"Rien; En cours de réflexion, action à planifier; Action planifiée dans les 6 à 12 prochains mois; Ce dispostif existe mais n'est pas encore formalisé; Ce dispositif est formalisé mais necessite d'être renforcé ou élargit; Ce dispositif est formalisé depuis plusieurs années et suivi dans une démarche d'amélioration continue",,0;1;2;3;4;5,,"0,5",qcm,1,,3,,,,,,,,no_lgbt,,,,,,,,,,,,,,,,,,,,,
+20221111,20214174,189,LGBTQIA+,Qualité de vie au travail,student,,"Nombre d'étudiants (f/h/nb) sensibilisés au sujet LGBT+ dans l'établissement scolaire: ateliers, conférences, prises de parole, témoignages...",,,0%;Moins de 10%;Entre 10 et 30%;Entre 30 et 40%;Entre 40 et 50%;Plus de 50%,,0;1;2;3;4;5,,"1,5","valeur_json_{
+  ""mode"": ""ratio-questions"",
+  ""questions"": [
+    ""20221001_0"",  ""20221001_1"",  ""20221001_2"",""20221001_3""
+  ],
+  ""range"": [
+    0,
+    0.1,
+    0.3,
+    0.4,
+0.5,
+1 ],
+  ""attributionmode"": ""range""
+}",1,valeur,3,,,,,,,,no_lgbt,,,,,,,,,,,,,,,,,,,,,
+20221112,20214175,190,LGBTQIA+,Qualité de vie au travail,student,,"Nombre d'ateliers, conférences, prises de paroles, témoignages à destination des étudiants (f/h/nb) sur le sujet LGBT+ qui ont eu lieu sur les 12 derniers mois : ",,,Aucun;Au moins un;Entre deux et trois; Entre trois et cinq ; Plus de cinq,,0;2;3;4;5,,1,valeur_0_1_2_3_5,1,,3,,,,,,,,no_lgbt,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,12,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,

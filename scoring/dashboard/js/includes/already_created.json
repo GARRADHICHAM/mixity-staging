@@ -1,0 +1,1180 @@
+[
+    {
+        "2021000": {
+            "params": [
+                {
+                    "type": "rate_choice",
+                    "combine": "0,1"
+                }
+            ],
+            "indicator_type": "LineChart",
+            "title_fr": "Êtes-vous sensible aux sujets de diversité et d'inclusion ?",
+            "title_en": "Êtes-vous sensible aux sujets de diversité et d'inclusion ?",
+            "title_es": "Êtes-vous sensible aux sujets de diversité et d'inclusion ?"
+        }
+    },
+    {
+        "2021001": {
+            "params": [
+                {
+                    "type": "rate_choice_total"
+                },
+                {
+                    "type": "rate_choice_total",
+                    "collaborator_filters": {
+                        "civility": "woman"
+                    }
+                },
+                {
+                    "type": "rate_choice_total",
+                    "collaborator_filters": {
+                        "civility": "man"
+                    }
+                },
+                {
+                    "type": "rate_choice_total",
+                    "collaborator_filters": {
+                        "civility": "non-binary"
+                    }
+                }
+            ],
+            "indicator_type": "BarChart",
+            "title_fr": "Avez-vous le sentiment d'appartenir à une minorité dans votre organisation ?",
+            "title_en": "Avez-vous le sentiment d'appartenir à une minorité dans votre organisation ?",
+            "title_es": "Avez-vous le sentiment d'appartenir à une minorité dans votre organisation ?"
+        }
+    },
+    {
+        "2021002": {
+            "params": [
+                {
+                    "type": "rate_subanswers",
+                    "sort": "value"
+                }
+            ],
+            "indicator_type": "ProgressBarChart",
+            "title_fr": "Si oui, laquelle, lesquelles (plusieurs choix possibles) :",
+            "title_en": "Si oui, laquelle, lesquelles (plusieurs choix possibles) :",
+            "title_es": "Si oui, laquelle, lesquelles (plusieurs choix possibles) :"
+        }
+    },
+    {
+        "2021003": {
+            "params": [
+                {
+                    "type": "rate_choice",
+                    "combine": "0,1"
+                }
+            ],
+            "indicator_type": "LineChart",
+            "title_fr": "Estimez-vous que la direction de votre organisation est engagée sur le sujet de la diversité et de l'inclusion ?",
+            "title_en": "Estimez-vous que la direction de votre organisation est engagée sur le sujet de la diversité et de l'inclusion ?",
+            "title_es": "Estimez-vous que la direction de votre organisation est engagée sur le sujet de la diversité et de l'inclusion ?"
+        }
+    },
+    {
+        "2021004": {
+            "params": [
+                {
+                    "type": "rate_choice",
+                    "sort": "value"
+                }
+            ],
+            "indicator_type": "ProgressBarChart",
+            "title_fr": "Sur quels axes, selon vous, portent les engagements de votre organisation ? (plusieurs réponses possibles)",
+            "title_en": "Sur quels axes, selon vous, portent les engagements de votre organisation ? (plusieurs réponses possibles)",
+            "title_es": "Sur quels axes, selon vous, portent les engagements de votre organisation ? (plusieurs réponses possibles)"
+        }
+    },
+    {
+        "2021005": {
+            "params": [
+                {
+                    "type": "rate_subanswers",
+                    "combine": "0,1"
+                }
+            ],
+            "indicator_type": "ProgressBarChart",
+            "title_fr": "Quels sont selon vous les éléments que votre organisation devrait prendre en compte en priorité pour permettre plus d’égalité des chances et d'inclusion ? En premier, et ensuite...",
+            "title_en": "Quels sont selon vous les éléments que votre organisation devrait prendre en compte en priorité pour permettre plus d’égalité des chances et d'inclusion ? En premier, et ensuite...",
+            "title_es": "Quels sont selon vous les éléments que votre organisation devrait prendre en compte en priorité pour permettre plus d’égalité des chances et d'inclusion ? En premier, et ensuite..."
+        }
+    },
+    {
+        "2021006": {
+            "params": [
+                {
+                    "type": "rate_choice",
+                    "combine": "0,1"
+                }
+            ],
+            "indicator_type": "LineChart",
+            "title_fr": "Etes-vous satisfait.e des actions de sensibilisation menées par votre organisation sur les questions de diversité et d'inclusion ?",
+            "title_en": "Etes-vous satisfait.e des actions de sensibilisation menées par votre organisation sur les questions de diversité et d'inclusion ?",
+            "title_es": "Etes-vous satisfait.e des actions de sensibilisation menées par votre organisation sur les questions de diversité et d'inclusion ?"
+        }
+    },
+    {
+        "20210061": {
+            "params": [
+                {
+                    "type": "rate_choice",
+                    "combine": "0,1"
+                }
+            ],
+            "indicator_type": "LineChart",
+            "title_fr": "Etes-vous satisfait.e de la politique menée par votre organisation sur les questions de diversité et d'inclusion ?",
+            "title_en": "Etes-vous satisfait.e de la politique menée par votre organisation sur les questions de diversité et d'inclusion ?",
+            "title_es": "Etes-vous satisfait.e de la politique menée par votre organisation sur les questions de diversité et d'inclusion ?"
+        }
+    },
+    {
+        "2021007": {
+            "params": [
+                {
+                    "type": "rate_choice",
+                    "combine": "0,1"
+                }
+            ],
+            "indicator_type": "CircularChart",
+            "title_fr": "Dans votre organisation actuelle, vous êtes-vous déjà senti.e mis.e à l'écart en tant qu'individu en raison d'un élément de votre identité ",
+            "title_en": "Dans votre organisation actuelle, vous êtes-vous déjà senti.e mis.e à l'écart en tant qu'individu en raison d'un élément de votre identité ",
+            "title_es": "Dans votre organisation actuelle, vous êtes-vous déjà senti.e mis.e à l'écart en tant qu'individu en raison d'un élément de votre identité "
+        }
+    },
+    {
+        "2021008": {
+            "params": [
+                {
+                    "type": "rate_choice",
+                    "combine": "0,1"
+                }
+            ],
+            "indicator_type": "CircularChart",
+            "title_fr": "Si vous avez une question ou un signalement sur le sujet des discriminations, du harcèlement et/ou des violences dans votre organisation, avez-vous connaissance d'un.e interlocuteur.rice privilégié.e à qui s’adresser ",
+            "title_en": "Si vous avez une question ou un signalement sur le sujet des discriminations, du harcèlement et/ou des violences dans votre organisation, avez-vous connaissance d'un.e interlocuteur.rice privilégié.e à qui s’adresser ",
+            "title_es": "Si vous avez une question ou un signalement sur le sujet des discriminations, du harcèlement et/ou des violences dans votre organisation, avez-vous connaissance d'un.e interlocuteur.rice privilégié.e à qui s’adresser "
+        }
+    },
+    {
+        "2021009": {
+            "params": [
+                {
+                    "type": "rate_subanswers_choice_count",
+                    "sort": "combined_value",
+                    "combine": "0,1"
+                }
+            ],
+            "indicator_type": "PieChart",
+            "title_fr": "Dans votre organisation, à quelle fréquence les sujets suivants font-ils l’objet de blagues ou propos discriminants (même sans mauvaise intention) ?",
+            "title_en": "Dans votre organisation, à quelle fréquence les sujets suivants font-ils l’objet de blagues ou propos discriminants (même sans mauvaise intention) ?",
+            "title_es": "Dans votre organisation, à quelle fréquence les sujets suivants font-ils l’objet de blagues ou propos discriminants (même sans mauvaise intention) ?"
+        }
+    },
+    {
+        "20210091": {
+            "params": [
+                {
+                    "type": "rate_subanswers_choice_count",
+                    "sort": "combined_value",
+                    "combine": "0,1"
+                }
+            ],
+            "indicator_type": "ProgressBarChart",
+            "title_fr": "Sujets citées Souvent ou Très Souvent",
+            "title_en": "Sujets citées Souvent ou Très Souvent",
+            "title_es": "Sujets citées Souvent ou Très Souvent"
+        }
+    },
+    {
+        "2021010": {
+            "params": [
+                {
+                    "type": "rate_choice",
+                    "combine": "0,1"
+                }
+            ],
+            "indicator_type": "BarChart",
+            "title_fr": "Si vous êtes concerné par le télétravail, diriez-vous que vos managers favorisent suffisamment la cohésion d'équipe et le sentiment d'appartenance ",
+            "title_en": "Si vous êtes concerné par le télétravail, diriez-vous que vos managers favorisent suffisamment la cohésion d'équipe et le sentiment d'appartenance ",
+            "title_es": "Si vous êtes concerné par le télétravail, diriez-vous que vos managers favorisent suffisamment la cohésion d'équipe et le sentiment d'appartenance "
+        }
+    },
+    {
+        "2021011": {
+            "params": [
+                {
+                    "type": "rate_subanswers",
+                    "combine": "0,1"
+                }
+            ],
+            "indicator_type": "ProgressBarChart",
+            "title_fr": "Les situations suivantes, vous semblent-elles possibles au sein de votre organisation - à titre personnel ",
+            "title_en": "Les situations suivantes, vous semblent-elles possibles au sein de votre organisation - à titre personnel ",
+            "title_es": "Les situations suivantes, vous semblent-elles possibles au sein de votre organisation - à titre personnel "
+        }
+    },
+    {
+        "20210110": {
+            "params": [
+                {
+                    "type": "rate_subanswers",
+                    "combine": "0,1"
+                }
+            ],
+            "indicator_type": "ProgressBarChart",
+            "title_fr": "Les situations suivantes, vous semblent-elles possibles au sein de votre organisation - à titre personnel ",
+            "title_en": "Les situations suivantes, vous semblent-elles possibles au sein de votre organisation - à titre personnel ",
+            "title_es": "Les situations suivantes, vous semblent-elles possibles au sein de votre organisation - à titre personnel "
+        }
+    },
+    {
+        "202101101": {
+            "params": [
+                {
+                    "type": "rate_subanswers",
+                    "combine": "0,1"
+                }
+            ],
+            "indicator_type": "ProgressBarChart",
+            "title_fr": "Les situations suivantes, vous semblent-elles possibles (à moyen et long terme) au sein de votre organisation ",
+            "title_en": "Les situations suivantes, vous semblent-elles possibles (à moyen et long terme) au sein de votre organisation ",
+            "title_es": "Les situations suivantes, vous semblent-elles possibles (à moyen et long terme) au sein de votre organisation "
+        }
+    },
+    {
+        "20210111": {
+            "params": [
+                {
+                    "type": "rate_choice",
+                    "combine": "0,1"
+                }
+            ],
+            "indicator_type": "LineChart",
+            "title_fr": "Sur une échelle de 1 à 5, (avec 5 correspondant au plus préparé), pensez-vous avoir été bien préparé pour votre rôle dans votre organisation ?",
+            "title_en": "Sur une échelle de 1 à 5, (avec 5 correspondant au plus préparé), pensez-vous avoir été bien préparé pour votre rôle dans votre organisation ?",
+            "title_es": "Sur une échelle de 1 à 5, (avec 5 correspondant au plus préparé), pensez-vous avoir été bien préparé pour votre rôle dans votre organisation ?"
+        }
+    },
+    {
+        "20210112": {
+            "params": [
+                {
+                    "type": "rate_choice",
+                    "combine": "0,1"
+                }
+            ],
+            "indicator_type": "PieChart",
+            "title_fr": "Selon vous, la phase d'accueil et d'intégration au sein de votre organisation aurait dû être..",
+            "title_en": "Selon vous, la phase d'accueil et d'intégration au sein de votre organisation aurait dû être..",
+            "title_es": "Selon vous, la phase d'accueil et d'intégration au sein de votre organisation aurait dû être.."
+        }
+    },
+    {
+        "2021012": {
+            "params": [
+                {
+                    "type": "rate_choice",
+                    "combine": "0,1"
+                }
+            ],
+            "indicator_type": "CircularChart",
+            "title_fr": "Avez-vous suffisamment connaissance d'actions internes/externes et de communications internes ou externes menées par votre organisation sur l'égalité professionnelle entre les femmes et les hommes ",
+            "title_en": "Avez-vous suffisamment connaissance d'actions internes/externes et de communications internes ou externes menées par votre organisation sur l'égalité professionnelle entre les femmes et les hommes ",
+            "title_es": "Avez-vous suffisamment connaissance d'actions internes/externes et de communications internes ou externes menées par votre organisation sur l'égalité professionnelle entre les femmes et les hommes "
+        }
+    },
+    {
+        "2021013": {
+            "params": [
+                {
+                    "type": "rate_choice",
+                    "combine": "0,1"
+                }
+            ],
+            "indicator_type": "CircularChart",
+            "title_fr": "Sur les 24 derniers mois, avez-vous été suffisamment sensibilisé.e aux agissements et violences sexistes et sexuelles en interne via des conférences, ateliers, formations, e-learning, brochures, articles... au sein de votre organisation?",
+            "title_en": "Sur les 24 derniers mois, avez-vous été suffisamment sensibilisé.e aux agissements et violences sexistes et sexuelles en interne via des conférences, ateliers, formations, e-learning, brochures, articles... au sein de votre organisation?",
+            "title_es": "Sur les 24 derniers mois, avez-vous été suffisamment sensibilisé.e aux agissements et violences sexistes et sexuelles en interne via des conférences, ateliers, formations, e-learning, brochures, articles... au sein de votre organisation?"
+        }
+    },
+    {
+        "2021014": {
+            "params": [
+                {
+                    "type": "rate_choice",
+                    "combine": "0,1"
+                }
+            ],
+            "indicator_type": "BarChart",
+            "title_fr": "Pensez-vous que l'identité de genre influe sur les critères de recrutement dans votre organisation ",
+            "title_en": "Pensez-vous que l'identité de genre influe sur les critères de recrutement dans votre organisation ",
+            "title_es": "Pensez-vous que l'identité de genre influe sur les critères de recrutement dans votre organisation "
+        }
+    },
+    {
+        "2021015": {
+            "params": [
+                {
+                    "type": "rate_choice",
+                    "combine": "0,1"
+                }
+            ],
+            "indicator_type": "BarChart",
+            "title_fr": "Pensez-vous que l'identité de genre influe sur les critères de promotion/formation dans votre organisation ",
+            "title_en": "Pensez-vous que l'identité de genre influe sur les critères de promotion/formation dans votre organisation ",
+            "title_es": "Pensez-vous que l'identité de genre influe sur les critères de promotion/formation dans votre organisation "
+        }
+    },
+    {
+        "2021016": {
+            "params": [
+                {
+                    "type": "rate_choice",
+                    "combine": "0,1"
+                }
+            ],
+            "indicator_type": "LineChart",
+            "title_fr": "Pensez-vous que l'organisation accompagne suffisamment l'évolution de carrière des femmes au travers de dispositifs spécifiques : mentorat, coaching, formations, réseau mixité..",
+            "title_en": "Pensez-vous que l'organisation accompagne suffisamment l'évolution de carrière des femmes au travers de dispositifs spécifiques : mentorat, coaching, formations, réseau mixité..",
+            "title_es": "Pensez-vous que l'organisation accompagne suffisamment l'évolution de carrière des femmes au travers de dispositifs spécifiques : mentorat, coaching, formations, réseau mixité.."
+        }
+    },
+    {
+        "2021017": {
+            "params": [
+                {
+                    "type": "rate_choice",
+                    "combine": "0,1"
+                }
+            ],
+            "indicator_type": "LineChart",
+            "title_fr": "Estimez-vous que votre organisation offre un équilibre des temps de vie (vie professionnelle/vie personnelle) favorable à l'évolution de carrière pour les femmes aussi bien que pour les hommes ",
+            "title_en": "Estimez-vous que votre organisation offre un équilibre des temps de vie (vie professionnelle/vie personnelle) favorable à l'évolution de carrière pour les femmes aussi bien que pour les hommes ",
+            "title_es": "Estimez-vous que votre organisation offre un équilibre des temps de vie (vie professionnelle/vie personnelle) favorable à l'évolution de carrière pour les femmes aussi bien que pour les hommes "
+        }
+    },
+    {
+        "20210111": {
+            "params": [
+                {
+                    "type": "rate_choice",
+                    "combine": "0,1"
+                }
+            ],
+            "indicator_type": "LineChart",
+            "title_fr": "Pensez-vous avoir été bien préparé pour votre rôle dans votre organisation ",
+            "title_en": "Pensez-vous avoir été bien préparé pour votre rôle dans votre organisation ",
+            "title_es": "Pensez-vous avoir été bien préparé pour votre rôle dans votre organisation "
+        }
+    },
+    {
+        "2021018": {
+            "params": [
+                {
+                    "type": "rate_subanswers_choice_count"
+                }
+            ],
+            "indicator_type": "LineChart",
+            "title_fr": "Dans votre organisation, à quel niveau situez-vous le risque d'être victime",
+            "title_en": "Dans votre organisation, à quel niveau situez-vous le risque d'être victime",
+            "title_es": "Dans votre organisation, à quel niveau situez-vous le risque d'être victime"
+        }
+    },
+    {
+        "2021019": {
+            "params": [
+                {
+                    "type": "rate_choice",
+                    "combine": "0,1"
+                }
+            ],
+            "indicator_type": "BarChart",
+            "title_fr": "Pensez-vous que le handicap soit un frein à l'embauche dans votre organisation ",
+            "title_en": "Pensez-vous que le handicap soit un frein à l'embauche dans votre organisation ",
+            "title_es": "Pensez-vous que le handicap soit un frein à l'embauche dans votre organisation "
+        }
+    },
+    {
+        "2021020": {
+            "params": [
+                {
+                    "type": "rate_choice",
+                    "combine": "0,1"
+                }
+            ],
+            "indicator_type": "CircularChart",
+            "title_fr": "Sur les 24 derniers mois, avez-vous été suffisamment sensibilisé.e par votre organisation sur le handicap visible et/ou invisible ?",
+            "title_en": "Sur les 24 derniers mois, avez-vous été suffisamment sensibilisé.e par votre organisation sur le handicap visible et/ou invisible ?",
+            "title_es": "Sur les 24 derniers mois, avez-vous été suffisamment sensibilisé.e par votre organisation sur le handicap visible et/ou invisible ?"
+        }
+    },
+    {
+        "2021021": {
+            "params": [
+                {
+                    "type": "rate_choice",
+                    "combine": "0,1"
+                }
+            ],
+            "indicator_type": "CircularChart",
+            "title_fr": "Pensez-vous que l'environnement de votre organisation peut s'adapter à tout type de handicap ?",
+            "title_en": "Pensez-vous que l'environnement de votre organisation peut s'adapter à tout type de handicap ?",
+            "title_es": "Pensez-vous que l'environnement de votre organisation peut s'adapter à tout type de handicap ?"
+        }
+    },
+    {
+        "2021022": {
+            "params": [
+                {
+                    "type": "rate_choice",
+                    "combine": "0,1"
+                }
+            ],
+            "indicator_type": "LineChart",
+            "title_fr": "Pensez-vous qu'il soit facile de parler de son handicap au sein de votre organisation ",
+            "title_en": "Pensez-vous qu'il soit facile de parler de son handicap au sein de votre organisation ",
+            "title_es": "Pensez-vous qu'il soit facile de parler de son handicap au sein de votre organisation "
+        }
+    },
+    {
+        "2021023": {
+            "params": [
+                {
+                    "type": "rate_choice",
+                    "combine": "0,1"
+                }
+            ],
+            "indicator_type": "BarChart",
+            "title_fr": "Pensez-vous que l'environnement de votre organisation peut s'adapter à tout type de handicap ? ",
+            "title_en": "Pensez-vous que l'environnement de votre organisation peut s'adapter à tout type de handicap ? ",
+            "title_es": "Pensez-vous que l'environnement de votre organisation peut s'adapter à tout type de handicap ? "
+        }
+    },
+    {
+        "2021024": {
+            "params": [
+                {
+                    "type": "rate_choice",
+                    "combine": "0,1"
+                }
+            ],
+            "indicator_type": "BarChart",
+            "title_fr": "Pensez-vous que les personnes en situation de maladie chronique sont suffisamment accompagnées par votre organisation ?",
+            "title_en": "Pensez-vous que les personnes en situation de maladie chronique sont suffisamment accompagnées par votre organisation ?",
+            "title_es": "Pensez-vous que les personnes en situation de maladie chronique sont suffisamment accompagnées par votre organisation ?"
+        }
+    },
+    {
+        "2021025": {
+            "params": [
+                {
+                    "type": "rate_choice",
+                    "combine": "0,1"
+                }
+            ],
+            "indicator_type": "LineChart",
+            "title_fr": "Estimez-vous que la direction de votre organisation est engagée sur le sujet de la diversité sociale et culturelle ",
+            "title_en": "Estimez-vous que la direction de votre organisation est engagée sur le sujet de la diversité sociale et culturelle ",
+            "title_es": "Estimez-vous que la direction de votre organisation est engagée sur le sujet de la diversité sociale et culturelle "
+        }
+    },
+    {
+        "20210251": {
+            "params": [
+                {
+                    "type": "rate_choice",
+                    "combine": "0,1"
+                }
+            ],
+            "indicator_type": "CircularChart",
+            "title_fr": "Lors de la création de programmes marketing multiculturels, l'entreprise consulte-t-elle suffisamment des membres internes et externes pour validation ?",
+            "title_en": "Lors de la création de programmes marketing multiculturels, l'entreprise consulte-t-elle suffisamment des membres internes et externes pour validation ?",
+            "title_es": "Lors de la création de programmes marketing multiculturels, l'entreprise consulte-t-elle suffisamment des membres internes et externes pour validation ?"
+        }
+    },
+    {
+        "2021026": {
+            "params": [
+                {
+                    "type": "rate_choice",
+                    "combine": "0,1"
+                }
+            ],
+            "indicator_type": "BarChart",
+            "title_fr": "Pensez-vous que la différence culturelle et/ou sociale soit un frein à l'embauche dans votre organisation ",
+            "title_en": "Pensez-vous que la différence culturelle et/ou sociale soit un frein à l'embauche dans votre organisation ",
+            "title_es": "Pensez-vous que la différence culturelle et/ou sociale soit un frein à l'embauche dans votre organisation "
+        }
+    },
+    {
+        "2021027": {
+            "params": [
+                {
+                    "type": "rate_choice",
+                    "combine": "0,1"
+                }
+            ],
+            "indicator_type": "CircularChart",
+            "title_fr": "Avez-vous connaissance d'un dispositif de communication et/ou de soutien de votre organisation à des associations qui favorisent l'égalité des chances ?",
+            "title_en": "Avez-vous connaissance d'un dispositif de communication et/ou de soutien de votre organisation à des associations qui favorisent l'égalité des chances ?",
+            "title_es": "Avez-vous connaissance d'un dispositif de communication et/ou de soutien de votre organisation à des associations qui favorisent l'égalité des chances ?"
+        }
+    },
+    {
+        "2021029": {
+            "params": [
+                {
+                    "type": "rate_choice",
+                    "combine": "0,1"
+                }
+            ],
+            "indicator_type": "BarChart",
+            "title_fr": "Avez-vous le sentiment que votre environnement de travail est inclusif quelle que soit votre culture et/ou origine ?",
+            "title_en": "Avez-vous le sentiment que votre environnement de travail est inclusif quelle que soit votre culture et/ou origine ?",
+            "title_es": "Avez-vous le sentiment que votre environnement de travail est inclusif quelle que soit votre culture et/ou origine ?"
+        }
+    },
+    {
+        "20210291": {
+            "params": [
+                {
+                    "type": "rate_choice",
+                    "combine": "0,1"
+                }
+            ],
+            "indicator_type": "LineChart",
+            "title_fr": "Estimez-vous que l'établissement favorise l'inclusion des personnes ayant une nationalité étrangèr",
+            "title_en": "Estimez-vous que l'établissement favorise l'inclusion des personnes ayant une nationalité étrangèr",
+            "title_es": "Estimez-vous que l'établissement favorise l'inclusion des personnes ayant une nationalité étrangèr"
+        }
+    },
+    {
+        "2021030": {
+            "params": [
+                {
+                    "type": "rate_choice",
+                    "combine": "0,1"
+                }
+            ],
+            "indicator_type": "LineChart",
+            "title_fr": "Avez-vous le sentiment que votre organisation offre les mêmes perspectives de carrière à l'ensemble des personnes, indépendamment de leur origine ethnique ou de leur statut social (c'est-à-dire leur situation socio-économique, leur niveau d'éducation, leur citoyenneté, etc.) ",
+            "title_en": "Avez-vous le sentiment que votre organisation offre les mêmes perspectives de carrière à l'ensemble des personnes, indépendamment de leur origine ethnique ou de leur statut social (c'est-à-dire leur situation socio-économique, leur niveau d'éducation, leur citoyenneté, etc.) ",
+            "title_es": "Avez-vous le sentiment que votre organisation offre les mêmes perspectives de carrière à l'ensemble des personnes, indépendamment de leur origine ethnique ou de leur statut social (c'est-à-dire leur situation socio-économique, leur niveau d'éducation, leur citoyenneté, etc.) "
+        }
+    },
+    {
+        "2021031": {
+            "params": [
+                {
+                    "type": "rate_choice",
+                    "combine": "0,1"
+                }
+            ],
+            "indicator_type": "BarChart",
+            "title_fr": "Pensez-vous que votre organisation agit pour favoriser le recrutement des jeunes de moins de 25 ans ? ",
+            "title_en": "Pensez-vous que votre organisation agit pour favoriser le recrutement des jeunes de moins de 25 ans ? ",
+            "title_es": "Pensez-vous que votre organisation agit pour favoriser le recrutement des jeunes de moins de 25 ans ? "
+        }
+    },
+    {
+        "20210311": {
+            "params": [
+                {
+                    "type": "rate_choice",
+                    "combine": "0,1"
+                }
+            ],
+            "indicator_type": "BarChart",
+            "title_fr": "Pensez-vous que votre organisation agit pour favoriser le recrutement des jeunes de moins de 30 ans ? ",
+            "title_en": "Pensez-vous que votre organisation agit pour favoriser le recrutement des jeunes de moins de 30 ans ? ",
+            "title_es": "Pensez-vous que votre organisation agit pour favoriser le recrutement des jeunes de moins de 30 ans ? "
+        }
+    },
+    {
+        "2021032": {
+            "params": [
+                {
+                    "type": "rate_choice",
+                    "combine": "0,1"
+                }
+            ],
+            "indicator_type": "BarChart",
+            "title_fr": "Pensez-vous que votre organisation agit pour favoriser le recrutement des personnes de plus de 50 ans ? ",
+            "title_en": "Pensez-vous que votre organisation agit pour favoriser le recrutement des personnes de plus de 50 ans ? ",
+            "title_es": "Pensez-vous que votre organisation agit pour favoriser le recrutement des personnes de plus de 50 ans ? "
+        }
+    },
+    {
+        "2021033": {
+            "params": [
+                {
+                    "type": "rate_choice",
+                    "combine": "0,1"
+                }
+            ],
+            "indicator_type": "BarChart",
+            "title_fr": "Pensez-vous que votre organisation soutient l'employabilité et le maintien dans l'emploi des personnes de plus de 50 ans ?  ",
+            "title_en": "Pensez-vous que votre organisation soutient l'employabilité et le maintien dans l'emploi des personnes de plus de 50 ans ?  ",
+            "title_es": "Pensez-vous que votre organisation soutient l'employabilité et le maintien dans l'emploi des personnes de plus de 50 ans ?  "
+        }
+    },
+    {
+        "2021034": {
+            "params": [
+                {
+                    "type": "rate_choice",
+                    "combine": "0,1"
+                }
+            ],
+            "indicator_type": "BarChart",
+            "title_fr": "Pensez-vous que votre organisation s'inscrit dans une culture de formation (f/h/nb) tout au long de la carrière ?   ",
+            "title_en": "Pensez-vous que votre organisation s'inscrit dans une culture de formation (f/h/nb) tout au long de la carrière ?   ",
+            "title_es": "Pensez-vous que votre organisation s'inscrit dans une culture de formation (f/h/nb) tout au long de la carrière ?   "
+        }
+    },
+    {
+        "2021035": {
+            "params": [
+                {
+                    "type": "rate_choice"
+                }
+            ],
+            "indicator_type": "CircularChart",
+            "title_fr": "Avez-vous connaissance d'un dispositif de partage de compétences inter-générationnel dans votre organisation ",
+            "title_en": "Avez-vous connaissance d'un dispositif de partage de compétences inter-générationnel dans votre organisation ",
+            "title_es": "Avez-vous connaissance d'un dispositif de partage de compétences inter-générationnel dans votre organisation "
+        }
+    },
+    {
+        "2021036": {
+            "params": [
+                {
+                    "type": "rate_choice",
+                    "combine": "0,1"
+                }
+            ],
+            "indicator_type": "LineChart",
+            "title_fr": "A quel niveau de satisfaction vous situez-vous sur la façon dont votre organisation est engagée pour l'inclusion des personnes LGBTQIA+ ",
+            "title_en": "A quel niveau de satisfaction vous situez-vous sur la façon dont votre organisation est engagée pour l'inclusion des personnes LGBTQIA+ ",
+            "title_es": "A quel niveau de satisfaction vous situez-vous sur la façon dont votre organisation est engagée pour l'inclusion des personnes LGBTQIA+ "
+        }
+    },
+    {
+        "2021037": {
+            "params": [
+                {
+                    "type": "rate_choice"
+                }
+            ],
+            "indicator_type": "CircularChart",
+            "title_fr": "Avez-vous connaissance d'actions internes/externes et de communications internes ou externes menées par votre organisation sur l'inclusion des personnes LGBTQIA+ ?",
+            "title_en": "Avez-vous connaissance d'actions internes/externes et de communications internes ou externes menées par votre organisation sur l'inclusion des personnes LGBTQIA+ ?",
+            "title_es": "Avez-vous connaissance d'actions internes/externes et de communications internes ou externes menées par votre organisation sur l'inclusion des personnes LGBTQIA+ ?"
+        }
+    },
+    {
+        "2021038": {
+            "params": [
+                {
+                    "type": "rate_choice",
+                    "combine": "0,1"
+                }
+            ],
+            "indicator_type": "BarChart",
+            "title_fr": "Avez-vous identifié des attitudes ou des propos discriminants au sein de votre organisation à propos des personnes LGBTQIA+ ",
+            "title_en": "Avez-vous identifié des attitudes ou des propos discriminants au sein de votre organisation à propos des personnes LGBTQIA+ ",
+            "title_es": "Avez-vous identifié des attitudes ou des propos discriminants au sein de votre organisation à propos des personnes LGBTQIA+ "
+        }
+    },
+    {
+        "2021040": {
+            "params": [
+                {
+                    "type": "rate_choice",
+                    "combine": "0,1"
+                }
+            ],
+            "indicator_type": "BarChart",
+            "title_fr": "Pensez-vous que l'orientation sexuelle ou l'identité de genre des personnes LGBTQIA+ constitue un frein pour progresser dans votre organisation ",
+            "title_en": "Pensez-vous que l'orientation sexuelle ou l'identité de genre des personnes LGBTQIA+ constitue un frein pour progresser dans votre organisation ",
+            "title_es": "Pensez-vous que l'orientation sexuelle ou l'identité de genre des personnes LGBTQIA+ constitue un frein pour progresser dans votre organisation "
+        }
+    },
+    {
+        "2021041": {
+            "params": [
+                {
+                    "type": "rate_choice",
+                    "combine": "0,1"
+                }
+            ],
+            "indicator_type": "LineChart",
+            "title_fr": "Pensez-vous qu'il soit facile de faire son coming out dans votre environnement de travail ",
+            "title_en": "Pensez-vous qu'il soit facile de faire son coming out dans votre environnement de travail ",
+            "title_es": "Pensez-vous qu'il soit facile de faire son coming out dans votre environnement de travail "
+        }
+    },
+    {
+        "2021044": {
+            "params": [
+                {
+                    "type": "rate_choice"
+                }
+            ],
+            "indicator_type": "LineChart",
+            "title_fr": "L'engagement en faveur de la diversité et de l'inclusion ont-ils fait partie de vos critères au moment de candidater ?",
+            "title_en": "L'engagement en faveur de la diversité et de l'inclusion ont-ils fait partie de vos critères au moment de candidater ?",
+            "title_es": "L'engagement en faveur de la diversité et de l'inclusion ont-ils fait partie de vos critères au moment de candidater ?"
+        }
+    },
+    {
+        "2021045": {
+            "params": [
+                {
+                    "type": "rate_choice",
+                    "combine": "0,1"
+                }
+            ],
+            "indicator_type": "BarChart",
+            "title_fr": "La diversité (pluralité des profils quels qu'ils soient (F/H/NB - Handicap - âges - origines...) dans votre équipe/promotion est-elle bien représentée selon vous ?",
+            "title_en": "La diversité (pluralité des profils quels qu'ils soient (F/H/NB - Handicap - âges - origines...) dans votre équipe/promotion est-elle bien représentée selon vous ?",
+            "title_es": "La diversité (pluralité des profils quels qu'ils soient (F/H/NB - Handicap - âges - origines...) dans votre équipe/promotion est-elle bien représentée selon vous ?"
+        }
+    },
+    {
+        "2021046": {
+            "params": [
+                {
+                    "type": "rate_choice",
+                    "combine": "0,1"
+                }
+            ],
+            "indicator_type": "BarChart",
+            "title_fr": "Pensez vous que toutes les personnes puissent s'épanouir et exprimer leurs différences au sein des activités de votre organisation ",
+            "title_en": "Pensez vous que toutes les personnes puissent s'épanouir et exprimer leurs différences au sein des activités de votre organisation ",
+            "title_es": "Pensez vous que toutes les personnes puissent s'épanouir et exprimer leurs différences au sein des activités de votre organisation "
+        }
+    },
+    {
+        "2021047": {
+            "params": [
+                {
+                    "type": "rate_choice"
+                }
+            ],
+            "indicator_type": "BarChart",
+            "title_fr": "Pensez vous que votre organisation favorise suffisamment le partage et la collaboration par ses actions et activités ?",
+            "title_en": "Pensez vous que votre organisation favorise suffisamment le partage et la collaboration par ses actions et activités ?",
+            "title_es": "Pensez vous que votre organisation favorise suffisamment le partage et la collaboration par ses actions et activités ?"
+        }
+    },
+    {
+        "2021049": {
+            "params": [
+                {
+                    "type": "rate_subanswers_choice_count",
+                    "sort": "combined_value",
+                    "combine": "0,1"
+                }
+            ],
+            "indicator_type": "CircularChart",
+            "title_fr": "Pensez vous bénéficier de manière générale d'un traitement équitable dans vos interactions avec... (je me sens reconnu dans mon identité) ",
+            "title_en": "Pensez vous bénéficier de manière générale d'un traitement équitable dans vos interactions avec... (je me sens reconnu dans mon identité) ",
+            "title_es": "Pensez vous bénéficier de manière générale d'un traitement équitable dans vos interactions avec... (je me sens reconnu dans mon identité) "
+        }
+    },
+    {
+        "20210491": {
+            "params": [
+                {
+                    "type": "rate_subanswers_choice_count",
+                    "sort": "combined_value",
+                    "combine": "0,1"
+                }
+            ],
+            "indicator_type": "CircularChart",
+            "title_fr": "Pensez vous bénéficier de manière générale d'un traitement équitable dans vos interactions avec... (je me sens reconnu dans mon identité) ",
+            "title_en": "Pensez vous bénéficier de manière générale d'un traitement équitable dans vos interactions avec... (je me sens reconnu dans mon identité) ",
+            "title_es": "Pensez vous bénéficier de manière générale d'un traitement équitable dans vos interactions avec... (je me sens reconnu dans mon identité) "
+        }
+    },
+    {
+        "2021051": {
+            "params": [
+                {
+                    "type": "rate_subanswers_choice_count",
+                    "sort": "combined_value",
+                    "combine": "0,1"
+                }
+            ],
+            "indicator_type": "CircularChart",
+            "title_fr": "Avez-vous connaissance d'un dispositif de sanction interne efficace contre les discriminations et violences dans l'organisation sur les sujet suivants :",
+            "title_en": "Avez-vous connaissance d'un dispositif de sanction interne efficace contre les discriminations et violences dans l'organisation sur les sujet suivants :",
+            "title_es": "Avez-vous connaissance d'un dispositif de sanction interne efficace contre les discriminations et violences dans l'organisation sur les sujet suivants :"
+        }
+    },
+    {
+        "20210511": {
+            "params": [
+                {
+                    "type": "rate_choice",
+                    "combine": "0,1"
+                }
+            ],
+            "indicator_type": "CircularChart",
+            "title_fr": "Suis-je suffisamment informé sur les sujets de diversité et d'inclusion pour échanger tant en interne qu'en externe",
+            "title_en": "Suis-je suffisamment informé sur les sujets de diversité et d'inclusion pour échanger tant en interne qu'en externe",
+            "title_es": "Suis-je suffisamment informé sur les sujets de diversité et d'inclusion pour échanger tant en interne qu'en externe"
+        }
+    },
+    {
+        "20210512": {
+            "params": [
+                {}
+            ],
+            "indicator_type": "CircularChart",
+            "title_fr": "Avez-vous connaissance d'un dispositif de sanction interne efficace contre les discriminations et violences dans l'organisation sur les sujet suivants :",
+            "title_en": "Avez-vous connaissance d'un dispositif de sanction interne efficace contre les discriminations et violences dans l'organisation sur les sujet suivants :",
+            "title_es": "Avez-vous connaissance d'un dispositif de sanction interne efficace contre les discriminations et violences dans l'organisation sur les sujet suivants :"
+        }
+    },
+    {
+        "2021053": {
+            "params": [
+                {
+                    "type": "rate_choice",
+                    "combine": "0,1"
+                }
+            ],
+            "indicator_type": "BarChart",
+            "title_fr": "Pensez-vous que les femmes et les hommes ont les mêmes chances d'être admis.e.s dans votre organisation ",
+            "title_en": "Pensez-vous que les femmes et les hommes ont les mêmes chances d'être admis.e.s dans votre organisation ",
+            "title_es": "Pensez-vous que les femmes et les hommes ont les mêmes chances d'être admis.e.s dans votre organisation "
+        }
+    },
+    {
+        "2021054": {
+            "params": [
+                {
+                    "type": "rate_choice"
+                }
+            ],
+            "indicator_type": "LineChart",
+            "title_fr": "Dans votre organisation, à quel niveau situez-vous le risque d'être victime d’une discrimination sur le genre ",
+            "title_en": "Dans votre organisation, à quel niveau situez-vous le risque d'être victime d’une discrimination sur le genre ",
+            "title_es": "Dans votre organisation, à quel niveau situez-vous le risque d'être victime d’une discrimination sur le genre "
+        }
+    },
+    {
+        "2021055": {
+            "params": [
+                {
+                    "type": "rate_choice"
+                }
+            ],
+            "indicator_type": "BarChart",
+            "title_fr": "Avez-vous été amené.e.s à aborder les sujets de l'égalité entre les femmes et les hommes dans les contenus de vos cours - dans le cadre de votre cursus actuel au sein de votre organisation ",
+            "title_en": "Avez-vous été amené.e.s à aborder les sujets de l'égalité entre les femmes et les hommes dans les contenus de vos cours - dans le cadre de votre cursus actuel au sein de votre organisation ",
+            "title_es": "Avez-vous été amené.e.s à aborder les sujets de l'égalité entre les femmes et les hommes dans les contenus de vos cours - dans le cadre de votre cursus actuel au sein de votre organisation "
+        }
+    },
+    {
+        "2021056": {
+            "params": [
+                {
+                    "type": "rate_choice",
+                    "combine": "0,1"
+                }
+            ],
+            "indicator_type": "BarChart",
+            "title_fr": "Pensez-vous que les chances de réussite aux examens (écrits et oraux) au sein de votre organisation sont les mêmes pour les femmes que pour les hommes ?",
+            "title_en": "Pensez-vous que les chances de réussite aux examens (écrits et oraux) au sein de votre organisation sont les mêmes pour les femmes que pour les hommes ?",
+            "title_es": "Pensez-vous que les chances de réussite aux examens (écrits et oraux) au sein de votre organisation sont les mêmes pour les femmes que pour les hommes ?"
+        }
+    },
+    {
+        "2021057": {
+            "params": [
+                {
+                    "type": "rate_choice"
+                }
+            ],
+            "indicator_type": "LineChart",
+            "title_fr": "Pensez-vous qu'il soit facile pour un.e étudiant.e en situation de handicap d'être scolarisé.e dans votre organisation ?",
+            "title_en": "Pensez-vous qu'il soit facile pour un.e étudiant.e en situation de handicap d'être scolarisé.e dans votre organisation ?",
+            "title_es": "Pensez-vous qu'il soit facile pour un.e étudiant.e en situation de handicap d'être scolarisé.e dans votre organisation ?"
+        }
+    },
+    {
+        "2021058": {
+            "params": [
+                {
+                    "type": "rate_choice"
+                }
+            ],
+            "indicator_type": "CircularChart",
+            "title_fr": "Avez-vous connaissance d'actions menées par votre organisation pour favoriser la diversité multiculturelle et sociale ?",
+            "title_en": "Avez-vous connaissance d'actions menées par votre organisation pour favoriser la diversité multiculturelle et sociale ?",
+            "title_es": "Avez-vous connaissance d'actions menées par votre organisation pour favoriser la diversité multiculturelle et sociale ?"
+        }
+    },
+    {
+        "2021059": {
+            "params": [
+                {
+                    "type": "rate_choice"
+                }
+            ],
+            "indicator_type": "BarChart",
+            "title_fr": "Pensez-vous que la différence culturelle et/ou sociale soit un frein à l'accès aux études dans votre organisation ",
+            "title_en": "Pensez-vous que la différence culturelle et/ou sociale soit un frein à l'accès aux études dans votre organisation ",
+            "title_es": "Pensez-vous que la différence culturelle et/ou sociale soit un frein à l'accès aux études dans votre organisation "
+        }
+    },
+    {
+        "2021060": {
+            "params": [
+                {
+                    "type": "rate_choice"
+                }
+            ],
+            "indicator_type": "BarChart",
+            "title_fr": "Votre BDE ou votre organisation encouragent-t-il des actions de mentorat étudiant.e.s avec des publics des quartiers politiques de la ville et/ou fragilisé (réfugié.e.s, personnes éloignées de l'emploi...",
+            "title_en": "Votre BDE ou votre organisation encouragent-t-il des actions de mentorat étudiant.e.s avec des publics des quartiers politiques de la ville et/ou fragilisé (réfugié.e.s, personnes éloignées de l'emploi...",
+            "title_es": "Votre BDE ou votre organisation encouragent-t-il des actions de mentorat étudiant.e.s avec des publics des quartiers politiques de la ville et/ou fragilisé (réfugié.e.s, personnes éloignées de l'emploi..."
+        }
+    },
+    {
+        "2021061": {
+            "params": [
+                {
+                    "type": "rate_choice",
+                    "combine": "0,1"
+                }
+            ],
+            "indicator_type": "BarChart",
+            "title_fr": "Pensez-vous que votre organisation mène des actions pour favoriser l'intégration d'étudiant.e.s en reconversion, plus agé.e.s que la moyenne des étudiant.e.s ?",
+            "title_en": "Pensez-vous que votre organisation mène des actions pour favoriser l'intégration d'étudiant.e.s en reconversion, plus agé.e.s que la moyenne des étudiant.e.s ?",
+            "title_es": "Pensez-vous que votre organisation mène des actions pour favoriser l'intégration d'étudiant.e.s en reconversion, plus agé.e.s que la moyenne des étudiant.e.s ?"
+        }
+    },
+    {
+        "2021062": {
+            "params": [
+                {
+                    "type": "rate_choice"
+                }
+            ],
+            "indicator_type": "BarChart",
+            "title_fr": "L’organisation communique-t-elle clairement (visuels, prises de parole...) sur son ouverture à toutes les générations ",
+            "title_en": "L’organisation communique-t-elle clairement (visuels, prises de parole...) sur son ouverture à toutes les générations ",
+            "title_es": "L’organisation communique-t-elle clairement (visuels, prises de parole...) sur son ouverture à toutes les générations "
+        }
+    },
+    {
+        "2021063": {
+            "params": [
+                {
+                    "type": "rate_choice",
+                    "combine": "0,1"
+                }
+            ],
+            "indicator_type": "LineChart",
+            "title_fr": "Votre organisation favorise t-elle les échanges entre les étudiant.e.s quelles que soient l'année et/ou le diplôme préparé ",
+            "title_en": "Votre organisation favorise t-elle les échanges entre les étudiant.e.s quelles que soient l'année et/ou le diplôme préparé ",
+            "title_es": "Votre organisation favorise t-elle les échanges entre les étudiant.e.s quelles que soient l'année et/ou le diplôme préparé "
+        }
+    },
+    {
+        "2021064": {
+            "params": [
+                {
+                    "type": "rate_choice",
+                    "combine": "0,1"
+                }
+            ],
+            "indicator_type": "LineChart",
+            "title_fr": "Votre organisation favorise t-elle les échanges entre les étudiant.e.s et les diplomé.e.s ",
+            "title_en": "Votre organisation favorise t-elle les échanges entre les étudiant.e.s et les diplomé.e.s ",
+            "title_es": "Votre organisation favorise t-elle les échanges entre les étudiant.e.s et les diplomé.e.s "
+        }
+    },
+    {
+        "2021065": {
+            "params": [
+                {
+                    "type": "rate_choice"
+                }
+            ],
+            "indicator_type": "CircularChart",
+            "title_fr": "Votre organisation soutient-elle une association ou un réseau en faveur de l'inclusion des personnes LGBTQIA+ ",
+            "title_en": "Votre organisation soutient-elle une association ou un réseau en faveur de l'inclusion des personnes LGBTQIA+ ",
+            "title_es": "Votre organisation soutient-elle une association ou un réseau en faveur de l'inclusion des personnes LGBTQIA+ "
+        }
+    },
+    {
+        "2021066": {
+            "params": [
+                {
+                    "type": "rate_choice",
+                    "combine": "0,1"
+                }
+            ],
+            "indicator_type": "LineChart",
+            "title_fr": "Pensez-vous qu'il soit facile pour un étudiant (f/h/nb) de faire son coming out dans votre organisation ?",
+            "title_en": "Pensez-vous qu'il soit facile pour un étudiant (f/h/nb) de faire son coming out dans votre organisation ?",
+            "title_es": "Pensez-vous qu'il soit facile pour un étudiant (f/h/nb) de faire son coming out dans votre organisation ?"
+        }
+    },
+    {
+        "2021067": {
+            "params": [
+                {
+                    "type": "rate_choice",
+                    "combine": "0,1"
+                }
+            ],
+            "indicator_type": "BarChart",
+            "title_fr": "À quelle fréquence rencontrez-vous des difficultés entre les générations dans votre organisation (communication, management, valeurs…) ",
+            "title_en": "À quelle fréquence rencontrez-vous des difficultés entre les générations dans votre organisation (communication, management, valeurs…) ",
+            "title_es": "À quelle fréquence rencontrez-vous des difficultés entre les générations dans votre organisation (communication, management, valeurs…) "
+        }
+    },
+    {
+        "2021068": {
+            "params": [
+                {
+                    "type": "rate_subanswers",
+                    "combine": "0,1"
+                }
+            ],
+            "indicator_type": "ProgressBarChart",
+            "title_fr": "Les situations suivantes, vous semblent-elles possibles au sein de votre organisation - à titre personnel ",
+            "title_en": "Les situations suivantes, vous semblent-elles possibles au sein de votre organisation - à titre personnel ",
+            "title_es": "Les situations suivantes, vous semblent-elles possibles au sein de votre organisation - à titre personnel "
+        }
+    },
+    {
+        "2021069": {
+            "params": [
+                {
+                    "type": "rate_choice",
+                    "combine": "0,1"
+                }
+            ],
+            "indicator_type": "BarChart",
+            "title_fr": "Estimez-vous que votre organisation accompagne suffisamment toutes les formes de parentalité ?",
+            "title_en": "Estimez-vous que votre organisation accompagne suffisamment toutes les formes de parentalité ?",
+            "title_es": "Estimez-vous que votre organisation accompagne suffisamment toutes les formes de parentalité ?"
+        }
+    },
+    {
+        "2021071": {
+            "params": [
+                {
+                    "type": "rate_choice",
+                    "combine": "0,1"
+                }
+            ],
+            "indicator_type": "LineChart",
+            "title_fr": "Si vous avez une question ou un signalement sur le sujet des discriminations, du harcèlement et/ou des violences sexistes et sexuelles au sein de votre organisation, avez-vous connaissance d'un.e interlocuteur.rice privilégié.e à qui s’adresser ",
+            "title_en": "Si vous avez une question ou un signalement sur le sujet des discriminations, du harcèlement et/ou des violences sexistes et sexuelles au sein de votre organisation, avez-vous connaissance d'un.e interlocuteur.rice privilégié.e à qui s’adresser ",
+            "title_es": "Si vous avez une question ou un signalement sur le sujet des discriminations, du harcèlement et/ou des violences sexistes et sexuelles au sein de votre organisation, avez-vous connaissance d'un.e interlocuteur.rice privilégié.e à qui s’adresser "
+        }
+    },
+    {
+        "2021072": {
+            "params": [
+                {
+                    "type": "rate_choice"
+                }
+            ],
+            "indicator_type": "CircularChart",
+            "title_fr": "Avez-vous suffisamment connaissance d'actions internes/externes menées par votre organisation sur l'égalité professionnelle entre les femmes et les hommes ",
+            "title_en": "Avez-vous suffisamment connaissance d'actions internes/externes menées par votre organisation sur l'égalité professionnelle entre les femmes et les hommes ",
+            "title_es": "Avez-vous suffisamment connaissance d'actions internes/externes menées par votre organisation sur l'égalité professionnelle entre les femmes et les hommes "
+        }
+    },
+    {
+        "2021073": {
+            "params": [
+                {
+                    "type": "rate_choice"
+                }
+            ],
+            "indicator_type": "CircularChart",
+            "title_fr": "Estimez-vous que votre organisation communique suffisamment en externe sur les actions en faveur de l'égalité entre les femmes et les hommes ",
+            "title_en": "Estimez-vous que votre organisation communique suffisamment en externe sur les actions en faveur de l'égalité entre les femmes et les hommes ",
+            "title_es": "Estimez-vous que votre organisation communique suffisamment en externe sur les actions en faveur de l'égalité entre les femmes et les hommes "
+        }
+    },
+    {
+        "2021074": {
+            "params": [
+                {
+                    "type": "rate_choice"
+                }
+            ],
+            "indicator_type": "BarChart",
+            "title_fr": "Pensez-vous que l'identité de genre influe sur les critères de promotion dans votre organisation ",
+            "title_en": "Pensez-vous que l'identité de genre influe sur les critères de promotion dans votre organisation ",
+            "title_es": "Pensez-vous que l'identité de genre influe sur les critères de promotion dans votre organisation "
+        }
+    },
+    {
+        "2021075": {
+            "params": [
+                {
+                    "type": "rate_choice"
+                }
+            ],
+            "indicator_type": "BarChart",
+            "title_fr": "Pensez-vous que l'identité de genre influe sur les critères de formation dans votre organisation ",
+            "title_en": "Pensez-vous que l'identité de genre influe sur les critères de formation dans votre organisation ",
+            "title_es": "Pensez-vous que l'identité de genre influe sur les critères de formation dans votre organisation "
+        }
+    },
+    {
+        "2021076": {
+            "params": [
+                {
+                    "type": "rate_choice",
+                    "combine": "0,1"
+                }
+            ],
+            "indicator_type": "LineChart",
+            "title_fr": "Estimez-vous que la direction de votre organisation est engagée en faveur de l'égalité entre les femmes et les hommes ",
+            "title_en": "Estimez-vous que la direction de votre organisation est engagée en faveur de l'égalité entre les femmes et les hommes ",
+            "title_es": "Estimez-vous que la direction de votre organisation est engagée en faveur de l'égalité entre les femmes et les hommes "
+        }
+    },
+    {
+        "2021077": {
+            "params": [
+                {
+                    "type": "rate_choice",
+                    "combine": "0,1"
+                }
+            ],
+            "indicator_type": "BarChart",
+            "title_fr": "Avez-vous été sensibilisé au sein de votre organisation sur les questions de diversité et d'inclusion ?",
+            "title_en": "Avez-vous été sensibilisé au sein de votre organisation sur les questions de diversité et d'inclusion ?",
+            "title_es": "Avez-vous été sensibilisé au sein de votre organisation sur les questions de diversité et d'inclusion ?"
+        }
+    },
+    {
+        "2021078": {
+            "params": [
+                {
+                    "type": "rate_choice",
+                    "combine": "0,1"
+                }
+            ],
+            "indicator_type": "BarChart",
+            "title_fr": "Avez-vous le sentiment de pouvoir évoluer au sein de l'organisation quel que soit votre âge ? ",
+            "title_en": "Avez-vous le sentiment de pouvoir évoluer au sein de l'organisation quel que soit votre âge ? ",
+            "title_es": "Avez-vous le sentiment de pouvoir évoluer au sein de l'organisation quel que soit votre âge ? "
+        }
+    }
+]

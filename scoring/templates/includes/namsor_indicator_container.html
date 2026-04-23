@@ -1,0 +1,25 @@
+{% load i18n %}
+<h2 class="title--h2 mb-5">
+    {% blocktrans trimmed %}Répartition par origines ethniques supposées des collaborateurs (f/h/nb){% endblocktrans %}
+    &nbsp;
+    <div class="position-relative d-inline-block">
+        <span class="tooltip">
+            <div class="tooltip__icon">?</div>
+            <span class="tooltip__text">
+                {% blocktrans %}Namsor est un outil qui permet de mesurer les origines ethniques supposées des collaborateurs (f/h/nb) par l'analyse des noms et prénoms.{% endblocktrans %}
+                <a class="button button--circle button--primary" href="https://namsor.app/about-us" target="_blank">
+                    {% blocktrans %}En savoir plus{% endblocktrans %}
+                </a>
+            </span>
+        </span>
+    </div>
+</h2>
+
+
+<section class="pdf_element" id="sc__gender">
+    <div class="items_container align-items-stretch bloc_namsor">
+        <div class="item_pb item_s3 item_c stretched_item px-0 px-lg-5">
+            {% include 'includes/indicators/namsor_2.html' with id="footprint" collab=collaborators_statistics %}
+        </div>
+    </div>
+</section>

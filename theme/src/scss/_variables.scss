@@ -1,0 +1,269 @@
+$xs: 480px;
+$sm: 768px;
+$md: 1024px;
+$lg: 1280px;
+$xl: 1768px;
+$xs-screen: "min-width: 320px";
+$sm-screen: "min-width: " + $sm;
+$md-screen: "min-width: " + $md;
+$lg-screen: "min-width: " + $lg;
+$xl-screen: "min-width: " + $xl;
+
+:root {
+    --xs: 480px;
+    --sm: 768px;
+    --md: 1024px;
+    --lg: 1280px;
+    --xl: 1768px;
+
+    --color-primary: #423C6B;
+    /* Purple */
+    --color-primary-dark: #181B3D;
+    /* Dark purple */
+    --color-primary-light: #8888E2;
+    /* Light puprle */
+    --color-primary-contrast: #ffffff;
+    /* Grey */
+    --color-primary-disabled: #B1B5C3;
+    /* White */
+    --color-secondary: #8888E2;
+    /* Green */
+    --color-secondary-light: #423c6b;
+    /* Light green */
+    --color-secondary-dark: #06766F;
+    /* Dark green */
+    --color-secondary-dark-hover: #0baca2;
+    --assess-good-evolution: #00A87B;
+    /* Dark green */
+    --color-secondary-contrast: #181B3D;
+    /* Dark purple */
+    --color-blue: #9AC6D5;
+    --color-blue-light: #D4E9EC;
+    --color-pink: #F67273;
+    --color-pink-hover: #e95455;
+    --color-grey-light: #f0f0f0;
+    --color-grey: #9ea0a4;
+    --text-color: #181B3D;
+    --color-strong: #777E90;
+    --color-lowkey-white: #F6F7FB;
+    --color-red: #FF6F6F;
+    --color-all: #8888E2;
+    --color-gender: #FF6F6F;
+    --color-disability: #0099FF;
+    --color-cultural-diversity: #03A87C;
+    --color-generational-diversity: #423C6B;
+    --color-lgbt: #47D4FF;
+    --color-general_concept: #FF6F6F;
+    --color-communication: #423C6B;
+    --color-professional_engagement: #47D4FF;
+    --color-professional_practice: #0099FF;
+    --color-cognitive_biases: #03A87C;
+    --color-bonus_posture: #8888E2;
+    --color-csrd: #000000;
+
+    /*button color*/
+
+    /* Primary hover*/
+    --color-primary-hover: #534B8B;
+    /* Button disable*/
+    --color-lowkey-grey: #E6E8EC;
+    /* Secondary hover*/
+    --color-secondary-hover: #A3A3F5;
+    /* Light*/
+    --color-light: #DBDFF1;
+    /* Secondary hover*/
+    --color-light-hover: #C4C9DE;
+
+}
+
+.color{
+    &-bg {
+        &-primary {
+            background-color: var(--color-primary);
+            &-dark {
+                background-color: var(--color-primary-dark);
+            }
+            &-light {
+                background-color: var(--color-primary-light);
+            }
+            &-contrast {
+                background-color: var(--color-primary-contrast);
+            }
+            &-disabled {
+                background-color: var(--color-primary-disabled);
+            }
+            &-hover {
+                background-color: var(--color-primary-hover);
+            }
+        }
+        &-secondary {
+            background-color: var(--color-secondary);
+            &-dark {
+                background-color: var(--color-secondary-dark);
+            }
+            &-light {
+                background-color: var(--color-secondary-light);
+            }
+            &-contrast {
+                background-color: var(--color-secondary-contrast);
+            }
+            &-hover {
+                background-color: var(--color-secondary-hover);
+            }
+        }
+        &-blue {
+            background-color: var(--color-blue);
+            &-light {
+                background-color: var(--color-blue-light);
+            }
+        }
+        &-pink {
+            background-color: var(--color-pink);
+            &-hover {
+                background-color: var(--color-pink-hover);
+            }
+        }
+        &-grey {
+            background-color: var(--color-grey);
+            &-light {
+                background-color: var(--color-grey-light);
+            }
+        }
+        &-red {
+            background-color: var(--color-red);
+        }
+        &-strong {
+            background-color: var(--color-strong);
+        }
+        &-light {
+            background-color: var(--color-light);
+            &-hover {
+                background-color: var(--color-light-hover);
+            }
+        }
+        &-lowkey {
+            &-white {
+                background-color: var(--color-lowkey-white);
+            }
+            &-grey {
+                background-color: var(--color-lowkey-grey);
+            }
+        }
+        &-all {
+            background-color: var(--color-all);
+        }
+        &-gender {
+            background-color: var(--color-gender);
+        }
+        &-disability {
+            background-color: var(--color-disability);
+        }
+        &-lgbt {
+            background-color: var(--color-lgbt);
+        }
+        &-cultural-diversity {
+            background-color: var(--color-cultural-diversity);
+        }
+        &-generational-diversity {
+            background-color: var(--color-generational-diversity);
+        }
+        &-csrd {
+            background-color: var(--color-csrd);
+        }
+    }
+    &-text {
+        &-primary {
+            color: var(--color-primary);
+            &-dark {
+                color: var(--color-primary-dark);
+            }
+            &-light {
+                color: var(--color-primary-light);
+            }
+            &-contrast {
+                color: var(--color-primary-contrast);
+            }
+            &-disabled {
+                color: var(--color-primary-disabled);
+            }
+            &-hover {
+                color: var(--color-primary-hover);
+            }
+        }
+        &-secondary {
+            color: var(--color-secondary);
+            &-dark {
+                color: var(--color-secondary-dark);
+            }
+            &-light {
+                color: var(--color-secondary-light);
+            }
+            &-contrast {
+                color: var(--color-secondary-contrast);
+            }
+            &-hover {
+                color: var(--color-secondary-hover);
+            }
+        }
+        &-blue {
+            color: var(--color-blue);
+            &-light {
+                color: var(--color-blue-light);
+            }
+        }
+        &-pink {
+            color: var(--color-pink);
+            &-hover {
+                color: var(--color-pink-hover);
+            }
+        }
+        &-grey {
+            color: var(--color-grey);
+            &-light {
+                color: var(--color-grey-light);
+            }
+        }
+        &-red {
+            color: var(--color-red);
+        }
+        &-strong {
+            color: var(--color-strong);
+        }
+        &-light {
+            color: var(--color-light);
+            &-hover {
+                color: var(--color-light-hover);
+            }
+        }
+        &-lowkey {
+            &-white {
+                color: var(--color-lowkey-white);
+            }
+            &-grey {
+                color: var(--color-lowkey-grey);
+            }
+        }
+        &-all {
+            color: var(--color-all);
+        }
+        &-gender {
+            color: var(--color-gender);
+        }
+        &-disability {
+            color: var(--color-disability);
+        }
+        &-lgbt {
+            color: var(--color-lgbt);
+        }
+        &-cultural-diversity {
+            color: var(--color-cultural-diversity);
+        }
+        &-generational-diversity {
+            color: var(--color-generational-diversity);
+        }
+        &-csrd {
+            color: var(--color-csrd);
+        }
+    }
+
+}

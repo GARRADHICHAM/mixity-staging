@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load i18n static %}
+
+
+{% block content %}
+    <div class="bg-gradient-multicolor">
+        <section class="container bg--radar">
+            <div class="row p-5">
+                <div class="col-md-6 offset-md-3 card-light">
+                    <article>
+                        <div id="intro_1">
+                            <h1 class="title--h2">{% blocktrans trimmed %}La structure{% endblocktrans %}</h1>
+                            <hr>
+                            {% include 'includes/multiform.html' with form=form submit=_("Terminer la création de structure") method="post" button_default=True %}
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </div>
+{% endblock %}

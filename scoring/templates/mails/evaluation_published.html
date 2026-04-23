@@ -1,0 +1,41 @@
+{% extends "base_email.html" %}
+{% load i18n static %}
+
+{% block content %}
+<tr>
+  <td><h1>{{ title }}</h1></td>
+</tr>
+<tr>
+  <td>
+    {% blocktrans trimmed %}
+    L'équipe Mixity est ravie de vous informer que votre empreinte Mixity et votre fiche entreprise avec
+    vos indicateurs de diversité et inclusion sont désormais en ligne sur <a style="color: #10ACAB" href="https://www.mixity.co">www.mixity.co</a>
+    {% endblocktrans %}
+  </td>
+</tr>
+<tr>
+  <td>
+    {% blocktrans trimmed %}
+    Pour consulter votre fiche entreprise en ligne : <a style="color: #10ACAB" href="{{ structure_public_url }}">cliquer ici</a>
+    {% endblocktrans %}
+  </td>
+</tr>
+{% if public %}
+<tr>
+  <td>
+    {% blocktrans trimmed %}
+    Pour vous accompagner dans la valorisation de votre démarche d'évaluation Mixity, notre équipe a
+    conçu  <a style="color: #10ACAB" href="https://files.mixity.co/index.php/s/o4zxr65FacmtPLX">un kit Communication</a> à partager avec vos équipes internes.
+    Nous restons à votre écoute pour toute question sur vos démarches en lien avec la promotion de votre évaluation Mixity.
+    {% endblocktrans %}
+  </td>
+</tr>
+{% endif %}
+<tr>
+  <td>
+    {% blocktrans trimmed %}
+    Pour contacter l'équipe support : <span style="color: #10ACAB">support@mixity.co</span>
+    {% endblocktrans %}
+  </td>
+</tr>
+{% endblock %}

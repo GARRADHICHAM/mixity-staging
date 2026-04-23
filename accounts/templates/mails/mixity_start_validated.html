@@ -1,0 +1,40 @@
+{% extends "base_email.html" %}
+{% load i18n static format_number %}
+
+{% block content %}
+<tr>
+  <td><h1>{% trans "Félicitations pour avoir complété la version d’essai de Mixity Start !" %}</h1></td>
+</tr>
+<tr>
+  <td>
+    {% blocktrans trimmed %}
+        Vous pouvez dès maintenant consulter vos <a href="{{ results_url }}">résultats</a> en ligne.
+    {% endblocktrans %}<br/><br/>
+    {% blocktrans trimmed %}
+    Cette version gratuite offre une empreinte partielle et des recommandations pour une dimension.
+    {% endblocktrans %}<br/><br/><br/>
+    {% blocktrans trimmed %}
+    La version complète de Mixity Start vous donne accès à l'évaluation de votre politique diversité et inclusion sur l'ensemble des dimensions Mixity (égalité professionnelle entre les femmes et les hommes, handicap, multiculturel et social, multigénérationnel et orientation sexuelle et/ou identité de genre), aux indicateurs et au recommandations pour construire vos plans d'actions dans une approche globale et transversale.
+    {% endblocktrans %}<br/><br/><br/>
+    <div style="margin-bottom: 21px;"><a style="background: #18ffc3;padding: 13px;border-radius: 21px;text-decoration: none;color: #181b3d;font-weight: bold;" href="{{ pursue_trial_url }}">{% blocktrans trimmed %}Accéder l’évaluation complète{% endblocktrans %}</a></div><br/>
+    {% blocktrans trimmed %}
+    Poursuivez votre démarche et évaluer votre politique de Diversité et d’Inclusion avec l’offre complète Mixity Start pour{% endblocktrans %}
+      {% currency price.tax_free_price %} {% blocktrans trimmed %}HT.
+    {% endblocktrans %}<br/><br/>
+    {% blocktrans trimmed %}
+        Mixity Start vous permet de bien débuter sur la diversité et l'inclusion. Notre équipe d'experts Mixity est à vos côtés pour vous accompagner au travers de ses solutions avancées pilotage diversité et inclusion avec :
+        {% endblocktrans %}
+      <ul>
+        <li>{% blocktrans trimmed %}Mixity Diag : Mesurer, piloter et promouvoir sa politique diversité et inclusion{% endblocktrans %}</li>
+        <li>{% blocktrans trimmed %}Mixity Human : Le sondage pour mesurer le sentiment d’inclusion des collaborateurs (f/h/nb){% endblocktrans %}</li>
+        </ul>
+<br/><br/>
+    {% blocktrans trimmed %}
+        Nous <a href="mailto:contact@mixity.co">contacter</a> pour en savoir plus.
+    {% endblocktrans %}<br/><br/>
+    {% blocktrans trimmed %}
+    L’équipe Mixity
+    {% endblocktrans %}
+  </td>
+</tr>
+{% endblock %}

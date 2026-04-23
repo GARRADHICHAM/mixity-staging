@@ -1,0 +1,68 @@
+{% load i18n %}
+{% load l10n %}
+{% load evolution_rate %}
+{% load format_number %}
+{% load list_index %}
+
+
+<div style="display: flex; flex-direction: column; align-items: stretch;">
+    <div style="display: grid; grid-template-columns: 33% 33% 33%">
+        <h3 line_id=17 class="txt_line content-strong" prefix="\n" style="text-align: left">
+                        {% blocktrans trimmed %}Femmes{% endblocktrans %}
+        </h3>
+        <h3 line_id=17 class="txt_line content-strong" prefix="\n" style="text-align: left">
+                        {% blocktrans trimmed %}Hommes{% endblocktrans %}
+        </h3>
+        <h3 line_id=17 class="txt_line content-strong" prefix="\n" style="text-align: left">
+                        {% blocktrans trimmed %}Non-binaires{% endblocktrans %}
+        </h3>
+            {% for answer in answers %}
+            {% if not forloop.first and answer %}
+                <hr style="grid-column: 1 / 4; margin: 0.5em 0" />
+            {% endif %}
+            {% if answer.0.value or answer.1.value or answer.2.value %}
+                <div style="grid-column: 1 / 4;">
+                    <span style="text-align: left; font-size: 12px; font-weight:600; font-family: Montserrat" line_id="17" class="txt_line">
+                        {{ labels|list_index:forloop.counter0 }} {% if answer.3.value %}({% percentage answer.3.value %} {% blocktrans trimmed %}Préférant ne rien déclarer{% endblocktrans %}){% endif %}
+                    </span>
+                </div>
+            {% with subanswers=answer %}
+                <div  style="display: grid; grid-template-columns: auto 70px;">
+                        <div class="d-flex align-items-center">
+                            <div class="progress_graph" style="background-color: #fff; margin-right: 6px">
+                                <div style="background-color: {{ cat.color }}; width: {{ subanswers.0.value|floatformat:'0'|default:"0" }}%"></div>
+                            </div>
+                        </div>
+                        <div style="white-space: nowrap;display: flex;">
+                            <div style="background-color:{{ cat.color }};" class="dot"></div>
+                            <span style="white-space: nowrap;color: {{ cat.color }}">&nbsp;{% percentage subanswers.0.value %}&nbsp;</span>
+                        </div>
+                </div>
+                <div  style="display: grid; grid-template-columns: auto 70px;">
+                        <div class="d-flex align-items-center">
+                            <div class="progress_graph" style="background-color: #fff; margin-right: 6px">
+                                <div style="background-color: {{ men_color }}; width: {{ subanswers.1.value|floatformat:'0'|default:"0" }}%"></div>
+                            </div>
+                        </div>
+                        <div style="white-space: nowrap;display: flex;">
+                            <div style="background-color:{{ men_color }};" class="dot"></div>
+                            <span style="white-space: nowrap;color: {{ men_color }}">&nbsp;{% percentage subanswers.1.value %}&nbsp;</span>
+                        </div>
+                </div>
+                <div  style="display: grid; grid-template-columns: auto 70px;">
+                        <div class="d-flex align-items-center">
+                            <div class="progress_graph" style="background-color: #fff; margin-right: 6px">
+                                <div style="background-color: {{ nb_color }}; width: {{ subanswers.2.value|floatformat:'0'|default:"0" }}%"></div>
+                            </div>
+                        </div>
+                        <div style="white-space: nowrap;display: flex;">
+                            <div style="background-color: {{ nb_color }};" class="dot"></div>
+                            <span style="white-space: nowrap;color:  {{ nb_color }}">&nbsp;{% percentage subanswers.2.value %}&nbsp;</span>
+                        </div>
+                </div>
+            {% endwith %}
+            {% endif %}
+            {% endfor %}
+    </div>
+</div>
+

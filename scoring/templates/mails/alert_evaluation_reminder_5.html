@@ -1,0 +1,19 @@
+{% include 'mails/mail_header.html' %}
+{% load i18n %}
+
+{% blocktrans trimmed %}
+<p>Bonjour,<br/>
+    Cela fait maintenant deux mois que vous vous êtes engagé.e avec Mixity dans une démarche d’évaluation <b>Diversité et Inclusion</b>.<br/>
+Cependant, vous n’avez toujours pas validé votre questionnaire. <br/>
+Ne tardez plus pour finaliser votre évaluation.  <br/>
+Nous sommes plus que jamais disponibles pour vous accompagner dans cette étape importante.<br/>
+</p>
+{% endblocktrans %}
+
+<div style="display:flex; width: 100%;">
+  <a href="{{ evaluation_url }}"
+    style="margin-right:5px; padding: 10px 10px;text-decoration: none;background: #18ffc3;border-radius: 40px;color: #000000;">{% trans "Accéder à votre évaluation" %}</a>
+  <a href="mailto:contact@mixity.co"
+    style="padding: 10px 10px;text-decoration: none;background: #0baca2;border-radius: 40px;color: #fff;">{% trans "Nous contacter" %}</a>
+</div>
+{% include 'mails/mail_footer.html' %}

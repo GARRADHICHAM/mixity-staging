@@ -1,0 +1,145 @@
+{% load i18n %}
+{% load format_number %}
+
+
+<div class="items_container" style="justify-content: center">
+    <div class="items_container item_s3" style="justify-content: center; width: 100%">
+        {% with answer1=answer_2021031 answer4=answer_20210311 answer2=answer_2021032 answer3=answer_2021033 %}
+            <div class="items_container item_s2 item_c item_pb">
+                <h3 class="content-strong padding-vertical-2">
+                    {% blocktrans trimmed %}Taux de répondants (f/h/nb) estimant que l'organisation agit pour favoriser :{% endblocktrans %}
+                </h3>
+                {% if answer1 %}
+                    <div class="w-100">
+                        <h3 line_id=17 suffix=" :  %" style="margin-bottom:10px" class="txt_line  content-strong">
+                            {% blocktrans trimmed %}Le recrutement des jeunes de moins de 25 ans{% endblocktrans %}
+                        </h3>
+                        {% computed_answer evaluation  answer1 '{"type":"rate_choice", "combine":"0,1"}' collaborators_queryset as results %}
+                        {% include 'includes/indicators/single_horizontal_histogram_json.html' with value=results.0.0.combined_value mean_score_in_business_line=results.1.0.combined_value mean_score=results.2.0.combined_value color="#FF7070" %}
+                    </div>
+                {% endif %}
+                {% if answer4 %}
+                    <div class="w-100">
+                        <h3 line_id=17 suffix=" :  %" style="margin-bottom:10px" class="txt_line  content-strong">
+                            {% blocktrans trimmed %}Le recrutement des jeunes de moins de 30 ans{% endblocktrans %}
+                        </h3>
+                        {% computed_answer evaluation  answer4 '{"type":"rate_choice", "combine":"0,1"}' collaborators_queryset as results %}
+                        {% include 'includes/indicators/single_horizontal_histogram_json.html' with value=results.0.0.combined_value mean_score_in_business_line=results.1.0.combined_value mean_score=results.2.0.combined_value color="#FF7070" %}
+                    </div>
+                {% endif %}
+                {% if answer2 %}
+                    <div class="w-100">
+                        <h3 line_id=17 suffix=" :  %" style="margin-bottom:10px" class="txt_line  content-strong">
+                            {% blocktrans trimmed %}Le recrutement des seniors de plus de 50 ans{% endblocktrans %}
+                        </h3>
+                        {% computed_answer evaluation  answer2 '{"type":"rate_choice", "combine":"0,1"}' collaborators_queryset as results %}
+                        {% include 'includes/indicators/single_horizontal_histogram_json.html' with value=results.0.0.combined_value mean_score_in_business_line=results.1.0.combined_value mean_score=results.2.0.combined_value color="#8888E2" %}
+                    </div>
+                {% endif %}
+                {% if answer3 %}
+                    <div class="w-100">
+                        <h3 line_id=17 suffix=" :  %" style="margin-bottom:10px" class="txt_line  content-strong">
+                            {% blocktrans trimmed %}Le maintien dans l'emploi des seniors de plus de 55 ans{% endblocktrans %}
+                        </h3>
+                        {% computed_answer evaluation  answer3 '{"type":"rate_choice", "combine":"0,1"}' collaborators_queryset as results %}
+                        {% include 'includes/indicators/single_horizontal_histogram_json.html' with value=results.0.0.combined_value mean_score_in_business_line=results.1.0.combined_value mean_score=results.2.0.combined_value color=cat.color %}
+                    </div>
+                {% endif %}
+            </div>
+        {% endwith %}
+    </div>
+    {% with answer=answer_2021035 %}
+        {% if answer %}
+            <div class="item_pb item_s1 item_c stretched_item">
+                <h3 line_id=17 suffix=" : ' }} %" class="txt_line  content-strong" style="margin:auto;">{% blocktrans trimmed %}Taux de répondants (f/h/nb) ayant connaissance d'un dispositif de partage de compétences inter-générationnel{% endblocktrans %}</h3>
+                <div class="d-flex justify-content-center">
+                    {% computed_answer evaluation  answer '{"type":"rate_choice"}' collaborators_queryset as results %}
+                    {% include 'includes/indicators/circular_plot.html' with border_color="#EBEAEA" blank_color="#e9ecef" legend1=_("Femmes") legend2=_('Hommes') legend3=_('Non-binaires') percent_inner=results.0.0.value percent=results.1.0.value percent_outter=results.2.0.value color=cat.color id=answer.id small=0 %}
+                </div>
+            </div>
+        {% endif %}
+    {% endwith %}
+    {% with answer=answer_2021034 %}
+        {% if answer %}
+            <div class="item_pb item_s1 item_c stretched_item">
+                <h3 line_id=17 suffix=" : ' }} %" class="txt_line  content-strong" style="margin:auto;">{% blocktrans trimmed %}Taux de répondants (f/h/nb) estimant que l'organisation s'inscrit dans une culture de formation des salariés (f/h/nb) tout au long de la carrière{% endblocktrans %}</h3>
+                <div class="d-flex justify-content-center">
+                    {% computed_answer evaluation  answer '{"type":"rate_choice", "combine":"0,1"}' collaborators_queryset as results %}
+                    {% include 'includes/indicators/half_circular_plot.html' with border_color="#EBEAEA" blank_color="#e9ecef" legend1=_("Femmes") legend2=_('Hommes') legend3=_('Non-binaires') percent_inner=results.0.0.combined_value percent=results.1.0.combined_value percent_outter=results.2.0.combined_value color=cat.color id=answer.id small=0 %}
+                </div>
+            </div>
+        {% endif %}
+    {% endwith %}
+    {% with answer=answer_2021078 %}
+        {% if answer %}
+            <div class="item_pb item_s1 item_c stretched_item">
+                <h3 line_id=17 suffix=" : ' }} %" class="txt_line  content-strong" style="margin:auto;">{% blocktrans trimmed %}Taux de répondants (f/h/nb) estimant pouvoir évoluer au sein de l'organisation quel que soit son âge{% endblocktrans %}</h3>
+                <div class="d-flex justify-content-center">
+                    {% computed_answer evaluation  answer '{"type":"rate_choice", "combine":"0,1"}' collaborators_queryset as results %}
+                    {% include 'includes/indicators/half_circular_plot.html' with border_color="#EBEAEA" blank_color="#e9ecef" legend1=_("Femmes") legend2=_('Hommes') legend3=_('Non-binaires') percent_inner=results.0.0.combined_value percent=results.1.0.combined_value percent_outter=results.2.0.combined_value color=cat.color id=answer.id small=0 %}
+                </div>
+            </div>
+        {% endif %}
+    {% endwith %}
+
+    {% with answer=answer_2021062 %}
+        {% if answer %}
+            <div class="item_pb item_s1 item_c stretched_item">
+                <h3 line_id=17 suffix=" : ' }} %" class="txt_line  content-strong" style="margin:auto;">{% blocktrans trimmed %}Taux de répondants (f/h/nb) estimant que l'établissement communique clairement son ouverture à toutes les générations{% endblocktrans %}</h3>
+                <div class="d-flex justify-content-center">
+                    {% computed_answer evaluation  answer '{"type":"rate_choice"}' collaborators_queryset as results %}
+                    {% include 'includes/indicators/circular_plot.html' with border_color="#EBEAEA" blank_color="#e9ecef" legend1=_("Femmes") legend2=_('Hommes') legend3=_('Non-binaires') percent_inner=results.0.0.value percent=results.1.0.value percent_outter=results.2.0.value color=cat.color id=answer.id small=0 %}
+                </div>
+            </div>
+        {% endif %}
+    {% endwith %}
+    <div class="items_container item_s3" style="justify-content: center; width: 100%">
+        {% with answer1=answer_2021061 answer2=answer_2021063 answer3=answer_2021064 %}
+            {% if answer1 %}
+                <div class="items_container item_s2 item_c item_pb">
+                    <h3 class="content-strong">
+                        {% blocktrans trimmed %}Taux de répondants (f/h/nb) estimant que l'établissement mène des actions pour favoriser...{% endblocktrans %}
+                    </h3>
+                    <div class="" style="width: 100%;">
+                        <h3 line_id=17 suffix=" :  %" style="margin-bottom:10px" class="txt_line  content-strong">
+                            {% blocktrans trimmed %}... l'intégration d'étudiants (f/h/nb) plus agés en reconversion{% endblocktrans %}
+                        </h3>
+                        {% computed_answer evaluation  answer1 '{"type":"rate_choice", "combine":"0,1"}' collaborators_queryset as results %}
+                        {% include 'includes/indicators/single_horizontal_histogram_json.html' with value=results.0.0.combined_value mean_score_in_business_line=results.1.0.combined_value mean_score=results.2.0.combined_value color="#FF7070" %}
+                    </div>
+                    <div class="" style="width: 100%;">
+                        <h3 line_id=17 suffix=" :  %" style="margin-bottom:10px" class="txt_line  content-strong">
+                            {% blocktrans trimmed %}... les échanges entre les étudiants (f/h/nb) quelles que soient l'année et/ou le diplôme préparé {% endblocktrans %}
+                        </h3>
+                        {% computed_answer evaluation  answer2 '{"type":"rate_choice", "combine":"0,1"}' collaborators_queryset as results %}
+                        {% include 'includes/indicators/single_horizontal_histogram_json.html' with value=results.0.0.combined_value mean_score_in_business_line=results.1.0.combined_value mean_score=results.2.0.combined_value color="#8888E2" %}
+                    </div>
+                    <div class="" style="width: 100%;">
+                        <h3 line_id=17 suffix=" :  %" style="margin-bottom:10px" class="txt_line  content-strong">
+                            {% blocktrans trimmed %}... les échanges entre les étudiants et les diplomés (f/h/nb){% endblocktrans %}
+                        </h3>
+                        {% computed_answer evaluation  answer3 '{"type":"rate_choice", "combine":"0,1"}' collaborators_queryset as results %}
+                        {% include 'includes/indicators/single_horizontal_histogram_json.html' with value=results.0.0.combined_value mean_score_in_business_line=results.1.0.combined_value mean_score=results.2.0.combined_value color=cat.color %}
+                    </div>
+                </div>
+            {% endif %}
+        {% endwith %}
+    </div>
+    {% with answer=answer_2021067 %}
+        {% if answer %}
+            <div class="item_pb item_s1 item_c stretched_item">
+                <h3 line_id=17 suffix=" : ' }} %" class="txt_line  content-strong" style="margin:auto;">{% blocktrans trimmed %}Taux de répondants (f/h/nb) rencontrant souvent ou très souvent des difficultés avec les autres générations{% endblocktrans %}</h3>
+                <div style="display: flex;justify-content: center; width: 100%; flex-wrap: wrap">
+                    {% computed_answer evaluation  answer '{"type":"rate_choice", "combine":"0,1"}' collaborators_queryset as results %}
+                    {% include 'includes/indicators/squares.html' with value=results.0.0.combined_value color=cat.color id=answer.id %}
+                    {% if display_mean_score %}
+                        <div style="display: flex; flex-wrap: wrap; min-width: 100%; justify-content: center">
+                            {% include 'includes/indicators/donut.html' with percent_inner=results.1.0.combined_value color="#863C63" blank_color="#e9ecef" id=answer.id|stringformat:"i"|add:"_" %}
+                            {% include 'includes/indicators/donut.html' with percent_inner=results.2.0.combined_value color="#95B9C1" blank_color="#e9ecef" id=answer.id|stringformat:"i"|add:"__" %}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        {% endif %}
+    {% endwith %}
+</div>

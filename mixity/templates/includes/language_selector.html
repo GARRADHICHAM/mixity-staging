@@ -1,0 +1,47 @@
+{% load static %}
+ <div class="dropdown_container"  style="{{ style }}">
+  <div class="space">
+
+
+
+    <div class="select_box">
+      <span id="select-op-btn" class="default js-option button--primary-light">
+              {% for language in languages %}
+                  {% if LANGUAGE_CODE == language.code %}<img style="width: 30px; margin-left:13px; vertical-align: sub" src="{% static "img/language_flags/"|add:language.code|add:".png" %}"/> <span class="language_label">{{ language.name_local|capfirst }}</span>{% endif %}
+              {% endfor %}
+      </span>
+      <div id="options" class="js-drop">
+
+              {% for language in languages %}
+
+            <input class="lang_input" style="display: none" type="radio" id="lang_{{ language.code }}" name="languages" value='<img style="margin-left: 13px;vertical-align: sub;width: 30px" src="{% static "img/language_flags/"|add:language.code|add:".png" %}"/> <span class="language_label">{{ language.name_local|capfirst }}</span>'>
+                <li class="button--primary-light" style="width: 101.4%;margin-left: -0.7%;font-weight: bold;">
+                    <label onclick="languageSelectorFunction('{{ language.code }}')" for="lang_{{ language.code }}" class="js-option"><img style="width: 30px; margin-left:16px; vertical-align: sub" src="{% static "img/language_flags/"|add:language.code|add:".png" %}"/> <span class="language_label">{{ language.name_local|capfirst }}</span></label>
+        </li>
+              {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+    function languageSelectorFunction(languageCode) {
+    document.cookie = "language_code=" + languageCode + "; path=/;";
+    window.location.reload(true)
+    }
+    document.querySelectorAll(".lang_input").forEach(element=>element.addEventListener('change', function () {
+        document.getElementById('select-op-btn').innerHTML = element.checked ? element.value : '';
+    }))
+    document.querySelectorAll(".js-option").forEach(element => element.addEventListener('click', function ()  {
+        let options = document.getElementById("options").classList
+        let select_op = document.getElementById("select-op-btn").classList
+        if(options.contains("js-drop")) {
+            options.remove("js-drop");
+            select_op.add("half-circle");
+        } else {
+            options.add('js-drop');
+            select_op.remove("half-circle");
+        }
+    }))
+
+</script>

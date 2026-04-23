@@ -1,0 +1,12 @@
+{% extends "base_email.html" %}
+{% load i18n static %}
+
+{% block content %}
+<tr>
+    <td>
+        <h1>
+            {% blocktrans trimmed %}Le recalcul et la mise à jour de tous les scores et les filtres de la structure {{ structure_name }} que vous avez lancé le {{ date }} est terminé !{% endblocktrans %}
+        </h1>
+    </td>
+</tr>
+{% endblock %}

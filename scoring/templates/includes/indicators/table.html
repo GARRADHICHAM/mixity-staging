@@ -1,0 +1,19 @@
+{% load i18n format_number %}
+<div class="w-100 graph-table">
+    <table data-toggle="table" data-page-size="8" data-pagination="true">
+        <thead>
+        <tr>
+            <th>{{ label }}</th>
+            <th>{% trans 'Taux' %}</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for row in data %}
+        <tr>
+            <td>{% trans row.name %}</td>
+            <td>{% percentage row.value %}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>

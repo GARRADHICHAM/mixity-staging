@@ -1,0 +1,62 @@
+name: Test on pull request
+on:
+  workflow_dispatch:
+  pull_request:
+  push:
+    branches:
+      - develop
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    container: python:3.9
+
+    services:
+      postgres:
+        image: postgres:11.17-alpine  # Use same version as heroku app
+        env:
+          POSTGRES_USER: runner
+          POSTGRES_PASSWORD: postgres
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+      redis:
+        image: redis:latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: "Update"
+        run: apt update
+      - name: "Install gettext"
+        run: apt install -y gettext
+      - name: "declare env"
+        run: env
+      - name: "install requirements"
+        run: pip install -r requirements-dev.txt
+      - name: "Compile translations"
+        run: python manage.py compilemessages
+      - name: "Run coverage"
+        run: |
+         coverage run --source='.' manage.py test --noinput --parallel=15 -v 3
+         coverage combine
+         coverage report
+        env:
+            POSTGRES_DB: mixity
+            POSTGRES_USER: runner
+            POSTGRES_PASSWORD: postgres
+            POSTGRES_PORT: 5432
+            POSTGRES_HOST_AUTH_METHOD: trust
+            POSTGRES_HOST: postgres
+            REDIS_URL: redis://redis:6379
+            PGSQL_USER: runner
+            PGSQL_PASSWORD: postgres
+            PGSQL_HOST: postgres
+            ASSERT_NUM_QUERIES_REFERENCE_ENABLED: 0
+      - uses: Co-qn/google-chat-notification@releases/v1
+        with:
+              name: Tests
+              url: ${{ secrets.GOOGLE_CHAT_GITHUB_WEBHOOK }}
+              status: ${{ job.status }}
+        if: always()

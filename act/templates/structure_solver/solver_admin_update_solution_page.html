@@ -1,0 +1,16 @@
+{% extends "base_dashboard.html" %}
+{% load i18n %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <article class="col-9 p-5 bg-gradient-multicolor">
+            <header class="text-center">
+                <h1 class="title--h1">{% blocktrans trimmed %}Modifier la solution{% endblocktrans %}</h1>
+            </header>
+            <br/>
+            {% include 'includes/solution_form.html' with form=form submit=_("Enregistrer") method="post" %}
+        </article>
+    </div>
+</div>
+{% endblock %}

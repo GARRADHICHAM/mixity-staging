@@ -1,0 +1,31 @@
+{% load i18n format_number %}
+<div class="tab-pane fade show {% if active %}active{% endif %}" id="{{ id }}" role="tabpanel"
+     aria-labelledby="{{ id }}-tab">
+    <div class="row">
+        <div class="col-lg-6 col-12 graph-modal-main">
+
+            <div
+                class="d-flex flex-column justify-content-center graph-modal-container">
+                <h3 class="txt_line content-strong">
+                    {{ title }}
+                </h3>
+
+                <div
+                    class="pie-header mt-3 d-flex align-items-center justify-content-center">
+                    <div class="d-flex align-items-center justify-content-center">
+                        <span>{% trans 'Confiance :' %} <strong>{% percentage data.confidence %}</strong></span>
+                    </div>
+
+                </div>
+                {% include 'includes/indicators/pie_chart.html' with results=data.results colors=colors id=id %}
+            </div>
+        </div>
+        <div class="col-lg-6 col-12 d-flex flex-column align-items-center">
+            <h3 class="txt_line content-strong mt-3 mt-md-0">
+                {% blocktrans trimmed %}Détails des {{ suffix }}{% endblocktrans %}
+            </h3>
+            <span class="mt-2 mb-3">{% trans 'Collaborateurs traités :' %} <strong>{{ collab.statistics.processed_collaborators }} / {{ collab.statistics.processed_collaborators|add:collab.statistics.unprocessed_collaborators }}</strong></span>
+            {% include 'includes/indicators/table.html' with data=data.computed_array label=label %}
+        </div>
+    </div>
+</div>

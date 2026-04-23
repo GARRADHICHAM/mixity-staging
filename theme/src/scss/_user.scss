@@ -1,0 +1,79 @@
+@import '_variables';
+.user {
+    display: grid;
+    grid-template-columns: 8em auto;
+    grid-template-rows: auto;
+    margin-bottom: 1em;
+
+    &--button {
+        text-decoration: none;
+    }
+
+    .active {
+        color: white;
+    }
+
+    &__content {
+        max-width: 600px;
+
+        a {
+            text-decoration: none;
+        }
+
+        .field__label__help {
+            color: var(--color-primary-dark)
+        }
+    }
+
+    &__image {
+        border-radius: 100%;
+        margin: 1em auto;
+        max-width: 3em;
+        overflow: hidden;
+        line-height: 0;
+        display: flex;
+        justify-content: center;
+        width: 5em;
+        height: 5em;
+
+        &--empty {
+            background: #edf0f4;
+
+            i {
+                font-size: 3em;
+            }
+        }
+    }
+
+    &__title {
+        grid-column: 2;
+        margin-bottom: 0;
+        font-weight: 600;
+        white-space: nowrap;
+    }
+
+    &__subtitle {
+        grid-column: 2;
+        margin-top: 0;
+    }
+}
+
+.noradius {
+    border-radius: 0% !important;
+}
+
+
+
+@media ($sm-screen) {
+    .user {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        grid-template-rows: auto;
+    }
+}
+
+
+/* IE compatibility */
+.user>* {
+    align-self: center;
+}

@@ -1,0 +1,24 @@
+{% extends "base_email.html" %}
+{% load i18n static %}
+
+{% block content %}
+<tr>
+	<td>
+		<h1>{% trans "Une évaluation a été publiée sur Mixity !" %}</h1>
+	</td>
+</tr>
+<tr>
+	<td>
+		{% blocktrans trimmed %}
+		Evaluation : {{ evaluation }} - {{ evaluation.entity }}
+		{% endblocktrans %}
+	</td>
+</tr>
+<tr>
+	<td>
+		{% blocktrans trimmed %}
+		<a class="button" href="{{ evaluation_url }}">Voir l'évaluation</a>
+		{% endblocktrans %}
+	</td>
+</tr>
+{% endblock %}

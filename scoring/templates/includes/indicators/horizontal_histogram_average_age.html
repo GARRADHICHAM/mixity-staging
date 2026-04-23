@@ -1,0 +1,148 @@
+{% load i18n %}
+{% load l10n %}
+{% load static %}
+
+{% localize off %}
+<div class="pie_chart" style="font-size:inherit; font-family:inherit;" id="{{ id }}"></div>
+
+{% block scripts %}
+    <script type="application/javascript">
+        $(document).ready(function () {
+
+            var percent_1 = Number("{{percent_1}}".replace(',', '.'));
+            var percent_1_mean = Number("{{percent_1_mean}}".replace(',', '.'));
+            var percent_1_mean_business_line = Number("{{percent_1_mean_business_line}}".replace(',', '.'));
+            var percent_2 = Number("{{percent_2}}".replace(',', '.'));
+            var percent_2_mean = Number("{{percent_2_mean}}".replace(',', '.'));
+            var percent_2_mean_business_line = Number("{{percent_2_mean_business_line}}".replace(',', '.'));
+            var percent_3 = Number("{{percent_3}}".replace(',', '.'));
+            var percent_3_mean = Number("{{percent_3_mean}}".replace(',', '.'));
+            var percent_3_mean_business_line = Number("{{percent_3_mean_business_line}}".replace(',', '.'));
+            var percent_4 = Number("{{percent_4}}".replace(',', '.'));
+            var percent_4_mean = Number("{{percent_4_mean}}".replace(',', '.'));
+            var percent_4_mean_business_line = Number("{{percent_4_mean_business_line}}".replace(',', '.'));
+            var percent_5 = Number("{{percent_5}}".replace(',', '.'));
+            var percent_5_mean = Number("{{percent_5_mean}}".replace(',', '.'));
+            var percent_5_mean_business_line = Number("{{percent_5_mean_business_line}}".replace(',', '.'));
+            var percent_6 = Number("{{percent_6}}".replace(',', '.'));
+            var percent_6_mean = Number("{{percent_6_mean}}".replace(',', '.'));
+            var percent_6_mean_business_line = Number("{{percent_6_mean_business_line}}".replace(',', '.'));
+            var percent_7 = Number("{{percent_7}}".replace(',', '.'));
+            var percent_7_mean = Number("{{percent_7_mean}}".replace(',', '.'));
+            var percent_7_mean_business_line = Number("{{percent_7_mean_business_line}}".replace(',', '.'));
+
+            if("{{percent_1}}" === "") { var percent_1_string =  '{% trans "ND*" %}'; } else { percent_1_string = percent_1.toString(); }
+            if("{{percent_2}}" === "") { var percent_2_string =  '{% trans "ND*" %}'; } else { percent_2_string = percent_2.toString(); }
+            if("{{percent_3}}" === "") { var percent_3_string =  '{% trans "ND*" %}'; } else { percent_3_string = percent_3.toString(); }
+            if("{{percent_4}}" === "") { var percent_4_string =  '{% trans "ND*" %}'; } else { percent_4_string = percent_4.toString(); }
+            if("{{percent_5}}" === "") { var percent_5_string =  '{% trans "ND*" %}'; } else { percent_5_string = percent_5.toString(); }
+            if("{{percent_6}}" === "") { var percent_6_string =  '{% trans "ND*" %}'; } else { percent_6_string = percent_6.toString(); }
+            if("{{percent_7}}" === "") { var percent_7_string =  '{% trans "ND*" %}'; } else { percent_7_string = percent_7.toString(); }
+            if("{{percent_1_mean}}" === "") { var percent_1_mean_string =  '{% trans "ND*" %}'; } else { percent_1_mean_string = percent_1_mean.toString(); }
+            if("{{percent_2_mean}}" === "") { var percent_2_mean_string =  '{% trans "ND*" %}'; } else { percent_2_mean_string = percent_2_mean.toString(); }
+            if("{{percent_3_mean}}" === "") { var percent_3_mean_string =  '{% trans "ND*" %}'; } else { percent_3_mean_string = percent_3_mean.toString(); }
+            if("{{percent_4_mean}}" === "") { var percent_4_mean_string =  '{% trans "ND*" %}'; } else { percent_4_mean_string = percent_4_mean.toString(); }
+            if("{{percent_5_mean}}" === "") { var percent_5_mean_string =  '{% trans "ND*" %}'; } else { percent_5_mean_string = percent_5_mean.toString(); }
+            if("{{percent_6_mean}}" === "") { var percent_6_mean_string =  '{% trans "ND*" %}'; } else { percent_6_mean_string = percent_6_mean.toString(); }
+            if("{{percent_7_mean}}" === "") { var percent_7_mean_string =  '{% trans "ND*" %}'; } else { percent_7_mean_string = percent_7_mean.toString(); }
+            if("{{percent_1_mean_business_line}}" === "") { var percent_1_mean_business_line_string =  '{% trans "ND*" %}'; } else { percent_1_mean_business_line_string = percent_1_mean_business_line.toString(); }
+            if("{{percent_2_mean_business_line}}" === "") { var percent_2_mean_business_line_string =  '{% trans "ND*" %}'; } else { percent_2_mean_business_line_string = percent_2_mean_business_line.toString(); }
+            if("{{percent_3_mean_business_line}}" === "") { var percent_3_mean_business_line_string =  '{% trans "ND*" %}'; } else { percent_3_mean_business_line_string = percent_3_mean_business_line.toString(); }
+            if("{{percent_4_mean_business_line}}" === "") { var percent_4_mean_business_line_string =  '{% trans "ND*" %}'; } else { percent_4_mean_business_line_string = percent_4_mean_business_line.toString(); }
+            if("{{percent_5_mean_business_line}}" === "") { var percent_5_mean_business_line_string =  '{% trans "ND*" %}'; } else { percent_5_mean_business_line_string = percent_5_mean_business_line.toString(); }
+            if("{{percent_6_mean_business_line}}" === "") { var percent_6_mean_business_line_string =  '{% trans "ND*" %}'; } else { percent_6_mean_business_line_string = percent_6_mean_business_line.toString(); }
+            if("{{percent_7_mean_business_line}}" === "") { var percent_7_mean_business_line_string =  '{% trans "ND*" %}'; } else { percent_7_mean_business_line_string = percent_7_mean_business_line.toString(); }
+
+            if (!percent_5) {
+                var data = {
+                  labels: [
+                    "{% trans '... au sein de l\'entreprise' %}",
+                    "{% trans '... au sein du conseil d\'administration' %}",
+                    "{% trans '... au sein du Comex/Codir' %}",
+                    "{% trans '... au sein des managers' %}",
+                  ],
+                  series: [
+                    {
+                      label: '{% trans "Mon entreprise" %}',
+                      values: [percent_1, percent_2, percent_3, percent_4,],
+                      strings: [percent_1_string, percent_2_string, percent_3_string, percent_4_string,]
+                    },
+                    {
+                      label: '{% trans "Moyenne" %}',
+                      values: [percent_1_mean, percent_2_mean, percent_3_mean, percent_4_mean,],
+                      strings: [percent_1_mean_string, percent_2_mean_string, percent_3_mean_string, percent_4_mean_string,]
+                    },
+                    {
+                      label: '{% trans "Moyenne dans le secteur" %}',
+                      values: [percent_1_mean_business_line, percent_2_mean_business_line, percent_3_mean_business_line, percent_4_mean_business_line,],
+                      strings: [percent_1_mean_business_line_string, percent_2_mean_business_line_string, percent_3_mean_business_line_string, percent_4_mean_business_line_string,]
+                    },]
+                };
+            } else {
+                var data = {
+                    labels: [
+                      "{% trans '... au sein de l\'entreprise' %}",
+                      "{% trans '... au sein du conseil d\'administration' %}",
+                      "{% trans '... au sein du Comex/Codir' %}",
+                      "{% trans '... au sein des managers' %}",
+                      "{% trans '... au sein des avocats (f/h/nb)' %}",
+                      "{% trans '... au sein de l\'assemblée d\'associés (f/h/nb)' %}",
+                      "{% trans '... au sein du Management Committee' %}",
+                    ],
+                    series: [
+                      {
+                        label: '{% trans "Mon entreprise" %}',
+                        values: [percent_1, percent_2, percent_3, percent_4, percent_5, percent_6, percent_7,],
+                        strings: [percent_1_string, percent_2_string, percent_3_string, percent_4_string, percent_5_string, percent_6_string, percent_7_string,]
+                      },
+                      {
+                        label: '{% trans "Moyenne" %}',
+                        values: [percent_1_mean, percent_2_mean, percent_3_mean, percent_4_mean, percent_5_mean, percent_6_mean, percent_7_mean,],
+                        strings: [percent_1_mean_string, percent_2_mean_string, percent_3_mean_string, percent_4_mean_string, percent_5_mean_string, percent_6_mean_string, percent_7_mean_string,]
+                      },
+                      {
+                        label: '{% trans "Moyenne dans le secteur" %}',
+                        values: [percent_1_mean_business_line, percent_2_mean_business_line, percent_3_mean_business_line, percent_4_mean_business_line, percent_5_mean_business_line, percent_6_mean_business_line, percent_7_mean_business_line,],
+                        strings: [percent_1_mean_business_line_string, percent_2_mean_business_line_string, percent_3_mean_business_line_string, percent_4_mean_business_line_string, percent_5_mean_business_line_string, percent_6_mean_business_line_string, percent_7_mean_business_line_string,]
+                      },]
+                  };
+            }
+
+            let maximum = Math.max(...data.series[0].values.concat(data.series[1].values).concat(data.series[2].values))
+            let moy_color = "#95B9C1"
+            let moy_secteur_color = "#863C63"
+
+            for(let i=0; i<data.labels.length; i++)
+            {
+                let child = document.createElement("div")
+                let ans;
+                if(!isNaN(data.series[0].strings[i])) {
+                    ans = "{% trans 'ans'%}"
+                } else {
+                    ans = "";
+                }
+                child.innerHTML = `<span style="text-align:left; color:#423C6B; white-space:nowrap; font-weight:600; height:87px;">${data.labels[i]}
+                                        <div class="pie_element">
+                                            <div class="pie_content" style="align-items:flex-start; width:65%;">
+                                                <div class="pie_me" style="background-color:{{ color }}; width: ${Math.max(22, (data.series[0].values[i] / maximum *100) + 0.5)}%">
+                                                    <div><span style="background-color:{{ color }}; text-align:left;">${data.series[0].strings[i]} ${ans}</span></div>
+                                                </div>
+                                                <div class="pie_other {% if not display_mean_score %}hidden{% endif %}" style="background-color:${moy_secteur_color}; width: ${(data.series[2].values[i] / maximum *100) + 0.5}%"></div>
+                                                <div class="pie_other {% if not display_mean_score %}hidden{% endif %}" style="background-color:${moy_color}; width: ${(data.series[1].values[i] / maximum *100) + 0.5}%"></div>
+                                            </div>
+                                            <div class="pie_legend" style="width:initial;">
+                                                <div {% if not display_mean_score %}class="hidden"{% endif %}>
+                                                    <span style="color: ${moy_secteur_color}">● ${data.series[2].values[i]} {% trans 'ans'%}</span>
+                                                </div>
+                                                <div {% if not display_mean_score %}class="hidden"{% endif %}>
+                                                    <span style="color:${moy_color}">● ${data.series[1].values[i]} {% trans 'ans'%}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </span>`
+                document.getElementById("{{ id }}").appendChild(child.firstChild)
+            }
+        });
+    </script>
+{% endblock %}
+{% endlocalize %}

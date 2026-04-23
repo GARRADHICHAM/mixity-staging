@@ -1,0 +1,6 @@
+*/tests.py
+*.log
+*.md
+mixity/test_data/
+.git/
+node_modules/

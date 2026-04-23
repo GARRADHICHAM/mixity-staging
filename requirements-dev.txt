@@ -1,0 +1,15 @@
+-r requirements.txt
+
+# development
+django-debug-toolbar>=3.2,<3.3
+django-environ~=0.8.1
+
+ipdb~=0.13.9
+colorlog==6.8.0
+
+# test
+tblib~=1.6.0
+coverage~=4.5.4
+git+https://gitlab.com/jeremymarc/django-smart-testing@0.7.6#egg=django-smart-testing
+
+responses~=0.16.0

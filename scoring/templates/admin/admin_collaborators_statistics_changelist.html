@@ -1,0 +1,22 @@
+{% extends 'admin/change_list.html' %}
+{%  load static %}
+{% comment %}Only present in Admin{% endcomment %}
+{% block object-tools %}
+<div id="namsor_api_container">
+    <strong>Utilisation de l'API : </strong><span id="namsor_api_usage">NAMSOR_API_USAGE</span> / <span id="namsor_api_total">NAMSOR_API_TOTAL</span>
+</div>
+<script>
+    fetch('/namsor-api-usage/').then(response => response.json()).then(json => {
+        if("error" in json) {
+            document.querySelector("#namsor_api_container").innerHTML = json.error
+        } else {
+            const usage = document.querySelector("#namsor_api_usage")
+            usage.innerHTML = json.usage
+            document.querySelector("#namsor_api_total").innerHTML = json.hardLimit
+            if(json.usage >= json.softLimit) {
+                usage.style.backgroundColor = "#d55219"
+            }
+        }
+    })
+</script>
+{% endblock %}

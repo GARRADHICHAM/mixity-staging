@@ -1,0 +1,34 @@
+{% load i18n %}
+{% load format_number %}
+
+<div>
+    <br/>
+    <h3 class="content-strong" style="text-align: left;">
+        {{ title }}
+    </h3>
+    {% with subanswers=answer.subanswers.all %}
+        {% if subanswers %}
+            <span  line_id=17 class="txt_line" style="display: none">
+                {{ title }} : {{ label_1 }} {% percentage value=subanswers.0.value %} {{ label_2 }} {% percentage value=subanswers.1.value %} {{ label_3 }} {% percentage value=subanswers.2.value %}
+            </span>
+            <div class="progress_graph" style="background-color:{{ color_3 }}">
+                <div style="background-color:{{ color_1 }}; width:{% firstof subanswers.0.get_value_from_json_params|stringformat:'f' 0 %}%"></div>
+                <div style="background-color:{{ color_2 }}; width:{% firstof subanswers.1.get_value_from_json_params|stringformat:'f' 0 %}%"></div>
+            </div>
+            <div class="progress_legend">
+                <div class="legend_element" style="justify-content: start">
+                    <div style="background-color:{{ color_1 }};" class="dot"></div>
+                    <span style="color: {{ color_1 }}">&nbsp;{% percentage value=subanswers.0.get_value_from_json_params %}&nbsp;</span>
+                </div>
+                <div class="legend_element">
+                    <div style="background-color:{{ color_2 }};" class="dot"></div>
+                    <span style="color: {{ color_2 }}">&nbsp;{% percentage value=subanswers.1.get_value_from_json_params %}&nbsp;</span>
+                </div>
+                <div class="legend_element" style="justify-content: end">
+                    <div style="background-color:{{ color_3 }};" class="dot"></div>
+                    <span style="color: {{ color_3 }}">&nbsp;{% percentage value=subanswers.2.get_value_from_json_params %}&nbsp;</span>
+                </div>
+            </div>
+        {% endif %}
+    {% endwith %}
+</div>

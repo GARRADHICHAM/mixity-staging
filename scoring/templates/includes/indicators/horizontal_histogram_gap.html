@@ -1,0 +1,25 @@
+{% load i18n %}
+{% load format_number %}
+{% load substract %}
+{% load absolute_value %}
+
+<div>
+    <br/>
+    <h3 line_id=17 suffix=" : {{ value|floatformat:'0' }} %" class="content-strong" style="text-align: left;margin-bottom:8px">
+        {{ label }}
+    </h3>
+        <div style="display: grid; grid-template-columns: 65% 35%">
+            <div style="width: 100%; display: flex; justify-content: left; flex-direction: column">
+                <div id="women_{{ id }}" style="height: 52px; background: {{color1}}; {% if value > 0 %}z-index:1;width: {{ 100|substract:value|floatformat:0 }}{% else %}width:100{% endif %}%"></div>
+                <div id="men_{{ id }}" style="height: 52px; background: {{color2}}; {% if value < 0 %}z-index:1;width:{{ 100|add:value|floatformat:0  }}{% else %}width:100{% endif %}%; margin-top:-10px"></div>
+            </div>
+            <div style="display: flex;justify-content: center;align-items: center;width: 100%"><span id="percent_{{id}}" style="color: {% if value > 0 %}{{color2}}{% else %}{{color1}}{% endif %}; float:right; font-weight:normal; padding-left: 15px; font-size: 18pt">
+                <strong style="font-size: 30px">{% percentage value|absolute_value %}</strong>
+                {% if value > 0 %}
+                    {% blocktrans trimmed %}en faveur des hommes{% endblocktrans %}
+                {% elif value < 0 %}
+                    {% blocktrans trimmed %}en faveur des femmes{% endblocktrans %}
+                {% endif %}
+            </span></div>
+        </div>
+</div>

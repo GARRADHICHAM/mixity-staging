@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load i18n static allow_evaluation %}
+
+
+{% block content %}
+  <section class="bg--radar">
+    <div class="col structure">
+      <div class="structure__content grid-column-2 bg-gradient-multicolor">
+        <article>
+          <h2 class="title--h2">{% blocktrans trimmed %}Le paiement a été effectué avec succès !{% endblocktrans %}</h2>
+          <br>
+          <div class="col col--1">
+            <p>
+                {% blocktrans trimmed %}Vous pouvez désormais accéder à votre questionnaire en ligne dans la rubrique "Mon Compte" - Empreinte - Voir les évaluations - Créer votre nouvelle empreinte.{% endblocktrans %}
+            </p>
+            <p>
+                {% blocktrans trimmed %}Votre facture est disponible dans la rubrique "Mon Compte" - Gérer les abonnements.{% endblocktrans %}
+            </p>
+            <br>
+
+            <a href="{% url 'structure:account' pk=pk %}" class="button button--circle button--sm">
+              <b>{% blocktrans trimmed %}Gérer votre compte entreprise{% endblocktrans %}</b>
+            </a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+{% endblock %}

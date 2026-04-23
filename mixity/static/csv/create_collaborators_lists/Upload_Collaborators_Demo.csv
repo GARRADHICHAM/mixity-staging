@@ -1,0 +1,16 @@
+first_name,last_name,email,entity_slug,is_owner,is_reader
+Alice,Dubois,alice.dubois@gmail.com,company,FALSE,TRUE
+Benjamin,Martin,benjamin.martin@yahoo.com,company-1a,FALSE,TRUE
+Camille,Bernard,camille.bernard@hotmail.com,company-1b,FALSE,TRUE
+David,Lefevre,david.lefevre@outlook.com,company-2a,FALSE,TRUE
+Élise,Moreau,elise.moreau@mail.com,company-1,FALSE,TRUE
+Florian,Simon,florian.simon@protonmail.com,company-2,FALSE,TRUE
+Gabrielle,Laurent,gabrielle.laurent@icloud.com,company,FALSE,TRUE
+Hugo,Michel,hugo.michel@gmail.com,company-1a,FALSE,TRUE
+Isabelle,Robert,isabelle.robert@aol.com,company-1b,FALSE,TRUE
+Julien,Petit,julien.petit@outlook.com,company-2a,FALSE,TRUE
+Karine,Richard,karine.richard@gmail.com,company-1,FALSE,TRUE
+Louis,Fournier,louis.fournier@yahoo.com,company-2,FALSE,TRUE
+Mathilde,Lefort,mathilde.lefort@live.com,company,FALSE,TRUE
+Nicolas,Dumont,nicolas.dumont@gmail.com,company-1a,FALSE,TRUE
+Ophélie,Rousseau,ophelie.rousseau@mail.com,company-1b,FALSE,TRUE

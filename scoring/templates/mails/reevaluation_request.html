@@ -1,0 +1,25 @@
+{% extends "base_email.html" %}
+{% load i18n static %}
+
+{% block content %}
+<tr>
+  <td>
+    <h1>{% trans "Demande de réouverture d'évaluation" %}</h1>
+  </td>
+</tr>
+<tr>
+  <td>
+  {{ entity }} {% blocktrans %}a fait une demande de réouverture concernant l'évaluation diag.{% endblocktrans %}
+  </td>
+</tr>
+<tr>
+  <td>
+    {% trans "Rendez-vous dans l'admin pour examiner la demande." %}
+  </td>
+</tr>
+<tr>
+  <td>
+    {% blocktrans %}L'acceptation de la demande de réouverture provoque la duplication de l'évaluation de l'entité ainsi que des évaluations des entités affiliées. Après validation, l'utilisateur pourra reprendre son questionnaire directement depuis son dashboard.{% endblocktrans %}
+  </td>
+</tr>
+{% endblock %}

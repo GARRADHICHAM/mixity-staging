@@ -1,0 +1,65 @@
+{% load i18n %}
+{% load l10n %}
+{% load format_number %}
+
+
+{% localize off %}
+<div class="d-flex justify-content-center">
+    <div class="pie_chart" style="font-size:inherit; font-family:inherit;">
+        <span style="text-align: left;color: #423C6B;font-weight: 600">{{ label_1 }}
+            <div class="pie_element" style="margin-top: 10px;">
+                <div class="pie_content" style="align-items:flex-start; width:100%;">
+                    <div class="pie_me" style="background-color:{{ color }}; width: {{ answer_1.value|default:'0.5' }}%"></div>
+                    {% if display_mean_score %}
+                        <div class="pie_other" style="background-color:#863C63; width: {{ answer_1.get_mean_score_in_business_line|default:'0.5' }}%"></div>
+                        <div class="pie_other" style="background-color:#95B9C1; width: {{ answer_1.get_mean_score|default:'0.5' }}%"></div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="progress_legend">
+                <div class="legend_element" style="justify-content: start">
+                    <div style="background-color:{{ color }};" class="dot"></div>
+                    <span style="color: {{ color }}; font-size: 15pt;">&nbsp;{% percentage value=answer_1.value %}&nbsp;</span>
+                </div>
+                {% if display_mean_score %}
+                    <div class="legend_element">
+                        <div style="background-color:#863C63;" class="dot"></div>
+                        <span style="color: #863C63; font-size: 15pt;">&nbsp;{% percentage value=answer_1.get_mean_score_in_business_line %}&nbsp;</span>
+                    </div>
+                    <div class="legend_element" style="justify-content: end">
+                        <div style="background-color:#95B9C1;" class="dot"></div>
+                        <span style="color: #95B9C1; font-size: 15pt;">&nbsp;{% percentage value=answer_1.get_mean_score %}&nbsp;</span>
+                    </div>
+                {% endif %}
+            </div>
+        </span>
+        <span style="text-align: left;color: #423C6B;font-weight: 600; margin-top:20px;">{{ label_2 }}
+            <div class="pie_element" style="margin-top: 10px;">
+                <div class="pie_content" style="align-items:flex-start; width:100%;">
+                    <div class="pie_me" style="background-color:{{ color }}; width: {{ answer_2.value|default:'0.5' }}%"></div>
+                    {% if display_mean_score %}
+                        <div class="pie_other" style="background-color:#863C63; width: {{ answer_2.get_mean_score_in_business_line|default:'0.5' }}%"></div>
+                        <div class="pie_other" style="background-color:#95B9C1; width: {{ answer_2.get_mean_score|default:'0.5' }}%"></div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="progress_legend">
+                <div class="legend_element" style="justify-content: start">
+                    <div style="background-color:{{ color }};" class="dot"></div>
+                    <span style="color: {{ color }}; font-size: 15pt;">&nbsp;{% percentage value=answer_2.value %}&nbsp;</span>
+                </div>
+                {% if display_mean_score %}
+                    <div class="legend_element">
+                        <div style="background-color:#863C63;" class="dot"></div>
+                        <span style="color: #863C63; font-size: 15pt;">&nbsp;{% percentage value=answer_2.get_mean_score_in_business_line %}&nbsp;</span>
+                    </div>
+                    <div class="legend_element" style="justify-content: end">
+                        <div style="background-color:#95B9C1;" class="dot"></div>
+                        <span style="color: #95B9C1; font-size: 15pt;">&nbsp;{% percentage value=answer_2.get_mean_score %}&nbsp;</span>
+                    </div>
+                {% endif %}
+            </div>
+        </span>
+    </div>
+</div>
+{% endlocalize %}

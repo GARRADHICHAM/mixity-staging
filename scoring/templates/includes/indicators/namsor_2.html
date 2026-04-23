@@ -1,0 +1,8 @@
+{% load define %}
+{% define collab|get_collaborators_statistics:'{"group_by":["region", "name"]}' as region_data %}
+<div class="w-100 p-4 d-flex flex-column align-items-end" id="namsor_indicator_{{ id }}"></div>
+{% block scripts %}
+<script>
+    Mixity.renderNamsorIndicator("{{ id }}", {{ region_data|safe }});
+</script>
+{% endblock %}

@@ -1,0 +1,291 @@
+{% load i18n %}
+{% load l10n %}
+
+
+<div class="items_container" style="justify-content: center; align-items: stretch">
+    {% with answer=answer_20213024 %}
+        {% if answer %}
+            <div class="item_pb item_s1 item_c stretched_item">
+                {% with title=_("Pourcentage de femmes, hommes, non-binaire dans l'entreprise") subanswers=answer.subanswers.all %}
+                    <h3 line_id=17 class="txt_line content-strong" prefix="\n">
+                        {{ title }}
+                    </h3>
+                {% include 'includes/indicators/pie_multiple_percent.html' with color1=cat.color value1=subanswers.0.value color2="#863C63" value2=subanswers.1.value color3="#8888E2" color4="#95B9C1" value3=subanswers.2.value value4=subanswers.3.value legend1=_("Femmes") legend2=_("Hommes") legend3=_("Non-binaires") legend4=_("Préfère ne rien déclarer") id=answer.id|stringformat:'i'|add:"pie_chart" %}
+                {% endwith %}
+                {% if answer.perimeter %}
+                    <div class="perimeter-indicator">
+                        <span>
+                            {% trans answer.perimeter %}
+                        </span>
+                    </div>
+                {% endif %}
+            </div>
+        {% endif %}
+    {% endwith %}
+    {% with answers=answer_ethnies_gender %}
+        {% if answers %}
+            <div class="item_pb item_s2 item_c">
+                    <h3 line_id=17 class="txt_line content-strong" prefix="\n"  style="text-align: left">
+                        {% blocktrans trimmed %}Pourcentage de ...{% endblocktrans %}
+                    </h3>
+                {% include 'includes/indicators/split_gender_ethnies.html' with men_color="#863C63" nb_color="#8888E2" cat=cat answers=answers labels=labels_ethnies_gender id=answer.id|stringformat:'i'|add:"ethnies_gender" %}
+                {% if answer.perimeter %}
+                    <div class="perimeter-indicator">
+                        <span>
+                            {% trans answer.perimeter %}
+                        </span>
+                    </div>
+                {% endif %}
+            </div>
+        {% endif %}
+    {% endwith %}
+    {% if not answer_ethnies_gender %}
+        <div class="items_container item_s2 stretched_item item_c" style="align-items: stretch">
+    {% endif %}
+    <div class="d-flex justify-content-center" style="width: 100%;flex-wrap:wrap">
+        {% with answer=answer_20213032 answer2=answer_20213033 %}
+            {% if answer %}
+                <div class="item_pb item_s{% if answer_ethnies_gender %}1{% else %}50{% endif %} stretched_item item_c">
+                    <h3 line_id=17 suffix=" : {{ answer.value|floatformat:'0' }} %" class="txt_line content-strong" style="width: 100%;">
+                        {{ answer.question.label }}
+                    </h3>
+                    <div style="display: flex;justify-content: center; flex-wrap: wrap;width: 100%">
+                        {% include 'includes/indicators/half_circular_plot.html' with last_year_value=answer.sibling_value|floatformat:'1' border_color="#EBEAEA" blank_color="#e9ecef" percent_inner=answer.value|floatformat:'1' percent=answer.get_mean_score_in_business_line|floatformat:'0' percent_outter=answer.get_mean_score|floatformat:'0' color=cat.color id=answer.id small=1 %}
+                        {% include 'includes/indicators/split_repartition.html' with answer=answer2 color=cat.color %}
+                    </div>
+                    {% if answer.perimeter %}
+                        <div class="perimeter-indicator">
+                            <span>
+                                {% trans answer.perimeter %}
+                            </span>
+                        </div>
+                    {% endif %}
+                    {% if answer2.perimeter %}
+                        <div class="perimeter-indicator">
+                            <span>
+                                {% trans answer2.perimeter %}
+                            </span>
+                        </div>
+                    {% endif %}
+                </div>
+            {% endif %}
+        {% endwith %}
+        {% with answer=answer_20213034 answer2=answer_20213035 %}
+            {% if answer %}
+                <div class="item_pb item_s{% if answer_ethnies_gender %}1{% else %}50{% endif %} stretched_item item_c">
+                    <h3 line_id=17 suffix=" : {{ answer.value|floatformat:'0' }} %" class="txt_line content-strong" style="width: 100%;">
+                        {{ answer.question.label }}
+                    </h3>
+                    <div style="display: flex;justify-content: center; flex-wrap: wrap;width: 100%">
+                        {% include 'includes/indicators/half_circular_plot.html' with last_year_value=answer.sibling_value|floatformat:'1' border_color="#EBEAEA" blank_color="#e9ecef" percent_inner=answer.value|floatformat:'1' percent=answer.get_mean_score_in_business_line|floatformat:'0' percent_outter=answer.get_mean_score|floatformat:'0' color=cat.color id=answer.id small=1 %}
+                        {% include 'includes/indicators/split_repartition.html' with answer=answer2 color=cat.color %}
+                    </div>
+                    {% if answer.perimeter %}
+                        <div class="perimeter-indicator">
+                            <span>
+                                {% trans answer.perimeter %}
+                            </span>
+                        </div>
+                    {% endif %}
+                    {% if answer2.perimeter %}
+                        <div class="perimeter-indicator">
+                            <span>
+                                {% trans answer2.perimeter %}
+                            </span>
+                        </div>
+                    {% endif %}
+                </div>
+            {% endif %}
+        {% endwith %}
+    </div>
+    <div class="d-flex justify-content-center" style="width: 100%;flex-wrap:wrap;">
+        {% with answer=answer_20213036 answer2=answer_20213037 %}
+            {% if answer %}
+                <div class="item_pb item_s{% if answer_ethnies_gender %}1{% else %}50{% endif %} stretched_item item_c">
+                    <h3 line_id=17 suffix=" : {{ answer.value|floatformat:'0' }} %" class="txt_line content-strong" style="width: 100%;">
+                        {{ answer.question.label }}
+                    </h3>
+                    <div style="display: flex;justify-content: center; flex-wrap: wrap; width: 100%">
+                        {% include 'includes/indicators/half_circular_plot.html' with last_year_value=answer.sibling_value|floatformat:'1' border_color="#EBEAEA" blank_color="#e9ecef" percent_inner=answer.value|floatformat:'1' percent=answer.get_mean_score_in_business_line|floatformat:'0' percent_outter=answer.get_mean_score|floatformat:'0' color=cat.color id=answer.id small=1 %}
+                        {% include 'includes/indicators/split_repartition.html' with answer=answer2 color=cat.color %}
+                    </div>
+                    {% if answer.perimeter %}
+                        <div class="perimeter-indicator">
+                            <span>
+                                {% trans answer.perimeter %}
+                            </span>
+                        </div>
+                    {% endif %}
+                    {% if answer2.perimeter %}
+                        <div class="perimeter-indicator">
+                            <span>
+                                {% trans answer2.perimeter %}
+                            </span>
+                        </div>
+                    {% endif %}
+                </div>
+            {% endif %}
+        {% endwith %}
+        {% with answer=answer_202130362 answer2=answer_202130363 %}
+            {% if answer %}
+                <div class="item_pb item_s{% if answer_ethnies_gender %}1{% else %}50{% endif %} stretched_item item_c">
+                    <h3 line_id=17 suffix=" : {{ answer.value|floatformat:'0' }} %" class="txt_line content-strong" style="width: 100%;">
+                        {{ answer.question.label }}
+                    </h3>
+                    <div style="display: flex;justify-content: center; flex-wrap: wrap; width: 100%">
+                        {% include 'includes/indicators/half_circular_plot.html' with last_year_value=answer.sibling_value|floatformat:'1' border_color="#EBEAEA" blank_color="#e9ecef" percent_inner=answer.value|floatformat:'1' percent=answer.get_mean_score_in_business_line|floatformat:'0' percent_outter=answer.get_mean_score|floatformat:'0' color=cat.color id=answer.id small=1 %}
+                        {% include 'includes/indicators/split_repartition.html' with answer=answer2 color=cat.color %}
+                    </div>
+                    {% if answer.perimeter %}
+                        <div class="perimeter-indicator">
+                            <span>
+                                {% trans answer.perimeter %}
+                            </span>
+                        </div>
+                    {% endif %}
+                    {% if answer2.perimeter %}
+                        <div class="perimeter-indicator">
+                            <span>
+                                {% trans answer2.perimeter %}
+                            </span>
+                        </div>
+                    {% endif %}
+                </div>
+            {% endif %}
+        {% endwith %}
+    </div>
+    {% if not answer_ethnies_gender %}
+        </div>
+    {% endif %}
+    {% with answer=answer_20213041 %}
+        {% if answer %}
+            <div class="item_pb item_s1 stretched_item item_c">
+                <h3 line_id=17 suffix=" : {{ answer.value|floatformat:'0' }} %" class="txt_line content-strong" style="width: 100%;">
+                    {% blocktrans trimmed %}Poucentage de femmes dans les 10 plus hautes rémunérations{% endblocktrans %}
+                </h3>
+                <div class="d-flex justify-content-center">
+                    {% include 'includes/indicators/circular_plot.html' with border_color="#EBEAEA" blank_color="#e9ecef" percent_inner=answer.value|floatformat:'0' percent=answer.get_mean_score_in_business_line|floatformat:'1' percent_outter=answer.get_mean_score|floatformat:'1' color=sc.category.color id=answer.id|stringformat:'i'|add:"circular_plot" %}
+                </div>
+                    {% if answer.perimeter %}
+                        <div class="perimeter-indicator">
+                            <span>
+                                {% trans answer.perimeter %}
+                            </span>
+                        </div>
+                    {% endif %}
+            </div>
+        {% endif %}
+    {% endwith %}
+    {% with answer=answer_20213039 %}
+        {% if answer %}
+            <div class="item_pb item_s1 item_c">
+                <h3 line_id=17 suffix=" : {{ answer.value|floatformat:'0' }} %" class="txt_line content-strong">
+                    {% blocktrans trimmed %}Ecart de rémunération effective entre les femmes et les hommes à poste, famille de fonction et âges comparable{% endblocktrans %}
+                </h3>
+                {% include 'includes/indicators/double_vertical_histogram.html' with value=answer.value last_year_value=answer.sibling_value label1=_("Femmes") color1=cat.color label2=_("Hommes") color2="#863C63" last_year=answer.sibling_year %}
+                    {% if answer.perimeter %}
+                        <div class="perimeter-indicator">
+                            <span>
+                                {% trans answer.perimeter %}
+                            </span>
+                        </div>
+                    {% endif %}
+            </div>
+        {% endif %}
+    {% endwith %}
+
+    {% with answer=answer_20213038 %}
+        {% if answer %}
+            <div class="item_pb item_s1 stretched_item item_c">
+                {% with label=_("Note globale à l'index d'égalité professionnelle entre les femmes et les hommes") %}
+                    {% include 'includes/indicators/number_percent.html' with full_width=True last_year=answer.sibling_year last_year_value=answer.sibling_value percent=answer.value text=text label=label color=cat.color id=answer.id|add:"number_percent_plot" %}
+                {% endwith %}
+                {% if answer.perimeter %}
+                    <div class="perimeter-indicator">
+                        <span>
+                            {% trans answer.perimeter %}
+                        </span>
+                    </div>
+                {% endif %}
+            </div>
+        {% endif %}
+    {% endwith %}
+
+    {% with color_2="#863C63" color_3="#8888E2" label_1=_("Femmes") label_2=_("Hommes") label_3=_("Non-binaires") %}
+        {% if answer_20213049 or answer_20213050 or answer_20213051 or answer_202130511 %}
+            <div class="item_pb item_s3">
+                <div style="display: flex;justify-content: space-between">
+                    <div>
+                        <h3 line_id=17 class="txt_line content-strong" prefix="\n" style="text-align: left;">
+                            {% blocktrans trimmed %}Pourcentage de femmes, hommes, non-binaires...{% endblocktrans %}
+                        </h3>
+                    </div>
+                    <div class="legend_container">
+                        <div class="legend_element"><div class="dot" style="background-color:{{ cat.color }};"></div> <span>&nbsp;{{ label_1 }}</span></div>
+                        <div class="legend_element"><div class="dot" style="background-color:{{ color_2 }};"></div> <span>&nbsp;{{ label_2 }}</span></div>
+                        <div class="legend_element"><div class="dot" style="background-color:{{ color_3 }};"></div> <span>&nbsp;{{ label_3 }}</span></div>
+                    </div>
+                </div>
+
+                {% if answer_20213049 %}
+                    {% with title=_("… dans les fonctions ventes/commerciales/service client") %}
+                        {% include 'includes/indicators/repartition_chart.html' with title=title answer=answer_20213049 color_1=cat.color color_2=color_2 color_3=color_3 label_1=label_1 label_2=label_2 label_3=label_3 perimeter=answer_20213049.perimeter %}
+                    {% endwith %}
+                {% endif %}
+
+                {% if answer_20213050 %}
+                    {% with title=_("… dans les métiers techniques et informatiques (métiers du web, de l'informatique, techniciens, ingénieurs, opérateurs et agents spécialisés") %}
+                        {% include 'includes/indicators/repartition_chart.html' with title=title answer=answer_20213050 color_1=cat.color color_2=color_2 color_3=color_3 label_1=label_1 label_2=label_2 label_3=label_3 perimeter=answer_20213050.perimeter %}
+                    {% endwith %}
+                {% endif %}
+
+                {% if answer_20213051 %}
+                    {% with title=_("… dans les métiers support (administration, ressources humaines, achats, communication, marketing, logistique, risque, audit, finance)") %}
+                        {% include 'includes/indicators/repartition_chart.html' with title=title answer=answer_20213051 color_1=cat.color color_2=color_2 color_3=color_3 label_1=label_1 label_2=label_2 label_3=label_3 perimeter=answer_20213051.perimeter %}
+                    {% endwith %}
+                {% endif %}
+
+                {% if answer_202130511 %}
+                    {% with title=_("... dans les métiers du journalisme") %}
+                        {% include 'includes/indicators/repartition_chart.html' with title=title answer=answer_202130511 color_1=cat.color color_2=color_2 color_3=color_3 label_1=label_1 label_2=label_2 label_3=label_3 perimeter=answer_202130511.perimeter %}
+                    {% endwith %}
+                {% endif %}
+            </div>
+        {% endif %}
+    {% endwith %}
+    {% with answer=answer_20213061 %}
+        {% if answer %}
+            <div class="item_pb item_s1 item_c">
+                {% with title=_("Nombre de congé maternité minimum - en jours - dans votre entreprise") %}
+                    {% include 'includes/indicators/conges_histogram_international.html' with year=answer.evaluation.sheet.year val_now=answer.value|floatformat:'0' val_nat=answer_20213060.value|floatformat:'0' color=cat.color id=answer.id|stringformat:'i'|add:"conges" %}
+                {% endwith %}
+                {% if answer.perimeter %}
+                    <div class="perimeter-indicator">
+                        <span>
+                            {% trans answer.perimeter %}
+                        </span>
+                    </div>
+                {% endif %}
+            </div>
+        {% endif %}
+    {% endwith %}
+    {% with answer=answer_20213063 %}
+        {% if answer %}
+            <div class="item_pb item_s1 item_c">
+                {% with title=_("Nombre de congé second parent minimum - en jours - dans votre entreprise") %}
+                    {% include 'includes/indicators/conges_histogram_international.html' with year=answer.evaluation.sheet.year val_now=answer.value|floatformat:'0' val_nat=answer_20213062.value|floatformat:'0' color=cat.color id=answer.id|stringformat:'i'|add:"conges" %}
+                {% endwith %}
+                {% if answer.perimeter %}
+                    <div class="perimeter-indicator">
+                        <span>
+                            {% trans answer.perimeter %}
+                        </span>
+                    </div>
+                {% endif %}
+            </div>
+        {% endif %}
+    {% endwith %}
+
+
+
+</div>

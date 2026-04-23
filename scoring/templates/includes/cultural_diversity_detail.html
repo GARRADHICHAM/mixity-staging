@@ -1,0 +1,425 @@
+{% load i18n %}
+
+
+<div class="items_container" style="justify-content: center; align-items: stretch">
+    {% if answer_591 %}
+        <div class="item_pb item_s1 item_c stretched_item">
+            <h3 line_id=17 suffix=" : {{ answer_591.value|floatformat:'0' }}" class="txt_line content-strong">
+                {% blocktrans trimmed %}Nombre de nationalités dans l’effectif{% endblocktrans %}
+            </h3>
+            {% include 'includes/indicators/number_icon.html' with value=answer_591.value icon_name="earth" %}
+            {% if answer_591.perimeter %}
+                <div class="perimeter-indicator">
+                    <span>
+                        {% trans answer_591.perimeter %}
+                    </span>
+                </div>
+            {% endif %}
+        </div>
+    {% endif %}
+
+    {% if answer_10037 %}
+        <div class="item_pb item_s1 item_c stretched_item">
+            <h3 line_id=17 suffix=" : {{ answer_10037.value|floatformat:'0' }}" class="txt_line content-strong">
+                {% blocktrans trimmed %}Nombre de nationalités dans les instances de gouvernance (Conseil d'Administration et/ou Comité de Direction){% endblocktrans %}
+            </h3>
+            {% include 'includes/indicators/number_icon.html' with value=answer_10037.value icon_name="earth" %}
+            {% if answer_10037.perimeter %}
+                <div class="perimeter-indicator">
+                    <span>
+                        {% trans answer_10037.perimeter %}
+                    </span>
+                </div>
+            {% endif %}
+        </div>
+    {% endif %}
+</div>
+
+<div class="items_container" style="justify-content: center; align-items: stretch">
+    {% if answer_751 %}
+        <div class="item_pb item_s1 item_c stretched_item">
+            <h3 line_id=17 suffix=" : {{ answer_751.value|floatformat:'0' }}" class="txt_line  content-strong">
+                {% blocktrans trimmed %}Nombre d'employés ayant bénéficié d’un dispositif ou d'une formation à la diversité et à l’inclusion et/ou à la lutte contre les discriminations{% endblocktrans %}
+            </h3>
+            {% include 'includes/indicators/number_icon.html' with value=answer_751.value icon_name="earth" %}
+            {% if answer_751.perimeter %}
+                <div class="perimeter-indicator">
+                    <span>
+                        {% trans answer_751.perimeter %}
+                    </span>
+                </div>
+            {% endif %}
+        </div>
+    {% endif %}
+
+    {% if answer_2020087 %}
+        <div class="item_pb item_s1 item_c stretched_item">
+            <h3 line_id=17 suffix=" : {{ answer_2020087.value|floatformat:'0' }}" class="txt_line  content-strong">
+                {% blocktrans trimmed %}Nombre de nationalités dans le conseil d'administration{% endblocktrans %}
+            </h3>
+            {% include 'includes/indicators/number_icon.html' with value=answer_2020087.value icon_name="earth" %}
+            {% if answer_2020087.perimeter %}
+                <div class="perimeter-indicator">
+                    <span>
+                        {% trans answer_2020087.perimeter %}
+                    </span>
+                </div>
+            {% endif %}
+        </div>
+    {% endif %}
+
+    {% if answer_592 %}
+        <div class="item_pb item_s1 item_c stretched_item">
+            <h3 line_id=17 suffix=" : {{ answer_592.value|floatformat:'0' }}" class="txt_line  content-strong">
+                {% blocktrans trimmed %}Nombre de nationalités dans le COMEX ou le CODIR{% endblocktrans %}
+            </h3>
+            {% include 'includes/indicators/number_icon.html' with value=answer_592.value icon_name="earth" %}
+            {% if answer_592.perimeter %}
+                <div class="perimeter-indicator">
+                    <span>
+                        {% trans answer_592.perimeter %}
+                    </span>
+                </div>
+            {% endif %}
+        </div>
+    {% endif %}
+
+    {% if answer_10040 %}
+        <div class="item_pb item_s1 item_c">
+            <h3 line_id=17 suffix=" : {{ answer_10040.value|floatformat:'0' }} %" class="txt_line  content-strong">
+                {% blocktrans trimmed %}Taux des des jeunes issus des quartiers politiques de la ville (Q.P.V) en apprentissage ou en stage{% endblocktrans %}
+            </h3>
+            <div class="d-flex justify-content-center">
+                {% include 'includes/indicators/circular_plot.html' with last_year_value=answer_10040.sibling_value border_color="#EBEAEA" blank_color="#e9ecef" percent_inner=answer_10040.value|floatformat:'1' percent=answer_10040.get_mean_score_in_business_line|floatformat:'0' percent_outter=answer_10040.get_mean_score|floatformat:'0' color=cat.color id=answer_10040.id small=0 %}
+            </div>
+            {% if answer_10040.perimeter %}
+                <div class="perimeter-indicator">
+                    <span>
+                        {% trans answer_10040.perimeter %}
+                    </span>
+                </div>
+            {% endif %}
+        </div>
+    {% endif %}
+
+    {% if answer_2020092 %}
+        <div class="item_pb item_s1 item_c">
+            <h3 line_id=17 suffix=" : {{ answer_2020092.value|floatformat:'0' }} %" class="txt_line  content-strong">
+                {% blocktrans trimmed %}Pourcentage de cadres ayant suivi un cursus universitaire / effectif total des cadres{% endblocktrans %}
+            </h3>
+            <div class="d-flex justify-content-center">
+                {% include 'includes/indicators/circular_plot.html' with last_year_value=answer_2020092.sibling_value border_color="#EBEAEA" blank_color="#e9ecef" percent_inner=answer_2020092.value|floatformat:'1' percent=answer_2020092.get_mean_score_in_business_line|floatformat:'0' percent_outter=answer_2020092.get_mean_score|floatformat:'0' color=cat.color id=answer_2020092.id small=0 %}
+            </div>
+            {% if answer_2020092.perimeter %}
+                <div class="perimeter-indicator">
+                    <span>
+                        {% trans answer_2020092.perimeter %}
+                    </span>
+                </div>
+            {% endif %}
+        </div>
+    {% endif %}
+
+    {% if answer_10038 %}
+        <div class="item_pb item_s1 item_c">
+            <h3 line_id=17 suffix=" : {{ answer_10038.value|floatformat:'0' }} %" class="txt_line  content-strong">
+                {% blocktrans trimmed %}Taux d’emploi estimé des personnes issues de la diversité d'origine sociale et/ou ethnique{% endblocktrans %}
+            </h3>
+            <div class="d-flex justify-content-center">
+                {% include 'includes/indicators/circular_plot.html' with last_year_value=answer_10038.sibling_value border_color="#EBEAEA" blank_color="#e9ecef" percent_inner=answer_10038.value|floatformat:'1' percent=answer_10038.get_mean_score_in_business_line|floatformat:'0' percent_outter=answer_10038.get_mean_score|floatformat:'0' color=cat.color id=answer_10038.id small=0 %}
+            </div>
+            {% if answer_10038.perimeter %}
+                <div class="perimeter-indicator">
+                    <span>
+                        {% trans answer_10038.perimeter %}
+                    </span>
+                </div>
+            {% endif %}
+        </div>
+    {% endif %}
+
+    {% if answer_20214107 or answer_20215076 %}
+        <div class="item_pb item_s1 item_c stretched_item">
+            {% if answer_20214107 %}
+                <h3 line_id=17 suffix=" : {{ answer_20214107.value|floatformat:'0' }}" class="txt_line  content-strong">
+                    {% blocktrans trimmed %}Nombre de nationalités dans l'effectif total {% endblocktrans %}
+                </h3>
+                {% include 'includes/indicators/number_icon.html' with value=answer_20214107.value icon_name="earth" %}
+                {% if answer_20214107.perimeter %}
+                    <div class="perimeter-indicator">
+                        <span>
+                            {% trans answer_20214107.perimeter %}
+                        </span>
+                    </div>
+                {% endif %}
+            {% elif answer_20215076 %}
+                <h3 line_id=17 suffix=" : {{ answer_20215076.value|floatformat:'0' }}" class="txt_line  content-strong">
+                    {% blocktrans trimmed %}Nombre de nationalités dans l'effectif total {% endblocktrans %}
+                </h3>
+                {% include 'includes/indicators/number_icon.html' with value=answer_20215076.value icon_name="earth" %}
+                {% if answer_20215076.perimeter %}
+                    <div class="perimeter-indicator">
+                        <span>
+                            {% trans answer_20215076.perimeter %}
+                        </span>
+                    </div>
+                {% endif %}
+            {% endif %}
+        </div>
+    {% endif %}
+
+    {% if answer_20214108 or answer_20215075 %}
+        <div class="item_pb item_s1 item_c stretched_item">
+            {% if answer_20214108 %}
+                <h3 line_id=17 suffix=" : {{ answer_20214108.value|floatformat:'0' }}" class="txt_line  content-strong">
+                    {% blocktrans trimmed %}Nombre de nationalités dans le Conseil d'Administration de l'organisation{% endblocktrans %}
+                </h3>
+                {% include 'includes/indicators/number_icon.html' with value=answer_20214108.value icon_name="earth" %}
+                {% if answer_20214108.perimeter %}
+                    <div class="perimeter-indicator">
+                        <span>
+                            {% trans answer_20214108.perimeter %}
+                        </span>
+                    </div>
+                {% endif %}
+            {% elif answer_20215075 %}
+                <h3 line_id=17 suffix=" : {{ answer_20215075.value|floatformat:'0' }}" class="txt_line  content-strong">
+                    {% blocktrans trimmed %}Nombre de nationalités dans le Conseil d'Administration de l'organisation{% endblocktrans %}
+                </h3>
+                {% include 'includes/indicators/number_icon.html' with value=answer_20215075.value icon_name="earth" %}
+                {% if answer_20215075.perimeter %}
+                    <div class="perimeter-indicator">
+                        <span>
+                            {% trans answer_20215075.perimeter %}
+                        </span>
+                    </div>
+                {% endif %}
+            {% endif %}
+        </div>
+    {% endif %}
+
+    {% if answer_20214109 or answer_20215077 %}
+        <div class="item_pb item_s1 item_c stretched_item">
+            {% if answer_20214109 %}
+                <h3 line_id=17 suffix=" : {{ answer_20214109.value|floatformat:'0' }}" class="txt_line  content-strong">
+                    {% blocktrans trimmed %}Nombre de nationalités dans le COMEX ou le CODIR{% endblocktrans %}
+                </h3>
+                {% include 'includes/indicators/number_icon.html' with value=answer_20214109.value icon_name="earth" %}
+                {% if answer_20214109.perimeter %}
+                    <div class="perimeter-indicator">
+                        <span>
+                            {% trans answer_20214109.perimeter %}
+                        </span>
+                    </div>
+                {% endif %}
+            {% elif answer_20215077 %}
+                <h3 line_id=17 suffix=" : {{ answer_20215077.value|floatformat:'0' }}" class="txt_line  content-strong">
+                    {% blocktrans trimmed %}Nombre de nationalités dans le COMEX ou le CODIR{% endblocktrans %}
+                </h3>
+                {% include 'includes/indicators/number_icon.html' with value=answer_20215077.value icon_name="earth" %}
+                {% if answer_20215077.perimeter %}
+                    <div class="perimeter-indicator">
+                        <span>
+                            {% trans answer_20215077.perimeter %}
+                        </span>
+                    </div>
+                {% endif %}
+            {% endif %}
+        </div>
+    {% endif %}
+
+    {% if answer_20214111 or answer_20215081 %}
+        <div class="item_pb item_s1 item_c">
+            {% if answer_20214111 %}
+                <h3 line_id=17 suffix=" : {{ answer_20214111.ratio_value|floatformat:'0' }} %" class="txt_line  content-strong">
+                    {% blocktrans trimmed %}Taux d'embauche (CDD/CDI) des employés (f/h/nb) originaires des quartiers prioritaires de la ville ou des Zones de Revitalisation Rurale{% endblocktrans %}
+                </h3>
+                <div class="d-flex justify-content-center">
+                    {% include 'includes/indicators/circular_plot.html' with last_year_value=answer_20214111.sibling_value border_color="#EBEAEA" blank_color="#e9ecef" percent_inner=answer_20214111.ratio_value|floatformat:'1' percent=answer_20214111.get_mean_score_in_business_line|floatformat:'0' percent_outter=answer_20214111.get_mean_score|floatformat:'0' color=cat.color id=answer_20214111.id small=0 %}
+                </div>
+                {% if answer_20214111.perimeter %}
+                    <div class="perimeter-indicator">
+                        <span>
+                            {% trans answer_20214111.perimeter %}
+                        </span>
+                    </div>
+                {% endif %}
+            {% elif answer_20215081 %}
+                <h3 line_id=17 suffix=" : {{ answer_20215081.ratio_value|floatformat:'0' }} %" class="txt_line  content-strong">
+                    {% blocktrans trimmed %}Taux d'embauche (CDD/CDI) des employés (f/h/nb) originaires des quartiers prioritaires de la ville ou des Zones de Revitalisation Rurale{% endblocktrans %}
+                </h3>
+                <div class="d-flex justify-content-center">
+                    {% include 'includes/indicators/circular_plot.html' with last_year_value=answer_20215081.sibling_value border_color="#EBEAEA" blank_color="#e9ecef" percent_inner=answer_20215081.ratio_value|floatformat:'1' percent=answer_20215081.get_mean_score_in_business_line|floatformat:'0' percent_outter=answer_20215081.get_mean_score|floatformat:'0' color=cat.color id=answer_20215081.id small=0 %}
+                </div>
+                {% if answer_20215081.perimeter %}
+                    <div class="perimeter-indicator">
+                        <span>
+                            {% trans answer_20215081.perimeter %}
+                        </span>
+                    </div>
+                {% endif %}
+            {% endif %}
+        </div>
+    {% endif %}
+
+    {% if answer_20214112 or answer_20215082 %}
+        <div class="item_pb item_s1 item_c">
+            {% if answer_20214112 %}
+                <h3 line_id=17 suffix=" : {{ answer_20214112.ratio_value|floatformat:'0' }} %" class="txt_line  content-strong">
+                    {% blocktrans trimmed %}Taux de stagiaires et/ou alternants (f/h/nb) originaires des quartiers prioritaires de la ville ou des Zones de Revitalisation Rurale{% endblocktrans %}
+                </h3>
+                <div class="d-flex justify-content-center">
+                    {% include 'includes/indicators/circular_plot.html' with last_year_value=answer_20214112.sibling_value border_color="#EBEAEA" blank_color="#e9ecef" percent_inner=answer_20214112.ratio_value|floatformat:'1' percent=answer_20214112.get_mean_score_in_business_line|floatformat:'0' percent_outter=answer_20214112.get_mean_score|floatformat:'0' color=cat.color id=answer_20214112.id small=0 %}
+                </div>
+                {% if answer_20214112.perimeter %}
+                    <div class="perimeter-indicator">
+                        <span>
+                            {% trans answer_20214112.perimeter %}
+                        </span>
+                    </div>
+                {% endif %}
+            {% elif answer_20215082 %}
+                <h3 line_id=17 suffix=" : {{ answer_20215082.ratio_value|floatformat:'0' }} %" class="txt_line  content-strong">
+                    {% blocktrans trimmed %}Taux de stagiaires et/ou alternants (f/h/nb) originaires des quartiers prioritaires de la ville ou des Zones de Revitalisation Rurale{% endblocktrans %}
+                </h3>
+                <div class="d-flex justify-content-center">
+                    {% include 'includes/indicators/circular_plot.html' with last_year_value=answer_20215082.sibling_value border_color="#EBEAEA" blank_color="#e9ecef" percent_inner=answer_20215082.ratio_value|floatformat:'1' percent=answer_20215082.get_mean_score_in_business_line|floatformat:'0' percent_outter=answer_20215082.get_mean_score|floatformat:'0' color=cat.color id=answer_20215082.id small=0 %}
+                </div>
+                {% if answer_20215082.perimeter %}
+                    <div class="perimeter-indicator">
+                        <span>
+                            {% trans answer_20215082.perimeter %}
+                        </span>
+                    </div>
+                {% endif %}
+            {% endif %}
+        </div>
+    {% endif %}
+
+    {% if answer_20214114 %}
+        <div class="item_pb item_s1 item_c">
+            <h3 line_id=17 suffix=" : {{ answer_20214114.ratio_value|floatformat:'0' }} %" class="txt_line  content-strong">
+                {% blocktrans trimmed %}Pourcentage de cadres ayant suivi un cursus universitaire public ou semi-public / effectif total des cadres {% endblocktrans %}
+            </h3>
+            <div class="d-flex justify-content-center">
+                {% include 'includes/indicators/circular_plot.html' with last_year_value=answer_20214114.sibling_value border_color="#EBEAEA" blank_color="#e9ecef" percent_inner=answer_20214114.ratio_value|floatformat:'1' percent=answer_20214114.get_mean_score_in_business_line|floatformat:'0' percent_outter=answer_20214114.get_mean_score|floatformat:'0' color=cat.color id=answer_20214114.id small=0 %}
+            </div>
+            {% if answer_20214114.perimeter %}
+                <div class="perimeter-indicator">
+                    <span>
+                        {% trans answer_20214114.perimeter %}
+                    </span>
+                </div>
+            {% endif %}
+        </div>
+    {% endif %}
+
+
+    {% if answer_202141091 %}
+        <div class="item_pb item_s1 item_c">
+            <h3 line_id=17 suffix=" : {{ answer_202141091.ratio_value|floatformat:'0' }} %" class="txt_line  content-strong">
+                {% blocktrans trimmed %}Pourcentage de personnes ayant une nationalité autre que Française dans l'effectif total{% endblocktrans %}
+            </h3>
+            <div class="d-flex justify-content-center">
+                {% include 'includes/indicators/circular_plot.html' with last_year_value=answer_202141091.sibling_value border_color="#EBEAEA" blank_color="#e9ecef" percent_inner=answer_202141091.ratio_value|floatformat:'1' percent=answer_202141091.get_mean_score_in_business_line|floatformat:'0' percent_outter=answer_202141091.get_mean_score|floatformat:'0' color=cat.color id=answer_202141091.id small=0 %}
+            </div>
+            {% if answer_202141091.perimeter %}
+                <div class="perimeter-indicator">
+                    <span>
+                        {% trans answer_202141091.perimeter %}
+                    </span>
+                </div>
+            {% endif %}
+        </div>
+    {% endif %}
+
+    {% if answer_202141092 %}
+        <div class="item_pb item_s1 item_c">
+            <h3 line_id=17 suffix=" : {{ answer_202141092.ratio_value|floatformat:'0' }} %" class="txt_line  content-strong">
+                {% blocktrans trimmed %}Pourcentage de personnes ayant une nationalité autre que Française au sein des managers{% endblocktrans %}
+            </h3>
+            <div class="d-flex justify-content-center">
+                {% include 'includes/indicators/circular_plot.html' with last_year_value=answer_202141092.sibling_value border_color="#EBEAEA" blank_color="#e9ecef" percent_inner=answer_202141092.ratio_value|floatformat:'1' percent=answer_202141092.get_mean_score_in_business_line|floatformat:'0' percent_outter=answer_202141092.get_mean_score|floatformat:'0' color=cat.color id=answer_202141092.id small=0 %}
+            </div>
+            {% if answer_202141092.perimeter %}
+                <div class="perimeter-indicator">
+                    <span>
+                        {% trans answer_202141092.perimeter %}
+                    </span>
+                </div>
+            {% endif %}
+        </div>
+    {% endif %}
+
+    {% if answer_202150791 %}
+        <div class="item_pb item_s1 item_c">
+            <h3 line_id=17 suffix=" : {{ answer_202150791.ratio_value|floatformat:'0' }} %" class="txt_line  content-strong">
+                {% blocktrans trimmed %}Pourcentage de personnes ayant une nationalité autre que Française dans l'effectif total{% endblocktrans %}
+            </h3>
+            <div class="d-flex justify-content-center">
+                {% include 'includes/indicators/circular_plot.html' with last_year_value=answer_202150791.sibling_value border_color="#EBEAEA" blank_color="#e9ecef" percent_inner=answer_202150791.ratio_value|floatformat:'1' percent=answer_202150791.get_mean_score_in_business_line|floatformat:'0' percent_outter=answer_202150791.get_mean_score|floatformat:'0' color=cat.color id=answer_202150791.id small=0 %}
+            </div>
+            {% if answer_202150791.perimeter %}
+                <div class="perimeter-indicator">
+                    <span>
+                        {% trans answer_202150791.perimeter %}
+                    </span>
+                </div>
+            {% endif %}
+        </div>
+    {% endif %}
+
+    {% if answer_2021510792 %}
+        <div class="item_pb item_s1 item_c">
+            <h3 line_id=17 suffix=" : {{ answer_2021510792.ratio_value|floatformat:'0' }} %" class="txt_line  content-strong">
+                {% blocktrans trimmed %}Pourcentage de personnes ayant une nationalité autre que Française au sein des managers (f/h/nb){% endblocktrans %}
+            </h3>
+            <div class="d-flex justify-content-center">
+                {% include 'includes/indicators/circular_plot.html' with last_year_value=answer_2021510792.sibling_value border_color="#EBEAEA" blank_color="#e9ecef" percent_inner=answer_2021510792.ratio_value|floatformat:'1' percent=answer_2021510792.get_mean_score_in_business_line|floatformat:'0' percent_outter=answer_2021510792.get_mean_score|floatformat:'0' color=cat.color id=answer_2021510792.id small=0 %}
+            </div>
+            {% if answer_2021510792.perimeter %}
+                <div class="perimeter-indicator">
+                    <span>
+                        {% trans answer_2021510792.perimeter %}
+                    </span>
+                </div>
+            {% endif %}
+        </div>
+    {% endif %}
+
+    {% if answer_2021510791 %}
+        <div class="item_pb item_s1 item_c">
+            <h3 line_id=17 suffix=" : {{ answer_2021510791.ratio_value|floatformat:'0' }} %" class="txt_line  content-strong">
+                {% blocktrans trimmed %}Pourcentage de personnes ayant une nationalité autre que Française parmi les salariés (f/h/nb){% endblocktrans %}
+            </h3>
+            <div class="d-flex justify-content-center">
+                {% include 'includes/indicators/circular_plot.html' with last_year_value=answer_2021510791.sibling_value border_color="#EBEAEA" blank_color="#e9ecef" percent_inner=answer_2021510791.ratio_value|floatformat:'1' percent=answer_2021510791.get_mean_score_in_business_line|floatformat:'0' percent_outter=answer_2021510791.get_mean_score|floatformat:'0' color=cat.color id=answer_2021510791.id small=0 %}
+            </div>
+            {% if answer_2021510791.perimeter %}
+                <div class="perimeter-indicator">
+                    <span>
+                        {% trans answer_2021510791.perimeter %}
+                    </span>
+                </div>
+            {% endif %}
+        </div>
+    {% endif %}
+
+    {% if answer_202150792 %}
+        <div class="item_pb item_s1 item_c">
+            <h3 line_id=17 suffix=" : {{ answer_202150792.ratio_value|floatformat:'0' }} %" class="txt_line  content-strong">
+                {% blocktrans trimmed %}Pourcentage de personnes ayant une nationalité autre que Française au sein des managers{% endblocktrans %}
+            </h3>
+            <div class="d-flex justify-content-center">
+                {% include 'includes/indicators/circular_plot.html' with last_year_value=answer_202150792.sibling_value border_color="#EBEAEA" blank_color="#e9ecef" percent_inner=answer_202150792.ratio_value|floatformat:'1' percent=answer_202150792.get_mean_score_in_business_line|floatformat:'0' percent_outter=answer_202150792.get_mean_score|floatformat:'0' color=cat.color id=answer_202150792.id small=0 %}
+            </div>
+            {% if answer_202150792.perimeter %}
+                <div class="perimeter-indicator">
+                    <span>
+                        {% trans answer_202150792.perimeter %}
+                    </span>
+                </div>
+            {% endif %}
+        </div>
+    {% endif %}
+</div>

@@ -1,0 +1,78 @@
+version: '3.7'
+
+services:
+    cache:
+        image: redis:7.0.4-alpine
+        environment:
+            ALLOW_EMPTY_PASSWORD: 'yes'
+        ports:
+            - '6379:6379'
+        volumes:
+            - redis:/data
+    db:
+        image: "postgres:12.5"
+        environment:
+            POSTGRES_DB: db
+            POSTGRES_USER: user
+            POSTGRES_PASSWORD: password
+        volumes:
+            - postgresql:/var/lib/postgresql/data
+            - ./db_saves:/db_saves
+            - ./pg_manager.sh:/pg_manager.sh
+        ports:
+            - 5432:5432
+    web:
+        image: mixity
+        build: .
+        command: python manage.py runserver 0.0.0.0:8000
+        environment:
+            - DJANGO_SETTINGS_MODULE=mixity.settings.dev
+            - REDIS_URL=redis://cache:6379
+        working_dir: /app
+        volumes:
+            - .:/app
+        ports:
+            - "8000:8000"
+        depends_on:
+            - db
+            - cache
+        links:
+            - db
+    mailhog:
+        image: mailhog/mailhog
+        logging:
+            driver: 'none'  # disable saving logs
+        environment:
+            - MH_STORAGE=maildir
+            - MH_MAILDIR_PATH=./mailhog_mixity/
+        ports:
+           #- "1025:1025" # smtp server. Commented bcs no use outside docker
+            - "8025:8025" # web ui
+    worker:
+        image: mixity
+        environment:
+            - DJANGO_SETTINGS_MODULE=mixity.settings.dev
+            - REDIS_URL=redis://cache:6379
+        command: python manage.py rqworker default
+        volumes:
+            - .:/app
+        depends_on:
+            - db
+            - web
+            - webpack
+            - cache
+    webpack:
+        image: mixity
+        command: /bin/sh -c "./start_webpack.sh"
+        ports:
+            - "8080:8080"
+            - "3009:3009"
+            - "3001:3001"
+        volumes:
+            - .:/app
+        working_dir: /app
+        depends_on:
+            - web
+volumes:
+    postgresql:
+    redis:

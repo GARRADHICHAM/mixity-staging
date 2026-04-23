@@ -1,0 +1,45 @@
+.all h2 {
+    background-color: rgba(136, 136, 226, 0.4) !important;
+    color: black !important;
+}
+
+.gender h2 {
+    background-color: rgba(255, 112, 112, 0.4) !important;
+    color: black !important;
+}
+
+.disability h2 {
+    background-color: rgba(0, 153, 255, 0.4) !important;
+    color: black !important;
+}
+
+.generational_diversity h2 {
+    background-color: rgba(66, 60, 107, 0.4) !important;
+    color: black !important;
+}
+
+.cultural_diversity h2 {
+    background-color: rgba(24, 255, 195, 0.4) !important;
+    color: black !important;
+}
+
+.lgbt h2 {
+    background-color: rgba(54, 176, 245, 0.4) !important;
+    color: black !important;
+}
+.progress-bar-indicator {
+  height: 10px;
+  background-image: linear-gradient(to right, green, yellow, orange, red);   width: 100%;
+  border-radius: 25px;
+}
+.progress-bar-container { overflow: hidden; border-radius: 25px;
+}
+.progress-bar-indicator{
+    width: 158px;
+}
+
+.table-ethnicity {
+    max-height: 215px;
+    overflow: scroll;
+    display: inline-block;
+}

@@ -1,0 +1,80 @@
+.profile-form-container {
+  margin-bottom: 2em;
+}
+
+.profile-form-dropbtn {
+  border: solid 1px #f67273;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.profile-form-dropbtn i {
+  color: #f67273;
+  font-weight: 600;
+}
+
+.profile-form-dropdown {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  margin-top: 0.3em;
+}
+
+.profile-form-dropdown-content {
+  position: absolute;
+  top: 0px;
+  border-top-left-radius: 1.1em;
+  border-bottom-left-radius: 1.1em;
+  width: 100%;
+  background-color: white;
+  z-index: 10;
+  border: solid 1px #f67273;
+  max-height: 410px;
+  overflow:auto;
+}
+
+/* Custom Dropdown Scrollbar */
+.profile-form-dropdown-content::-webkit-scrollbar {
+  width: 7px;
+  margin-right:10px;
+}
+
+/* Track */
+.profile-form-dropdown-content::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  -webkit-margin-start: auto;
+}
+
+/* Handle */
+.profile-form-dropdown-content::-webkit-scrollbar-thumb:window-inactive,
+.profile-form-dropdown-content::-webkit-scrollbar-thumb {
+  background: #adb5bd;
+}
+
+.profile-form-dropdown-content a {
+  color: black;
+  padding: 0.563em 1em;
+  line-height: 1.4;
+  cursor: pointer;
+  text-decoration: none;
+  display: block;
+  border-radius: 2.5em;
+  font-weight: 500;
+  font-family: Montserrat, sans-serif !important;
+  font-size: 1em;
+}
+
+.dropdown-value-icon {
+  color: #f67273;
+  font-weight: 600;
+  float: right;
+}
+
+.profile-form-dropdown-content a:hover {
+  background-color: #f67273;
+  color: white;
+}
+
+.profile-form-dropdown:hover .profile-form-dropbtn {
+  opacity: 0.8;
+}

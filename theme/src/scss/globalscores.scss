@@ -1,0 +1,33 @@
+.score{
+    &__card {
+        width: 15%;
+        border-radius: 16px;
+        border-color: #DEDFEA;
+    }
+    &__title {
+        font-size: 1.2rem; 
+        line-height: 1.6rem;
+    }
+    &__stroke {
+        width: 85%;
+    }
+    &__percentage {
+        font-size: 1.2rem; 
+        line-height: 1.6rem;
+    }
+    &__smallCircle {
+        width: 20%; 
+    }
+    &__bigCircle {
+        width: 30%; 
+    }
+    &__subtitle {
+        color: #9094AA; 
+        font-size: 0.8rem;
+    }
+    &__smallPercentage {
+        font-size: .8rem;
+        line-height: 1.5rem;
+    }
+}
+

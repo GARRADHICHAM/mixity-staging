@@ -1,0 +1,277 @@
+
+{% load l10n %}
+{% load i18n %}
+{% load percentage %}
+{% load static %}
+
+<div class="items_container" style="justify-content: center; align-items: stretch">
+    {% if answer_20216000 %}
+        <div class="item_pb item_s1 item_c">
+            <h3 class="content-strong">
+                {% blocktrans trimmed %}Effectif total de l'entreprise{% endblocktrans %}
+            </h3>
+            {% include 'includes/indicators/number_icon.html' with value=answer_20216000_sum icon_name="people" on_top=True icon_size="220px" %}
+            {% if answer_20216000.perimeter %}
+                <div class="perimeter-indicator">
+                    <span>
+                        {% trans answer_20216000.perimeter %}
+                    </span>
+                </div>
+            {% endif %}
+        </div>
+    {% endif %}
+
+    {% with answer1=answer_202160001 answer2=answer_202160002 %}
+        {% if answer1 and answer2 %}
+            <div class="item_pb item_s2 item_c">
+                <div style="display: flex;justify-content: space-between">
+                    <div></div>
+                    <div>
+                        <h3 class="content-strong">
+                            {% blocktrans trimmed %}Nombre de fondateurs (f/h/nb){% endblocktrans %}
+                        </h3>
+                        {% include 'includes/indicators/number_icon.html' with value=answer_202160001_sum icon_name="people" icon_size="150px" %}
+                    </div>
+                    <div>
+                        <h3 class="content-strong" style="padding-bottom: 10px">
+                            {% blocktrans trimmed %}Nombre de nationalités{% endblocktrans %}
+                        </h3>
+                        {% include 'includes/indicators/number_icon.html' with value=answer2.value icon_name="earth" icon_size="100px" %}
+                    </div>
+                    <div></div>
+                </div>
+
+                {% with title=_("Répartition par genre des fondateurs (f/h/nb)") color_1="#FF7070" color_2="#863C63" color_3="#8888E2" label_1=_("Femmes") label_2=_("Hommes") label_3=_("Non-binaire") %}
+                    {% include 'includes/indicators/repartition_chart_ratio.html' with title=title answer=answer1 color_1=color_1 color_2=color_2 color_3=color_3 label_1=label_1 label_2=label_2 label_3=label_3 perimeter=answer1.perimeter %}
+                    <div style="display: flex;justify-content: space-between">
+                        <div class="content-strong" style="color: {{ color_1 }}">{{ label_1 }}</div>
+                        <div class="content-strong" style="color: {{ color_2 }}">{{ label_2 }}</div>
+                        <div class="content-strong" style="color: {{ color_3 }}">{{ label_3 }}</div>
+                    </div>
+                {% endwith %}
+
+            </div>
+        {% endif %}
+    {% endwith %}
+
+    {% if answer_20216028 or answer_20216027%}
+        <div class="item_pb item_s3 item_c items_container">
+    {% endif %}
+    {% if answer_20216000 %}
+        <div class="item_pb item_s1 item_c item_pie_start stretched_item">
+            <h3 line_id=17 class="txt_line content-strong" prefix="\n">
+                {% blocktrans trimmed %}Répartition des genres au sein de l'entreprise {% endblocktrans %}
+            </h3>
+            {% with subanswers=answer_20216000.subanswers.all %}
+                {% include 'includes/indicators/pie_multiple_percent.html' with color1="#FF7070" value1=subanswers.0.value|percentage:answer_20216000_sum color2="#863C63" value2=subanswers.1.value|percentage:answer_20216000_sum color3="#8888E2" value3=subanswers.2.value|percentage:answer_20216000_sum color4="#95B9C1" legend1=_("Femmes") legend2=_("Hommes") legend3=_("Non-binaire") id=answer_20216000.id|stringformat:'i'|add:"pie_chart" %}
+            {% endwith %}
+            {% if answer_20216000.perimeter %}
+                <div class="perimeter-indicator">
+                    <span>
+                        {% trans answer_20216000.perimeter %}
+                    </span>
+                </div>
+            {% endif %}
+        </div>
+    {% endif %}
+
+    {% with answers=answer_20216028 %}
+        {% if answers %}
+            <div class="item_pb item_s2 item_c item_bars">
+                <h3 line_id=17 class="txt_line content-strong" prefix="\n"  style="text-align: left">
+                    Répartition des femmes par ethnies dans l'organisation
+                </h3>
+                {% include 'includes/indicators/split_repartition.html' with answer=answers color=cat.color %}
+                {% if answer.perimeter %}
+                    <div class="perimeter-indicator">
+                        <span>
+                            {% trans answer.perimeter %}
+                        </span>
+                    </div>
+                {% endif %}
+            </div>
+        {% endif %}
+    {% endwith %}
+    {% with answers=answer_20216027 %}
+        {% if answers %}
+            <div class="item_pb item_s2 item_c item_bars">
+                <h3 line_id=17 class="txt_line content-strong" prefix="\n"  style="text-align: left">
+                    Répartition des femmes par ethnies dans l'organisation
+                </h3>
+                {% include 'includes/indicators/split_repartition.html' with answer=answers color=cat.color %}
+                {% if answer.perimeter %}
+                    <div class="perimeter-indicator">
+                        <span>
+                            {% trans answer.perimeter %}
+                        </span>
+                    </div>
+                {% endif %}
+            </div>
+        {% endif %}
+    {% endwith %}
+    {% if answer_20216028 or answer_20216027 %}
+        </div>
+    {% endif %}
+
+
+    {% if answer_20216002 %}
+        <div class="item_pb item_s1 item_c stretched_item">
+            <h3 line_id=17 suffix=" : {{ answer_20216002.ratio_value|floatformat:'0' }} %" class="txt_line content-strong">
+                {% blocktrans trimmed %}Nombre de salariés (f/h/nb) ayant répondu à un sondage sur la politique Diversité et l'Inclusion de l'entreprise{% endblocktrans %}
+            </h3>
+            <h5 class="content-light">
+                {% blocktrans trimmed %}dans les 2 dernières années{% endblocktrans %}
+            </h5>
+            {% include 'includes/indicators/circular_plot.html' with last_year_value=answer_20216002.sibling_value border_color="#EBEAEA" blank_color="#e9ecef" percent_inner=answer_20216002.value|floatformat:'1' percent=answer_20216002.get_mean_score_in_business_line|floatformat:'0' percent_outter=answer_20216002.get_mean_score|floatformat:'0' color=cat.color id=answer_20216002.id %}
+            {% if answer_20216002.perimeter %}
+                <div class="perimeter-indicator">
+                    <span>
+                        {% trans answer_20216002.perimeter %}
+                    </span>
+                </div>
+            {% endif %}
+        </div>
+    {% endif %}
+
+    {% with answer=answer_202160012 %}
+        {% if answer %}
+            <div class="item_pb item_s1 item_c">
+                <h3 line_id=17 suffix=" : {{ answer.value|floatformat:'0' }} %" class="txt_line content-strong">
+                    {% blocktrans trimmed %}Taux de collaborateurs (f/h/nb) dans l'entreprise sensibilisés à l'inclusion et la non-discrimination{% endblocktrans %}
+                </h3>
+                <h5 class="content-light">
+                    {% blocktrans trimmed %}dans les 3 mois suivant le recrutement{% endblocktrans %}
+                </h5>
+                <div class="d-flex justify-content-center">
+                    {% include 'includes/indicators/circular_plot.html' with last_year_value=answer.sibling_value border_color="#EBEAEA" blank_color="#e9ecef" percent_inner=answer.value|floatformat:'1' percent=answer.get_mean_score_in_business_line|floatformat:'0' percent_outter=answer.get_mean_score|floatformat:'0' color=cat.color id=answer.id small=0 %}
+                </div>
+                {% if answer.perimeter %}
+                    <div class="perimeter-indicator">
+                        <span>
+                            {% trans answer.perimeter %}
+                        </span>
+                    </div>
+                {% endif %}
+            </div>
+        {% endif %}
+    {% endwith %}
+
+    {% if answer_20216001 %}
+        <div class="item_pb item_s1 item_c">
+            <h3 line_id=17 suffix=" : {{ answer_20216001.value|floatformat:'0' }} %" class="txt_line content-strong">
+                {% blocktrans trimmed %}Taux de managers (f/h/nb) formés à la lutte contre les discriminations{% endblocktrans %}
+            </h3>
+            <h5 class="content-light">
+                {% blocktrans trimmed %}dans les 2 dernières années{% endblocktrans %}
+                <br>
+                <br>
+            </h5>
+            <div class="d-flex justify-content-center">
+                {% include 'includes/indicators/half_circular_plot.html' with last_year_value=answer_20216001.sibling_value border_color="#EBEAEA" blank_color="#e9ecef" percent_inner=answer_20216001.value|floatformat:'1' percent=answer_20216001.get_mean_score_in_business_line|floatformat:'0' percent_outter=answer_20216001.get_mean_score|floatformat:'0' color=cat.color id=answer_20216001.id %}
+            </div>
+            {% if answer_20216001.perimeter %}
+                <div class="perimeter-indicator">
+                    <span>
+                        {% trans answer_20216001.perimeter %}
+                    </span>
+                </div>
+            {% endif %}
+        </div>
+    {% endif %}
+
+    {% with answer=answer_202160011 %}
+        {% if answer %}
+            <div class="item_pb item_s1 item_c">
+                <h3 line_id=17 suffix=" : {{ answer.value|floatformat:'0' }} %" class="txt_line content-strong">
+                    {% blocktrans trimmed %}Taux de personnes en charge du recrutement formés à la lutte contre les discriminations{% endblocktrans %}
+                </h3>
+                <h5 class="content-light">
+                    {% blocktrans trimmed %}dans les 2 dernières années{% endblocktrans %}
+                </h5>
+                <div class="d-flex justify-content-center">
+                    {% include 'includes/indicators/half_circular_plot.html' with last_year_value=answer.sibling_value border_color="#EBEAEA" blank_color="#e9ecef" percent_inner=answer.value|floatformat:'1' percent=answer.get_mean_score_in_business_line|floatformat:'0' percent_outter=answer.get_mean_score|floatformat:'0' color=cat.color id=answer.id small=0 %}
+                </div>
+                {% if answer.perimeter %}
+                    <div class="perimeter-indicator">
+                        <span>
+                            {% trans answer.perimeter %}
+                        </span>
+                    </div>
+                {% endif %}
+            </div>
+        {% endif %}
+    {% endwith %}
+
+    {% with answer=answer_20216058 %}
+        {% if answer %}
+            <div class="{% if answer.choice.value >= 3.0 %}item_smid{% endif %} items_container item_c">
+                {% if answer.choice.value >= 3.0 %}
+                    <div class="item_pb item_s3 d-flex align-items-center" style="width: 100%">
+                        <div><img src="{% static 'img/network.png' %}" style="width: 112px" /></div>
+                        <div>
+                            <h3 line_id=17 class="txt_line  content-strong" style="text-align: left; margin-left: 30px;">
+                                {% blocktrans trimmed %}Existence d'un comité Diversité et Inclusion qui participe à la construction et au pilotage de la politique Diversité et Inclusion{% endblocktrans %}
+                            </h3>
+                        </div>
+                    </div>
+                {% else%}
+                    <div class="item_pb item_s3 d-flex align-items-center" style="width: 100%">
+                        <div><img src="{% static 'img/reseau_2.png' %}" style="width: 112px" /></div>
+                        <div>
+                            <h3 line_id=17 class="txt_line  content-strong" style="text-align: left; margin-left: 30px;">
+                                {% blocktrans trimmed %}Il n'existe pas de comité Diversité et Inclusion qui participe à la construction et au pilotage de la politique Diversité et Inclusion{% endblocktrans %}
+                            </h3>
+                        </div>
+                    </div>
+                {% endif %}
+                {% if answer.perimeter %}
+                    <div class="perimeter-indicator">
+                        <span>
+                            {% trans answer.perimeter %}
+                        </span>
+                    </div>
+                {% endif %}
+            </div>
+        {% endif %}
+    {% endwith %}
+
+    {% with answer=answer_202160131 %}
+        {% if answer %}
+            <div class="item_pb item_s3">
+                <br/>
+                <div style="display: flex;justify-content: space-between">
+                    <div>
+                        <h3 line_id=17 class="txt_line content-strong" prefix="\n" style="text-align: left;">
+                            {% blocktrans trimmed %}L'organisation met en place des actions pour favoriser l'équilibre entre la vie professionnelle et personnelle :{% endblocktrans %}
+                        </h3>
+                    </div>
+                </div><br/>
+                <div class="row">
+                    {% with subanswers=answer.subanswers.all %}
+                        <div class="col">
+                            {% for subanswer in subanswers %}
+                                {% if subanswer.value >= 0.5 %}
+                                    <div class="existing-line"><span style="color:{{cat.color }}; font-size: 30pt">✓</span><span style="font-weight: 600"> {{subanswer.subquestion.label}}</span></div><br/>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                        <div class="col">
+                            {% for subanswer in subanswers %}
+                                {% if subanswer.value < 0.5 and subanswer.subquestion.label != "Autres" %}
+                                    <div class="existing-line"><span style="color:{{cat.color }}; font-size: 30pt">✗</span><span style="font-weight: 600"> {{subanswer.subquestion.label}}</span></div><br/>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    {% endwith %}
+                </div>
+                {% if answer.perimeter %}
+                    <div class="perimeter-indicator">
+                        <span>
+                            {% trans answer.perimeter %}
+                        </span>
+                    </div>
+                {% endif %}
+            </div>
+        {% endif %}
+    {% endwith %}
+</div>

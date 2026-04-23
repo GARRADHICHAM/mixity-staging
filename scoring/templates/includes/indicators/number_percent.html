@@ -1,0 +1,29 @@
+{% load i18n %}
+{% load l10n %}
+{% load format_number %}
+
+
+<h3 class="txt_line content-strong" line_id="17" suffix=" : {% firstof percent|floatformat:'0' _('ND*') %}">{{ label }}</h3>
+
+<div style="display: flex; flex-wrap: wrap;">
+    <div class="n_percent_sub" {% if full_width %}style="width:100%"{% endif %}>
+        {%  if percent %}
+        <div class="d-flex justify-content-center" style="align-items: start;flex-wrap: wrap;">
+            <div class="d-flex justify-content-center" style="width: 100%; align-items: start;">
+                <div>
+                    <span style="color:{{ color }};" class="percent_number">{% simple_number value=percent %}</span>
+                </div>
+                <div style="margin-top: 26px;">
+                    <span style="color: #423c6b; font-family: Cousine; font-size: 30pt; font-weight: normal;">&nbsp;/&nbsp;100</span>
+                </div>
+            </div>
+            {% if last_year_value %}
+            <div class="progress_evol" style="color:#423c6b; margin-top: -30px;">vs {{ last_year|unlocalize }} : <span style="color: {{ cat.color }}"> {% points current_year=percent last_year=last_year_value show_evolution=True %}</span></div>
+            {% endif %}
+        </div>
+        {% else %}
+        <span style="color:{{ color }};  font-family: Cousine; font-weight: normal; font-size: 100pt;">{% trans "ND*" %}</span>
+        {% endif %}
+    </div>
+    <div class="n_percent_sub" style="color: #423c6b; {% if full_width %}width:100%{% endif %}"><p style="padding-left: 30px;">{{ text }}</p></div>
+</div>

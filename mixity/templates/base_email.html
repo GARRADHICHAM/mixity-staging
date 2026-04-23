@@ -1,0 +1,54 @@
+{% load i18n %}
+{% load static %}
+{% load premailer %}
+
+
+{% premailer "" %}
+<html lang="fr">
+<style type="text/css">
+  html {height: 100%; min-width: 70%; display: table; margin: auto;}
+  body {height: 100%; width: 100%; vertical-align: middle; font-family: "Open Sans", Helvetica, Arial, sans-serif;}
+  .background{
+    display: table; vertical-align: middle;
+    margin-left: auto; margin-right: auto; margin-bottom: 10px; margin-top: 10px;
+    height: 95%;
+    width: 100%;
+    padding-left:0;
+    padding-right:0;
+  }
+  .content {min-width: 500px; max-width: 600px; background-color: #fff; padding: 0px 50px 0px 50px; height:100%;}
+  td {padding: 30px 0 30px 0;}
+  .tdbackground { padding: 0;}
+  h1 {color: #181b3d; font-size: 1.3em;}
+  img {max-width: 14em;}
+  .button {border-radius: 2.5em; background: #18ffc3;color: #181b3d;padding: 1em; text-decoration: none; margin: 1em;}
+  a {color: #808080;}
+  u {color: #808080;}
+</style>
+<body>
+  <table class="background">
+    <tr>
+      <td class="tdbackground">
+        <table class="content">
+              <tr>
+                <td align="center">
+                  <!-- TODO ne pas mettre ce lien en dur  -->
+                  <img src="https://www.mixity.co/static/img/logo-mixity-258x73.png" alt="Logo Mixity">
+                </td>
+              </tr>
+              {% block content %}
+              {% endblock %}
+              <tr>
+                <td>
+                  <hr>
+                  <!-- TODO ne pas mettre ce lien en dur  -->
+                  <a href="https://staging.mixity.co">www.mixity.co</a>
+                </td>
+              </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>
+{% endpremailer %}

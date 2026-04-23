@@ -1,0 +1,75 @@
+{% load i18n %}
+{% load l10n %}
+{% load static %}
+{% load format_number %}
+
+
+<!-- Create a div where the graph will take place -->
+{% localize off %}
+<div id="p_chart_container_{{id}}" style="display: flex; flex-direction: column;position:relative;">
+    <div id="pie_chart_{{id}}"></div>
+    {% if legend %}
+    <div style="display:flex;justify-content: center; width:100%">
+        <div style="background-color:{{ color }};" class="dot"></div> <h3 style="color: {{color}}">&nbsp;&nbsp;{% percentage value %}</h3>
+    </div>
+    {% endif %}
+</div>
+
+{% block scripts %}
+<script>
+
+{% if small %}
+    var width = 200
+    var height = 250
+    var margin = 18
+{% else %}
+    var width = 280
+    var height = 340
+    var margin = 25
+{% endif %}
+
+// set the dimensions and margins of the graph
+//var width = 300
+//    height = 300
+//    margin = 0
+
+// The radius of the pieplot is half the width or half the height (smallest one). I subtract a bit of margin.
+var radius = Math.min(width, height) / 2 - margin
+
+// append the svg object to the div called 'my_dataviz'
+var svg = d3.select("#pie_chart_{{id}}")
+  .append("svg")
+    .attr("width", width)
+    .attr("height", height)
+  .append("g")
+    .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+
+// Create dummy data
+var data = {a: 0{{ value|floatformat:'0' }}, b: 100-0{{ value|floatformat:'0' }}};
+
+// set the color scale
+var color = d3.scaleOrdinal()
+  .domain(data)
+  .range(["{{ color }}", "#FFFF"])
+
+// Compute the position of each group on the pie:
+var pie = d3.pie()
+  .value(function(d) {return d.value; })
+var data_ready = pie(d3.entries(data))
+
+// Build the pie chart: Basically, each part of the pie is a path that we build using the arc function.
+svg
+  .selectAll('whatever')
+  .data(data_ready)
+  .enter()
+  .append('path')
+  .attr('d', d3.arc()
+    .innerRadius(0)
+    .outerRadius(radius)
+  )
+  .attr('fill', function(d){ return(color(d.data.key)) })
+  .style("opacity", 1)
+
+</script>
+{% endblock %}
+{% endlocalize %}

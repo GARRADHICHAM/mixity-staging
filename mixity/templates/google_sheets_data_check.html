@@ -1,0 +1,248 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Vérification de l'intégrité du Google Sheets</title>
+    <script>
+    let green = "#2fd22f";
+    let grey = "#a1a1a1";
+    </script>
+</head>
+
+<body onload="init()">
+  <h1>Vérification de l'intégrité du Google Sheets</h1>
+  <p><span style="color:#2fd22f">▣</span> OK <span style="color:yellow">▣</span> Manque certaines traductions <span style="color:red">▣</span> Traductions à moitié réalisées <span style="color:#a1a1a1">▣</span> Non applicable</p>
+  <input name="new" id="new" type="checkbox"><label for="new">Nouveau format de traduction</label><br/>
+  <input id="fileInput" type="file" name="file" />
+  <div id="questions_content"></div>
+</body>
+
+
+<script>
+    function buildItem(color, key, max, details=null) {
+        if(details == null) {
+            return '<div style="background-color:' + color + '; padding: 5px; margin:5px;">' + key + ' (' + max + ')</div>'
+        }
+         return '<div style="background-color:' + color + '; padding: 5px; margin:5px;"><details><summary>' + key + ' (' + max + ')</summary>'+details+'</details></div>'
+    }
+let LANGUAGES = ["FR", "EN", "ES", "IT", "ZH", "ZH-CHT"]
+let COLUMNS = ["SUBQUESTIONS", "SUBQUESTIONS_CHOICES", "QUESTION_LABEL", "ANSWER_CHOICES", "HELP_TEXT", "STRENGTHS","WEAKNESSES"]
+let combos = {}
+COLUMNS.forEach((column) => {
+    combos[column] = [column]
+    LANGUAGES.forEach((language) => {
+        combos[column].push(column+"_"+language)
+    })
+})
+function init() {
+  document.getElementById('fileInput').addEventListener('change', handleFileSelect, false);
+}
+
+function handleFileSelect(event) {
+  const reader = new FileReader()
+  reader.onload = handleFileLoad;
+  reader.readAsText(event.target.files[0])
+}
+
+function handleFileLoad(event) {
+  document.getElementById("questions_content").innerHTML = ""
+  console.log(event);
+  let csvContent = CSVToArray(event.target.result, ",");
+  let column_indexes = {};
+  for (let i=0; i<csvContent[1].length; i++) {
+      column_indexes[csvContent[1][i]] = i
+  }
+  let suffix = ""
+  if(document.getElementById("new").checked) {
+      suffix = "_FR"
+  }
+  for(let i=2; i<csvContent.length; i++) {
+      if(csvContent[i][column_indexes["QUESTION_ID"]].length >0) {
+          let html_div = document.createElement('div')
+          html_div.style = "display:flex;align-items:baseline";
+          html_div.innerHTML += "<div style=\"padding: 5px; margin:5px;\">" + csvContent[i][column_indexes["QUESTION_ID"]] + "</div>"
+          for (const [key, value] of Object.entries(combos)) {
+                  let column_results = {}
+                  let max = 0;
+                  value.forEach((column) => {
+                      if(column_indexes.hasOwnProperty(column)){
+                        let data = csvContent[i][column_indexes[column]].split(";")
+                        if (data.length === 1 &&  data[0] === "") {
+                            column_results[column] = 0
+                        } else {
+                            column_results[column] = data.length
+                            if (data.length > max) {
+                                max = data.length;
+                            }
+                        }
+                      }
+                  })
+                  let color = green;
+                  let previous = -1
+                  for (const [column, count] of Object.entries(column_results)) {
+                      if(previous !== -1) {
+                          if (count === 0 && count !== previous) {
+                              color = "yellow"
+                          } else if (count !== previous && previous !== 0) {
+                              color = "red";
+                              break;
+                          }
+                      }
+                      previous = count
+                  }
+                  let details = ""
+                  for (const [column, count] of Object.entries(column_results)) {
+                      details+= column+" : "+count+"<br/>"
+                  }
+                  html_div.innerHTML+= buildItem(color, key, max, details)
+
+
+          }
+          let answer_choices = csvContent[i][column_indexes["ANSWER_CHOICES" + suffix]].split(";")
+          if(answer_choices.length === 1 && answer_choices[0] === "") {
+              answer_choices = 0;
+          } else {
+              answer_choices = answer_choices.length
+          }
+          let mark = csvContent[i][column_indexes["MARK"]].split(";")
+          if(mark.length === 1 && mark[0] === "") {
+              mark = 0;
+          } else {
+              mark = mark.length
+          }
+          let color = green
+          if(mark === 0 && answer_choices !== 0) {
+              color = "yellow"
+          } else if(mark !== answer_choices && answer_choices!==0) {
+              color = 'red'
+          }
+          html_div.innerHTML+= buildItem(color, "MARK", mark)
+          let sqc_choices = csvContent[i][column_indexes["SUBQUESTIONS_CHOICES" + suffix]].split(";")
+          if(sqc_choices.length === 1 && sqc_choices[0] === "") {
+              sqc_choices = 0;
+          } else {
+              sqc_choices = sqc_choices.length
+          }
+          let sq_points = csvContent[i][column_indexes["SUBQUESTIONS_POINTS"]].split(";")
+          if(sq_points.length === 1 && sq_points[0] === "") {
+              sq_points = 0;
+          } else {
+              sq_points = sq_points.length
+          }
+          color = green
+          if(sq_points === 0 && sqc_choices !== 0) {
+              color = "yellow"
+          } else if(sq_points !== sqc_choices && sqc_choices!==0) {
+              color = 'red'
+          }
+          html_div.innerHTML+= buildItem(color, "SUBQUESTIONS_POINTS", sq_points)
+
+          let question_type = csvContent[i][column_indexes["QUESTION_TYPE"]].split("_")
+          color = grey
+          let count = 0
+          if(question_type.length > 2 && question_type[1] === "json") {
+              color = green;
+              count = 1
+              console.log(question_type.slice(2).join("_"))
+              try {
+                  JSON.parse(question_type.slice(2).join("_"))
+              } catch(e) {
+                  console.log(e)
+                  color = "red"
+              }
+          }
+          html_div.innerHTML+= buildItem(color, "Valid JSON ?", count)
+          document.getElementById("questions_content").appendChild(html_div)
+      }
+  }
+}
+</script>
+<script type="text/javascript">
+    // ref: http://stackoverflow.com/a/1293163/2343
+    // This will parse a delimited string into an array of
+    // arrays. The default delimiter is the comma, but this
+    // can be overriden in the second argument.
+    function CSVToArray( strData, strDelimiter ){
+        // Check to see if the delimiter is defined. If not,
+        // then default to comma.
+        strDelimiter = (strDelimiter || ",");
+
+        // Create a regular expression to parse the CSV values.
+        var objPattern = new RegExp(
+            (
+                // Delimiters.
+                "(\\" + strDelimiter + "|\\r?\\n|\\r|^)" +
+
+                // Quoted fields.
+                "(?:\"([^\"]*(?:\"\"[^\"]*)*)\"|" +
+
+                // Standard fields.
+                "([^\"\\" + strDelimiter + "\\r\\n]*))"
+            ),
+            "gi"
+            );
+
+
+        // Create an array to hold our data. Give the array
+        // a default empty first row.
+        var arrData = [[]];
+
+        // Create an array to hold our individual pattern
+        // matching groups.
+        var arrMatches = null;
+
+
+        // Keep looping over the regular expression matches
+        // until we can no longer find a match.
+        while (arrMatches = objPattern.exec( strData )){
+
+            // Get the delimiter that was found.
+            var strMatchedDelimiter = arrMatches[ 1 ];
+
+            // Check to see if the given delimiter has a length
+            // (is not the start of string) and if it matches
+            // field delimiter. If id does not, then we know
+            // that this delimiter is a row delimiter.
+            if (
+                strMatchedDelimiter.length &&
+                strMatchedDelimiter !== strDelimiter
+                ){
+
+                // Since we have reached a new row of data,
+                // add an empty row to our data array.
+                arrData.push( [] );
+
+            }
+
+            var strMatchedValue;
+
+            // Now that we have our delimiter out of the way,
+            // let's check to see which kind of value we
+            // captured (quoted or unquoted).
+            if (arrMatches[ 2 ]){
+
+                // We found a quoted value. When we capture
+                // this value, unescape any double quotes.
+                strMatchedValue = arrMatches[ 2 ].replace(
+                    new RegExp( "\"\"", "g" ),
+                    "\""
+                    );
+
+            } else {
+
+                // We found a non-quoted value.
+                strMatchedValue = arrMatches[ 3 ];
+
+            }
+
+
+            // Now that we have our value string, let's add
+            // it to the data array.
+            arrData[ arrData.length - 1 ].push( strMatchedValue );
+        }
+
+        // Return the parsed data.
+        return( arrData );
+    }
+
+</script>
+</html>

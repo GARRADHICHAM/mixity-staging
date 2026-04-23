@@ -1,0 +1,115 @@
+{% load i18n %}
+{% load format_number %}
+{% load static %}
+
+<div class="items_container" style="justify-content: center; align-items: stretch">
+    {% if answer_20216051 %}
+        <div class="item_pb item_s1 item_c">
+            <h3 line_id=17 suffix=" : {{ answer_20216051.value|floatformat:'0' }} %" class="txt_line  content-strong">
+                {% blocktrans trimmed %}Taux d'embauche de jeunes de moins de 25 ans{% endblocktrans %}
+            </h3>
+            <div class="d-flex justify-content-center">
+                {% include 'includes/indicators/circular_plot.html' with last_year_value=answer_20216051.sibling_value border_color="#EBEAEA" blank_color="#e9ecef" percent_inner=answer_20216051.value|floatformat:'1' percent=answer_20216051.get_mean_score_in_business_line|floatformat:'0' percent_outter=answer_20216051.get_mean_score|floatformat:'0' color=cat.color id=answer_20216051.id small=0 %}
+            </div>
+            {% if answer_20216051.perimeter %}
+                <div class="perimeter-indicator">
+                    <span>
+                        {% trans answer_20216051.perimeter %}
+                    </span>
+                </div>
+            {% endif %}
+        </div>
+    {% endif %}
+
+    {% if answer_20216050 %}
+        <div class="item_pb item_s1 item_c">
+            <h3 line_id=17 suffix=" : {{ answer_20216050.value|floatformat:'0' }} %" class="txt_line  content-strong">
+                {% blocktrans trimmed %}Taux d'embauche de seniors de plus de 50 ans{% endblocktrans %}
+            </h3>
+            <div class="d-flex justify-content-center">
+                {% include 'includes/indicators/circular_plot.html' with last_year_value=answer_20216050.sibling_value border_color="#EBEAEA" blank_color="#e9ecef" percent_inner=answer_20216050.value|floatformat:'1' percent=answer_20216050.get_mean_score_in_business_line|floatformat:'0' percent_outter=answer_20216050.get_mean_score|floatformat:'0' color=cat.color id=answer_20216050.id small=0 %}
+            </div>
+            {% if answer_20216050.perimeter %}
+                <div class="perimeter-indicator">
+                    <span>
+                        {% trans answer_20216050.perimeter %}
+                    </span>
+                </div>
+            {% endif %}
+    </div>
+    {% endif %}
+
+    {% with answer1=answer_20216076 answer2=answer_20216077 answer3=answer_20216078 %}
+        {% if answer1 and answer2 and answer3 %}
+            <div class="item_pb item_s1">
+                <h3 line_id=17 class="txt_line  content-strong">
+                    {% blocktrans trimmed %}Age moyen ...{% endblocktrans %}
+                </h3>
+                <div class="d-flex justify-content-center">
+                    {% include 'includes/indicators/horizontal_histogram_average_age_start.html' with percent_1=answer1.value|floatformat:'0' percent_1_mean=answer1.get_mean_score|floatformat:'0' percent_1_mean_business_line=answer1.get_mean_score_in_business_line|floatformat:'0' percent_2=answer2.value|floatformat:'0' percent_2_mean=answer2.get_mean_score|floatformat:'0' percent_2_mean_business_line=answer2.get_mean_score_in_business_line|floatformat:'0' percent_3=answer3.value|floatformat:'0' percent_3_mean=answer3.get_mean_score|floatformat:'0' percent_3_mean_business_line=answer3.get_mean_score_in_business_line|floatformat:'0' color=cat.color id=answer1.id|floatformat:'0'|add:"age_pyramid" display_mean_score=display_mean_score %}
+                </div>
+                {% if answer1.perimeter %}
+                    <div class="perimeter-indicator">
+                        <span>
+                            {% trans answer1.perimeter %}
+                        </span>
+                    </div>
+                {% endif %}
+                {% if answer2.perimeter %}
+                    <div class="perimeter-indicator">
+                        <span>
+                            {% trans answer2.perimeter %}
+                        </span>
+                    </div>
+                {% endif %}
+                {% if answer3.perimeter %}
+                    <div class="perimeter-indicator">
+                        <span>
+                            {% trans answer3.perimeter %}
+                        </span>
+                    </div>
+                {% endif %}
+            </div>
+        {% endif %}
+    {% endwith %}
+
+    {% with answer=answer_20216074 %}
+        {% if answer %}
+            <div class="item_pb item_s1 items_container item_c">
+                <h3 line_id=17 suffix=" : {{ answer.value|floatformat:'0' }} %" class="txt_line content-strong">
+                    {% blocktrans trimmed %}Taux d'employés (f/h/nb) de plus de 45 ans dans l'organisation{% endblocktrans %}
+                </h3>
+                <div class="d-flex justify-content-center">
+                    {% include 'includes/indicators/half_circular_plot.html' with last_year_value=answer.sibling_value border_color="#EBEAEA" blank_color="#e9ecef" percent_inner=answer.value|floatformat:'1' percent=answer.get_mean_score_in_business_line|floatformat:'0' percent_outter=answer.get_mean_score|floatformat:'0' color=cat.color id=answer.id small=1 %}
+                </div>
+                {% if answer.perimeter %}
+                    <div class="perimeter-indicator">
+                        <span>
+                            {% trans answer.perimeter %}
+                        </span>
+                    </div>
+                {% endif %}
+            </div>
+        {% endif %}
+    {% endwith %}
+
+    {% with answer=answer_20216075 %}
+        {% if answer %}
+            <div class="item_pb item_s1 items_container item_c">
+                <h3 line_id=17 suffix=" : {{ answer.value|floatformat:'0' }} %" class="txt_line content-strong">
+                    {% blocktrans trimmed %}Taux d'employés (f/h/nb) de moins de 26 ans dans l'organisation{% endblocktrans %}
+                </h3>
+                <div class="d-flex justify-content-center">
+                    {% include 'includes/indicators/half_circular_plot.html' with last_year_value=answer.sibling_value border_color="#EBEAEA" blank_color="#e9ecef" percent_inner=answer.value|floatformat:'1' percent=answer.get_mean_score_in_business_line|floatformat:'0' percent_outter=answer.get_mean_score|floatformat:'0' color=cat.color id=answer.id small=1 %}
+                </div>
+                {% if answer.perimeter %}
+                    <div class="perimeter-indicator">
+                        <span>
+                            {% trans answer.perimeter %}
+                        </span>
+                    </div>
+                {% endif %}
+            </div>
+        {% endif %}
+    {% endwith %}
+</div>

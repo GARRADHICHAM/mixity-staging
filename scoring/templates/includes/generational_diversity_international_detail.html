@@ -1,0 +1,118 @@
+{% load i18n %}
+{% load format_number %}
+
+
+<div class="items_container" style="justify-content: center; align-items: stretch">
+    {% with answer=answer_20213105 %}
+        {% if answer %}
+            <div class="item_pb item_s3">
+                {% with subanswers=answer.get_ordered_subanswers %}
+                    <h3 line_id=17 suffix=" : Génération Z {% firstof subanswers.0.value|floatformat:'0' %} % Génération Y {% firstof subanswers.1.value|floatformat:'0' %} % Genération X {% firstof subanswers.2.value|floatformat:'0' %} % Baby Boomers {% firstof subanswers.3.value|floatformat:'0' %} %" class="txt_line  content-strong">
+                        {% blocktrans trimmed %}Répartition des générations dans l'entreprise{% endblocktrans %}
+                    </h3>
+                    <div class="d-flex justify-content-center">
+                        {% include 'includes/indicators/horizontal_histogram_generational.html' with percent_1=subanswers.0.value|floatformat:'0' percent_1_mean=subanswers.0.get_mean_score|floatformat:'0' percent_1_mean_business_line=subanswers.0.get_mean_score_in_business_line|floatformat:'0' percent_2=subanswers.1.value|floatformat:'0' percent_2_mean=subanswers.1.get_mean_score|floatformat:'0' percent_2_mean_business_line=subanswers.1.get_mean_score_in_business_line|floatformat:'0' percent_3=subanswers.2.value|floatformat:'0' percent_3_mean=subanswers.2.get_mean_score|floatformat:'0' percent_3_mean_business_line=subanswers.2.get_mean_score_in_business_line|floatformat:'0' percent_4=subanswers.3.value|floatformat:'0' percent_4_mean=subanswers.3.get_mean_score|floatformat:'0' percent_4_mean_business_line=subanswers.3.get_mean_score_in_business_line|floatformat:'0' color=cat.color id=answer_10101.id|floatformat:'0'|add:"age_pyramid" display_mean_score=display_mean_score %}
+                    </div>
+                {% endwith %}
+                {% if answer.perimeter %}
+                    <div class="perimeter-indicator">
+                        <span>
+                            {% trans answer.perimeter %}
+                        </span>
+                    </div>
+                {% endif %}
+            </div>
+        {% endif %}
+    {% endwith %}
+    {% with answer=answer_20213103 %}
+        {% if answer %}
+            <div class="item_pb item_s1 item_c stretched_item">
+                <h3 line_id=17 suffix=" : {{ answer.value|floatformat:'0' }} %" class="txt_line  content-strong" style="margin:auto;">{% blocktrans trimmed %}Taux d'embauche de seniors de plus de 50 ans{% endblocktrans %}</h3>
+                <div class="d-flex justify-content-center">
+                    {% include 'includes/indicators/circular_plot.html' with last_year_value=answer.sibling_value border_color="#EBEAEA" blank_color="#e9ecef" percent_inner=answer.value|floatformat:'1' percent=answer.get_mean_score_in_business_line|floatformat:'0' percent_outter=answer.get_mean_score|floatformat:'0' color=cat.color id=answer.id %}
+                </div>
+                <span>
+                    {% blocktrans trimmed %}dans les 12 derniers mois{% endblocktrans %}
+                </span>
+                {% if answer.perimeter %}
+                    <div class="perimeter-indicator">
+                        <span>
+                            {% trans answer.perimeter %}
+                        </span>
+                    </div>
+                {% endif %}
+            </div>
+        {% endif %}
+    {% endwith %}
+    {% with answer=answer_20213104 %}
+        {% if answer %}
+            <div class="item_pb item_s1 item_c stretched_item">
+                <h3 line_id=17 suffix=" : {{ answer.value|floatformat:'0' }} %" class="txt_line  content-strong" style="margin:auto;">{% blocktrans trimmed %}Taux d'embauche des jeunes de moins de 25 ans{% endblocktrans %}</h3>
+                <div class="d-flex justify-content-center">
+                    {% include 'includes/indicators/circular_plot.html' with last_year_value=answer.sibling_value border_color="#EBEAEA" blank_color="#e9ecef" percent_inner=answer.value|floatformat:'1' percent=answer.get_mean_score_in_business_line|floatformat:'0' percent_outter=answer.get_mean_score|floatformat:'0' color=cat.color id=answer.id %}
+                </div>
+                <span>
+                    {% blocktrans trimmed %}dans les 12 derniers mois{% endblocktrans %}
+                </span>
+                {% if answer.perimeter %}
+                    <div class="perimeter-indicator">
+                        <span>
+                            {% trans answer.perimeter %}
+                        </span>
+                    </div>
+                {% endif %}
+            </div>
+        {% endif %}
+    {% endwith %}
+    {% with answer1=answer_20213110 answer2=answer_20213109 answer3=answer_20213111 %}
+        {% if answer1 or answer2 or answer3 %}
+            <div class="item_pb item_s1 item_c stretched_item">
+                <h3 line_id=17 suffix="Over 55 : {{ answer1.value|floatformat:'0' }} % Over 30 : {{ answer2.value|floatformat:'0' }} % Total : {{ answer3.value|floatformat:'0' }} %" class="txt_line  content-strong" style="margin:auto;">{% blocktrans trimmed %}Taux de formation ...{% endblocktrans %}</h3>
+                <div style="display: flex;align-items: center;flex-direction: column;width: 100%">
+                    {% include 'includes/indicators/circular_plot_2.html' with border_color="#EBEAEA" blank_color="#e9ecef" percent_inner=answer1.value|floatformat:'1' percent=answer2.value|floatformat:'0' percent_outter=answer3.value|floatformat:'0' color=cat.color id=answer.id %}
+                    <div style="display:flex;justify-content: space-between; width:100%">
+                        <div><span style="text-align: left;color: #FF7070; white-space: nowrap; font-weight: 600">
+                            {% blocktrans trimmed %}... des moins de 30 ans{% endblocktrans %}
+                        </span></div>
+                        <div style="display: flex; flex-wrap: nowrap"><div style="background-color:#FF7070;" class="dot"></div> <h3 style="color: #FF7070; white-space: nowrap">&nbsp;{% percentage answer1.value %}</h3></div>
+                    </div>
+                    <hr style="margin: 0.5em 0; width:100%" />
+                    <div style="display:flex;justify-content: space-between; width:100%">
+                        <div><span style="text-align: left;color: #8888E2; white-space: nowrap; font-weight: 600">
+                            {% blocktrans trimmed %}... des plus de 55 ans{% endblocktrans %}
+                        </span></div>
+                        <div style="display: flex; flex-wrap: nowrap"><div style="background-color:#8888E2;" class="dot"></div> <h3 style="color: #8888E2; white-space: nowrap">&nbsp;{% percentage answer2.value %}</h3></div>
+                    </div>
+                    <hr style="margin: 0.5em 0; width:100%" />
+                    <div style="display:flex;justify-content: space-between; width:100%">
+                        <div><span style="text-align: left;color: #423C6B; white-space: nowrap; font-weight: 600">
+                            {% blocktrans trimmed %}... de l'ensemble des effectifs {% endblocktrans %}
+                        </span></div>
+                        <div style="display: flex; flex-wrap: nowrap"><div style="background-color:#423C6B;" class="dot"></div> <h3 style="color: #423C6B; white-space: nowrap">&nbsp;{% percentage answer3.value %}</h3></div>
+                    </div>
+                </div>
+                {% if answer1.perimeter %}
+                    <div class="perimeter-indicator">
+                        <span>
+                            {% trans answer1.perimeter %}
+                        </span>
+                    </div>
+                {% endif %}
+                {% if answer2.perimeter %}
+                    <div class="perimeter-indicator">
+                        <span>
+                            {% trans answer2.perimeter %}
+                        </span>
+                    </div>
+                {% endif %}
+                {% if answer3.perimeter %}
+                    <div class="perimeter-indicator">
+                        <span>
+                            {% trans answer3.perimeter %}
+                        </span>
+                    </div>
+                {% endif %}
+            </div>
+        {% endif %}
+    {% endwith %}
+</div>

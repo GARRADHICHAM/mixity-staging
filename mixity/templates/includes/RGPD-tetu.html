@@ -1,0 +1,24 @@
+{% load i18n %}
+{% load static %}
+
+
+<section class="mxt-container bg--blue">
+  <article class="col col--13-23">
+  <div class="mxt-row row--2 rgpd">
+    <h1 class="title--h1" style="display: flex; margin-bottom: 0;
+   align-items:center;justify-self: baseline;"><img class="" alt="Icone RGPD" src="{% static 'img/RGPD.png' %}" style="max-width: 3em;"/><span> {% blocktrans trimmed %}Politique RGPD{% endblocktrans %} </span></h1>
+      <p class="content-strong" style="font-size: 23px!important;">{% blocktrans trimmed %}Toutes les données collectées sont
+          totalement confidentielles et sont conservées selon les meilleurs standards de sécurité.{% endblocktrans %}</p>
+  </div>
+    <p class="content-strong" style="align-self: center;">
+        {% blocktrans trimmed %}Ce sondage est complètement anonyme, les informations collectées ne permettront à aucun moment
+        de vous identifier.
+        Par ailleurs, toutes les précautions sont prises pour garantir cet anonymat lors de l’exploitation des
+        réponses.
+        Votre participation à cette enquête est facultative et vous êtes libre de ne pas répondre à ce
+        questionnaire.
+        Plus vous serez nombreux.ses. à répondre, plus les données recueillies seront représentatives et
+        utiles.{% endblocktrans %}
+    </p>
+    </article>
+</section>

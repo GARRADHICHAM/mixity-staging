@@ -1,0 +1,43 @@
+{% extends "base_email.html" %}
+{% load i18n static %}
+
+{% block content %}
+<tr>
+	<td>
+		<h1>{% trans "Une évaluation a été crée sur mixity !" %}</h1>
+	</td>
+</tr>
+<tr>
+	<td>
+		{% blocktrans trimmed %}
+		Utilisateur : {{ user }}
+		{% endblocktrans %}
+	</td>
+</tr>
+<tr>
+	<td>
+		{% blocktrans trimmed %}
+		Evaluation : {{ evaluation }} - Effectif de {{ workforce }} personnes
+		{% endblocktrans %}
+	</td>
+</tr>
+<tr>
+	<td>
+		{% blocktrans trimmed %}
+		Type d'évaluation : {{ subscription_type }} 
+		{% endblocktrans %}
+		{%if evaluation.subscription.is_trial %}
+			{% blocktrans trimmed %}
+				en période d'essai
+			{% endblocktrans %}
+		{%endif%}
+	</td>
+</tr>
+<tr>
+	<td>
+		{% blocktrans trimmed %}
+		<a class="button" href="{{ evaluation_url }}">Voir l'évaluation pour la valider.</a>
+		{% endblocktrans %}
+	</td>
+</tr>
+{% endblock %}

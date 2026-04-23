@@ -1,0 +1,18 @@
+{% extends "base_email.html" %}
+{% load i18n static %}
+
+{% block content %}
+<tr>
+  <td><h1>{% trans "Félicitations, votre évaluation a été créée !" %}</h1></td>
+</tr>
+<tr>
+  <td>
+    {% trans "Nous allons valider votre évaluation dans les plus brefs délais." %}
+  </td>
+</tr>
+<tr>
+  <td>
+    {% blocktrans trimmed %}Pour contacter l'équipe support : <span style="color: #10ACAB">support@mixity.co</span>{% endblocktrans %}
+  </td>
+</tr>
+{% endblock %}

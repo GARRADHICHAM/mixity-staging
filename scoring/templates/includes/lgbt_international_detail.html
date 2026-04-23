@@ -1,0 +1,149 @@
+{% load i18n %}
+{% load static %}
+
+
+<div class="items_container" style="justify-content: space-around; align-items: stretch">
+    <div class="items_container item_s50">
+        {% if answer_20213118 and answer_20213118.choice.value >= 4.0 %}
+            <div class="item_pb item_s3 d-flex align-items-center" style="width: 100%">
+                <div><img src="{% static 'img/network.png' %}" style="width: 112px" /></div>
+                <div>
+                    <h3 line_id=17 class="txt_line  content-strong" style="text-align: left; margin-left: 30px;">
+                        {% blocktrans trimmed %}Existence d'un groupe ressource pour les employés (ERG) ou d'un réseau interne qui fédère les communautés LGBTQIA+ et/ou alliés (f/h/nb).{% endblocktrans %}
+                    </h3>
+                </div>
+                {% if answer_20213118.perimeter %}
+                    <div class="perimeter-indicator">
+                        <span>
+                            {% trans answer_20213118.perimeter %}
+                        </span>
+                    </div>
+                {% endif %}
+            </div>
+        {% else %}
+            <div class="item_pb item_s3 d-flex align-items-center" style="width: 100%">
+                <div><img src="{% static 'img/reseau_2.png' %}" style="width: 112px" /></div>
+                <div>
+                    <h3 line_id=17 class="txt_line  content-strong" style="text-align: left; margin-left: 30px;">
+                        {% blocktrans trimmed %}Il n'y a pas encore au sein de l'entreprise de groupe ressource pour les employés (ERG) ou de réseau interne qui fédère les communautés LGBTQIA+ et/ou alliés (f/h/nb).{% endblocktrans %}
+                    </h3>
+                </div>
+            </div>
+        {% endif %}
+        {% if answer_20213119 and answer_20213118 and answer_20213118.choice.value >= 4.0 %}
+            <div class="item_pb item_s3 item_c">
+                <h3 line_id=17 suffix=" : {{ answer_2020129.value|floatformat:'0' }}" class="txt_line content-strong">
+                    {% blocktrans trimmed %}Nombre d'employés qui font partie d'un réseau interne LGBTQIA+ créé à l'initiative des employés et/ou de l'entreprise{% endblocktrans %}
+                </h3>
+                <div class="d-flex justify-content-center">
+                    {% include 'includes/indicators/number_icon.html' with lgbt=True value=answer_20213119.value icon_name="people_lgbt" on_top=True icon_size="220px" %}
+                </div>
+                {% if answer_20213119.perimeter %}
+                    <div class="perimeter-indicator">
+                        <span>
+                            {% trans answer_20213119.perimeter %}
+                        </span>
+                    </div>
+                {% endif %}
+                {% if answer_20213118.perimeter %}
+                    <div class="perimeter-indicator">
+                        <span>
+                            {% trans answer_20213118.perimeter %}
+                        </span>
+                    </div>
+                {% endif %}
+            </div>
+        {% endif %}
+
+        {% with answer=answer_202131201 %}
+            {% if answer %}
+                <div class="item_pb item_s3 item_c stretched_item">
+                    <h3 line_id=17 suffix=" : {{ answer.value|floatformat:'0' }}" class="txt_line  content-strong">
+                        {% blocktrans trimmed %}Nombre de communication diffusées sur les réseaux sociaux sur le sujet LGBTQIA+{% endblocktrans %}
+                    </h3>
+                    {% include 'includes/indicators/number_icon.html' with color=cat.color value=answer.value last_year_value=answer.sibling_value last_year=answer.sibling_year %}
+                    <div style="width: 100%;text-align: center;">
+                        <span>
+                            {% blocktrans trimmed %}dans les 12 derniers mois{% endblocktrans %}
+                        </span>
+                    </div>
+                    {% if answer.perimeter %}
+                        <div class="perimeter-indicator">
+                            <span>
+                                {% trans answer.perimeter %}
+                            </span>
+                        </div>
+                    {% endif %}
+                </div>
+            {% endif %}
+        {% endwith %}
+    </div>
+    <div class="items_container item_s50">
+        {% with answer=answer_20213121 %}
+            {% if answer %}
+                <div class="item_pb item_s3 item_c stretched_item">
+                    <h3 line_id=17 suffix=" : {{ answer.value|floatformat:'0' }}" class="txt_line  content-strong">
+                        {% blocktrans trimmed %}Nombre d'actions menées avec des associations sur le sujet LGBTQIA+{% endblocktrans %}
+                    </h3>
+                    {% include 'includes/indicators/number_icon.html' with color=cat.color value=answer.value last_year_value=answer.sibling_value last_year=answer.sibling_year %}
+                    <div style="width: 100%;text-align: center;">
+                        <span>
+                            {% blocktrans trimmed %}dans les 12 derniers mois{% endblocktrans %}
+                        </span>
+                    </div>
+                    {% if answer.perimeter %}
+                        <div class="perimeter-indicator">
+                            <span>
+                                {% trans answer.perimeter %}
+                            </span>
+                        </div>
+                    {% endif %}
+                </div>
+            {% endif %}
+        {% endwith %}
+        {% with answer=answer_20213120 %}
+            {% if answer %}
+                <div class="item_pb item_s3 item_c stretched_item">
+                    <h3 line_id=17 suffix=" : {{ answer.value|floatformat:'0' }}" class="txt_line  content-strong">
+                        {% blocktrans trimmed %}Nombre de prises de parole médiatiques sur le sujet LGBTQIA+{% endblocktrans %}
+                    </h3>
+                    {% include 'includes/indicators/number_icon.html' with color=cat.color value=answer.value last_year_value=answer.sibling_value last_year=answer.sibling_year %}
+                    <div style="width: 100%;text-align: center;">
+                        <span>
+                            {% blocktrans trimmed %}dans les 12 derniers mois{% endblocktrans %}
+                        </span>
+                    </div>
+                    {% if answer.perimeter %}
+                        <div class="perimeter-indicator">
+                            <span>
+                                {% trans answer.perimeter %}
+                            </span>
+                        </div>
+                    {% endif %}
+                </div>
+            {% endif %}
+        {% endwith %}
+        {% with answer=answer_20213123 %}
+            {% if answer %}
+                <div class="item_pb item_s3 item_c stretched_item">
+                    <h3 line_id=17 suffix=" : {{ answer.value|floatformat:'0' }}" class="txt_line  content-strong">
+                        {% blocktrans trimmed %}Nombre d'ateliers, conférences, prises de paroles, témoignages sur le sujet LGBTQIA+{% endblocktrans %}
+                    </h3>
+                    {% include 'includes/indicators/number_icon.html' with color=cat.color value=answer.value last_year_value=answer.sibling_value last_year=answer.sibling_year icon_name="board" %}
+                    <div style="width: 100%;text-align: center;">
+                        <span>
+                            {% blocktrans trimmed %}sur les 12 derniers mois{% endblocktrans %}
+                        </span>
+                    </div>
+                    {% if answer.perimeter %}
+                        <div class="perimeter-indicator">
+                            <span>
+                                {% trans answer.perimeter %}
+                            </span>
+                        </div>
+                    {% endif %}
+                </div>
+            {% endif %}
+        {% endwith %}
+    </div>
+</div>

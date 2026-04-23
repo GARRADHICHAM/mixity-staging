@@ -1,0 +1,27 @@
+{% load i18n %}
+{% load format_number %}
+
+
+<div style="display: flex; justify-content: center; flex-direction: column">
+{% with subanswers=answer.subanswers.all %}
+{% if subanswers %}
+{% for subanswer in subanswers %}
+<div style="margin-top: 10px;">
+    <div style="display: grid; grid-template-columns: auto 70px;">
+        <span style="text-align: left; font-size: 12px; font-weight:600; font-family: Montserrat;margin-right: 5px;" line_id=17 class="txt_line">
+            {{ subanswer.subquestion.label }}
+        </span>
+        <div style="white-space: nowrap;display: flex;">
+            <div style="background-color:{{ cat.color }};" class="dot"></div>
+            <span style="white-space: nowrap;color: {{ cat.color }}">&nbsp;{% percentage subanswer.value %}&nbsp;</span>
+        </div>
+    </div>
+
+    <div class="progress_graph" style="background-color: #e9ecef">
+        <div style="background-color: {{ cat.color }}; width: {% if not subanswer.value %}0{% else %}{{ subanswer.value|stringformat:'f' }}{% endif %}%"></div>
+        </div>
+</div>
+{% endfor %}
+{% endif %}
+{% endwith %}
+</div>

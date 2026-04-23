@@ -1,0 +1,134 @@
+{% load  i18n %}
+{% load  subcategory_answers_rate %}
+{% load static %}
+
+
+<ul class="sidemenu" style="min-height: 100vh">
+    {% if fake %}
+        {% for category in categories %}
+            <li class="sidemenu__item" style="padding-bottom: 20px;">
+                <div class="sidemenu__link">{% trans category.name %}
+                    <i class="fas fa-angle-down" style="float:right;height:20px; line-height:20px;"></i>
+                    <hr class="hr--sidemenu">
+                </div>
+            </li>
+        {% endfor %}
+    {% else %}
+        {% if trial_cats %}
+            {% include "includes/locked_category.html" with category="Transversal" %}
+        {% endif %}
+        {% with targets=evaluation.footprint_sidebar categories_data=evaluation.get_categories_datas  %}
+            {% for target_slug, target_data in targets.items %}
+                {% if targets|length > 1 %}
+                    <h4 style="color:#fff;text-align:center">{{ target_data.label }}</h4>
+                {% endif %}
+                {% for category_slug, category_data in target_data.categories.items %}
+                    {% with nameId=target_slug|add:'_'|add:category_slug %}
+                        <li
+                            class="sidemenu__item"
+                            style="padding-bottom: 20px;"
+                        >
+                            <div style="font-weight: 600" class="sidemenu__link {% if category.slug == category_slug and target_name == target_slug %}sidemenu__link--active{% endif %}"
+                                 data-toggle="collapse"
+                                 href="#collapse_{{nameId}}"
+                                 role="button"
+                                 aria-expanded="true"
+                                 aria-controls="collapse_{{nameId}}"
+                            >
+                                {% trans category_data.name %}
+                                <i class="fas fa-angle-down" style="float:right;height:20px; line-height:20px;"></i>
+                                <hr class="hr--sidemenu">
+                            </div>
+                            <div class="sidemenu_sub collapse {% if category.slug == category_slug and target_name == target_slug %}show{% endif %}" id="collapse_{{nameId}}">
+                                <!-- NORMAL SUBCATEGORIES / SOUS-CATEGORIES NORMALES + KEY FIGURES / CHIFFRES CLE-->
+                                {% for subcategory_slug, subcategory_data in category_data.subcategories.items %}
+                                    <div class="sidemenu__item" style="margin-top: 5px;">
+                                        <a
+                                            style="{% if subcategory_data.nb_remaining_answers == 0 %}opacity: 0.5;{% endif %}"
+                                            class="sidemenu__link {% if subcategory.slug == subcategory_slug and category.slug == category_slug and target_name == target_slug %}sidemenu__link--active-italic{% endif %}"
+                                            href="{% url 'evaluation_fill' pk=evaluation.id target=target_slug category=category_slug subcategory=subcategory_slug page="0" %}">
+                                            {% trans subcategory_data.name %}
+                                            {% if subcategory_data.nb_remaining_answers == 0 %}
+                                                <i class="fas fa-circle" aria-hidden="true" style="float:right;height:20px; line-height:20px;"></i>
+                                            {% else %}
+                                                <i class="fas fa-circle-notch" aria-hidden="true"
+                                                   style="float:right;height:20px; line-height:20px;"></i>
+                                            {% endif %}
+                                        </a>
+                                    </div>
+                                {% endfor %}
+                                <!-- FREE FIELDS / CHAMPS LIBRES -->
+                                {% if evaluation.sheet.type.slug != "mixity_start" %}
+                                    <!-- TODO: replace this awfull loop by something smart embedded in footprint_sidebar -->
+                                    {% for score_category in scores_categories %}
+                                        {% if score_category.category.slug == category_slug %}
+                                            <div class="sidemenu__item" style="margin-top: 5px;">
+                                                <a
+                                                    style="font-weight:100; height:20px; line-height:20px; {% if score_category.detail and score_category.aim %}opacity: 0.5;{% endif %}"
+                                                    class="sidemenu__link {% if category.id == category_data.id and not subcategory and target_name == target_slug %}sidemenu__link--active-italic{% endif %}"
+                                                    href="{% url 'evaluation_category_confirm' score_category.id target_slug category_slug %}">
+                                                {% trans "Champ libre" %}
+                                                {% if score_category.is_finished %}
+                                                    <i class="fas fa-circle" aria-hidden="true"
+                                                       style="float:right;height:20px; line-height:20px;"></i>
+                                                {% else %}
+                                                    <i class="fas fa-circle-notch" aria-hidden="true"
+                                                       style="float:right;height:20px; line-height:20px;"></i>
+                                                {% endif %}
+                                                </a>
+                                            </div>
+                                        {% endif %}
+                                    {% endfor %}
+                                {% endif %}
+                            </div>
+                        </li>
+                    {% endwith %}
+                {% endfor %}
+            {% endfor %}
+        {% endwith %}
+
+        {% if entity.entity_level.structure %}
+            {% if accessible_entities|length > 1 and membership.structure_id or accessible_entities|length > 1 and membership.is_owner %}
+                    <li class="sidemenu__item" style="padding-bottom: 20px;" id="header_nav_quest_elem">
+                        <div style="font-weight: 600" class="sidemenu__link collapsed" data-toggle="collapse" href="#collapse_collaborator_entity" role="button" aria-expanded="true" aria-controls="collapse_collaborator_entity">
+                            {{ entity.name }}
+                            {{ mainpk }}
+                            <i class="fas fa-angle-down" style="float:right;height:20px; line-height:20px;"></i>
+                            <hr class="hr--sidemenu">
+                        </div>
+                        <div class="sidemenu_sub collapse" id="collapse_collaborator_entity" style="overflow: hidden;"></div>
+                        <script>
+                            json = '{{ json_formatted | safe }}'
+                            mainentity = '{{ entity }}'
+                            if (json == "") {
+                                json = "[]"
+                            }
+                            json = JSON.parse(json);
+                            htmlwaterfall = ""
+                            for (var i = 0; i < json.length; i++) {
+                                subelemjson = json[i];
+                                htmlwaterfall = `
+                                <div class="sidemenu__item" id="${subelemjson.htmlname}" style="margin-top: 5px;margin-left: ${subelemjson.level * 10}px">
+                                    <a class="sidemenu__link " href="/scoring/evaluation/${subelemjson.pk}/confirm"> ${subelemjson.name}`
+                                if ( subelemjson.name == mainentity) {
+                                    htmlwaterfall += `<i class="fas fa-circle" aria-hidden="true" style="float:right;height:20px; line-height:20px;"></i>`
+                                } else {
+                                    htmlwaterfall += `<i class="fas fa-circle-notch" aria-hidden="true" style="float:right;height:20px; line-height:20px;"></i>`
+                                }
+                                htmlwaterfall += `</a></div>`
+                                if (subelemjson.parent != "none" && subelemjson.parent != null) {
+                                    document.getElementById(subelemjson.parenthtml).innerHTML += htmlwaterfall
+                                } else {
+                                    document.getElementById("collapse_collaborator_entity").innerHTML += htmlwaterfall
+                                }
+                            }
+                            document.getElementById("header_nav_quest_elem").style.paddingTop = 600 - (25 * json.length) + "px";
+                        </script>
+                </li>
+            {% endif %}
+        {% endif %}
+        {% for category in trial_cats %}
+            {% include "includes/locked_category.html" %}
+        {% endfor %}
+    {% endif %}
+</ul>

@@ -1,0 +1,18 @@
+{% extends "base_email.html" %}
+{% load i18n static %}
+
+{% block title %}
+{% blocktrans trimmed %}Merci d’avoir rejoint la communauté Mixity.{% endblocktrans %}
+{% endblock %}
+
+{% block content %}
+<tr>
+  <td>{% blocktrans trimmed %}Bonjour,<br>Cliquer sur le lien suivant pour terminer votre inscription sur
+      Mixity.{% endblocktrans %}</td>
+</tr>
+<tr>
+  <td align="center">
+    <a class="button" href="{{ url }}">{% blocktrans trimmed %}Valider mon email{% endblocktrans %}</a>
+  </td>
+</tr>
+{% endblock %}

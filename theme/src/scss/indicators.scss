@@ -1,0 +1,20 @@
+.select_indicator {
+    background: #FFF;
+    border: 1px solid #DEDFEA;
+    border-radius: 6px;
+    width: 60%;
+    color: var(--color-primary-dark);
+    padding: 0.725rem 3rem 0.725rem 0.725rem;
+}
+
+.bloc_namsor {
+    @media screen and (min-width: 768px) {
+        width: 109%;
+    }
+}
+
+.processed_collaborators {
+    @media screen and (max-width: 768px) {
+        text-align: end;
+    }
+}

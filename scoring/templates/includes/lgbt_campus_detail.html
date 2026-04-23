@@ -1,0 +1,185 @@
+{% load l10n %}
+{% load i18n %}
+{% load format_number %}
+
+
+<div class="items_container" style="justify-content: center; align-items: stretch">
+    <div class="items_container w-100 justify-content-center">
+
+        {% if target_name == "all" or target_name == "collaborator" %}
+
+            {% with answer=answer_20220234 %}
+                {% if answer %}
+                    <div class="item_pb item_s1 item_c stretched_item">
+                        <h3 line_id=17 suffix=" : {{ answer.value|floatformat:'0' }}" class="txt_line  content-strong">
+                            {% blocktrans trimmed %}Nombre de prises de parole médiatiques dans les 12 derniers mois sur le sujet LGBTQIA+{% endblocktrans %}
+                        </h3>
+                        {% include 'includes/indicators/number_icon.html' with color=cat.color value=answer.value last_year_value=answer.sibling_value last_year=answer.sibling_year icon_name="antenna" %}
+                        {% if answer.perimeter %}
+                            <div class="perimeter-indicator">
+                                <span>
+                                    {% trans answer.perimeter %}
+                                </span>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+
+            {% with answer=answer_20220235 %}
+                {% if answer %}
+                    <div class="item_pb item_s1 item_c stretched_item">
+                        <h3 line_id=17 suffix=" : {{ answer.value|floatformat:'0' }}" class="txt_line  content-strong">
+                            {% blocktrans trimmed %}Nombre de communication sur les réseaux sociaux dans les 12 derniers mois sur le sujet LGBTQIA+{% endblocktrans %}
+                        </h3>
+                        {% include 'includes/indicators/number_icon.html' with color=cat.color value=answer.value last_year_value=answer.sibling_value last_year=answer.sibling_year icon_name="smartphone" %}
+                        {% if answer.perimeter %}
+                            <div class="perimeter-indicator">
+                                <span>
+                                    {% trans answer.perimeter %}
+                                </span>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+
+            {% with answer=answer_20220237 %}
+                {% if answer %}
+                    <div class="item_pb item_s1 item_c stretched_item">
+                        <h3 line_id=17 suffix=" : {{ answer.value|floatformat:'0' }}" class="txt_line  content-strong">
+                            {% blocktrans trimmed %}Nombre d'actions menées auprès des collaborateurs (f/h/nb) sur l'année avec des associations{% endblocktrans %}
+                        </h3>
+                        {% include 'includes/indicators/number_icon.html' with color=cat.color value=answer.value last_year_value=answer.sibling_value last_year=answer.sibling_year icon_name="hands" %}
+                        {% if answer.perimeter %}
+                            <div class="perimeter-indicator">
+                                <span>
+                                    {% trans answer.perimeter %}
+                                </span>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+
+            {% with answer=answer_20220241 %}
+                {% if answer %}
+                    <div class="item_pb item_s1 item_c">
+                        <h3 line_id=17 suffix=" : {{ answer.ratio_value|floatformat:'0' }} %" class="txt_line content-strong">
+                            {% blocktrans trimmed %}Taux de salariés (f/h/nb) sensibilisés au sujet LGBTQIA+{% endblocktrans %}
+                        </h3>
+                        <div class="d-flex justify-content-center">
+                            {% include 'includes/indicators/half_circular_plot.html' with last_year_value=answer.sibling_value border_color="#EBEAEA" blank_color="#e9ecef" percent_inner=answer.ratio_value|floatformat:'1' percent=answer.get_mean_score_in_business_line|floatformat:'0' percent_outter=answer.get_mean_score|floatformat:'0' color=cat.color id=answer.id small=1 %}
+                        </div>
+                        {% if answer.perimeter %}
+                            <div class="perimeter-indicator">
+                                <span>
+                                    {% trans answer.perimeter %}
+                                </span>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+
+            {% with answer=answer_20220242 %}
+                {% if answer %}
+                    <div class="item_pb item_s1 item_c">
+                        <h3 line_id=17 suffix=" : {{ answer.ratio_value|floatformat:'0' }} %" class="txt_line content-strong">
+                            {% blocktrans trimmed %}Taux de managers (f/h/nb) sensibilisés au sujet LGBTQIA+{% endblocktrans %}
+                        </h3>
+                        <div class="d-flex justify-content-center">
+                            {% include 'includes/indicators/half_circular_plot.html' with last_year_value=answer.sibling_value border_color="#EBEAEA" blank_color="#e9ecef" percent_inner=answer.ratio_value|floatformat:'1' percent=answer.get_mean_score_in_business_line|floatformat:'0' percent_outter=answer.get_mean_score|floatformat:'0' color=cat.color id=answer.id small=1 %}
+                        </div>
+                        {% if answer.perimeter %}
+                            <div class="perimeter-indicator">
+                                <span>
+                                    {% trans answer.perimeter %}
+                                </span>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+
+            {% with answer=answer_20220243 %}
+                {% if answer %}
+                    <div class="item_pb item_s1 item_c stretched_item">
+                        <h3 line_id=17 suffix=" : {{ answer.value }}" class="txt_line  content-strong">
+                            {% blocktrans trimmed %}Nombre d'ateliers, conférences, prises de paroles, témoignages auprès des collaborateurs (f/h/nb) sur le sujet LGBTQIA+ qui ont eu lieu sur les 12 derniers mois{% endblocktrans %}
+                        </h3>
+                        {% include 'includes/indicators/number_icon.html' with color=cat.color value=answer.value last_year_value=answer.sibling_value last_year=answer.sibling_year %}
+                        {% if answer.perimeter %}
+                            <div class="perimeter-indicator">
+                                <span>
+                                    {% trans answer.perimeter %}
+                                </span>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+        {% endif %}
+
+
+        {% if target_name == "all" or target_name == "student" %}
+
+            {% with answer=answer_20221108 %}
+                {% if answer %}
+                    <div class="item_pb item_s1 item_c stretched_item">
+                        <h3 line_id=17 suffix=" : {{ answer.value|floatformat:'0' }}" class="txt_line  content-strong">
+                            {% blocktrans trimmed %}Nombre d'actions menées auprès des étudiants (f/h/nb) sur l'année avec des associations{% endblocktrans %}
+                        </h3>
+                        {% include 'includes/indicators/number_icon.html' with color=cat.color value=answer.value last_year_value=answer.sibling_value last_year=answer.sibling_year icon_name="hands" %}
+                        {% if answer.perimeter %}
+                            <div class="perimeter-indicator">
+                                <span>
+                                    {% trans answer.perimeter %}
+                                </span>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+
+            {% with answer=answer_20221111 %}
+                {% if answer %}
+                    <div class="item_pb item_s1 item_c">
+                        <h3 line_id=17 suffix=" : {{ answer.ratio_value|floatformat:'0' }} %" class="txt_line content-strong">
+                            {% blocktrans trimmed %}Taux d'étudiants (f/h/nb) sensibilisés au sujet LGBTQIA+{% endblocktrans %}
+                        </h3>
+                        <div class="d-flex justify-content-center">
+                            {% include 'includes/indicators/half_circular_plot.html' with last_year_value=answer.sibling_value border_color="#EBEAEA" blank_color="#e9ecef" percent_inner=answer.ratio_value|floatformat:'1' percent=answer.get_mean_score_in_business_line|floatformat:'0' percent_outter=answer.get_mean_score|floatformat:'0' color=cat.color id=answer.id small=1 %}
+                        </div>
+                        {% if answer.perimeter %}
+                            <div class="perimeter-indicator">
+                                <span>
+                                    {% trans answer.perimeter %}
+                                </span>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+
+            {% with answer=answer_20220243 %}
+                {% if answer %}
+                    <div class="item_pb item_s1 item_c stretched_item">
+                        <h3 line_id=17 suffix=" : {{ answer.value }}" class="txt_line  content-strong">
+                            {% blocktrans trimmed %}Nombre d'ateliers, conférences, prises de paroles, témoignages auprès des étudiants (f/h/nb) sur le sujet LGBTQIA+ qui ont eu lieu sur les 12 derniers mois{% endblocktrans %}
+                        </h3>
+                        {% include 'includes/indicators/number_icon.html' with color=cat.color value=answer.value last_year_value=answer.sibling_value last_year=answer.sibling_year %}
+                        {% if answer.perimeter %}
+                            <div class="perimeter-indicator">
+                                <span>
+                                    {% trans answer.perimeter %}
+                                </span>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+        {% endif %}
+
+    </div>
+</div>

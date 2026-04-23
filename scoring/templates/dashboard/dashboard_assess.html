@@ -1,0 +1,258 @@
+{% extends "base_dashboard.html" %}
+{% load i18n static format_number %}
+
+<!-- Messages -->
+{% if messages %}
+<div class="messages">
+    {% for message in messages %}
+    <div class="message message--{{ message.level_tag }}">{{ message|safe }}</div>
+    {% endfor %}
+</div>
+{% endif %}
+
+{% block content %}
+<div class="col py-3 dashboard-assess-indicator-font-size">
+    <div class="p-4">
+        <!-- Selecteur -->
+        <div class="row m-3 align-items-center justify-content-between">
+            <!-- Liste d'évaluations -->
+            <h4 class="col-4">{% trans "Mes Evaluations " %} {{ product.label }}</h4>
+
+            <!-- Select et Tooltip -->
+            <div class="col-3 d-flex justify-content-end">
+                <select value="{{ evaluation.display_version }}" onchange="handleVersion(this)" class="selector border d-flex me-5">
+                    {% for version in versions_list %}
+                    <option value="{{ version.display_version }}" {% if evaluation.display_version == version.display_version %}selected{% endif %} >{{ version.display_version }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+
+        <script>
+            function handleVersion(selectElement) {
+                const selectedVersion = selectElement.value;
+
+                const slugify = (text) => {
+                    return text
+                        .toLowerCase()
+                        .normalize('NFD')                      // Normaliser les caractères
+                        .replace(/[\u0300-\u036f]/g, '')       // Enlever les accents
+                        .replace(/[^a-z0-9 -]/g, '')           // Enlever les caractères non autorisés
+                };
+
+                const [year, month] = selectedVersion.split('-');
+                const selectedVersionSlugified = `${year}-${slugify(month)}`;
+                const newUrl = `/{{ evaluation.entity.slug }}/{{ product.slug }}/assess/${selectedVersionSlugified}`;
+
+                window.location.href = newUrl;
+            }
+        </script>
+
+        <!-- Footprint Block -->
+        <div class="row m-3">
+            <div class="col-6">
+                <h3 class="mxt--large-bold">{% blocktrans trimmed %}Votre empreinte{% endblocktrans %}
+                    {% if evaluation and evaluation.is_validated_by_admin %}
+                    {{ evaluation.version|date:"Y" }}
+                    {% endif %} </h3>
+                {% if evaluation and evaluation.is_validated_by_admin %}
+                {% include 'includes/radar.html' with evaluation=evaluation %}
+                {% else %}
+                <div>
+                    <img alt="Image Empreinte non disponible" src="{% static 'img/footprint_not_available.png' %}">
+                </div>
+                {% endif %}
+            </div>
+
+            <!-- Downloads Block -->
+            <div class="col-6">
+                <h3 class="mxt--large-bold" style="margin-bottom: .6rem">{% blocktrans trimmed %}Votre
+                    questionnaire{%endblocktrans %}</h3>
+                <div class="card-light card-light-green row p-3">
+                    <h3 class="mxt--normal-bold" style="font-weight: 500">{% blocktrans trimmed %}Revoir et éditer vos
+                        questions{% endblocktrans %}</h3>
+                    <div class="d-flex justify-content-start gap-3">
+                        {% comment %} {% if evaluation.is_validated_by_admin and membership.is_owner %}
+                        <a class="mxt--small button border assess_white_btn p-0 px-3" href="#">
+                            {% blocktrans trimmed %}Comparer{% endblocktrans %}</a>
+                        {% endif %} {% endcomment %}
+
+                        {% if evaluation and not evaluation.is_validated_by_admin and evaluation.is_diag and not membership.is_reader %} <a href="{% url 'evaluation_confirm' pk=evaluation.pk  %}" class="mxt--small button border assess_white_btn p-0 px-1"><i class="bi bi-pencil-fill"></i> {% blocktrans trimmed %}Reprendre le questionnaire {% endblocktrans %} </a> {% endif %}
+
+                        {% if evaluation and evaluation.is_human and membership.is_owner %}
+                        <div style="grid-column: 1/3; text-align: center;">
+                            <h3 class="title--h3"><strong>{% blocktrans trimmed %}URL de votre évaluation à partager à
+                                    vos collaborateurs (f/h/nb) : {% endblocktrans %}</strong></h3>
+                            <a id="eval_{{ evaluation.id }}" href="{{ evaluation.collaborator_url }}"
+                                style="display: none">{{ evaluation.collaborator_url }}</a>
+                            <script
+                                type="text/javascript">document.getElementById("eval_{{ evaluation.id }}").innerText = document.getElementById("eval_{{ evaluation.id }}").href;</script>
+                            <button class="btn btn-sm rounded-pill btn-secondary margin"
+                                onclick="copyToClipboard('eval_{{ evaluation.id }}')">{% blocktrans trimmed %}Copier le
+                                lien{% endblocktrans %}</button>
+                            <br />
+                            <a href="{% url 'evaluation_validate' pk=evaluation.id %}"
+                                class="mxt--small button border assess_secondary_btn p-0 px-1">
+                                <i class="bi bi-lock"></i>{% blocktrans trimmed %}Valider et bloquer les nouvelles
+                                réponses{% endblocktrans %}
+                            </a>
+                        </div>
+                        {% elif evaluation and evaluation.is_human and evaluation_status == "validate_by_user" and
+                        membership.is_owner %}
+                        <div style="grid-column: 1/3; text-align: center;">
+                            <h3 class="title--h3"><strong>{% blocktrans trimmed %}URL de votre évaluation à partager à
+                                    vos collaborateurs (f/h/nb) : {% endblocktrans %}</strong></h3>
+                            <a id="eval_{{ evaluation.id }}" href="{{ evaluation.collaborator_url }}"
+                                style="display: none">{{ evaluation.collaborator_url }}</a>
+                            <script
+                                type="text/javascript">document.getElementById("eval_{{ evaluation.id }}").innerText = document.getElementById("eval_{{ evaluation.id }}").href;</script>
+                            <button class="btn btn-sm rounded-pill btn-secondary margin"
+                                onclick="copyToClipboard('eval_{{ evaluation.id }}')">{% blocktrans trimmed %}Copier le
+                                lien{% endblocktrans %}</button>
+                            <br />
+                            <a href="{% url 'evaluation_open' pk=evaluation.id %}"
+                                class="mxt--small button border assess_secondary_btn p-0 px-1">
+                                <i class="bi bi-unlock"></i>{% blocktrans trimmed %}Rouvrir et autoriser les nouvelles
+                                réponses{% endblocktrans %}
+                            </a>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+                {% if membership.is_owner %}
+                <div class="d-flex justify-content-start w-95 gap-5 m-auto" style="height: 42.5%">
+                    <div
+                        class="card-light card-light-blue row p-3 {% if not evaluation.is_validated_by_admin %}disabled{% endif %}">
+                        <h3 class="mxt--normal-bold" style="font-weight: 500">{% blocktrans trimmed %}Publier votre
+                            évaluation{% endblocktrans %}</h3>
+                        <div class="d-flex justify-content-start gap-5">
+                            {% if evaluation.is_validated_by_admin and not evaluation.is_trial %}
+                            <a href="{% url 'evaluation_publish' evaluation.id %}"
+                                class="mxt--small button border assess_secondary_btn p-0 px-1">
+                                {% if evaluation.public_display %}
+                                <i class="bi bi-share"></i>{% blocktrans trimmed %}Rendre privée{% endblocktrans %}
+                                {% else %}
+                                <i class="bi bi-share"></i>{% blocktrans trimmed %}Rendre publique{% endblocktrans %}
+                                {% endif %}
+                            </a>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="card-light card-light-blue row p-3">
+                        <h3 class="mxt--normal-bold" style="font-weight: 500">{% blocktrans trimmed %}Télécharger les
+                            résultats de votre questionnaire{% endblocktrans %}</h3>
+                        <div class="d-flex justify-content-start gap-3">
+                            {% if evaluation %}
+                                {% include "includes/sheet_download.html" with evaluation=evaluation filters=excel_human_filters %}
+                            {% endif %}
+                            {% if evaluation and evaluation.is_validated_by_admin and evaluation.pdf_sheet %}
+                                {% include "includes/pdf_download.html" with evaluation=evaluation %}
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- Filters Block -->
+        {% if evaluation.is_human %}
+        <div class="m-3">
+            {% include 'includes/human_criteria_detail.html' %}
+        </div>
+        {% endif %}
+
+        {% if evaluation.is_validated_by_admin %}
+        <div class="row m-3">
+            <h3 class="mxt--large-bold" id="evaluation-tabs">{% blocktrans trimmed %}Mon évaluation{% endblocktrans %}</h3>
+            <nav class="tab-menu">
+                <div class="nav nav-tabs d-flex justify-content-start" id="nav-tab" role="tablist">
+                    {% for sc in scores_categories %}
+                    <button
+                        class="nav-link {% if forloop.counter == 1 %} active {% endif %} nav-color nav-color-{{ sc.category.slug }}"
+                        id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#cat-select-{{ sc.category.slug }}"
+                        type="button" role="tab" aria-controls="{{ sc.category.slug }}"
+                        aria-selected="{% if forloop.counter == 1 %}true{% else %}false{% endif %}">
+                        <span class="bullet bullet-{{ sc.category.slug }}"></span>
+                        <span class="mxt--small-bold">{% trans sc.category.name %}</span>
+                    </button>
+                    {% endfor %}
+                </div>
+            </nav>
+            <div class="tab-content" id="nav-tabContent">
+                {% for sc in scores_categories %}
+                <div class="tab-pane fade {% if forloop.counter == 1 %} show active {% endif %}"
+                    id="cat-select-{{ sc.category.slug }}" role="tabpanel" aria-labelledby="{{ sc.category.slug }}-tab">
+                    <!-- Indicators Block --> <h3 class="mxt--large-bold" style="margin-top: 40px; margin-bottom: 24px">{% blocktrans trimmed %}Indicateurs{% endblocktrans %}</h3>
+                    {% if sc.category.slug == "cultural_diversity" and collaborators_statistics%}
+                    {% include "includes/namsor_indicator_container.html" with collaborators_statistics=collaborators_statistics %}
+                    {% endif %}
+                    <div class="row m-3">
+                        {% with 'includes/'|add:sc.category.slug|add:sc.evaluation.sheet.type.suffix_company_sheet|add:'_detail.html' as cat_template %} {% include cat_template with cat=sc.category %} {% endwith %}
+                    </div>
+
+                    <!-- + & - Block -->
+                    <h3 class="mxt--large-bold" style="margin-top: 40px; margin-bottom: 24px">
+                        {% blocktrans trimmed%}Evaluation{% endblocktrans %}</h3>
+                    <div class="row m-3">
+                        <article class="" style="display:flex; justify-content: space-between; flex-wrap: wrap">
+                            {% include "includes/strengths_weaknesses_and_aims.html" %}
+                        </article>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
+
+{% block styles %}
+<style>
+    .semi-donut {
+        width: 100px;
+        height: 75px;
+        position: relative;
+        font-size: 1.5rem;
+        font-weight: 500;
+        overflow: hidden;
+        color: var(--fill);
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        box-sizing: border-box;
+    }
+
+    .semi-donut:after {
+        content: '';
+        width: 100px;
+        height: 100px;
+        border: 7px solid;
+        border-color: rgba(0, 0, 0, 0.15) rgba(0, 0, 0, 0.15) var(--fill) var(--fill);
+        position: absolute;
+        border-radius: 50%;
+        left: 0;
+        top: 25px;
+        box-sizing: border-box;
+        transform: rotate(calc(1deg * (-45 + var(--percentage) * 1.8)));
+    }
+
+    .semi-donut__percentage {
+        font-size: 1.4rem;
+    }
+</style>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    function copyToClipboard(elementId) {
+        var aux = document.createElement("input");
+        aux.setAttribute("value", document.getElementById(elementId).innerHTML);
+        document.body.appendChild(aux);
+        aux.select();
+        document.execCommand("copy");
+        document.body.removeChild(aux);
+    }
+</script>
+{% endblock %}

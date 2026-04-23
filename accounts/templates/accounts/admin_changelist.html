@@ -1,0 +1,41 @@
+{% extends 'admin/change_list.html' %}
+{%  load static %}
+
+{% block object-tools %}
+    <div>
+
+    <div class="dropdown">
+      <span style="cursor:pointer;background: aquamarine;color: black;padding: 10px;border-radius: 20px;font-weight: 500;"><img style="height: 20px;vertical-align: sub;" src="{%  static "img/excel.png" %}" /> Exporter les données clients en CSV</span>
+      <div class="dropdown-content">
+        <a href="csv_export/?delimiter=comma">Séparé par des virgules</a><br/>
+        <a href="csv_export/?delimiter=semicolon">Séparé par des points-virgules</a>
+      </div>
+    </div>
+
+       </div>
+    <br />
+
+    {{ block.super }}
+    <style>
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #f9f9f9;
+      min-width: 100px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      padding: 12px 16px;
+      z-index: 1;
+        margin-top:10px;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+    </style>
+
+{% endblock %}

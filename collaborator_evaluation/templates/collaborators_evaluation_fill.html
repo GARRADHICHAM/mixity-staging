@@ -1,0 +1,35 @@
+{% extends "base-minimal.html" %}
+{% load i18n static %}
+{% block head %}
+<link
+  href="/static/dist/css/collaboratorsevaluation-1.0.0.css"
+  rel="stylesheet"
+/>
+{% endblock %}
+{% block content %}
+{% get_current_language as LANGUAGE_CODE %}
+{% get_available_languages as LANGUAGES %}
+{% get_language_info_list for LANGUAGES as languages %}
+<div style="position: absolute; top:50px; right: 56px">
+    {% include "includes/language_selector.html" %}
+</div>
+<div id="root"></div>
+  <form action="" method="post" class="form" id="collaborator_form">
+      {% csrf_token %}
+  </form>
+<script src="{% url "javascript-catalog" %}"></script>
+<script type="text/javascript">
+  let questionnaire = {{questionnaire|safe}};
+  window.history.pushState(null, "", window.location.href);
+  window.onpopstate = function () {
+      window.history.pushState(null, "", window.location.href);
+      let btns = document.getElementsByClassName("button button--circle button-previous page-control-button")
+      if(btns.length > 0) {
+          btns[0].click()
+      }
+  }
+  window.onbeforeunload = function() { return "{% blocktrans trimmed %}Voulez-vous vraiment quitter ? Vos réponses seraient perdues.{% endblocktrans %}"; };
+
+</script>
+<script src="/static/dist/js/collaboratorevaluation-1.0.0.js"></script>
+{% endblock %}

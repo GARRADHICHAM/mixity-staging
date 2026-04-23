@@ -1,0 +1,20 @@
+{% extends "base_email.html" %}
+{% load i18n static %}
+
+{% block content %}
+<tr>
+  <td>
+    <h1>{% trans "Synthèse de l'évaluation" %}</h1>
+  </td>
+</tr>
+<tr>
+  <td>
+      {% blocktrans %}La synthèse de l'évaluation a bien été exportée pour l'entité suivante :{% endblocktrans %} {{ entity }}
+  </td>
+</tr>
+<tr>
+  <td>
+    {% trans "Vous la trouverez au format pdf en piece jointe." %}
+  </td>
+</tr>
+{% endblock %}

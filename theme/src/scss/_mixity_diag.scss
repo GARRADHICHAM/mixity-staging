@@ -1,0 +1,23 @@
+@import '_variables';
+
+.color-diag {
+    background:-moz-linear-gradient(90deg, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0.2) 50.01%), linear-gradient(224.54deg, #47D4FF 17.39%, #FF6F6F 80.66%);
+    background: -webkit-linear-gradient(90deg, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0.2) 50.01%), linear-gradient(224.54deg, #47D4FF 17.39%, #FF6F6F 80.66%);
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0.2) 50.01%), linear-gradient(224.54deg, #47D4FF 17.39%, #FF6F6F 80.66%);
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color:transparent;
+    color: transparent;
+}
+
+.color-human {
+    background:-moz-linear-gradient(90deg, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0.2) 50.01%), linear-gradient(135deg, #47D4FF 14.64%, #8888E2 85.36%);
+    background: -webkit-linear-gradient(90deg, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0.2) 50.01%), linear-gradient(135deg, #47D4FF 14.64%, #8888E2 85.36%);
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0.2) 50.01%), linear-gradient(135deg, #47D4FF 14.64%, #8888E2 85.36%);
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color:transparent;
+    color: transparent;
+}

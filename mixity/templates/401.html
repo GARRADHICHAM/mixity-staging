@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+
+{% block content %}
+  <div class="bg--primary-alpha full-height">
+    <section class="container error">
+      <div class="error__content text-center">
+        <h1 class="error__title">401</h1>
+        <p class="error__description">{% blocktrans trimmed %}La page demandée est sécurisée et requiert une
+            authentification.{% endblocktrans %}</p>
+        <a href="{% url 'home' %}" class="btn btn-secondary btn-sm">{% blocktrans trimmed %}Retour à la page d'accueil{% endblocktrans %}</a>
+        <p><a href="https://www.mixity.co/contact/">{% blocktrans trimmed %}Nous contacter pour nous signaler un problème{% endblocktrans %}</a></p>
+      </div>
+      <div class="error__bg full-height"></div>
+    </section>
+  </div>
+{% endblock %}

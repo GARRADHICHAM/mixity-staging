@@ -1,0 +1,16 @@
+{% extends "base_email.html" %}
+{% load i18n static %}
+
+{% block content %}
+<tr>
+  <td><h1>{% trans "Demande de connexion à ADP" %}</h1></td>
+</tr>
+<tr>
+  <td>
+    {% trans "L'entité xxx à fait une demande de connexion à ADP, à votre tour de jouer. Communiquer la demande à ADP afin de récupérer les Credentials pour l'entité en question" %}
+  </td>
+</tr>
+
+</tr>
+
+{% endblock %}

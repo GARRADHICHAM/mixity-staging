@@ -1,0 +1,35 @@
+{% load static define get_item %}
+{% comment %}Only present in Admin{% endcomment %}
+{% if statistics %}
+<a href="{{ statistics.raw_data.url }}"><img style="height: 20px;" class="vertical-align-sub" src="{%  static "img/excel.png" %}" /> Télécharger les données CSV</a>
+&nbsp;|&nbsp;
+<span>Personnes traitées : {{ statistics.processed_collaborators }} / {{ statistics.processed_collaborators|add:statistics.unprocessed_collaborators }}</span>
+&nbsp;|&nbsp;
+<span>Taux de confiance (Moyenne) : {{ statistics.confidence|floatformat:2 }}</span>
+&nbsp;|&nbsp;
+<span>Médiane : {{ statistics.median|floatformat:2 }}</span><br/>
+<strong>Données agrégées :</strong><br/>
+<table class="table-ethnicity">
+    <tr>
+        <th>Diaspora</th>
+        <th>Effectif</th>
+        <th>Pourcentage</th>
+    </tr>
+{% for diaspora in statistics.computed_data %}
+  {% define diaspora.name as name %}
+  {% if vocabulary %}
+    {% define vocabulary|get_item:name as translated_name %}
+    {% if translated_name %}
+        {% define translated_name.name as name %}
+    {% endif %}
+  {% endif %}
+    <tr>
+        <th>{{ name }}</th>
+        <th>{{ diaspora.value }}</th>
+        <th class="diaspora-percent-compute" data-total-value="{{ statistics.processed_collaborators }}">{{ diaspora.value }}</th>
+    </tr>
+{% endfor %}
+</table>
+{% else %}
+    Pas de statistiques pour cette entrée
+{% endif %}

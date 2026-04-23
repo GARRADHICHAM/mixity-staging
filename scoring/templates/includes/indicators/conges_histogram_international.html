@@ -1,0 +1,56 @@
+{% load i18n %}
+{% load l10n %}
+{% load evolution_rate %}
+{% load format_number %}
+
+
+<div>
+    <h3 class="content-strong">{{ title }}</h3>
+    <br>
+    <div style="display: grid; grid-template-columns: 100%">
+    <div style="height:150px; padding: 0; display: flex; align-items: flex-end; justify-content: space-between">
+        <div id="histogram_{{ id }}_ref" style="width:{% if val_prev %}30{% else %}45{% endif %}%;height:0px; background-color: #fff; display: flex; justify-content: center; align-items: flex-end"><div style="color: #000; font-size: 33pt"><span>{{ val_nat }}</span></div></div>
+        <div id="histogram_{{ id }}_valnow" style="width:{% if val_prev %}30{% else %}45{% endif %}%;height:0px; background-color: {{ cat.color }}; display: flex; justify-content: center; align-items: flex-end"><div style="color: {{ cat.color }}; filter: invert(100%); font-size: 33pt"><span>{% simple_number value=val_now %}</span></div></div>
+    </div>
+        <div style="display: flex; align-items: center; justify-content: center; flex-wrap: wrap;margin-top: 10px">
+            <div style="display:flex; justify-content: space-between; width: 100%;">
+                <div style="margin:5px 0px;width:30%;"><div style="display:flex; align-items:center; width:200px"><div style="background-color:#fff;" class="dot"></div> <span>&nbsp;{% blocktrans trimmed %}Législation{% endblocktrans %}</span></div></div>
+                <div class="legend_element"><div style="background-color:{{ cat.color }};" class="dot"></div> <span>&nbsp;{{ year|unlocalize }}</span></div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+    let val_ref = {{ val_nat }};
+    let height = 150;
+    let val_now, ref_height, now_height;
+
+    if("{{ val_now }}" === "" || "{{ val_now }}" === "None")
+    {
+        val_now = 0;
+    } else {
+        val_now = {{ val_now }};
+    }
+
+    let max = Math.max(val_now, val_ref);
+
+    if(max === val_ref)
+    {
+        ref_height = height;
+    } else {
+        ref_height = height * val_ref / max;
+    }
+
+    if(max === val_now)
+    {
+        now_height = height;
+    } else {
+        now_height = height * val_now / max;
+    }
+    document.getElementById("histogram_{{ id }}_ref").style.height = ref_height.toString() + "px";
+    document.getElementById("histogram_{{ id }}_valnow").style.height = now_height.toString() + "px";
+    });
+</script>

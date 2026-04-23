@@ -1,0 +1,224 @@
+.mxt {
+    &--h1 {
+        font-family: 'DM Sans', sans-serif;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 4rem;
+        line-height: 4.5rem;
+        @media screen and (max-width: 560px) {
+            font-size: 2rem;
+            line-height: 2.25rem;
+        }
+    }
+
+    &--h2 {
+        font-family: 'DM Sans', sans-serif;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 3rem;
+        line-height: 3.5rem;
+        @media screen and (max-width: 560px) {
+            font-size: 1.75rem;
+            line-height: 2rem;
+        }
+    }
+
+    &--h3 {
+        font-family: 'DM Sans', sans-serif;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 2rem;
+        line-height: 2.5rem;
+    }
+
+    &--h4 {
+        font-family: 'DM Sans', sans-serif;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 1.25rem;
+        line-height: 1.75rem;
+    }
+
+    &--large {
+        font-family: 'DM Sans', sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 1.5rem;
+        line-height: 2rem;
+        @media screen and (max-width: 560px) {
+            font-size: 1.13rem;
+            line-height: 1.25rem;
+        }
+    }
+
+    &--large-bold {
+        font-family: 'DM Sans', sans-serif;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 1.5rem;
+        line-height: 2rem;
+        @media screen and (max-width: 560px) {
+            font-size: 1.13rem;
+            line-height: 1.25rem;
+        }
+    }
+
+    &--normal {
+        font-family: 'DM Sans', sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 1.25rem;
+        line-height: 1.75rem;
+    }
+
+    &--normal-bold {
+        font-family: 'DM Sans', sans-serif;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 1.25rem;
+        line-height: 1.75rem;
+    }
+
+    &--small {
+        font-family: 'DM Sans', sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    &--small-bold {
+        font-family: 'DM Sans', sans-serif;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    &--xs {
+        font-family: 'DM Sans', sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        font-size: .75rem;
+        line-height: 1.13rem;
+    }
+}
+
+.mxt-button {
+    display: block;
+    width: fit-content;
+    font-family: 'DM Sans', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 28px;
+    background: var(--color-primary);
+    border-radius: 64px;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    padding: 10px 24px 10px 24px !important;
+    @media screen and (max-width: 768px){
+        margin: auto !important;
+    }
+
+    &:hover {
+        cursor: pointer;
+        color: white;
+        background: var(--color-primary-hover);
+    }
+    &:disabled {
+        background: var(--color-lowkey-grey);
+    }
+
+    &--secondary {
+        background: var(--color-primary-light);
+        &:hover {
+            cursor: pointer;
+            background: var(--color-secondary-hover);
+        }
+    }
+
+    &--light {
+        background: var(--color-light);
+        &:hover {
+            cursor: pointer;
+            background: var(--color-light-hover);
+        }
+    }
+
+    &--arrow {
+        padding: 10px 46px 10px 24px !important;
+        &:after {
+            content: "\e902";
+            font-family: 'mixity-icons' !important;
+            font-size: 30px;
+            position: absolute;
+            font-weight: normal;
+            margin-top: 2px;
+        }
+    }
+    &--transparent {
+        background: transparent !important;
+        color: var(--color-primary-light) !important;
+        padding: 10px 36px 10px 14px;
+        @media screen and (max-width: 768px){
+            padding: 10px 26px 10px 0 !important;
+        }
+        &:after {
+            content: "\e902";
+            font-family: 'mixity-icons' !important;
+            font-size: 30px;
+            position: absolute;
+            font-weight: normal;
+            color: var(--color-primary-light);
+
+        }
+    }
+}
+
+.mxt-container {
+    padding: 30px 10%;
+    width: 100%;
+    @media screen and (max-width: 768px){
+        padding: 10% 2% !important;
+    }
+
+    >* {
+        max-width: var(--lg);
+        margin: 0 auto;
+        padding: 3em 0;
+        @media screen and (max-width: 768px) {
+            text-align: center;
+            padding: 3em 1.5em;
+         }
+    }
+
+    &__title {
+        max-width: 30em;
+        font-weight: 600;
+        font-size: 2em;
+        text-align: center;
+    }
+    &-purple {
+        height: fit-content;
+        background-color: var(--color-primary);
+        margin: 5% 0;
+        padding: 10% 2%;
+    }
+}
+
+
+.mxt-icon {
+    vertical-align: middle;
+    &--32 {
+        vertical-align: middle;
+        font-size: 32px;
+    }
+}
+
+.mxt-row {
+    display: grid;
+    grid-template-rows: 1fr !important;
+    grid-template-columns: auto;
+}

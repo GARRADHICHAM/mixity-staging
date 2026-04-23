@@ -1,0 +1,455 @@
+{% load l10n %}
+{% load i18n %}
+{% load percentage %}
+{% load format_number %}
+{% load computed_answer %}
+{% load substract %}
+
+<!-- TODO : Add lines in suffix (only when optimisation done) -->
+<!-- TODO : Add mean sector (only when optimisation done) -->
+<div class="items_container" style="justify-content: center; align-items: stretch">
+    <div class="items_container w-100 justify-content-center">
+        {% with answer=answer_2021001 answer2=answer_2021002 answer3=answer_20210020 %}
+
+            {% if answer %}
+                <div class="item_pb item_s2 item_c items_container">
+                    <div class="item_s50 item_c stretched_item">
+                        <h3 line_id=17 suffix=" : ' }} %" class="txt_line  content-strong" style="margin:auto;">{% blocktrans trimmed %}Taux de répondants (f/h/nb) estimant appartenir à une minorité dans l'organisation{% endblocktrans %}</h3>
+                        <div style="display: flex;justify-content: center;margin-top: -31px;">
+                            {% computed_answer evaluation  answer '{"type":"rate_choice_total"}' collaborators_queryset as results_global %}
+                            {% computed_answer evaluation  answer '{"type":"rate_choice_total", "collaborator_filters":{"civility":"woman"}}' collaborators_queryset as results_women %}
+                            {% computed_answer evaluation  answer '{"type":"rate_choice_total", "collaborator_filters":{"civility":"man"}}' collaborators_queryset as results_men %}
+                            {% computed_answer evaluation  answer '{"type":"rate_choice_total", "collaborator_filters":{"civility":"non-binary"}}' collaborators_queryset as results_nb %}
+                            {% include 'includes/indicators/circular_plot_with_pie.html' with border_color="#EBEAEA" blank_color="#e9ecef" legend1=_("Femmes") legend1_2=_("Hommes") legend1_3=_('Non-binaire') legend2=_('Moyenne dans mon secteur') legend3=_('Moyenne globale') color1="#FF7070" color2="#863C63" color3="#8888E2" percent_inner=results_global.0.0.value|default:None percent_outter=results_global.2.0.value|default:None value1=results_women.0.0.value value2=results_men.0.0.value value3=results_nb.0.0.value percent=results_global.1.0.value|default:None color=cat.color id=answer.id small=0 %}
+                        </div>
+                    </div>
+                    {% if answer2 %}
+                        <div class="item_s50 item_c stretched_item">
+                            <h3 line_id=17 suffix=" : ' }} %" class="txt_line  content-strong" style="margin:auto;">{% blocktrans trimmed %}Caractéristiques citées (f/h/nb){% endblocktrans %}</h3>
+                            <div class="d-flex justify-content-center">
+                                {% computed_answer evaluation  answer2 '{"type":"rate_subanswers", "sort":"value"}' collaborators_queryset as data %}
+                                {% include 'includes/indicators/split_repartition_json.html' with round=True orange_count=3 data=data color=cat.color id=answer2.id%}
+                            </div>
+                            {% if answer2.perimeter %}
+                                <div class="perimeter-indicator">
+                                    <span>
+                                        {% trans answer2.perimeter %}
+                                    </span>
+                                </div>
+                            {% endif %}
+                        </div>
+                    {% elif answer3 %}
+                        <div class="item_s50 item_c stretched_item">
+                            <h3 line_id=17 suffix=" : ' }} %" class="txt_line  content-strong" style="margin:auto;">{% blocktrans trimmed %}Caractéristiques citées (f/h/nb){% endblocktrans %}</h3>
+                            <div class="d-flex justify-content-center">
+                                {% computed_answer evaluation answer3 '{"type":"rate_subanswers", "sort":"value"}' collaborators_queryset as data %}
+                                {% include 'includes/indicators/split_repartition_json.html' with round=True orange_count=3 data=data color=cat.color id=answer3.id%}
+                            </div>
+                            {% if answer3.perimeter %}
+                                <div class="perimeter-indicator">
+                                    <span>
+                                        {% trans answer3.perimeter %}
+                                    </span>
+                                </div>
+                            {% endif %}
+                        </div>
+                    {% endif %}
+                </div>
+            {% endif %}
+        {% endwith %}
+    </div>
+    {% with answer=answer_2021004 answer2=answer_20210040 %}
+        {% if answer %}
+            <div class="item_pb item_s2 item_c stretched_item">
+                <h3 line_id=17 suffix=" : ' }} %" class="txt_line  content-strong" style="margin:auto;">{% blocktrans trimmed %}Perception de l'engagement de l'organisation selon les axes{% endblocktrans %}</h3>
+                <div style="display: flex;justify-content: center;width: 100%;">
+                    {% computed_answer evaluation  answer '{"type":"rate_subanswers", "sort":"value"}' collaborators_queryset as data %}
+                    {% include 'includes/indicators/split_repartition_json.html' with big=True round=True orange_count=1 data=data color=cat.color %}
+                </div>
+            </div>
+        {% elif answer2 %}
+            <div class="item_pb item_s2 item_c stretched_item">
+                <h3 line_id=17 suffix=" : ' }} %" class="txt_line  content-strong" style="margin:auto;">{% blocktrans trimmed %}Perception de l'engagement de l'organisation selon les axes{% endblocktrans %}</h3>
+                <div style="display: flex;justify-content: center;width: 100%;">
+                    {% computed_answer evaluation answer2 '{"type":"rate_subanswers", "sort":"value"}' collaborators_queryset as data %}
+                    {% include 'includes/indicators/split_repartition_json.html' with big=True round=True orange_count=1 data=data color=cat.color %}
+                </div>
+                {% if answer2.perimeter %}
+                    <div class="perimeter-indicator">
+                        <span>
+                            {% trans answer2.perimeter %}
+                        </span>
+                    </div>
+                {% endif %}
+            </div>
+        {% endif %}
+    {% endwith %}
+
+    {% with answer=answer_2021005 answer2=answer_20210050 %}
+        {% if answer %}
+            <div class="item_pb item_s2 item_c stretched_item">
+                <h3 line_id=17 suffix=" : ' }} %" class="txt_line  content-strong" style="margin:auto;">{% blocktrans trimmed %}Sujets sur lesquels l'organisation devrait agir en priorité pour permettre plus d'égalité des chances et d'inclusion{% endblocktrans %}</h3>
+                <div style="display: flex;justify-content: center;width: 100%;">
+                    {% computed_answer evaluation  answer '{"type":"rate_subanswers_count", "sort":"value"}' collaborators_queryset as data %}
+                    {% include 'includes/indicators/split_repartition_json.html' with limit=5 big=True round=True orange_count=1 data=data color=cat.color %}
+                </div>
+            </div>
+        {% elif answer2 %}
+            <div class="item_pb item_s2 item_c stretched_item">
+                <h3 line_id=17 suffix=" : ' }} %" class="txt_line  content-strong" style="margin:auto;">{% blocktrans trimmed %}Sujets sur lesquels l'organisation devrait agir en priorité pour permettre plus d'égalité des chances et d'inclusion{% endblocktrans %}</h3>
+                <div style="display: flex;justify-content: center;width: 100%;">
+                    {% computed_answer evaluation answer2 '{"type":"rate_subanswers_count", "sort":"value"}' collaborators_queryset as data %}
+                    {% include 'includes/indicators/split_repartition_json.html' with limit=5 big=True round=True orange_count=1 data=data color=cat.color %}
+                </div>
+                {% if answer2.perimeter %}
+                    <div class="perimeter-indicator">
+                        <span>
+                            {% trans answer2.perimeter %}
+                        </span>
+                    </div>
+                {% endif %}
+            </div>
+        {% endif %}
+    {% endwith %}
+    {% with answer=answer_2021000 %}
+        {% if answer %}
+            <div class="item_pb item_s1 item_c stretched_item">
+                <h3 line_id=17 suffix=" : ' }} %" class="txt_line  content-strong" style="margin:auto;">{% blocktrans trimmed %}Taux de répondants (f/h/nb) sensibles aux sujets de la diversité et l'inclusion{% endblocktrans %}</h3>
+                <div class="d-flex justify-content-center">
+                    {% computed_answer evaluation  answer '{"type":"rate_choice", "combine":"0,1"}' collaborators_queryset as results %}
+                    {% include 'includes/indicators/half_circular_plot.html' with border_color="#EBEAEA" blank_color="#e9ecef" legend1=_("Femmes") legend2=_('Hommes') legend3=_('Non-binaires') percent_inner=results.0.0.combined_value percent=results.1.0.combined_value percent_outter=results.2.0.combined_value color=cat.color id=answer.id small=0 %}
+                </div>
+            </div>
+        {% endif %}
+    {% endwith %}
+    {% with answer=answer_2021003 %}
+        {% if answer %}
+            <div class="item_pb item_s1 item_c stretched_item">
+                <h3 line_id=17 suffix=" : ' }} %" class="txt_line  content-strong" style="margin:auto;">{% blocktrans trimmed %}Taux de répondants (f/h/nb) estimant que l'organisation est engagée sur les sujets de la diversité et l'inclusion{% endblocktrans %}</h3>
+                <div class="d-flex justify-content-center">
+                    {% computed_answer evaluation  answer '{"type":"rate_choice", "combine":"0,1"}' collaborators_queryset as results %}
+                    {% include 'includes/indicators/half_circular_plot.html' with border_color="#EBEAEA" blank_color="#e9ecef" legend1=_("Femmes") legend2=_('Hommes') legend3=_('Non-binaires') percent_inner=results.0.0.combined_value percent=results.1.0.combined_value percent_outter=results.2.0.combined_value color=cat.color id=answer.id small=0 %}
+                </div>
+            </div>
+        {% endif %}
+    {% endwith %}
+    {% with answer=answer_20210061 %}
+        {% if answer %}
+            <div class="item_pb item_s1 item_c stretched_item">
+                <h3 line_id=17 suffix=" : ' }} %" class="txt_line  content-strong" style="margin:auto;">{% blocktrans trimmed %}Taux de satisfaction de la politique diversité et l'inclusion{% endblocktrans %}</h3>
+                <div class="d-flex justify-content-center">
+                    {% computed_answer evaluation  answer '{"type":"rate_choice", "combine":"0,1"}' collaborators_queryset as results %}
+                    {% include 'includes/indicators/half_circular_plot.html' with border_color="#EBEAEA" blank_color="#e9ecef" percent_inner=results.0.0.combined_value percent=results.1.0.combined_value percent_outter=results.2.0.combined_value color=cat.color id=answer.id small=0 %}
+                </div>
+            </div>
+        {% endif %}
+    {% endwith %}
+    {% with answer=answer_20210511 %}
+        {% if answer %}
+            <div class="item_pb item_s1 item_c stretched_item">
+                <h3 line_id=17 suffix=" : ' }} %" class="txt_line  content-strong" style="margin:auto;">{% blocktrans trimmed %}Taux de répondants (f/h/nb) estimant être suffisamment informé sur les sujets de diversité et d'inclusion pour échanger en interne et externe{% endblocktrans %}</h3>
+                <div class="d-flex justify-content-center">
+                    {% computed_answer evaluation  answer '{"type":"rate_choice", "combine":"0,1"}' collaborators_queryset as results %}
+                    {% include 'includes/indicators/half_circular_plot.html' with border_color="#EBEAEA" blank_color="#e9ecef" percent_inner=results.0.0.combined_value percent=results.1.0.combined_value percent_outter=results.2.0.combined_value color=cat.color id=answer.id small=0 %}
+                </div>
+            </div>
+        {% endif %}
+    {% endwith %}
+    {% with answer=answer_2021077 %}
+        {% if answer %}
+            <div class="item_pb item_s1 item_c stretched_item">
+                <h3 line_id=17 suffix=" : ' }} %" class="txt_line  content-strong" style="margin:auto;">{% blocktrans trimmed %}Taux de répondants (f/h/nb) ayant été sensibilisés aux sujets de la diversité et l'inclusion{% endblocktrans %}</h3>
+                <div class="d-flex justify-content-center">
+                    {% computed_answer evaluation  answer '{"type":"rate_choice", "combine":"0,1"}' collaborators_queryset as results %}
+                    {% include 'includes/indicators/half_circular_plot.html' with border_color="#EBEAEA" blank_color="#e9ecef" legend1=_("Femmes") legend2=_('Hommes') legend3=_('Non-binaires') percent_inner=results.0.0.combined_value percent=results.1.0.combined_value percent_outter=results.2.0.combined_value color=cat.color id=answer.id small=0 %}
+                </div>
+            </div>
+        {% endif %}
+    {% endwith %}
+    {% with answer=answer_2021006 %}
+        {% if answer %}
+            <div class="item_pb item_s1 item_c stretched_item">
+                <h3 line_id=17 suffix=" : ' }} %" class="txt_line  content-strong" style="margin:auto;">{% blocktrans trimmed %}Taux de satisfaction sur les actions de sensibilisation menées en faveur de la diversité et l'inclusion{% endblocktrans %}</h3>
+                <div class="d-flex justify-content-center">
+                    {% computed_answer evaluation  answer '{"type":"rate_choice", "combine":"0,1"}' collaborators_queryset as results %}
+                    {% include 'includes/indicators/half_circular_plot.html' with border_color="#EBEAEA" blank_color="#e9ecef" legend1=_("Femmes") legend2=_('Hommes') legend3=_('Non-binaires') percent_inner=results.0.0.combined_value percent=results.1.0.combined_value percent_outter=results.2.0.combined_value color=cat.color id=answer.id small=0 %}
+                </div>
+            </div>
+        {% endif %}
+    {% endwith %}
+
+    {% with answer=answer_2021007 %}
+        {% if answer %}
+            <div class="item_pb item_s1 item_c stretched_item">
+                <h3 line_id=17 suffix=" : ' }} %" class="txt_line  content-strong" style="margin:auto;">{% blocktrans trimmed %}Taux de répondants (f/h/nb) s'étant déjà senti mis à l'écart à cause d'un élément d'apparence et/ou de personnalité{% endblocktrans %}</h3>
+                <div style="display: flex;justify-content: center; width: 100%; flex-wrap: wrap">
+                    {% computed_answer evaluation  answer '{"type":"rate_choice", "combine":"0,1"}' collaborators_queryset as results %}
+                    {% include 'includes/indicators/squares.html' with value=results.0.0.value color=cat.color id=answer.id %}
+                    {% if display_mean_score %}
+                        <div style="display: flex; flex-wrap: wrap; min-width: 100%; justify-content: center">
+                            {% include 'includes/indicators/donut.html' with percent_inner=results.1.0.value color="#863C63" blank_color="#e9ecef" id=answer.id|stringformat:"i"|add:"_" %}
+                            {% include 'includes/indicators/donut.html' with percent_inner=results.2.0.value color="#95B9C1" blank_color="#e9ecef" id=answer.id|stringformat:"i"|add:"__" %}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        {% endif %}
+    {% endwith %}
+
+    {% with answer=answer_2021008 %}
+        {% if answer %}
+            <div class="item_pb item_s1 item_c stretched_item">
+                <h3 line_id=17 suffix=" : ' }} %" class="txt_line  content-strong" style="margin:auto;">{% blocktrans trimmed %}Connaissance d'un interlocuteur (f/h/nb) dédié à qui s'adresser pour toute question sur le sujet des discriminations, du harcèlement et/ou des violences sexistes et sexuelles au travail{% endblocktrans %}</h3>
+                <div class="d-flex justify-content-center">
+                        {% computed_answer evaluation  answer '{"type":"rate_choice"}' collaborators_queryset as results %}
+                        {% include 'includes/indicators/circular_plot.html' with border_color="#EBEAEA" blank_color="#e9ecef" legend1=_("Femmes") legend2=_('Hommes') legend3=_('Non-binaires') percent_inner=results.0.0.value percent=results.1.0.value percent_outter=results.2.0.value color=cat.color id=answer.id small=0 %}
+                </div>
+            </div>
+        {% endif %}
+    {% endwith %}
+    {% with answer=answer_2021009 answer2=answer_20210090 answer3=answer_20210091 %}
+        {% if answer %}
+            <div class="item_pb item_s1 item_c stretched_item">
+                <h3 line_id=17 suffix=" : ' }} %" class="txt_line  content-strong" style="margin:auto;">{% blocktrans trimmed %}Fréquence des sujets faisant souvent ou très souvent l'objet de blagues ou propos discriminants (même sans mauvaise intention){% endblocktrans %}</h3>
+                <div style="display: flex;justify-content: center;width: 100%;">
+                    {% computed_answer evaluation  answer '{"type":"rate_subanswers_choice_count", "sort":"combined_value", "combine":"0,1"}' collaborators_queryset as results %}
+
+                    <div style="display: flex; justify-content: center; flex-direction: column;width: 100%;">
+                        {% for sq in results.0 %}
+                            {% if forloop.counter0 < 3 %}
+                                {% include 'includes/indicators/split_repartition_item.html' with color=cat.color orange=True label=sq.label value=sq.choices.0.combined_value round=True %}
+                            {% else %}
+                                {% include 'includes/indicators/split_repartition_item.html' with color=cat.color orange=False label=sq.label value=sq.choices.0.combined_value round=True %}
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        {% elif answer2 %}
+            <div class="item_pb item_s1 item_c stretched_item">
+                <h3 line_id=17 suffix=" : ' }} %" class="txt_line  content-strong" style="margin:auto;">{% blocktrans trimmed %}Fréquence des sujets faisant souvent ou très souvent l'objet de blagues ou propos discriminants (même sans mauvaise intention){% endblocktrans %}</h3>
+                <div style="display: flex;justify-content: center;width: 100%;">
+                    {% computed_answer evaluation answer2 '{"type":"rate_subanswers_choice_count", "sort":"combined_value", "combine":"0,1"}' collaborators_queryset as results %}
+
+                    <div style="display: flex; justify-content: center; flex-direction: column;width: 100%;">
+                        {% for sq in results.0 %}
+                            {% if forloop.counter0 < 3 %}
+                                {% include 'includes/indicators/split_repartition_item.html' with color=cat.color orange=True label=sq.label value=sq.choices.0.combined_value round=True %}
+                            {% else %}
+                                {% include 'includes/indicators/split_repartition_item.html' with color=cat.color orange=False label=sq.label value=sq.choices.0.combined_value round=True %}
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+                {% if answer2.perimeter %}
+                    <div class="perimeter-indicator">
+                        <span>
+                            {% trans answer2.perimeter %}
+                        </span>
+                    </div>
+                {% endif %}
+            </div>
+        {% elif answer3 %}
+            <div class="item_pb item_s1 item_c stretched_item">
+                <h3 line_id=17 suffix=" : ' }} %" class="txt_line  content-strong" style="margin:auto;">{% blocktrans trimmed %}Fréquence des sujets faisant souvent ou très souvent l'objet de blagues ou propos discriminants (même sans mauvaise intention){% endblocktrans %}</h3>
+                <div style="display: flex;justify-content: center;width: 100%;">
+                    {% computed_answer evaluation answer3 '{"type":"rate_subanswers_choice_count", "sort":"combined_value", "combine":"0,1"}' collaborators_queryset as results %}
+
+                    <div style="display: flex; justify-content: center; flex-direction: column;width: 100%;">
+                        {% for sq in results.0 %}
+                            {% if forloop.counter0 < 3 %}
+                                {% include 'includes/indicators/split_repartition_item.html' with color=cat.color orange=True label=sq.label value=sq.choices.0.combined_value round=True %}
+                            {% else %}
+                                {% include 'includes/indicators/split_repartition_item.html' with color=cat.color orange=False label=sq.label value=sq.choices.0.combined_value round=True %}
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+                {% if answer3.perimeter %}
+                    <div class="perimeter-indicator">
+                        <span>
+                            {% trans answer3.perimeter %}
+                        </span>
+                    </div>
+                {% endif %}
+            </div>
+        {% endif %}
+    {% endwith %}
+    {% with answer=answer_2021010 %}
+        {% if answer %}
+            <div class="item_pb item_s1 item_c stretched_item">
+                <h3 line_id=17 suffix=" : ' }} %" class="txt_line  content-strong" style="margin:auto;">{% blocktrans trimmed %}Dans un contexte de télétravail, les managers (f/h/nb) encouragent la cohésion d'équipe et le sentiment d'appartenance{% endblocktrans %}</h3>
+                <div class="d-flex justify-content-center">
+                    {% computed_answer evaluation  answer '{"type":"rate_choice", "combine":"0,1"}' collaborators_queryset as results %}
+                    {% include 'includes/indicators/half_circular_plot.html' with border_color="#EBEAEA" blank_color="#fff" legend1=_("Femmes") legend2=_('Hommes') legend3=_('Non-binaires') percent_inner=results.0.0.combined_value percent=results.1.0.combined_value percent_outter=results.2.0.combined_value color=cat.color id=answer.id small=0 %}
+                </div>
+            </div>
+        {% endif %}
+    {% endwith %}
+    {% with answer=answer_20210101 %}
+        {% if answer %}
+            <div class="item_pb item_s1 item_c stretched_item">
+                <h3 line_id=17 suffix=" : ' }} %" class="txt_line  content-strong" style="margin:auto;">{% blocktrans trimmed %}Taux de répondants (f/h/nb) estimant que les managers (f/h/nb) encouragent la cohésion d'équipe et le sentiment d'appartenance{% endblocktrans %}</h3>
+                <div class="d-flex justify-content-center">
+                    {% computed_answer evaluation  answer '{"type":"rate_choice", "combine":"0,1"}' collaborators_queryset as results %}
+                    {% include 'includes/indicators/half_circular_plot.html' with border_color="#EBEAEA" blank_color="#fff" legend1=_("Femmes") legend2=_('Hommes') legend3=_('Non-binaires') percent_inner=results.0.0.combined_value percent=results.1.0.combined_value percent_outter=results.2.0.combined_value color=cat.color id=answer.id small=0 %}
+                </div>
+            </div>
+        {% endif %}
+    {% endwith %}
+
+    {% with answer=answer_2021011 %}
+        {% if answer %}
+            <div class="item_pb item_s2 item_c stretched_item">
+                {% computed_answer evaluation  answer '{"type":"rate_subanswers"}' collaborators_queryset as results %}
+                <h3 line_id=17 class="txt_line content-strong" prefix="\n">
+                    {% blocktrans trimmed %}Situations qui semblent être possibles au sein de l'organisation{% endblocktrans %}
+                </h3>
+                {% include 'includes/indicators/multiple_bar_chart.html' with width="20%; min-width:80px;" color1="#FF7070" value1=results.0.0.value color2="#863C63" value2=results.0.1.value color3="#8888E2"  value3=results.0.2.value legend1=results.0.0.label legend2=results.0.1.label legend3=results.0.2.label id=answer.id|stringformat:'i'|add:"pie_chart" %}
+            </div>
+        {% endif %}
+    {% endwith %}
+    {% with answer=answer_20210110 %}
+        {% if answer %}
+            <div class="item_pb item_s2 item_c stretched_item">
+                {% computed_answer evaluation  answer '{"type":"rate_subanswers"}' collaborators_queryset as results %}
+                <h3 line_id=17 class="txt_line content-strong" prefix="\n">
+                    {% blocktrans trimmed %}Situations qui semblent être possibles au sein de l'organisation{% endblocktrans %}
+                </h3>
+                {% include 'includes/indicators/multiple_bar_chart.html' with width="20%; min-width:80px;" color1="#FF7070" value1=results.0.0.value color2="#863C63" value2=results.0.1.value color3="#8888E2"  value3=results.0.2.value legend1=results.0.0.label legend2=results.0.1.label legend3=results.0.2.label id=answer.id|stringformat:'i'|add:"pie_chart" %}
+            </div>
+        {% endif %}
+    {% endwith %}
+    {% with answer=answer_20210111 %}
+        {% if answer %}
+            <div class="item_pb item_s50 item_c stretched_item">
+                {% computed_answer evaluation  answer '{"type":"rate_choice"}' collaborators_queryset as results %}
+                <h3 line_id=17 class="txt_line content-strong" prefix="\n">
+                    {% blocktrans trimmed %}Niveau perçu de la préparation pour leur rôle dans l'organisation{% endblocktrans %}
+                </h3>
+                {% include 'includes/indicators/multiple_bar_chart_risque.html' with color1="#18FFC3" value1=results.0.0.value color2="#5B7899" value2=results.0.1.value color3="#8888E2"  value3=results.0.2.value legend1=results.0.0.label legend2=results.0.1.label legend3=results.0.2.label color4="#863C63"  value4=results.0.3.value legend4=results.0.3.label  color5="#FF7070"  value5=results.0.4.value legend5=results.0.4.label  id=answer.id|stringformat:'i'|add:"pie_chart" label1=_('Peu formé') label2=_('Bien formé') %}
+            </div>
+        {% endif %}
+    {% endwith %}
+    {% with answer=answer_20210112 %}
+        {% if answer %}
+            <div class="item_pb item_s50 item_c stretched_item">
+                {% computed_answer evaluation  answer '{"type":"rate_choice"}' collaborators_queryset as results %}
+                <h3 line_id=17 class="txt_line content-strong" prefix="\n">
+                    {% blocktrans trimmed %}La phase d'accueil au sein de l'organisation aurait dû être...{% endblocktrans %}
+                </h3>
+                {% include 'includes/indicators/multiple_bar_chart.html' with width="20%; min-width:80px;" color1="#FF7070" value1=results.0.0.value color2="#863C63" value2=results.0.1.value color3="#8888E2"  value3=results.0.2.value legend1=results.0.0.label legend2=results.0.1.label legend3=results.0.2.label id=answer.id|stringformat:'i'|add:"pie_chart" %}
+            </div>
+        {% endif %}
+    {% endwith %}
+
+    {% with answer=answer_2021044 %}
+        {% if answer %}
+            <div class="item_pb item_s1 item_c stretched_item">
+                <h3 line_id=17 suffix=" : ' }} %" class="txt_line  content-strong" style="margin:auto;">{% blocktrans trimmed %}Taux de répondants (f/h/nb) ayant candidaté en partie grâce à l'engagement en faveur de la D&I{% endblocktrans %}</h3>
+                <div class="d-flex justify-content-center">
+                    {% computed_answer evaluation  answer '{"type":"rate_choice"}' collaborators_queryset as results %}
+                    {% include 'includes/indicators/half_circular_plot.html' with border_color="#EBEAEA" blank_color="#e9ecef" legend1=_("Femmes") legend2=_('Hommes') legend3=_('Non-binaires') percent_inner=results.0.0.value percent=results.1.0.value percent_outter=results.2.0.value color=cat.color id=answer.id small=0 %}
+                </div>
+            </div>
+        {% endif %}
+    {% endwith %}
+    {% with answer1=answer_2021045 answer2=answer_2021046 %}
+        {% if answer1 %}
+            <div class="items_container item_s3 item_c item_pb">
+                <h3 class="content-strong">
+                    {% blocktrans trimmed %}Taux de répondants (f/h/nb) estimant que...{% endblocktrans %}
+                </h3>
+                <div class="padding-vertical-2"  style="width: 100%;">
+                    <h3 line_id=17 suffix=" : %" style="margin-bottom:10px" class="txt_line  content-strong">
+                        {% blocktrans trimmed %}... la diversité dans la promotion/équipe est bien représentée{% endblocktrans %}
+                    </h3>
+                    {% computed_answer evaluation  answer1 '{"type":"rate_choice", "combine":"0,1"}' collaborators_queryset as results %}
+                    {% include 'includes/indicators/single_horizontal_histogram_json.html' with value=results.0.0.combined_value mean_score_in_business_line=results.1.0.combined_value mean_score=results.2.0.combined_value color=cat.color %}
+                </div>
+                <div class="" style="width: 100%">
+                    <h3 line_id=17 suffix=" :  %" style="margin-bottom:10px" class="txt_line  content-strong">
+                        {% blocktrans trimmed %}... toutes personnes peut s'épanouir et exprimer ses différences au sein de l'établissement{% endblocktrans %}
+                    </h3>
+                    {% computed_answer evaluation  answer2 '{"type":"rate_choice", "combine":"0,1"}' collaborators_queryset as results %}
+                    {% include 'includes/indicators/single_horizontal_histogram_json.html' with value=results.0.0.combined_value mean_score_in_business_line=results.1.0.combined_value mean_score=results.2.0.combined_value color="#5B7899" %}
+                </div>
+            </div>
+        {% endif %}
+    {% endwith %}
+    {% with answer=answer_2021047 %}
+        {% if answer %}
+            <div class="item_pb item_s1 item_c stretched_item">
+                <h3 line_id=17 suffix=" : ' }} %" class="txt_line  content-strong" style="margin:auto;">{% blocktrans trimmed %}Taux de répondants (f/h/nb) estimant que l'établissement favorise suffisamment le partage et la collaboration{% endblocktrans %}</h3>
+                <div class="d-flex justify-content-center">
+                        {% computed_answer evaluation  answer '{"type":"rate_choice"}' collaborators_queryset as results %}
+                        {% include 'includes/indicators/circular_plot.html' with border_color="#EBEAEA" blank_color="#e9ecef" legend1=_("Femmes") legend2=_('Hommes') legend3=_('Non-binaires') percent_inner=results.0.0.value percent=results.1.0.value percent_outter=results.2.0.value color=cat.color id=answer.id small=0 %}
+                </div>
+            </div>
+        {% endif %}
+    {% endwith %}
+    {% with answer=answer_2021049 %}
+        {% if answer %}
+            <div class="item_pb item_s1 item_c stretched_item">
+                <h3 line_id=17 suffix=" : ' }} %" class="txt_line  content-strong" style="margin:auto;">{% blocktrans trimmed %}Taux de collaborateurs et enseignants estimant bénéficier de traitement équitables dans leurs intéractions avec :{% endblocktrans %}</h3>
+                <div style="display: flex;justify-content: center;width: 100%;">
+                    {% computed_answer evaluation  answer '{"type":"rate_subanswers_choice_count", "sort":"combined_value", "combine":"0,1"}' collaborators_queryset as results %}
+
+                    <div style="display: flex; justify-content: center; flex-direction: column;width: 100%;">
+                        {% for sq in results.0 %}
+                            {% include 'includes/indicators/split_repartition_item.html' with color=cat.color orange=False label=sq.label value=sq.choices.0.combined_value round=True %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    {% endwith %}
+    {% with answer=answer_20210491 %}
+        {% if answer %}
+            <div class="item_pb item_s1 item_c stretched_item">
+                <h3 line_id=17 suffix=" : ' }} %" class="txt_line  content-strong" style="margin:auto;">{% blocktrans trimmed %}Taux d'étudiants estimant bénéficier de traitement équitables dans leurs intéractions avec :{% endblocktrans %}</h3>
+                <div style="display: flex;justify-content: center;width: 100%;">
+                    {% computed_answer evaluation  answer '{"type":"rate_subanswers_choice_count", "sort":"combined_value", "combine":"0,1"}' collaborators_queryset as results %}
+
+                    <div style="display: flex; justify-content: center; flex-direction: column;width: 100%;">
+                        {% for sq in results.0 %}
+                            {% include 'includes/indicators/split_repartition_item.html' with color=cat.color orange=False label=sq.label value=sq.choices.0.combined_value round=True %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    {% endwith %}
+    {% with answer=answer_2021051 %}
+        {% if answer %}
+            <div class="item_pb item_s1 item_c stretched_item">
+                <h3 line_id=17 suffix=" : ' }} %" class="txt_line  content-strong" style="margin:auto;">{% blocktrans trimmed %}Taux de répondants (f/h/nb) ayant connaissance d'un dispositif de sanctions efficace contre les discriminations et violences sur les sujets suivants :{% endblocktrans %}</h3>
+                <div style="display: flex;justify-content: center;width: 100%;">
+                    {% computed_answer evaluation  answer '{"type":"rate_subanswers_choice_count"}' collaborators_queryset as results %}
+
+                    <div style="display: flex; justify-content: center; flex-direction: column;width: 100%;">
+                        {% for sq in results.0 %}
+                            {% if forloop.counter0 < 3 %}
+                                {% include 'includes/indicators/split_repartition_item.html' with color=cat.color orange=True label=sq.label value=sq.choices.0.value round=True %}
+                            {% else %}
+                                {% include 'includes/indicators/split_repartition_item.html' with color=cat.color orange=False label=sq.label value=sq.choices.0.value round=True %}
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    {% endwith %}
+    {% with answer=answer_2021052 %}
+        {% if answer %}
+            <div class="item_pb item_s1 item_c stretched_item">
+                <h3 line_id=17 suffix=" : ' }} %" class="txt_line  content-strong" style="margin:auto;">{% blocktrans trimmed %}Taux de répondants (f/h/nb) estimant que les actions et évenements organisés par l'établissement inclus toutes les diversités{% endblocktrans %}</h3>
+                <div class="d-flex justify-content-center">
+                        {% computed_answer evaluation  answer '{"type":"rate_choice"}' collaborators_queryset as results %}
+                        {% include 'includes/indicators/circular_plot.html' with border_color="#EBEAEA" blank_color="#e9ecef" legend1=_("Femmes") legend2=_('Hommes') legend3=_('Non-binaires') percent_inner=results.0.0.value percent=results.1.0.value percent_outter=results.2.0.value color=cat.color id=answer.id small=0 %}
+                </div>
+            </div>
+        {% endif %}
+    {% endwith %}
+
+</div>

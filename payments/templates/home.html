@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% load static i18n %}
+
+
+{% block content %}
+    <script>let structure_id = {{ structure_id }};</script>
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="{% static 'dist/stripe_payment.js' %}"></script>
+    <script>
+    document.body.innerHTML = "<div id='loading_screen' style='background: #9ea0a4ad; width: 100%;height: 100vh;position: absolute;display: flex; align-items: center; justify-content: center; z-index:10000; flex-direction: column'><img style='width:200px; ' src='{%  static 'img/loading.svg' %}' /><span id='loading_infos'>{% blocktrans trimmed %}Chargement en cours...{% endblocktrans %}</span></span></div>" + document.body.innerHTML;
+    </script>
+{% endblock %}

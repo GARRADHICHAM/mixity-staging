@@ -1,0 +1,24 @@
+{% extends "base_email.html" %}
+{% load i18n static %}
+
+{% block content %}
+<tr>
+  <td><h1>{% trans "Votre paiement a été reçu !" %}</h1></td>
+</tr>
+<tr>
+  <td>
+    {% blocktrans trimmed %}
+    Merci pour votre engagement en faveur de la diversité et de l'inclusion.
+    Lorsque le paiement aura été confirmé, vous pourrez accéder à votre évaluation.
+    {% endblocktrans %}
+  </td>
+</tr>
+<tr>
+  <td>
+    <div style="margin-bottom: 21px;"><a style="background: #18ffc3;padding: 13px;border-radius: 21px;text-decoration: none;color: #181b3d;font-weight: bold;" href="{{ protocol }}://{{ domain }}{{ invoice_url }}">{% blocktrans trimmed %}Accéder à mes factures{% endblocktrans %}</a></div>
+    {% blocktrans trimmed %}
+    Pour contacter l'équipe support : <span style="color: #10ACAB">support@mixity.co</span>
+    {% endblocktrans %}
+  </td>
+</tr>
+{% endblock %}

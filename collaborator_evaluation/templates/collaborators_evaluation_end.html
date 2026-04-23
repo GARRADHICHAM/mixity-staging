@@ -1,0 +1,37 @@
+{% extends "base-minimal.html" %}
+{% load i18n static %}
+
+{% block content %}
+
+  <section class="mxt-container">
+      {% if object.sheet.type.slug == "evaluation_collaborateurs_360" %}
+        <img alt="Image Mixity" style="height: auto;width: 30%; max-width: 300px;margin: auto; display: block;" src="{% static 'img/logo-mixity.png' %}">
+        {% else %}
+        <img alt="Image collaboration Mixity x Tetu" style="height: auto;width: 30%; max-width: 500px;margin: auto; display: block;" src="{% static 'img/logo-tetu.png' %}">
+        {% endif %}
+
+
+      <div class="col col--2">
+          <article>
+              <h1 class="title--h1">
+                {% blocktrans trimmed %}Merci de votre participation{% endblocktrans %}
+              </h1>
+              <h2 class="color--pink title--h2">
+                {% blocktrans trimmed %}Ensemble, faisons progresser la diversité et l’inclusion dans les organisations.{% endblocktrans %}
+              </h2>
+            <div style="width: 70%; max-width: 300px; padding-top: 2em;">
+            <a href="https://share.hsforms.com/1MfEwnDeVQIGC1kD1F0bQhw43j1b" target="_blank"
+                            style="float: left; cursor: pointer; width: 100%;"
+                          class="button button--circle button--primary-light">{% blocktrans trimmed %}S'abonner à la newsletter{% endblocktrans %}</a>
+            </div>
+          </article>
+      {% if object.sheet.type.slug == "evaluation_collaborateurs_360" %}
+          <img style="width:100%" alt="{% blocktrans trimmed %}Image de remerciement{% endblocktrans %}" src="{% static 'img/frame.png' %}">
+        {% else %}
+          <img style="width:100%" alt="{% blocktrans trimmed %}Image de remerciement{% endblocktrans %}" src="{% static 'img/thanks_lgbt.png' %}">
+        {% endif %}
+      </div>
+  </section>
+
+
+{% endblock %}

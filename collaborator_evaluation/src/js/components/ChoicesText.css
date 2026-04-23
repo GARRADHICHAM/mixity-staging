@@ -1,0 +1,10 @@
+.choices-text-input {
+  border-color: lightgrey;
+  height: 10em;
+  border-width: 2px;
+  border-radius: 6px;
+}
+
+.choices-text-input:focus {
+  outline-color: #8888e2;
+}

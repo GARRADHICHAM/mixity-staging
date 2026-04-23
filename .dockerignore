@@ -1,0 +1,11 @@
+*.dump
+**/__pycache__
+venv
+node_modules
+collaborator_evaluation/node_modules
+.idea
+.smart_testing
+.coverage-html
+.gitlab
+.github
+backup_*

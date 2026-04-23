@@ -1,0 +1,234 @@
+{% load l10n %}
+{% load i18n %}
+{% load percentage %}
+{% load static %}
+
+
+<div class="items_container" style="justify-content: center; align-items: stretch">
+    <div class="items_container item_s2-2 item_c">
+        {% if answer_20213001 %}
+        <div class="item_pb item_s3 item_c">
+            <h3 class="content-strong">
+                {% blocktrans trimmed %}Effectif total de l'entreprise{% endblocktrans %}
+            </h3>
+            <div class="d-flex justify-content-center">
+                {% include 'includes/indicators/number_icon.html' with value=answer_20213001.value icon_name="people" icon_size="179px" %}
+            </div>
+            {% if answer_20213001.perimeter %}
+                <div class="perimeter-indicator">
+                    <span>
+                        {% trans answer_20213001.perimeter %}
+                    </span>
+                </div>
+            {% endif %}
+        </div>
+        {% endif %}
+        {% if answer_20213005 %}
+        <div class="item_pb item_s3 item_c">
+            <h3 class="content-strong">
+                {{ answer_20213005.question.label }}
+            </h3>
+            <div class="d-flex justify-content-center">
+                {% include 'includes/indicators/number_icon.html' with value=answer_20213005.value currency_symbol=answer_20213005.currency_symbol icon_name="money_purple" icon_size="160px" font_size="57px" %}
+            </div>
+            {% if answer_20213005.perimeter %}
+                <div class="perimeter-indicator">
+                    <span>
+                        {% trans answer_20213005.perimeter %}
+                    </span>
+                </div>
+            {% endif %}
+        </div>
+        {% endif %}
+    </div>
+
+    <!--TODO: Pourcentages à calculer en fonction de l'effectif --->
+    {% if answer_20213004 %}
+    <div class="item_pb item_s0 stretched_item item_c">
+        <h3 line_id=17 suffix=" : {{ answer_20213004.value|floatformat:'0' }} %" class="txt_line content-strong">
+            {% blocktrans trimmed %}Pourcentage d'employés (f/h/nb) en charge du recrutement formés à la non discrimination{% endblocktrans %}
+        </h3>
+        <div class="perimeter-indicator">
+            <span>
+                {% blocktrans trimmed %}durant les 24 derniers mois{% endblocktrans %}
+            </span>
+        </div>
+        <div class="d-flex justify-content-center">
+            {% include 'includes/indicators/circular_plot.html' with last_year_value=answer_20213004.sibling_value|floatformat:'1' border_color="#EBEAEA" blank_color="#e9ecef" percent_inner=answer_20213004.value|floatformat:'1' percent=answer_20213004.get_mean_score_in_business_line|floatformat:'0' percent_outter=answer_20213004.get_mean_score|floatformat:'0' color=cat.color id=answer_20213004.id %}
+        </div>
+        {% if answer_20213004.perimeter %}
+            <div class="perimeter-indicator">
+                <span>
+                    {% trans answer_20213004.perimeter %}
+                </span>
+            </div>
+        {% endif %}
+    </div>
+    {% endif %}
+    {% if answer_20213003 %}
+    <div class="item_pb item_s0 stretched_item item_c">
+        <h3 line_id=17 suffix=" : {{ answer_20213003.value|floatformat:'0' }} %" class="txt_line content-strong">
+            {% blocktrans trimmed %}Pourcentage de managers (f/h/nb) formés  à la non discrimination{% endblocktrans %}
+        </h3>
+        <div class="perimeter-indicator">
+            <span>
+                {% blocktrans trimmed %}durant les 24 derniers mois{% endblocktrans %}
+            </span>
+        </div>
+        <div class="d-flex justify-content-center">
+            {% include 'includes/indicators/circular_plot.html' with last_year_value=answer_20213003.sibling_value|floatformat:'1' border_color="#EBEAEA" blank_color="#e9ecef" percent_inner=answer_20213003.value|floatformat:'1' percent=answer_20213003.get_mean_score_in_business_line|floatformat:'0' percent_outter=answer_20213003.get_mean_score|floatformat:'0' color=cat.color id=answer_20213003.id %}
+        </div>
+        {% if answer_20213003.perimeter %}
+            <div class="perimeter-indicator">
+                <span>
+                    {% trans answer_20213003.perimeter %}
+                </span>
+            </div>
+        {% endif %}
+
+    </div>
+    {% endif %}
+
+    {% with answer=answer_20213002 %}
+    {% if answer %}
+    <div class="item_pb item_s1 stretched_item item_c">
+        <h3 line_id=17 suffix=" : {{ answer.value|floatformat:'0' }} %" class="txt_line content-strong">
+            {% blocktrans trimmed %}Pourcentage d'employés (f/h/nb) sensibilisés à la Diversité et à l'Inclusion{% endblocktrans %}
+        </h3>
+        <span>
+            {% blocktrans trimmed %}durant les 12 derniers mois{% endblocktrans %}
+        </span>
+        <div class="d-flex justify-content-center">
+            {% with value=answer.value|percentage:answer.evaluation.get_workforce_from_evaluation %}
+            {% include 'includes/indicators/half_circular_plot.html' with last_year_value=answer.sibling_value|floatformat:'1' border_color="#EBEAEA" blank_color="#e9ecef" percent_inner=value|floatformat:'1' percent=answer.get_mean_score_in_business_line|floatformat:'0' percent_outter=answer.get_mean_score|floatformat:'0' color=cat.color id=answer.id small=1 %}
+            {% endwith %}
+        </div>
+        {% if answer_20213002.perimeter %}
+            <div class="perimeter-indicator">
+                <span>
+                    {% trans answer_20213002.perimeter %}
+                </span>
+            </div>
+        {% endif %}
+    </div>
+    {% endif %}
+    {% endwith %}
+    {% with answer=answer_20213006 %}
+    {% if answer %}
+    <div class="item_pb item_s1 stretched_item item_c">
+        <h3 line_id=17 suffix=" : {{ answer.value|floatformat:'0' }} %" class="txt_line content-strong">
+            {% blocktrans trimmed %}Pourcentage d'employés (f/h/nb) interrogés sur la Diversité et l'Inclusion dans l'entreprise{% endblocktrans %}
+        </h3>
+        <span>
+            {% blocktrans trimmed %}durant les 24 derniers mois{% endblocktrans %}
+        </span>
+        <div class="d-flex justify-content-center">
+            {% with value=answer.value|percentage:answer.evaluation.get_workforce_from_evaluation %}
+            {% include 'includes/indicators/half_circular_plot.html' with last_year_value=answer.sibling_value|floatformat:'1' border_color="#EBEAEA" blank_color="#e9ecef" percent_inner=value|floatformat:'1' percent=answer.get_mean_score_in_business_line|floatformat:'0' percent_outter=answer.get_mean_score|floatformat:'0' color=cat.color id=answer.id small=1 %}
+            {% endwith %}
+        </div>
+        {% if answer_20213006.perimeter %}
+            <div class="perimeter-indicator">
+                <span>
+                    {% trans answer_20213006.perimeter %}
+                </span>
+            </div>
+        {% endif %}
+    </div>
+    {% endif %}
+    {% endwith %}
+    {% with answer=answer_20213007 %}
+    {% if answer %}
+    <div class="item_pb item_s1 stretched_item item_c">
+        <h3 line_id=17 suffix=" : {{ answer.value|floatformat:'0' }} %" class="txt_line content-strong">
+            {% blocktrans trimmed %}Pourcentage d'employés (f/h/nb) interrogés satisfaits de la politique Diversité et Inclusion de l'entreprise{% endblocktrans %}
+        </h3>
+        <span>
+            {% blocktrans trimmed %}durant les 24 derniers mois{% endblocktrans %}
+        </span>
+        <div class="d-flex justify-content-center">
+            {% include 'includes/indicators/half_circular_plot.html' with last_year_value=answer.sibling_value|floatformat:'1' border_color="#EBEAEA" blank_color="#e9ecef" percent_inner=answer.value|floatformat:'1' percent=answer.get_mean_score_in_business_line|floatformat:'0' percent_outter=answer.get_mean_score|floatformat:'0' color=cat.color id=answer.id small=1 %}
+        </div>
+        {% if answer_20213007.perimeter %}
+            <div class="perimeter-indicator">
+                <span>
+                    {% trans answer_20213007.perimeter %}
+                </span>
+            </div>
+        {% endif %}
+    </div>
+    {% endif %}
+    {% endwith %}
+
+    {% if answer_202130201 %}
+    {% with color_2="#863C63" color_3="#8888E2" label_1=_("Parents") label_2=_("Aidants") label_3=_("Non aidants") %}
+    <div class="item_pb item_s2 item_c">
+        <div style="display: flex;justify-content: space-between">
+            <div>
+                <h3 line_id=17 class="txt_line content-strong" prefix="\n" style="text-align: left;">
+                    {% blocktrans trimmed %}Pourcentage de ...{% endblocktrans %}
+                </h3>
+            </div>
+            <div class="legend_container" style="width: auto">
+                <div class="legend_element">
+                    <div class="dot" style="background-color:{{ cat.color }};"></div> <span>&nbsp;{{ label_1 }}</span>
+                </div>
+                <div class="legend_element">
+                    <div class="dot" style="background-color:{{ color_2 }};"></div> <span>&nbsp;{{ label_2 }}</span>
+                </div>
+                <div class="legend_element">
+                    <div class="dot" style="background-color:{{ color_3 }};"></div> <span>&nbsp;{{ label_3 }}</span>
+                </div>
+            </div>
+        </div>
+
+        {% if answer_202130201 %}
+        {% with title=_("... parents, aidants, non aidants") %}
+        {% include 'includes/indicators/repartition_chart.html' with title=title answer=answer_202130201 color_1=cat.color color_2=color_2 color_3=color_3 label_1=label_1 label_2=label_2 label_3=label_3 %}
+        {% endwith %}
+        {% endif %}
+        {% if answer_202130201.perimeter %}
+            <div class="perimeter-indicator">
+                <span>
+                    {% trans answer_202130201.perimeter %}
+                </span>
+            </div>
+        {% endif %}
+
+    </div>
+    {% endwith %}
+    {% endif %}
+    {% if answer_20213020 and answer_20213020.choice.value >= 4.0 %}
+    <div class="item_pb item_s1 d-flex align-items-center item_c">
+        <div><img src="{% static 'img/parentalite.png' %}" style="width: 112px" /></div>
+        <div>
+            <h3 line_id=17 class="txt_line  content-strong" style="text-align: left; margin-left: 30px;">
+                {% blocktrans trimmed %}Il existe une politique en faveur de l'équilibre vie pro / vie perso, prenant en compte la sitation des parents et aidants{% endblocktrans %}
+            </h3>
+        </div>
+        {% if answer_20213020.perimeter %}
+            <div class="perimeter-indicator">
+                <span>
+                    {% trans answer_20213020.perimeter %}
+                </span>
+            </div>
+        {% endif %}
+    </div>
+    {% else %}
+    <div class="item_pb item_s1 d-flex align-items-center item_c">
+        <div><img src="{% static 'img/parentalite.png' %}" style="width: 112px" /></div>
+        <div>
+            <h3 line_id=17 class="txt_line  content-strong" style="text-align: left; margin-left: 30px;">
+                {% blocktrans trimmed %}Il n'existe pas encore de politique en faveur de l'équilibre vie pro / vie perso, prenant en compte la sitation des parents et aidants{% endblocktrans %}
+            </h3>
+            {% if answer_20213020.perimeter %}
+                <div class="perimeter-indicator">
+                    <span>
+                        {% trans answer_20213020.perimeter %}
+                    </span>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+    {% endif %}
+</div>

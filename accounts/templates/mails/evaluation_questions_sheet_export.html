@@ -1,0 +1,16 @@
+{% extends "base_email.html" %}
+{% load i18n static %}
+
+{% block content %}
+<tr>
+    <td>
+        <h1>
+            {% if with_filters %}
+                {% blocktrans with name=evaluation.entity.name id=evaluation.id %}Votre export pour le récapitulatif de l'évaluation {{ name }} ({{ id }}) avec les filtres est terminé !{% endblocktrans %}
+            {% else %}
+                {% blocktrans with name=evaluation.entity.name id=evaluation.id %}Votre export pour le récapitulatif de l'évaluation {{ name }} ({{ id }}) est terminé !{% endblocktrans %}
+            {% endif %}
+        </h1>
+    </td>
+</tr>
+{% endblock %}

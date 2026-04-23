@@ -1,0 +1,81 @@
+{% load i18n define format_number %}
+<h3 class="txt_line content-strong">
+    {{ title }}
+</h3>
+{% define "#8888E2 #FF7070 #61264A #888 #00BFB7" as colors %}
+{% define colors.split as colors %}
+{% define collab|get_collaborators_statistics:'{"group_by":"name"}' as ethnicity_data %}
+<div class="pie-header mt-3">
+    <div class="d-flex align-items-center justify-content-start">
+        <span>Confiance : <strong>{% percentage ethnicity_data.confidence %}</strong></span>
+    </div>
+    <div class="button button--circle button--primary" type="button" data-toggle="modal"
+         data-target="#modal_{{ id }}">+ {% blocktrans %}Détails{% endblocktrans %}
+    </div>
+</div>
+{% if only_ethnicity %}
+{% include 'includes/indicators/pie_chart.html' with results=ethnicity_data.results colors=colors id=id|add:'_1' %}
+{% else %}
+{% define collab|get_collaborators_statistics:'{"group_by":"sub_region"}' as sub_region_data %}
+{% define collab|get_collaborators_statistics:'{"group_by":"region"}' as region_data %}
+{% include 'includes/indicators/pie_chart.html' with results=sub_region_data.results colors=colors id=id|add:'_1' %}
+{% endif %}
+<!-- Modal -->
+<div class="modal fade" id="modal_{{ id }}" tabindex="-1" role="dialog"
+     aria-labelledby="modal_label_{{ id }}" aria-hidden="true" style="z-index: 20000000;">
+    <div class="modal-dialog modal-xl graph-modal" role="document">
+        <div class="modal-content graph-modal">
+            <div class="modal-header graph-header">
+                <h5 class="modal-title" id="modal_label_{{ id }}">{% trans 'Détails du graphique' %}</h5>
+                <button type="button" class="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true" class="mxt--h3">&nbsp;&times;&nbsp;</span>
+                </button>
+            </div>
+            <div class="modal-body row">
+                <ul class="nav nav-tabs graph-tabs" id="myTab" role="tablist">
+                    {% if not only_ethnicity %}
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="region_tab_{{ id }}-tab" data-bs-toggle="tab"
+                                data-bs-target="#region_tab_{{ id }}" type="button" role="tab"
+                                aria-controls="region_tab_{{ id }}"
+                                aria-selected="true">{% trans 'Région' %}
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="sub_region_tab_{{ id }}-tab" data-bs-toggle="tab"
+                                data-bs-target="#sub_region_tab_{{ id }}" type="button" role="tab"
+                                aria-controls="sub_region_tab_{{ id }}">
+                            {% trans 'Sous-région' %}
+                        </button>
+                    </li>
+                    {% endif %}
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link {% if only_ethnicity %}active{% endif %}"
+                                id="ethnicity_tab_{{ id }}-tab" data-bs-toggle="tab"
+                                data-bs-target="#ethnicity_tab_{{ id }}" type="button" role="tab"
+                                aria-controls="ethnicity_tab_{{ id }}" aria-selected="false">{% trans 'Ethnie' %}
+                        </button>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div class="position-absolute d-inline-block graph-tooltip">
+                        <span class="tooltip">
+                            <div class="tooltip__icon">?</div>
+                            <span class="tooltip__text">
+                                {% blocktrans %}Namsor est un outil qui permet de mesurer les origines ethniques supposées des collaborateurs (f/h/nb) par l'analyse des noms et prénoms.{% endblocktrans %}
+                                <a class="button button--circle button--primary" href="https://namsor.app/about-us" target="_blank">
+                                    {% blocktrans %}En savoir plus{% endblocktrans %}
+                                </a>
+                            </span>
+                        </span>
+                    </div>
+                    {% if not only_ethnicity %}
+                    {% include 'includes/indicators/namsor_tab.html' with collab=collab data=region_data label=_("Région") suffix=_("régions") id='region_tab_'|add:id active=True %}
+                    {% include 'includes/indicators/namsor_tab.html' with collab=collab data=sub_region_data label=_("Sous-Région") suffix=_("sous-régions") id='sub_region_tab_'|add:id %}
+                    {% endif %}
+                    {% include 'includes/indicators/namsor_tab.html' with collab=collab data=ethnicity_data label=_("Ethnie") suffix=_("ethnies") id='ethnicity_tab_'|add:id active=only_ethnicity %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

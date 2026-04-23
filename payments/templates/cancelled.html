@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load i18n static allow_evaluation %}
+
+
+{% block content %}
+  <section class="bg--radar">
+    <div class="col structure">
+      <div class="structure__content grid-column-2 bg-gradient-multicolor">
+        <article>
+          <h2 class="title--h2">{% blocktrans trimmed %}Le paiement a malheureusement échoué !{% endblocktrans %}</h2>
+          <br>
+          <div class="col col--1">
+            <p>
+                {% blocktrans trimmed %}Le paiement ayant échoué, votre abonnement reste pour le moment inactif. Vous pouvez toujours rééssayer de payer votre abonnement en cliquant sur votre structure dans la rubrique "Mon compte" ou alors contactez le support si vous souhaitez payer via une méthode différente.{% endblocktrans %}
+            </p>
+            <br>
+
+            <a href="{% url 'structure:account' pk=pk %}" class="button button--circle button--sm">
+              <b>{% blocktrans trimmed %}Gérer votre compte entreprise{% endblocktrans %}</b>
+            </a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+{% endblock %}

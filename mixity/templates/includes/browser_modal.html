@@ -1,0 +1,59 @@
+{% load i18n %}
+{% load static %}
+
+
+<div id="browserModal" class="modal">
+    <div class="modal-content">
+        <span class="close" id="closeBrowserModal" style="float:right; font-size:3em">&times;</span>
+        <h2><i class="fas fa-exclamation-triangle"></i> {% blocktrans trimmed %}Attention{% endblocktrans %} <i class="fas fa-exclamation-triangle"></i></h2>
+        <p>{% blocktrans trimmed %}Mixity ne garantit pas à ce jour la comptabilité avec votre navigateur <strong>Internet
+            Explorer</strong>.{% endblocktrans %}</p>
+        <p><strong>{% blocktrans trimmed %}Cela peut entrainer des bugs d'affichage et de performances.{% endblocktrans %}</strong></p>
+        <p>{% blocktrans trimmed %}Pour une navigation optimale, nous vous invitons à télécharger un navigateur compatible tel
+            que Microsoft Edge, Mozilla Firefox et Google Chrome en cliquant sur une des images ci
+            dessous.{% endblocktrans %}</p>
+        <article style="display: flex;flex-wrap: wrap;flex-direction: row;justify-content: center; height:220px;">
+            <a href="https://www.google.com/intl/fr_fr/chrome/" target="_blank">
+                <img style="height: 100px;width: auto; margin: 2em;" class="image--md" alt="Logo Microsoft Edge" src="{% static 'img/browsers/edge.jpeg' %}">
+            </a>
+
+            <a href="https://www.mozilla.org/fr/firefox/new/" target="_blank" style="text-align: center">
+
+                <img style="height: 100px;width: auto; margin: 2em;" class="image--md" alt="Logo Mozilla Firefox" src="{% static 'img/browsers/firefox.png' %}">
+            </a>
+
+            <a href="https://www.google.com/intl/fr_fr/chrome/" target="_blank">
+                <img style="height: 100px;width: auto; margin: 2em;" class="image--md" alt="Logo Google Chrome" src="{% static 'img/browsers/chrome.png' %}">
+            </a>
+        </article>
+    </div>
+</div>
+<script type='text/javascript'>
+    function BrowserDetection() {
+        let isIE = /*@cc_on!@*/false || !!document.documentMode;
+        let notSeen = Cookies.get('mixity_browser_read') === undefined;
+        if (isIE && notSeen) {
+            var modal = document.getElementById("browserModal");
+            modal.style.display = "flex";
+            Cookies.set('mixity_browser_read', 1, { sameSite: 'strict' });
+        }
+    }
+    $(document).ready(function () {
+        // Get the modal
+        var modal = document.getElementById("browserModal");
+        // Get the <span> element that closes the modal
+        var span = document.getElementById("closeBrowserModal");
+        // Get the <span> element that closes the modal
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function () {
+            modal.style.display = "none";
+        }
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+        BrowserDetection();
+    });
+</script>

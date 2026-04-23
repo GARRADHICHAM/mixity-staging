@@ -1,0 +1,81 @@
+{% load i18n %}
+{% load static %}
+{% load static %}
+
+<div class="items_container" style="justify-content: center; align-items: stretch">
+    {% with answer=answer_20216056 %}
+        {% if answer %}
+            <div class="item_pb item_s1 item_c stretched_item">
+                <h3 line_id=17 suffix=" : {{ answer.value }}" class="txt_line  content-strong">
+                    {% blocktrans trimmed %}Nombre d'ateliers, conférences, prises de paroles, témoignages en interne sur les sujets LGBTQIA+{% endblocktrans %}
+                </h3>
+                <h5 class="content-light">
+                    {% blocktrans trimmed %}dans les 12 derniers mois{% endblocktrans %}
+                </h5>
+
+                {% include 'includes/indicators/number_icon.html' with color=cat.color value=answer.value last_year_value=answer.sibling_value last_year=answer.sibling_year %}
+                {% if answer.perimeter %}
+                    <div class="perimeter-indicator">
+                        <span>
+                            {% trans answer.perimeter %}
+                        </span>
+                    </div>
+                {% endif %}
+            </div>
+        {% endif %}
+    {% endwith %}
+
+    {% with answer=answer_20216080 %}
+        {% if answer %}
+            <div class="item_pb item_s1 item_c stretched_item">
+                <h3 line_id=17 suffix=" : {{ answer.value }}" class="txt_line  content-strong">
+                    {% blocktrans trimmed %}Nombre de prises de parole, communications, interviews en externe sur les sujets LGBTQIA+{% endblocktrans %}
+                </h3>
+                <h5 class="content-light">
+                    {% blocktrans trimmed %}dans les 12 derniers mois{% endblocktrans %}
+                </h5>
+
+                {% include 'includes/indicators/number_icon.html' with color=cat.color value=answer.value last_year_value=answer.sibling_value last_year=answer.sibling_year %}
+                {% if answer.perimeter %}
+                    <div class="perimeter-indicator">
+                        <span>
+                            {% trans answer.perimeter %}
+                        </span>
+                    </div>
+                {% endif %}
+            </div>
+        {% endif %}
+    {% endwith %}
+    {% with answer=answer_20216079 %}
+        {% if answer %}
+            <div class="{% if answer.choice.value >= 3.0 %}item_smid{% endif %} items_container item_c">
+                {% if answer.choice.value >= 3.0 %}
+                    <div class="item_pb item_s3 d-flex align-items-center" style="width: 100%">
+                        <div><img src="{% static 'img/network.png' %}" style="width: 112px" /></div>
+                        <div>
+                            <h3 line_id=17 class="txt_line  content-strong" style="text-align: left; margin-left: 30px;">
+                                {% blocktrans trimmed %}Existence d'au moins une personne référente sur les sujets LGBTQIA+{% endblocktrans %}
+                            </h3>
+                        </div>
+                    </div>
+                {% else%}
+                    <div class="item_pb item_s3 d-flex align-items-center" style="width: 100%">
+                        <div><img src="{% static 'img/reseau_2.png' %}" style="width: 112px" /></div>
+                        <div>
+                            <h3 line_id=17 class="txt_line  content-strong" style="text-align: left; margin-left: 30px;">
+                                {% blocktrans trimmed %}Il n'existe pas de personne référente sur les sujets LGBTQIA+{% endblocktrans %}
+                            </h3>
+                        </div>
+                    </div>
+                {% endif %}
+                {% if answer.perimeter %}
+                    <div class="perimeter-indicator">
+                        <span>
+                            {% trans answer.perimeter %}
+                        </span>
+                    </div>
+                {% endif %}
+            </div>
+        {% endif %}
+    {% endwith %}
+</div>

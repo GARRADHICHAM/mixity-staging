@@ -1,0 +1,251 @@
+{% load i18n %}
+{% load static %}
+<div id="dashboard_sider" class="col-auto col-md-3 col-xl-3 bg-white">
+    <!-- Top components -->
+    <div class="nav_container pt-3 border-end">
+        <div class="nav_top">
+            <a class="dashboard_logo ps-3" href="{% url 'home' %}">
+                <img src="{% static 'img/logo-mixity.svg' %}" class="pb-4 pt-2 pl-2" style="width: 33%;" alt="{% trans 'Logo Mixity' %}">
+            </a>
+            <ul id="top_dropdown_list" class="list-unstyled ps-0 pb-3">
+                <li class="mb-1">
+                    <a href="{% if entity %}{% url 'home' entity.slug %}{% else %}{% url 'home' %}{% endif %}" class="w-100 dashboard-btn align-items-center rounded text-decoration-none color--primary-dark border-0">
+                        <span class="icon-home px-2"></span>
+                        {% blocktrans trimmed %}Accueil{% endblocktrans %}
+                    </a>
+                </li>
+
+                <li class="mb-1">
+                    <button class="w-100 dashboard-btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#mesurer-collapse" aria-expanded="false">
+                        <span class="icon-measure px-2"></span>
+                        {% blocktrans trimmed %}Mesurer{% endblocktrans %}
+                    </button>
+                    <div class="collapse" id="mesurer-collapse">
+                        <ul class="dashboard-btn-toggle-nav list-unstyled small" style="border-left: 2px solid #DEDFEA; margin-left: 1.7em">
+                            <!-- MIXITY DIAG -->
+                            {% if diag_evaluation %}
+                                <li><a href="{% url 'dashboard:dashboard_assess_test' entity.slug 'diag' 'en-cours' %}" class="link-dark mt-2 p-2 rounded">{% blocktrans trimmed %}Mixity Diag{% endblocktrans %}</a></li>
+                            {% else %}
+                                <li><a href="/diag/landing/" class="link-dark mt-2 p-2 rounded">{% blocktrans trimmed %}Mixity Diag{% endblocktrans %}</a></li>
+                            {% endif %}
+                            <!-- MIXITY HUMAN -->
+                            {% if human_evaluation %}
+                                <li><a href="{% url 'dashboard:dashboard_assess_test' entity.slug 'human' 'en-cours' %}" class="link-dark p-2 rounded">{% blocktrans trimmed %}Mixity Human{% endblocktrans %}</a></li>
+                            {% else %}
+                                <li><a href="/human/landing/" class="link-dark p-2 rounded">{% blocktrans trimmed %}Mixity Human{% endblocktrans %}</a></li>
+                            {% endif %}
+							{% if scan_evaluation and scan_evaluation.display_version == "en-cours" %}
+                                <li><a href="{% url 'dashboard:dashboard_assess_test' entity.slug 'scan' 'en-cours' %}" class="link-dark p-2 rounded">{% blocktrans trimmed %}Mixity Scan{% endblocktrans %}</a></li>
+                            {% endif %}
+                            {% if not global.is_mixity_start %}
+                            <!-- ADP -->
+{#                              <li><a href="{% url 'dashboard:sirh:adp_status' entity.slug %}" class="link-dark p-2 rounded">{% blocktrans trimmed %}Connecteur SIRH{% endblocktrans %}</a></li>#}
+                            <!-- Namsor -->
+                                {%if entity.slug %}
+                                <li><a href="{% url 'dashboard:name_analyzer' entity.slug %}" class="link-dark p-2 rounded">{% blocktrans trimmed %}Mesure ethnique perçue{% endblocktrans %}</a></li>
+                                {% endif %}
+                            {% endif %}
+                        </ul>
+                    </div>
+                </li>
+                <li class="mb-1">
+                    <button class="w-100 dashboard-btn-toggle align-items-center {%if entity and entity.entity_level.structure.subscription_pack %} rounded collapsed {% endif %}" {% if entity and entity.entity_level.structure.subscription_pack %} data-bs-toggle="collapse" {% else %} onclick="window.location.href = '/pilot/landing/';" {% endif %} data-bs-target="#piloter-collapse" aria-expanded="false">
+                        <span class="icon-measure px-2"></span>
+                        {% blocktrans trimmed %}Piloter{% endblocktrans %}
+                    </button>
+                    <div class="collapse" id="piloter-collapse">
+                        <ul class="dashboard-btn-toggle-nav list-unstyled small" style="border-left: 2px solid #DEDFEA; margin-left: 1.7em">
+                            <li><a href="{% if entity %}{% url 'dashboard:lead:home' entity.slug %}{% endif %}" class="link-dark mt-2 p-2 rounded">{% blocktrans trimmed %}Mon plan d'actions{% endblocktrans %}</a></li>
+                            <li><a href="{% if entity %}{% url 'dashboard:lead:overview' entity.slug %}{% endif %}" class="link-dark mt-2 p-2 rounded">{% blocktrans trimmed %}Aperçu{% endblocktrans %}</a></li>
+                            {% comment %} <li><a href="#" class="link-dark p-2 rounded disabled">{% blocktrans trimmed %}Catalogue d'actions{% endblocktrans %}</a></li> {% endcomment %}
+                        </ul>
+                    </div>
+                </li>
+                <li class="mb-1">
+                    <button class="w-100 dashboard-btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse"data-bs-target="#agir-collapse" aria-expanded="false">
+                        <span class="icon-take-action px-2"></span>
+                        {% blocktrans trimmed %}Agir{% endblocktrans %}
+                    </button>
+                    <div class="collapse" id="agir-collapse">
+                        <ul class="dashboard-btn-toggle-nav list-unstyled small" style="border-left: 2px solid #DEDFEA; margin-left: 1.7em">
+                            
+                            <li class="mb-1" style="margin-left: 1.7em">
+                                <!-- E-learning -->
+                                <li class="w-100">
+                                    <a href="/elearning/landing/" class="link-dark mt-2 p-2 rounded">{% blocktrans trimmed %}E-learnings{% endblocktrans %}</a>                                    
+                                </li>                          
+                                <!-- Solutions -->
+                                 {% if entity and entity.entity_level.structure.subscription_pack %}
+                                    <button class="mt-2 dashboard-btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#solutions-collapse" aria-expanded="false" style="margin-left: 1.25rem">
+                                        {% blocktrans trimmed %}Solutions{% endblocktrans %}
+                                    </button>
+                                    <div class="collapse" id="solutions-collapse">
+                                        <ul class="dashboard-btn-toggle-nav list-unstyled small" style="border-left: 2px solid #DEDFEA; margin-left: 1.7em">
+                                            <li><a href="{% if entity %}{% url 'dashboard:act:search_solutions' entity.slug %}{% endif %}" class="link-dark p-2 rounded">{% blocktrans trimmed %}Chercher une solution{% endblocktrans %}</a></li>
+                                            <li><a href="{% if entity %}{% url 'dashboard:act:favorites_solutions' entity.slug %}{% endif %}" class="link-dark mt-2 p-2 rounded">{% blocktrans trimmed %}Mes favoris{% endblocktrans %}</a></li>
+                                            <li><a href="/solver/landing/" class="link-dark mt-2 p-2 rounded">{% blocktrans trimmed %}Devenir solutionneur{% endblocktrans %}</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            {% endif %}
+{#                            <!-- Best Practices -->#}
+{#                            <li class="mb-1" style="margin-left: 1.7em">#}
+{#                                <button class="w-100 dashboard-btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#best-practices-collapse" aria-expanded="false">#}
+{#                                    {% blocktrans trimmed %}Bonnes Pratiques{% endblocktrans %}#}
+{#                                </button>#}
+{#                                <div class="collapse" id="best-practices-collapse">#}
+{#                                    <ul class="dashboard-btn-toggle-nav list-unstyled small" style="border-left: 2px solid #DEDFEA; margin-left: 1.7em">#}
+{#                                        <li><a href="{% if entity %}{% url 'dashboard:act:search_best_practices' entity.slug %}{% endif %}" class="link-dark mt-2 p-2 rounded">{% blocktrans trimmed %}Chercher une bonne pratique{% endblocktrans %}</a></li>#}
+{#                                        <li><a href="{% if entity %}{% url 'dashboard:act:best_practices_management' entity.slug %}{% endif %}" class="link-dark mt-2 p-2 rounded">{% blocktrans trimmed %}Gérer mes bonnes pratiques{% endblocktrans %}</a></li>#}
+{#                                        <li><a href="{% if entity %}{% url 'dashboard:act:favorites_best_practices' entity.slug %}{% endif %}" class="link-dark mt-2 p-2 rounded">{% blocktrans trimmed %}Consulter mes bonnes pratiques{% endblocktrans %}</a></li>#}
+{#                                    </ul>#}
+{#                                </div>#}
+{#                            </li>#}
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <!-- Bottom components -->
+        <div class="nav_bottom w-100">
+            <ul class="list-unstyled ps-0">
+                {% if entity and membership.is_owner %}
+                    {#            <li class="mb-1 w-100 dashboard-btn">#}
+                    {#                <a href="#" class="w-100 dashboard-btn align-items-center rounded" style="outline: 0; text-decoration: none; color:  #181B3D;">#}
+                    {#                    <span class="icon-offers px-2"></span>#}
+                    {#                    {% blocktrans trimmed %}Nos offres{% endblocktrans %}#}
+                    {#                </a>#}
+                    {#            </li>#}
+                    {% if membership.structure_id %}
+                        <li class="mb-1 w-100">
+                            <a href="{% url 'dashboard:account:update' entity.entity_level.structure.get_main_entity.slug "structure" %}" class="w-100 dashboard-btn align-items-start rounded">
+                                <span class="icon-public-profile px-2"></span>
+                                <p>{% blocktrans trimmed %}Informations de la structure{% endblocktrans %}</p>
+                            </a>
+                        </li>
+                    {% endif %}
+                    {% if membership.is_owner and accessible_entities|length >= 1 %}
+                        <li class="mb-1 w-100">
+                            <a href="{% url 'dashboard:account:update' entity.entity_level.structure.get_main_entity.slug "entity"  %}" class="w-100 dashboard-btn align-items-start rounded">
+                                <span class="icon-public-profile px-2"></span>
+                                <p>{% blocktrans trimmed %}Informations de l'entité{% endblocktrans %}</p>
+                            </a>
+                        </li>
+                    {% endif %}
+                    {% if membership.structure_id %}
+                        <li class="mb-1 w-100">
+                            <a href="{% url 'dashboard:account:update' entity.entity_level.structure.get_main_entity.slug "collaborators" %}" class="w-100 dashboard-btn align-items-start rounded">
+                                <span class="icon-invite-coworker px-2"></span>
+                                <p>{% blocktrans trimmed %}Inviter des collaborateurs{% endblocktrans %}</p>
+                            </a>
+                        </li>
+                        <li class="mb-1 w-100">
+                            {% if not solver %}
+                                <a href="{% url 'dashboard:solver:create' entity.entity_level.structure.slug %}" class="w-100 dashboard-btn align-items-start rounded">
+                                    <span class="icon-become-solver px-2"></span>
+                                    <p>{% blocktrans trimmed %}Devenir solutionneur{% endblocktrans %}</p>
+                                </a>
+                            {% else %}
+                                <a href="{% url 'dashboard:act:solver_solutions' entity.slug %}" class="w-100 dashboard-btn align-items-start rounded">
+                                    <span class="icon-become-solver px-2"></span>
+                                    <p>{% blocktrans trimmed %}Gérer mes solutions{% endblocktrans %}</p>
+                                </a>
+                            {% endif %}
+                        </li>
+                    {% endif %}
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+    <div class="dashboard_sider_bottom pb-3 border-end">
+        {% if entity.entity_level.structure %}
+            {% if accessible_entities %}
+                <div class="d-flex align-items-center py-2">
+                    <div class="sider_structure__container">
+                        <div class="sider_structure__text">
+                            <h2 class="sider_structure__title">{% blocktrans trimmed %}Entité{% endblocktrans %}</h2>
+                            <h2 class="sider_structure__name">{{ entity.name }}</h2>
+                        </div>
+                    </div>
+                    {% if accessible_entities|length > 1 %}
+                        <div>
+                            <a class="dashboard-dropdown-toggle text-decoration-none" href="#" id="offcanvasNavbarDropdownEntities" role="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
+                            <ul class="dropdown-menu border-end" id="dropdown-entities">
+                                <h3 class="mxt--h4 ps-3 pt-3 pb-4">{% blocktrans trimmed %}Choix de l'entité{% endblocktrans %}</h3>
+                                {% for entity in accessible_entities %}
+                                    <div class="{% if entity.parent_entity in accessible_entities and entity.parent_entity.entity_level.level != 0 %}collapse{% endif %}" id="{{entity.parent_entity.slug}}-collapse">
+                                        <ul class="dashboard-btn-toggle-nav list-unstyled small" style="{% if entity.entity_level.level > 1 %}border-left: 2px solid #DEDFEA; margin-left: {{entity.entity_level.level}}.5em{% endif %}">
+                                            <li class="d-flex justify-content-between py-2">
+                                                {% if entity.entity_level.level == 0 %}
+                                                    <a class="ps-3 dashboard-btn align-items-center rounded text-decoration-none color--primary-dark border-0" href="{% url 'home' entity.slug %}">{% blocktrans trimmed %}{{entity}}{% endblocktrans %}</a>
+                                                    <div class="pe-2"><img class="sider_structure__logo" src="{{ entity.entity_level.structure.get_logo_url }}"/></div>
+                                                {% elif entity.children_entities.exists %}
+                                                <div class="d-flex justify-content-between w-100 px-0">
+                                                    <a class="ps-3 dashboard-btn align-items-center rounded text-decoration-none color--primary-dark border-0" href="{% url 'home' entity.slug %}">{% blocktrans trimmed %}{{entity}}{% endblocktrans %}</a>
+                                                    <button class="dashboard-btn-toggle rounded collapsed" data-bs-toggle="collapse" data-bs-target="#{{entity.slug}}-collapse" aria-expanded="false"></button>
+                                                </div>
+                                                {% else %}
+                                                    <a class="ps-3 dashboard-btn align-items-center rounded text-decoration-none color--primary-dark border-0" href="{% url 'home' entity.slug %}">{% blocktrans trimmed %}{{entity}}{% endblocktrans %}</a>
+                                                {% endif %}
+                                            </li>
+                                        </ul>
+                                    </div>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    {% endif %}
+                </div>
+            {% endif %}
+            {% if membership.user.is_staff %}
+                <div class="d-flex align-items-center py-2">
+                    <div class="sider_structure__container">
+                        <div><img class="sider_structure__logo" src="{{ entity.entity_level.structure.get_logo_url }}"/></div>
+                        <div class="sider_structure__text">
+                            <div class="sider_structure__title">{% blocktrans trimmed %}Structure{% endblocktrans %}</div>
+                            <div class="sider_structure__name">{{ entity.entity_level.structure.display_name }}</div>
+                        </div>
+                    </div>
+                    <div>
+                        <a class="dashboard-dropdown-toggle text-decoration-none" href="#" id="offcanvasNavbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
+                        <ul class="dropdown-menu border-end" id="dropdown-structure">
+                            <h3 class="mxt--h4 ps-3 pt-3 pb-4">{% blocktrans trimmed %}Choix de la structure{% endblocktrans %}</h3>
+                            {% for entity in user.accessible_structures %}
+                                <li class="d-flex justify-content-between py-2" style="padding-left: 2.25rem">
+                                    <a class="w-100 dashboard-btn align-items-center rounded text-decoration-none color--primary-dark border-0" href="{% url 'home' entity.slug %}">
+                                        <div class="d-inline-flex align-items-center">
+                                            <div class="pe-2"><img class="sider_structure__logo" src="{{ entity.entity_level.structure.get_logo_url }}"/></div>
+                                            {{ entity.entity_level.structure.display_name }}
+                                        </div>
+                                    </a>
+                                </li>
+                            {% endfor %}
+                            {% if membership.structure_id and membership.is_owner %}
+                                <li class="d-flex justify-content-between py-2" style="padding-left: 2.25rem">
+                                    <a class="w-100 dashboard-btn align-items-center rounded text-decoration-none color--primary-dark border-0" href="{% url 'structure:add' %}">
+                                        <div class="d-inline- pt-3">
+                                            {% blocktrans trimmed %}Ajouter une structure{% endblocktrans %}
+                                        </div>
+                                    </a>
+                                </li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+                <a class="dropdown-item py-2" href="{% url 'structure:add' %}">
+                    <div class="d-inline-block">
+                        {% blocktrans trimmed %}Ajouter une structure{% endblocktrans %}
+                    </div>
+                </a>
+            {% endif %}
+        {% endif %}
+    </div>
+</div>
+</div>
+
+{% block scripts %}
+<script>
+    $('.dropdown-menu').click(function(event){
+        event.stopPropagation();
+    });
+</script>
+{% endblock %}

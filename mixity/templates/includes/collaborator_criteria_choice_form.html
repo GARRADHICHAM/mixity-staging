@@ -1,0 +1,29 @@
+{% load i18n %}
+
+<div class="dropdown-header">
+    <form class="form" id="collaborator_filter" enctype="multipart/form-data" method="post">
+        {% csrf_token %}
+        <div class="form">
+            {{ form.media }}
+            {% for field in form %}
+                <div class="btn-group">
+                    <button class="dropdown-toggle btn" href="#" style="display:initial" id="field_{{field.id_for_label}}" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+                        {{ field.label_tag }}
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-start rounded">
+                        {% for choice in field %}
+                            <div class="content-light" style="width: 100%; padding: 5px">
+                                {{ choice }}
+                            </div>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="items_container">
+            <a onclick="document.getElementById('collaborator_filter').submit();" name="save_next" value="{% trans submit %}" class="btn btn-primary" style="width: 100%">
+                {% blocktrans trimmed %}Valider{% endblocktrans %}
+            </a>
+        </div>
+    </form>
+</div>

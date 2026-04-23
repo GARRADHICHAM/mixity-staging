@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/HTML" lang="fr" xml:lang="fr">
+  <head>
+    <!-- Title -->
+    <title>MIXITY</title>
+
+    <!-- Required Meta Tags Always Come First -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width">
+
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <!-- Meta Tags for Apple -->
+    <meta name="apple-mobile-web-app-title" content="Mixity"> <!-- New in iOS6 -->
+    <meta name='apple-mobile-web-app-capable' content='yes'>
+    <meta name='apple-touch-fullscreen' content='yes'>
+    <meta name='apple-mobile-web-app-status-bar-style' content='black'>
+    <meta name='format-detection' content='telephone=no'>
+    <meta name='viewport' content='width = 320, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes'>
+    <link href="/static/dist/css/style-1.0.0.css" rel="stylesheet"/>
+    <link href="/static/dist/css/style-1.0.1.css" rel="stylesheet"/>
+    <link rel="icon" href="/static/favicon.ico">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Cousine:400,600,700" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+
+
+  </head>
+
+
+  <body>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+    <script src="/static/vendors/d3.v5.min.js"></script>
+    <script src="/static/dist/js/index-1.0.0.js"></script>
+    <script src="/static/cookielaw/js/cookielaw.js"></script>
+    <!-- Easy cookies with Cookie.set() -->
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@beta/dist/js.cookie.min.js"></script>
+
+
+<!-- Topbar -->
+<header class="container">
+  <!-- Main menu -->
+  <nav class="navbar navbar-expand-xl m-0 border-bottom p-0" style="height: 68px;"> <!-- sticky-top -->
+      <div class="container-fluid">
+          <!-- Logo -->
+          <a href="/" class="navbar-brand" style="height: 68px;">
+              <img src="/static/img/logo-mixity.svg" alt="Logo Mixity" class="pt-2" style="width: 130px">
+          </a>
+          <!-- Menu icon on mobile -->
+          <button class="navbar-toggler d-block d-xl-none float-end" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar">
+              <span class="icon-burger"></span>
+          </button>
+          <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar">
+              <!-- Sidebar on mobile -->
+              <div class="offcanvas-header">
+                  <img class="offcanvas-title pt-2" src="/static/img/logo-mixity.svg" alt="Logo Mixity" id="offcanvasNavbarLabel" style="max-width: 130px">
+                  <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+              </div>
+              <!-- Menu items -->
+              <div class="offcanvas-body">
+                  <!-- General items -->
+                  <ul class="navbar-nav justify-content-start flex-grow-1">
+                      <li class="nav-item">
+                          <a class="nav-link" href="/footprint/">
+                              Empreinte
+                          </a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="/evaluation/">
+                            Solutions
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link" href="/method/">
+                              Méthodologie
+                          </a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link" href="/pricing/">
+                              Prix
+                          </a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link" href="/about/">
+                              À propos
+                          </a>
+                      </li>
+                      <li class="nav-item ">
+                          <a class="nav-link" href="/faq/">
+                              FAQ
+                          </a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link" href="https://blog.mixity.co" target="_blank">
+                              Blog
+                          </a>
+                      </li>
+                  </ul>
+              </div>
+          </div>
+      </div>
+  </nav>
+  <!-- End Menu -->
+</header>
+
+<!-- End Header -->
+	<div class="bg--primary-alpha full-height">
+		<section class="container error">
+			<div class="error__content text-center">
+				<h1 class="error__title">500</h1>
+				<p class="error__description">Le serveur a rencontré un problème.</p>
+				<a href="/" class="btn btn-secondary rounded btn-sm">Retour à la page d'accueil</a>
+				<p><a href="/contact/">Nous contacter pour nous signaler un problème</a></p>
+			</div>
+			<div class="error__bg full-height"></div>
+		</section>
+	</div>
+
+<!-- End Content -->
+
+<footer class="container">
+  <div class="row">
+      <div class="col-lg-3 col-md-12">
+          <ul class="navbar-nav">
+              <li class="nav-item pt-2">
+                  <a class="nav-link">
+                      <img src="/static/img/logo-mixity.svg" alt="Logo Mixity" style="max-width: 5.5em; margin-left: -0.2em;">
+                  </a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="dashboard:account:dashboard_register">
+                      <span class="icon-user"></span>
+                      Créez votre compte
+                  </a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" target="_blank" href="https://share.hsforms.com/1MfEwnDeVQIGC1kD1F0bQhw43j1b">
+                      <span class="icon-mail"></span>
+                      S'abonner à la newsletter
+                  </a>
+              </li>
+          </ul>
+      </div>
+
+      <div class="col-lg-3 col-sm-6 col-xs-12">
+          <div class="mxt--h4 pt-3 pb-2">
+              Mixity
+          </div>
+          <ul class="navbar-nav">
+              <li class="nav-item">
+                  <a class="nav-link" href="/about/">À propos</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="/footprint/">Empreinte</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="/method/">Méthodologie</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="/pricing/">Prix</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="https://blog.mixity.co" target="_blank">Blog</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="/partner/">Devenir partenaire</a>
+              </li>
+          </ul>
+      </div>
+
+      <div class="col-lg-3 col-sm-6 col-xs-12">
+          <div class="mxt--h4 pt-3 pb-2">
+              Solutions
+          </div>
+          <ul class="navbar-nav">
+              <li class="nav-item">
+                  <a class="nav-link" href="/evaluation/mixity_start/">Start</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="/evaluation/human/">Human</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="/evaluation/diag/">Diag</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link disabled" href="#">Pilotage</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="/formation/">Formations</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="/mixity-partner/">Consultants</a>
+              </li>
+          </ul>
+      </div>
+
+      <div class="col-lg-3 col-sm-6 col-xs-12">
+          <div class="mxt--h4 pt-3 pb-2">
+              Support
+          </div>
+          <ul class="navbar-nav">
+              <li class="nav-item">
+                  <a class="nav-link" href="/faq/">FAQ</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="/contact/">Nous contacter</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="/cgu/">Conditions d\'utilisation</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="/privacy/">Confidentialité</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="/legal/">Légal</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="/press/">Presse</a>
+              </li>
+          </ul>
+      </div>
+  </div>
+
+  <div class="row color--primary-disabled border-top pt-3">
+      <div class="col-md-6 order-md-2">
+          <div class="float-md-end">
+              <ul class="nav mxt--h3">
+                  <li class="nav-item">
+                      <a class="nav-link" href="https://www.linkedin.com/company/mixity-co/" target="_blank" title="Linkedin">
+                          <i class="icon-logo-linkedin"></i>
+                      </a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="https://www.instagram.com/mixity_co/?hl=fr" target="_blank" title="Instagram">
+                          <i class="icon-logo-instagram"></i>
+                      </a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" h²f="https://twitter.com/Mixity_co" target="_blank" title="Twitter">
+                          <i class="icon-logo-twitter"></i>
+                      </a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="https://www.facebook.com/Mixity.co/" target="_blank" title="Facebook">
+                          <i class="icon-logo-facebook"></i>
+                      </a>
+                  </li>
+              </ul>
+          </div>
+      </div>
+      <div class="col-md-6 mxt--small order-md-1 align-middle">
+          © Copyright Mixity 2022. Tous droits réservés.
+      </div>
+  </div>
+</footer>
+
+</body>
+</html>

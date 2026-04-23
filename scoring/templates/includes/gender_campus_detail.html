@@ -1,0 +1,719 @@
+{% load l10n %}
+{% load i18n %}
+{% load percentage %}
+{% load concat %}
+
+
+<div class="items_container" style="justify-content: center; align-items: stretch">
+    <div class="items_container w-100 justify-content-center">
+
+        {% if target_name == "all" or target_name == "collaborator" %}
+            {% with answer=answer_20220065 %}
+                {% if answer %}
+                    <div class="item_pb item_s1 stretched_item item_c">
+                        <h3 line_id=17 suffix=" : {{ answer.value|floatformat:'0' }} %" class="txt_line content-strong" style="width: 100%;">
+                            {% blocktrans trimmed %}Taux de femmes au sein du Conseil d'Administration{% endblocktrans %}
+                        </h3>
+                        <div style="display: flex;justify-content: center; flex-wrap: wrap;width: 100%">
+                            {% include 'includes/indicators/half_circular_plot.html' with last_year_value=answer.sibling_value|floatformat:'1' border_color="#EBEAEA" blank_color="#e9ecef" percent_inner=answer.ratio_value|floatformat:'1' percent=answer.get_mean_score_in_business_line|floatformat:'0' percent_outter=answer.get_mean_score|floatformat:'0' color=cat.color id=answer.id small=1 %}
+                        </div>
+                        {% if answer.perimeter %}
+                            <div class="perimeter-indicator">
+                                <span>
+                                    {% trans answer.perimeter %}
+                                </span>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+            {% with answer=answer_20220062 %}
+                {% if answer %}
+                    <div class="item_pb item_s1 stretched_item item_c">
+                        <h3 line_id=17 suffix=" : {{ answer.value|floatformat:'0' }} %" class="txt_line content-strong" style="width: 100%;">
+                            {% blocktrans trimmed %}Taux de femmes au sein du COMEX si existant ou CODIR{% endblocktrans %}
+                        </h3>
+                        <div style="display: flex;justify-content: center; flex-wrap: wrap;width: 100%">
+                            {% include 'includes/indicators/half_circular_plot.html' with last_year_value=answer.sibling_value|floatformat:'1' border_color="#EBEAEA" blank_color="#e9ecef" percent_inner=answer.ratio_value|floatformat:'1' percent=answer.get_mean_score_in_business_line|floatformat:'0' percent_outter=answer.get_mean_score|floatformat:'0' color=cat.color id=answer.id small=1 %}
+                        </div>
+                        {% if answer.perimeter %}
+                            <div class="perimeter-indicator">
+                                <span>
+                                    {% trans answer.perimeter %}
+                                </span>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+
+            {% with answer=answer_20220068 %}
+                {% if answer %}
+                    <div class="item_pb item_s1 stretched_item item_c">
+                        <h3 line_id=17 suffix=" : {{ answer.value|floatformat:'0' }} %" class="txt_line content-strong" style="width: 100%;">
+                            {% blocktrans trimmed %}Taux de femmes cadres directrices dans l'établissement scolaire{% endblocktrans %}
+                        </h3>
+                        <div style="display: flex;justify-content: center; flex-wrap: wrap; width: 100%">
+                            {% include 'includes/indicators/half_circular_plot.html' with last_year_value=answer.sibling_value|floatformat:'1' border_color="#EBEAEA" blank_color="#e9ecef" percent_inner=answer.ratio_value|floatformat:'1' percent=answer.get_mean_score_in_business_line|floatformat:'0' percent_outter=answer.get_mean_score|floatformat:'0' color=cat.color id=answer.id small=1 %}
+                        </div>
+                        {% if answer.perimeter %}
+                            <div class="perimeter-indicator">
+                                <span>
+                                    {% trans answer.perimeter %}
+                                </span>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+
+            {% with answer=answer_20220071 %}
+                {% if answer %}
+                    <div class="item_pb item_s1 stretched_item item_c">
+                        <h3 line_id=17 suffix=" : {{ answer.value|floatformat:'0' }} %" class="txt_line content-strong" style="width: 100%;">
+                            {% blocktrans trimmed %}Taux de femmes managers dans l'établissement scolaire{% endblocktrans %}
+                        </h3>
+                        <div style="display: flex;justify-content: center; flex-wrap: wrap; width: 100%">
+                            {% include 'includes/indicators/half_circular_plot.html' with last_year_value=answer.sibling_value|floatformat:'1' border_color="#EBEAEA" blank_color="#e9ecef" percent_inner=answer.ratio_value|floatformat:'1' percent=answer.get_mean_score_in_business_line|floatformat:'0' percent_outter=answer.get_mean_score|floatformat:'0' color=cat.color id=answer.id small=1 %}
+                        </div>
+                        {% if answer.perimeter %}
+                            <div class="perimeter-indicator">
+                                <span>
+                                    {% trans answer.perimeter %}
+                                </span>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+
+            {% with answer=answer_20220081.subanswers.all.0 text=_("Note globale à l'index d'égalité femmes-hommes") label=_("Index de l’égalité femmes/hommes") %}
+                {% if answer %}
+                    <div class="item_pb item_s2 stretched_item item_c">
+                        {% include 'includes/indicators/number_percent.html' with last_year=answer.sibling_year last_year_value=answer.sibling_value percent=answer.value text=text label=label color=cat.color id=answer.id|floatformat:'0'|add:"number_percent_plot" %}
+                        {% if answer_20220081.perimeter %}
+                            <div class="perimeter-indicator">
+                                <span>
+                                    {% trans answer_20220081.perimeter %}
+                                </span>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+
+            {% with answer=answer_20220080 color_2="#863C63" color_3="#8888E2" label_1=_("Femme") label_2=_("Homme") label_3=_("Non-binaire") %}
+                {% if answer %}
+                    <div class="item_pb item_s3">
+                        <div style="display: flex;justify-content: space-between">
+                            <div>
+                                <h3 line_id=17 class="txt_line content-strong" prefix="\n" style="text-align: left;">
+                                    {% blocktrans trimmed %}Répartition par genre des personnes recrutées dans les 12 derniers mois{% endblocktrans %}
+                                </h3>
+                            </div>
+                            <div class="legend_container" style="width: auto">
+                                <div class="legend_element"><div class="dot" style="background-color:{{ cat.color }};"></div> <span>&nbsp;{{ label_1 }}</span></div>
+                                <div class="legend_element"><div class="dot" style="background-color:{{ color_2 }};"></div> <span>&nbsp;{{ label_2 }}</span></div>
+                                <div class="legend_element"><div class="dot" style="background-color:{{ color_3 }};"></div> <span>&nbsp;{{ label_3 }}</span></div>
+                            </div>
+                        </div>
+                        {% include 'includes/indicators/repartition_chart_ratio.html' with answer=answer color_1=cat.color color_2=color_2 color_3=color_3 label_1=label_1 label_2=label_2 label_3=label_3 %}
+                        {% if answer.perimeter %}
+                            <div class="perimeter-indicator">
+                                <span>
+                                    {% trans answer.perimeter %}
+                                </span>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+
+            {% with answer=answer_20220085 %}
+                {% if answer %}
+                    <div class="item_pb item_s1 item_c">
+                        <h3 line_id=17 suffix=" : {{ answer.value|floatformat:'0' }} %" class="txt_line content-strong">
+                            {% blocktrans trimmed %}Écart de salaire entre les hommes et les femmes (poste et âge comparables){% endblocktrans %}
+                        </h3>
+                        {% include 'includes/indicators/double_vertical_histogram.html' with value=answer.value last_year_value=answer.sibling_value label1=_("Femmes") color1=cat.color label2=_("Hommes") color2="#863C63" last_year=answer.sibling_year %}
+                        {% if answer.perimeter %}
+                            <div class="perimeter-indicator">
+                                <span>
+                                    {% trans answer.perimeter %}
+                                </span>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+
+            {% with answer=answer_202200851 %}
+                {% if answer %}
+                    <div class="item_pb item_s1 item_c">
+                        <h3 line_id=17 suffix=" : {{ answer.value|floatformat:'0' }} %" class="txt_line content-strong">
+                            {% blocktrans trimmed %}Ecart de rémunération effective entre les femmes et les hommes à poste, famille de fonction et âge comparables pour les collaborateurs (f/h/nb){% endblocktrans %}
+                        </h3>
+                        {% include 'includes/indicators/double_vertical_histogram.html' with value=answer.value last_year_value=answer.sibling_value label1=_("Femmes") color1=cat.color label2=_("Hommes") color2="#863C63" last_year=answer.sibling_year %}
+                        {% if answer.perimeter %}
+                            <div class="perimeter-indicator">
+                                <span>
+                                    {% trans answer.perimeter %}
+                                </span>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+            {% with answer=answer_202200852 %}
+                {% if answer %}
+                    <div class="item_pb item_s1 item_c">
+                        <h3 line_id=17 suffix=" : {{ answer.value|floatformat:'0' }} %" class="txt_line content-strong">
+                            {% blocktrans trimmed %}Ecart de rémunération effective entre les femmes et les hommes à poste, famille de fonction et âge comparables pour les enseignants (f/h/nb){% endblocktrans %}
+                        </h3>
+                        {% include 'includes/indicators/double_vertical_histogram.html' with value=answer.value last_year_value=answer.sibling_value label1=_("Femmes") color1=cat.color label2=_("Hommes") color2="#863C63" last_year=answer.sibling_year %}
+                        {% if answer.perimeter %}
+                            <div class="perimeter-indicator">
+                                <span>
+                                    {% trans answer.perimeter %}
+                                </span>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+            {% with answer=answer_202200853 %}
+                {% if answer %}
+                    <div class="item_pb item_s1 item_c">
+                        <h3 line_id=17 suffix=" : {{ answer.value|floatformat:'0' }} %" class="txt_line content-strong">
+                            {% blocktrans trimmed %}Ecart de rémunération effective entre les femmes et les hommes à poste, famille de fonction et âge comparables pour les enseignants qualifiés chercheurs (f/h/nb){% endblocktrans %}
+                        </h3>
+                        {% include 'includes/indicators/double_vertical_histogram.html' with value=answer.value last_year_value=answer.sibling_value label1=_("Femmes") color1=cat.color label2=_("Hommes") color2="#863C63" last_year=answer.sibling_year %}
+                        {% if answer.perimeter %}
+                            <div class="perimeter-indicator">
+                                <span>
+                                    {% trans answer.perimeter %}
+                                </span>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+            {% with answer=answer_20220088 %}
+                {% if answer %}
+                    <div class="item_pb item_s1 item_c">
+                        <h3 line_id=17 suffix=" : {{ answer.value|floatformat:'0' }} %" class="txt_line content-strong">
+                            {% blocktrans trimmed %}Écart de rémunération chez les cadres directeurs entre les femmes et les hommes{% endblocktrans %}
+                        </h3>
+                        {% include 'includes/indicators/double_vertical_histogram.html' with value=answer.value last_year_value=answer.sibling_value label1=_("Femmes") color1=cat.color label2=_("Hommes") color2="#863C63" last_year=answer.sibling_year %}
+                        {% if answer.perimeter %}
+                            <div class="perimeter-indicator">
+                                <span>
+                                    {% trans answer.perimeter %}
+                                </span>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+
+            {% with answer=answer_20220089 %}
+                {% if answer %}
+                    <div class="item_pb item_s1 item_c">
+                        <h3 line_id=17 suffix=" : {{ answer.value|floatformat:'0' }} %" class="txt_line content-strong">
+                            {% blocktrans trimmed %}Écart de salaire entre les hommes et les femmes managers (poste et âge comparables){% endblocktrans %}
+                        </h3>
+                        {% include 'includes/indicators/double_vertical_histogram.html' with value=answer.value last_year_value=answer.sibling_value label1=_("Femmes") color1=cat.color label2=_("Hommes") color2="#863C63" last_year=answer.sibling_year %}
+                        {% if answer.perimeter %}
+                            <div class="perimeter-indicator">
+                                <span>
+                                    {% trans answer.perimeter %}
+                                </span>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+
+            {% with answer=answer_20220090 %}
+                {% if answer %}
+                    <div class="item_pb item_s1 item_c">
+                        <h3 line_id=17 suffix=" : {{ answer.value|floatformat:'0' }} %" class="txt_line content-strong">
+                            {% blocktrans trimmed %}Écart de salaire entre les hommes et les femmes non-managers (poste et âge comparables){% endblocktrans %}
+                        </h3>
+                        {% include 'includes/indicators/double_vertical_histogram.html' with value=answer.value last_year_value=answer.sibling_value label1=_("Femmes") color1=cat.color label2=_("Hommes") color2="#863C63" last_year=answer.sibling_year %}
+                        {% if answer.perimeter %}
+                            <div class="perimeter-indicator">
+                                <span>
+                                    {% trans answer.perimeter %}
+                                </span>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+
+            {% with answer=answer_20220096 %}
+                {% if answer %}
+                    <div class="item_pb item_s1 item_c">
+                        <h3 line_id=17 suffix=" : {{ answer.value|floatformat:'0' }} %" class="txt_line content-strong">
+                            {% blocktrans trimmed %}Écart d'heures de formation entre les hommes et les femmes {% endblocktrans %}
+                        </h3>
+                        {% include 'includes/indicators/double_vertical_histogram.html' with value=answer.value last_year_value=answer.sibling_value label1=_("Femmes") color1=cat.color label2=_("Hommes") color2="#863C63" last_year=answer.sibling_year %}
+                        {% if answer.perimeter %}
+                            <div class="perimeter-indicator">
+                                <span>
+                                    {% trans answer.perimeter %}
+                                </span>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+
+            {% with color_2="#863C63" color_3="#8888E2" label_1=_("Femmes") label_2=_("Hommes") label_3=_("Non-binaire") %}
+                {% if answer_20220097 or answer_202200971 or answer_202200972 %}
+                    <div class="item_pb item_s3">
+                        <div style="display: flex;justify-content: space-between">
+                            <div>
+                                <h3 line_id=17 class="txt_line content-strong" prefix="\n" style="text-align: left;">
+                                    {% blocktrans trimmed %}Répartition des genres...{% endblocktrans %}
+                                </h3>
+                            </div>
+                            <div class="legend_container">
+                                <div class="legend_element"><div class="dot" style="background-color:{{ cat.color }};"></div><span>&nbsp;{{ label_1 }}</span></div>
+                                <div class="legend_element"><div class="dot" style="background-color:{{ color_2 }};"></div><span>&nbsp;{{ label_2 }}</span></div>
+                                <div class="legend_element"><div class="dot" style="background-color:{{ color_3 }};"></div><span>&nbsp;{{ label_3 }}</span></div>
+                            </div>
+                        </div>
+
+                        {% if answer_20220097 %}
+                            {% with title=_("... dans les fonctions ventes/commerciales") %}
+                                {% include 'includes/indicators/repartition_chart.html' with title=title answer=answer_20220097 color_1=cat.color color_2=color_2 color_3=color_3 label_1=label_1 label_2=label_2 label_3=label_3 %}
+                            {% endwith %}
+                            {% if answer_20220097.perimeter %}
+                                <div class="perimeter-indicator">
+                                    <span>
+                                        {% trans answer_20220097.perimeter %}
+                                    </span>
+                                </div>
+                            {% endif %}
+                        {% endif %}
+
+                        {% comment %} ########### {% endcomment %}
+                        {% if answer_202200971 %}
+                            {% with title=_("... dans les fonctions techniques/informatiques") %}
+                                {% include 'includes/indicators/repartition_chart.html' with title=title answer=answer_202200971 color_1=cat.color color_2=color_2 color_3=color_3 label_1=label_1 label_2=label_2 label_3=label_3 %}
+                            {% endwith %}
+                            {% if answer_202200971.perimeter %}
+                                <div class="perimeter-indicator">
+                                    <span>
+                                        {% trans answer_202200971.perimeter %}
+                                    </span>
+                                </div>
+                            {% endif %}
+                        {% endif %}
+
+                        {% comment %} ########### {% endcomment %}
+                        {% if answer_202200972 %}
+                            {% with title=_("... dans les fonctions support") %}
+                                {% include 'includes/indicators/repartition_chart.html' with title=title answer=answer_202200972 color_1=cat.color color_2=color_2 color_3=color_3 label_1=label_1 label_2=label_2 label_3=label_3 %}
+                            {% endwith %}
+                            {% if answer_202200972.perimeter %}
+                                <div class="perimeter-indicator">
+                                    <span>
+                                        {% trans answer_202200972.perimeter %}
+                                    </span>
+                                </div>
+                            {% endif %}
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+
+            {% with answer=answer_20220101 %}
+                {% if answer %}
+                    <div class="item_pb item_s1 item_c">
+                        {% with title=_("Nombre de congé maternité minimum - en jours - dans votre entreprise") %}
+                            {% include 'includes/indicators/conges_histogram_international.html' with year=answer.evaluation.sheet.year val_now=answer.value|floatformat:'0' val_nat=answer_20213060.value|floatformat:'0' color=cat.color id=answer.id|stringformat:'i'|add:"conges" %}
+                        {% endwith %}
+                        {% if answer.perimeter %}
+                            <div class="perimeter-indicator">
+                                <span>
+                                    {% trans answer.perimeter %}
+                                </span>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+
+            {% with answer=answer_20220103 %}
+                {% if answer %}
+                    <div class="item_pb item_s1 item_c">
+                        <h3 line_id=17 suffix=" : {{ answer.value|floatformat:'0' }}" class="txt_line content-strong">
+                            {% blocktrans trimmed %}Nombre de jours de congés du second parent pour l'arrivée d'un enfant{% endblocktrans %}
+                        </h3>
+                        {% include 'includes/indicators/conges_histogram.html' with year=answer.evaluation.sheet.year last_year=answer.sibling_year val_prev=answer.sibling_value val_now=answer.value cat=cat id=answer.id|floatformat:'0' %}
+                        {% if answer.perimeter %}
+                            <div class="perimeter-indicator">
+                                <span>
+                                    {% trans answer.perimeter %}
+                                </span>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+
+            {% with answer=answer_20220107 %}
+                {% if answer %}
+                    <div class="item_pb item_s1 items_container item_c">
+                        <h3 line_id=17 suffix=" : {{ answer.ratio_value|floatformat:'0' }} %" class="txt_line content-strong">
+                            {% blocktrans trimmed %}Taux d'employés (f/h/nb) sensibilisés aux stéréotypes de genre et aux propos et comportements sexistes et sexuelles.{% endblocktrans %}
+                        </h3>
+                        <div class="d-flex justify-content-center">
+                            {% include 'includes/indicators/half_circular_plot.html' with last_year_value=answer.sibling_value border_color="#EBEAEA" blank_color="#e9ecef" percent_inner=answer.ratio_value|floatformat:'1' percent=answer.get_mean_score_in_business_line|floatformat:'0' percent_outter=answer.get_mean_score|floatformat:'0' color=cat.color id=answer.id small=1 %}
+                        </div>
+                        {% if answer.perimeter %}
+                            <div class="perimeter-indicator">
+                                <span>
+                                    {% trans answer.perimeter %}
+                                </span>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+
+            {% with answer=answer_20220108 %}
+                {% if answer %}
+                    <div class="item_pb item_s1 items_container item_c">
+                        <h3 line_id=17 suffix=" : {{ answer.ratio_value|floatformat:'0' }} %" class="txt_line content-strong">
+                            {% blocktrans trimmed %}Taux de managers (f/h/nb) sensibilisés aux stéréotypes de genre et aux propos et comportements sexistes et sexuelles.{% endblocktrans %}
+                        </h3>
+                        <div class="d-flex justify-content-center">
+                            {% include 'includes/indicators/half_circular_plot.html' with last_year_value=answer.sibling_value border_color="#EBEAEA" blank_color="#e9ecef" percent_inner=answer.ratio_value|floatformat:'1' percent=answer.get_mean_score_in_business_line|floatformat:'0' percent_outter=answer.get_mean_score|floatformat:'0' color=cat.color id=answer.id small=1 %}
+                        </div>
+                        {% if answer.perimeter %}
+                            <div class="perimeter-indicator">
+                                <span>
+                                    {% trans answer.perimeter %}
+                                </span>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+        {% endif %}
+
+
+        {% if target_name == "all" or target_name == "student" %}
+
+            {% with answer=answer_20221039 %}
+                {% if answer %}
+                    <div class="item_pb item_s1 items_container item_c">
+                        <h3 line_id=17 suffix=" : {{ answer.ratio_value|floatformat:'0' }} %" class="txt_line content-strong">
+                            {% blocktrans trimmed %}Taux d'étudiants (f/h/nb) sensibilisés aux stéréotypes de genre et aux propos et comportements sexistes et sexuelles.{% endblocktrans %}
+                        </h3>
+                        <div class="d-flex justify-content-center">
+                            {% include 'includes/indicators/half_circular_plot.html' with last_year_value=answer.sibling_value border_color="#EBEAEA" blank_color="#e9ecef" percent_inner=answer.ratio_value|floatformat:'1' percent=answer.get_mean_score_in_business_line|floatformat:'0' percent_outter=answer.get_mean_score|floatformat:'0' color=cat.color id=answer.id small=1 %}
+                        </div>
+                        {% if answer.perimeter %}
+                            <div class="perimeter-indicator">
+                                <span>
+                                    {% trans answer.perimeter %}
+                                </span>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+
+            {% with answer=answer_20221026 %}
+                {% if answer %}
+                    <div class="item_pb item_s1 items_container item_c">
+                        <h3 line_id=17 suffix=" : {{ answer.value|floatformat:'0' }} %" class="txt_line content-strong">
+                            {% blocktrans trimmed %}Pourcentage de femmes au sein des postes clés du bureau des étudiants{% endblocktrans %}
+                        </h3>
+                        <div class="d-flex justify-content-center">
+                            {% include 'includes/indicators/half_circular_plot.html' with last_year_value=answer.sibling_value border_color="#EBEAEA" blank_color="#e9ecef" percent_inner=answer.value|floatformat:'1' percent=answer.get_mean_score_in_business_line|floatformat:'0' percent_outter=answer.get_mean_score|floatformat:'0' color=cat.color id=answer.id small=1 %}
+                        </div>
+                        {% if answer.perimeter %}
+                            <div class="perimeter-indicator">
+                                <span>
+                                    {% trans answer.perimeter %}
+                                </span>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+
+            {% with answer=answer_20221028 %}
+                {% if answer %}
+                    <div class="item_pb item_s1 items_container item_c">
+                        <h3 line_id=17 suffix=" : {{ answer.value|floatformat:'0' }} %" class="txt_line content-strong">
+                            {% blocktrans trimmed %}Pourcentage de femmes au sein des postes clés du bureau des sports{% endblocktrans %}
+                        </h3>
+                        <div class="d-flex justify-content-center">
+                            {% include 'includes/indicators/half_circular_plot.html' with last_year_value=answer.sibling_value border_color="#EBEAEA" blank_color="#e9ecef" percent_inner=answer.value|floatformat:'1' percent=answer.get_mean_score_in_business_line|floatformat:'0' percent_outter=answer.get_mean_score|floatformat:'0' color=cat.color id=answer.id small=1 %}
+                        </div>
+                        {% if answer.perimeter %}
+                            <div class="perimeter-indicator">
+                                <span>
+                                    {% trans answer.perimeter %}
+                                </span>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+
+            {% with answer=answer_20221035 color_2="#863C63" color_3="#8888E2" label_1=_("Femme") label_2=_("Homme") label_3=_("Non-binaire") %}
+                {% if answer %}
+                    <div class="item_pb item_s3">
+                        <div style="display: flex;justify-content: space-between">
+                            <div>
+                                <h3 line_id=17 class="txt_line content-strong" prefix="\n" style="text-align: left;">
+                                    {% blocktrans trimmed %}Répartition par genre des étudiants (f/h/nb) admis dans les 12 derniers mois{% endblocktrans %}
+                                </h3>
+                            </div>
+                            <div class="legend_container" style="width: auto">
+                                <div class="legend_element"><div class="dot" style="background-color:{{ cat.color }};"></div> <span>&nbsp;{{ label_1 }}</span></div>
+                                <div class="legend_element"><div class="dot" style="background-color:{{ color_2 }};"></div> <span>&nbsp;{{ label_2 }}</span></div>
+                                <div class="legend_element"><div class="dot" style="background-color:{{ color_3 }};"></div> <span>&nbsp;{{ label_3 }}</span></div>
+                            </div>
+                        </div>
+                        {% include 'includes/indicators/repartition_chart_ratio.html' with answer=answer color_1=cat.color color_2=color_2 color_3=color_3 label_1=label_1 label_2=label_2 label_3=label_3 %}
+                        {% if answer.perimeter %}
+                            <div class="perimeter-indicator">
+                                <span>
+                                    {% trans answer.perimeter %}
+                                </span>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+
+            {% with color_2="#863C63" color_3="#8888E2" label_1=_("Femmes") label_2=_("Hommes") label_3=_("Non-binaire") %}
+                    {% if answer_202210421 or answer_202210422 or answer_202210423 or answer_202210424 or answer_202210425 or answer_20221042 %}
+                        <div class="item_pb item_s3">
+                            <div style="display: flex;justify-content: space-between">
+                                <div>
+                                    <h3 line_id=17 class="txt_line content-strong" prefix="\n" style="text-align: left;">
+                                        {% blocktrans trimmed %}Répartition des genres...{% endblocktrans %}
+                                    </h3>
+                                </div>
+                                <div class="legend_container">
+                                    <div class="legend_element"><div class="dot" style="background-color:{{ cat.color }};"></div><span>&nbsp;{{ label_1 }}</span></div>
+                                    <div class="legend_element"><div class="dot" style="background-color:{{ color_2 }};"></div><span>&nbsp;{{ label_2 }}</span></div>
+                                    <div class="legend_element"><div class="dot" style="background-color:{{ color_3 }};"></div><span>&nbsp;{{ label_3 }}</span></div>
+                                </div>
+                            </div>
+
+                            {% with answer=answer_202210421 %}
+                                {% with title=_("... au sein de la filière")|concat:" "|concat:answer.perimeter %}
+                                    {% include 'includes/indicators/repartition_chart.html' with title=title answer=answer color_1=cat.color color_2=color_2 color_3=color_3 label_1=label_1 label_2=label_2 label_3=label_3 %}
+                                {% endwith %}
+                            {% endwith %}
+
+                            {% with answer=answer_202210422 %}
+                                {% with title=_("... au sein de la filière")|concat:" "|concat:answer.perimeter %}
+                                    {% include 'includes/indicators/repartition_chart.html' with title=title answer=answer color_1=cat.color color_2=color_2 color_3=color_3 label_1=label_1 label_2=label_2 label_3=label_3 %}
+                                {% endwith %}
+                            {% endwith %}
+
+                            {% with answer=answer_202210423 %}
+                                {% with title=_("... au sein de la filière")|concat:" "|concat:answer.perimeter %}
+                                    {% include 'includes/indicators/repartition_chart.html' with title=title answer=answer color_1=cat.color color_2=color_2 color_3=color_3 label_1=label_1 label_2=label_2 label_3=label_3 %}
+                                {% endwith %}
+                            {% endwith %}
+
+                            {% with answer=answer_202210424 %}
+                                {% with title=_("... au sein de la filière")|concat:" "|concat:answer.perimeter %}
+                                    {% include 'includes/indicators/repartition_chart.html' with title=title answer=answer color_1=cat.color color_2=color_2 color_3=color_3 label_1=label_1 label_2=label_2 label_3=label_3 %}
+                                {% endwith %}
+                            {% endwith %}
+
+                            {% with answer=answer_202210425 %}
+                                {% with title=_("... au sein de la filière")|concat:" "|concat:answer.perimeter %}
+                                    {% include 'includes/indicators/repartition_chart.html' with title=title answer=answer color_1=cat.color color_2=color_2 color_3=color_3 label_1=label_1 label_2=label_2 label_3=label_3 %}
+                                {% endwith %}
+                            {% endwith %}
+
+                            {% with answer=answer_20221042 %}
+                                {% with title=_("... au sein de la filière")|concat:" "|concat:answer.perimeter %}
+                                    {% include 'includes/indicators/repartition_chart.html' with title=title answer=answer color_1=cat.color color_2=color_2 color_3=color_3 label_1=label_1 label_2=label_2 label_3=label_3 %}
+                                {% endwith %}
+                            {% endwith %}
+                        </div>
+                    {% endif %}
+            {% endwith %}
+
+            {% with color_2="#863C63" color_3="#8888E2" label_1=_("Femmes") label_2=_("Hommes") label_3=_("Non-binaire") %}
+                    {% if answer_2022104261 or answer_202210427 %}
+                        <div class="item_pb item_s3">
+                            <div style="display: flex;justify-content: space-between">
+                                <div>
+                                    <h3 line_id=17 class="txt_line content-strong" prefix="\n" style="text-align: left;">
+                                        {% blocktrans trimmed %}Répartition des genres...{% endblocktrans %}
+                                    </h3>
+                                </div>
+                                <div class="legend_container">
+                                    <div class="legend_element"><div class="dot" style="background-color:{{ cat.color }};"></div><span>&nbsp;{{ label_1 }}</span></div>
+                                    <div class="legend_element"><div class="dot" style="background-color:{{ color_2 }};"></div><span>&nbsp;{{ label_2 }}</span></div>
+                                    <div class="legend_element"><div class="dot" style="background-color:{{ color_3 }};"></div><span>&nbsp;{{ label_3 }}</span></div>
+                                </div>
+                            </div>
+
+                            {% with answer=answer_202210426 %}
+                                {% with title=_("... des primo-entrants en première année") %}
+                                    {% include 'includes/indicators/repartition_chart.html' with title=title answer=answer color_1=cat.color color_2=color_2 color_3=color_3 label_1=label_1 label_2=label_2 label_3=label_3 %}
+                                {% endwith %}
+                                {% if answer.perimeter %}
+                                    <div class="perimeter-indicator">
+                                        <span>
+                                            {% trans answer.perimeter %}
+                                        </span>
+                                    </div>
+                                {% endif %}
+                            {% endwith %}
+
+                            {% with answer=answer_202210427 %}
+                                {% with title=_("... des primo-entrants en première année") %}
+                                    {% include 'includes/indicators/repartition_chart.html' with title=title answer=answer color_1=cat.color color_2=color_2 color_3=color_3 label_1=label_1 label_2=label_2 label_3=label_3 %}
+                                {% endwith %}
+                                {% if answer.perimeter %}
+                                    <div class="perimeter-indicator">
+                                        <span>
+                                            {% trans answer.perimeter %}
+                                        </span>
+                                    </div>
+                                {% endif %}
+                            {% endwith %}
+
+
+                        </div>
+                    {% endif %}
+            {% endwith %}
+
+
+            {% with answer=answer_202210428 %}
+                {% if answer %}
+                    <div class="item_pb item_s1 item_c stretched_item">
+                        {% with title=_("Taux d'obtention du diplôme de troisième année") %}
+                            <h3 line_id=17 class="txt_line content-strong" prefix="\n">
+                                {{ title }}
+                            </h3>
+                            {% with subanswers=answer.subanswers.all %}
+                                {% include 'includes/indicators/multiple_bar_chart.html' with color1=cat.color value1=subanswer.0.value color2="#863C63" value2=subanswer.1.value color3="#8888E2"  value3=subanswer.2.value value4=subanswer.3.value color4="#5B7899" legend1=subanswer.0.label legend2=subanswer.1.label legend3=subanswer.2.label legend4=subanswer.3.label id=answer.id|stringformat:'i'|add:"pie_chart" %}
+                            {% endwith %}
+                        {% endwith %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+
+            {% with answer=answer_202210429 %}
+                {% if answer %}
+                    <div class="item_pb item_s1 item_c stretched_item">
+                        {% with title=_("Taux d'obtention du diplôme de cinquième année") %}
+                            <h3 line_id=17 class="txt_line content-strong" prefix="\n">
+                                {{ title }}
+                            </h3>
+                            {% with subanswers=answer.subanswers.all %}
+                                {% include 'includes/indicators/multiple_bar_chart.html' with color1=cat.color value1=subanswer.0.value color2="#863C63" value2=subanswer.1.value color3="#8888E2"  value3=subanswer.2.value value4=subanswer.3.value color4="#5B7899" legend1=subanswer.0.label legend2=subanswer.1.label legend3=subanswer.2.label legend4=subanswer.3.label id=answer.id|stringformat:'i'|add:"pie_chart" %}
+                            {% endwith %}
+                        {% endwith %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+            {% with answer=answer_202210443 %}
+                {% if answer %}
+                    <div class="item_pb item_s1 item_c">
+                        <h3 line_id=17 suffix=" : {{ answer.value|floatformat:'0' }} %" class="txt_line content-strong">
+                            {% blocktrans trimmed %}Écart entre les taux de cadres hommes et femmes à la délivrance du diplôme{% endblocktrans %}
+                        </h3>
+                        {% include 'includes/indicators/double_vertical_histogram.html' with value=answer.value last_year_value=answer.sibling_value label1=_("Femmes") color1=cat.color label2=_("Hommes") color2="#863C63" last_year=answer.sibling_year %}
+                        {% if answer.perimeter %}
+                            <div class="perimeter-indicator">
+                                <span>
+                                    {% trans answer.perimeter %}
+                                </span>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+            {% with answer=answer_202210444 %}
+                {% if answer %}
+                    <div class="item_pb item_s1 item_c">
+                        <h3 line_id=17 suffix=" : {{ answer.value|floatformat:'0' }} %" class="txt_line content-strong">
+                            {% blocktrans trimmed %}Écart entre les taux de cadres hommes et femmes à la délivrance du diplome{% endblocktrans %}
+                        </h3>
+                        {% include 'includes/indicators/double_vertical_histogram.html' with value=answer.value last_year_value=answer.sibling_value label1=_("Femmes") color1=cat.color label2=_("Hommes") color2="#863C63" last_year=answer.sibling_year %}
+                        {% if answer.perimeter %}
+                            <div class="perimeter-indicator">
+                                <span>
+                                    {% trans answer.perimeter %}
+                                </span>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+            {% with answer=answer_202210442 %}
+                {% if answer %}
+                    <div class="item_pb item_s1 item_c">
+                        <h3 line_id=17 suffix=" : {{ answer.value|floatformat:'0' }} %" class="txt_line content-strong">
+                            {% blocktrans trimmed %}Écart de rémunération brute annuelle moyenne entre les femmes et les hommes pour les premiers emplois{% endblocktrans %}
+                        </h3>
+                        {% include 'includes/indicators/double_vertical_histogram.html' with value=answer.value last_year_value=answer.sibling_value label1=_("Femmes") color1=cat.color label2=_("Hommes") color2="#863C63" last_year=answer.sibling_year %}
+                        {% if answer.perimeter %}
+                            <div class="perimeter-indicator">
+                                <span>
+                                    {% trans answer.perimeter %}
+                                </span>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+            {% with answer=answer_20221044 %}
+                {% if answer %}
+                    <div class="item_pb item_s1 item_c">
+                        <h3 line_id=17 suffix=" : {{ answer.value|floatformat:'0' }} %" class="txt_line content-strong">
+                            {% blocktrans trimmed %}Ecart de rémunération brute annuelle moyenne entre les femmes et les hommes cadres lors du premier emploi{% endblocktrans %}
+                        </h3>
+                        {% include 'includes/indicators/double_vertical_histogram.html' with value=answer.value last_year_value=answer.sibling_value label1=_("Femmes") color1=cat.color label2=_("Hommes") color2="#863C63" last_year=answer.sibling_year %}
+                        {% if answer.perimeter %}
+                            <div class="perimeter-indicator">
+                                <span>
+                                    {% trans answer.perimeter %}
+                                </span>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+            {% with answer=answer_202210441 %}
+                {% if answer %}
+                    <div class="item_pb item_s1 item_c">
+                        <h3 line_id=17 suffix=" : {{ answer.value|floatformat:'0' }} %" class="txt_line content-strong">
+                            {% blocktrans trimmed %}Écart de rémunération brute annuelle moyenne entre les femmes et les hommes non-cadres lors du premier emploi{% endblocktrans %}
+                        </h3>
+                        {% include 'includes/indicators/double_vertical_histogram.html' with value=answer.value last_year_value=answer.sibling_value label1=_("Femmes") color1=cat.color label2=_("Hommes") color2="#863C63" last_year=answer.sibling_year %}
+                        {% if answer.perimeter %}
+                            <div class="perimeter-indicator">
+                                <span>
+                                    {% trans answer.perimeter %}
+                                </span>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+        {% endif %}
+
+    </div>
+</div>

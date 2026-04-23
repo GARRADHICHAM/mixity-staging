@@ -1,0 +1,213 @@
+{% load i18n %}
+{% load static %}
+{% load cookielaw_tags%}
+{% load noindex %}
+
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/HTML" lang="fr" xml:lang="fr">
+  <head>
+    <!-- Title -->
+    <title>MIXITY</title>
+
+    <!-- Required Meta Tags Always Come First -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width">
+    {% noindex %}
+
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="google-site-verification" content="slC6vzmyHC2JL0SGIz4nhbC2MKTo3FGTDtkY5eyAv0o" />
+
+    <!-- Meta Tags for Apple -->
+    <meta name="apple-mobile-web-app-title" content="Mixity"> <!-- New in iOS6 -->
+    <meta name='apple-mobile-web-app-capable' content='yes'>
+    <meta name='apple-touch-fullscreen' content='yes'>
+    <meta property="og:title" content="{% if og_title %}{{ og_title }}{% else %}Mixity{% endif %}"/>
+    <meta property="og:description" content="{% if og_description %}{{ og_description }}{% else %}Mesure et pilotage diversité et inclusion{% endif %}"/>
+    <meta property="og:image" content="{% if og_image %}{{ og_image }}{% else %}https://www.mixity.co/static/img/offer_illus_global.png{% endif %}" />
+    <meta name='apple-mobile-web-app-status-bar-style' content='black'>
+    <meta name='format-detection' content='telephone=no'>
+    <meta name='viewport' content='width = 320, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes'>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Bootstrap 5.1.3 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <!--- Bootstrap table -->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.21.3/dist/bootstrap-table.min.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://unpkg.com/bootstrap-table@1.21.3/dist/bootstrap-table.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+
+    <link href="/static/dist/css/style-1.0.0.css?{{ request.version }}" rel="stylesheet"/>
+    <link rel="icon" href="{% static 'favicon.ico' %}">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Cousine:400,600,700" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap" rel="stylesheet"> <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+
+    <script type="text/javascript" src="{% url 'javascript-catalog' %}"></script>
+    <script src="{% static 'dist/js/html2pdf.bundle.min.js' %}"></script>
+    <script src="{% static 'dist/js/dom-to-image.js' %}"></script>
+    <!-- Hubspot Form -->
+    <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2.js"></script>
+
+    {% if GTAG %}
+       <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','{{ GTAG }}');</script>
+    <!-- End Google Tag Manager -->
+    {% endif %}
+
+
+    <!-- Hotjar Tracking Code for https://www.mixity.co/ -->
+        {% if HOTJAR_SCRIPT %}
+            <script>
+                (function(h,o,t,j,a,r){
+                    h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+                    h._hjSettings={hjid:3353908,hjsv:6};
+                    a=o.getElementsByTagName('head')[0];
+                    r=o.createElement('script');r.async=1;
+                    r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+                    a.appendChild(r);
+                })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+            </script>
+        {% endif %}
+    <!-- Hotjar script -->
+
+    <!-- Crisp chat Code for https://www.mixity.co/ -->
+        {% if CRISP_ID %}
+            {% if user.is_authenticated %}
+                <script type="module" src="{% static 'dist/js/crispcomponents-1.0.0.js' %}" id="crisp-script" data-email="{{ user.email }}" data-username="{{ user }}" data-crispid="{{ CRISP_ID }}"></script>
+            {% else %}
+                <script type="module" src="{% static 'dist/js/crispcomponents-1.0.0.js' %}" id="crisp-script" data-email="" data-username="" data-crispid="{{ CRISP_ID }}"></script>
+            {% endif %}
+        {% endif %}
+    <!-- Crisp script -->
+
+
+
+    {% block head %}
+    {% endblock %}
+  </head>
+
+  <body{% if colored_header %} class="header-colored"{% endif %}>
+      <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id={{GTAG}}"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    {% comment %} Sentry config {% endcomment %}
+    {% if SENTRY_DSN %}
+        <script
+            src="https://browser.sentry-cdn.com/6.2.2/bundle.tracing.min.js"
+            integrity="sha384-6nyTKv8WQWCjiZcGvMp9ienPyVwBBfPhJk3/aiESxhtkGc0XtP6ZcB+vafBNfxTD"
+            crossorigin="anonymous"
+        ></script>
+        <script type="text/javascript">
+            Sentry.init({
+                dsn: "{{ SENTRY_DSN }}",
+                release: "mixity@{{ request.version }}",
+                integrations: [new Sentry.Integrations.BrowserTracing()],
+                environment: "js {{ SENTRY_ENV }}",
+                tracesSampleRate: 1.0,
+            });
+        </script>
+    {% endif %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+    <script src="{% static 'vendors/d3.v5.min.js' %}"></script>
+    <script src="/static/dist/js/index-1.0.0.js"></script>
+    <script src="{% static 'cookielaw/js/cookielaw.js' %}"></script>
+    <!-- Easy cookies with Cookie.set() -->
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@beta/dist/js.cookie.min.js"></script>
+    {% if GOOGLE_ANALYTICS_KEY %}
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+      <!-- Old Analytics Script <script async src="https://www.googletagmanager.com/gtag/js?id={{ GOOGLE_ANALYTICS_KEY }}"></script>
+        <script>
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', '{{ GOOGLE_ANALYTICS_KEY }}');
+        </script> -->
+    {% endif %}
+    <script>
+        // script preventing big images to be uploaded on the server ( heroku error )
+        $( document ).ready(function() {
+            function checkImagesize(field){
+                if (field.files.length > 0 && field.files[0].size > 500000) {
+                        alert("{% trans 'La taille de votre fichier doit être inférieure à 500ko' %}");
+                        field.style.color = "red";
+                        field.value = "";
+                    }
+                else {
+                    field.style.color = "inherit";
+                }
+            }
+
+            var file_inputs = $("input:file");
+            file_inputs.each(function (element, index) {
+              var uploadLogoField = document.getElementById(element.id);
+                if (uploadLogoField !== undefined && uploadLogoField !== null) {
+                    uploadLogoField.onchange = function () {
+                        checkImagesize(uploadLogoField)
+                    }
+                }
+            });
+        });
+    </script>
+    <script type="application/javascript">
+        $(document).ready(function () {
+
+            $('.slider').slick({
+                dots:true,
+                autoplay: true,
+                autoplaySpeed: 7000
+            });
+            if($(document).width() > 1200) {
+                $('.slider-multiple').slick({
+                    dots: false,
+                    autoplay: true,
+                    autoplaySpeed: 7000,
+                    slidesToShow: 6,
+                    slidesToScroll: 3
+                });
+            }
+            else if($(document).width() > 768) {
+                $('.slider-multiple').slick({
+                    dots: false,
+                    autoplay: true,
+                    autoplaySpeed: 7000,
+                    slidesToShow: 4,
+                    slidesToScroll: 2
+                });
+            }
+            else {
+                $('.slider-multiple').slick({
+                    dots: false,
+                    autoplay: true,
+                    autoplaySpeed: 7000,
+                    slidesToShow: 2,
+                    slidesToScroll: 2
+                });
+            }
+        });
+    </script>
+      {% block scripts %}
+      {% endblock %}
+      {% include 'includes/browser_modal.html' %}
+      <section class="main full-height">
+          {% cookielaw_banner %}
+          {% block content %}
+          {% endblock %}
+      </section>
+  </body>
+</html>

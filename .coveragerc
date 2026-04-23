@@ -1,0 +1,38 @@
+# https://coverage.readthedocs.io/en/latest/config.html
+
+[run]
+source=.
+branch = True
+concurrency=multiprocessing
+omit=
+    */migrations/*
+    */admin.py
+    */tests/*
+    */importsheets/*
+    manage.py
+    settings.py
+    */apps.py
+
+[report]
+fail_under = 40
+show_missing = True
+skip_covered = True
+ignore_errors = True
+# Regexes for lines to exclude from consideration
+exclude_lines =
+    # Have to re-enable the standard pragma
+    pragma: no cover
+
+    # Don't complain about missing debug-only code:
+    def __repr__
+    if self\.debug
+
+    # Don't complain if tests don't hit defensive assertion code:
+    raise AssertionError
+    raise NotImplementedError
+    pass
+
+    # Don't complain if non-runnable code isn't run:
+    if 0:
+    if False:
+    if __name__ == .__main__.:

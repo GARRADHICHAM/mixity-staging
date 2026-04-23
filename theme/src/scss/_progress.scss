@@ -1,0 +1,61 @@
+/*------------------------------------
+  Progress Bars
+------------------------------------*/
+
+
+
+.progress {
+    display: flex;
+    height: 1.5rem;
+    overflow: hidden;
+    font-size: .75rem;
+    background-color: #e9ecef;
+    border-radius: .75rem;
+
+    &--big {
+        height: 2rem;
+        font-size: 1.5rem;
+        border-radius: 1rem;
+    }
+    &-bar {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        color: var(--color-primary);
+        white-space: nowrap;
+        background-color: var(--color-primary);
+        transition: width .6s ease;
+
+        &--percentage {
+            margin-left: 10px; 
+            margin-right: 10px;
+            font-weight: 800;
+        }
+    
+        &--gender {
+            background-color: var(--color-pink);
+        }
+    
+        &--cultural_diversity {
+            background-color: var(--color-cultural-diversity);
+        }
+    
+        &--disability {
+            background-color: var(--color-disability);
+        }
+    
+        &--generational_diversity {
+            background-color: var(--color-primary);
+            color: #fff;
+        }
+    
+        &--lgbt {
+            background-color: #47D4FF;
+        }
+    
+        &--all {
+            background-color: #8888e2;
+        }
+    }
+}

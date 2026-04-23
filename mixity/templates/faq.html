@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+
+
+{% block content %}
+
+<section class="mxt-container bg-gradient-multicolor">
+
+  <div class="col text-center justify-content-center align-items-center">
+    <header>
+      <h1 class="mxt--h1">{% blocktrans trimmed %}Foire aux questions{% endblocktrans %}</h1>
+    </header>
+  </div>
+
+  <div class="col col-lg-8 col-12">
+      {%  for object in object_list %}
+          <h2 class="color--primary mxt--h2" id="category_{{ object.slug }}">{% trans object.name %}</h2>
+          {%  for faq in object.faqs.all %}
+              <br>
+              <p class="bubble bubble__left bg--primary-light content-strong">{{faq.question|linebreaksbr}}</p>
+              <br>
+              <p class="bubble bubble__right bg--blue-light color--primary content">{{faq.answer|linebreaksbr}}</p>
+          {% endfor %}
+      {% endfor %}
+  </div>
+
+</section>
+
+{% endblock %}

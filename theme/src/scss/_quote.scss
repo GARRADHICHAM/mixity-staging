@@ -1,0 +1,90 @@
+@import '_variables';
+.quote {
+    margin-bottom: 2em;
+
+    &__title {
+        margin: 0;
+        font-weight: 700;
+    }
+
+    &__subtitle {
+        margin: 0;
+    }
+
+    &__picture {
+        width: 4em;
+        height: 4em;
+        border-radius: 4em;
+        margin: 1em .75em;
+        overflow: hidden;
+    }
+
+    &__content {
+        display: flex;
+    }
+
+    &__cite {
+        font-style: italic;
+        margin: 0;
+        padding: 0;
+        flex: 1;
+    }
+}
+
+
+.bubble {
+    border-radius: 15px;
+    position: relative;
+    max-width: 70%;
+    padding: 10px 10px 10px 10px;
+
+    &__left {
+        justify-self: start;
+        color: white !important;
+    }
+
+    &__right {
+        justify-self: end;
+    }
+}
+
+.bubble__left:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 25px;
+    width: 0;
+    height: 0;
+    border: 20px solid transparent;
+    border-top-color: var(--color-primary-light);
+    border-bottom: 0;
+    border-left: 0;
+    margin-left: -10px;
+    margin-bottom: -20px;
+}
+
+.bubble__right:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 25px;
+    width: 0;
+    height: 0;
+    border: 20px solid transparent;
+    border-top-color: var(--color-blue-light);
+    border-bottom: 0;
+    border-right: 0;
+    margin-right: -10px;
+    margin-bottom: -20px;
+}
+
+@media ($sm-screen) {
+    .quote {
+        &__picture {
+            width: 8em;
+            height: 8em;
+            border-radius: 8em;
+            margin: 1em;
+        }
+    }
+}

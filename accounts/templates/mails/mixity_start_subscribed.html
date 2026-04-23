@@ -1,0 +1,24 @@
+{% extends "base_email.html" %}
+{% load i18n static format_number %}
+
+{% block content %}
+<tr>
+  <td><h1>{% trans "Merci d’avoir souscrit à la version complète de Mixity Start !" %}</h1></td>
+</tr>
+<tr>
+  <td>
+    {% blocktrans trimmed %}
+    Poursuivez votre évaluation pour générer votre empreinte et vos recommandations sur l’ensemble des dimensions de la diversité et de l’inclusion.
+    {% endblocktrans %}<br/><br/><br/>
+    <div style="margin-bottom: 21px;"><a style="background: #18ffc3;padding: 13px;border-radius: 21px;text-decoration: none;color: #181b3d;font-weight: bold;" href="{{ evaluation_url }}">{% blocktrans trimmed %}Accéder l’évaluation complète{% endblocktrans %}</a></div><br/>
+    {% blocktrans trimmed %}
+        Nous vous invitons également à compléter votre <a href="{{ account_url }}">profil</a> avec toutes les informations nécessaires.{% endblocktrans %}<br/><br/>
+    {% blocktrans trimmed %}
+        Nous sommes à votre disposition pour répondre à vos <a href="mailto:contact@mixity.co">questions</a>.{% endblocktrans %}
+      <br/><br/>
+    {% blocktrans trimmed %}
+    L’équipe Mixity
+    {% endblocktrans %}
+  </td>
+</tr>
+{% endblock %}

@@ -1,0 +1,100 @@
+{% load l10n %}
+{% load static %}
+
+
+<!-- Create a div where the graph will take place -->
+{% localize off %}
+<div id="horizontal_histogram_{{ id }}"></div>
+
+{% block scripts %}
+<script type="application/javascript">
+    $(document).ready(function () {
+        // set the dimensions and margins of the graph
+        let is_long = Boolean({{ is_long }});
+        let margin = {top: 0, right: 0, bottom: 0, left: 0},
+            width = is_long? 1000 : 500 - margin.left - margin.right,
+            height = 50 - margin.top - margin.bottom,
+            value1 = parseFloat("{{ value }}".replace(',', '.')),
+            value2 = parseFloat("{{ reference }}".replace(',', '.'));
+
+        let percent  = value1;
+        //let value2 = (100 * (value1 - value2) / Math.max(value1, value2)).toFixed(1);
+        //let value2 = (((percent * value1) / 100 ) + value1).toFixed(1);
+        // append the svg object to the body of the page
+        var svg = d3.select("#horizontal_histogram_{{id}}")
+            .append("svg")
+            .attr("width", width + margin.left + margin.right)
+            .attr("height", height + margin.top + margin.bottom)
+            .append("g")
+            .attr("transform",
+                "translate(" + margin.left + "," + margin.top + ")");
+        var color = d3.scaleOrdinal()
+            .domain(["Homme", "Femme"])
+            .range(["{{color}}", "{% firstof second_color "#EBEAEA" %}"])
+
+        // Parse the Data
+        let data = [{Country: "Homme", Value: value1}, {Country: "Femme", Value: value2}]
+
+        // Add X axis
+        var x = d3.scaleLinear()
+            .domain([0, Math.max(value1, value2)])
+            .range([0, width - 200]);
+        svg.append("g")
+            .attr("transform", "translate(0," + height + ")")
+            //.call(d3.axisBottom(x))
+            .selectAll("text")
+            .attr("transform", "translate(-10,0)rotate(-45)")
+            .style("text-anchor", "end");
+
+        // Y axis
+        var y = d3.scaleBand()
+            .range([0, height])
+            .domain(["Homme", "Femme"])
+            .padding(.1);
+        svg.append("g")
+        //.call(d3.axisLeft(y))
+
+        //Bars
+        svg.selectAll("myRect")
+            .data(data)
+            .enter()
+            .append("rect")
+            .attr("x", x(0))
+            .attr("y", function (d) {
+                return y(d.Country);
+            })
+            .attr("width", function (d) {
+                return x(d.Value);
+            })
+            .attr("height", y.bandwidth())
+            .attr('fill', function (d) {
+                return (color(d.Country))
+            })
+
+        svg.append("text")
+            .attr("text-anchor", "middle")
+            .attr("x", width - 100)
+            //.attr("y", 20)
+            .attr("y", height / 2 + 20)
+            .text("{{ value }}" === "" ? "ND*" : percent.toString())
+            .style('font-size', '4em')
+            .style('font-family', 'Cousine')
+            .style('font-weight', '700')
+            .style('fill', '{{color}}');
+
+        svg.append("text")
+            .attr("text-anchor", "middle")
+            //.attr("x", width - 100)
+            .attr("x", 100)
+            //.attr("y", height / 2)
+            .attr("y", 41)
+            .text("{{ reference }}" === "" ? "ND*" : value2.toString() +  " ( référence nationale )")
+            .style('font-size', '12px')
+            .style('font-family', 'Cousine')
+            .style('font-weight', '700')
+            .style('fill', '#423c6b');
+
+    })
+</script>
+{% endblock %}
+{% endlocalize %}

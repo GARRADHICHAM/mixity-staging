@@ -1,0 +1,42 @@
+.error {
+    position: relative;
+    color: white;
+
+    a {
+        color: white;
+    }
+
+    &__bg {
+        position: absolute;
+        z-index: 1;
+        display: block;
+        padding: 0;
+        width: 100%;
+        top: 0;
+        bottom: 0;
+        opacity: .8;
+        background-image: url('/static/img/radar.png');
+        background-size: auto 70%;
+        background-position: 80% 40%;
+        background-repeat: no-repeat;
+        filter: blur(.5rem);
+    }
+
+    &__content {
+        position: relative;
+        z-index: 2;
+    }
+
+    &__title {
+        font-size: 3em;
+        font-weight: 600;
+        margin-top: .5em;
+        margin-bottom: 0;
+        color: white;
+        line-height: 1;
+    }
+
+    &__description {
+        margin-bottom: 2em;
+    }
+}

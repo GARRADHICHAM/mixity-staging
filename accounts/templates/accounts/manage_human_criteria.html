@@ -1,0 +1,154 @@
+{% extends "base_dashboard.html" %}
+{% load i18n static format_number %}
+
+
+{% block content %}
+    <section class="mxt-container bg-gradient-multicolor full-height">
+            <div class="card-light">
+                <article>
+                    <div style="text-align: left">
+                        <span class="title--h2">{% blocktrans trimmed %}Filtres personnalisés{% endblocktrans %}</span>
+                        <br/><br/>
+                        <span>{% blocktrans trimmed %}Vous pouvez ci-dessous ajouter des filtres avec des choix personnalisés, ces filtres vont permettre de consulter les réponses au sondage en fonction des caractéristiques des répondants (entités, statut, métiers...){% endblocktrans %}</span>
+                        <br/><br/>
+                        <span>{% blocktrans trimmed %}Le genre et l'âge sont les deux caractéristiques déjà présentes au sein du sondage.{% endblocktrans %}</span>
+                        <br/><br/>
+                        <span>{% blocktrans trimmed %}Vous pouvez ajouter autant de filtres et de choix que vous souhaitez ou ne pas en ajouter du tout.{% endblocktrans %}</span>
+                        <br/><br/>
+                        <span><b>{% blocktrans trimmed %}Attention :{% endblocktrans %}</b>&nbsp;<i>{% blocktrans trimmed %}Si la population de répondants n'est pas assez importante au sein des différents choix de filtres, vous ne pourrez pas visualiser les résultats filtrés.{% endblocktrans %}</i></span>
+                        <br/><br/>
+                    </div>
+                    <div class="col col--2 all_criteria" data-structure-id="{{ structure.id }}" data-csrf-token="{{csrf_token}}" data-href="{% url 'home' slug=structure.get_main_entity.slug %}">
+                        <div class="border" style="padding: 20px" id="criteria-1">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text bg--secondary color--white">
+                                        {% blocktrans trimmed %}Filtre : {% endblocktrans %}
+                                    </span>
+                                </div>
+                                <input id="criteria-label-1" class="criteria_human form-control" type="text" value="{{ default_criteria.label }}" aria-describedby="inputGroup-sizing-default" aria-label="Nom du filtre"/>
+                            </div>
+                            <div style="margin: 20px 20px" id="all-choices-1">
+                                {% for choice in default_criteria.choice %}
+                                    <div class="input-group input-group-sm mb-3" id="human-criteria-choice-{{ forloop.counter }}">
+                                        <input id="input-human-criteria-choice-{{ forloop.counter }}" class="criteria_human_choice_1 form-control" type="text" value="{{ choice }}" aria-describedby="inputGroup-sizing-sm" aria-label="Nom de choix"/>
+                                        <button class="btn btn-outline-secondary" aria-label="{{ label }}" onclick='deleteElem("human-criteria-choice-{{ forloop.counter }}")' style="border-radius: 0 2.5em 2.5em 0;">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                            <div style="text-align: center">
+                                <button class="btn button--sm button--secondary" onClick='add_criteria_choice("all-choices-1", "1")'>{% blocktrans trimmed %}Ajouter un choix{% endblocktrans %}</button>
+                            </div>
+                            <div style="text-align: right; margin-top: 10px">
+                                <button class="btn button--sm button--primary" onClick='deleteElem("criteria-1")'>{% blocktrans trimmed %}Supprimer le filtre{% endblocktrans %}</button>
+                            </div>
+                        </div>
+                        <div class="add_criteria_button" id="add-criteria-button" style="justify-self: center; align-self: center">
+                            <button class="btn button--sm button--primary" onclick="add_criteria()">{% blocktrans trimmed %}Ajouter un filtre{% endblocktrans %}</button>
+                        </div>
+                    </div>
+                    <div style="text-align: center; margin: 30px">
+                        <button class="btn button--primary" onclick="save_criteria()">{% blocktrans trimmed %}Sauvegarder les filtres et générer votre évaluation{% endblocktrans %}</button>
+                    </div>
+                </article>
+            </div>
+    </section>
+{% endblock %}
+{% block scripts %}
+    <script>
+        function uniqueID() {
+            return Math.floor(Math.random() * Date.now())
+        }
+
+        function deleteElem(elem_id) {
+            let elem = document.getElementById(elem_id);
+            if (elem){
+                elem.remove();
+            }
+        }
+
+        function add_criteria() {
+            let block = document.querySelector('.all_criteria');
+            let button = document.getElementById('add-criteria-button');
+            let criteria_id = uniqueID();
+            let choice_id = uniqueID();
+            button.remove();
+            block.insertAdjacentHTML('beforeend', '<div class="border" style="padding: 20px" id="criteria-' + criteria_id + '">' +
+                '<div class="input-group mb-3"><div class="input-group-prepend">' +
+                '<span class="input-group-text bg--secondary color--white">{% blocktrans trimmed %}Filtre : {% endblocktrans %}</span></div>' +
+                '<input id="criteria-label-' + criteria_id + '" class="criteria_human form-control" type="text" aria-describedby="inputGroup-sizing-default" aria-label="Nom du filtre"/></div>' +
+                '<div style="margin: 20px 20px" id="all-choices-' + criteria_id + '">' +
+                '<div class="input-group input-group-sm mb-3" id="human-criteria-choice-' + choice_id + '">' +
+                '<input id="input-human-criteria-choice-' + choice_id + '" class="criteria_human_choice_' + criteria_id + ' form-control" type="text" aria-describedby="inputGroup-sizing-sm" aria-label="Nom de choix"/>' +
+                '<button class="btn btn-outline-secondary" aria-label="{{ label }}" onclick=\'deleteElem("human-criteria-choice-' + choice_id + '")\' style="border-radius: 0 2.5em 2.5em 0;"><i class="fas fa-trash"></i></button></div></div>' +
+                '<div style="text-align: center">' +
+                '<button class="btn button--sm button--secondary" onClick=\'add_criteria_choice("all-choices-' + criteria_id + '", "' + criteria_id + '")\'>{% blocktrans trimmed %}Ajouter un choix{% endblocktrans %}</button></div>'+
+                '<div style="text-align: right; margin-top: 10px"> <button class="btn button--sm button--primary" onClick=\'deleteElem("criteria-' + criteria_id + '")\'>{% blocktrans trimmed %}Supprimer le filtre{% endblocktrans %}</button></div></div>' +
+                '<div class="add_criteria_button" id="add-criteria-button" style="justify-self: center; align-self: center"> <button class="btn button--sm button--primary" onclick="add_criteria()">{% blocktrans trimmed %}Ajouter un filtre{% endblocktrans %}</button> </div>');
+        }
+
+        function add_criteria_choice(choice_id, criteria_id) {
+            let block = document.getElementById(choice_id);
+            let new_choice_id = uniqueID();
+
+            block.insertAdjacentHTML('beforeend', '<div class="input-group input-group-sm mb-3" id="human-criteria-choice-' + new_choice_id + '">' +
+                '<input id="input-human-criteria-choice-' + new_choice_id + '" class="criteria_human_choice_' + criteria_id + ' form-control" type="text" aria-describedby="inputGroup-sizing-sm" aria-label="Nom de choix"/>'+
+                '<button class="btn btn-outline-secondary" aria-label="{{ label }}" onclick=\'deleteElem("human-criteria-choice-' + new_choice_id + '")\' style="border-radius: 0 2.5em 2.5em 0;"><i class="fas fa-trash"></i></button></div>');
+        }
+
+        function send_criteria(jsonCriteria) {
+            let element = document.querySelector('.all_criteria');
+            fetch('/structure/' + element.getAttribute('data-structure-id') + '/manage-criteria/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json;charset=utf-8',
+                    'X-CSRFToken': element.getAttribute('data-csrf-token') // mandatory to pass form validation
+                },
+                body: JSON.stringify(jsonCriteria)
+            }).then((response) => {
+                if (response.status === 200) {
+                    window.location.href = element.getAttribute('data-href')
+                } else {
+                    window.alert(gettext('Une erreur est survenue. Notre équipe en a été informée. Si le problème persiste, contactez le support.'))
+                }
+            }).catch(() => {
+                window.alert(gettext('Une erreur est survenue. Notre équipe en a été informée. Si le problème persiste, contactez le support.'))
+            })
+        }
+
+        function save_criteria() {
+            let criteria = document.querySelectorAll('.criteria_human');
+            let jsonAllCriteria = []
+            for (let i = 0; i < criteria.length; ++i) {
+                let choices_class = criteria[i].id.replace('criteria-label-', 'criteria_human_choice_');
+                let criteria_choices = document.querySelectorAll('.' + choices_class)
+
+                if (!criteria[i].value) {
+                    window.alert(gettext("Un de vos filtres n'a pas de nom"));
+                    return;
+                }
+                let jsonCriteria = {}
+                jsonCriteria['label'] = criteria[i].value
+
+                let choiceList = []
+                criteria_choices.forEach(function (choice){
+                    if (choice.value) {
+                        choiceList.push(choice.value)
+                    }
+                })
+                if (choiceList.length <= 1) {
+                    window.alert(gettext("Un de vos filtres n'a pas assez de choix"));
+                    return;
+                }
+                jsonCriteria['choices'] = choiceList
+
+                jsonAllCriteria.push(jsonCriteria)
+            }
+            send_criteria(jsonAllCriteria);
+        }
+
+    </script>
+{% endblock %}
+

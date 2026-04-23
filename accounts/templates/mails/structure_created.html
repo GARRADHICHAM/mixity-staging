@@ -1,0 +1,23 @@
+{% extends "base_email.html" %}
+{% load i18n static allow_evaluation %}
+
+{% block content %}
+    <tr>
+        <td><h1>{% blocktrans trimmed %}Félicitations, votre organisation a rejoint la communauté Mixity !{% endblocktrans %}</h1></td>
+    </tr>
+    <tr>
+        <td>
+            {% blocktrans trimmed %}Nous avons bien enregistré votre demande d’abonnement {{ subscription_label }} pour votre
+            structure {{ structure_name }}.
+            Une fois votre offre validée, vous pourrez accéder à votre questionnaire et débuter votre évaluation ici:{% endblocktrans %}
+            <a class="btn btn-secondary" href="{{ structure_url }}">{% blocktrans trimmed %}Débuter votre évalutation{% endblocktrans %}</a>
+        </td>
+    </tr>
+    <tr>
+        <td align="center">
+            <p><strong>{% blocktrans trimmed %}Une question ? Pour nous contacter, complétez le formulaire
+                ci-après{% endblocktrans %}</strong></p>
+            <a class="button" href="{{ contact_url }}">{% blocktrans trimmed %}Nous contacter{% endblocktrans %}</a>
+        </td>
+    </tr>
+{% endblock %}

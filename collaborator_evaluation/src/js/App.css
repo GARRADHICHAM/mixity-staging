@@ -1,0 +1,24 @@
+.App {
+    overflow-x: hidden;
+    padding: 4em;
+    font-family: Montserrat, sans-serif;
+    box-sizing: border-box;
+}
+
+.questionnaire-logo {
+    max-width: 160px;
+    margin-bottom: 4em;
+}
+
+.questionnaire-title {
+    margin-bottom: 2em;
+    font-size: 2.3em;
+}
+
+li {
+    list-style: none;
+}
+
+.bold {
+    font-weight: bold;
+}

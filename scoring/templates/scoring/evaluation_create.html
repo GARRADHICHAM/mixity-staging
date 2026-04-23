@@ -1,0 +1,116 @@
+{% extends "base.html" %}
+{% load static %}
+{% load i18n %}
+{% load l10n %}
+{% load define %}
+
+{% block content %}
+<div class="container-fluid full-height">
+    <div class="row">
+        <div class="col-3 bg-primary">
+            {% include 'includes/nav_evaluation.html' with fake=True %}
+        </div>
+        <article class="col-9 p-5 bg-gradient-multicolor" style="flex-direction: column;">
+            <header>
+                {% if sheet.slug == "gender" %}
+                    {% define _("Mixity Gender") as offer_name %}
+                {% else %}
+                    {% define _("Diversité et Inclusion") as offer_name %}
+                {% endif %}
+            <h2 class="title--h2">{% blocktrans trimmed with data_year=sheet.get_data_year|unlocalize %}Vous allez générer votre empreinte {{ offer_name }} <strong>sur la base du référentiel Mixity {{ data_year }}{% endblocktrans %}</strong>.</h2>
+            <h2 class="title--h2">{% blocktrans trimmed %}Avant de commencer à remplir le référentiel Mixity,
+            prenez le temps de consulter les 4 étapes pour bien compléter votre empreinte.{% endblocktrans %}</h2>
+            </header>
+            <div class="col col--4">
+            <div class="">
+                <img alt="Image catégories : Genre, LGBTQIA+, Handicap" class="image" src="{% static 'img/category.png' %}">
+                <h3 class="title">
+                    {% if sheet.slug == "mixity_start" %}
+                        {% blocktrans trimmed %}Quelles données sont demandées ?{% endblocktrans %}
+                    {% else %}
+                        {% blocktrans trimmed %}Quelles catégories dois-je compléter ?{% endblocktrans %}
+                    {% endif %}
+                </h3>
+                {% if sheet.slug == "mixity_start" %}
+                    <p>L'évaluation mesure des données quantitatives (indicateurs chiffrés) et des informations qualitatives (niveau de maturité des actions).</p>
+                    <p>Définissez une date (exemple: 31/12/2020) pour les questions qui demandent les actions sur les 12 derniers mois, puis comptabilisez à rebours depuis cette date (pour notre exemple cela corespond donc à l'année 2020 depuis le 01/01/2020).</p>
+                {% else %}
+                    {% blocktrans trimmed %}
+                        <p>Vous pouvez choisir les catégories que vous souhaitez compléter.</p>
+                        <p>Si vous débutez une catégorie<br>- ex : <strong>Genre</strong>, il vous sera demandé de répondre à toutes les questions.</p>
+                    {% endblocktrans %}
+                {% endif %}
+            </div>
+            <div class="">
+                <img alt="Image temps questionnaire" class="image" src="{% static 'img/time.png' %}">
+                <h3>{% trans "Combien de temps consacrer au questionnaire ?" %}</h3>
+                {% blocktrans trimmed %}
+                    <p>Un taux de remplissage vous indique à quel niveau vous vous situez tout au long du parcours.</p>
+                    <p>Vous pouvez sauvegarder et quitter à tout moment.</p>
+                {% endblocktrans %}
+                {% if sheet.slug == "mixity_start" %}
+                    {% blocktrans trimmed %}
+                        <p>Dans le menu de gauche, vous pourrez observer un cercle, lorsque celui-ci est plein, cela signifie que la catégorie est entièrement complétée.</p>
+                    {% endblocktrans %}
+                {% endif %}
+                {% blocktrans trimmed %}
+                    <p> Vous pouvez sauvegarder et quitter au rythme qui vous conviendra.</p>
+                {% endblocktrans %}
+            </div>
+            <div class="">
+                <img alt="Image vérification" class="image" src="{% static 'img/verify.png' %}">
+                <h3>{% trans "Puis-je vérifier mes réponses avant validation ?" %}</h3>
+                {% blocktrans trimmed %}
+                <p>Une fois votre questionnaire complété, vous pourrez télécharger une version Excel avec l'intégralité de vos réponses.</p>
+                <p>A ce stade, vous pourrez encore modifier vos réponses.</p>
+                {% endblocktrans %}
+            </div>
+            <div class="">
+                <img alt="Image génération empreinte" class="image" src="{% static 'img/generate.png' %}">
+                <h3>{% trans "Comment générer mon empreinte ?" %}</h3>
+                {% if sheet.slug == "mixity_start" %}
+                    {% blocktrans trimmed %}
+                        <p>Une fois le questionnaire validé, vous serez automatiquement redirigé vers vos résultats.</p>
+                    {% endblocktrans %}
+                {% else %}
+                    {% blocktrans trimmed %}
+                        <p>Une fois le questionnaire validé, l'équipe Mixity vous contactera pour finaliser votre évaluation.</p>
+                    {% endblocktrans %}
+                {% endif %}
+                {% blocktrans trimmed %}
+                    <p>Après validation de votre évaluation par Mixity, votre fiche entreprise avec votre empreinte {{ offer_name }}, vos scores et indicateurs seront disponibles sur votre espace d'administration - section empreinte - "voir les évaluations".</p>
+                {% endblocktrans %}
+            </div>
+            </div>
+            <div style="color:white">
+                <form action="" method="post" class="form" enctype="{{enctype|default:'multipart/form-data'}}" onsubmit="document.getElementById('submit_btn').disabled = true">
+                    {% csrf_token %}
+                    {% comment %} {{ form.media }}
+                    {% for field in form %}
+                        <div class="field" id="field_{{field.id_for_label}}" {% if field.as_hidden %}style="display: none" {% endif %}>
+                            {{ field.errors }}
+                            <label class="field__label">{{ field.label_tag }} <span class="field__label__help">{% if not field.field.required %}{% blocktrans trimmed %}(optionnel){% endblocktrans %}{% endif %}</span></label>
+                            {{ field }}
+                            {% if field.help_text %}
+                                <div class="help">{{ field.help_text|safe }}</div>
+                            {% endif %}
+                        </div>
+                    {% endfor %} {% endcomment %}
+                    <div class="col col--1 title--h3" style="align-self: center">
+                        <button id="submit_btn" class="btn btn-primary" onclick="disableButton()" type="submit">{% blocktrans trimmed %}Commencer l'évaluation{% endblocktrans %}</button>
+                    </div>
+                </form>
+
+            </div>
+        </article>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        function disableButton() {
+            document.getElementById("submit_btn").hidden = true;
+        }
+    </script>
+{% endblock %}

@@ -1,0 +1,58 @@
+.structure-detail__button {
+    font-weight: 600; 
+    text-decoration: none;
+    text-align: center; 
+    width: 100%;
+    line-height: 2rem;
+    padding: .5rem;
+}
+
+.structure-detail__tabs {
+    height: 50px;
+    font-size: 15pt;
+    @media screen and (max-width: 768px) {
+        height: fit-content;
+    }
+}
+
+.footprint__graph {
+    margin: 0 0 0 10%;
+    @media screen and (max-width: 768px) {
+        margin: 0;
+        max-width: 330px;
+    }
+}
+
+.women__managers {
+    @media screen and (max-width: 768px) {
+        flex-direction: column !important;
+        justify-content: center !important;
+    }
+}
+
+.company__details {
+    grid-gap:0.25em; 
+    margin-top:-1.25em; 
+    margin-bottom:2em; 
+    color:#8888E2;
+}
+
+.button--pink {
+    img {
+        width: 22px;
+        margin-right: 5px;
+    }
+}
+
+.label_img {
+    height: 100px;
+    width: auto; 
+    margin: 2em;
+}
+
+.progress__title {
+    margin-right: 10px; 
+    font-size: 1.2em; 
+    white-space: nowrap;
+    margin-bottom: .5rem;
+}

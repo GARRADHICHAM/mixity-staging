@@ -1,0 +1,39 @@
+default:
+  image: python:3.9
+  before_script:
+    - apt update
+    - apt install -y gettext
+
+services:
+  - name: redis:latest
+  - name: postgres:11.17-alpine  # Use same version has heroku app
+    alias: postgres
+
+stages:
+ # for now tests are locals / problems with JSONField and sqlite - test
+  - test
+
+variables:
+  POSTGRES_DB: mixity
+  POSTGRES_USER: runner
+  POSTGRES_PASSWORD: ""
+  POSTGRES_PORT: 5432
+  POSTGRES_HOST_AUTH_METHOD: trust
+  POSTGRES_HOST: postgres
+  REDIS_URL: redis://redis:6379
+  PGSQL_USER: runner
+  PGSQL_HOST: postgres
+  ASSERT_NUM_QUERIES_REFERENCE_ENABLED: 0
+
+staging:
+  stage: test
+  timeout: 7m
+  script:
+  - env
+  - pip install -r requirements-dev.txt
+  - python manage.py compilemessages
+  - make config
+  - coverage run --parallel-mode --source='.' manage.py test --noinput --parallel=11 -v 3 && coverage combine && coverage report
+  only:
+  - develop
+  - merge_requests

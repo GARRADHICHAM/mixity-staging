@@ -1,0 +1,318 @@
+.relative {
+    position: relative;
+}
+
+.color {
+    &--white {
+        color: white;
+    }
+
+    &--pink {
+        color: var(--color-pink) !important;
+    }
+
+    &--red {
+        color: var(--color-red) !important;
+    }
+
+    &--primary {
+        color: var(--color-primary) !important;
+
+        &::before {
+            color: var(--color-primary) !important;
+        }
+    }
+
+    &--primary-light {
+        color: var(--color-primary-light) !important;
+
+        &::before {
+            color: var(--color-primary-light) !important;
+        }
+    }
+
+    &--primary-dark {
+        color: var(--color-primary-dark) !important;
+
+        &::before {
+            color: var(--color-primary-dark) !important;
+        }
+    }
+
+    &--primary-disabled {
+        color: var(--color-primary-disabled) !important;
+
+        &::before {
+            color: var(--color-primary-disabled) !important;
+        }
+    }
+
+    &--secondary {
+        color: var(--color-secondary) !important;
+    }
+
+    &--secondary-light {
+        color: var(--color-secondary-light) !important;
+    }
+
+    &--secondary-dark {
+        color: var(--color-secondary-dark) !important;
+    }
+
+    &--secondary-dark-hover {
+        color: var(--color-secondary-dark-hover) !important;
+    }
+
+
+    &--yellow {
+        color: #EF9F55 !important;
+    }
+
+    &--text {
+        color: var(--text-color) !important;
+    }
+
+    &--strong {
+        color: var(--color-strong) !important;
+    }
+    &--lowkey-grey {
+        color: var(--color-lowkey-grey) !important;
+    }
+}
+
+.border {
+    &--white {
+        border-color: white;
+    }
+
+    &--pink {
+        border-color: var(--color-pink) !important;
+    }
+
+    &--red {
+        border-color: var(--color-red) !important;
+    }
+
+    &--primary {
+        border-color: var(--color-primary) !important;
+
+        &::before {
+            border-color: var(--color-primary) !important;
+        }
+    }
+
+    &--primary-light {
+        border-color: var(--color-primary-light) !important;
+
+        &::before {
+            border-color: var(--color-primary-light) !important;
+        }
+    }
+
+    &--primary-dark {
+        border-color: var(--color-primary-dark) !important;
+
+        &::before {
+            border-color: var(--color-primary-dark) !important;
+        }
+    }
+
+    &--primary-disabled {
+        border-color: var(--color-primary-disabled) !important;
+
+        &::before {
+            border-color: var(--color-primary-disabled) !important;
+        }
+    }
+
+    &--secondary {
+        border-color: var(--color-secondary) !important;
+    }
+
+    &--secondary-light {
+        border-color: var(--color-secondary-light) !important;
+    }
+
+    &--secondary-dark {
+        border-color: var(--color-secondary-dark) !important;
+    }
+
+    &--secondary-dark-hover {
+        border-color: var(--color-secondary-dark-hover) !important;
+    }
+
+
+    &--yellow {
+        border-color: #EF9F55 !important;
+    }
+
+    &--text {
+        border-color: var(--text-color) !important;
+    }
+
+    &--strong {
+        border-color: var(--color-strong) !important;
+    }
+    &--lowkey-grey {
+        border-color: var(--color-lowkey-grey) !important;
+    }
+}
+
+.padding {
+    padding: 1em;
+}
+
+.padding-vertical {
+    padding: 1em 0;
+}
+
+.padding-vertical-2 {
+    padding: 2em 0;
+}
+
+.padding-vertical-4 {
+    padding: 4em 0;
+}
+
+.padding-horizontal {
+    padding: 0 1em;
+}
+
+.padding-horizontal-2 {
+    padding: 0 2em;
+}
+
+.padding-horizontal-4 {
+    padding: 0 4em;
+}
+
+.padding-2 {
+    padding: 2em;
+}
+
+.padding-4 {
+    padding: 4em;
+}
+
+.margin {
+    margin: 1em;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-red-dark {
+    color: #863C63 !important;
+}
+
+.full-height {
+    /* 100% view height minus header + footer height */
+    min-height: calc(100vh - 32em);
+}
+
+.bg {
+    &--gradient {
+        background: linear-gradient(rgba(255, 255, 255, 0), rgba(91, 120, 153, .25));
+    }
+
+    &--gradient-secondary {
+        background: linear-gradient(rgba(255, 255, 255, 0), rgba(91, 153, 131, .25));
+    }
+
+    &-gradient-multicolor {
+        background-image: url(/static/img/homePage/background.png);
+        background-size: 100% 100%;
+    }
+
+    &--gradient-primary {
+        background: linear-gradient(to left, rgba(91, 120, 153, .25), #8888e2);
+    }
+
+    &--gradient-primary-light {
+        background: linear-gradient(84.98deg, #E7E4F3 -0.31%, rgba(231, 228, 243, 0) 103.95%), #FFFFFF;
+    }
+
+    &--gradient-summary {
+        background: url('/static/img/background/bg_summary.svg');
+        background-position: bottom;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    &--gradient-blue-light {
+        background: linear-gradient(83.12deg, rgba(112, 212, 255, 0.7) -52%, rgba(112, 212, 255, 0) 104.17%);
+    }
+
+    &--white {
+        background: white;
+    }
+
+    &--blue {
+        background: var(--color-blue);
+    }
+
+    &--blue-light {
+        background: var(--color-blue-light);
+    }
+
+    &--pink {
+        background: var(--color-pink);
+    }
+     &--red {
+        background: var(--color-red) !important;
+    }
+
+    &--primary {
+        background: var(--color-primary) !important;
+    }
+
+    &--primary-light {
+        background: var(--color-primary-light) !important;
+    }
+
+    &--yellow {
+        background: #EF9F55 !important;
+    }
+
+
+    &--primary-alpha {
+        background: rgba(var(--color-primary), .8) !important;
+    }
+
+    &--secondary {
+        background: var(--color-secondary) !important;
+    }
+
+    &--secondary-light {
+        background: var(--color-secondary-light) !important;
+    }
+
+    &--secondary-dark {
+        background: var(--color-secondary-dark) !important;
+    }
+
+
+    &--radar {
+        background-image: url('/static/img/footprint-group-01.png');
+        background-position: 10% bottom;
+        background-repeat: no-repeat;
+    }
+}
+.header-colored {
+    background: url('/static/img/background/bg_header.svg');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.border-color-disabled {
+    border-color: var(--color-primary-disabled);
+}
+.two-lines-max {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    line-clamp: 2;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}

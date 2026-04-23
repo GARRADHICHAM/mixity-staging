@@ -1,0 +1,270 @@
+{% load i18n %}
+{% load l10n %}
+{% load static %}
+{% load format_number %}
+
+
+<!-- Create a div where the graph will take place -->
+{% localize off %}
+<div id="c_plot_container_{{id}}" style="display: flex; flex-direction: column;position:relative;margin-top: 10px;">
+    <div id="circular_plot_{{id}}"></div>
+    {% if last_year_value and percent %}
+    <div style="width: 100%; display: flex; justify-content: center;top: 64%; position:absolute;">
+        <div style="border-radius: 15px; border:1px solid #FF7070; padding: {% if small %}0px 6px; font-size: 10pt{% else %}2px 10px; font-size:12pt{% endif %}">
+            <span style="color: #FF7070;">{% points current_year=percent_inner last_year=last_year_value show_evolution=True %}</span>
+        </div>
+    </div>
+    {% endif %}
+</div>
+
+{% block scripts %}
+<script type="application/javascript">
+    // set the dimensions and margins of the graph
+    $(document).ready(function () {
+        {% if small %}
+            let width = 350
+            let height = 180
+            let margin = 18
+            let thincirclesize = 9
+            let fatcirclesize = 18
+            let font_size = "2em"
+            let font_size_legend = "1.5em"
+        {% else %}
+            let width = 400
+            let height = 320
+            let margin = 25
+            let thincirclesize = 8
+            let fatcirclesize = 18
+            let font_size = "3em"
+            let font_size_legend = "2em"
+        {% endif %}
+        document.querySelector("#c_plot_container_{{id}}").style.height = height.toString() + "px";
+
+        {% if not blank_color  %}
+        let blank_color = "#EBEAEA";
+        {% else %}
+        let blank_color = "{{ blank_color }}";
+        {% endif %}
+
+
+        {% if not border_color %}
+        let border_color = "#fff";
+        {% else %}
+        let border_color = "{{ border_color }}";
+        {% endif %}
+
+        // The radius of the pieplot is half the width or half the height (smallest one). I subtract a bit of margin.
+        var radius_outter = width / 2.3 - margin
+        var radius = radius_outter - thincirclesize
+        var radius_inner = radius - fatcirclesize;
+
+        // append the svg object to the div called 'my_dataviz'
+        var svg = d3.select("#circular_plot_{{id}}")
+            .append("svg")
+            .attr("width", width)
+            .attr("height", height)
+            .append("g")
+            .attr("transform", "translate(" + (width+thincirclesize) / 2 + "," + (height+90) / 2 + ")");
+
+        // Create data
+        var percent = Number("{{percent}}".replace(',', '.'));
+        var percent_outter = Number("{{percent_outter}}".replace(',', '.'));
+        var percent_inner = Number("{{percent_inner}}".replace(',', '.'));
+
+        if (isNaN(percent))
+            percent = 0
+
+        if (isNaN(percent_outter))
+            percent_outter = 0
+
+        let to_8 = Math.max(8 - Math.min(percent_inner, percent_outter), 0);
+
+        {% if round %}
+            percent =  Math.ceil(percent)
+            percent_outter =  Math.ceil(percent_outter)
+            percent_inner =  Math.ceil(percent_inner)
+        {% endif %}
+
+        if ("{{percent}}" === "") {
+            var data = {a: to_8 + 0.8, b: 100.0}
+        }
+        else {
+            var data = { a:  percent + to_8, b: 100 - percent - to_8}
+        }
+
+        var data_outter = { a:  percent_outter + to_8, b: 100 - percent_outter - to_8}
+        var data_inner = { a:  percent_inner + to_8, b: 100 - percent_inner  - to_8}
+
+        // Set the color scale
+        var color = d3.scaleOrdinal()
+            .domain(data)
+            .range(["#863C63", blank_color,])
+
+        var color_outter = d3.scaleOrdinal()
+            .domain(data_outter)
+            .range([ "#95B9C1", blank_color ,])
+
+        var color_inner = d3.scaleOrdinal()
+            .domain(data_inner)
+            .range(["{{color}}", blank_color ,])
+
+
+        // Compute the position of each group on the pie:
+        var pie = d3.pie()
+            .value(function (d) {
+                return d.value;
+            })
+            .sort(null)
+                .startAngle(-Math.PI / 2)
+                .endAngle(Math.PI / 2)
+        var data_ready = pie(d3.entries(data))
+        var data_ready_outter = pie(d3.entries(data_outter))
+        var data_ready_inner = pie(d3.entries(data_inner))
+
+        // Build the pie chart: Basically, each part of the pie is a path that we build using the arc function.
+
+
+        {% if display_mean_score %}
+            svg.selectAll('whatever')
+                .data(data_ready)
+                .enter()
+                .append('path')
+                .attr('d', d3.arc()
+                    .innerRadius(radius_inner)
+                    .outerRadius(radius_outter)
+                )
+                .attr('fill', function (d) {
+                    return (color(d.data.key))
+                })
+                .attr("stroke", "none")
+
+            svg.selectAll('whatever')
+                .data(data_ready_outter)
+                .enter()
+                .append('path')
+                .attr('d', d3.arc()
+                    .innerRadius(radius)
+                    .outerRadius(radius_outter + 1)
+                )
+                .attr('fill', function (d) {
+                    return (color_outter(d.data.key))
+                })
+                .attr("id", function(d,i) { return "outterArc_{{id}}"+i; })
+                .attr("stroke", "none")
+        {% endif %}
+
+        var inner_arc = d3.arc()
+                .innerRadius(radius_inner - fatcirclesize)
+                .outerRadius(radius_outter - thincirclesize*2)
+        svg.selectAll('whatever')
+            .data(data_ready_inner)
+            .enter()
+            .append('path')
+            .attr('d', inner_arc)
+            .attr('fill', function (d) {
+                return (color_inner(d.data.key))
+            })
+            .attr("id", function(d,i) { return "innerArc_{{id}}"+i; })
+            .attr("stroke", "none");
+
+
+        /* Borders */
+        {% if display_mean_score %}
+            svg.selectAll('whatever')
+                .data(data_ready)
+                .enter()
+                .append('path')
+                .attr('d', d3.arc()
+                    .innerRadius(radius_outter - thincirclesize*2)
+                    .outerRadius(radius_outter - thincirclesize*2 - 1)
+                )
+                .attr('fill', border_color)
+                .attr("stroke", "none")
+
+            svg.selectAll('whatever')
+                .data(data_ready)
+                .enter()
+                .append('path')
+                .attr('d', d3.arc()
+                    .innerRadius(radius_outter - thincirclesize)
+                    .outerRadius(radius_outter - thincirclesize + 1)
+                )
+                .attr('fill', border_color)
+                .attr("stroke", "none")
+        {% endif %}
+
+
+        svg.append("text")
+            .attr("text-anchor", "middle")
+            .attr("dy", "-0.75em")
+            .text("{% percentage value=percent_inner %}")
+            .style('font-size', font_size)
+            .style('font-family', 'Cousine')
+            .style('font-weight', 'normal')
+            .style('fill', '{{ color }}');
+
+        {% if display_mean_score %}
+            svg.append("text")
+                .attr("text-anchor", "middle")
+                .attr("dy", "1.5em")
+                .attr("dx", "-2.2em")
+                .text("● {% percentage value=percent_outter %}")
+                .style('font-size', font_size_legend)
+                .style('font-family', 'Cousine')
+                .style('font-weight', 'normal')
+                .style('fill', "#95B9C1");
+
+            svg.append("text")
+                .attr("text-anchor", "middle")
+                .attr("dy", "1.5em")
+                .attr("dx", "+2.2em")
+                .text("● {% percentage value=percent %}")
+                .style('font-size', font_size_legend)
+                .style('font-family', 'Cousine')
+                .style('font-weight', 'normal')
+                .style('fill', "#863C63");
+        {% endif %}
+
+
+        /*  //Append the month names to each slice
+        svg.selectAll(".inner_legend")
+            .data(data_ready_inner)
+            .enter().append("text")
+            .attr("class", "monthText")
+            .attr("dy", 26)
+            .attr("x", 5)
+            .append("textPath")
+            //.attr("xlink:href",function(d,i){return "#donutArc"+i;})
+            .attr("xlink:href",function(d,i){return "#innerArc_{{id}}"+i;})
+            //.attr("transform", function(d, i) {
+            //    console.log("LALALALAALALA");
+                //    console.log(d);
+                //   console.log(i);
+                //    let translateX = radius_inner;
+                //    let translateY = 0;
+                //    let rotate = d.endAngle * Math.PI;
+                //    return "translate(" + translateX + "," + translateY + ") rotate(" + rotate + ")"
+            // })
+            .text(function(d){return d.index === 1 ? ("{{percent_inner}}" === "") ? 'ND' : String(percent_inner): '';})
+            .style('fill', '#FAC2AC')
+            .style('font-weight', 600)
+
+
+        //Append the month names to each slice
+        svg.selectAll(".outter_legend")
+            .data(data_ready_outter)
+            .enter().append("text")
+            .attr("class", "monthText")
+            .attr("dy", -6)
+            //.attr("x", 5)
+            .append("textPath")
+            .attr("xlink:href",function(d,i){return "#outterArc_{{id}}"+i;})
+            .text(function(d){return d.index === 1 ? ("{{percent_outter}}" === "") ? 'ND' : String(percent_outter): '';})
+            .style('fill', '#D67F5C')
+            .style('font-weight', 600);
+        */
+
+    })
+</script>
+{% endblock %}
+{% endlocalize %}

@@ -1,0 +1,119 @@
+{% load static %}
+{% load i18n %}
+
+{% comment %} Strengths section {% endcomment %}
+<div class="item_pb public_axe strenght_container">
+    <div class="points_title m-3">
+        <div class="d-flex align-items-center">
+            <h2 class="txt_line title--h2">
+                {% blocktrans trimmed %}Points forts{% endblocktrans %}
+            </h2>
+        </div>
+    </div>
+
+    {% for strenght in scores_categories_strengths|get_item:sc.category.slug %}
+        {% if strenght.description %}
+            <div class="{% if forloop.counter > 3 %}detail_pt details_hidden{% endif %} strenght_answer_container row mb-2 mx-2 mt-4">
+                <div class="icon"><i class="bi bi-hand-thumbs-up align-self-center" style="color: {{ sc.category.color }};"></i></div>
+                <div class="strenght_answer">
+                    <div class="mxt--h4">{% trans strenght.subcategory__name %}</div>
+                    <div class="mxt--small">{{ strenght.description|linebreaksbr }}</div>
+                </div>
+            </div>
+        {% endif %}
+    {% endfor %}
+
+    {% if scores_categories_strengths|get_item:sc.category.slug|length == 0 %}
+        <div class="m-3 mxt--h4">{% blocktrans trimmed %}Aucun point fort{% endblocktrans %}</div>
+    {% endif %}
+
+    {% if scores_categories_strengths|get_item:sc.category.slug|length > 3 %}
+        <div class="voir_suite_bouton mt-2 w-100 d-flex justify-content-center" style="color: {{ sc.category.color }}">
+            <p><strong>+</strong> {% blocktrans trimmed %}plus de détails{% endblocktrans %}</p>
+        </div>
+        <div class="masquer_suite_bouton details_hidden mt-2 w-100 d-flex justify-content-center" style="color: {{ sc.category.color }}">
+            <p><strong>-</strong> {% blocktrans trimmed %}masquer les détails{% endblocktrans %}</p>
+        </div>
+    {% endif %}
+</div>
+
+{% comment %} Weaknesses section {% endcomment %}
+<div class="item_pb public_axe weakness_container">
+    <div class="points_title m-3">
+        <div class="d-flex align-items-center">
+            <h2 class="title--h2 txt_line">
+                {% blocktrans trimmed %}Axes d'amélioration{% endblocktrans %}
+            </h2>
+        </div>
+    </div>
+
+    {% for weakness in scores_categories_weaknesses|get_item:sc.category.slug %}
+        {% if weakness.description %}
+            <div class="{% if forloop.counter > 3 %}detail_pt details_hidden{% endif %} weakness_answer_container row mb-2 mx-2 mt-4">
+                <div class="icon"><i class="bi bi-award align-self-center" style="color: {{ sc.category.color }};"></i></div>
+                <div class="weakness_answer">
+                    <div class="mxt--h4">{% trans weakness.subcategory__name %}</div>
+                    <div class="mxt--small">{{ weakness.description|linebreaksbr }}</div>
+                </div>
+            </div>
+        {% endif %}
+    {% endfor %}
+
+    {% if scores_categories_weaknesses|get_item:sc.category.slug|length == 0 %}
+        <div class="m-3 mxt--h4">{% blocktrans trimmed %}Aucun axe d'amélioration{% endblocktrans %}</div>
+    {% endif %}
+
+    {% if scores_categories_weaknesses|get_item:sc.category.slug|length > 3 %}
+        <div class="voir_suite_bouton mt-2 w-100 d-flex justify-content-center" style="color: {{ sc.category.color }}">
+            <p><strong>+</strong> {% blocktrans trimmed %}plus de détails{% endblocktrans %}</p>
+        </div>
+        <div class="masquer_suite_bouton details_hidden mt-2 w-100 d-flex justify-content-center" style="color: {{ sc.category.color }}">
+            <p><strong>-</strong> {% blocktrans trimmed %}masquer les détails{% endblocktrans %}</p>
+        </div>
+    {% endif %}
+</div>
+
+{% comment %} Aims section {% endcomment %}
+<div class="aim">
+    <div class="public_axe item_pb aim_container row">
+        <div class="points_title m-3 aim_title">
+            <div class="d-flex align-items-center">
+                <h2 class="title--h2 txt_line">
+                    {% blocktrans trimmed %}Objectifs recommandés{% endblocktrans %}
+                </h2>
+            </div>
+        </div>
+
+        {% for cat, aim in scores_categories_aims|get_item:sc.category.slug %}
+            {% if evaluation.display_aims_category == True and cat %}
+                <div class="aim_category w-100">
+                    <h3 class="title--h3 aim_category_title w-100">{{ cat }}</h3>
+                </div>
+            {% endif %}
+            <div class="aim_answer_col">
+                {% if aim.description %}
+                    <div class=" aim_answer_container row mb-2 mx-2 mt-4">
+                        <div class="icon"><i class="bi bi-bullseye align-self-center" style="color: {{ sc.category.color }};"></i></div>
+                        <div class="aim_answer">
+                            <div class="mxt--h4 pb-2">{% trans aim.subcategory.name %}</div>
+                            <div class="mxt--small">{{ aim.description|linebreaksbr }}</div>
+                        </div>
+                    </div>
+                    {% if aim.answer and aim.answer.question.indicators %}
+                        <div class="recommended">
+                            <div class="mxt--h4">
+                                <h4 class="recommended_title">{% blocktrans trimmed %}Indicateurs recommandés :{% endblocktrans%}</h4>
+                            </div>
+                            <div class="recommended_answer">
+                                {{ aim.answer.question.indicators|linebreaksbr }}
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endif %}
+            </div>
+        {% endfor %}
+        {% if aim_count|get_item:sc.category.slug == None %}
+            <div class="m-3 mxt--h4">{% blocktrans trimmed %}Aucun objectif{% endblocktrans %}</div>
+        {% endif %}
+    </div>
+</div>

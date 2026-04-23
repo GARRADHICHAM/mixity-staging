@@ -1,0 +1,168 @@
+.elearning-details-component,
+.elearnings-list-component {
+    font-size: 90%;
+
+    .card-img-top{
+        border-top-left-radius: 14px;
+        border-top-right-radius: 14px;
+    }
+
+    .spacing-container{
+        margin-top: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+    
+
+    
+    .elearning-description-card{
+        margin-right: 20px;
+        margin-bottom: 20px;
+        border-radius: 16px;
+    }
+    
+    
+    .elearning-video-card{
+        margin-bottom: 20px;
+        border-radius: 16px;
+    }
+    
+    .elearning-summary-card{
+        margin-bottom: 20px;
+        border-radius: 16px;
+        
+        .card-text{
+            margin-bottom: 0;
+        }
+    }
+    
+    .elearning-contact{
+        border-radius: 16px;
+    }
+    
+    .category-tag {
+        border-radius: 24px;
+        font-size: 12px;
+        font-weight: 500;
+        letter-spacing: -0.02rem;
+        display: flex;
+        align-items: center;
+        padding: 4px 8px;
+        margin-bottom: 8px;
+        margin-right: 4px;
+    }
+    
+    .title-text {
+        font-weight: bold;
+        margin: 16px 0;
+    }
+    
+    .summary-text {
+        color: #9094AA;
+        margin-bottom: 8px;
+    }
+    
+    .time-target-container {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+    }
+    
+    .keywords-list {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+    
+    .keywords-text {
+        font-size: 12px;
+        background-color: #FAFAFA;
+        border-radius: 4px;
+        padding: 4px 8px 4px 8px;    
+    
+        &.card-text:last-child {
+            margin-bottom: 1rem;
+        }
+    }
+    
+    .elearning-icon {
+        width: 16px;
+        height: auto;
+        margin-right: 5px;
+    }
+    
+    
+    
+}
+
+.elearning-cards-container {
+    margin-top: 20px;
+    text-align: left;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(300px, 1fr)); 
+    gap: 20px;
+
+    @media (max-width: 768px) {
+        padding: 0 10px;
+        grid-template-columns: repeat(1, 1fr); 
+    }
+}
+
+.elearning-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 30px;
+    border-radius: 16px;
+    border: 1px solid #DEDFEA;
+    background-color: #fff;
+    padding: 16px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+
+    .elearning-card-body {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    .elearning-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        width: 100%;
+        justify-content: flex-start;
+    }
+
+    .elearning-card-bottom {
+        font-size: 12px;
+        font-weight: 500;
+        line-height: 18px;
+        letter-spacing: -2%;
+    }
+
+    
+}
+
+@media (max-width: 768px) {
+    .elearning-card {
+        width: 100%;
+    }
+}
+
+.placeholder{
+    font-size: large;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    text-align: center;
+    background-color: unset;
+}
+
+.checkbox__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    column-gap: 20px; 
+    row-gap: 10px;  
+}

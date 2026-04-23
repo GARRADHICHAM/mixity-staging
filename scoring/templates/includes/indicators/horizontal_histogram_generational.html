@@ -1,0 +1,102 @@
+{% load i18n %}
+{% load l10n %}
+{% load static %}
+
+{% localize off %}
+<div class="pie_chart" id="{{ id }}">
+
+</div>
+
+{% block scripts %}
+    <script type="application/javascript">
+        $(document).ready(function () {
+
+            var percent_1 = Number("{{percent_1}}".replace(',', '.'));
+            var percent_1_mean = Number("{{percent_1_mean}}".replace(',', '.'));
+            var percent_1_mean_business_line = Number("{{percent_1_mean_business_line}}".replace(',', '.'));
+            var percent_2 = Number("{{percent_2}}".replace(',', '.'));
+            var percent_2_mean = Number("{{percent_2_mean}}".replace(',', '.'));
+            var percent_2_mean_business_line = Number("{{percent_2_mean_business_line}}".replace(',', '.'));
+            var percent_3 = Number("{{percent_3}}".replace(',', '.'));
+            var percent_3_mean = Number("{{percent_3_mean}}".replace(',', '.'));
+            var percent_3_mean_business_line = Number("{{percent_3_mean_business_line}}".replace(',', '.'));
+            var percent_4 = Number("{{percent_4}}".replace(',', '.'));
+            var percent_4_mean = Number("{{percent_4_mean}}".replace(',', '.'));
+            var percent_4_mean_business_line = Number("{{percent_4_mean_business_line}}".replace(',', '.'));
+
+            if("{{percent_1}}" === "") { var percent_1_string =  '{% trans "ND*" %}'; } else { percent_1_string = percent_1.toString() + "%"; }
+            if("{{percent_2}}" === "") { var percent_2_string =  '{% trans "ND*" %}'; } else { percent_2_string = percent_2.toString() + "%"; }
+            if("{{percent_3}}" === "") { var percent_3_string =  '{% trans "ND*" %}'; } else { percent_3_string = percent_3.toString() + "%"; }
+            if("{{percent_4}}" === "") { var percent_4_string =  '{% trans "ND*" %}'; } else { percent_4_string = percent_4.toString() + "%"; }
+            if("{{percent_1_mean}}" === "") { var percent_1_mean_string =  '{% trans "ND*" %}'; } else { percent_1_mean_string = percent_1_mean.toString() + "%"; }
+            if("{{percent_2_mean}}" === "") { var percent_2_mean_string =  '{% trans "ND*" %}'; } else { percent_2_mean_string = percent_2_mean.toString() + "%"; }
+            if("{{percent_3_mean}}" === "") { var percent_3_mean_string =  '{% trans "ND*" %}'; } else { percent_3_mean_string = percent_3_mean.toString() + "%"; }
+            if("{{percent_4_mean}}" === "") { var percent_4_mean_string =  '{% trans "ND*" %}'; } else { percent_4_mean_string = percent_4_mean.toString() + "%"; }
+            if("{{percent_1_mean_business_line}}" === "") { var percent_1_mean_business_line_string =  '{% trans "ND*" %}'; } else { percent_1_mean_business_line_string = percent_1_mean_business_line.toString() + "%"; }
+            if("{{percent_2_mean_business_line}}" === "") { var percent_2_mean_business_line_string =  '{% trans "ND*" %}'; } else { percent_2_mean_business_line_string = percent_2_mean_business_line.toString() + "%"; }
+            if("{{percent_3_mean_business_line}}" === "") { var percent_3_mean_business_line_string =  '{% trans "ND*" %}'; } else { percent_3_mean_business_line_string = percent_3_mean_business_line.toString() + "%"; }
+            if("{{percent_4_mean_business_line}}" === "") { var percent_4_mean_business_line_string =  '{% trans "ND*" %}'; } else { percent_4_mean_business_line_string = percent_4_mean_business_line.toString() + "%"; }
+
+            var data = {
+              labels: [
+                '{% trans "- de 26 ans" %}',
+                '{% trans "26 à 39 ans" %}',
+                '{% trans "40 à 54 ans" %}',
+                '{% trans "55 ans et +" %}'
+              ],
+              series: [
+                {
+                  label: '{% trans "Mon entreprise" %}',
+                  values: [percent_1,percent_2, percent_3, percent_4,  ],
+                  strings: [percent_1_string, percent_2_string, percent_3_string, percent_4_string,]
+                },
+                  {
+                  label: '{% trans "Moyenne dans le secteur" %}',
+                  values: [percent_1_mean_business_line, percent_2_mean_business_line, percent_3_mean_business_line, percent_4_mean_business_line,],
+                  strings: [percent_1_mean_business_line_string, percent_2_mean_business_line_string, percent_3_mean_business_line_string, percent_4_mean_business_line_string,]
+                },
+                {
+                  label: '{% trans "Moyenne" %}',
+                  values: [percent_1_mean, percent_2_mean, percent_3_mean, percent_4_mean,],
+                  strings: [percent_1_mean_string, percent_2_mean_string, percent_3_mean_string, percent_4_mean_string,]
+                },
+                ]
+            };
+
+            let maximum = Math.max(...data.series[0].values.concat(data.series[1].values).concat(data.series[2].values))
+            let moy_secteur_color = "#863C63"
+            let moy_color = "#95B9C1"
+
+          for(let i=0; i<data.labels.length; i++)
+          {
+              let child = document.createElement("div")
+              child.innerHTML = `<div class="pie_element">
+                                    <div class="pie_label"><span>${data.labels[i]}</span></div>
+                                    <div class="pie_content">
+                                        <div class="pie_me" style="background-color:{{ color }}; width: ${(data.series[0].values[i] / maximum *100) + 0.5}%"><div><span style="background-color: {{ color }}">${data.series[0].strings[i]}</span></div></div>
+                                        <div class="pie_other {% if not display_mean_score %}hidden{% endif %}" style="background-color:${moy_secteur_color}; width: ${(data.series[1].values[i] / maximum *100) + 0.5}%"></div>
+                                        <div class="pie_other {% if not display_mean_score %}hidden{% endif %}" style="background-color:${moy_color}; width: ${(data.series[2].values[i] / maximum *100) + 0.5}%"></div>
+                                    </div>
+                                    <div class="pie_legend">
+                                        <div {% if not display_mean_score %}class="hidden"{% endif %}>
+                                            <span style="color:${moy_secteur_color}">● ${data.series[1].values[i]} %</span>
+                                        </div>
+                                        <div {% if not display_mean_score %}class="hidden"{% endif %}>
+                                            <span style="color: ${moy_color}">● ${data.series[2].values[i]} %</span>
+                                        </div>
+                                    </div>
+                                </div>`
+              document.getElementById("{{ id }}").appendChild(child.firstChild)
+              if(i<data.labels.length -1)
+              {
+                    let separator = document.createElement('div');
+                    separator.innerHTML = '<div class="pie_separator" style="background-color: {{ color }}"></div>'
+                    document.getElementById("{{ id }}").appendChild(separator.firstChild)
+              }
+          }
+
+        });
+
+    </script>
+{% endblock %}
+{% endlocalize %}

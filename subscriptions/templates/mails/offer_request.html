@@ -1,0 +1,20 @@
+{% extends "base_email.html" %}
+{% load i18n static allow_evaluation %}
+
+{% block content %}
+    <tr>
+        <td><h1>Votre demande d'offre {{ subscription_label }}</h1></td>
+    </tr>
+    <tr>
+        <td>
+            Nous avons bien enregistré votre demande d’abonnement {{ subscription_label }} pour votre structure {{ structure_name }}.
+            Vous allez recevoir un devis à valider par e-mail dans les plus brefs délais.
+        </td>
+    </tr>
+    <tr>
+        <td align="center">
+            <p><strong>Une question ? Pour nous contacter, complétez le formulaire ci-après</strong></p>
+            <a class="button" href="{{ contact_url }}">Nous contacter</a>
+        </td>
+    </tr>
+{% endblock %}

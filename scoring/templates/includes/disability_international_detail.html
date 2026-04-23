@@ -1,0 +1,153 @@
+{% load i18n %}
+{% load format_number %}
+
+
+<div class="items_container" style="justify-content: center; align-items: stretch">
+    {% with answer1=answer_20213067 answer2=answer_202130671 answer3_value=answer_202130671_20213067 %}
+        {% if answer1 or answer2 or answer3_value %}
+            <div class="item_pb item_s1 item_c stretched_item">
+                <h3 line_id=17 suffix="visible : {{ answer3_value|floatformat:'0' }} % invisible : {{ answer2.value|floatformat:'0' }} % Total : {{ answer1.value|floatformat:'0' }} %" class="txt_line  content-strong" style="margin:auto;">{% blocktrans trimmed %}Pourcentage d'employés (f/h/nb) avec ...{% endblocktrans %}</h3>
+                <div style="display: flex;position:relative;align-items: center;flex-direction: column;width: 100%">
+                    {% include 'includes/indicators/circular_plot_2.html' with outer_color=cat.color border_color="#EBEAEA" blank_color="#e9ecef" percent_inner=answer3_value|floatformat:'1' percent=answer2.value|floatformat:'0' percent_outter=answer1.value|floatformat:'0' color=cat.color id=answer1.id %}
+                    <div style="display:flex;justify-content: space-between; width:100%">
+                        <div><span style="text-align: left;color: #FF7070; white-space: nowrap; font-weight: 600">
+                            {% blocktrans trimmed %}... handicaps visibles{% endblocktrans %}
+                        </span></div>
+                        <div style="display: flex; flex-wrap: nowrap"><div style="background-color:#FF7070;" class="dot"></div> <h3 style="color: #FF7070; white-space: nowrap">&nbsp;{% percentage answer3_value %}</h3></div>
+                    </div>
+                    <hr style="margin: 0.5em 0; width:100%" />
+                    <div style="display:flex;justify-content: space-between; width:100%">
+                        <div><span style="text-align: left;color: #8888E2; white-space: nowrap; font-weight: 600">
+                            {% blocktrans trimmed %}... handicaps invisibles{% endblocktrans %}
+                        </span></div>
+                        <div style="display: flex; flex-wrap: nowrap"><div style="background-color:#8888E2;" class="dot"></div> <h3 style="color: #8888E2; white-space: nowrap">&nbsp;{% percentage answer2.value %}</h3></div>
+                    </div>
+                    <hr style="margin: 0.5em 0; width:100%" />
+                    <div style="display:flex;justify-content: space-between; width:100%">
+                        <div><span style="text-align: left;color: {{cat.color }}; white-space: nowrap; font-weight: 600">
+                            {% blocktrans trimmed %}… handicaps (visible + invisible){% endblocktrans %}
+                        </span></div>
+                        <div style="display: flex; flex-wrap: nowrap"><div style="background-color:{{cat.color }};" class="dot"></div> <h3 style="color: {{cat.color }}; white-space: nowrap">&nbsp;{% percentage answer1.value %}</h3></div>
+                    </div>
+                    <div style="width: 100%;position: absolute;text-align:center;top: 34%;margin-left:12px;">
+                        <span style="color:{{cat.color }};font-size: 20pt;font-family: Cousine;">{% percentage answer1.value %}</span>
+                    </div>
+                </div>
+                {% if answer1.perimeter %}
+                    <div class="perimeter-indicator">
+                        <span>
+                            {% trans answer1.perimeter %}
+                        </span>
+                    </div>
+                {% endif %}
+                {% if answer2.perimeter %}
+                    <div class="perimeter-indicator">
+                        <span>
+                            {% trans answer2.perimeter %}
+                        </span>
+                    </div>
+                {% endif %}
+            </div>
+        {% endif %}
+    {% endwith %}
+    {% with answer=answer_20213068 %}
+        {% if answer %}
+            <div class="item_pb item_s1 item_c stretched_item">
+                <h3 line_id=17 suffix=" : {{ answer.value|floatformat:'0' }} %" class="txt_line  content-strong" style="margin:auto;">Indirect employment rate, that is to say including contracts concluded with an adapted structure for disabled persons or with a disabled self employed person</h3>
+                <div class="d-flex justify-content-center">
+                    {% include 'includes/indicators/circular_plot.html' with last_year_value=answer.sibling_value border_color="#EBEAEA" blank_color="#e9ecef" percent_inner=answer.value|floatformat:'1' percent=answer.get_mean_score_in_business_line|floatformat:'0' percent_outter=answer.get_mean_score|floatformat:'0' color=cat.color id=answer.id %}
+                </div>
+                {% if answer.perimeter %}
+                    <div class="perimeter-indicator">
+                        <span>
+                            {% trans answer.perimeter %}
+                        </span>
+                    </div>
+                {% endif %}
+            </div>
+        {% endif %}
+    {% endwith %}
+    {% with answer=answer_20213076 %}
+        {% if answer %}
+            <div class="item_pb item_s1 item_c stretched_item">
+                <h3 line_id=17 suffix=" : {{ answer.value|floatformat:'0' }} %" class="txt_line  content-strong" style="margin:auto;">{% blocktrans trimmed %}Taux d'accessibilité des sites web de référence de l'entreprise{% endblocktrans %}</h3>
+                <div class="d-flex justify-content-center">
+                    {% include 'includes/indicators/circular_plot.html' with last_year_value=answer.sibling_value border_color="#EBEAEA" blank_color="#e9ecef" percent_inner=answer.value|floatformat:'1' percent=answer.get_mean_score_in_business_line|floatformat:'0' percent_outter=answer.get_mean_score|floatformat:'0' color=cat.color id=answer.id %}
+                </div>
+                {% if answer.perimeter %}
+                    <div class="perimeter-indicator">
+                        <span>
+                            {% trans answer.perimeter %}
+                        </span>
+                    </div>
+                {% endif %}
+            </div>
+        {% endif %}
+    {% endwith %}
+    {% with answer=answer_20213069 %}
+        {% if answer %}
+            <div class="item_pb item_s1 item_c stretched_item">
+                <h3 line_id=17 suffix=" : {{ answer.value|floatformat:'0' }} %" class="txt_line  content-strong">
+                    {% blocktrans trimmed %}Taux de croissance du nombre de collaborateurs (f/h/nb) en situation de handicap depuis 3 ans{% endblocktrans %}
+                </h3>
+                {% include 'includes/indicators/percent_evol.html' with value=answer.value color=cat.color %}
+                {% if answer.perimeter %}
+                    <div class="perimeter-indicator">
+                        <span>
+                            {% trans answer.perimeter %}
+                        </span>
+                    </div>
+                {% endif %}
+            </div>
+        {% endif %}
+    {% endwith %}
+
+    {% if answer_20213070 %}
+        <div class="item_pb item_s1 stretched_item item_c">
+            <h3 class="content-strong">
+                {% blocktrans trimmed %}Montant annuel € HT consacré aux achats auprès de structures du secteur du travail protégé et/ou adapté et montant total des achats{% endblocktrans %}
+            </h3>
+            <div class="d-flex flex-column justify-content-center">
+                <div>
+                    {% include 'includes/indicators/number_icon.html' with currency_symbol=answer_20213070.currency_symbol value=answer_20213070.value color=cat.color font_size="30px" icon_name="money" %}
+                </div>
+                <div>
+                    <h5 class="content-strong">
+                        {% with color=cat.color %}
+                            {% percentage answer_20213070.ratio_value as value %}
+                            {% blocktrans trimmed %}soit <span style="color:{{ color }};">{{ value }}</span> des achats{% endblocktrans %}
+                        {% endwith %}
+                    </h5>
+                </div>
+                <div class="sales-indicator">
+                    <span style="font-size: 1.5em; font-family: Cousine; font-weight: normal; color:#95B9C1">● {% percentage answer_20213070.get_mean_score %}</span>
+                    <span style="font-size: 1.5em; font-family: Cousine; font-weight: normal; color:#863C63">&nbsp;&nbsp;● {% percentage answer_20213070.get_mean_score_in_business_line %}</span>
+                </div>
+            </div>
+            {% if answer_20213070.perimeter %}
+                <div class="perimeter-indicator">
+                    <span>
+                        {% trans answer_20213070.perimeter %}
+                    </span>
+                </div>
+            {% endif %}
+        </div>
+    {% endif %}
+    {% with answer=answer_20213075 %}
+        {% if answer %}
+            <div class="item_pb item_s1 item_c stretched_item">
+                <h3 line_id=17 suffix=" : {{ answer.value|floatformat:'0' }}" class="txt_line  content-strong">
+                    {% blocktrans trimmed %}Nombre d'ateliers, conférences, prise de parole, témoignage sur le handicap dans les 12 derniers mois{% endblocktrans %}
+                </h3>
+                {% include 'includes/indicators/number_icon.html' with color=cat.color value=answer.value last_year_value=answer.sibling_value last_year=answer.sibling_year icon_name="megaphone_disability" %}
+                {% if answer.perimeter %}
+                    <div class="perimeter-indicator">
+                        <span>
+                            {% trans answer.perimeter %}
+                        </span>
+                    </div>
+                {% endif %}
+            </div>
+        {% endif %}
+    {% endwith %}
+</div>

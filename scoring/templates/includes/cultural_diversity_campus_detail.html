@@ -1,0 +1,529 @@
+{% load l10n %}
+{% load i18n %}
+{% load format_number %}
+
+
+<div class="items_container" style="justify-content: center; align-items: stretch">
+    <div class="items_container w-100 justify-content-center">
+
+        {% if target_name == "all" or target_name == "collaborator" %}
+
+            {% with answer=answer_20220145 %}
+                {% if answer %}
+                    <div class="item_pb item_s1 item_c stretched_item">
+                        <h3 line_id=17 suffix=" : {{ answer.value|floatformat:'0' }}" class="txt_line  content-strong">
+                            {% blocktrans trimmed %}Nombre de nationalités dans l'effectif total {% endblocktrans %}
+                        </h3>
+                        {% include 'includes/indicators/number_icon.html' with value=answer.value icon_name="earth" %}
+                        {% if answer.perimeter %}
+                            <div class="perimeter-indicator">
+                                <span>
+                                    {% trans answer.perimeter %}
+                                </span>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+
+            {% with answer=answer_20220150 %}
+                {% if answer %}
+                    <div class="item_pb item_s1 item_c stretched_item">
+                        <h3 line_id=17 suffix=" : {{ answer.value|floatformat:'0' }}" class="txt_line  content-strong">
+                            {% blocktrans trimmed %}Nombre de nationalités dans le Conseil d'Administration de l'entreprise{% endblocktrans %}
+                        </h3>
+                        {% include 'includes/indicators/number_icon.html' with value=answer.value icon_name="earth" %}
+                        {% if answer.perimeter %}
+                            <div class="perimeter-indicator">
+                                <span>
+                                    {% trans answer.perimeter %}
+                                </span>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+
+            {% with answer=answer_20220154 %}
+                {% if answer %}
+                    <div class="item_pb item_s1 item_c stretched_item">
+                        <h3 line_id=17 suffix=" : {{ answer.value|floatformat:'0' }}" class="txt_line  content-strong">
+                            {% blocktrans trimmed %}Nombre de nationalités dans le COMEX ou le CODIR{% endblocktrans %}
+                        </h3>
+                        {% include 'includes/indicators/number_icon.html' with value=answer.value icon_name="earth" %}
+                        {% if answer.perimeter %}
+                            <div class="perimeter-indicator">
+                                <span>
+                                    {% trans answer.perimeter %}
+                                </span>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+
+            {% with answer=answer_20220158 %}
+                {% if answer %}
+                    <div class="item_pb item_s1 item_c">
+                        <h3 line_id=17 suffix=" : {{ answer.ratio_value|floatformat:'0' }} %" class="txt_line  content-strong">
+                            {% blocktrans trimmed %}Nombre de personnes ayant une nationalité autre que Française chez les enseignants (f/h/nb){% endblocktrans %}
+                        </h3>
+                        <div class="d-flex justify-content-center">
+                            {% include 'includes/indicators/circular_plot.html' with last_year_value=answer.sibling_value border_color="#EBEAEA" blank_color="#e9ecef" percent_inner=answer.ratio_value|floatformat:'1' percent=answer.get_mean_score_in_business_line|floatformat:'0' percent_outter=answer.get_mean_score|floatformat:'0' color=cat.color id=answer.id small=0 %}
+                        </div>
+                        {% if answer.perimeter %}
+                            <div class="perimeter-indicator">
+                                <span>
+                                    {% trans answer.perimeter %}
+                                </span>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+
+            {% with answer=answer_20220159 %}
+                {% if answer %}
+                    <div class="item_pb item_s1 item_c">
+                        <h3 line_id=17 suffix=" : {{ answer.ratio_value|floatformat:'0' }} %" class="txt_line  content-strong">
+                            {% blocktrans trimmed %}Pourcentage de personnes ayant une nationalité autre que Française au sein des managers{% endblocktrans %}
+                        </h3>
+                        <div class="d-flex justify-content-center">
+                            {% include 'includes/indicators/circular_plot.html' with last_year_value=answer.sibling_value border_color="#EBEAEA" blank_color="#e9ecef" percent_inner=answer.ratio_value|floatformat:'1' percent=answer.get_mean_score_in_business_line|floatformat:'0' percent_outter=answer.get_mean_score|floatformat:'0' color=cat.color id=answer.id small=0 %}
+                        </div>
+                        {% if answer.perimeter %}
+                            <div class="perimeter-indicator">
+                                <span>
+                                    {% trans answer.perimeter %}
+                                </span>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+
+            {% with answer=answer_20220160 %}
+                {% if answer %}
+                    <div class="item_pb item_s1 item_c">
+                        <h3 line_id=17 suffix=" : {{ answer.ratio_value|floatformat:'0' }} %" class="txt_line content-strong">
+                            {% blocktrans trimmed %}Taux de personnel (f/h/nb) en charge du recrutement formés à la lutte contre les discriminations{% endblocktrans %}
+                        </h3>
+                        <h5 class="content-light">
+                            {% blocktrans trimmed %}dans les 2 dernières années{% endblocktrans %}
+                        </h5>
+                        <div class="d-flex justify-content-center">
+                            {% include 'includes/indicators/circular_plot.html' with last_year_value=answer.sibling_value border_color="#EBEAEA" blank_color="#e9ecef" percent_inner=answer.ratio_value|floatformat:'1' percent=answer.get_mean_score_in_business_line|floatformat:'0' percent_outter=answer.get_mean_score|floatformat:'0' color=cat.color id=answer.id small=0 %}
+                        </div>
+                        {% if answer.perimeter %}
+                            <div class="perimeter-indicator">
+                                <span>
+                                    {% trans answer.perimeter %}
+                                </span>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+
+            {% with answer=answer_20220164 %}
+                {% if answer %}
+                    <div class="item_pb item_s1 item_c">
+                        <h3 line_id=17 suffix=" : {{ answer.ratio_value|floatformat:'0' }} %" class="txt_line  content-strong">
+                            {% blocktrans trimmed %}Taux d'embauche (CDD/CDI) des employés (f/h/nb) originaires des quartiers prioritaires de la ville{% endblocktrans %}
+                        </h3>
+                        <div class="d-flex justify-content-center">
+                            {% include 'includes/indicators/circular_plot.html' with last_year_value=answer.sibling_value border_color="#EBEAEA" blank_color="#e9ecef" percent_inner=answer.ratio_value|floatformat:'1' percent=answer.get_mean_score_in_business_line|floatformat:'0' percent_outter=answer.get_mean_score|floatformat:'0' color=cat.color id=answer.id small=0 %}
+                        </div>
+                        {% if answer.perimeter %}
+                            <div class="perimeter-indicator">
+                                <span>
+                                    {% trans answer.perimeter %}
+                                </span>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+
+            {% with answer=answer_20220165 %}
+                {% if answer %}
+                    <div class="item_pb item_s1 item_c">
+                        <h3 line_id=17 suffix=" : {{ answer.ratio_value|floatformat:'0' }} %" class="txt_line  content-strong">
+                            {% blocktrans trimmed %}Taux d'embauche (CDD/CDI) des employés (f/h/nb) originaires des Zones de Revitalisation Rurale{% endblocktrans %}
+                        </h3>
+                        <div class="d-flex justify-content-center">
+                            {% include 'includes/indicators/circular_plot.html' with last_year_value=answer.sibling_value border_color="#EBEAEA" blank_color="#e9ecef" percent_inner=answer.ratio_value|floatformat:'1' percent=answer.get_mean_score_in_business_line|floatformat:'0' percent_outter=answer.get_mean_score|floatformat:'0' color=cat.color id=answer.id small=0 %}
+                        </div>
+                        {% if answer.perimeter %}
+                            <div class="perimeter-indicator">
+                                <span>
+                                    {% trans answer.perimeter %}
+                                </span>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+
+            {% with answer=answer_20220166 %}
+                {% if answer %}
+                    <div class="item_pb item_s1 item_c">
+                        <h3 line_id=17 suffix=" : {{ answer.ratio_value|floatformat:'0' }} %" class="txt_line  content-strong">
+                            {% blocktrans trimmed %}Taux de stagiaires et/ou alternants (f/h/nb) originaires des quartiers prioritaires de la ville{% endblocktrans %}
+                        </h3>
+                        <div class="d-flex justify-content-center">
+                            {% include 'includes/indicators/circular_plot.html' with last_year_value=answer.sibling_value border_color="#EBEAEA" blank_color="#e9ecef" percent_inner=answer.ratio_value|floatformat:'1' percent=answer.get_mean_score_in_business_line|floatformat:'0' percent_outter=answer.get_mean_score|floatformat:'0' color=cat.color id=answer.id small=0 %}
+                        </div>
+                        {% if answer.perimeter %}
+                            <div class="perimeter-indicator">
+                                <span>
+                                    {% trans answer.perimeter %}
+                                </span>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+
+            {% with answer=answer_20220167 %}
+                {% if answer %}
+                    <div class="item_pb item_s1 item_c">
+                        <h3 line_id=17 suffix=" : {{ answer.ratio_value|floatformat:'0' }} %" class="txt_line  content-strong">
+                            {% blocktrans trimmed %}Taux de stagiaires et/ou alternants (f/h/nb) originaires des Zones de Revitalisation Rurale{% endblocktrans %}
+                        </h3>
+                        <div class="d-flex justify-content-center">
+                            {% include 'includes/indicators/circular_plot.html' with last_year_value=answer.sibling_value border_color="#EBEAEA" blank_color="#e9ecef" percent_inner=answer.ratio_value|floatformat:'1' percent=answer.get_mean_score_in_business_line|floatformat:'0' percent_outter=answer.get_mean_score|floatformat:'0' color=cat.color id=answer.id small=0 %}
+                        </div>
+                        {% if answer.perimeter %}
+                            <div class="perimeter-indicator">
+                                <span>
+                                    {% trans answer.perimeter %}
+                                </span>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+
+            {% with answer=answer_20220169 %}
+                {% if answer %}
+                    <div class="item_pb item_s1 item_c">
+                        <h3 line_id=17 suffix=" : {{ answer.ratio_value|floatformat:'0' }} %" class="txt_line  content-strong">
+                            {% blocktrans trimmed %}Pourcentage de cadres ayant suivi un cursus universitaire public ou semi-public / effectif total des cadres {% endblocktrans %}
+                        </h3>
+                        <div class="d-flex justify-content-center">
+                            {% include 'includes/indicators/circular_plot.html' with last_year_value=answer.sibling_value border_color="#EBEAEA" blank_color="#e9ecef" percent_inner=answer.ratio_value|floatformat:'1' percent=answer.get_mean_score_in_business_line|floatformat:'0' percent_outter=answer.get_mean_score|floatformat:'0' color=cat.color id=answer.id small=0 %}
+                        </div>
+                        {% if answer.perimeter %}
+                            <div class="perimeter-indicator">
+                                <span>
+                                    {% trans answer.perimeter %}
+                                </span>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+
+            {% with answer=answer_20220180 %}
+                {% if answer %}
+                    <div class="item_pb item_s1 item_c stretched_item">
+                        <h3 line_id=17 suffix=" : {{ answer.value|floatformat:'0' }}" class="txt_line  content-strong">
+                            {% blocktrans trimmed %}Nombre d'employés (f/h/nb) impliqués dans le mentorat ou de bénévoles dans des associations à but non lucratif abordant des questions éthniques ou socials{% endblocktrans %}
+                        </h3>
+                        {% include 'includes/indicators/number_icon.html' with color=cat.color value=answer.value last_year_value=answer.sibling_value last_year=answer.sibling_year icon_name="megaphone_international" %}
+                        {% if answer.perimeter %}
+                            <div class="perimeter-indicator">
+                                <span>
+                                    {% trans answer.perimeter %}
+                                </span>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+
+            {% with answer=answer_20220185 %}
+                {% if answer %}
+                    <div class="item_pb item_s1 stretched_item item_c">
+                        <h3 class="content-strong">
+                            {% blocktrans trimmed %}Pourcentage et montant des achats annuels € HT consacrés aux achats auprès des entreprises d'insertion par activité économique{% endblocktrans %}
+                        </h3>
+                        <div class="d-flex flex-column justify-content-center">
+                            <div>
+                                {% include 'includes/indicators/number_icon.html' with currency_symbol=answer.currency_symbol value=answer.value color=cat.color font_size="30px" icon_name="money" %}
+                            </div>
+                            <div>
+                                <h5 class="content-strong">
+                                    {% with color=cat.color %}
+                                        {% percentage answer.ratio_value as value %}
+                                        {% blocktrans trimmed %}soit <span style="color:{{ color }};">{{ value }}</span> des achats{% endblocktrans %}
+                                    {% endwith %}
+                                </h5>
+                            </div>
+                            <div class="sales-indicator">
+                                <span style="font-size: 1.5em; font-family: Cousine; font-weight: normal; color:#95B9C1">● {% percentage answer.get_mean_score_in_business_line %}</span>
+                                <span style="font-size: 1.5em; font-family: Cousine; font-weight: normal; color:#863C63">&nbsp;&nbsp;● {% percentage answer.get_mean_score %}</span>
+                            </div>
+                        </div>
+                        {% if answer.perimeter %}
+                            <div class="perimeter-indicator">
+                                <span>
+                                    {% trans answer.perimeter %}
+                                </span>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+        {% endif %}
+
+
+        {% if target_name == "all" or target_name == "student" %}
+
+
+            {% with answer=answer_20221061 %}
+                {% if answer %}
+                    <div class="item_pb item_s3">
+                        <div class="true-false-indicator">
+                            <h3 line_id=17 class="txt_line content-strong" prefix="\n" style="text-align: left;">
+                                {% blocktrans trimmed %}Un diagnostic sur la politique diversité multiculturelle (origines culturelles,  et/ ou sociales, trajectoire de réussite au regard de l'origine sociale) a été réalisé soit en interne soit par une structure extérieure.{% endblocktrans %}
+                            </h3>
+                        </div>
+                        <div class="row">
+                            {% with subanswers=answer.subanswers.all %}
+                                <div class="col">
+                                    {% for subanswer in subanswers %}
+                                        {% if subanswer.value >= 0.5 %}
+                                            <div class="existing-line"><span style="color:{{cat.color }}; font-size: 30pt">✓</span><span style="font-weight: 600"> {{subanswer.subquestion.label}}</span></div><br/>
+                                        {% endif %}
+                                    {% endfor %}
+                                </div>
+                                <div class="col">
+                                    {% for subanswer in subanswers %}
+                                        {% if subanswer.value < 0.5 %}
+                                            <div class="existing-line"><span style="color:{{cat.color }}; font-size: 30pt">✗</span><span style="font-weight: 600"> {{subanswer.subquestion.label}}</span></div><br/>
+                                        {% endif %}
+                                    {% endfor %}
+                                </div>
+                            {% endwith %}
+                        </div>
+                    </div>
+                {% endif %}
+            {% endwith %}
+            {% with answer=answer_20221062 %}
+                {% if answer %}
+                    <div class="item_pb item_s1 item_c stretched_item">
+                        <h3 line_id=17 suffix=" : {{ answer.value|floatformat:'0' }}" class="txt_line  content-strong">
+                            {% blocktrans trimmed %}Nombre de nationalités dans l'effectif total {% endblocktrans %}
+                        </h3>
+                        {% include 'includes/indicators/number_icon.html' with value=answer.value icon_name="earth" %}
+                        {% if answer.perimeter %}
+                            <div class="perimeter-indicator">
+                                <span>
+                                    {% trans answer.perimeter %}
+                                </span>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+
+            {% with answer=answer_20221070 %}
+                {% if answer %}
+
+                    <div class="item_pb item_s1 stretched_item item_c">
+                        <h3 class="content-strong">
+                            {% blocktrans trimmed %}Nombre d'étudiants (f/h/nb) ayant obtenu une bourse spécifique de l'établissement{% endblocktrans %}
+                        </h3>
+                        <div class="d-flex flex-column justify-content-center">
+                            <div>
+                                {% include 'includes/indicators/number_icon.html' with currency_symbol=answer.currency_symbol value=answer.value color=cat.color font_size="30px" icon_name="money_cultural_diversity" %}
+                            </div>
+                            <div>
+                                <h5 class="content-strong">
+                                    {% percentage answer.ratio_value as value %}
+                                    {% blocktrans trimmed %}soit <span style="color:{{ cat.color }};">{{ value }}</span> des étudiants{% endblocktrans %}
+                                </h5>
+                            </div>
+                            <div class="sales-indicator">
+                                <span style="font-size: 1.5em; font-family: Cousine; font-weight: normal; color:#95B9C1">● {% percentage answer.get_mean_score_in_business_line %}</span>
+                                <span style="font-size: 1.5em; font-family: Cousine; font-weight: normal; color:#863C63">&nbsp;&nbsp;● {% percentage answer.get_mean_score %}</span>
+                            </div>
+                        </div>
+                        {% if answer.perimeter %}
+                            <div class="perimeter-indicator">
+                                <span>
+                                    {% trans answer.perimeter %}
+                                </span>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+
+            {% with answer=answer_20221077 %}
+                {% if answer %}
+                    <div class="item_pb item_s1 item_c stretched_item">
+                        <h3 line_id=17 suffix=" : {{ answer.value|floatformat:'0' }}" class="txt_line  content-strong">
+                            {% blocktrans trimmed %}Nombre de partenariats avec des lycées en QPV (Quartiers Prioritaires de la Ville){% endblocktrans %}
+                        </h3>
+                        {% include 'includes/indicators/number_icon.html' with value=answer.value icon_name="building_cultural_diversity" %}
+                        {% if answer.perimeter %}
+                            <div class="perimeter-indicator">
+                                <span>
+                                    {% trans answer.perimeter %}
+                                </span>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+
+
+            {% with answer=answer_20221066 %}
+                {% if answer %}
+                    <div class="item_pb item_s1 item_c">
+                        <h3 line_id=17 suffix=" : {{ answer.ratio_value|floatformat:'0' }} %" class="txt_line  content-strong">
+                            {% blocktrans trimmed %}Pourcentage d'étudiants ayant une nationalité autre que Française{% endblocktrans %}
+                        </h3>
+                        <div class="d-flex justify-content-center">
+                            {% include 'includes/indicators/circular_plot.html' with last_year_value=answer.sibling_value border_color="#EBEAEA" blank_color="#e9ecef" percent_inner=answer.ratio_value|floatformat:'1' percent=answer.get_mean_score_in_business_line|floatformat:'0' percent_outter=answer.get_mean_score|floatformat:'0' color=cat.color id=answer.id small=0 %}
+                        </div>
+                        {% if answer.perimeter %}
+                            <div class="perimeter-indicator">
+                                <span>
+                                    {% trans answer.perimeter %}
+                                </span>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+
+            {% with answer=answer_20221067 %}
+                {% if answer %}
+                    <div class="item_pb item_s1 item_c">
+                        <h3 line_id=17 suffix=" : {{ answer.value|floatformat:'0' }} %" class="txt_line  content-strong">
+                            {% blocktrans trimmed %}Taux d'étudiants boursiers (f/h/nb) (bourse sur critères sociaux) dans l'établissement{% endblocktrans %}
+                        </h3>
+                        <div class="d-flex justify-content-center">
+                            {% include 'includes/indicators/circular_plot.html' with last_year_value=answer.sibling_value border_color="#EBEAEA" blank_color="#e9ecef" percent_inner=answer.value|floatformat:'1' percent=answer.get_mean_score_in_business_line|floatformat:'0' percent_outter=answer.get_mean_score|floatformat:'0' color=cat.color id=answer.id small=0 %}
+                        </div>
+                        {% if answer.perimeter %}
+                            <div class="perimeter-indicator">
+                                <span>
+                                    {% trans answer.perimeter %}
+                                </span>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+
+            {% with answer=answer_20221068 %}
+                {% if answer %}
+                    <div class="item_pb item_s1 item_c">
+                        <h3 line_id=17 suffix=" : {{ answer.value|floatformat:'0' }} %" class="txt_line  content-strong">
+                            {% blocktrans trimmed %}Taux d'étudiants boursiers (f/h/nb) (bourse sur critères sociaux) accueillis dans les 12 derniers mois au sein de l'établissement{% endblocktrans %}
+                        </h3>
+                        <div class="d-flex justify-content-center">
+                            {% include 'includes/indicators/circular_plot.html' with last_year_value=answer.sibling_value border_color="#EBEAEA" blank_color="#e9ecef" percent_inner=answer.value|floatformat:'1' percent=answer.get_mean_score_in_business_line|floatformat:'0' percent_outter=answer.get_mean_score|floatformat:'0' color=cat.color id=answer.id small=0 %}
+                        </div>
+                        {% if answer.perimeter %}
+                            <div class="perimeter-indicator">
+                                <span>
+                                    {% trans answer.perimeter %}
+                                </span>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+
+            {% with answer=answer_20221076 %}
+                {% if answer %}
+                    <div class="item_pb item_s1 item_c">
+                        <h3 line_id=17 suffix=" : {{ answer.value|floatformat:'0' }} %" class="txt_line  content-strong">
+                            {% blocktrans trimmed %}Taux d'étudiants (f/h/nb) ayant obtenu le bac dans un lycée situé en QPV (Quartiers Prioritaires de la Ville){% endblocktrans %}
+                        </h3>
+                        <div class="d-flex justify-content-center">
+                            {% include 'includes/indicators/circular_plot.html' with last_year_value=answer.sibling_value border_color="#EBEAEA" blank_color="#e9ecef" percent_inner=answer.value|floatformat:'1' percent=answer.get_mean_score_in_business_line|floatformat:'0' percent_outter=answer.get_mean_score|floatformat:'0' color=cat.color id=answer.id small=0 %}
+                        </div>
+                        {% if answer.perimeter %}
+                            <div class="perimeter-indicator">
+                                <span>
+                                    {% trans answer.perimeter %}
+                                </span>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+
+            {% with answer=answer_20221078 %}
+                {% if answer %}
+                    <div class="item_pb item_s1 item_c">
+                        <h3 line_id=17 suffix=" : {{ answer.ratio_value|floatformat:'0' }} %" class="txt_line  content-strong">
+                            {% blocktrans trimmed %}Taux d'étudiants (f/h/nb) originaires des Zones de Revitalisation Rurale{% endblocktrans %}
+                        </h3>
+                        <div class="d-flex justify-content-center">
+                            {% include 'includes/indicators/circular_plot.html' with last_year_value=answer.sibling_value border_color="#EBEAEA" blank_color="#e9ecef" percent_inner=answer.ratio_value|floatformat:'1' percent=answer.get_mean_score_in_business_line|floatformat:'0' percent_outter=answer.get_mean_score|floatformat:'0' color=cat.color id=answer.id small=0 %}
+                        </div>
+                        {% if answer.perimeter %}
+                            <div class="perimeter-indicator">
+                                <span>
+                                    {% trans answer.perimeter %}
+                                </span>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+
+            {% with answer=answer_202210781 %}
+                {% if answer %}
+                    <div class="item_pb item_s1 item_c">
+                        <h3 line_id=17 suffix=" : {{ answer.ratio_value|floatformat:'0' }} %" class="txt_line  content-strong">
+                            {% blocktrans trimmed %}Taux d'étudiants (f/h/nb) résidant dans un QPV (Quartiers Prioritaires de la Ville){% endblocktrans %}
+                        </h3>
+                        <div class="d-flex justify-content-center">
+                            {% include 'includes/indicators/circular_plot.html' with last_year_value=answer.sibling_value border_color="#EBEAEA" blank_color="#e9ecef" percent_inner=answer.ratio_value|floatformat:'1' percent=answer.get_mean_score_in_business_line|floatformat:'0' percent_outter=answer.get_mean_score|floatformat:'0' color=cat.color id=answer.id small=0 %}
+                        </div>
+                        {% if answer.perimeter %}
+                            <div class="perimeter-indicator">
+                                <span>
+                                    {% trans answer.perimeter %}
+                                </span>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+
+            {% with answer=answer_20221080 %}
+                {% if answer %}
+                    <div class="item_pb item_s1 stretched_item item_c">
+                        <h3 line_id=17 suffix=" : {{ answer.value|floatformat:'0' }} %" class="txt_line content-strong">
+                            {% blocktrans trimmed %}Taux de personnes en charge du parcours pédagogique formées au recrutement inclusif sur les enjeux culturels et sociaux.{% endblocktrans %}
+                        </h3>
+                        <h5 class="content-light">
+                            {% blocktrans trimmed %}dans les 2 dernières années{% endblocktrans %}
+                        </h5>
+                        <div class="d-flex justify-content-center">
+                            {% include 'includes/indicators/circular_plot.html' with last_year_value=answer.sibling_value border_color="#EBEAEA" blank_color="#e9ecef" percent_inner=answer.value|floatformat:'1' percent=answer.get_mean_score_in_business_line|floatformat:'0' percent_outter=answer.get_mean_score|floatformat:'0' color=cat.color id=answer.id small=0 %}
+                        </div>
+                        {% if answer.perimeter %}
+                            <div class="perimeter-indicator">
+                                <span>
+                                    {% trans answer.perimeter %}
+                                </span>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+        {% endif %}
+
+    </div>
+</div>

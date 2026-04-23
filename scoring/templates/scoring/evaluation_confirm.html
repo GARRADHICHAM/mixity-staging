@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load l10n %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-3 bg-primary">
+            {% include 'includes/nav_evaluation.html' with pk=view.kwargs.pk %}
+        </div>
+        <article class="col-9 p-5 bg-gradient-multicolor" style="flex-direction: column;display: flex;justify-content: space-between;">
+            <header class="text-center" style="position:relative">
+                <h1 class="title--h1">{% blocktrans trimmed %}Votre évaluation {{ evaluation.sheet.year|unlocalize }}{% endblocktrans %}</h1>
+                {% if trial_cats %}
+                    <a href="{% url 'structure:pursue_trial' subscription_option.pk %}" style="font-weight: bold;top: 0;position: absolute;right: 0;" class="btn btn-secondary">{% blocktrans trimmed %}Accéder à l’ensemble du questionnaire{% endblocktrans %}</a>
+                {% endif %}
+            </header>
+
+            <section class="col--3 row--2">
+                {% if trial_cats %}
+                    {% include "includes/locked_card.html" with category="Transversal" %}
+                {% endif %}
+                {% for score_category in scores_categories %}
+                    <div class="card">
+                        {% trans score_category.category.name as category_label %}
+                        <h3 class="title--h3"  style="margin-bottom: 5px;">{% blocktrans trimmed %}Catégorie : <strong>{{ category_label }}</strong>{% endblocktrans %}
+
+                        </h3>
+                        <hr class="hr--sidemenu">
+                        <p>
+
+                            {% blocktrans trimmed %}Taux de réponse :{% endblocktrans %} {% widthratio score_category.category_answers_rate 1 100 %} % {% comment %}({{score_category.answers.count}} / {{ score_category.questions.count}}){% endcomment %}
+                        </p>
+                    </div>
+                {% endfor %}
+                {% for category in trial_cats %}
+                    {% include "includes/locked_card.html" %}
+                {% endfor %}
+            </section>
+            <div class="row mt-5">
+                <div class="col-md-4 py-1 d-grid">
+                    <a
+                        class="btn btn-primary"
+                        href={{ next_url }}>
+                        {{ button_name }}
+                    </a>
+                </div>
+                <div class="col-md-4 py-1 d-grid">
+                    {% if evaluation.can_validate and evaluation.childrens_validated %}
+                        <button id="validationModalBtn" class="btn btn-primary">{% blocktrans trimmed %}Valider
+                            votre évaluation{% endblocktrans %}</button>
+                    {% elif evaluation.is_validated_by_user %}
+                        <a class="btn btn-primary" style="cursor: not-allowed;" >
+                            {% blocktrans trimmed %}Vous avez déjà validé cette évaluation{% endblocktrans %}
+                        </a>
+                    {% else %}
+                        <a class="btn btn-primary disabled" style="cursor: not-allowed;" >
+                            {% blocktrans trimmed %}Vous ne pouvez pas encore valider{% endblocktrans %}
+                        </a>
+                    {% endif %}
+                </div>
+
+                <div class="col-md-4 py-1 d-grid">
+                    <a class="btn btn-secondary" href="{% url 'home' slug=evaluation.entity.slug %}"  value="Sauvegarder et quitter le questionnaire">
+                        {% blocktrans trimmed %}Sauvegarder et quitter{% endblocktrans %}
+                    </a>
+                </div>
+            </div>
+        </article>
+    </div>
+</div>
+    {% if evaluation.can_validate and evaluation.childrens_validated %}
+        {% include 'includes/questions_validation_modal.html' %}
+    {% endif %}
+{% endblock %}

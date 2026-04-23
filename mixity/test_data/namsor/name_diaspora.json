@@ -1,0 +1,79 @@
+{
+  "personalNames": [
+    {
+      "script": "LATIN",
+      "id": "0d7d6417-0bbb-4205-951d-b3473f605b56",
+      "firstName": "Keith",
+      "lastName": "Haring",
+      "score": 10.578504679244919,
+      "ethnicityAlt": "British",
+      "ethnicity": "German",
+      "lifted": false,
+      "countryIso2": "US",
+      "ethnicitiesTop": [
+        "German",
+        "British",
+        "Dutch",
+        "Danish",
+        "Irish",
+        "Jewish",
+        "Norwegian",
+        "HispanoLatino",
+        "Swedish",
+        "AfricanAmerican"
+      ],
+      "probabilityCalibrated": 0.6115763692637636,
+      "probabilityAltCalibrated": 0.6115763692637636
+    },
+      {
+      "script": "LATIN",
+      "id": "0d7d6417-0bbb-4205-951d-b3473f605b57",
+      "firstName": "Cathy",
+      "lastName": "Haring",
+      "score": 10.578504679244919,
+      "ethnicityAlt": "French",
+      "ethnicity": "British",
+      "lifted": false,
+      "countryIso2": "GB",
+      "ethnicitiesTop": [
+        "German",
+        "British",
+        "Dutch",
+        "Danish",
+        "Irish",
+        "Jewish",
+        "Norwegian",
+        "HispanoLatino",
+        "Swedish",
+        "AfricanAmerican"
+      ],
+      "probabilityCalibrated": 0.6115763692637636,
+      "probabilityAltCalibrated": 0.6115763692637636
+    },
+      {
+      "script": "LATIN",
+      "id": "0d7d6417-0bbb-4205-951d-b3473f605b57",
+      "firstName": "Baba",
+      "lastName": "Haring",
+      "score": 10.578504679244919,
+      "ethnicityAlt": "French",
+      "ethnicity": "British",
+      "lifted": false,
+      "countryIso2": "GB",
+      "ethnicitiesTop": [
+        "German",
+        "British",
+        "Dutch",
+        "Danish",
+        "Irish",
+        "Jewish",
+        "Norwegian",
+        "HispanoLatino",
+        "Swedish",
+        "AfricanAmerican"
+      ],
+      "probabilityCalibrated": 0.3015763692637636,
+      "probabilityAltCalibrated": 0.6115763692637636
+    }
+  ]
+}

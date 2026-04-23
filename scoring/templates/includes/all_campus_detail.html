@@ -1,0 +1,381 @@
+{% load l10n %}
+{% load i18n %}
+{% load percentage %}
+
+
+<div class="items_container" style="justify-content: center; align-items: stretch">
+    <div class="items_container w-100 justify-content-center">
+
+        {% if target_name == "all" or target_name == "collaborator" %}
+            {% with answer=answer_20220003 %}
+                {% if answer %}
+                    <div class="item_pb item_s1 item_c">
+                        <h3 class="content-strong">
+                            {% blocktrans trimmed %}Effectif total des collaborateurs (f/h/nb) dans l'établissement{% endblocktrans %}
+                        </h3>
+                        {% include 'includes/indicators/number_icon.html' with value=answer_20220003_sum icon_name="people" on_top=True icon_size="220px" %}
+                        {% if answer.perimeter %}
+                            <div class="perimeter-indicator">
+                                <span>
+                                    {% trans answer.perimeter %}
+                                </span>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+
+            {% with answer=answer_20220002 %}
+                {% if answer %}
+                    <div class="item_pb item_s1 stretched_item item_c">
+                        <h3 class="content-strong">
+                            {% blocktrans trimmed %}Budget annuel global de l'établissement scolaire{% endblocktrans %}
+                        </h3>
+                        <div class="d-flex flex-column justify-content-center">
+                            <div>
+                                {% include 'includes/indicators/number_icon.html' with currency_symbol=answer.currency_symbol value=answer.value color=cat.color font_size="30px" icon_name="money" %}
+                            </div>
+                            {% if answer.perimeter %}
+                                <div class="perimeter-indicator">
+                                    <span>
+                                        {% trans answer.perimeter %}
+                                    </span>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endif %}
+            {% endwith %}
+
+            {% with answer=answer_20220003 %}
+                {% if answer %}
+                    <div class="item_pb item_s1 stretched_item item_c">
+                        <h3 line_id=17 class="txt_line content-strong" prefix="\n">
+                            {% blocktrans trimmed %}Répartition par genre des collaborateurs (f/h/nb) au sein de l'établissement {% endblocktrans %}
+                        </h3>
+                        {% with subanswers=answer.subanswers.all %}
+                            {% include 'includes/indicators/pie_multiple_percent.html' with color1="#FF7070" value1=subanswers.0.value|percentage:answer.value color2="#863C63" value2=subanswers.1.value|percentage:answer.value color3="#8888E2" value3=subanswers.2.value|percentage:answer.value color4="#95B9C1" legend1=_("Femmes") legend2=_("Hommes") legend3=_("Non-binaire") id=answer.id|stringformat:'i'|add:"pie_chart" %}
+                        {% endwith %}
+                        {% if answer.perimeter %}
+                            <div class="perimeter-indicator">
+                                <span>
+                                    {% trans answer.perimeter %}
+                                </span>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+
+            {% with answer=answer_20220022 %}
+                {% if answer %}
+                    <div class="item_pb item_s1 stretched_item item_c">
+                        <h3 line_id=17 suffix=" : {{ answer.ratio_value|floatformat:'0' }} %" class="txt_line content-strong">
+                            {% blocktrans trimmed %}Taux d'employés (f/h/nb) ayant répondu à un sondage sur la politique Diversité et l'Inclusion de l'entreprise{% endblocktrans %}
+                        </h3>
+                        <h5 class="content-light">
+                            {% blocktrans trimmed %}dans les 2 dernières années{% endblocktrans %}
+                        </h5>
+                        <div class="d-flex justify-content-center">
+                            {% include 'includes/indicators/circular_plot.html' with last_year_value=answer.sibling_value border_color="#EBEAEA" blank_color="#e9ecef" percent_inner=answer.ratio_value|floatformat:'1' percent=answer.get_mean_score_in_business_line|floatformat:'0' percent_outter=answer.get_mean_score|floatformat:'0' color=cat.color id=answer.id %}
+                        </div>
+                        {% if answer.perimeter %}
+                            <div class="perimeter-indicator">
+                                <span>
+                                    {% trans answer.perimeter %}
+                                </span>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+
+            {% with answer=answer_20220023 %}
+                {% if answer %}
+                    <div class="item_pb item_s1 stretched_item item_c">
+                        <h3 line_id=17 suffix=" : {{ answer.value|floatformat:'0' }} %" style="margin-bottom:10px" class="txt_line  content-strong">
+                            {% blocktrans trimmed %}Taux d'employés (f/h/nb) interrogés qui estime que l'établissement est engagé sur la diversité et l'inclusion{% endblocktrans %}
+                        </h3>
+                        {% include 'includes/indicators/single_horizontal_histogram.html' with answer=answer color=cat.color ratio=True %}
+                        {% if answer.perimeter %}
+                            <div class="perimeter-indicator">
+                                <span>
+                                    {% trans answer.perimeter %}
+                                </span>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+
+            {% with answer=answer_20220029 %}
+                {% if answer %}
+                    <div class="item_pb item_s1 stretched_item item_c">
+                        <h3 line_id=17 suffix=" : {{ answer.ratio_value|floatformat:'0' }} %" class="txt_line content-strong">
+                            {% blocktrans trimmed %}Taux de personnes en charge des achats formées aux achats inclusifs{% endblocktrans %}
+                        </h3>
+                        <h5 class="content-light">
+                            {% blocktrans trimmed %}dans les 2 dernières années{% endblocktrans %}
+                        </h5>
+                        <div class="d-flex justify-content-center">
+                            {% include 'includes/indicators/circular_plot.html' with last_year_value=answer.sibling_value border_color="#EBEAEA" blank_color="#e9ecef" percent_inner=answer.ratio_value|floatformat:'1' percent=answer.get_mean_score_in_business_line|floatformat:'0' percent_outter=answer.get_mean_score|floatformat:'0' color=cat.color id=answer.id small=0 %}
+                        </div>
+                        {% if answer.perimeter %}
+                            <div class="perimeter-indicator">
+                                <span>
+                                    {% trans answer.perimeter %}
+                                </span>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+
+            {% with answer1=answer_20220030 answer2=answer_20220031 %}
+                {% if answer1 or answer2 %}
+                    <div class="item_pb item_s1 stretched_item item_c">
+                        {% if answer1 %}
+                            <h3 line_id=17 suffix=" : {{ answer1.ratio_value|floatformat:'0' }} %" class="txt_line content-strong">
+                                {% blocktrans trimmed %}Taux de managers (f/h/nb) formés à la lutte contre les discriminations{% endblocktrans %}
+                            </h3>
+                        {% elif answer2 %}
+                            <h3 line_id=17 suffix=" : {{ answer2.ratio_value|floatformat:'0' }} %" class="txt_line content-strong">
+                                {% blocktrans trimmed %}Taux de managers (f/h/nb) formés à la lutte contre les discriminations{% endblocktrans %}
+                            </h3>
+                        {% endif %}
+                        <h5 class="content-light">
+                            {% blocktrans trimmed %}dans les 2 dernières années{% endblocktrans %}
+                        </h5>
+                        <div class="d-flex justify-content-center">
+
+                            {% if answer1 %}
+                                {% include 'includes/indicators/circular_plot.html' with last_year_value=answer1.sibling_value border_color="#EBEAEA" blank_color="#e9ecef" percent_inner=answer1.ratio_value|floatformat:'1' percent=answer1.get_mean_score_in_business_line|floatformat:'0' percent_outter=answer1.get_mean_score|floatformat:'0' color=cat.color id=answer1.id small=0 %}
+                            {% elif answer2 %}
+                                {% include 'includes/indicators/circular_plot.html' with last_year_value=answer2.sibling_value border_color="#EBEAEA" blank_color="#e9ecef" percent_inner=answer2.ratio_value|floatformat:'1' percent=answer2.get_mean_score_in_business_line|floatformat:'0' percent_outter=answer2.get_mean_score|floatformat:'0' color=cat.color id=answer2.id small=0 %}
+                            {% endif %}
+                        </div>
+                        {% if answer1.perimeter %}
+                            <div class="perimeter-indicator">
+                                <span>
+                                    {% trans answer1.perimeter %}
+                                </span>
+                            </div>
+                        {% endif %}
+                        {% if answer2.perimeter %}
+                            <div class="perimeter-indicator">
+                                <span>
+                                    {% trans answer2.perimeter %}
+                                </span>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+
+            {% with answer=answer_20220032 %}
+                {% if answer %}
+                    <div class="item_pb item_s1 stretched_item item_c">
+                        <h3 line_id=17 suffix=" : {{ answer.ratio_value|floatformat:'0' }} %" class="txt_line content-strong">
+                            {% blocktrans trimmed %}Taux de personnel (f/h/nb) en charge du recrutement formés à la lutte contre les discriminations{% endblocktrans %}
+                        </h3>
+                        <h5 class="content-light">
+                            {% blocktrans trimmed %}dans les 2 dernières années{% endblocktrans %}
+                        </h5>
+                        <div class="d-flex justify-content-center">
+                            {% include 'includes/indicators/circular_plot.html' with last_year_value=answer.sibling_value border_color="#EBEAEA" blank_color="#e9ecef" percent_inner=answer.ratio_value|floatformat:'1' percent=answer.get_mean_score_in_business_line|floatformat:'0' percent_outter=answer.get_mean_score|floatformat:'0' color=cat.color id=answer.id small=0 %}
+                        </div>
+                        {% if answer.perimeter %}
+                            <div class="perimeter-indicator">
+                                <span>
+                                    {% trans answer.perimeter %}
+                                </span>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+
+            {% with answer=answer_20220034 %}
+                {% if answer %}
+                    <div class="item_pb item_s1 stretched_item item_c">
+                        <h3 line_id=17 suffix=" : {{ answer.ratio_value|floatformat:'0' }} %" class="txt_line content-strong">
+                            {% blocktrans trimmed %}Taux de nouveaux arrivants (f/h/nb) sensibilisés à l'inclusion et la non-discrimination{% endblocktrans %}
+                        </h3>
+                        <h5 class="content-light">
+                            {% blocktrans trimmed %}dans les 6 mois suivant le recrutement{% endblocktrans %}
+                        </h5>
+                        <div class="d-flex justify-content-center">
+                            {% include 'includes/indicators/circular_plot.html' with last_year_value=answer.sibling_value border_color="#EBEAEA" blank_color="#e9ecef" percent_inner=answer.ratio_value|floatformat:'1' percent=answer.get_mean_score_in_business_line|floatformat:'0' percent_outter=answer.get_mean_score|floatformat:'0' color=cat.color id=answer.id small=0 %}
+                        </div>
+                        {% if answer.perimeter %}
+                            <div class="perimeter-indicator">
+                                <span>
+                                    {% trans answer.perimeter %}
+                                </span>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+
+            {% with answer=answer_20220044 %}
+                {% if answer %}
+                    <div class="item_pb item_s3">
+                        <div class="true-false-indicator">
+                            <h3 line_id=17 class="txt_line content-strong" prefix="\n" style="text-align: left;">
+                                {% blocktrans trimmed %}L'entreprise favorise l'équilibre vie pro-vie perso des collaborateurs (f/h/nb) notamment des parents et des aidants avec les actions suivantes ...{% endblocktrans %}
+                            </h3>
+                        </div>
+                        <div class="row">
+                            {% with subanswers=answer.subanswers.all %}
+                                <div class="col">
+                                    {% for subanswer in subanswers %}
+                                        {% if subanswer.value >= 0.5 %}
+                                            <div class="existing-line"><span style="color:{{cat.color }}; font-size: 30pt">✓</span><span style="font-weight: 600"> {{subanswer.subquestion.label}}</span></div><br/>
+                                        {% endif %}
+                                    {% endfor %}
+                                </div>
+                                <div class="col">
+                                    {% for subanswer in subanswers %}
+                                        {% if subanswer.value < 0.5 and subanswer.subquestion.label != "Autres" %}
+                                            <div class="existing-line"><span style="color:{{cat.color }}; font-size: 30pt">✗</span><span style="font-weight: 600"> {{subanswer.subquestion.label}}</span></div><br/>
+                                        {% endif %}
+                                    {% endfor %}
+                                </div>
+                            {% endwith %}
+                        </div>
+                    </div>
+                {% endif %}
+            {% endwith %}
+        {% endif %}
+
+
+        {% if target_name == "all" or target_name == "student" %}
+            {% with answer=answer_20221001 %}
+                {% if answer %}
+                    <div class="item_pb item_s1 item_c">
+                        <h3 class="content-strong">
+                            {% blocktrans trimmed %}Effectif total des étudiants (f/h/nb){% endblocktrans %}
+                        </h3>
+                        {% include 'includes/indicators/number_icon.html' with value=answer_20221001_sum icon_name="people" on_top=True icon_size="220px" %}
+                        {% if answer.perimeter %}
+                            <div class="perimeter-indicator">
+                                <span>
+                                    {% trans answer.perimeter %}
+                                </span>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+
+            {% with answer=answer_20221001 %}
+                {% if answer %}
+                    <div class="item_pb item_s1 stretched_item item_c">
+                        <h3 line_id=17 class="txt_line content-strong" prefix="\n">
+                            {% blocktrans trimmed %}Répartition par genres des étudiants au sein de l'établissement {% endblocktrans %}
+                        </h3>
+                        {% with subanswers=answer.subanswers.all %}
+                            {% include 'includes/indicators/pie_multiple_percent.html' with color1="#FF7070" value1=subanswers.0.value|percentage:answer.value color2="#863C63" value2=subanswers.1.value|percentage:answer.value color3="#8888E2" value3=subanswers.2.value|percentage:answer.value color4="#95B9C1" value4=subanswers.3.value|percentage:answer.value legend1=_("Femmes") legend2=_("Hommes") legend3=_("Non-binaire") legend4=_("Ne souhaitant pas se déclarer") id=answer.id|stringformat:'i'|add:"pie_chart" %}
+                        {% endwith %}
+                        {% if answer.perimeter %}
+                            <div class="perimeter-indicator">
+                                <span>
+                                    {% trans answer.perimeter %}
+                                </span>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+
+            {% with answer=answer_20221010 %}
+                {% if answer %}
+                    <div class="item_pb item_s1 stretched_item item_c">
+                        <h3 line_id=17 suffix=" : {{ answer.ratio_value|floatformat:'0' }} %" class="txt_line content-strong">
+                            {% blocktrans trimmed %}Taux d'étudiants (f/h/nb) ayant répondu à un sondage sur la politique Diversité et l'Inclusion de l'établissement scolaire{% endblocktrans %}
+                        </h3>
+                        <h5 class="content-light">
+                            {% blocktrans trimmed %}dans les 24 derniers mois{% endblocktrans %}
+                        </h5>
+                        <div class="d-flex justify-content-center">
+                            {% include 'includes/indicators/circular_plot.html' with last_year_value=answer.sibling_value border_color="#EBEAEA" blank_color="#fff" percent_inner=answer.ratio_value|floatformat:'1' percent=answer.get_mean_score_in_business_line|floatformat:'0' percent_outter=answer.get_mean_score|floatformat:'0' color=cat.color id=answer.id %}
+                        </div>
+                        {% if answer.perimeter %}
+                            <div class="perimeter-indicator">
+                                <span>
+                                    {% trans answer.perimeter %}
+                                </span>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+
+            {% with answer=answer_20221011 %}
+                {% if answer %}
+                    <div class="item_pb item_s1 stretched_item item_c">
+                        <h3 line_id=17 suffix=" : {{ answer.value|floatformat:'0' }} %" style="margin-bottom:10px" class="txt_line  content-strong">
+                            {% blocktrans trimmed %}Taux d'étudiants (f/h/nb) interrogés qui estime que l'établissement est engagé sur la diversité et l'inclusion{% endblocktrans %}
+                        </h3>
+                        {% include 'includes/indicators/single_horizontal_histogram.html' with answer=answer color=cat.color ratio=True %}
+                        {% if answer.perimeter %}
+                            <div class="perimeter-indicator">
+                                <span>
+                                    {% trans answer.perimeter %}
+                                </span>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+
+            {% with answer=answer_20221017 %}
+                {% if answer %}
+                    <div class="item_pb item_s1 stretched_item item_c">
+                        <h3 line_id=17 suffix=" : {{ answer.ratio_value|floatformat:'0' }} %" class="txt_line content-strong">
+                            {% blocktrans trimmed %}Taux de personnes au sein des Carrière ayant suivi un parcours de formation à la lutte contre les discriminations dans le recrutement{% endblocktrans %}
+                        </h3>
+                        <h5 class="content-light">
+                            {% blocktrans trimmed %}dans les 2 dernières années{% endblocktrans %}
+                        </h5>
+                        <div class="d-flex justify-content-center">
+                            {% include 'includes/indicators/circular_plot.html' with last_year_value=answer.sibling_value border_color="#EBEAEA" blank_color="#e9ecef" percent_inner=answer.ratio_value|floatformat:'1' percent=answer.get_mean_score_in_business_line|floatformat:'0' percent_outter=answer.get_mean_score|floatformat:'0' color=cat.color id=answer.id small=0 %}
+                        </div>
+                        {% if answer.perimeter %}
+                            <div class="perimeter-indicator">
+                                <span>
+                                    {% trans answer.perimeter %}
+                                </span>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+
+            {% with answer=answer_20221018 %}
+                {% if answer %}
+                    <div class="item_pb item_s1 stretched_item item_c">
+                        <h3 line_id=17 suffix=" : {{ answer.ratio_value|floatformat:'0' }} %" class="txt_line content-strong">
+                            {% blocktrans trimmed %}Taux d'étudiants ayant suivi un parcours de sensibilisation à la non-discrimination{% endblocktrans %}
+                        </h3>
+                        <h5 class="content-light">
+                            {% blocktrans trimmed %}dans les 2 dernières années{% endblocktrans %}
+                        </h5>
+                        <div class="d-flex justify-content-center">
+                            {% include 'includes/indicators/circular_plot.html' with last_year_value=answer.sibling_value border_color="#EBEAEA" blank_color="#e9ecef" percent_inner=answer.ratio_value|floatformat:'1' percent=answer.get_mean_score_in_business_line|floatformat:'0' percent_outter=answer.get_mean_score|floatformat:'0' color=cat.color id=answer.id small=0 %}
+                        </div>
+                        {% if answer.perimeter %}
+                            <div class="perimeter-indicator">
+                                <span>
+                                    {% trans answer.perimeter %}
+                                </span>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+        {% endif %}
+
+    </div>
+</div>

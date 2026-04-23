@@ -1,0 +1,20 @@
+{% extends "base_email.html" %}
+{% load i18n static %}
+
+
+{% block content %}
+<tr>
+    <td><h1>{% blocktrans trimmed %}Vous avez été invité sur Mixity!{% endblocktrans %}</h1></td>
+</tr>
+    <tr>
+    <td>{% blocktrans trimmed %}{{ inviter }} vous a invité à collaborer sur l'empreinte de {{ structure }} sur
+        Mixity.{% endblocktrans %}</td>
+</tr>
+<tr>
+    <td align="center">
+        <a class="button" href="{{ invite_url }}">
+            {% blocktrans trimmed %}Rejoindre {{ structure }} sur Mixity{% endblocktrans %}
+        </a>
+    </td>
+</tr>
+{% endblock %}

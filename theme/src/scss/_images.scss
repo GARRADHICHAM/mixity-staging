@@ -1,0 +1,68 @@
+.image {
+    &--xs {
+        max-width: 8em;
+    }
+
+    &--sm {
+        max-width: 10em;
+    }
+
+    &--md {
+        max-width: 14em;
+    }
+
+    &--l {
+        max-width: 34em;
+    }
+}
+
+.photos-contact {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-bottom: 10px;
+    width: 100%;
+    max-width: 400px;
+}
+
+.drawing-pic  {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 10px;
+}
+
+.drawing-quote  {
+    width: 60px;
+    margin-bottom: 10px;
+}
+
+.img_partners {
+    min-width:200%; 
+    margin-top:-25%;
+    @media screen and (max-width: 768px) {
+        position: relative;
+        top: 25%;
+        left: -25%;
+        min-width: 300% !important;
+        margin: 0 !important;
+    }
+}
+
+.client_skills  {
+    width: auto;
+    height: 60px;
+}
+
+.infos_picture {
+    width: auto;
+    height: 80px;
+}
+
+.glassmorphism {
+    background: rgba( 255, 255, 255, 0.7 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.1);
+    backdrop-filter: blur( 14px );
+    -webkit-backdrop-filter: blur( 14px );
+    border-radius: 10px;
+    border: 1px solid #cecece45;
+}

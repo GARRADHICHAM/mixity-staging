@@ -1,0 +1,252 @@
+{% load l10n %}
+{% load static %}
+
+
+{% localize off %}
+<!-- Create a div where the graph will take place -->
+<div id="radial_chart_{{id}}"></div>
+
+{% block scripts %}
+<script type="application/javascript">
+	// set the dimensions and margins of the graph
+	$(document).ready(function () {
+            //Practically all this code comes from https://github.com/alangrafu/radar-chart-d3
+		//I only made some additions and aesthetic adjustments to make the chart look better
+		//(of course, that is only my point of view)
+		//Such as a better placement of the titles at each line end,
+		//adding numbers that reflect what each circular level stands for
+		//Not placing the last level and slight differences in color
+		//
+		//For a bit of extra information check the blog about it:
+		//http://nbremer.blogspot.nl/2013/09/making-d3-radar-chart-look-bit-better.html
+
+		var RadarChart = {
+			draw: function(id, d, options){
+				var cfg = {
+					radius: 5,
+					w: 600,
+					h: 600,
+					factor: 1,
+					factorLegend: 1.2,
+					levels: 4,
+					maxValue: 100,
+					radians: 2 * Math.PI,
+					opacityArea: 0.0,
+					TranslateX: 150,
+					TranslateY: 150,
+					ExtraWidthX: 300,
+					ExtraWidthY: 300,
+					color: d3.scaleOrdinal().domain(d[0].map(function(i, j){return i})).range([ '#8785BB', '#876D7F', '#96BBC2']),
+					stroke: d3.scaleOrdinal().domain(d[0].map(function(i, j){return i})).range([ '0.8', '0.0', '0.0']),
+					px: d3.scaleOrdinal().domain(d[0].map(function(i, j){return i})).range([ "1px", "5px", "5px"])
+				};
+
+				if('undefined' !== typeof options){
+					for(var i in options){
+						if('undefined' !== typeof options[i]){
+							cfg[i] = options[i];
+						}
+					}
+				}
+
+				cfg.maxValue = Math.max(cfg.maxValue, d3.max(d, function(i){return d3.max(i.map(function(o){return o.Value;}))}));
+				var allAxis = (d[0].map(function(i, j){return i}));
+				var total = allAxis.length;
+				var angleSlice = - Math.PI * 2 / total
+				var radius = cfg.factor*Math.min(cfg.w/2, cfg.h/2);
+				var Format = d3.format('%');
+				d3.select(id).select("svg").remove();
+				var g = d3.select(id)
+						.append("svg")
+						.attr("width", cfg.w+cfg.ExtraWidthX)
+						.attr("height", cfg.h+cfg.ExtraWidthY)
+						.append("g")
+						.attr("transform", "translate(" + cfg.TranslateX + "," + cfg.TranslateY + ")");
+						;
+
+				var tooltip;
+
+				//Circular segments
+				for(var j=0; j<cfg.levels-1; j++){
+				var levelFactor = cfg.factor*radius*((j+1)/cfg.levels);
+				g.selectAll(".levels")
+				.data(allAxis)
+				.enter()
+				.append("svg:line")
+				.attr("x1", function(d, i){return levelFactor*(1-cfg.factor*Math.sin(i*cfg.radians/total));})
+				.attr("y1", function(d, i){return levelFactor*(1-cfg.factor*Math.cos(i*cfg.radians/total));})
+				.attr("x2", function(d, i){return levelFactor*(1-cfg.factor*Math.sin((i+1)*cfg.radians/total));})
+				.attr("y2", function(d, i){return levelFactor*(1-cfg.factor*Math.cos((i+1)*cfg.radians/total));})
+				.attr("class", "line")
+				.style("stroke", "#C7C7C7")
+				//.style("stroke-opacity", "0.75")
+				.style("stroke-width", "0.5px")
+				.attr("transform", "translate(" + (cfg.w/2-levelFactor) + ", " + (cfg.h/2-levelFactor) + ")");
+				}
+
+				series = 0;
+
+				var axis = g.selectAll(".axis")
+						.data(allAxis)
+						.enter()
+						.append("g")
+						.attr("class", "axis");
+
+				axis.append("line")
+					.attr("x1", cfg.w/2)
+					.attr("y1", cfg.h/2)
+					.attr("x2", function(d, i){return cfg.w/2*(1-cfg.factor*Math.sin(i*cfg.radians/total));})
+					.attr("y2", function(d, i){return cfg.h/2*(1-cfg.factor*Math.cos(i*cfg.radians/total));})
+					.attr("class", "line")
+					.style("stroke", "#C7C7C7")
+					.style("stroke-width", "0.5px");
+
+				axis.append("text")
+					.attr("class", "legend")
+					.text(function(d){return (d.SubCategory.length > 20 ? d.SubCategory.slice(0, 20) + '...':
+					gettext(d.SubCategory))})
+					.style("font-family", "Montserrat")
+					.style("font-size", "14px")
+					.style("font-weight", "700")
+					.style("fill",function(d, i){return d.Color})
+					.attr("text-anchor", "middle")
+					.attr("dy", "-0.5em")
+					.attr("transform", function(d, i) {
+						let rotate = 0;
+						if (i > total/2) {
+							rotate = angleSlice * i > Math.PI / 2 ?
+								(angleSlice * i * 180 / Math.PI) - 270 :
+								(angleSlice * i * 180 / Math.PI) - 90;
+						}
+						else {
+							rotate = angleSlice * i > Math.PI / 2 ?
+								(angleSlice * i * 180 / Math.PI) + 270 :
+								(angleSlice * i * 180 / Math.PI) + 90;
+						}
+						let translateX = (radius * Math.cos(angleSlice * i - Math.PI / 2) * cfg.factorLegend) + cfg.w / 2;
+						let translateY =  (radius * Math.sin(angleSlice * i - Math.PI / 2) * cfg.factorLegend) + cfg.h / 2;
+						return "translate(" + translateX + "," + translateY + ") rotate(" + rotate + ")"
+					})
+					//.attr("transform", "translate(" + (cfg.w/2-levelFactor) + ", " + (cfg.h/2-levelFactor) + ")")
+					//.attr("x", function(d, i){return cfg.w/2*(1-cfg.factorLegend*Math.sin(i*cfg.radians/total))-60*Math.sin(i*cfg.radians/total);})
+					//.attr("y", function(d, i){return cfg.h/2*(1-Math.cos(i*cfg.radians/total))-20*Math.cos(i*cfg.radians/total);});
+
+
+				d.forEach(function(y, x){
+				dataValues = [];
+				g.selectAll(".nodes")
+					.data(y, function(j, i){
+					dataValues.push([
+						cfg.w/2*(1-(parseFloat(Math.max(j.Value, 0))/cfg.maxValue)*cfg.factor*Math.sin(i*cfg.radians/total)),
+						cfg.h/2*(1-(parseFloat(Math.max(j.Value, 0))/cfg.maxValue)*cfg.factor*Math.cos(i*cfg.radians/total))
+					]);
+					});
+				dataValues.push(dataValues[0]);
+				g.selectAll(".area")
+								.data([dataValues])
+								.enter()
+								.append("polygon")
+								.attr("class", "radar-chart-serie"+String(series))
+								.style("stroke-width", cfg.px(series))
+								.style("stroke", cfg.color(series))
+								.attr("points",function(d) {
+									var str="";
+									for(var pti=0;pti<d.length;pti++){
+										str=str+d[pti][0]+","+d[pti][1]+" ";
+									}
+									return str;
+								})
+								.style("fill", function(j, i){return cfg.color(series)})
+								.style("fill-opacity", cfg.stroke(series))
+								.on('mouseover', function (d){
+													z = "polygon."+d3.select(this).attr("class");
+													g.selectAll("polygon")
+													.transition(200)
+													.style("fill-opacity", 0.1);
+													g.selectAll(z)
+													.transition(200)
+													.style("fill-opacity", .7);
+												})
+								.on('mouseout', function(){
+													g.selectAll("polygon")
+													.transition(200)
+													.style("fill-opacity", cfg.opacityArea);
+								});
+				series++;
+				});
+				series=0;
+
+
+				d.forEach(function(y, x){
+				g.selectAll(".nodes")
+					.data(y).enter()
+					//.append("svg:circle")
+					.attr("class", "radar-chart-serie"+series)
+					.attr('r', cfg.radius)
+					.attr("alt", function(j){return Math.max(j.Value, 0)})
+					.attr("cx", function(j, i){
+					dataValues.push([
+						cfg.w/2*(1-(parseFloat(Math.max(j.Value, 0))/cfg.maxValue)*cfg.factor*Math.sin(i*cfg.radians/total)),
+						cfg.h/2*(1-(parseFloat(Math.max(j.Value, 0))/cfg.maxValue)*cfg.factor*Math.cos(i*cfg.radians/total))
+					]);
+					return cfg.w/2*(1-(Math.max(j.Value, 0)/cfg.maxValue)*cfg.factor*Math.sin(i*cfg.radians/total));
+					})
+					.attr("cy", function(j, i){
+					return cfg.h/2*(1-(Math.max(j.Value, 0)/cfg.maxValue)*cfg.factor*Math.cos(i*cfg.radians/total));
+					})
+					.attr("data-id", function(j){return j.axis})
+					.style("fill", cfg.color(series)).style("fill-opacity", .9)
+					.on('mouseover', function (d){
+								newX =  parseFloat(d3.select(this).attr('cx')) - 10;
+								newY =  parseFloat(d3.select(this).attr('cy')) - 5;
+
+								tooltip
+									.attr('x', newX)
+									.attr('y', newY)
+									.text(Format(d.Value))
+									.transition(200)
+									.style('opacity', 1);
+
+								z = "polygon."+d3.select(this).attr("class");
+								g.selectAll("polygon")
+									.transition(200)
+									.style("fill-opacity", 0.1);
+								g.selectAll(z)
+									.transition(200)
+									.style("fill-opacity", .7);
+							})
+					.on('mouseout', function(){
+								tooltip
+									.transition(200)
+									.style('opacity', 0);
+								g.selectAll("polygon")
+									.transition(200)
+									.style("fill-opacity", cfg.opacityArea);
+							})
+					.append("svg:title")
+					.text(function(j){return Math.max(j.Value, 0)});
+
+				series++;
+				});
+				//Tooltip
+				tooltip = g.append('text')
+						.style('opacity', 0)
+						.style('font-family', 'sans-serif')
+						.style('font-size', '13px');
+			}
+		};
+
+		//Data
+		let d = {{ values }};
+		d=d.reverse();
+
+		//Options for the Radar chart, other than default
+
+		//Call function to draw the Radar chart
+		//Will expect that data is in %'s
+		RadarChart.draw("#radial_chart_{{id}}", d);
+
+	})
+</script>
+{% endblock %}
+{% endlocalize %}

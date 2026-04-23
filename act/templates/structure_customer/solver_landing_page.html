@@ -1,0 +1,25 @@
+{% extends "base_dashboard.html" %}
+{% load i18n static %}
+
+{% block content %}
+    <section class="mxt-container full-height bg-gradient-multicolor">
+        <div class="mxt--normal card-light">
+            <h2 class="title--h2 text-center">{% blocktrans trimmed %}Devenir Solutionneur{% endblocktrans %}</h2>
+            <br/>
+            <p>{% blocktrans trimmed %}Votre organisation est engagée en faveur de la Diversité, de l’Équité et de l’Inclusion (DE&I) et vous avez des solutions à proposer ?{% endblocktrans %}</p>
+            <p>{% blocktrans trimmed %}Mixity vous propose de devenir partenaire et d’être visible auprès de ses organisations clientes.{% endblocktrans %}</p>
+            <p>{% blocktrans trimmed %}Au sein d’une plateforme qui favorise la mesure, le pilotage et la promotion des politiques DE&I, vous bénéficierez d’un espace pour valoriser vos solutions.{% endblocktrans %}</p>
+            <p>{% blocktrans trimmed %}Référencez vos solutions et permettez aux organisations de s’engager à vos côtés{% endblocktrans %}</p>
+            <br/>
+            <h3 class="text-center title--h3 text-decoration-underline">{% blocktrans trimmed %}Comment cela fonctionne :{% endblocktrans %}</h3>
+            <ul>
+                <li>{% blocktrans trimmed %}Rencontrez les équipes Mixity{% endblocktrans %}</li>
+                <li>{% blocktrans trimmed %}Valoriser 5 solutions DE&I{% endblocktrans %}</li>
+                <li>{% blocktrans trimmed %}Améliorer votre visibilité auprès d’organisations engagées{% endblocktrans %}</li>
+            </ul>
+            <br/>
+            <p class="text-center mxt--normal-bold">{% blocktrans trimmed %}Frais de fonctionnement : 250€ par an pour 5 offres{% endblocktrans %}</p>
+            {% include 'includes/form.html' with form=form submit=_("S'inscrire") method="post" %}
+        </div>
+    </section>
+{% endblock %}

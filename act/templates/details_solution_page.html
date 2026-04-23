@@ -1,0 +1,44 @@
+{% extends "base_dashboard.html" %}
+{% load i18n %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="mt-3">
+                <h5><b>{% blocktrans trimmed %}Titre{% endblocktrans %}</b></h5>
+                <p class="mb-0">{{solution.title}}</p>
+                <h5><b>{% blocktrans trimmed %}Résumé{% endblocktrans %}</b></h5>
+                <p class="mb-0">{{solution.summary}}</p>
+            </div>
+            <div>
+                <p><b>{% blocktrans trimmed %}Date de création{% endblocktrans %} : </b>{{solution.creation_date}}</p>
+                <p><b>{% blocktrans trimmed %}Description{% endblocktrans %} : </b>{{solution.description}}</p>
+                <p><b>{% blocktrans trimmed %}Pays{% endblocktrans %} : </b>{{solution.country}}</p>
+                <div>
+                    <p><b>{% blocktrans trimmed %}Langues{% endblocktrans %} : </b><p class="mxt--small"></p>
+                    {% for language in languages %}
+                    <span style="background: rgba(71, 212, 255, 0.1); border-radius: 4px; padding: 5px; color: #47D4FF">{{language}}</span></p>
+                    {% endfor %}
+                </div>
+                <p><b>{% blocktrans trimmed %}Tarifs{% endblocktrans %} : </b>{{solution.price_desc}}</p>
+                <div>
+                    <p><b>{% blocktrans trimmed %}Mots-clés{% endblocktrans %} : </b><p class="mxt--small"></p>
+                    {% for keyword in keywords %}
+                    <span style="background: rgba(71, 212, 255, 0.1); border-radius: 4px; padding: 5px; color: #47D4FF">{{keyword}}</span></p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            {% if solution.photo_url == "default" %}
+                <img src="{% static 'solvers_catalog/solution.jpg' %}" alt="Details thumbnail solution" class="rounded">
+            {% else %}
+                <img src="{{solution.photo_url}}" alt="Details thumbnail solution" class="rounded">
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

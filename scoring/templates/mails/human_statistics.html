@@ -1,0 +1,28 @@
+{% extends "base_email.html" %}
+{% load i18n static %}
+
+{% block content %}
+
+<tr>
+	<td>
+		<h1>{% trans "Statistiques de votre évaluation Mixity Human en cours" %}</h1>
+	</td>
+</tr>
+<tr>
+	<td>
+		{% blocktrans trimmed %}
+		Votré évaluation Mixity Human progresse. Actuellement, votre évaluation comptabilise {{ total_answers }} réponses sur vos
+             {{ number_of_employees }} collaborateurs. Ce qui correspond à un taux de répondants de {{ rate_answers }} %.
+		{% endblocktrans %}<br/><br/>
+
+		{% blocktrans trimmed %}
+		Vous pouvez laisser votre évaluation active pour continuer de recevoir des réponses ou alors valider celle-ci si le taux de répondants vous satisfait.
+		{% endblocktrans %}
+	</td>
+</tr>
+<tr>
+  <td>
+    <div style="margin-bottom: 21px;"><a style="background: #18ffc3;padding: 13px;border-radius: 21px;text-decoration: none;color: #181b3d;font-weight: bold;" href="{{ footprint_update_url }}">{% blocktrans trimmed %}Accéder à mes évaluations{% endblocktrans %}</a></div>
+  </td>
+</tr>
+{% endblock %}

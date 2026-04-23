@@ -1,0 +1,38 @@
+{% load i18n %}
+{% load l10n %}
+{% load format_number %}
+
+
+{% localize off %}
+<div class="d-flex justify-content-center">
+    <div class="pie_chart" style="font-size:inherit; font-family:inherit;">
+        <span style="text-align: left;color: #423C6B;font-weight: 600">{{ label }}
+            <div class="pie_element">
+                <div class="pie_content" style="align-items:flex-start; width:100%;">
+                    <div style="border: #e9ecef solid 0.5px; background: white; width: 100%"><div class="pie_me" style="margin-bottom: 0px;background-color:{{ color }}; width: {{ value|default:'0.5' }}%"></div></div>
+                    {% if display_mean_score %}
+                        <div style="border: #e9ecef solid 0.5px; background: white; width: 100%"><div class="pie_other" style="margin-bottom: 0px;background-color:#863C63; width: {{ mean_score_in_business_line|default:'0.5' }}%"></div></div>
+                        <div style="border: #e9ecef solid 0.5px; background: white; width: 100%"><div class="pie_other" style="margin-bottom: 0px;background-color:#95B9C1; width: {{ mean_score|default:'0.5' }}%"></div></div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="progress_legend">
+                <div class="legend_element" style="justify-content: start">
+                    <div style="background-color:{{ color }};" class="dot"></div>
+                    <span style="color: {{ color }}; font-size: 15pt;">&nbsp;{% percentage value=value %}&nbsp;</span>
+                </div>
+                {% if display_mean_score %}
+                    <div class="legend_element">
+                        <div style="background-color:#863C63;" class="dot"></div>
+                        <span style="color: #863C63; font-size: 15pt;">&nbsp;{% percentage value=mean_score_in_business_line %}&nbsp;</span>
+                    </div>
+                    <div class="legend_element" style="justify-content: end">
+                        <div style="background-color:#95B9C1;" class="dot"></div>
+                        <span style="color: #95B9C1; font-size: 15pt;">&nbsp;{% percentage value=mean_score %}&nbsp;</span>
+                    </div>
+                {% endif %}
+            </div>
+        </span>
+    </div>
+</div>
+{% endlocalize %}

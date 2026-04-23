@@ -1,0 +1,15 @@
+{% load l10n %}
+{% load evolution_rate %}
+{% load format_number %}
+
+
+<div style="display: flex; width: 100%; flex-wrap: wrap; justify-content: center;">
+    <div style="width: 100%; text-align: center;">
+        <span class="value_montant" style="color: {{ color }}; font-family: Cousine;">{% simple_number value=value %}</span>
+    </div>
+    {% if last_year_value %}
+        {% with evol=value|evolution_rate:last_year_value %}
+            <div class="progress_evol" style="color:#423c6b; ">vs {{ last_year|unlocalize }} : <span style="color: {{ color }}"> {% percentage value=evol show_evolution=True %}</span></div>
+        {% endwith %}
+    {% endif %}
+</div>

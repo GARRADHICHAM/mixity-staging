@@ -1,0 +1,29 @@
+{% load i18n define mutable %}
+
+<div class="d-flex">
+    <div class="field__label mr-auto">
+        <span>{{ label }}</span>
+        {% if custom_question_label_field.value %}
+                    <div class="d-inline-flex custom-question-label">
+                    {{ custom_question_label_field.value }}
+                    </div>
+                  {{ custom_question_label_field|update:None }}
+        {% endif %}
+    </div>
+    {% if field.help_text and field.field.suffix == None %}
+        <div class="">
+            <a class="btn help-bubble mxt--small" style="width: 100px;background-color: #f0f0f0" data-bs-toggle="collapse" tabindex="-1" href="#help-{{ field.id_for_label }}" role="button" aria-expanded="false" aria-controls="help-{{ field.id_for_label }}">
+                <span class="fas fa-question-circle pe-2"></span>
+                {% blocktrans trimmed %}Aide{% endblocktrans %}
+            </a>
+        </div>
+    {% endif %}
+</div>
+
+{% if field.help_text and field.field.suffix == None %}
+    <div class="collapse p-3" id="help-{{ field.id_for_label }}">
+        <div class="card-light help-bubble mxt--small">
+            {{ field.help_text|safe|linebreaksbr }}
+        </div>
+    </div>
+{% endif %}

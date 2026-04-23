@@ -1,0 +1,25 @@
+{% load i18n %}
+{% load static %}
+
+{% if structure.can_pay_by_card %}
+    {% if not structure.first_subscriptionOption.is_active %}
+        {% if structure.last_payment_failed %}
+        <div style="width: 100%; background: #f99191; padding: 25px 0; display: flex; justify-content: center; align-items: center">
+            <span class="title--h3" style="text-align: center">{% blocktrans trimmed %}Le dernier paiement a malheureusement échoué. Pour activer votre compte, veuillez réessayer de régler en ligne en{% endblocktrans %} <a href="{% url "payments:pay" pk=structure.id %}">{% blocktrans trimmed %}cliquant ici{% endblocktrans %}</a> {% blocktrans trimmed %}ou contactez le support pour choisir une autre méthode de paiement.{% endblocktrans %}</span>
+
+        </div>
+        {% else %}
+        <div style="width: 100%; background: #f99191; padding: 25px 0; display: flex; justify-content: center; align-items: center">
+            <span class="title--h3" style="text-align: center">{% blocktrans trimmed %}Votre abonnement est pour le moment inactif. Pour l'activer, veuillez régler en ligne en{% endblocktrans %} <a href="{% url "payments:pay" pk=structure.id %}">{% blocktrans trimmed %}cliquant ici{% endblocktrans %}</a> {% blocktrans trimmed %}ou contactez le support pour choisir une autre méthode de paiement.{% endblocktrans %}</span>
+
+        </div>
+        {% endif %}
+    {% endif %}
+{% elif structure.is_awaiting_payment %}
+    {% if not structure.first_subscriptionOption.is_active or structure.first_subscriptionOption.is_trial %}
+    <div style="width: 100%; background: #f9cf91; padding: 25px 0; display: flex; justify-content: center; align-items: center">
+        <span class="title--h3" style="text-align: center">{% blocktrans trimmed %}Votre abonnement est pour le moment inactif. Nous attendons la confirmation du paiement pour qu'il soit automatiquement activé.{% endblocktrans %}</span>
+
+    </div>
+    {% endif %}
+{% endif %}

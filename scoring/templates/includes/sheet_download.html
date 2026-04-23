@@ -1,0 +1,312 @@
+{% load i18n settings_value %}
+{% load static %}
+{% get_available_languages as LANGUAGES %}
+{% get_current_language as LANGUAGE_CODE %}
+{% get_language_info_list for LANGUAGES as languages %}
+{% settings_value "ENABLED_WEBSITE_LANGUAGES" as ENABLED_WEBSITE_LANGUAGES %}
+{% csrf_token %}
+
+{% block script %}
+    <script>
+        function send_excel_human_filters() {
+            // Getting filters
+            let human_selected_filters = {
+                "pk": 0,
+                "collab_filters": {},
+                "collab_human_criteria": {},
+                "language_code": "",
+                "second_filter_activated": "false",
+                "second_collab_filters": {},
+                "second_collab_human_criteria": {}
+            };
+            let filters = document.querySelectorAll(".excel_collab_filter");
+            let second_filters = document.querySelectorAll(".second_excel_collab_filter");
+            let human_criteria = document.querySelectorAll(".excel_collab_human_criteria");
+            let second_human_criteria = document.querySelectorAll(".second_excel_collab_human_criteria");
+
+            human_selected_filters["pk"] = document.getElementById("human_excel_pk").getAttribute("data-pk");
+
+            // Collab Filters
+            filters.forEach(function (f) {
+                let checked_values = f.children[2].querySelectorAll('input[type="checkbox"]:checked');
+                let slug = f.children[1].id;
+                if (human_selected_filters["collab_filters"][slug] === undefined && checked_values.length > 0) {
+                    human_selected_filters["collab_filters"][slug] = [];
+                }
+                checked_values.forEach(function (value) {
+                    let current_label = value.getAttribute('choice-value');
+                    human_selected_filters["collab_filters"][slug].push({"slug":value.getAttribute('choice-key'),"label":current_label});
+                })
+            })
+
+            // Collab Human Criteria
+            human_criteria.forEach(function (f) {
+                let checked_values = f.children[2].querySelectorAll('input[type="checkbox"]:checked');
+                let label = f.children[1].textContent;
+                if (human_selected_filters["collab_human_criteria"][label] === undefined && checked_values.length > 0) {
+                    human_selected_filters["collab_human_criteria"][label] = [];
+                }
+                checked_values.forEach(function (value) {
+                    human_selected_filters["collab_human_criteria"][label].push(value.getAttribute('choice-id'));
+                })
+            })
+
+            //check if second filter is activated
+            if (document.getElementById("second-filter").getAttribute("is-active") === "true") {
+                human_selected_filters["second_filter_activated"] = "true";
+                //second filters
+                second_filters.forEach(function (f) {
+                    let checked_values = f.children[2].querySelectorAll('input[type="checkbox"]:checked');
+                    let slug = f.children[1].id;
+                    if (human_selected_filters["second_collab_filters"][slug] === undefined && checked_values.length > 0) {
+                        human_selected_filters["second_collab_filters"][slug] = [];
+                    }
+                    checked_values.forEach(function (value) {
+                        let current_label = value.getAttribute('choice-value');
+                        human_selected_filters["second_collab_filters"][slug].push({"slug": value.getAttribute('choice-key'), "label": current_label});
+                    })
+                })
+                //second human criteria
+                second_human_criteria.forEach(function (f) {
+                    let checked_values = f.children[2].querySelectorAll('input[type="checkbox"]:checked');
+                    let label = f.children[1].textContent;
+                    if (human_selected_filters["second_collab_human_criteria"][label] === undefined && checked_values.length > 0) {
+                        human_selected_filters["second_collab_human_criteria"][label] = [];
+                    }
+                    checked_values.forEach(function (value) {
+                        human_selected_filters["second_collab_human_criteria"][label].push(value.getAttribute('choice-id'));
+                    })
+                })
+            } else {
+                human_selected_filters["second_filter_activated"] = "false";
+            }
+
+            // Getting language
+            let language_code = document.querySelector(".excel_languages").querySelector('input[type="radio"]:checked');
+            if (language_code) {
+                human_selected_filters["language_code"]=language_code.getAttribute('choice-id');
+            }
+            if (human_selected_filters["language_code"]) {
+                // Sending filters to APIView
+                return fetch(`/scoring/evaluation/${this.props.evaluation.pk}/human-filtered-excel/`, {
+                    credentials: 'include',
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json;charset=utf-8',
+                        'X-CSRFToken': csrftoken
+                    },
+                    body: JSON.stringify(human_selected_filters)
+                }).then((response) => response.json()).then(data => {
+                    if (data.result === "failure" ){
+                        document.getElementById("close_btn_excel_human_filters").click();
+                        window.location.reload();
+                    }else if (data.result === "close") {
+                        document.getElementById("close_btn_excel_human_filters").click();
+                    }
+                }
+                ).catch((error) => {
+                    let error_msg = "Error while exporting excel with filters :" + error;
+                    alert(error_msg);
+                })
+            } else {
+                alert(gettext("Veuillez choisir une langue !"));
+            }
+        }
+
+        function add_second_filter() {
+            document.getElementById("excel_human_filters_Modal").scroll({top: 0, behavior: 'smooth'});
+            document.getElementById("second-filter").setAttribute("is-active", "true");
+            document.getElementById("second-filter").style.display = "block";
+            document.getElementById("first-filter").style.display = "none";
+            document.getElementById("add_second_filter_button").style.display = "none";
+            document.getElementById("modif_first_filter_button").style.display = "block";
+            document.getElementById("delete_second_filter_button").style.display = "block";
+        }
+
+        function modif_first_filter() {
+            document.getElementById("excel_human_filters_Modal").scroll({top: 0, behavior: 'smooth'});
+            document.getElementById("second-filter").style.display = "none";
+            document.getElementById("first-filter").style.display = "block";
+            document.getElementById("modif_first_filter_button").style.display = "none";
+            document.getElementById("modif_second_filter_button").style.display = "block";
+        }
+
+        function modif_second_filter() {
+            document.getElementById("excel_human_filters_Modal").scroll({top: 0, behavior: 'smooth'});
+            document.getElementById("second-filter").style.display = "block";
+            document.getElementById("first-filter").style.display = "none";
+            document.getElementById("modif_second_filter_button").style.display = "none";
+            document.getElementById("modif_first_filter_button").style.display = "block";
+        }
+
+        function delete_second_filter() {
+            document.getElementById("excel_human_filters_Modal").scroll({top: 0, behavior: 'smooth'});
+            document.getElementById("second-filter").setAttribute("is-active", "false");
+            document.getElementById("modif_second_filter_button").style.display = "none";
+
+            document.getElementById("second-filter").style.display = "none";
+            document.getElementById("first-filter").style.display = "block";
+            document.getElementById("add_second_filter_button").style.display = "block";
+            document.getElementById("modif_first_filter_button").style.display = "none";
+            document.getElementById("delete_second_filter_button").style.display = "none";
+        }
+    </script>
+{% endblock %}
+
+<!------Using HTML as a Proxy t avoid mixing template language and javascript------>
+<meta id="human_excel_pk" data-pk="{{evaluation.pk}}">
+
+<div class="nav-item dropdown">
+    <!-- Languages -->
+    <a class="excel-dropdown header-dropdown-toggle mxt--small button border assess_white_btn p-0 px-1" role="button"
+       data-bs-toggle="dropdown" aria-expanded="false">
+        <i class="bi bi-cloud-download"></i>{% if evaluation.is_validated_by_user %}{% blocktrans trimmed %}Excel{% endblocktrans %}{% else %}{% blocktrans trimmed %}Excel en cours{% endblocktrans %}{% endif %}&nbsp;&nbsp;&nbsp;&nbsp;
+    </a>
+    <ul class="dropdown-menu">
+        {% for language in languages %}
+            {% if evaluation.is_human or language.code in ENABLED_WEBSITE_LANGUAGES %}
+                <li>
+                    <a style="cursor: pointer;" class="dropdown-item"
+                       href="{% url 'sheet_download_i18n' pk=evaluation.pk language_code=language.code %}">
+                        <span class="icon-flag-{{ language.code }}"></span>
+                        {{ language.name_local|capfirst }} ({{ language.code|title }})
+                    </a>
+                </li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+    <!-- Filters -->
+    {% if evaluation and evaluation.is_human %}
+        <!-- Triggering modal -->
+        <button type="button" class="mxt--small button border assess_white_btn p-0 px-1" data-bs-toggle="modal" data-bs-target="#excel_human_filters_Modal">
+            <i class="bi bi-cloud-download"></i>{% if evaluation.is_validated_by_user %}{% blocktrans trimmed %}Excel avec filtres{% endblocktrans %}{% else %}{% blocktrans trimmed %}Excel avec filtres en cours{% endblocktrans %}{% endif %}
+        </button>
+        <!-- Modal content -->
+        <div class="modal fade" id="excel_human_filters_Modal" tabindex="-1" aria-labelledby="excel_human_filters_label" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <!-- first filter -->
+                    <div id="first-filter">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="excel_human_filters_label">{% blocktrans %}Choisir vos filtres{% endblocktrans %}</h5>
+                            <button type="button" id="close_btn_excel_human_filters" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <!-- Modal Languages with Filters -->
+                            <h5 class="mb-4">{% blocktrans %}Langues{% endblocktrans %}</h5>
+                            <form class="d-flex flex-column flex-wrap">
+                            <div class="excel_languages">
+                            {% for language in languages %}
+                                {% if evaluation.is_human or language.code in ENABLED_WEBSITE_LANGUAGES %}
+                                    <div class="form-check">
+                                        <input class="form-check-input" name="execl_filtered_languages" type="radio" value="" id="{{ language.code }}__radio" choice-id="{{ language.code }}" {% if LANGUAGE_CODE == language.code %} checked {% endif %} >
+                                        <label class="form-check-label" for="{{ language.code }}__radio">
+                                            <span class="icon-flag-{{ language.code }}"></span>
+                                            {{ language.name_local|capfirst }} ({{ language.code|title }})
+                                        </label>
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                            </div>
+                            </form>
+                            <br/>
+                            <!-- Modal Filters -->
+                            <h5 class="mb-4">{% blocktrans %}Filtres{% endblocktrans %}</h5>
+                            {% for key,value in human_excel_filters.items %}
+                                {% if value.is_human_criteria %}
+                                    <div class="excel_collab_human_criteria">
+                                        <hr class="solid" style='borderColor:"#DEDFEA"'/>
+                                        <h6 class="mb-4">{{ value.label }}</h6>
+                                        <form class="d-flex flex-column flex-wrap">
+                                            {% for choice in value.choices %}
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" value="" id="{{ choice.id }}__check" choice-id="{{ choice.id }}">
+                                                    <label class="form-check-label" for="{{ choice.id }}__check">
+                                                        {{ choice }}
+                                                    </label>
+                                                </div>
+                                            {% endfor %}
+                                        </form>
+                                    </div>
+                                {% else %}
+                                    <div class="excel_collab_filter">
+                                        <hr class="solid" style='borderColor:"#DEDFEA"'/>
+                                        <h6 id="{{ key }}" class="mb-4">{{ value.label }}</h6>
+                                        <form class="d-flex flex-column flex-wrap">
+                                            {% for choice in value.choices %}
+                                                {% for choice_key, choice_value in choice.items %}
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" value="" id="{{ choice_key }}__check" choice-key="{{ choice_key }}" choice-value="{{ choice_value }}">
+                                                        <label class="form-check-label" id="{{ choice_key }}__label" for="{{ choice_key }}__check">
+                                                            {{ choice_value }}
+                                                        </label>
+                                                    </div>
+                                                {% endfor %}
+                                            {% endfor %}
+                                        </form>
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <!-- second filter -->
+                    <div id="second-filter" style="display: none;" is-active="false">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="excel_human_filters_label">{% blocktrans %}Choisir votre second filtre{% endblocktrans %}</h5>
+                            <button type="button" id="close_btn_excel_human_filters" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <!-- Modal Filters -->
+                            <h5 class="mb-4">{% blocktrans %}Second filtres{% endblocktrans %}</h5>
+                            {% for key,value in human_excel_filters.items %}
+                                {% if value.is_human_criteria %}
+                                    <div class="second_excel_collab_human_criteria">
+                                        <hr class="solid" style='borderColor:"#DEDFEA"'/>
+                                        <h6 class="mb-4">{{ value.label }}</h6>
+                                        <form class="d-flex flex-column flex-wrap">
+                                            {% for choice in value.choices %}
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" value="" id="second_{{ choice.id }}__check" choice-id="{{ choice.id }}">
+                                                    <label class="form-check-label" for="second_{{ choice.id }}__check">
+                                                        {{ choice }}
+                                                    </label>
+                                                </div>
+                                            {% endfor %}
+                                        </form>
+                                    </div>
+                                {% else %}
+                                    <div class="second_excel_collab_filter">
+                                        <hr class="solid" style='borderColor:"#DEDFEA"'/>
+                                        <h6 id="{{ key }}" class="mb-4">{{ value.label }}</h6>
+                                        <form class="d-flex flex-column flex-wrap">
+                                            {% for choice in value.choices %}
+                                                {% for choice_key, choice_value in choice.items %}
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" value="" id="second_{{ choice_key }}__check" choice-key="{{ choice_key }}" choice-value="{{ choice_value }}">
+                                                        <label class="form-check-label" id="second_{{ choice_key }}__label" for="second_{{ choice_key }}__check">
+                                                            {{ choice_value }}
+                                                        </label>
+                                                    </div>
+                                                {% endfor %}
+                                            {% endfor %}
+                                        </form>
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" id="add_second_filter_button" class="btn btn-primary" onclick="add_second_filter()">{% blocktrans %}ajouter un filtre{% endblocktrans %}</button>
+                        <button type="button" id="modif_first_filter_button" class="btn btn-primary" style="display: none; font-size: 13px;" onclick="modif_first_filter()">{% blocktrans %}modifier le premier filtre{% endblocktrans %}</button>
+                        <button type="button" id="modif_second_filter_button" class="btn btn-primary" style="display: none; font-size: 13px;" onclick="modif_second_filter()">{% blocktrans %}modifier le second filtre{% endblocktrans %}</button>
+
+                        <button type="button" id="delete_second_filter_button" class="btn btn-primary" style="display: none; font-size: 13px;" onclick="delete_second_filter()">{% blocktrans %}supprimer le second filter{% endblocktrans %}</button>
+
+                        <button type="button" class="btn btn-primary" onclick="send_excel_human_filters()">{% blocktrans %}Valider{% endblocktrans %}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+</div>
+

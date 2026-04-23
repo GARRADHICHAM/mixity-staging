@@ -1,0 +1,91 @@
+@font-face {
+    font-family: 'mixity-icons';
+    src:  url('/static/dist/webfonts/mixity-icons-v3.eot');
+    src:  url('/static/dist/webfonts/mixity-icons-v3.eot') format('embedded-opentype'),
+    url('/static/dist/webfonts/mixity-icons-v3.ttf') format('truetype'),
+    url('/static/dist/webfonts/mixity-icons-v3.woff') format('woff'),
+    url('/static/dist/webfonts/mixity-icons-v3.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'mixity-icons' !important;
+    speak: never;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.icon-burger:before {
+    content: "\e907";
+}
+.icon-circle-info:before {
+    content: "\e90a";
+}
+.icon-logo-facebook:before {
+    content: "\e922";
+}
+.icon-logo-instagram:before {
+    content: "\e923";
+}
+.icon-logo-linkedin:before {
+    content: "\e924";
+}
+.icon-logo-twitter:before {
+    content: "\e925";
+}
+.icon-mail:before {
+    content: "\e927";
+}
+.icon-offer-diag:before {
+    content: "\e92a";
+    color: rgb(0, 0, 0);
+}
+.icon-offer-start:before {
+    content: "\e930";
+    color: rgb(0, 0, 0);
+}
+.icon-user:before {
+    content: "\e937";
+}
+.icon-home:before {
+    content: url("/static/icon/home.svg")
+}
+.icon-measure:before {
+    content: url("/static/icon/measure.svg")
+}
+.icon-monitor:before {
+    content: url("/static/icon/monitor.svg")
+}
+.icon-take-action:before {
+    content: url("/static/icon/take-action.svg")
+}
+.icon-promote:before {
+    content: url("/static/icon/promote.svg")
+}
+.icon-public-profile:before {
+    content: url("/static/icon/public-profile.svg")
+}
+.icon-invite-coworker:before {
+    content: url("/static/icon/invite-coworker.svg")
+}
+.icon-become-solver:before {
+    content: url("/static/icon/become-solver.svg")
+}
+.icon-footprint-human:before {
+    content: url("/static/icon/human.svg")
+}
+.icon-footprint-scan:before {
+    content: url("/static/img/scan/Scan.svg")
+}
+.icon-trash::before {
+    content: url("/static/icon/trash.svg")
+}

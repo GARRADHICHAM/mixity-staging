@@ -1,0 +1,28 @@
+{% load i18n %}
+{% load static %}
+{% load currencies %}
+{% load settings_value %}
+
+
+{% get_current_language as LANGUAGE_CODE %}
+{% get_available_languages as LANGUAGES %}
+{% get_language_info_list for LANGUAGES as languages %}
+{% get_currency_list as CURRENCIES %}
+{% settings_value "ENABLED_WEBSITE_LANGUAGES" as ENABLED_WEBSITE_LANGUAGES %}
+
+<header class="container py-4">
+    <nav class="navbar navbar-expand-xl m-0 p-0"> <!-- sticky-top -->
+        <div class="navbar-expand-xl m-0 p-0 d-flex justify-content-between align-items-center" style="width: 100%;">
+            <div>
+                <a class="navbar-brand" href="{% url 'home' %}">
+                    <img src="{% static 'img/logo_mixity_white_font.svg' %}" alt="logo" style="height: 36.59px;">
+                </a>
+            </div>
+            <div>
+                <a class="text-white text-decoration-none" style="font-size: 15px;" href="https://www.mixity.co">
+                    {% blocktrans trimmed %}Retourner sur le site{% endblocktrans %}
+                </a>
+            </div>
+        </div>
+    </nav>
+</header>

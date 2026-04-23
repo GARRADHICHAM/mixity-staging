@@ -1,0 +1,132 @@
+{% load i18n %}
+{% load percentage %}
+{% load format_number %}
+{% load static %}
+
+<div class="items_container" style="justify-content: center; align-items: stretch">
+    {% if answer_20216029 %}
+        <div class="item_pb item_s1 item_c stretched_item">
+            <h3 line_id=17 suffix=" : {{ answer_20216029.value|floatformat:'0' }} %" class="txt_line  content-strong" style="margin:auto;">{% blocktrans trimmed %}Taux de personnes en situation de handicap au sein de l’organisation.{% endblocktrans %}</h3>
+            <div class="d-flex justify-content-center">
+                {% include 'includes/indicators/circular_plot.html' with last_year_value=answer_20216029.sibling_value border_color="#EBEAEA" blank_color="#e9ecef" percent_inner=answer_20216029.value|floatformat:'1' percent=answer_20216029.get_mean_score_in_business_line|floatformat:'0' percent_outter=answer_20216029.get_mean_score|floatformat:'0' color=cat.color id=answer_20216029.id small=0 %}
+            </div>
+            {% if answer_20216029.perimeter %}
+                <div class="perimeter-indicator">
+                    <span>
+                        {% trans answer_20216029.perimeter %}
+                    </span>
+                </div>
+            {% endif %}
+        </div>
+    {% endif %}
+
+    {% with answer=answer_20216064 %}
+        {% if answer %}
+            <div class="item_pb item_s1 items_container item_c">
+                <h3 line_id=17 suffix=" : {{ answer.value|floatformat:'0' }} %" class="txt_line content-strong">
+                    {% blocktrans trimmed %}Taux d'achats effectués auprès du secteur adapté et protégé{% endblocktrans %}
+                </h3>
+                <div class="d-flex justify-content-center">
+                    {% include 'includes/indicators/half_circular_plot.html' with last_year_value=answer.sibling_value border_color="#EBEAEA" blank_color="#e9ecef" percent_inner=answer.value|floatformat:'1' percent=answer.get_mean_score_in_business_line|floatformat:'0' percent_outter=answer.get_mean_score|floatformat:'0' color=cat.color id=answer.id small=1 %}
+                </div>
+                {% if answer.perimeter %}
+                    <div class="perimeter-indicator">
+                        <span>
+                            {% trans answer.perimeter %}
+                        </span>
+                    </div>
+                {% endif %}
+            </div>
+        {% endif %}
+    {% endwith %}
+
+    {% if answer_20216035 %}
+        <div class="item_pb item_s1 item_c stretched_item">
+            <h3 line_id=17 suffix=" : {{ answer_20216035.value|floatformat:'0' }} %" class="txt_line  content-strong" style="margin:auto;">{% blocktrans trimmed %}Taux de salariés (f/h/nb) ayant suivi dans l'année un dispositif de sensibilisation et/ou de formation avec mention des stéréotypes liés au handicap {% endblocktrans %}
+            </h3>
+            <div class="d-flex justify-content-center">
+                {% include 'includes/indicators/half_circular_plot.html' with last_year_value=answer_20216035.sibling_value border_color="#EBEAEA" blank_color="#e9ecef" percent_inner=answer_20216035.value|floatformat:'1' percent=answer_20216035.get_mean_score_in_business_line|floatformat:'0' percent_outter=answer_20216035.get_mean_score|floatformat:'0' color=cat.color id=answer_20216035.id small=0 %}
+            </div>
+            {% if answer_20216035.perimeter %}
+                <div class="perimeter-indicator">
+                    <span>
+                        {% trans answer_20216035.perimeter %}
+                    </span>
+                </div>
+            {% endif %}
+        </div>
+    {% endif %}
+
+    {% with answer=answer_20216065 %}
+        {% if answer %}
+            <div class="{% if answer.choice.value >= 3.0 %}item_smid{% endif %} items_container item_c">
+                {% if answer.choice.value >= 3.0 %}
+                    <div class="item_pb item_s3 d-flex align-items-center" style="width: 100%">
+                        <div><img src="{% static 'img/network.png' %}" style="width: 112px" /></div>
+                        <div>
+                            <h3 line_id=17 class="txt_line  content-strong" style="text-align: left; margin-left: 30px;">
+                                {% blocktrans trimmed %}Existence de partenariats avec une/des organisations externes spécialisées sur le handicap{% endblocktrans %}
+                            </h3>
+                        </div>
+                    </div>
+                {% else%}
+                    <div class="item_pb item_s3 d-flex align-items-center" style="width: 100%">
+                        <div><img src="{% static 'img/reseau_2.png' %}" style="width: 112px" /></div>
+                        <div>
+                            <h3 line_id=17 class="txt_line  content-strong" style="text-align: left; margin-left: 30px;">
+                                {% blocktrans trimmed %}Il n'existe pas de partenariats avec une/des organisations externes spécialisées sur le handicap{% endblocktrans %}
+                            </h3>
+                        </div>
+                    </div>
+                {% endif %}
+                {% if answer.perimeter %}
+                    <div class="perimeter-indicator">
+                        <span>
+                            {% trans answer.perimeter %}
+                        </span>
+                    </div>
+                {% endif %}
+            </div>
+        {% endif %}
+    {% endwith %}
+
+    {% with answer=answer_20216048 %}
+        {% if answer %}
+            <div class="item_pb item_s3">
+                <br/>
+                <div style="display: flex;justify-content: space-between">
+                    <div>
+                        <h3 line_id=17 class="txt_line content-strong" prefix="\n" style="text-align: left;">
+                            {% blocktrans trimmed %}L'organisation a mis en place des actions pour accompagner les personnes ayant une maladie chronique :{% endblocktrans %}
+                        </h3>
+                    </div>
+                </div><br/>
+                <div class="row">
+                    {% with subanswers=answer.subanswers.all %}
+                        <div class="col">
+                            {% for subanswer in subanswers %}
+                                {% if subanswer.value >= 0.5 %}
+                                    <div class="existing-line"><span style="color:{{cat.color }}; font-size: 30pt">✓</span><span style="font-weight: 600"> {{subanswer.subquestion.label}}</span></div><br/>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                        <div class="col">
+                            {% for subanswer in subanswers %}
+                                {% if subanswer.value < 0.5 and subanswer.subquestion.label != "Autres" %}
+                                    <div class="existing-line"><span style="color:{{cat.color }}; font-size: 30pt">✗</span><span style="font-weight: 600"> {{subanswer.subquestion.label}}</span></div><br/>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    {% endwith %}
+                </div>
+                {% if answer.perimeter %}
+                    <div class="perimeter-indicator">
+                        <span>
+                            {% trans answer.perimeter %}
+                        </span>
+                    </div>
+                {% endif %}
+            </div>
+        {% endif %}
+    {% endwith %}
+</div>

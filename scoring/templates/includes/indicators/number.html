@@ -1,0 +1,39 @@
+{% load l10n %}
+{% load humanize %}
+
+<article class="padding text-center">
+    {%  if not number_last %}
+    <span style="color:{{ color }}; font-size: 4em; font-family: Cousine; font-weight: 700;">
+        {% if number|length > 6 %}
+            {% if number|length > 7 %}
+                {% firstof number|intword _('ND*') %}
+            {% elif number|get_digit:"7" > 1 %}
+                {% firstof number|intword _('ND*') %}
+            {% else %}
+                {% firstof number|intword|slice:":-1" _('ND*') %}
+            {% endif %}
+        {% else %}
+            {% firstof number _('ND*') %}
+        {% endif %}
+    </span>
+
+    <h3 line_id=17 suffix=" :  {% firstof number _('ND*') %}" class="text_line content-strong" style="margin-top: 0em;">{{ text }}</h3>
+
+    {% else %}
+    <h3 line_id=17 suffix=" :  {% firstof number _('ND*') %}" class="text_line content-strong" style="width: 100%;max-width: 600px; text-align: center;margin: auto;margin-top: 0;">{{ text }}</h3>
+    
+    <span style="color:{{ color }}; font-size: 3em; font-family: Cousine; font-weight: 700;">
+        {% if number|length > 6 %}
+            {% if number|length > 7 %}
+                {% firstof number|intword _('ND*') %}
+            {% elif number|get_digit:"7" > 1 %}
+                {% firstof number|intword _('ND*') %}
+            {% else %}
+                {% firstof number|intword|slice:":-1" _('ND*') %}
+            {% endif %}
+        {% else %}
+            {% firstof number _('ND*') %}
+        {% endif %}
+    </span>
+    {% endif %}
+</article>

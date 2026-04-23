@@ -1,0 +1,39 @@
+@import '_variables';
+.public {
+    &__image {
+        border-radius: 100%;
+        margin-bottom: 1em;
+        overflow: hidden;
+        line-height: 0;
+        display: flex;
+        justify-content: center;
+        width: 10em;
+        height: 10em;
+
+        &--empty {
+            background: #edf0f4;
+
+            i {
+                font-size: 3em;
+            }
+        }
+    }
+
+}
+
+@media ($sm-screen) {
+    .public {
+        display: grid;
+        grid-template-columns: 3fr 1fr;
+        grid-template-rows: auto;
+    }
+}
+
+
+.public__image>* {
+    align-self: center;
+}
+
+.profile navbar .noradius {
+    border-radius: 0% !important;
+}

@@ -1,0 +1,174 @@
+{% load i18n %}
+{% load get_type %}
+{% load forloop_access define mutable %}
+
+
+{% if action_url and url_params %}
+  <form action="{% url action_url url_params %}" method="{{method|default:'get'}}" class="form full-height" enctype="{{enctype|default:'multipart/form-data'}}">
+{% elif action_url %}
+  <form action="{% url action_url %}" method="{{method|default:'get'}}" class="form full-height" enctype="{{enctype|default:'multipart/form-data'}}">
+{% else %}
+  <form action="" method="{{method|default:'get'}}" class="form full-height" enctype="{{enctype|default:'multipart/form-data'}}">
+{% endif %}
+{% if method|lower == "post" %}
+  {% csrf_token %}
+{% endif %}
+  {% define None|declare as blocked_aggregation_field %}
+  {% define None|declare as not_applicable_field %}
+  {% define None|declare as indicator_not_followed_field %}
+  {% define None|declare as custom_question_label_field %}
+  {% define _("Si vous décidez de ne pas prendre en compte l'agrégation des reponses de vos entités filles, cochez cette case.") as blocked_aggregation_label %}
+  {% define _("Si cette question ne vous est pas applicable, cochez cette case. Vous n'aurez pas à y répondre et elle sera retirée de votre empreinte.") as non_applicable_label %}
+  {% define _("Si vous décidez de ne pas répondre à la question car il s'agit d'un sujet que vous ne suivez pas en interne, cochez cette case.") as indicator_not_followed_label %}
+  {% for field in form %}
+    {% if "_blocked_aggregation" in field.name %}
+      {{ blocked_aggregation_field|update:field }}
+    {% elif "_indicator_not_followed" in field.name %}
+        {{ indicator_not_followed_field|update:field }}
+    {% elif "_not_applicable" in field.name %}
+        {{ not_applicable_field|update:field }}
+    {% elif "_custom_question_label" in field.name %}
+        {{ custom_question_label_field|update:field }}
+    {% else %}
+        {% if "currency" not in field.name %}
+        {% with field_type=field|get_type %}
+          {% if field_type == "Field" %}
+              {% include 'includes/form_evaluation_label.html' with label=field.label custom_question_label_field=custom_question_label_field %}
+          {% else %}
+          {% if field.field.prefix == True %}
+              <div class="d-flex gap-4 ms-3">
+              {% if blocked_aggregation_field.value %}
+                {% define blocked_aggregation_field.value as f %}
+                {% include "includes/label.html" with f=f help_text=blocked_aggregation_label %}
+                {{ blocked_aggregation_field|update:None }}
+              {% endif %}
+              {% if not_applicable_field.value %}
+                  {% define not_applicable_field.value as f %}
+                  {% include "includes/label.html" with f=f help_text=non_applicable_label %}
+                  {{ not_applicable_field|update:None }}
+              {% endif %}
+              {% if indicator_not_followed_field.value %}
+                  {% define indicator_not_followed_field.value as f %}
+                  {% include "includes/label.html" with f=f help_text=indicator_not_followed_label %}
+                  {{ indicator_not_followed_field|update:None }}
+              {% endif %}
+              </div>
+            <div class="multi_answer">
+          {% endif %}
+          {% if field.field.array_prefix == True %}
+            <table class="table_form" CELLSPACING=0>
+                <thead>
+                    <tr>
+                        <th>{% blocktrans trimmed %}Intitulé{% endblocktrans %}</th>
+                        <th>{% blocktrans trimmed %}Descriptif{% endblocktrans %}</th>
+                    </tr>
+                </thead>
+                <tbody>
+          {% endif %}
+          {% if field.field.col == 0 %}
+            <tr>
+                <td>
+          {% elif field.field.col == 1 %}
+                <td>
+          {% endif %}
+
+        {% if field.field.ui_type == "multiple_qcm" %}
+          <div class="d-flex gap-4 p-2 pb-3 ms-3">
+            {% if blocked_aggregation_field.value %}
+              {% define blocked_aggregation_field.value as f %}
+              {% include "includes/label.html" with f=f help_text=blocked_aggregation_label %}
+              {{ blocked_aggregation_field|update:None }}
+            {% endif %}
+            {% if not_applicable_field.value %}
+              {% define not_applicable_field.value as f %}
+              {% include "includes/label.html" with f=f help_text=non_applicable_label %}
+              {{ not_applicable_field|update:None }}
+            {% endif %}
+            {% if indicator_not_followed_field.value %}
+                {% define indicator_not_followed_field.value as f %}
+                {% include "includes/label.html" with f=f help_text=indicator_not_followed_label %}
+                {{ indicator_not_followed_field|update:None }}
+            {% endif %}
+          </div>
+        {% endif %}
+
+        <div class="field card" id="field_{{field.id_for_label}}">
+            {% if not field_type == "BooleanField" and field.field.col == None %}
+                {% include 'includes/form_evaluation_label.html' with label=field.label_tag custom_question_label_field=custom_question_label_field %}
+            {% endif %}
+
+            {% if field.field.ui_type != "multiple_qcm" %}
+              <div class="d-flex gap-4 ms-3">
+                {% if blocked_aggregation_field.value %}
+                  {% define blocked_aggregation_field.value as f %}
+                  {% include "includes/label.html" with f=f help_text=blocked_aggregation_label %}
+                  {{ blocked_aggregation_field|update:None }}
+                {% endif %}
+                {% if not_applicable_field.value %}
+                  {% define not_applicable_field.value as f %}
+                  {% include "includes/label.html" with f=f help_text=non_applicable_label %}
+                  {{ not_applicable_field|update:None }}
+                {% endif %}
+                {% if indicator_not_followed_field.value %}
+                    {% define indicator_not_followed_field.value as f %}
+                    {% include "includes/label.html" with f=f help_text=indicator_not_followed_label %}
+                    {{ indicator_not_followed_field|update:None }}
+                {% endif %}
+              </div>
+            {% endif %}
+            {{ field.errors }}
+            {{ field }}
+            {% if field_type == "BooleanField" %}
+                <label for="{{ field.auto_id }}">{{ field.label }}</label>
+            {% endif %}
+
+            {% if field.field.is_percentage %}<span> %</span>{% endif %}
+
+            {% if field.field.currency_field %}
+                {{ form|next_element:forloop.counter0 }}
+            {% endif %}
+
+        </div>
+
+
+          {% if field.field.suffix == True %}
+            </div>
+          {% endif %}
+
+          {% if field.field.col == 0 %}
+            </td>
+          {% elif field.field.col == 1 %}
+          </td></tr>
+          {% endif %}
+
+          {% if field.field.array_suffix == True %}
+            </tbody>
+          </table>
+          {% endif %}
+          {% endif %}
+        {% endwith %}
+        {% endif %}
+
+    {% endif %}
+  {% endfor %}
+
+    <div class="row">
+        {% if not evaluation.is_validated_by_user %}
+            <div class="col-md-6 py-1 d-grid">
+                <a class="btn btn-outline-primary" href="javascript:history.go(-1)">
+                    {% blocktrans trimmed %}Page précédente{% endblocktrans %}
+                </a>
+            </div>
+            <div class="col-md-6 py-1 d-grid">
+                <button class="btn btn-primary" type="submit" name="save_next" value="{% trans submit %}">
+                    {{ next_action }}
+                </button>
+            </div>
+            <div class="col-12 py-1 d-grid">
+                <button class="btn btn-secondary" type="submit" name="save_leave" value="Sauvegarder et quitter le questionnaire">
+                    {% blocktrans trimmed %}Sauvegarder et quitter{% endblocktrans %}
+                </button>
+            </div>
+        {% endif %}
+    </div>
+</form>

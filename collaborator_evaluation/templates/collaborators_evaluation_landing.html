@@ -1,0 +1,14 @@
+{% extends "base-minimal.html" %}
+{% load i18n static %}
+
+
+{% block content %}
+
+{% if object.sheet.type.slug == "evaluation_collaborateurs_360" %}
+{% include "collaborators_evaluation_landing_360.html" %}
+{% else %}
+{% include "collaborators_evaluation_landing_tetu.html" %}
+{% endif %}
+
+
+{% endblock %}

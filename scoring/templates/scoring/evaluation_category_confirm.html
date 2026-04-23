@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-3 bg-primary">
+            {% include 'includes/nav_evaluation.html' %}
+        </div>
+        <article class="col-9 p-5 bg-gradient-multicolor">
+            <header class="text-center">
+                <h1 class="title--h1">{% blocktrans trimmed %}Questionnaire Mixity{% endblocktrans %}</h1>
+                <h1 class="title--h2">{% trans score_category.category.name %}</h1>
+            </header>
+            {% include 'includes/form_evaluation.html' with form=form submit=_("Enregistrer") method="post" button_secondary=True %}
+        </article>
+    </div>
+</div>
+{% endblock %}

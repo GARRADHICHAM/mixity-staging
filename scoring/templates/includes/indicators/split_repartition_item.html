@@ -1,0 +1,19 @@
+{% load i18n %}
+{% load format_number %}
+
+
+<div style="margin-top: 10px;">
+    <div style="display: grid; grid-template-columns: auto 80px;">
+        <span style="text-align: left; font-size: 12px; font-weight:600; font-family: Montserrat;margin-right: 5px;" line_id=17 class="txt_line">
+            {{ label }}
+        </span>
+        <div style="white-space: nowrap;display: flex; justify-content: space-between">
+            <div style="background-color:{% if orange %}#FF7070{% else %}{{ color }}{% endif %};" class="dot"></div>
+            <span style="white-space: nowrap;color: {% if orange %}#FF7070{% else %}{{ color }}{% endif %}">&nbsp;{% percentage value %}&nbsp;</span>
+        </div>
+    </div>
+
+    <div class="progress_graph" style="{% if big %}height:19px;{% endif %}{% if round %}border-radius:8px;{% endif %}background-color: #e9ecef">
+        <div style="{% if round %}border-radius:8px;{% endif %}background-color: {% if orange %}#FF7070{% else %}{{ color }}{% endif %}; width: {% if not value %}0{% else %}{{ value|stringformat:'f' }}{% endif %}%"></div>
+        </div>
+</div>

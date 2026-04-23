@@ -1,0 +1,71 @@
+.pie-container {
+    display: flex;
+    flex-direction: column;
+    position:relative;
+    margin-top:18px;
+    align-items:center;
+    .pie-content {
+        margin-bottom: 18px
+    }
+    hr {
+        margin: 0.5em 0;
+        width:100%
+    }
+    .pie-percent-container {
+        width: 95px;
+    }
+}
+.pie-header {
+    width: 100%;
+    height: 40px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom:-10px
+}
+
+.graph-modal-container {
+    width:340px;
+    transform: scale(0.8);
+    transform-origin: top left;
+}
+.graph-modal-main {
+    height: 528px;
+}
+
+.graph-modal {
+    top: -80px;
+}
+.graph-header {
+    height: 68px;
+    margin-top: -16px;
+}
+.graph-table .page-list {
+    display: none!important;
+}
+.graph-tabs {
+    margin-top: -10px;
+    margin-bottom: 10px;
+}
+
+@media screen and (max-width: var(--lg)) {
+  .graph-modal {
+      width: 100%;
+      top: -20px;
+  }
+}
+@media screen and (max-width: var(--md)) {
+  .graph-modal-container {
+    width: 100%;
+    transform: scale(1);
+    }
+
+    .graph-modal-main {
+        height: auto;
+    }
+}
+
+.graph-tooltip {
+    right: 10px;
+    top: 13px;
+}
+

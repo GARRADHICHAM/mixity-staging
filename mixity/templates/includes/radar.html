@@ -1,0 +1,111 @@
+{% load i18n %}
+{% load static %}
+{% load format_number %}
+
+
+{% if title and evaluation %}
+    <a href="{% url 'scoring:detail_public_subscription' slug=evaluation.entity.slug subscription_type=evaluation.subscription.subscription_type.slug %}">
+        <p class="title--h2">{{ evaluation.short_name }}</p>
+    </a>
+{% elif title and structure %}
+    <a href="{% url 'scoring:detail_public' structure.get_main_entity.slug %}">
+        <p class="title--h2">{{ structure }}</p>
+    </a>
+{% endif %}
+
+{% if evaluation %}
+    {% if evaluation.is_validated_by_admin or request.user.is_staff %}
+        {% if evaluation.is_campus and not evaluation.is_human %}
+            {% radar_datas evaluation target scores_categories as measures %}
+        {% elif evaluation.is_human and current_human_filter %}
+            {% radar_datas evaluation=evaluation human_filter=current_human_filter as measures %}
+        {% else %}
+            {% radar_datas evaluation as measures %}
+        {% endif %}
+        <div class="card" style="border-radius: 25px">
+            <!------------ Structure name & Global score-------------->
+            <div class="relative pb-5">
+                <div class="d-flex flex-column radar_top-left">
+                    <div class="d-flex align-items-center mxt--h4 m-0 text-start">
+                        {% if evaluation.is_human %}
+                            <span style="margin-right: 10px" class="icon-footprint-human"></span>Mixity Human
+                        {% elif evaluation.sheet.type.name == "Mixity Start" %}
+                            <span style="margin-right: 10px" class="mxt-icon--32 icon-offer-start color-start"></span>Mixity Start
+                        {% else %}
+                           <span style="margin-right: 10px" class="mxt-icon--32 icon-offer-diag color-diag"></span>Mixity Diag
+                        {% endif %}
+                    </div>
+                    <div class="mxt--small text-start" style="font-size: 14px; margin-left: 43px">
+                        {{ evaluation.entity.name }}
+                    </div>
+                </div>
+                <div class="d-flex flex-column radar_top-right">
+                    <p class="mxt--small m-0" style="color: #9094AA">{% blocktrans %}Score Diversité & Inclusion{% endblocktrans %}</p>
+                    <div class="text-end">
+                        {% if current_human_filter %}
+                            <p class="mxt--large-bold m-0" style="color: #181B3D">{{ filters_global_score|floatformat:'0' }}<span class="mxt--small-bold" style="color: #181B3D;">/100</span></p>
+                        {% else %}
+                            <p class="mxt--large-bold m-0" style="color: #181B3D">{{ evaluation.get_global_score_delta|floatformat:'0' }}<span class="mxt--small-bold" style="color: #181B3D;">/100</span></p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <br/>
+            <!------------ Footprint -------------->
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="d-flex flex-column" style="width: 47%">
+                    {% for cat in scores_categories %}
+                        {% if cat.category.slug != "all" %}
+                            <div>
+                                <div class="d-flex justify-content-between align-items-center mb-1">
+                                    <h3 class="fw-medium mb-0" style="font-size: .9rem">{% trans cat.category.name %}</h3>
+                                    <p class="fw-medium m-0" style="font-size: .9rem">{{ cat.display_value |floatformat:'0'  }}%</p>
+                                </div>
+                                <div class="w-100 progress-bar mb-3" style="height: 10px; background-color: #E6E8EC; border-radius: 5px">
+                                    <div class="progress-bar-inner" style="width: {{ cat.display_value|floatformat:'0' }}%; height: 10px; background-color: {{ cat.category.color }}; border-radius: 5px"></div>
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                {% if evaluation.sheet.type.category %}
+                    <div class="d-flex justify-content-center radar" style="width: 47%" id="radar{{ evaluation.sheet.type.category.slug }}_{% firstof id evaluation.id %}"
+                         data-radar="{{ measures|safe }}">
+                        <!-- Here generage random footsprint SVG -->
+                    </div>
+                {% elif evaluation.is_category_evaluation %}
+                    <div class="d-flex justify-content-center radar" style="width: 47%" id="radargender_{% firstof id evaluation.id %}"
+                         data-radar="{{ measures|safe }}">
+                        <!-- Here generage random footsprint SVG -->
+                    </div>
+                {% else %}
+                    <div class="d-flex justify-content-center radar" style="width: 47%" id="radar_{% firstof id evaluation.id %}"
+                         data-radar="{{ measures|safe }}">
+                        <!-- Here generage random footsprint SVG -->
+                    </div>
+                {% endif %}
+            </div>
+            <!------------ Mixity Watermark -------------->
+            <div class="relative py-4">
+                <img src="/static/img/logo-mixity.svg" alt="Logo Mixity" class="radar_watermark">
+            </div>
+        </div>
+        {% if footer_footprint %}
+            <div class="col col--2" style="margin-top: -15px; margin-bottom: 30px; margin-right: 10px; color: inherit; font-weight: 600; justify-items: center;">
+                <img class="image--xs" src="{% static 'img/logo-mixity.svg' %}" alt="Logo Mixity" style="
+                    height: auto;
+                    width: auto;
+                    margin: auto;">
+                <span style="    padding: 10px;
+        text-align: center;">www.mixity.co</span>
+            </div>
+        {% endif %}
+    {% else %}
+        <img src="{% static 'img/footprint_not_available.png' %}" alt="Image Empreinte non disponible" style="width: 70%;margin: auto;">
+        <div class="radar-text-overlay">{% trans "En attente" %}</div>
+    {% endif %}
+
+{% else %}
+    <img alt="Image Empreinte non disponible" src="{% static 'img/footprint_not_available.png' %}">
+    <div class="radar-text-overlay">{% trans "En attente" %}</div>
+{% endif %}

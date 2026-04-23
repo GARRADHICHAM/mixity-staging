@@ -1,0 +1,7 @@
+name,slug,workforce,entity_level,parent_entity_slug,tag,tag,tag,tag,tag,tag,tag,tag,tag,tag,tag,tag,tag,tag,tag,tag,tag,tag,tag,tag,tag
+company,company,56,0,,fr,,,,,,,,,,,,,,,,,,,,
+company-1,company-1,45,1,company,de,,,,,,,,,,,,,,,,,,,,
+company-2,company-2,34,1,company,us,,,,,,,,,,,,,,,,,,,,
+company-1a,company-1a,16,2,company-1,de,,,,,,,,,,,,,,,,,,,,
+company-1b,company-1b,16,2,company-1,de,,,,,,,,,,,,,,,,,,,,
+company-2a,company-2a,88,2,company-2,campus,us,,,,,,,,,,,,,,,,,,,

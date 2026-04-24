@@ -115,3 +115,5 @@ openai==1.44.1
 
 # Pdf
 playwright==1.49.0
+
+gunicorn

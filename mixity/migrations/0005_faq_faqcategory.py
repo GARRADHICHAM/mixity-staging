@@ -52,13 +52,13 @@ def migrate_data(apps, schemaeditor):
             },
             {
                 'question': "Comment faire ? J’ai perdu mes identifiants, mes codes d’accès à la plateforme Mixity ?",
-                'answer': "Vous pouvez envoyer un mail à l’adresse suivante : support@mixity.co. Une réponse vous parviendra dans un délai raisonnable.",
+                'answer': "Vous pouvez envoyer un mail à l’adresse suivante : support@mixity.io. Une réponse vous parviendra dans un délai raisonnable.",
             },
             {
                 'question': "Je ne trouve pas l’empreinte de mon organisation",
                 'answer': "L’empreinte recherchée n’est pas disponible ? Si après vérification de votre saisie et à "
                           "l’issue de plusieurs tentatives vous n’obtenez aucun résultat, contactez-nous à l’adresse "
-                          ": support@mixity.co en nous communiquant le nom de la structure recherchée. Nous ferons "
+                          ": support@mixity.io en nous communiquant le nom de la structure recherchée. Nous ferons "
                           "le nécessaire pour inviter l’organisation à remplir son empreinte et vous informerons dès que"
                           " l’empreinte sera disponible sur notre site.",
             }

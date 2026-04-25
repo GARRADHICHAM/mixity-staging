@@ -119,7 +119,7 @@ class InvoiceView(UserPassesTestMixin, LoginRequiredMixin, DetailView):
         c.setFont("Arial-Bold", 5)
         c.drawCentredString(125, 30, "6 Rue Edouard Nignon, 44300 Nantes, France")
         c.drawCentredString(
-            125, 35, "Tel: +33 6 07 35 78 29   |   Mail: contact@mixity.co"
+            125, 35, "Tel: +33 6 07 35 78 29   |   Mail: contact@mixity.io"
         )
         # Changing the font size for Specifying GST Number of firm
         c.setFont("Arial-Bold", 6)

@@ -5997,7 +5997,7 @@ class Evaluation(models.Model):
                 + "\n"
             )
 
-        faviconUrl = "https://www.app.mixity.co/static/favicon.ico"
+        faviconUrl = "https://www.app.mixity.io/static/favicon.ico"
 
         footprintFile = footprint.split("/")[-1]
 
@@ -6026,7 +6026,7 @@ class Evaluation(models.Model):
                             <div style="margin-bottom: 2rem;">
                                 <div style="display: flex; justify-content: space-between; align-items: start;">
                                     <div style="display: flex; align-items: center;">
-                                        <img src="https://www.app.mixity.co/static/icon/{productSlug}.svg" alt="arrow" style="width: 20px;">
+                                        <img src="https://www.app.mixity.io/static/icon/{productSlug}.svg" alt="arrow" style="width: 20px;">
                                         <h1 style="font-weight: 500; font-size: 16px; margin-left: 6px; line-height: 20px;">Mixity {productName}</h1>
                                     </div>
                                     <div style="text-align: right;">
@@ -6039,7 +6039,7 @@ class Evaluation(models.Model):
                                         {global_scores}
                                     </div>
                                     <div style="width: 50%; padding-left: 16px;">
-                                        <img src="https://www.app.mixity.co/mediafiles/media/footprints/{footprintFile}" alt="footprint" width="100%">
+                                        <img src="https://www.app.mixity.io/mediafiles/media/footprints/{footprintFile}" alt="footprint" width="100%">
                                     </div>
                                 </div>
                             </div>
@@ -6059,7 +6059,7 @@ class Evaluation(models.Model):
                         </div>
                         <div style="display: flex; margin-bottom: 3rem; padding: 16px; justify-content: space-between; gap: 32px; align-items: start; border: 1px solid transparent; border-radius: 8px; background: linear-gradient(to bottom, white, white), linear-gradient(to right, #3ACFD5, #3A4ED5); background-clip: padding-box, border-box; background-origin: padding-box, border-box;">
                             <div style="display: flex; gap: 10px; justify-content: space-between; align-items: center;">
-                                <img src="https://staging.mixity.co/{photo}" alt="{firstName} {lastName}" style="width: 50px; height: 50px; border-radius: 100%;">
+                                <img src="https://staging.mixity.io/{photo}" alt="{firstName} {lastName}" style="width: 50px; height: 50px; border-radius: 100%;">
                                 <div style="width: min-content;">
                                     <h3 style="font-weight: 700; font-size: 12px; line-height: 15px; white-space: nowrap;">{firstName}<span> <span>{lastName}</h3>
                                     <p>{title}</p>	

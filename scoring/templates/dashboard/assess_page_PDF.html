@@ -22,7 +22,7 @@
         <meta name="apple-mobile-web-app-title" content="Mixity"> <!-- New in iOS6 -->
         <meta name='apple-mobile-web-app-capable' content='yes'>
         <meta name='apple-touch-fullscreen' content='yes'>
-        <meta property="og:image" content="{% if og_image %}{{ og_image }}{% else %}https://www.mixity.co/static/img/offer_illus_global.png{% endif %}" />
+        <meta property="og:image" content="{% if og_image %}{{ og_image }}{% else %}https://www.mixity.io/static/img/offer_illus_global.png{% endif %}" />
         <meta name='apple-mobile-web-app-status-bar-style' content='black'>
         <meta name='format-detection' content='telephone=no'>
         <meta name='viewport' content='width = 320, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes'>
@@ -69,7 +69,7 @@
         <!-- End Google Tag Manager -->
         {% endif %}
 
-        <!-- Crisp chat Code for https://www.mixity.co/ -->
+        <!-- Crisp chat Code for https://www.mixity.io/ -->
         {% if CRISP_ID %}
             {% if user.is_authenticated %}
                 <script type="module" src="{% static 'dist/js/crispcomponents-1.0.0.js' %}" id="crisp-script" data-email="{{ user.email }}" data-username="{{ user }}" data-crispid="{{ CRISP_ID }}"></script>

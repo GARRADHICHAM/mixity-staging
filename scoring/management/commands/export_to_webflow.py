@@ -159,7 +159,7 @@ class Command(BaseCommand):
                     "date": evaluation.created_date.strftime("%m-%y"),
                     "secteur": evaluation.entity.entity_level.structure.business_line.name,
                     "url-vers-le-site-du-client": evaluation.entity.entity_level.structure.website,
-                    "url-vers-page-publique": "https://www.app.mixity.co/scoring/"
+                    "url-vers-page-publique": "https://www.app.mixity.io/scoring/"
                     + evaluation.entity.slug
                     + "/"
                     + evaluation.display_version_slugified

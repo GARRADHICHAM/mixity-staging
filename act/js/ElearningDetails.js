@@ -220,7 +220,7 @@ function ElearningDetails() {
 									color: '#FFFFFF',
 									padding: '4px 12px 4px 12px',
 								}}
-								onClick={() => (window.location.href = 'https://www.mixity.co/demo')}
+								onClick={() => (window.location.href = 'https://www.mixity.io/demo')}
 							>
 								{gettext('Contactez-nous')}
 							</button>

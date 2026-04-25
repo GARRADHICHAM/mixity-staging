@@ -817,7 +817,7 @@ class ApiMixityMembers(
 ):
     def get(self, request, slug=""):
         data = list(
-            MixityUser.objects.filter(email__icontains="@mixity.co").values_list(
+            MixityUser.objects.filter(email__icontains="@mixity.io").values_list(
                 "pk", flat=True
             )
         )

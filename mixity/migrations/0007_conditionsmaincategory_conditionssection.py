@@ -16,10 +16,10 @@ def migrate_data(apps, schemaeditor):
                      'es « CGU ») sont éditées par MIXITY, '
                      'société par actions simplifiée au capital variable de 25.000 Euros, enregistrée au Registre du '
                      'commerce et des sociétés de Nantes sous le numéro 849 373 023, dont le siège social est situé 6, '
-                     'rue Edouard Nignon, 44300 – Nantes, joignable à l’adresse email suivante : contact@mixity.co, '
+                     'rue Edouard Nignon, 44300 – Nantes, joignable à l’adresse email suivante : contact@mixity.io, '
                      'dûment représentée par Sandrine CHARPENTIER, en sa qualité de Présidente et directrice de '
                      'publication des présentes (ci-après, « Mixity »).\n« MIXITY » est une plateforme disponible sur '
-                     'le lien www.mixity.co permettant à toute entreprise d’évaluer'
+                     'le lien www.mixity.io permettant à toute entreprise d’évaluer'
                      ', de piloter et de promouvoir l’impact '
                      'de la diversité et de l’inclusion au sein de son organisation '
                      '(ci-après, la « Plateforme »). Suite '
@@ -79,7 +79,7 @@ def migrate_data(apps, schemaeditor):
                      'CGU.\n« Mixity User » : désigne, de manière indifférente, les utilisateurs de la Plateforme : '
                      'l’Administrateur comme l’Utilisateur.\n« Plateforme » : désigne la'
                      ' plateforme en ligne éditée par '
-                     'Mixity et disponible sur le lien www.mixity.co. \n« Questionnaire » : désigne le questionnaire '
+                     'Mixity et disponible sur le lien www.mixity.io. \n« Questionnaire » : désigne le questionnaire '
                      'd’auto-évaluation proposé à l’organisation au moment de la création de son Compte Utilisateur '
                      'permettant le calcul de son Empreinte. \n« Utilisateur » : désigne tout Utilisateur personne '
                      'physique, employé de l’organisation ou non, qui dispose d’un Compte Utilisateur, bénéficie des '
@@ -120,7 +120,7 @@ def migrate_data(apps, schemaeditor):
         {
           'title': '3. INSCRIPTION A LA PLATEFORME ',
           'content': 'Pour procéder à son inscription, le Mixity User est invité à se rendre sur le domaine '
-                     '<mixity.co>. '
+                     '<mixity.io>. '
                      'Il est rappelé au Mixity User que le terminal sur lequel il se connecte comme la connexion '
                      'Internet '
                      'afférente restent à sa charge exclusive et sous sa seule responsabilité.  \n <table  '
@@ -236,7 +236,7 @@ def migrate_data(apps, schemaeditor):
                      'férent dans son '
                      'compte.\nPour procéder à l’évaluation Collaborateur quand l’organi'
                      'sation a souscrit à ce service, '
-                     'le Collaborateur est invité à se rendre sur le domaine <mixity.co> via un lien dédié. Il ne lui '
+                     'le Collaborateur est invité à se rendre sur le domaine <mixity.io> via un lien dédié. Il ne lui '
                      'sera pas demandé de se créer un compte utilisateur. Le Collaborateur accèdera directement à '
                      'l’évaluation. Il est rappelé au Collaborateur que le terminal sur lequel il se connecte comme la '
                      'connexion Internet afférente restent à sa charge exclusive et sous sa seule responsabilité. '
@@ -280,7 +280,7 @@ def migrate_data(apps, schemaeditor):
                      'irréfragable un accès et une utilisation des Fonctionnalités par le Mixity User qui y est seul '
                      'rattaché. En cas d’accès frauduleux, de modification du mot de passe, ou toute activité suspecte '
                      'via ses identifiants, le Mixity User s’engage à en informer immédiatement Mixity, par email à '
-                     'l’adresse : contact@mixity.co, ou par téléphone au numéro : 06 07 35 78 29, ou par courrier à '
+                     'l’adresse : contact@mixity.io, ou par téléphone au numéro : 06 07 35 78 29, ou par courrier à '
                      'l’adresse : Mixity - 6 rue Edouard Nignon 44300 Nantes.\nToute inscription frauduleuse à la '
                      'Plateforme, notamment en utilisant des informations d’un tiers ou portant '
                      'atteinte aux droits d’un '
@@ -478,7 +478,7 @@ def migrate_data(apps, schemaeditor):
         {
           'title': '10. DÉSINSCRIPTION DE L’UTILISATEUR',
           'content': 'Le Mixity User peut, à tout moment, procéder à sa désinscription de la Plateforme, en écrivant à '
-                     'Mixity à l’adresse : contact@mixity.co ou directement depuis son compte. Il est entendu qu’en '
+                     'Mixity à l’adresse : contact@mixity.io ou directement depuis son compte. Il est entendu qu’en '
                      'cas '
                      'de désinscription, les factures à échoir restent dues à Mixity.\nLa désinscription de la '
                      'Plateforme n’empêche pas de solliciter la création d’un nouveau compte et l’utilisation de '
@@ -595,7 +595,7 @@ def migrate_data(apps, schemaeditor):
                      'Règlement (UE) 2016/679 du Parlement et du Conseil en date du 27 a'
                      'vril 2016. \nPour connaître les '
                      'modalités de gestion de ses données à caractère personnel, le Mixity User est invité à consulter '
-                     'directement la Politique de confidentialité disponible sur le site web www.mixity.co.',
+                     'directement la Politique de confidentialité disponible sur le site web www.mixity.io.',
         },
         {
           'title': '14. LITIGES ET DROIT APPLICABLE',
@@ -619,7 +619,7 @@ def migrate_data(apps, schemaeditor):
           'title': 'PRÉAMBULE',
           'content': 'La présente politique de confidentialité (ci-après, la « Politique de confidentialité »), '
                      'est éditée par la société Mixity pour la plateforme qu\'elle propose sous le même nom '
-                     'disponible sur le lien www.mixity.co permettant à toute organisation (ci-après, '
+                     'disponible sur le lien www.mixity.io permettant à toute organisation (ci-après, '
                      'l\' « Organisation ») d\'évaluer, de piloter et de promouvoir l\'impact de la diversité et de '
                      'l\'inclusion au sein de son organisation (ci-après, la « Plateforme ») grâce à un algorithme '
                      'unique qui, combiné à des informations communiquées par l\'Organisation, génère une « empreinte '
@@ -638,10 +638,10 @@ def migrate_data(apps, schemaeditor):
                      'création de son compte utilisateur et bénéficier des fonctionnalités.\n\nLa Politique de '
                      'confidentialité s\'applique en complément des conditions générales d\'utilisation de la '
                      'Plateforme (ci-après les « Conditions générales d\'utilisation » ou « CGU »), consultables sur '
-                     'le lien site www.mixity.co. Elle peut être modifiée à tout moment par Mixity aux fins, '
+                     'le lien site www.mixity.io. Elle peut être modifiée à tout moment par Mixity aux fins, '
                      'notamment, de mise à jour en fonction de la Réglementation, sous réserve d\'en informer '
                      'préalablement l\'utilisateur. En cas de doute, ce dernier est invité à consulter la dernière '
-                     'version en ligne sur le lien : www.mixity.co.',
+                     'version en ligne sur le lien : www.mixity.io.',
         },
         {
           'title': '1. DÉFINITIONS',
@@ -1166,7 +1166,7 @@ def migrate_data(apps, schemaeditor):
           '<p dir="ltr" ><span >sur leurs Données.</span></p>'
           ''
           '<p dir="ltr" ><span >Les Personnes concernées peuvent valablement exercer leurs droits '
-                     'en écrivant un email à l\'adresse : data@mixity.co ou par courrier à l\'adre'
+                     'en écrivant un email à l\'adresse : data@mixity.io ou par courrier à l\'adre'
                      'sse Mixity SAS, 6 rue Edouard Nignon 44300 Nantes, d&ucirc;ment accompagné d'
                      '\'un justificatif d\'identité. Mixity disposera d\'un délai de 2 mois à comp'
                      'ter de la réception de la demande pour y répondre.  </span></p>'
@@ -1193,7 +1193,7 @@ def migrate_data(apps, schemaeditor):
           '    </li>'
           '    <li dir="ltr" >'
           '        <p dir="ltr" ><span >Par email, à l\'adresse électronique : </span><span >suppo'
-                     'rt@mixity.co</span></p>'
+                     'rt@mixity.io</span></p>'
           '    </li>'
           '</ul>'
           '<p dir="ltr" ><span >Toute question sera toujours accueillie avec bienveillance !</span></p>'

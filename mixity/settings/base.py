@@ -192,11 +192,11 @@ AUTHENTICATION_BACKENDS = (
 
 SIMPLE_EMAIL_CONFIRMATION_PERIOD = timedelta(7)
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
-MIXITY_EMAIL_FROM = "support@mixity.co"
-MIXITY_EMAIL_CONTACT = "contact@mixity.co"
-MIXITY_EMAIL_SUPPORT = "support@mixity.co"
+MIXITY_EMAIL_FROM = "support@mixity.io"
+MIXITY_EMAIL_CONTACT = "contact@mixity.io"
+MIXITY_EMAIL_SUPPORT = "support@mixity.io"
 DEFAULT_FROM_EMAIL = MIXITY_EMAIL_FROM
-MIXITY_EMAIL_TO = "contact@mixity.co"
+MIXITY_EMAIL_TO = "contact@mixity.io"
 LOGIN_URL = "/account/login"
 LOGIN_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL = "home"
@@ -293,7 +293,7 @@ CONSTANCE_CONFIG = {
         float,
     ),
     "MIXITY_NOREPLY_EMAIL": (
-        "support@mixity.co",
+        "support@mixity.io",
         "Email d'origine des notifications",
         str,
     ),
@@ -399,7 +399,7 @@ HUBSPOT_API_CLIENT = None
 
 # Blog API request
 BLOG_API_KEY = "d128bbe364b33372efd6cd11a2"
-BLOG_API_URL = "https://blog.mixity.co/ghost/api/v3/content/posts/?key=" + BLOG_API_KEY
+BLOG_API_URL = "https://blog.mixity.io/ghost/api/v3/content/posts/?key=" + BLOG_API_KEY
 
 OPEN_AI_API_KEY = os.environ.get("OPEN_AI_API_KEY", "")
 DEEPL_API_KEY = os.environ.get("DEEPL_API_KEY", "")

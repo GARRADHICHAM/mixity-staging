@@ -603,7 +603,7 @@ class MixityUserCreationForm(UserCreationForm):
         self.fields["validate_cgu"].label = mark_safe(
             "{} <a href={}>{}</a>".format(
                 _("J'accepte les"),
-                ("https://mixity.co/cgu"),
+                ("https://mixity.io/cgu"),
                 _("conditions générales d'utilisation"),
             )
         )

@@ -186,7 +186,7 @@ def send_structure_created_mail(user, request, structure, subscription):
             "user": user,
             "structure_name": str(structure),
             "subscription_label": _(subscription.subscriptionOption.product.label),
-            "contact_url": "https://www.mixity.co/contact/",
+            "contact_url": "https://www.mixity.io/contact/",
             "structure_url": request.build_absolute_uri(
                 reverse("structure:update_footprints", args=[structure.id])
             ),

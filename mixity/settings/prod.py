@@ -12,7 +12,7 @@ ENVIRONMENT_NAME = SENTRY_ENV
 
 if ENVIRONMENT_NAME.lower() == "staging":
     ENVIRONMENT_COLOR = "Orange"
-    ENVIRONMENT_DOMAIN = "staging.mixity.co"
+    ENVIRONMENT_DOMAIN = "staging.mixity.io"
     DEBUG = bool(int(os.environ.get("DEBUG", "0")))
     if DEBUG:
         INSTALLED_APPS += ("debug_toolbar",)
@@ -20,7 +20,7 @@ if ENVIRONMENT_NAME.lower() == "staging":
         DEBUG_TOOLBAR_CONFIG = {"SHOW_TOOLBAR_CALLBACK": lambda x: True}
 else:
     ENVIRONMENT_COLOR = "Red"
-    ENVIRONMENT_DOMAIN = "www.app.mixity.co"
+    ENVIRONMENT_DOMAIN = "www.app.mixity.io"
     DEBUG = False
 
 SENTRY_TRACE_SAMPLE_RATE = float(os.getenv("SENTRY_TRACE_SAMPLE_RATE", 0.2))
@@ -41,7 +41,7 @@ SECURE_CONTENT_TYPE_NOSNIFF = True
 SECURE_BROWSER_XSS_FILTER = True
 X_FRAME_OPTIONS = "DENY"
 CSRF_COOKIE_HTTPONLY = True
-ALLOWED_HOSTS = ["www.app.mixity.co"]
+ALLOWED_HOSTS = ["www.app.mixity.io"]
 BASICAUTH_USERNAME = os.getenv("BASICAUTH_USERNAME")
 BASICAUTH_PASSWORD = os.getenv("BASICAUTH_PASSWORD")
 # if BASICAUTH_USERNAME and BASICAUTH_PASSWORD:

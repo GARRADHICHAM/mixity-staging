@@ -176,7 +176,7 @@ def alert_evaluation_reminder(email, evaluation):
     html_content = render_to_string(
         "mails/alert_evaluation_reminder_" + str(evaluation.reminder_count) + ".html",
         {
-            "evaluation_url": "https://mixity.co/structure/"
+            "evaluation_url": "https://mixity.io/structure/"
             + str(evaluation.entity.entity_level.structure.id)
             + "/update/footprints/"
         },

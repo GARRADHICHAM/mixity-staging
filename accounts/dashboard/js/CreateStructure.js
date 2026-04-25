@@ -110,7 +110,7 @@ class CreateStructure extends Component {
 						<p className="text-center">{gettext(this.state.error_modal_message)}</p>
 						<p className="text-center">
 							{gettext("Si l'erreur persiste, veuillez ")}
-							<a href={'https://www.mixity.co/contact'}>{gettext('prendre contact avec notre équipe')}</a>
+							<a href={'https://www.mixity.io/contact'}>{gettext('prendre contact avec notre équipe')}</a>
 						</p>
 					</Modal>
 					<div

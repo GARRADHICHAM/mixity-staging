@@ -675,7 +675,7 @@ msgstr ""
 msgid ""
 "Notre équipe est à votre disposions pour répondre à vos questions tout au "
 "long de votre évaluation. à votre disposition pour répondre à vos <a "
-"href=\"mailto:contact@mixity.co\">questions</a>."
+"href=\"mailto:contact@mixity.io\">questions</a>."
 msgstr ""
 
 #: accounts/templates/mails/mixity_start_created.html:26
@@ -711,7 +711,7 @@ msgstr ""
 #: accounts/templates/mails/mixity_start_subscribed.html:16
 msgid ""
 "Nous sommes à votre disposition pour répondre à vos <a "
-"href=\"mailto:contact@mixity.co\">questions</a>."
+"href=\"mailto:contact@mixity.io\">questions</a>."
 msgstr ""
 
 #: accounts/templates/mails/mixity_start_validated.html:6
@@ -762,7 +762,7 @@ msgstr ""
 
 #: accounts/templates/mails/mixity_start_validated.html:32
 msgid ""
-"Nous <a href=\"mailto:contact@mixity.co\">contacter</a> pour en savoir plus."
+"Nous <a href=\"mailto:contact@mixity.io\">contacter</a> pour en savoir plus."
 msgstr ""
 
 #: accounts/templates/mails/password_reset.html:7
@@ -2386,7 +2386,7 @@ msgstr ""
 #: scoring/templates/mails/structure_created_start.html:24
 msgid ""
 "Pour contacter l'équipe support : <span style=\"color: "
-"#10ACAB\">support@mixity.co</span>"
+"#10ACAB\">support@mixity.io</span>"
 msgstr ""
 
 #: invoices/views.py:133
@@ -6991,7 +6991,7 @@ msgid ""
 "L'équipe Mixity est ravie de vous informer que votre empreinte Mixity et "
 "votre fiche entreprise avec vos indicateurs de diversité et inclusion sont "
 "désormais en ligne sur <a style=\"color: #10ACAB\" "
-"href=\"https://www.mixity.co\">www.mixity.co</a>"
+"href=\"https://www.mixity.io\">www.mixity.io</a>"
 msgstr ""
 
 #: scoring/templates/mails/evaluation_published.html:18
@@ -7005,7 +7005,7 @@ msgstr ""
 msgid ""
 "Pour vous accompagner dans la valorisation de votre démarche d'évaluation "
 "Mixity, notre équipe a conçu  <a style=\"color: #10ACAB\" "
-"href=\"https://files.mixity.co/index.php/s/o4zxr65FacmtPLX\">un kit "
+"href=\"https://files.mixity.io/index.php/s/o4zxr65FacmtPLX\">un kit "
 "Communication</a> à partager avec vos équipes internes. Nous restons à votre"
 " écoute pour toute question sur vos démarches en lien avec la promotion de "
 "votre évaluation Mixity."
@@ -7033,7 +7033,7 @@ msgstr ""
 msgid ""
 "Merci pour votre engagement en faveur de la diversité et de l'inclusion. "
 "Votre empreinte est désormais disponible sur votre compte administrateur sur"
-" <a href=\"https://www.mixity.co\">www.mixity.co</a>"
+" <a href=\"https://www.mixity.io\">www.mixity.io</a>"
 msgstr ""
 
 #: scoring/templates/mails/evaluation_validated.html:18
@@ -7075,7 +7075,7 @@ msgstr ""
 
 #: scoring/templates/mails/mail_footer.html:3
 msgid ""
-"<p> A très vite sur <a href=\"https://www.mixity.co/\">www.mixity.co</a><br>"
+"<p> A très vite sur <a href=\"https://www.mixity.io/\">www.mixity.io</a><br>"
 " Vous pouvez aussi suivre Mixity sur les réseaux sociaux ! </p>"
 msgstr ""
 

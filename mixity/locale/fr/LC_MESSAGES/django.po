@@ -3123,7 +3123,7 @@ msgid "Valider"
 msgstr ""
 
 #: mixity/templates/includes/footer-sign-in.html:34
-msgid "© Copyright Mixity 2023. Tous droits réservés."
+msgid "© Copyright Mixity 2026. Tous droits réservés."
 msgstr ""
 
 #: mixity/templates/includes/form.html:30

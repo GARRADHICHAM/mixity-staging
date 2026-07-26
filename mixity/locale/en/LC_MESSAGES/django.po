@@ -3394,8 +3394,8 @@ msgid "Valider"
 msgstr "Validate"
 
 #: mixity/templates/includes/footer-sign-in.html:34
-msgid "© Copyright Mixity 2023. Tous droits réservés."
-msgstr "© Copyright Mixity 2023. All rights reserved."
+msgid "© Copyright Mixity 2026. Tous droits réservés."
+msgstr "© Copyright Mixity 2026. All rights reserved."
 
 #: mixity/templates/includes/form.html:30
 #: mixity/templates/includes/form_evaluation.html:159

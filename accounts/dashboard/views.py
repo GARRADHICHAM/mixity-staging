@@ -162,10 +162,7 @@ class DashboardRegisterStartView(
         context = super().get_context_data(**kwargs)
         return context
 
-    def test_func(self):
-        return self.request.user.test_func_rights(self.entity)
-
-
+  
 class DashboardRegisterConfirmedView(
     TemplateView,
 ):
@@ -177,10 +174,7 @@ class DashboardRegisterConfirmedView(
         user.confirm_email(self.request.GET["confirmation_key"])
         return context
 
-    def test_func(self):
-        return self.request.user.test_func_rights(self.entity)
-
-
+  
 class DashboardMailValidationView(
     TemplateView,
 ):
@@ -190,10 +184,7 @@ class DashboardMailValidationView(
         context = super().get_context_data(**kwargs)
         return context
 
-    def test_func(self):
-        return self.request.user.test_func_rights(self.entity)
-
-
+   
 class DashboardRegisterView(
     TemplateView,
 ):
@@ -204,10 +195,7 @@ class DashboardRegisterView(
         context["subscription"] = kwargs.get("subscription", "public")
         return context
 
-    def test_func(self):
-        return self.request.user.test_func_rights(self.entity)
-
-
+ 
 class DashboardLoginView(
     TemplateView,
 ):
@@ -216,9 +204,6 @@ class DashboardLoginView(
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         return context
-
-    def test_func(self):
-        return self.request.user.test_func_rights(self.entity)
 
 
 class DashboardRegisterStartConfirmedView(
@@ -232,10 +217,7 @@ class DashboardRegisterStartConfirmedView(
         user.confirm_email(self.request.GET["confirmation_key"])
         return context
 
-    def test_func(self):
-        return self.request.user.test_func_rights(self.entity)
-
-
+  
 class InvitationConfirmedView(
     TemplateView,
 ):
@@ -249,10 +231,7 @@ class InvitationConfirmedView(
         context["slug"] = kwargs["slug"]
         return context
 
-    def test_func(self):
-        return self.request.user.test_func_rights(self.entity)
-
-
+  
 class InvitationCreatePasswordView(
     TemplateView,
 ):
@@ -266,10 +245,7 @@ class InvitationCreatePasswordView(
         context["slug"] = kwargs["slug"]
         return context
 
-    def test_func(self):
-        return self.request.user.test_func_rights(self.entity)
-
-
+   
 class CollaboratorRedirectEvaluationView(SignedEvaluationMixin, View):
     def get(self, request, *args, **kwargs):
         encryption_class = encryption()
@@ -306,6 +282,3 @@ class CollaboratorRedirectEvaluationView(SignedEvaluationMixin, View):
                     )
                 )
         return redirect("/")
-
-    def test_func(self):
-        return self.request.user.test_func_rights(self.entity)

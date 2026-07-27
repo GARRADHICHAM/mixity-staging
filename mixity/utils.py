@@ -262,4 +262,4 @@ def segment_tracking(user, event_name, event_content=None):
     try:
         segment_tracking_job.delay(user.id, event_name, json.dumps(event_content))
     except Exception:
-    pass
+        pass

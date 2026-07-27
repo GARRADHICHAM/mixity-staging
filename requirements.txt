@@ -67,7 +67,7 @@ jours-feries-france>=0.7
 # i18n
 python-gettext==4.1
 polib==1.1.1
-fast-i18n @ git+https://gitlab.com/jeremymarc/fast-i18n@0.0.1
+#fast-i18n @ git+https://gitlab.com/jeremymarc/fast-i18n@0.0.1
 
 # Admin
 django-tinymce==3.3.0

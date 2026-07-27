@@ -21,7 +21,7 @@ if ENVIRONMENT_NAME.lower() == "staging":
 else:
     ENVIRONMENT_COLOR = "Red"
     ENVIRONMENT_DOMAIN = "www.app.mixity.io"
-    DEBUG = True
+    DEBUG = False
 
 SENTRY_TRACE_SAMPLE_RATE = float(os.getenv("SENTRY_TRACE_SAMPLE_RATE", 0.2))
 

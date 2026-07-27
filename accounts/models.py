@@ -706,8 +706,11 @@ class Structure(models.Model):
         return self.commercial_name or self.juridic_name
 
     @cached_property
-    def get_main_entity(self):
-        return self.entity_level.get(level=0).entities.first()
+   def get_main_entity(self):
+    level_zero = self.entity_level.filter(level=0).first()
+    if level_zero:
+        return level_zero.entities.first()
+    return None
 
 
 class EntityLevel(models.Model):

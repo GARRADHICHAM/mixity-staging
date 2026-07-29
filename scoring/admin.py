@@ -495,21 +495,28 @@ class EvaluationForm(forms.ModelForm):
             self.fields[field].widget = TinyMCE(
                 attrs={"cols": 2, "rows": 2, "height": 200}
             )
-        questions_list = [
-            (
-                q.id,
-                f"{q.google_sheets_id} {q.category.name} / {q.subcategory.name} : {q.label}",
-            )
-            for q in self.instance.sheet.questions.all()
-            .select_related("category", "subcategory")
-            .only(
-                "id",
-                "google_sheets_id",
-                "label",
-                "category__name",
-                "subcategory__name",
-            )
-        ]  # We only select questions related to the current sheet
+            
+        # --- CORRECTIF POUR L'ERREUR 500 ---
+        questions_list = []
+        
+        # On vérifie que l'instance est sauvegardée en base (pk) et qu'elle a une sheet associée
+        if self.instance and self.instance.pk and getattr(self.instance, 'sheet', None):
+            questions_list = [
+                (
+                    q.id,
+                    f"{q.google_sheets_id} {q.category.name} / {q.subcategory.name} : {q.label}",
+                )
+                for q in self.instance.sheet.questions.all()
+                .select_related("category", "subcategory")
+                .only(
+                    "id",
+                    "google_sheets_id",
+                    "label",
+                    "category__name",
+                    "subcategory__name",
+                )
+            ]
+            
         self.fields["mandatory_questions"].choices = questions_list
         self.fields["forbidden_questions"].choices = questions_list
 

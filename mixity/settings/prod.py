@@ -62,9 +62,9 @@ django_heroku.settings(locals())
 
 # Mails
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
-EMAIL_HOST = "smtp.sendgrid.net"
-EMAIL_HOST_USER = "apikey"
-EMAIL_HOST_PASSWORD = os.getenv("SENDGRID_API_KEY")
+EMAIL_HOST = "pro2.mail.ovh.net"
+EMAIL_HOST_USER = "support@mixity.io"
+EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 

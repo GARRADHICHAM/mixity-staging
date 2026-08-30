@@ -498,11 +498,11 @@ class StructureUpdate extends Component {
 				};
 			});
 		}
-		if (value.length > 40) {
+		if (value.length > 256) {
 			this.setShowErrorModal(true);
 			return this.setState(() => {
 				return {
-					error_modal_message: gettext('La taille maximale est de 40 caractères.'),
+					error_modal_message: gettext('La taille maximale est de 256 caractères.'),
 				};
 			});
 		}

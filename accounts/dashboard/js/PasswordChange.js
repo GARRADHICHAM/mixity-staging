@@ -13,6 +13,7 @@ class PasswordChange extends Component {
 
 			show_error_modal: false,
 			error_modal_message: '',
+			show_success_modal: false,
 
 			InputsMappings: {
 				picture: 'foto',
@@ -149,55 +150,69 @@ class PasswordChange extends Component {
 	}
 
 	handlePasswordChange = async () => {
-		if (!this.isEveryNeededFieldFilled()) {
-			this.setShowErrorModal(true);
-			return this.setState(() => {
-				return {
-					error_modal_message: gettext('Veuillez remplir tous les champs obligatoires.'),
-				};
-			});
-		}
-		if (this.state.Inputs[1].value !== this.state.Inputs[2].value) {
-			this.setShowErrorModal(true);
-			return this.setState(() => {
-				return {
-					error_modal_message: gettext('Les deux mots de passe ne correspondent pas.'),
-				};
-			});
-		}
-		if (!this.checkPasswordValidity(this.state.Inputs[1].value)) {
-			return;
-		}
-		try {
-			const formData = new FormData();
-			formData.append('old_password', this.state.Inputs[0].value);
-			formData.append('new_password', this.state.Inputs[1].value);
+        if (!this.isEveryNeededFieldFilled()) {
+            this.setShowErrorModal(true);
+            return this.setState(() => {
+                return {
+                    error_modal_message: gettext('Veuillez remplir tous les champs obligatoires.'),
+                };
+            });
+        }
+        if (this.state.Inputs[1].value !== this.state.Inputs[2].value) {
+            this.setShowErrorModal(true);
+            return this.setState(() => {
+                return {
+                    error_modal_message: gettext('Les deux mots de passe ne correspondent pas.'),
+                };
+            });
+        }
+        if (!this.checkPasswordValidity(this.state.Inputs[1].value)) {
+            return;
+        }
+        try {
+            const formData = new FormData();
+            formData.append('old_password', this.state.Inputs[0].value);
+            formData.append('new_password', this.state.Inputs[1].value);
 
-			const response = await fetch(`/api/password_change/`, {
-				method: 'POST',
-				headers: {
-					'X-CSRFToken': csrftoken,
-				},
-				body: formData,
-			});
-			this.fetchErrorMessage(response);
-			const data = await response.json();
-			this.setState(() => {
-				return {
-					show_error_modal: true,
-					error_modal_message: data.message,
-				};
-			});
-		} catch (error) {
-			console.error('>>>>> ERROR in handlePasswordChange: ', error);
-			this.setState(() => {
-				return {
-					show_error_modal: true,
-					error_modal_message: gettext("Quelque chose s'est mal passé !"),
-				};
-			});
-		}
-	};
+            const response = await fetch(`/api/password_change/`, {
+                method: 'POST',
+                headers: {
+                    'X-CSRFToken': csrftoken,
+                },
+                body: formData,
+            });
+            
+            if (response.status > 400) {
+                 this.setState({
+                     show_error_modal: true,
+                     error_modal_message: gettext("L'ancien mot de passe est incorrect ou une erreur est survenue."),
+                 });
+                 return;
+            }
+
+            // Succès ! On affiche la popup verte et on vide les champs
+            this.setState((prevState) => {
+                return {
+                    show_success_modal: true,
+                    Inputs: prevState.Inputs.map(input => ({ ...input, value: '' }))
+                };
+            });
+            
+            // Fermeture automatique après 3 secondes
+            setTimeout(() => {
+                this.setState({ show_success_modal: false });
+            }, 3000);
+
+        } catch (error) {
+            console.error('>>>>> ERROR in handlePasswordChange: ', error);
+            this.setState(() => {
+                return {
+                    show_error_modal: true,
+                    error_modal_message: gettext("Quelque chose s'est mal passé !"),
+                };
+            });
+        }
+    };
 
 	isEveryNeededFieldFilled() {
 		let isFilled = true;
@@ -225,6 +240,19 @@ class PasswordChange extends Component {
 						{this.state.error_modal_message}
 					</div>
 				</Modal>
+				<Modal
+                    aria-labelledby="contained-modal-title-vcenter"
+                    style={{ zIndex: '1050' }}
+                    className="criteria_modal m-0 p-0"
+                    centered
+                    show={this.state.show_success_modal}
+                    onHide={() => this.setState({ show_success_modal: false })}
+                    title={gettext('Succès')}
+                >
+                    <div className="text-center" style={{ fontWeight: 500, fontSize: '110%', color: '#28a745' }}>
+                        {gettext('Votre nouveau mot de passe a bien été enregistré')}
+                    </div>
+                </Modal>
 				{/*header block*/}
 				<div className="d-flex justify-content-between px-3 pt-3 pb-2 border-bottom" style={{ backgroundColor: '#fff' }}>
 					<Breadcrumb className="ps-2" separators=">" aria-label="breadcrumb">

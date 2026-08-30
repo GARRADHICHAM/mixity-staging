@@ -176,8 +176,9 @@ class ApiUploadCollaboratorsCSV(APIView, LoginRequiredMixin):
     def post(self, request, *args, **kwargs):
         try:
             csv_file = request.FILES["file"]
-            entity_slug = request.POST.get("entity_slug")
-            if not Entity.objects.filter(slug=entity_slug).exists():
+            main_entity_slug = request.POST.get("entity_slug")
+            
+            if not Entity.objects.filter(slug=main_entity_slug).exists():
                 return JsonResponse(
                     {"success": False, "message": "L'entité n'existe pas !"},
                     status=status.HTTP_400_BAD_REQUEST,
@@ -223,23 +224,27 @@ class ApiUploadCollaboratorsCSV(APIView, LoginRequiredMixin):
                     status=status.HTTP_400_BAD_REQUEST,
                 )
 
-            # Vérification de la filiation des entités mentionnées dans le fichier, avec l'entité depuis laquelle les collaborateurs sont invités.
-            entity = Entity.objects.get(slug=entity_slug)
+            # Vérification de la filiation des entités mentionnées dans le fichier
+            entity = Entity.objects.get(slug=main_entity_slug)
             structure = entity.entity_level.structure
             children_entities = entity.get_all_children_entities
             valid_entities_list = list(children_entities)
             valid_entities_list.append(entity)
+            
             for row in rows:
-                if not Entity.objects.filter(slug=row[3]):
+                csv_entity_slug = row[3].strip()
+                
+                if not Entity.objects.filter(slug=csv_entity_slug):
                     return JsonResponse(
                         {
                             "success": False,
-                            "message": f"Le slug {row[3]} ne correspond à aucune entité",
+                            "message": f"Le slug '{csv_entity_slug}' ne correspond à aucune entité. Vérifiez que vous n'avez pas mis le nom de l'entité au lieu de son slug.",
                         },
                         status=status.HTTP_400_BAD_REQUEST,
                     )
 
-                entity_row = Entity.objects.get(slug=row[3])
+                entity_row = Entity.objects.get(slug=csv_entity_slug) 
+                
                 if not entity_row in valid_entities_list:
                     return JsonResponse(
                         {
@@ -260,6 +265,7 @@ class ApiUploadCollaboratorsCSV(APIView, LoginRequiredMixin):
                         },
                         status=status.HTTP_400_BAD_REQUEST,
                     )
+                    
                 # Vérification du contenu des colonnes is_owner et is_reader
                 if row[4].lower() not in ["true", "false"]:
                     return JsonResponse(
@@ -277,7 +283,7 @@ class ApiUploadCollaboratorsCSV(APIView, LoginRequiredMixin):
                         },
                         status=status.HTTP_400_BAD_REQUEST,
                     )
-                # Fin des vérifications
+            # Fin des vérifications
 
             # Création des collaborateurs
             with transaction.atomic():
@@ -285,7 +291,7 @@ class ApiUploadCollaboratorsCSV(APIView, LoginRequiredMixin):
                     first_name = row[0]
                     last_name = row[1]
                     email = row[2]
-                    entity_slug = row[3]
+                    row_entity_slug = row[3].strip()
                     is_owner = row[4].lower() == "true"
                     is_reader = row[5].lower() == "true"
 
@@ -308,11 +314,11 @@ class ApiUploadCollaboratorsCSV(APIView, LoginRequiredMixin):
                     # Création de l'adhésion
                     if not Membership.objects.filter(
                         user=new_collaborator,
-                        entity=Entity.objects.get(slug=entity_slug),
+                        entity=Entity.objects.get(slug=row_entity_slug),
                     ):
                         Membership.objects.create(
                             user=new_collaborator,
-                            entity=Entity.objects.get(slug=entity_slug),
+                            entity=Entity.objects.get(slug=row_entity_slug),
                             structure=structure,
                             is_reader=is_reader,
                             is_owner=is_owner,
@@ -457,7 +463,7 @@ class ApiUploadEntitiesCSV(APIView, LoginRequiredMixin):
                                 "success": False,
                                 "message": f"Les entités rattachées à la structure {structure.juridic_name} doivent être issue de l'entité {entity_slug} ou d'une de ces entités filles !",
                             },
-                            status=4,
+                            status=400,
                         )
 
                 else:
@@ -990,15 +996,26 @@ class ApiUpdateProfile(APIView):
         try:
             user = request.user
             data = request.data
+            
+            # Mise à jour des champs textes (avec l'ajout de la fonction oubliée)
             user.first_name = data.get("first_name")
             user.last_name = data.get("last_name")
-            user.foto = data.get("foto")
             user.phone = data.get("phone")
-            # user.commercial_name = data.get("commercial_name")
+            user.job = data.get("job")
+            
+            # Sécurisation de l'image : on ne la modifie QUE si c'est un vrai fichier
+            # (Cela empêche Django de planter s'il reçoit l'ancienne URL en texte)
+            foto = data.get("foto")
+            if foto and not isinstance(foto, str):
+                user.foto = foto
+                
             user.save()
+            return Response({"message": "Update successful"}, status=status.HTTP_200_OK)
+            
         except Exception as e:
-            return Response({"Update failed"}, status=status.HTTP_400_BAD_REQUEST)
-        return Response({"Update successful"}, status=status.HTTP_200_OK)
+            # Ce print te permettra de voir la vraie erreur dans tes logs Heroku si ça replante
+            print(f"Erreur lors de la mise à jour du profil : {e}") 
+            return Response({"error": "Update failed"}, status=status.HTTP_400_BAD_REQUEST)
 
 
 class ApiPasswordChange(APIView):

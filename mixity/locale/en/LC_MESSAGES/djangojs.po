@@ -1131,8 +1131,8 @@ msgstr "The SIRET must consist of 14 digits."
 #: accounts/dashboard/js/UpdateProfile.js:116
 #: mixity/static/dist/js/dashboardprofileupdatecomponents-1.0.0.js:2
 #: mixity/static/dist/js/dashboardstructureupdatecomponents-1.0.0.js:2
-msgid "La taille maximale est de 40 caractères."
-msgstr "The maximum size is 40 characters."
+msgid "La taille maximale est de 256 caractères."
+msgstr "The maximum size is 256 characters."
 
 #: accounts/dashboard/js/StructureUpdate.js:1185
 #: mixity/static/dist/js/dashboardstructureupdatecomponents-1.0.0.js:2

@@ -39,6 +39,19 @@ class SolverCreationView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
             and not self.get_object().get_solver
         )
 
+    def handle_no_permission(self):
+        structure = self.get_object()
+        if self.request.user in structure.owners and structure.get_solver:
+            return redirect(
+                reverse(
+                    "dashboard:act:solver_solutions",
+                    kwargs={
+                        "slug": structure.entity_level.first().entities.first().slug
+                    },
+                )
+            )
+        return super().handle_no_permission()
+
     # Creating a new solver
     def form_valid(self, form):
         form.instance.structure = self.get_object()

@@ -1131,7 +1131,7 @@ msgstr ""
 #: accounts/dashboard/js/UpdateProfile.js:116
 #: mixity/static/dist/js/dashboardprofileupdatecomponents-1.0.0.js:2
 #: mixity/static/dist/js/dashboardstructureupdatecomponents-1.0.0.js:2
-msgid "La taille maximale est de 40 caractères."
+msgid "La taille maximale est de 256 caractères."
 msgstr ""
 
 #: accounts/dashboard/js/StructureUpdate.js:1185

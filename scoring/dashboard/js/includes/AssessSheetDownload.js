@@ -97,7 +97,7 @@ class AssessSheetDownload extends Component {
 		this.fetchErrorMessage(response_url);
 		const data_url = await response_url.json();
 
-		let url = 'https://' + data_url + '/api/' + this.props.entity_pk + '/get_children_tree/';
+		let url = window.location.protocol + '//' + data_url + '/api/' + this.props.entity_pk + '/get_children_tree/';
 
 		const response_children_tree = await fetch(url);
 		this.fetchErrorMessage(response_children_tree);

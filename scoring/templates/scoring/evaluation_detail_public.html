@@ -83,7 +83,7 @@
             {% if entity.entity_level.structure.has_logo %}
                 <div class="public__image noradius">
                     <div class="public__image noradius">
-                        <img src="{{ entity.entity_level.structure.get_logo_url }}" alt="Logo"/>
+                        <img src="{{ entity.entity_level.structure.get_logo_url }}" alt="Logo" onerror="this.onerror=null;this.src='{% static 'icon/buildings.svg' %}'"/>
                     </div>
                 </div>
             {% endif %}
@@ -170,7 +170,7 @@
                     {% for st in group_structures %}
                         {% if st.has_logo %}
                             <a href="{% url 'scoring:detail_public' st.get_main_entity.slug %}">
-                                <img alt="{% firstof st.commercial_name st.juridic_name %}" src="{{ st.get_logo_url }}" style="height: 50px; width: auto" />
+                                <img alt="{% firstof st.commercial_name st.juridic_name %}" src="{{ st.get_logo_url }}" style="height: 50px; width: auto"  onerror="this.onerror=null;this.src='{% static 'icon/buildings.svg' %}'"/>
                             </a>
                         {% else %}
                             <a href="{% url 'scoring:detail_public' st.get_main_entity.slug %}">{% firstof st.commercial_name st.juridic_name %}</a>

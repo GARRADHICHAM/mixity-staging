@@ -158,13 +158,13 @@ class AimSerializer(serializers.ModelSerializer):
     def get_category(self, instance):
         try:
             return instance.category.slug
-        except:
+        except Exception:
             return None
 
     def get_subcategory_name(self, instance):
         try:
             return instance.subcategory.name
-        except:
+        except Exception:
             return None
 
     class Meta:
@@ -185,13 +185,13 @@ class StrengthSerializer(serializers.ModelSerializer):
     def get_category(self, instance):
         try:
             return instance.category.slug
-        except:
+        except Exception:
             return None
 
     def get_subcategory_name(self, instance):
         try:
             return instance.subcategory.name
-        except:
+        except Exception:
             return None
 
     class Meta:
@@ -212,13 +212,13 @@ class WeaknessSerializer(serializers.ModelSerializer):
     def get_category(self, instance):
         try:
             return instance.category.slug
-        except:
+        except Exception:
             return None
 
     def get_subcategory_name(self, instance):
         try:
             return instance.subcategory.name
-        except:
+        except Exception:
             return None
 
     class Meta:
@@ -356,25 +356,25 @@ class AssessScoreCategorySerializer(serializers.ModelSerializer):
     def get_evolution(self, instance):
         try:
             return instance.evolution
-        except:
+        except Exception:
             return None
 
     def get_inner_percent(self, instance):
         try:
             return instance.inner_percent
-        except:
+        except Exception:
             return None
 
     def get_outter_percent(self, instance):
         try:
             return instance.outter_percent
-        except:
+        except Exception:
             return None
 
     def get_between_percent(self, instance):
         try:
             return instance.between_percent
-        except:
+        except Exception:
             return None
 
     def get_serialized_sibling(self, instance):

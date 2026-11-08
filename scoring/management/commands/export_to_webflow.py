@@ -19,7 +19,7 @@ class Command(BaseCommand):
         headers = {
             "authorization": "Bearer " + settings.WEBFLOW_API_KEY,
         }
-        response = requests.delete(url, headers=headers)
+        response = requests.delete(url, headers=headers, timeout=30)
         if response.status_code == 204:
             return True
         else:
@@ -43,7 +43,7 @@ class Command(BaseCommand):
             "accept": "application/json",
             "authorization": "Bearer " + settings.WEBFLOW_API_KEY,
         }
-        response = requests.get(url, headers=headers)
+        response = requests.get(url, headers=headers, timeout=30)
         if response.status_code == 200:
             items = response.json()["items"]
             all_items.extend(items)
@@ -58,7 +58,7 @@ class Command(BaseCommand):
                     + "/items?cmsLocaleIds=&limit=100&offset="
                     + str(response.json()["pagination"]["offset"] + 1)
                 )
-                response = requests.get(url, headers=headers)
+                response = requests.get(url, headers=headers, timeout=30)
                 if response.status_code == 200:
                     items = response.json()["items"]
                     all_items.extend(items)
@@ -159,7 +159,7 @@ class Command(BaseCommand):
                     "date": evaluation.created_date.strftime("%m-%y"),
                     "secteur": evaluation.entity.entity_level.structure.business_line.name,
                     "url-vers-le-site-du-client": evaluation.entity.entity_level.structure.website,
-                    "url-vers-page-publique": "https://www.app.mixity.io/scoring/"
+                    "url-vers-page-publique": "https://app.mixity.io/scoring/"
                     + evaluation.entity.slug
                     + "/"
                     + evaluation.display_version_slugified
@@ -208,7 +208,7 @@ class Command(BaseCommand):
             data = {
                 "fieldData": evaluation_data,
             }
-            response = requests.post(url, headers=headers, json=data)
+            response = requests.post(url, headers=headers, json=data, timeout=30)
             if response.status_code == 202:
                 self.stdout.write(
                     self.style.SUCCESS(
@@ -240,7 +240,7 @@ class Command(BaseCommand):
             "authorization": "Bearer " + settings.WEBFLOW_API_KEY,
         }
         body = {"itemIds": items_ids}
-        response = requests.post(url, headers=headers, json=body)
+        response = requests.post(url, headers=headers, json=body, timeout=30)
         response_data = response.json()
         if response.status_code == 202:
             self.stdout.write(self.style.SUCCESS("Collection published"))

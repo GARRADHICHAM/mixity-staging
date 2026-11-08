@@ -13,7 +13,7 @@ function ElearningDetails() {
 			.then((data) => {
 				const domain = data;
 				const firstSegment = window.location.pathname.split('/').filter(Boolean)[0];
-				setEnvironmentUrl(`https://${domain}/${firstSegment}`);
+				setEnvironmentUrl(`${window.location.protocol}//${domain}/${firstSegment}`);
 			})
 			.then(() => {
 				fetchElearning();

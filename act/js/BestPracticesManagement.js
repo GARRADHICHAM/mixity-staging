@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import Loading from '../../mixity/dashboard/js/includes/Loading';
+import { useDefaultBestPracticeImage, useDefaultLogo } from '../../mixity/dashboard/js/includes/imageFallback';
 import { Breadcrumb, Card, Form, Modal } from 'react-bootstrap';
 import { Editor } from '@tinymce/tinymce-react';
 import Header from '../../mixity/dashboard/js/includes/Header';
@@ -85,7 +87,7 @@ class BestPracticesManagement extends Component {
 				this.setState(
 					() => {
 						return {
-							url: 'https://' + data,
+							url: window.location.protocol + '//' + data,
 						};
 					},
 					() => {
@@ -1339,6 +1341,7 @@ class BestPracticesManagement extends Component {
 											? this.state.detailedBestPractice.logo + '?text=Image cap'
 											: '/static/best_practices_catalog/best_practice.jpg?text=Image cap'
 									}
+									onError={useDefaultBestPracticeImage}
 								/>
 								<Card.Body className="px-0 py-2">
 									<div className="d-flex flex-wrap mb-2">
@@ -1450,6 +1453,7 @@ class BestPracticesManagement extends Component {
 												style={{ borderRadius: '6px', height: '4vh', width: 'auto' }}
 												variant="top"
 												src={this.state.structure.logo + '?text=Image cap'}
+												onError={useDefaultLogo}
 											/>
 										)}
 									</div>
@@ -1646,6 +1650,7 @@ class BestPracticesManagement extends Component {
 											style={{ borderTopLeftRadius: '16px', borderTopRightRadius: '16px', height: '25vh', objectFit: 'cover' }}
 											variant="top"
 											src={bp.logo ? bp.logo + '?text=Image cap' : '/static/best_practices_catalog/best_practice.jpg?text=Image cap'}
+											onError={useDefaultBestPracticeImage}
 										/>
 										<Card.Body className="px-4 pt-2 pb-0" style={{ cursor: 'pointer' }} onClick={() => this.manageDetailedBestPractice(bp)}>
 											<div className="d-flex flex-wrap mb-2">
@@ -1699,6 +1704,7 @@ class BestPracticesManagement extends Component {
 													style={{ borderRadius: '6px', height: '3vh', width: 'auto', float: 'right' }}
 													variant="top"
 													src={this.state.structure.logo + '?text=Image cap'}
+													onError={useDefaultLogo}
 												/>
 											)}
 										</Card.Footer>
@@ -1710,7 +1716,7 @@ class BestPracticesManagement extends Component {
 				</div>
 			)
 		) : (
-			<h4 className="d-flex justify-content-center align-items-middle">{this.state.placeholder}</h4>
+			<Loading message={this.state.placeholder} />
 		);
 	}
 }

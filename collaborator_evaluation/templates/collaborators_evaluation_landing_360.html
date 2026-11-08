@@ -81,7 +81,7 @@
     <section class="mxt-container">
         {% if object.entity.entity_level.structure.has_logo %}
             <div class="row">
-                <img class="col" alt="Structure logo" src="{{ object.entity.entity_level.structure.get_logo_url }}" style="height: auto;width: 30%; max-width: 300px;margin: auto; display: block;"/>
+                <img class="col" alt="Structure logo" src="{{ object.entity.entity_level.structure.get_logo_url }}" style="height: auto;width: 30%; max-width: 300px;margin: auto; display: block;" onerror="this.onerror=null;this.src='{% static 'icon/buildings.svg' %}'"/>
                 <img class="col" alt="Logo Mixity" style="height: auto;width: 30%; max-width: 300px;margin: auto; display: block;" src="{% static 'img/logo-mixity.png' %}">
             </div>
         {% else %}
@@ -114,7 +114,7 @@
             <div class="col col--23-13 bg--white" style="justify-items: center; align-items: center;">
                 <div class="bg--white" style="padding: 2em;">
                     <h2 class="title--h2" style="display: flex;
-   align-items:center;justify-self: baseline;"><img class="" alt="Structure logo" src="{{ object.entity.entity_level.structure.get_logo_url }}" style="max-width: 8em;padding-right: 1em;"/><span> {{ object.entity.entity_level.structure.display_name }} {% blocktrans trimmed %}s’engage avec Mixity pour l’inclusion de toutes et de tous.{% endblocktrans %} </span></h2>
+   align-items:center;justify-self: baseline;"><img class="" alt="Structure logo" src="{{ object.entity.entity_level.structure.get_logo_url }}" style="max-width: 8em;padding-right: 1em;" onerror="this.onerror=null;this.src='{% static 'icon/buildings.svg' %}'"/><span> {{ object.entity.entity_level.structure.display_name }} {% blocktrans trimmed %}s’engage avec Mixity pour l’inclusion de toutes et de tous.{% endblocktrans %} </span></h2>
 
                     {% if object.entity.entity_level.structure.human_description %}
                         <p class="color--primary-light content-strong">{{ object.entity.entity_level.structure.human_description|safe }}</p>

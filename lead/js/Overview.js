@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Loading from '../../mixity/dashboard/js/includes/Loading';
 import { Breadcrumb, Card, Modal, Form } from 'react-bootstrap';
 import moment from 'moment';
 import Header from '../../mixity/dashboard/js/includes/Header';
@@ -68,7 +69,7 @@ class Overview extends Component {
 				this.setState(
 					() => {
 						return {
-							url: 'https://' + data,
+							url: window.location.protocol + '//' + data,
 						};
 					},
 					() => {
@@ -224,35 +225,23 @@ class Overview extends Component {
 	}
 
 	kpisTrackedManagement(filterList) {
-		var user = this.state.user;
-		user.kpis_tracked = filterList;
+		// Seule la liste des indicateurs suivis est envoyée : un PUT du profil complet était refusé
+		// (400) quand le prénom ou le nom est vide, et la réponse d'erreur remplaçait l'utilisateur.
+		const user = { ...this.state.user, kpis_tracked: filterList };
 		const requestOptions = {
 			credentials: 'include',
-			method: 'PUT',
+			method: 'PATCH',
 			headers: { 'Content-Type': 'application/json', 'X-CSRFToken': csrftoken },
-			body: JSON.stringify(user),
+			body: JSON.stringify({ kpis_tracked: filterList }),
 		};
 		fetch(this.state.url + '/api/user/' + user.pk + '/', requestOptions)
 			.then((response) => {
-				if (response.status > 400) {
-					return this.setState(() => {
-						return { placeholder: gettext("Quelque chose s'est mal passé !") };
-					});
-				}
-				return response.json();
+				if (!response.ok) console.log('error while saving tracked kpis');
 			})
-			.then((data) => {
-				this.setState(
-					() => {
-						return {
-							user: data,
-							lgShow: false,
-						};
-					},
-					() => {
-						this.applyFiltersOnKeysIndicator();
-					},
-				);
+			.finally(() => {
+				this.setState({ user: user, lgShow: false }, () => {
+					this.applyFiltersOnKeysIndicator();
+				});
 			});
 	}
 
@@ -311,11 +300,10 @@ class Overview extends Component {
 		savedKpis.map((kpi) => {
 			if (!kpi.label) kpi.label = this.state.genericKpis.find((genkpi) => genkpi.pk === kpi.generic_kpi).label;
 		});
-		var filtered = [];
-		kpis.map((kpi) => {
-			if (kpi.generic_kpi && this.state.user.kpis_tracked.includes(kpi.pk[0])) filtered.push(kpi);
-			else if (!kpi.generic_kpi && kpis.filter((kpi) => this.state.user.kpis_tracked.includes(kpi.pk))) filtered.push(kpi);
-		});
+		// Aucun indicateur choisi : tous sont affichés, et cochés dans la fenêtre « Indicateurs ».
+		const tracked = this.state.user.kpis_tracked || [];
+		const filtered = tracked.length ? kpis.filter((kpi) => [].concat(kpi.pk).some((pk) => tracked.includes(pk))) : kpis;
+		const filterKpis = tracked.length ? tracked : kpis.flatMap((kpi) => [].concat(kpi.pk));
 
 		//Créer les valeurs supplémentaires nécessaire dans les categories
 		categories.map((cat) => {
@@ -344,6 +332,7 @@ class Overview extends Component {
 			savedActions: savedActions,
 			savedKpis: savedKpis,
 			filteredKpis: filtered,
+			filterKpis: filterKpis,
 			actions: actions,
 			monthsShort: moment.monthsShort(),
 			months: moment.months(),
@@ -449,7 +438,7 @@ class Overview extends Component {
 			JSON.stringify(
 				this.state.savedKpis
 					.filter((kpi) => actions.flatMap((action) => action.kpis.map((kpi) => kpi.pk)).includes(kpi.pk))
-					.filter((kpi) => this.state.user.kpis_tracked.includes(kpi.pk)),
+					.filter((kpi) => !this.state.user.kpis_tracked.length || this.state.user.kpis_tracked.includes(kpi.pk)),
 			),
 		);
 
@@ -996,7 +985,7 @@ class Overview extends Component {
 				</Modal>
 			</div>
 		) : (
-			<h4 className="d-flex justify-content-center align-items-middle">{this.state.placeholder}</h4>
+			<Loading message={this.state.placeholder} />
 		);
 	}
 }

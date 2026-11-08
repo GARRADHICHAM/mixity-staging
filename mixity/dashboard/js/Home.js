@@ -1,4 +1,5 @@
 import React, { Component, useEffect } from 'react';
+import Loading from './includes/Loading';
 import { Chart as ChartJS, RadialLinearScale, PointElement, LineElement, Filler, CategoryScale, LinearScale, BarElement, Title, Legend } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
 import pattern from 'patternomaly';
@@ -9,6 +10,14 @@ import Header from './includes/Header';
 import GlobalScores from './includes/GlobalScores';
 
 ChartJS.register(RadialLinearScale, PointElement, LineElement, Filler, CategoryScale, LinearScale, BarElement, Title, Legend);
+
+const ACTION_STATUS_LABELS = {
+	reflection: gettext('Action en réflexion'),
+	planned: gettext('Action planifiée'),
+	in_progress: gettext('Action en cours'),
+	operation: gettext('Action pilote'),
+	deployed: gettext('Action déployée'),
+};
 
 class Home extends Component {
 	constructor(props) {
@@ -57,15 +66,9 @@ class Home extends Component {
 
 	/* Fetch all the datas needed once when loading the page */
 	componentDidMount() {
-		fetch('api/url/')
-			.then((response) => {
-				if (response.status > 400) {
-					return this.setState(() => {
-						return { placeholder: gettext("Quelque chose s'est mal passé !") };
-					});
-				}
-				return response.json();
-			})
+		// L'adresse de l'API est celle de la page elle-même (même protocole, même hôte) : inutile de la
+		// demander au serveur, ce qui supprime un aller-retour et évite d'écrire "https://" en dur.
+		Promise.resolve(window.location.host)
 			.then((base_url) => {
 				let url = base_url;
 				if (window.location.pathname.split('/').filter(Boolean)[0]) {
@@ -73,7 +76,7 @@ class Home extends Component {
 				}
 				this.setState(
 					{
-						url: `https://${url}`,
+						url: `${window.location.protocol}//${url}`,
 					},
 					() => {
 						fetch(`${this.state.url}/api/category/`)
@@ -788,7 +791,7 @@ class Home extends Component {
 															{this.state.current_human && (
 																<a
 																	onClick={() => {
-																		navigator.clipboard.writeText(window.location.host + this.state.human.collaborator_url);
+																		navigator.clipboard.writeText(window.location.origin + this.state.human.collaborator_url);
 																	}}
 																	className="mxt--small button border dashboard_secondary_btn p-0 px-3 mb-2"
 																>
@@ -998,7 +1001,7 @@ class Home extends Component {
 															{action.label}
 														</Card.Title>
 														<Card.Text className="p-0 m-0" style={{ fontSize: '12px', color: '#9094AA' }}>
-															{action.status + ' - ' + action.action_date}
+															{(ACTION_STATUS_LABELS[action.status] || action.status) + ' - ' + new Date(action.action_date).toLocaleDateString(language_code)}
 														</Card.Text>
 													</div>
 												</div>
@@ -1058,7 +1061,7 @@ class Home extends Component {
 					</div>
 				</div>
 			) : (
-				<h4 className="d-flex justify-content-center align-items-middle">{this.state.placeholder}</h4>
+				<Loading message={this.state.placeholder} />
 			)
 		);
 	}

@@ -9,6 +9,6 @@ class StructureTranslationOptions(TranslationOptions):
 
 
 @register(BusinessLine)
-class StructureTranslationOptions(TranslationOptions):
+class BusinessLineTranslationOptions(TranslationOptions):
     fields = ("name",)
 

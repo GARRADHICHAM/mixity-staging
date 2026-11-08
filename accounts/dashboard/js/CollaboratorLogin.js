@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+import Loading from '../../../mixity/dashboard/js/includes/Loading';
 import { Modal, Alert } from 'react-bootstrap';
 
 class CollaboratorLogin extends Component {
@@ -34,10 +35,10 @@ class CollaboratorLogin extends Component {
 			const response_url = await fetch('api/url/');
 			this.fetchErrorMessage(response_url);
 			const data_url = await response_url.json();
-			let url = 'https://' + data_url;
+			let url = window.location.protocol + '//' + data_url;
 			let emptyurl = url;
-			let url_evaluation = 'https://' + data_url;
-			let dashboard_url = 'https://' + data_url + '/';
+			let url_evaluation = window.location.protocol + '//' + data_url;
+			let dashboard_url = window.location.protocol + '//' + data_url + '/';
 			let version_slug = segments[segments.length - 1];
 
 			if (window.location.pathname.split('/').filter(Boolean)[1]) url += '/' + window.location.pathname.split('/').filter(Boolean)[1];
@@ -114,7 +115,7 @@ class CollaboratorLogin extends Component {
 			this.fetchErrorMessage(response);
 			const data = await response.json();
 			await this.fetchEvaluation();
-			const evaluation_url = 'https://' + window.location.host + this.state.evaluation.collaborator_url;
+			const evaluation_url = window.location.protocol + '//' + window.location.host + this.state.evaluation.collaborator_url;
 			window.location.href = evaluation_url;
 		} catch (error) {
 			console.error('>>>>> ERROR in fetchLoginRequest: ', error);
@@ -187,9 +188,7 @@ class CollaboratorLogin extends Component {
 				</section>
 			</div>
 		) : (
-			<h4 className="d-flex justify-content-center align-items-middle" style={{ marginTop: '40%' }}>
-				{this.state.placeholder}
-			</h4>
+			<Loading message={this.state.placeholder} />
 		);
 	}
 }

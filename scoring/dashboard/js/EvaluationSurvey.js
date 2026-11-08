@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Loading from '../../../mixity/dashboard/js/includes/Loading';
 import Header from '../../../mixity/dashboard/js/includes/Header';
 import { QCMQuestionWithSolution } from './includes/questions_type/QCMQuestionWithSolution';
 import { CriteriasFields } from './includes/questions_type/CriteriasFields';
@@ -58,8 +59,8 @@ class EvaluationSurvey extends Component {
 			this.fetchErrorMessage(response_url);
 			const data_url = await response_url.json();
 
-			let url = 'https://' + data_url;
-			let url_evaluation = 'https://' + data_url;
+			let url = window.location.protocol + '//' + data_url;
+			let url_evaluation = window.location.protocol + '//' + data_url;
 			if (window.location.pathname.split('/').filter(Boolean)[1])
 				url_evaluation += '/' + window.location.pathname.split('/').filter(Boolean)[0] + '/' + window.location.pathname.split('/').filter(Boolean)[1];
 			const is_diag_page = window.location.href.includes('diag');
@@ -279,8 +280,7 @@ class EvaluationSurvey extends Component {
 					</div>
 					{/* Body */}
 					{!this.state.questionLoaded && !this.state.answerLoaded ?
-						<h4 className="d-flex justify-content-center align-items-middle"
-							style={{ marginTop: '40%' }}>{this.state.placeholder}</h4>
+						<Loading message={this.state.placeholder} />
 						:
 						<div className="py-3 d-flex align-items-center justify-content-center dashboard-assess-indicator-font-size text-center" style={{flex:"1"}}>
 							{

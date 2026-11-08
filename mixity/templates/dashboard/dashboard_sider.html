@@ -178,7 +178,7 @@
                                             <li class="d-flex justify-content-between py-2">
                                                 {% if entity.entity_level.level == 0 %}
                                                     <a class="ps-3 dashboard-btn align-items-center rounded text-decoration-none color--primary-dark border-0" href="{% url 'home' entity.slug %}">{% blocktrans trimmed %}{{entity}}{% endblocktrans %}</a>
-                                                    <div class="pe-2"><img class="sider_structure__logo" src="{{ entity.entity_level.structure.get_logo_url }}"/></div>
+                                                    <div class="pe-2"><img class="sider_structure__logo" src="{{ entity.entity_level.structure.get_logo_url }}" onerror="this.onerror=null;this.src='{% static 'icon/buildings.svg' %}'"/></div>
                                                 {% elif entity.children_entities.exists %}
                                                 <div class="d-flex justify-content-between w-100 px-0">
                                                     <a class="ps-3 dashboard-btn align-items-center rounded text-decoration-none color--primary-dark border-0" href="{% url 'home' entity.slug %}">{% blocktrans trimmed %}{{entity}}{% endblocktrans %}</a>
@@ -199,7 +199,7 @@
             {% if membership.user.is_staff %}
                 <div class="d-flex align-items-center py-2">
                     <div class="sider_structure__container">
-                        <div><img class="sider_structure__logo" src="{{ entity.entity_level.structure.get_logo_url }}"/></div>
+                        <div><img class="sider_structure__logo" src="{{ entity.entity_level.structure.get_logo_url }}" onerror="this.onerror=null;this.src='{% static 'icon/buildings.svg' %}'"/></div>
                         <div class="sider_structure__text">
                             <div class="sider_structure__title">{% blocktrans trimmed %}Structure{% endblocktrans %}</div>
                             <div class="sider_structure__name">{{ entity.entity_level.structure.display_name }}</div>
@@ -213,7 +213,7 @@
                                 <li class="d-flex justify-content-between py-2" style="padding-left: 2.25rem">
                                     <a class="w-100 dashboard-btn align-items-center rounded text-decoration-none color--primary-dark border-0" href="{% url 'home' entity.slug %}">
                                         <div class="d-inline-flex align-items-center">
-                                            <div class="pe-2"><img class="sider_structure__logo" src="{{ entity.entity_level.structure.get_logo_url }}"/></div>
+                                            <div class="pe-2"><img class="sider_structure__logo" src="{{ entity.entity_level.structure.get_logo_url }}" onerror="this.onerror=null;this.src='{% static 'icon/buildings.svg' %}'"/></div>
                                             {{ entity.entity_level.structure.display_name }}
                                         </div>
                                     </a>

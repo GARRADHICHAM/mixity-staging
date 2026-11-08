@@ -37,10 +37,17 @@ PROJECT_NAME = os.path.basename(PROJECT_DIR)
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get("SECRET_KEY", "awsomesecretkey")
+# Ces valeurs par défaut sont publiques (dépôt) : elles ne servent qu'au développement.
+# En production, SECRET_KEY et EMAIL_ENCRYPTION_KEY doivent venir de l'environnement
+# (prod.py signale un démarrage avec ces valeurs publiques).
+PUBLIC_DEFAULT_SECRETS = {
+    "SECRET_KEY": "awsomesecretkey",
+    "EMAIL_ENCRYPTION_KEY": "czv37e6zzIOINs0QNBCMo1biYKpe2SyAZlVH5bO7AH8=",
+}
+SECRET_KEY = os.environ.get("SECRET_KEY", PUBLIC_DEFAULT_SECRETS["SECRET_KEY"])
 
 EMAIL_ENCRYPTION_KEY = os.environ.get(
-    "EMAIL_ENCRYPTION_KEY", "czv37e6zzIOINs0QNBCMo1biYKpe2SyAZlVH5bO7AH8="
+    "EMAIL_ENCRYPTION_KEY", PUBLIC_DEFAULT_SECRETS["EMAIL_ENCRYPTION_KEY"]
 )
 
 ALLOWED_HOSTS = ["mixity.herokuapp.com"]
@@ -103,6 +110,12 @@ INSTALLED_APPS = (
 )
 
 SITE_ID = 1
+
+# API : une session connectée est exigée par défaut.
+# Les rares points publics (connexion, inscription...) déclarent permission_classes = [AllowAny].
+REST_FRAMEWORK = {
+    "DEFAULT_PERMISSION_CLASSES": ["rest_framework.permissions.IsAuthenticated"],
+}
 
 MIDDLEWARE = (
     # Enable SECURE_HSTS_* features
@@ -262,6 +275,9 @@ LANGUAGES_GOOGLE_SHEETS = {
 
 ENABLED_WEBSITE_LANGUAGES = ["fr", "en", "es"]
 
+# Site marketing (Webflow) : cible des boutons des pages d'atterrissage (contact, démo, tarifs...)
+MARKETING_SITE_URL = os.environ.get("MARKETING_SITE_URL", "https://www.mixity.io")
+
 DEFAULT_USER_CURRENCY_CODE = "EUR"
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -310,7 +326,8 @@ CONSTANCE_CONFIG = {
     "MIXITY_EVALUATION_REMINDERS_MAX_NUMBER": (6, "Nombre maximum de relances", int),
 }
 
-DEBUG = True
+# Sûr par défaut : dev.py et test.py activent DEBUG, prod.py le fixe explicitement.
+DEBUG = False
 CORS_ORIGIN_ALLOW_ALL = False
 DATA_UPLOAD_MAX_NUMBER_FIELDS = 10240
 
@@ -334,9 +351,7 @@ RECAPTCHA_PRIVATE_KEY = os.environ.get(
 DEFAULT_CHOICE_VALUE = int(os.environ.get("DEFAULT_CHOICE_VALUE", 3))
 
 # Used in Google map for django-address
-GOOGLE_API_KEY = os.environ.get(
-    "GOOGLE_API_KEY", "AIzaSyBaKiTHcvga5po47-nAoW2aP1jCSnNIwFU"
-)
+GOOGLE_API_KEY = os.environ.get("GOOGLE_API_KEY", "")
 
 SILENCED_SYSTEM_CHECKS = ["captcha.recaptcha_test_key_error"]
 
@@ -398,7 +413,7 @@ ALLOW_AUTO_EVAL = os.environ.get("ALLOW_AUTO_EVAL", "true").lower() == "true"
 HUBSPOT_API_CLIENT = None
 
 # Blog API request
-BLOG_API_KEY = "d128bbe364b33372efd6cd11a2"
+BLOG_API_KEY = os.environ.get("BLOG_API_KEY", "")
 BLOG_API_URL = "https://blog.mixity.io/ghost/api/v3/content/posts/?key=" + BLOG_API_KEY
 
 OPEN_AI_API_KEY = os.environ.get("OPEN_AI_API_KEY", "")
@@ -406,12 +421,12 @@ DEEPL_API_KEY = os.environ.get("DEEPL_API_KEY", "")
 SENTRY_CLIENT_SECRET = os.environ.get("SENTRY_CLIENT_SECRET", "")
 GOOGLECHAT_WEBHOOK_URL = os.environ.get(
     "GOOGLECHAT_WEBHOOK_URL",
-    "https://chat.googleapis.com/v1/spaces/AAAA9DQvNQE/messages?key=AIzaSyDdI0hCZtE6vySjMm-WEfRq3CPzqKqqsHI&token=JmwPlyqdRagtulocdhwHJMYk8KDWv7Y3Ds1FzGdaYqQ%3D",
+    "",
 )
 
 GOOGLECHAT_LOGENTRIES_WEBHOOK_URL = os.environ.get(
     "GOOGLECHAT_LOGENTRIES_WEBHOOK_URL",
-    "https://chat.googleapis.com/v1/spaces/AAAA9DQvNQE/messages?key=AIzaSyDdI0hCZtE6vySjMm-WEfRq3CPzqKqqsHI&token=JmwPlyqdRagtulocdhwHJMYk8KDWv7Y3Ds1FzGdaYqQ%3D",
+    "",
 )
 LOGENTRIES_URL = os.environ.get(
     "LOGENTRIES_URL",

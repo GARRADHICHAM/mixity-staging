@@ -55,7 +55,7 @@ class QuestionTranslationOptions(TranslationOptions):
 
 
 @register(Choice)
-class QuestionTranslationOptions(TranslationOptions):
+class ChoiceTranslationOptions(TranslationOptions):
     fields = ("label",)
 
 

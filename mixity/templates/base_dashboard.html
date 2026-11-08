@@ -183,12 +183,27 @@
                     }
                 });
             });
+
+            // Les liens vers un autre site (contenus des solutions, bonnes pratiques...) s'ouvrent
+            // dans un nouvel onglet, pour ne pas faire sortir de l'application.
+            document.addEventListener("click", function (event) {
+                var link = event.target.closest && event.target.closest("a[href]");
+                if (!link || link.target || !/^https?:$/.test(link.protocol) || link.host === window.location.host) return;
+                link.target = "_blank";
+                link.rel = "noopener noreferrer";
+            }, true);
         </script>
         {% block scripts %}
         {% endblock %}
         {#    header for dashboard part without react    #}
         {% if dashboard_header %}
             {% include "dashboard/header_dashboard.html" %}
+        {% elif messages %}
+            <div class="messages">
+                {% for message in messages %}
+                    <div class="message message--{{ message.level_tag }}">{{ message }}</div>
+                {% endfor %}
+            </div>
         {% endif %}
         {% block styles %}
         {% endblock %}

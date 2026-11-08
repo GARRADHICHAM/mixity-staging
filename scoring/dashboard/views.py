@@ -228,7 +228,7 @@ class DashboardAssessView(
                         "dashboard:dashboard_assess_test",
                         args=[
                             self.evaluation.entity.slug,
-                            "diag",
+                            "human" if self.evaluation.is_human else "diag",
                             self.evaluation.display_version_slugified,
                         ],
                     )

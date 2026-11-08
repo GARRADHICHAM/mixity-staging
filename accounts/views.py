@@ -6,6 +6,9 @@ from django.contrib import messages
 from django.utils.text import slugify
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import PasswordResetForm
+from django.contrib.auth.tokens import default_token_generator
+from django.utils.encoding import force_str
+from django.utils.http import urlsafe_base64_decode
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.views import LoginView as BaseLoginView
 from django.contrib.auth.views import (
@@ -15,7 +18,6 @@ from django.db import transaction
 from django.contrib.auth.views import PasswordResetView as BasePasswordResetView
 from django.contrib.messages.views import SuccessMessageMixin
 from django.core.exceptions import ImproperlyConfigured
-from django.core.files.storage import FileSystemStorage
 from django.db.models import Prefetch, Q, Count
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404, redirect
@@ -114,11 +116,13 @@ from subscriptions.models import (
 
 # fixing dev environnement where CLOUDINARY_URL is not set
 try:
-    from cloudinary_storage.storage import MediaCloudinaryStorage
+    from mixity.storage import FlatCloudinaryStorage
 
-    ImageStorage = MediaCloudinaryStorage()
+    ImageStorage = FlatCloudinaryStorage()
 except ImproperlyConfigured:
-    ImageStorage = FileSystemStorage()
+    from mixity.storage_dev import LocalOrCloudinaryStorage
+
+    ImageStorage = LocalOrCloudinaryStorage()
 
 
 class PasswordResetFormAllowNoPassword(PasswordResetForm):
@@ -139,10 +143,42 @@ class ResetPasswordViews(
         return context
 
 
+PASSWORD_RESET_SESSION_KEY = "password_reset_proof"
+
+
+def get_user_from_uidb64(uidb64):
+    """Retourne l'utilisateur désigné par l'identifiant encodé du lien, ou None."""
+    try:
+        pk = force_str(urlsafe_base64_decode(uidb64))
+        return get_user_model()._default_manager.get(pk=pk, is_active=True)
+    except (TypeError, ValueError, OverflowError, get_user_model().DoesNotExist):
+        return None
+
+
 class ResetPasswordConfirmView(
     TemplateView,
 ):
+    """
+    Page "nouveau mot de passe" ouverte depuis le lien reçu par e-mail.
+
+    Le jeton du lien est vérifié ici, puis mémorisé dans la session de ce navigateur :
+    l'API qui change le mot de passe (ApiForgottenPasswordChange) exige cette preuve.
+    """
+
     template_name = "accounts/forgotten-password-change.html"
+
+    def get(self, request, *args, **kwargs):
+        user = get_user_from_uidb64(kwargs["uidb64"])
+        if user is None or not default_token_generator.check_token(
+            user, kwargs["token"]
+        ):
+            messages.error(request, _("Ce lien n'est plus valide, veuillez en demander un nouveau."))
+            return redirect("user:password_reset")
+        request.session[PASSWORD_RESET_SESSION_KEY] = {
+            "uidb64": kwargs["uidb64"],
+            "token": kwargs["token"],
+        }
+        return super().get(request, *args, **kwargs)
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

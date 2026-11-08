@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+import Loading from '../../../mixity/dashboard/js/includes/Loading';
 import { Modal } from 'react-bootstrap';
 
 class RegisterConfirmed extends Component {
@@ -419,9 +420,7 @@ class RegisterConfirmed extends Component {
 				</div>
 			</div>
 		) : (
-			<h4 className="d-flex justify-content-center align-items-middle" style={{ marginTop: '40%' }}>
-				{this.state.placeholder}
-			</h4>
+			<Loading message={this.state.placeholder} />
 		);
 	}
 }

@@ -5,7 +5,6 @@ from django.db import models
 from django.utils.text import slugify
 from django.utils.translation import ugettext_lazy as _
 from django.core.exceptions import ImproperlyConfigured
-from django.core.files.storage import FileSystemStorage
 
 from accounts.vocabularies import LANGUAGE_CHOICES
 from mixity.settings.base import ENABLED_WEBSITE_LANGUAGES, LANGUAGES_GOOGLE_SHEETS
@@ -13,23 +12,22 @@ from mixity.services.namsor.models import *  # Used to register Namsor models to
 from django import forms
 
 try:
-    from cloudinary_storage.storage import (
-        RawMediaCloudinaryStorage,
-        MediaCloudinaryStorage,
-    )
+    from mixity.storage import FlatCloudinaryStorage, FlatRawCloudinaryStorage
 
-    class RawStorage(RawMediaCloudinaryStorage):
+    class RawStorage(FlatRawCloudinaryStorage):
         pass
 
-    class ImageStorage(MediaCloudinaryStorage):
+    class ImageStorage(FlatCloudinaryStorage):
         pass
 
 except ImproperlyConfigured:
 
-    class RawStorage(FileSystemStorage):
+    from mixity.storage_dev import LocalOrCloudinaryRawStorage, LocalOrCloudinaryStorage
+
+    class RawStorage(LocalOrCloudinaryRawStorage):
         pass
 
-    class ImageStorage(FileSystemStorage):
+    class ImageStorage(LocalOrCloudinaryStorage):
         pass
 
 

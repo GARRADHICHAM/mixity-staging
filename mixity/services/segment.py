@@ -19,6 +19,7 @@ class SegmentAPI:
             self.BASE_URL + "identify",
             data=json.dumps({"userId": user_id, "traits": traits}),
             headers=self.get_headers(),
+            timeout=10,
         )
 
     def track(self, user_id, event, properties):
@@ -28,6 +29,7 @@ class SegmentAPI:
                 {"userId": user_id, "event": event, "properties": properties}
             ),
             headers=self.get_headers(),
+            timeout=10,
         )
 
     def get_headers(self):

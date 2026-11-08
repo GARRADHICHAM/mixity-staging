@@ -57,7 +57,8 @@ class DisplayDownloads extends Component {
 			this.fetchErrorMessage(response);
 			const data = await response.json();
 
-			this.props.refresh_entity_evaluation();
+			// Recharge la page pour afficher l'évaluation validée (boutons de partage et de blocage retirés)
+			if (response.ok) window.location.reload();
 		} catch (error) {
 			console.error('>>>>> ERROR in block responses : ', error);
 		}
@@ -257,7 +258,7 @@ class DisplayDownloads extends Component {
 												<button
 													className="mxt--small button border assess_white_btn p-0 px-3"
 													onClick={() => {
-														navigator.clipboard.writeText(window.location.host + this.props.evaluation.collaborator_url);
+														navigator.clipboard.writeText(window.location.origin + this.props.evaluation.collaborator_url);
 													}}
 												>
 													{gettext('Copier le lien')}
@@ -308,7 +309,7 @@ class DisplayDownloads extends Component {
 											<button
 												className="mxt--small button border assess_white_btn p-0 px-3"
 												onClick={() => {
-													navigator.clipboard.writeText(window.location.host + this.props.evaluation.collaborator_url);
+													navigator.clipboard.writeText(window.location.origin + this.props.evaluation.collaborator_url);
 												}}
 											>
 												{gettext('Copier le lien')}

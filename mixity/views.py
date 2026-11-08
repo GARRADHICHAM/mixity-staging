@@ -178,14 +178,14 @@ class FAQPageView(ListView):
     template_name = "faq.html"
 
 
-class GoogleSheetsDataCheckView(TemplateView, LoginRequiredMixin, UserPassesTestMixin):
+class GoogleSheetsDataCheckView(LoginRequiredMixin, UserPassesTestMixin, TemplateView):
     template_name = "google_sheets_data_check.html"
 
     def test_func(self):
         return self.request.user.is_staff
 
 
-class QuestionTypeGeneratorView(TemplateView, LoginRequiredMixin, UserPassesTestMixin):
+class QuestionTypeGeneratorView(LoginRequiredMixin, UserPassesTestMixin, TemplateView):
     template_name = "question_type_generator.html"
 
     def test_func(self):

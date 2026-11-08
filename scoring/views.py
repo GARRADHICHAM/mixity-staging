@@ -2,6 +2,7 @@ import io
 import logging
 import math
 import json
+from django.core.exceptions import PermissionDenied
 import datetime
 import os.path
 from time import mktime
@@ -820,8 +821,9 @@ def react_export_filtered_questions_sheet_with_job(
         collabs_queryset_list = []
         for elem in converted_paramslist:
             actual_filter = converted_paramslist[elem]
-            collab_filters = actual_filter["collab_filters"]
-            collab_human_criteria = actual_filter["collab_human_criteria"]
+            # Sans critères personnalisés pour l'entreprise, le front n'envoie pas ces clés
+            collab_filters = actual_filter.get("collab_filters", {})
+            collab_human_criteria = actual_filter.get("collab_human_criteria", {})
             collab_inputs = prepare_collaborator_filters(
                 evaluation,
                 collab_filters,
@@ -1055,8 +1057,8 @@ class ExportReactExcelFileApiView(LoginRequiredMixin, View):
             for elem in params["filterlist"]:
                 index += 1
                 actual_filter = params["filterlist"][elem]
-                collab_filters = actual_filter["collab_filters"]
-                collab_human_criteria = actual_filter["collab_human_criteria"]
+                collab_filters = actual_filter.get("collab_filters", {})
+                collab_human_criteria = actual_filter.get("collab_human_criteria", {})
                 collab_inputs = prepare_collaborator_filters(
                     evaluation,
                     collab_filters,
@@ -1594,7 +1596,27 @@ class NextActionMixin:
         return action
 
 
-class EvaluationValidate(RedirectView):
+class EvaluationEditorMixin(LoginRequiredMixin, UserPassesTestMixin):
+    """
+    Réserve une action sur une évaluation (valider, rouvrir, téléverser un visuel)
+    aux membres non lecteurs de l'entreprise concernée, et à l'équipe Mixity (staff).
+    """
+
+    def test_func(self):
+        user = self.request.user
+        if user.is_staff:
+            return True
+        evaluation = get_object_or_404(
+            Evaluation.objects.select_related("entity__entity_level__structure"),
+            pk=self.kwargs["pk"],
+        )
+        if evaluation.entity is None or not user.test_func_rights(evaluation.entity):
+            return False
+        membership = user.get_rights(evaluation.entity)
+        return not (membership and membership.is_reader)
+
+
+class EvaluationValidate(EvaluationEditorMixin, RedirectView):
     def get_redirect_url(self, *args, **kwargs):
         evaluation = get_object_or_404(Evaluation, pk=kwargs["pk"])
         if not evaluation.is_validated_by_admin:
@@ -1613,7 +1635,7 @@ class EvaluationValidate(RedirectView):
             )
 
 
-class EvaluationOpen(RedirectView):
+class EvaluationOpen(EvaluationEditorMixin, RedirectView):
     def get_redirect_url(self, *args, **kwargs):
         evaluation = get_object_or_404(Evaluation, pk=kwargs["pk"])
         if not evaluation.is_validated_by_admin:
@@ -2327,9 +2349,8 @@ class EvaluationCategoryConfirm(
                     "pk": self.object.evaluation.pk,
                     "category": question.category.slug,
                     "subcategory": settings.KEY_FIGURES_SLUG,
-                    "target": self.target,
-                    "page": 0,
                     "target": question.target,
+                    "page": 0,
                 }
                 return reverse("evaluation_fill", kwargs=kwargs)
             else:
@@ -2339,7 +2360,7 @@ class EvaluationCategoryConfirm(
                 )
 
 
-class EvaluationFootprintUpload(UpdateView):
+class EvaluationFootprintUpload(EvaluationEditorMixin, UpdateView):
     model = Evaluation
     fields = [
         "footprint",
@@ -2360,7 +2381,7 @@ class EvaluationFootprintUpload(UpdateView):
         return JsonResponse({"image": "created"})
 
 
-class EvaluationPDFUpload(UpdateView):
+class EvaluationPDFUpload(EvaluationEditorMixin, UpdateView):
     model = Evaluation
     fields = [
         "footprint",
@@ -2380,7 +2401,7 @@ class EvaluationPDFUpload(UpdateView):
         return JsonResponse({"image": "created"})
 
 
-class EvaluationShareUpload(UpdateView):
+class EvaluationShareUpload(EvaluationEditorMixin, UpdateView):
     model = Evaluation
     fields = [
         "footprint",
@@ -2400,7 +2421,7 @@ class EvaluationShareUpload(UpdateView):
         return JsonResponse({"image": "created"})
 
 
-class EvaluationSocialThumbnailUpload(UpdateView):
+class EvaluationSocialThumbnailUpload(EvaluationEditorMixin, UpdateView):
     model = Evaluation
     fields = [
         "footprint",
@@ -2483,6 +2504,9 @@ class EvaluationConfirm(
 
         if self.get_object().entity:
             data["membership"] = self.request.user.get_rights(self.get_object().entity)
+            if data["membership"] is None:
+                # Utilisateur sans lien avec cette entreprise : accès refusé (avant : erreur 500)
+                raise PermissionDenied
             if data["membership"].structure_id:
                 data["accessible_entities"] = data[
                     "membership"
@@ -2504,34 +2528,31 @@ class EvaluationConfirm(
             if evaluation.entity_id not in last_global_evaluations:
                 last_global_evaluations[evaluation.entity_id] = evaluation
 
-        data["json_formatted"] = "["
+        # L'évaluation affichée sert de repli pour son entité : une entreprise toute neuve n'a pas encore
+        # d'autre évaluation, et une entité sans évaluation exploitable est simplement ignorée
+        # (avant : KeyError, la page "Reprendre le questionnaire" plantait).
+        last_global_evaluations.setdefault(self.get_object().entity_id, self.get_object())
 
+        entities_for_selector = []
         for ellemm in data["accessible_entities"]:
-            data["json_formatted"] += (
-                "{'name' : '"
-                + str(last_global_evaluations[ellemm.id])
-                + "', 'pk' : '"
-                + str(last_global_evaluations[ellemm.id].pk)
-                + "', 'level': '"
-                + str(ellemm.entity_level.level)
-                + "', 'parent': '"
-                + (
-                    str(ellemm.parent_entity)
-                    if ellemm.parent_entity != None
-                    else "none"
-                )
-                + "', 'htmlname': '"
-                + str(last_global_evaluations[ellemm.id]).replace(" ", "_")
-                + "', 'parenthtml': '"
-                + (
-                    str(ellemm.parent_entity)
-                    if ellemm.parent_entity != None
-                    else "none"
-                ).replace(" ", "_")
-                + "'}, "
+            last_evaluation = last_global_evaluations.get(ellemm.id)
+            if last_evaluation is None:
+                continue
+            parent_name = (
+                str(ellemm.parent_entity) if ellemm.parent_entity is not None else "none"
             )
-        data["json_formatted"] = data["json_formatted"][:-2] + "]"
-        data["json_formatted"] = data["json_formatted"].replace("'", '"')
+            entities_for_selector.append(
+                {
+                    "name": str(last_evaluation),
+                    "pk": str(last_evaluation.pk),
+                    "level": str(ellemm.entity_level.level),
+                    "parent": parent_name,
+                    "htmlname": str(last_evaluation).replace(" ", "_"),
+                    "parenthtml": parent_name.replace(" ", "_"),
+                }
+            )
+        # Le gabarit insère cette chaîne entre apostrophes dans du JavaScript : on échappe donc les apostrophes
+        data["json_formatted"] = json.dumps(entities_for_selector).replace("'", "\\'")
 
         data["evaluation"] = self.get_object()
         data["min_rate"] = constanceconfig.MIXITY_MIN_ANSWER_RATE
@@ -2554,15 +2575,23 @@ class EvaluationConfirm(
             data["next_url"] = reverse("evaluation_fill", kwargs=kwargs)
             data["button_name"] = _("Reprendre le questionnaire")
         else:
-            kwargs = {
-                "pk": self._evaluation.pk,
-                "category": self._evaluation.scores_categories.first.category.slug,
-                "subcategory": self._evaluation.scores_categories.first.category.subcategories.first.slug,
-                "page": 0,
-            }
-            if self._evaluation.scores_categories.first.target:
-                kwargs["target"] = self._evaluation.scores_categories.first.target
-            data["next_url"] = reverse("evaluation_fill", kwargs=kwargs)
+            first_score = self._evaluation.scores_categories.first()
+            first_subcategory = (
+                first_score.category.subcategories.first() if first_score else None
+            )
+            if first_score and first_subcategory:
+                kwargs = {
+                    "pk": self._evaluation.pk,
+                    "category": first_score.category.slug,
+                    "subcategory": first_subcategory.slug,
+                    "page": 0,
+                }
+                if first_score.target:
+                    kwargs["target"] = first_score.target
+                data["next_url"] = reverse("evaluation_fill", kwargs=kwargs)
+            else:
+                # Évaluation sans question ni score (ex. questionnaire non généré) : rien à reprendre
+                data["next_url"] = "/"
             data["button_name"] = _("Vérifier le questionnaire")
         return data
 
@@ -2587,7 +2616,7 @@ class EvaluationConfirm(
                 )
         evaluation.do_user_validation()
 
-        if evaluation.sheet.type == "evaluation_collaborateurs_360":
+        if evaluation.sheet.type.slug == "evaluation_collaborateurs_360":
             product = "human"
         else:
             product = "diag"
@@ -2600,7 +2629,7 @@ class EvaluationConfirm(
             .first()
         )
 
-        if not subscription_option.is_trial:
+        if not (subscription_option and subscription_option.is_trial):
             send_evaluation_created_mail(self.request.user, self.request, evaluation)
         alert_evaluation_created_mail(self.request.user, self.request, evaluation)
         evaluation.create_aims()

@@ -12,13 +12,15 @@ from django.conf import settings
 
 @csrf_exempt
 def logentries_webhook(request):
+    url = settings.GOOGLECHAT_LOGENTRIES_WEBHOOK_URL
+    if not url:
+        # Webhook non configuré (variable GOOGLECHAT_LOGENTRIES_WEBHOOK_URL)
+        return HttpResponse(status=404)
     try:
         body = json.loads(request.POST.get("payload"))
-
-        url = settings.GOOGLECHAT_LOGENTRIES_WEBHOOK_URL
         if "alert" not in body:
             return HttpResponse(status=400)
-        r = requests.post(url, json=generate_json_from_issue(body))
+        r = requests.post(url, json=generate_json_from_issue(body), timeout=10)
         return HttpResponse(status=r.status_code, content=r.text)
     except Exception:
         return HttpResponse(status=400, content="Bad request")

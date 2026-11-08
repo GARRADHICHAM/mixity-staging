@@ -1,6 +1,5 @@
 from functools import cached_property
 
-from django.core.files.storage import FileSystemStorage
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.core.exceptions import ImproperlyConfigured
@@ -14,23 +13,22 @@ from accounts.vocabularies import (
 from mixity.models import Language, SolutionFormat
 
 try:
-    from cloudinary_storage.storage import (
-        RawMediaCloudinaryStorage,
-        MediaCloudinaryStorage,
-    )
+    from mixity.storage import FlatCloudinaryStorage, FlatRawCloudinaryStorage
 
-    class RawStorage(RawMediaCloudinaryStorage):
+    class RawStorage(FlatRawCloudinaryStorage):
         pass
 
-    class ImageStorage(MediaCloudinaryStorage):
+    class ImageStorage(FlatCloudinaryStorage):
         pass
 
 except ImproperlyConfigured:
 
-    class RawStorage(FileSystemStorage):
+    from mixity.storage_dev import LocalOrCloudinaryRawStorage, LocalOrCloudinaryStorage
+
+    class RawStorage(LocalOrCloudinaryRawStorage):
         pass
 
-    class ImageStorage(FileSystemStorage):
+    class ImageStorage(LocalOrCloudinaryStorage):
         pass
 
 

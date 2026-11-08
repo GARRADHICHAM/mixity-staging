@@ -1,4 +1,5 @@
 import React, { Component, createRef } from 'react';
+import Loading from '../../mixity/dashboard/js/includes/Loading';
 import { Breadcrumb, Modal } from 'react-bootstrap';
 import Header from '../../mixity/dashboard/js/includes/Header';
 // https://0.0.0.0:8080/dashboard/maaf/sirh/status/
@@ -432,7 +433,7 @@ class ADPStatus extends Component {
 				</div>
 			</div>
 		) : (
-			<h4 className="d-flex justify-content-center align-items-middle">{this.state.placeholder}</h4>
+			<Loading message={this.state.placeholder} />
 		);
 	}
 }

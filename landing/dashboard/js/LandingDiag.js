@@ -1,6 +1,8 @@
 import React, { Component, useState } from 'react';
+import Loading from '../../../mixity/dashboard/js/includes/Loading';
 import { Breadcrumb } from 'react-bootstrap';
 import Header from '../../../mixity/dashboard/js/includes/Header';
+import { openMarketingPage } from './marketing';
 
 import Background from '../../../mixity/static/img/background/bg_header.svg';
 
@@ -52,12 +54,13 @@ class LandingDiag extends Component {
 					<div className="d-flex flex-row align-items-center" style={{ whiteSpace: 'nowrap' }}>
 						<button
 							style={{ borderRadius: '6px', backgroundColor: '#FFFFFF', border: '2px solid', padding: '4px 12px 4px 12px', marginRight: '12px' }}
-							onClick={() => (window.location.href = '/evaluation/diag/')}
+							onClick={() => openMarketingPage('diag')}
 						>
 							{gettext("Qu'est-ce que Mixity Diag ?")}
 						</button>
 						<button
 							style={{ borderRadius: '6px', backgroundColor: '#FFFFFF', border: '2px solid', padding: '4px 12px 4px 12px', marginRight: '12px' }}
+						onClick={() => openMarketingPage('example')}
 						>
 							{gettext('Voir un exemple')}
 						</button>
@@ -70,7 +73,7 @@ class LandingDiag extends Component {
 								color: '#FFFFFF',
 								padding: '4px 12px 4px 12px',
 							}}
-							onClick={() => (window.location.href = '/contact/')}
+							onClick={() => openMarketingPage('demo')}
 						>
 							{gettext('Demander une demo')}
 						</button>
@@ -159,9 +162,7 @@ class LandingDiag extends Component {
 				</div>
 			</div>
 		) : (
-			<h4 className="d-flex justify-content-center align-items-middle" style={{ marginTop: '40%' }}>
-				{this.state.placeholder}
-			</h4>
+			<Loading message={this.state.placeholder} />
 		);
 	}
 }

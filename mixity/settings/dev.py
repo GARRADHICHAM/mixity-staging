@@ -13,20 +13,28 @@ from .base import *  # noqa
 
 from hubspot import HubSpot
 
+import cloudinary
 import redis
 from urllib.parse import urlparse
 
 ENVIRONMENT_NAME = "Developement"
 ENVIRONMENT_COLOR = "Green"
 
-INSTALLED_APPS += tuple(  # noqa
-    [
-        "debug_toolbar",
-    ]
-)
+# La barre de débogage ralentit fortement les pages (elle enregistre chaque requête SQL : environ
+# 30 fois plus lent mesuré sur le tableau de bord). Elle est donc facultative :
+# définir DEBUG_TOOLBAR=1 dans l'environnement du service web pour l'activer.
+USE_DEBUG_TOOLBAR = os.environ.get("DEBUG_TOOLBAR") == "1"
+
+if USE_DEBUG_TOOLBAR:
+    INSTALLED_APPS += ("debug_toolbar",)  # noqa
 SECRET_KEY = os.environ.get("SECRET_KEY", "secretkey-superhot-12345678")  # noqa
 ALLOWED_HOSTS = ["*"]
 DEBUG = True
+
+# Derrière le proxy HTTPS local (service "https" de docker-compose.override.yml, https://localhost:8443) :
+# Django reçoit du HTTP simple et doit croire l'en-tête X-Forwarded-Proto du proxy, sinon les liens des
+# e-mails (confirmation, mot de passe oublié) sont écrits en http:// et refusés par le proxy.
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 
 # Add colors in logs
 LOGGING_COLORED = os.environ.get("LOGGING_COLORED", False)
@@ -62,15 +70,18 @@ for logger in LOGGING["loggers"].values():  # noqa
 
 # Middlewares
 
-MIDDLEWARE = (
-    tuple(
-        ["debug_toolbar.middleware.DebugToolbarMiddleware"],
+if USE_DEBUG_TOOLBAR:
+    MIDDLEWARE = (
+        tuple(
+            ["debug_toolbar.middleware.DebugToolbarMiddleware"],
+        )
+        + MIDDLEWARE
     )
-    + MIDDLEWARE
-)
 
 DEBUG_TOOLBAR_CONFIG = {
     "SHOW_TOOLBAR_CALLBACK": lambda x: True,
+    # Replié au démarrage : déplié, il recouvre le coin supérieur droit et intercepte des clics
+    "SHOW_COLLAPSED": True,
 }
 
 # skip captcha tests in dev
@@ -84,6 +95,20 @@ except ImportError:
 env = environ.Env()
 
 environ.Env.read_env(os.path.join(BASE_DIR, "settings/.env"))
+
+# Valeurs lues dans mixity/settings/.env (fichier ignoré par git), jamais dans le code.
+# base.py est exécuté avant la lecture du .env : on les relit ici.
+GOOGLE_API_KEY = env("GOOGLE_API_KEY", default="")
+BLOG_API_KEY = env("BLOG_API_KEY", default="")
+BLOG_API_URL = "https://blog.mixity.io/ghost/api/v3/content/posts/?key=" + BLOG_API_KEY
+GOOGLECHAT_WEBHOOK_URL = env("GOOGLECHAT_WEBHOOK_URL", default="")
+GOOGLECHAT_LOGENTRIES_WEBHOOK_URL = env("GOOGLECHAT_LOGENTRIES_WEBHOOK_URL", default="")
+
+# Fichiers : enregistrés sur le disque ; ceux qui n'y sont pas (base copiée depuis la
+# production) sont affichés depuis le compte Cloudinary public, sans clé d'API.
+DEFAULT_FILE_STORAGE = "mixity.storage_dev.LocalOrCloudinaryStorage"
+cloudinary.config(cloud_name=env("CLOUDINARY_CLOUD_NAME", default="mixity"), secure=True)
+
 STRIPE_PUBLIC_KEY = env("STRIPE_PUBLIC_KEY", default="")
 STRIPE_SECRET_KEY = env("STRIPE_SECRET_KEY", default="")
 stripe.api_key = STRIPE_SECRET_KEY

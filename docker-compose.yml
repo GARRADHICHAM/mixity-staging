@@ -24,7 +24,9 @@ services:
     web:
         image: mixity
         build: .
-        command: python manage.py runserver 0.0.0.0:8000
+        # Le dossier du projet est monté sur /app et masque les traductions compilées dans l'image :
+        # on les recompile au démarrage (fichiers .mo ignorés par git).
+        command: /bin/sh -c "python manage.py compilemessages ; python manage.py runserver 0.0.0.0:8000"
         environment:
             - DJANGO_SETTINGS_MODULE=mixity.settings.dev
             - REDIS_URL=redis://cache:6379

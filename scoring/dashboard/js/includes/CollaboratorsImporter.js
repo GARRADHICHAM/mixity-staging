@@ -42,9 +42,9 @@ class CollaboratorsImporter extends React.Component {
 		this.fetchErrorMessage(response_url);
 		const data_url = await response_url.json();
 
-		let url = 'https://' + data_url;
+		let url = window.location.protocol + '//' + data_url;
 		let emptyurl = url;
-		let url_evaluation = 'https://' + data_url;
+		let url_evaluation = window.location.protocol + '//' + data_url;
 		if (window.location.pathname.split('/').filter(Boolean)[0])
 			url_evaluation += '/' + window.location.pathname.split('/').filter(Boolean)[0] + '/' + window.location.pathname.split('/').filter(Boolean)[1];
 		const is_diag_page = window.location.href.includes('diag');

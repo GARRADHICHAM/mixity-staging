@@ -32,7 +32,8 @@ def migrate_data(apps, schemaeditor):
         s_global.label = "Mixity Global"
         s_global.slug = "global"
         s_global.description = "L'évaluation de votre politique de diversité et inclusion"
-        s_global.question_sheet_types.set([mixity_evaluation_globale_pme, mixity_evaluation_globale])
+        # Sheet types may not exist yet on a fresh database
+        s_global.question_sheet_types.set([qst for qst in (mixity_evaluation_globale_pme, mixity_evaluation_globale) if qst])
         s_global.save()
 
     if s_gender:
@@ -40,7 +41,7 @@ def migrate_data(apps, schemaeditor):
         s_gender.label = "Mixity Gender"
         s_gender.slug = "gender"
         s_gender.description = "L’évaluation de votre politique d’égalité professionnelle entre les femmes et les hommes"
-        s_gender.question_sheet_types.set([mixity_evaluation_genre])
+        s_gender.question_sheet_types.set([qst for qst in (mixity_evaluation_genre,) if qst])
         s_gender.save()
 
     if s_human:

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Loading from '../../../mixity/dashboard/js/includes/Loading';
 import { Breadcrumb, Card, Tab, Tabs, Modal, Form } from 'react-bootstrap';
 import Header from '../../../mixity/dashboard/js/includes/Header';
 import NotificationLoader from '../../../mixity/dashboard/js/includes/NotificationLoader';
@@ -529,8 +530,8 @@ class AssessPage extends Component {
 			this.fetchErrorMessage(response_url);
 			const data_url = await response_url.json();
 
-			let url = 'https://' + data_url;
-			let url_evaluation = 'https://' + data_url;
+			let url = window.location.protocol + '//' + data_url;
+			let url_evaluation = window.location.protocol + '//' + data_url;
 			if (window.location.pathname.split('/').filter(Boolean)[0])
 				url_evaluation += '/' + window.location.pathname.split('/').filter(Boolean)[0] + '/' + window.location.pathname.split('/').filter(Boolean)[1];
 			const is_diag_page = window.location.href.includes('diag');
@@ -1505,9 +1506,7 @@ class AssessPage extends Component {
 
 	render() {
 		return !this.state.entityLoaded && !this.state.evaluationLoaded ? (
-			<h4 className="d-flex justify-content-center align-items-middle" style={{ marginTop: '40%' }}>
-				{this.state.placeholder}
-			</h4>
+			<Loading message={this.state.placeholder} />
 		) : (
 			<div style={{ fontFamily: 'DM Sans' }}>
 				<style type="text/css">

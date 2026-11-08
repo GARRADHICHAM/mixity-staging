@@ -109,6 +109,7 @@ class APIConnection:
                 "client_secret": client_secret,
                 "grant_type": "client_credentials",
             },
+            timeout=30,
         )
 
     def get_workers(self, page):
@@ -120,6 +121,7 @@ class APIConnection:
             ),
             verify=True,
             headers={"Authorization": f"Bearer {self.token}"},
+            timeout=30,
         )
 
 

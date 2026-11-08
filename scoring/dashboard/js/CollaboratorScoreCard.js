@@ -28,7 +28,7 @@ export default function CollaboratorScoreCard(props) {
 		const response_url = await fetch(`/api/url/`);
 		if (response_url.status === 200) {
 			const data = await response_url.json();
-			SetUrl('https://' + data);
+			SetUrl(window.location.protocol + '//' + data);
 		} else
 			console.log(response_url);
 

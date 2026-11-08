@@ -1951,7 +1951,7 @@ class DashboardTest(TestCaseMixin, TestCase):
             ],
         )
         self.scoring_client.force_login(self.user)
-        with self.assertNumQueries(38):
+        with self.assertNumQueries(37):
             self.get_page("home", args=[self.entity.slug])
         with self.assertNumQueries(
             7
@@ -2490,7 +2490,7 @@ class MultiEntitiesTest(TestCaseMixin, TestCase):
             ],
         )
         self.scoring_client.force_login(self.user)
-        with self.assertNumQueries(40):
+        with self.assertNumQueries(39):
             self.get_page("home", args=[self.entity_fr.slug])
 
     ## Will correct this test once the refacto on the questionnaire will be done ##

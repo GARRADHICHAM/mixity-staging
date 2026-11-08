@@ -1,6 +1,7 @@
 import datetime
 import csv
 import io
+import logging
 import re
 
 from django.http import JsonResponse
@@ -32,7 +33,20 @@ from accounts.models import (
     Entity,
     EntityLevel,
 )
-from accounts.views import PasswordResetFormAllowNoPassword
+from accounts.permissions import (
+    find_structure,
+    forbidden,
+    is_structure_owner,
+    not_found,
+    owns_entity,
+    structure_for_member,
+    structure_for_owner,
+)
+from accounts.views import (
+    PASSWORD_RESET_SESSION_KEY,
+    PasswordResetFormAllowNoPassword,
+    get_user_from_uidb64,
+)
 
 from accounts.serializers import BusinessLineSerializer
 
@@ -80,6 +94,9 @@ from subscriptions.models import (
     SubscriptionOption,
 )
 
+from cryptography.fernet import InvalidToken
+from django.conf import settings
+from rest_framework.permissions import AllowAny
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from django.contrib.auth import authenticate, login
@@ -88,17 +105,25 @@ from mixity.utils import encryption
 from urllib.parse import unquote_plus
 
 
+logger = logging.getLogger(__name__)
+
+
 class ApiDashboardRegister(APIView):
+    permission_classes = [AllowAny]  # inscription : ouvert aux visiteurs
+
     def post(self, request, *args, **kwargs):
-        email = request.data.get("email").lower().strip()
+        email = (request.data.get("email") or "").lower().strip()
         password = request.data.get("password")
         subscription = request.data.get("subscription")
-        is_newsletter = request.data.get("is_newsletter")
+        is_newsletter = bool(request.data.get("is_newsletter"))  # facultatif : non coché = False
 
         if not email or not password:
             return Response(
                 "Email and password are required", status=status.HTTP_400_BAD_REQUEST
             )
+        if MixityUser.objects.filter(Q(email__iexact=email) | Q(username__iexact=email)).exists():
+            # Réponse distincte : le front n'affiche encore qu'un message générique (point U-5)
+            return Response("Email already used", status=status.HTTP_409_CONFLICT)
         try:
             user = MixityUser.objects.create_user(
                 username=email,
@@ -118,13 +143,15 @@ class ApiDashboardRegister(APIView):
             return Response(
                 "POST request processed, Account Registered", status=status.HTTP_200_OK
             )
-        except Exception as e:
+        except Exception:
+            # On journalise la vraie cause (sans l'adresse e-mail) : le message renvoyé reste générique
+            logger.exception("Inscription impossible")
             return Response(
                 "User couldn't be created", status=status.HTTP_400_BAD_REQUEST
             )
 
 
-class ApiGetUserName(APIView, LoginRequiredMixin):
+class ApiGetUserName(LoginRequiredMixin, APIView):
     def get(self, request, *args, **kwargs):
         user = request.user
         return Response(
@@ -133,7 +160,7 @@ class ApiGetUserName(APIView, LoginRequiredMixin):
         )
 
 
-class ApiUserNewsletter(APIView, LoginRequiredMixin):
+class ApiUserNewsletter(LoginRequiredMixin, APIView):
     def get(self, request, *args, **kwargs):
         user = request.user
         return Response(
@@ -143,6 +170,8 @@ class ApiUserNewsletter(APIView, LoginRequiredMixin):
 
 
 class ApiGetEmail(APIView):
+    permission_classes = [AllowAny]  # appelé avant connexion avec un jeton chiffré
+
     def get(self, request, *args, **kwargs):
         encryption_class = encryption()
         encrypted_email = kwargs.get("encrypted_email")
@@ -152,12 +181,12 @@ class ApiGetEmail(APIView):
         return Response({"email": email}, status=status.HTTP_200_OK)
 
 
-class ApiGetCompanyName(APIView, LoginRequiredMixin):
+class ApiGetCompanyName(LoginRequiredMixin, APIView):
     def get(self, request, *args, **kwargs):
         user = request.user
 
-        if user.structures.length > 0:
-            structure = user.structures[0]
+        structure = user.structures.order_by("pk").first()
+        if structure is not None:
             return Response(
                 {"company": structure.juridic_name},
                 status=status.HTTP_200_OK,
@@ -167,21 +196,29 @@ class ApiGetCompanyName(APIView, LoginRequiredMixin):
 
 
 class ApiCountriesList(APIView):
+    permission_classes = [AllowAny]  # liste publique des pays (formulaires d'inscription)
+
     def get(self, request, format=None):
         country_list = [{"code": code, "name": name} for code, name in countries]
         return Response(country_list)
 
 
-class ApiUploadCollaboratorsCSV(APIView, LoginRequiredMixin):
+class ApiUploadCollaboratorsCSV(LoginRequiredMixin, APIView):
     def post(self, request, *args, **kwargs):
         try:
             csv_file = request.FILES["file"]
             main_entity_slug = request.POST.get("entity_slug")
             
-            if not Entity.objects.filter(slug=main_entity_slug).exists():
+            main_entity = Entity.objects.filter(slug=main_entity_slug).first()
+            if main_entity is None:
                 return JsonResponse(
                     {"success": False, "message": "L'entité n'existe pas !"},
                     status=status.HTTP_400_BAD_REQUEST,
+                )
+            if not owns_entity(request.user, main_entity):
+                return JsonResponse(
+                    {"success": False, "message": "Accès refusé."},
+                    status=status.HTTP_403_FORBIDDEN,
                 )
             if not csv_file.name.endswith(".csv"):
                 return JsonResponse(
@@ -360,7 +397,7 @@ class ApiUploadCollaboratorsCSV(APIView, LoginRequiredMixin):
             )
 
 
-class ApiUploadEntitiesCSV(APIView, LoginRequiredMixin):
+class ApiUploadEntitiesCSV(LoginRequiredMixin, APIView):
     def validate_file(self, csv_file, entity_slug):
         try:
             main_entity = Entity.objects.get(slug=entity_slug)
@@ -518,6 +555,13 @@ class ApiUploadEntitiesCSV(APIView, LoginRequiredMixin):
             # Récupération des variables
             csv_file = request.FILES["file"]
             entity_slug = request.POST.get("entity_slug")
+
+            target_entity = Entity.objects.filter(slug=entity_slug).first()
+            if target_entity is not None and not owns_entity(request.user, target_entity):
+                return JsonResponse(
+                    {"success": False, "message": "Accès refusé."},
+                    status=status.HTTP_403_FORBIDDEN,
+                )
 
             # Vérifications validité du fichier
             validation_result = self.validate_file(csv_file, entity_slug)
@@ -756,6 +800,12 @@ class ApiCreateOptions(APIView):
         product_slug = request.data.get("product")
         structure_id = request.data.get("structure_id")
 
+        structure = Structure.objects.filter(pk=structure_id).first() if structure_id else None
+        if structure is None:
+            return not_found()
+        if not is_structure_owner(request.user, structure):
+            return forbidden()
+
         try:
             sub_pack = (
                 SubscriptionPack.objects.filter(structure_id=structure_id)
@@ -828,12 +878,19 @@ class ApiValidateCoupon(APIView):
             )
 
 
-class ApiCreateSubStartOption(APIView, LoginRequiredMixin):
+class ApiCreateSubStartOption(LoginRequiredMixin, APIView):
     def post(self, request, *args, **kwargs):
-        try:
-            structure = Structure.objects.get(siret=request.data.get("siret"))
-        except Structure.DoesNotExist:
-            structure = Structure.objects.get(duns=request.data.get("siret"))
+        reference = request.data.get("siret")
+        structure = (
+            Structure.objects.filter(siret=reference).first()
+            or Structure.objects.filter(duns=reference).first()
+            if reference
+            else None
+        )
+        if structure is None:
+            return not_found()
+        if not is_structure_owner(request.user, structure):
+            return forbidden()
 
         sub_pack = structure.subscription_pack.order_by("-start_date").first()
         sub_start = sub_pack.add_new_option("diag")
@@ -850,8 +907,10 @@ class ApiCreateSubStartOption(APIView, LoginRequiredMixin):
 
 
 class ApiLogin(APIView):
+    permission_classes = [AllowAny]  # connexion : ouvert aux visiteurs
+
     def post(self, request, *args, **kwargs):
-        email = request.data.get("email").lower().strip()
+        email = (request.data.get("email") or "").lower().strip()
         password = request.data.get("password")
 
         if not email or not password:
@@ -871,8 +930,10 @@ class ApiLogin(APIView):
 
 
 class ApiForgottenPasswordMail(APIView):
+    permission_classes = [AllowAny]  # mot de passe oublié : ouvert aux visiteurs
+
     def post(self, request, *args, **kwargs):
-        email = request.data.get("email").lower().strip()
+        email = (request.data.get("email") or "").lower().strip()
 
         if not email:
             return Response(
@@ -896,6 +957,8 @@ class ApiForgottenPasswordMail(APIView):
 
 
 class ApiCollaboratorLogin(APIView):
+    permission_classes = [AllowAny]  # connexion d'un collaborateur invité
+
     def post(self, request, *args, **kwargs):
         encryption_class = encryption()
         encrypted_email = request.data.get("encrypted_email")
@@ -920,7 +983,7 @@ class ApiCollaboratorLogin(APIView):
             )
 
 
-class ApiUpdateUser(APIView, LoginRequiredMixin):
+class ApiUpdateUser(LoginRequiredMixin, APIView):
     def post(self, request, *args, **kwargs):
         user = request.user
         user.first_name = request.data.get("first_name")
@@ -934,18 +997,42 @@ class ApiUpdateUser(APIView, LoginRequiredMixin):
 
 
 class ApiCreateCollaboratorPassword(APIView):
+    """
+    Un invité (collaborateur) définit son premier mot de passe depuis le lien reçu par e-mail.
+
+    Le lien expire (durée du réglage PASSWORD_RESET_TIMEOUT_DAYS) et ne permet
+    de définir un mot de passe que pour un compte qui n'en a pas encore.
+    """
+
+    permission_classes = [AllowAny]  # l'invité n'est pas encore connecté
+
     def post(self, request, *args, **kwargs):
-        encryption_class = encryption()
         encrypted_email = request.data.get("encrypted_email")
-        email = encryption_class.decrypt_data(
-            unquote_plus(encrypted_email.replace("%25", "%"))
-        )
         password = request.data.get("password")
+        if not encrypted_email or not password:
+            return Response(
+                "Link and password are required", status=status.HTTP_400_BAD_REQUEST
+            )
+        link_lifetime = getattr(settings, "PASSWORD_RESET_TIMEOUT_DAYS", 30) * 24 * 3600
+        try:
+            email = encryption().decrypt_data(
+                unquote_plus(encrypted_email.replace("%25", "%")), ttl=link_lifetime
+            )
+        except (InvalidToken, ValueError):
+            return Response(
+                "Invalid or expired link", status=status.HTTP_400_BAD_REQUEST
+            )
         subscribed_to_newsletter = request.data.get("subscribed_to_newsletter")
-        user = MixityUser.objects.get(email=email)
-        if user == None:
+        user = MixityUser.objects.filter(email=email).first()
+        if user is None:
             return Response("User not found", status=status.HTTP_404_NOT_FOUND)
-        user.is_newsletter = subscribed_to_newsletter
+        if user.password and user.has_usable_password():
+            return Response(
+                "A password is already set for this account",
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+        if subscribed_to_newsletter is not None:
+            user.is_newsletter = bool(subscribed_to_newsletter)
         user.set_password(password)
         user.save()
         return Response(
@@ -971,12 +1058,9 @@ class ApiGetStructureEntities(APIView):
         return entities_list_structured
 
     def post(self, request):
-        try:
-            siret = request.data.get("siret")
-            structure = Structure.objects.get(siret=siret)
-        except Structure.DoesNotExist:
-            duns = request.data.get("duns")
-            structure = Structure.objects.get(duns=request.data.get("duns"))
+        structure, error = structure_for_member(request)
+        if error:
+            return error
         entities_list_structured = []
 
         main_entity = structure.get_main_entity
@@ -1036,15 +1120,29 @@ class ApiPasswordChange(APIView):
 
 
 class ApiForgottenPasswordChange(APIView):
+    """
+    Définit un nouveau mot de passe après "mot de passe oublié".
+
+    Public, mais exige la preuve mémorisée dans la session par la page du lien reçu par
+    e-mail (ResetPasswordConfirmView) : l'identifiant doit correspondre et le jeton doit
+    toujours être valide. Sans cela, connaître le numéro d'un utilisateur suffisait.
+    """
+
+    permission_classes = [AllowAny]
+
     def post(self, request):
-        try:
-            user = MixityUser.objects.get(
-                pk=force_str(urlsafe_base64_decode(request.data.get("uuid")))
-            )
-            user.set_password(request.data.get("new_password"))
-            user.save()
-        except Exception as e:
+        uidb64 = request.data.get("uuid")
+        new_password = request.data.get("new_password")
+        proof = request.session.get(PASSWORD_RESET_SESSION_KEY)
+        if not uidb64 or not new_password or not proof or proof.get("uidb64") != uidb64:
             return Response({"Update failed"}, status=status.HTTP_400_BAD_REQUEST)
+        user = get_user_from_uidb64(uidb64)
+        if user is None or not default_token_generator.check_token(user, proof["token"]):
+            return Response({"Update failed"}, status=status.HTTP_400_BAD_REQUEST)
+        user.set_password(new_password)
+        user.save()
+        # le jeton devient invalide (il dépend de l'ancien mot de passe) ; on efface aussi la preuve
+        del request.session[PASSWORD_RESET_SESSION_KEY]
         return Response({"Update successful"}, status=status.HTTP_200_OK)
 
 
@@ -1066,12 +1164,9 @@ class ApiGetProfile(APIView):
 class ApiUpdateCollaborator(APIView):
     def post(self, request):
         data = request.data
-        try:
-            siret = request.data.get("siret")
-            structure = Structure.objects.get(siret=siret)
-        except Structure.DoesNotExist:
-            duns = request.data.get("duns")
-            structure = Structure.objects.get(duns=duns)
+        structure, error = structure_for_owner(request)
+        if error:
+            return error
         entities = []
         isParentOwner = structure.members.filter(
             username=request.user.username
@@ -1092,12 +1187,9 @@ class ApiUpdateCollaborator(APIView):
 class ApiDeleteCollaborator(APIView):
     def post(self, request):
         data = request.data
-        try:
-            siret = request.data.get("siret")
-            structure = Structure.objects.get(siret=siret)
-        except Structure.DoesNotExist:
-            duns = request.data.get("duns")
-            structure = Structure.objects.get(duns=request.data.get("duns"))
+        structure, error = structure_for_owner(request)
+        if error:
+            return error
         entities = []
         empty_entity = {
             "entity_name": "",
@@ -1145,12 +1237,9 @@ class ApiDeleteCollaborator(APIView):
 class ApiGetCollaborators(APIView):
     def post(self, request):
         data = request.data
-        try:
-            siret = request.data.get("siret")
-            structure = Structure.objects.get(siret=siret)
-        except Structure.DoesNotExist:
-            duns = request.data.get("duns")
-            structure = Structure.objects.get(duns=request.data.get("duns"))
+        structure, error = structure_for_owner(request)
+        if error:
+            return error
         entities = []
         empty_entity = {
             "entity_name": "",
@@ -1218,12 +1307,9 @@ class EntitiesTree:
 class ApiInviteCollaborators(APIView):
     def post(self, request):
         data = request.data
-        try:
-            siret = request.data.get("siret")
-            structure = Structure.objects.get(siret=siret)
-        except Structure.DoesNotExist:
-            duns = request.data.get("duns")
-            structure = Structure.objects.get(duns=request.data.get("duns"))
+        structure, error = structure_for_owner(request)
+        if error:
+            return error
         collaborators = data.get("collaborators")
         entities = []
         isParentOwner = structure.members.filter(
@@ -1261,12 +1347,9 @@ class ApiInviteCollaborators(APIView):
 class ApiUpdateStructureDescription(APIView):
     def post(self, request):
         data = request.data
-        try:
-            siret = request.data.get("siret")
-            structure = Structure.objects.get(siret=siret)
-        except Structure.DoesNotExist:
-            duns = request.data.get("duns")
-            structure = Structure.objects.get(duns=request.data.get("duns"))
+        structure, error = structure_for_owner(request)
+        if error:
+            return error
         structure.description = data.get("activity_description")
         structure.human_description = data.get("human_description")
         structure.commitment = data.get("commitment_description")
@@ -1276,12 +1359,9 @@ class ApiUpdateStructureDescription(APIView):
 
 class ApiGetStructureDescription(APIView):
     def post(self, request):
-        try:
-            siret = request.data.get("siret")
-            structure = Structure.objects.get(siret=siret)
-        except Structure.DoesNotExist:
-            duns = request.data.get("duns")
-            structure = Structure.objects.get(duns=request.data.get("duns"))
+        structure, error = structure_for_member(request)
+        if error:
+            return error
         activity_description = structure.description if structure.description else ""
         human_description = (
             structure.human_description if structure.human_description else ""
@@ -1301,12 +1381,9 @@ class ApiUpdateEntityInfos(APIView):
     def post(self, request):
         data = request.data
         entities = []
-        try:
-            siret = request.data.get("siret")
-            structure = Structure.objects.get(siret=siret)
-        except Structure.DoesNotExist:
-            duns = request.data.get("duns")
-            structure = Structure.objects.get(duns=request.data.get("duns"))
+        structure, error = structure_for_owner(request)
+        if error:
+            return error
         isParentOwner = structure.members.filter(
             username=request.user.username
         ).exists()
@@ -1326,7 +1403,11 @@ class ApiUpdateEntityInfos(APIView):
 class ApiUpdateStructure(APIView):
     def post(self, request):
         data = request.data
-        structure = Structure.objects.get(siret=data.get("old_siret"))
+        structure = Structure.objects.filter(siret=data.get("old_siret")).first()
+        if structure is None:
+            return not_found()
+        if not is_structure_owner(request.user, structure):
+            return forbidden()
         structure.commercial_name = data.get("commercial_name")
         structure.category = data.get("category")
         structure.logo = data.get("logo")
@@ -1344,6 +1425,8 @@ class ApiUpdateStructure(APIView):
         data = request.data
         try:
             structure = Structure.objects.get(siret=data.get("old_siret"))
+            if not is_structure_owner(request.user, structure):
+                return forbidden()
 
             update_fields = [
                 "juridic_name",

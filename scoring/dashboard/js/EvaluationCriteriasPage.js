@@ -1,4 +1,5 @@
 import React, { Component, useState } from 'react';
+import Loading from '../../../mixity/dashboard/js/includes/Loading';
 import { Breadcrumb } from 'react-bootstrap';
 import Accordion from 'react-bootstrap/Accordion';
 import AccordionButton from 'react-bootstrap/AccordionButton';
@@ -50,9 +51,9 @@ class EvaluationCriteriasPage extends Component {
 			const response_url = await fetch('api/url/');
 			this.fetchErrorMessage(response_url);
 			const data_url = await response_url.json();
-			let url = 'https://' + data_url;
+			let url = window.location.protocol + '//' + data_url;
 			let emptyurl = url;
-			let url_evaluation = 'https://' + data_url;
+			let url_evaluation = window.location.protocol + '//' + data_url;
 
 			if (window.location.pathname.split('/').filter(Boolean)[0])
 				url_evaluation += '/' + window.location.pathname.split('/').filter(Boolean)[0] + '/' + window.location.pathname.split('/').filter(Boolean)[1];
@@ -766,9 +767,7 @@ class EvaluationCriteriasPage extends Component {
 				</div>
 			</div>
 		) : (
-			<h4 className="d-flex justify-content-center align-items-middle" style={{ marginTop: '40%' }}>
-				{this.state.placeholder}
-			</h4>
+			<Loading message={this.state.placeholder} />
 		);
 	}
 }

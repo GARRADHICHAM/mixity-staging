@@ -474,7 +474,7 @@ class Structure(models.Model):
     def get_solver(self):
         try:
             return self.solver
-        except:
+        except Exception:
             return None
 
     @cached_property
@@ -546,9 +546,11 @@ class Structure(models.Model):
             return ""
         return self.business_line.name
 
+    DEFAULT_LOGO = "icon/buildings.svg"
+
     def get_logo_url(self):
         if not self.logo:
-            return static("img/structure.svg")
+            return static(self.DEFAULT_LOGO)
         return self.logo.url
 
     def has_logo(self):

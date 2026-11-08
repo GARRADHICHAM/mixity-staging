@@ -286,6 +286,52 @@ class StructureAdmin(TranslationAdmin, CSSJsAdminMixin):
             )
         )
 
+    def save_related(self, request, form, formsets, change):
+        super().save_related(request, form, formsets, change)
+        self.ensure_main_entity(form.instance)
+
+    @staticmethod
+    def ensure_main_entity(structure):
+        # Même initialisation que la création côté client (CreateStructure) :
+        # sans entité principale, le tableau de bord et les packs ne fonctionnent pas.
+        entity = structure.get_main_entity
+        if entity is None:
+            entity_level, _ = EntityLevel.objects.get_or_create(
+                structure=structure, level=0, defaults={"label": "Groupe"}
+            )
+            entity = Entity.objects.create(
+                name=f"{structure.juridic_name}-main",
+                entity_level=entity_level,
+                workforce=structure.workforce,
+                country=structure.country,
+                phone=structure.phone1,
+            )
+
+            workforce = structure.workforce
+            if workforce < 50:
+                tag_name = "very_small_company"
+            elif workforce < 250:
+                tag_name = "50_250_company"
+            elif workforce < 500:
+                tag_name = "small_company"
+            elif workforce < 1000:
+                tag_name = "middle_company"
+            elif workforce < 5000:
+                tag_name = "1000_4999_company"
+            else:
+                tag_name = "5000_company"
+            tags = list(QuestionTag.objects.filter(name=tag_name))
+            if structure.country:
+                country_tag, _ = QuestionTag.objects.get_or_create(
+                    name=structure.country.code.lower()
+                )
+                tags.append(country_tag)
+            structure.tags.add(*tags)
+            entity.tags.add(*tags)
+            structure.__dict__.pop("get_main_entity", None)
+
+        structure.memberships.filter(entity__isnull=True).update(entity=entity)
+
     def secondary_business_lines_joined(self, obj):
         return ", ".join(bs.name for bs in obj.secondary_business_lines.all())
 

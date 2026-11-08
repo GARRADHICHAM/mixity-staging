@@ -10,22 +10,32 @@ from django.conf import settings
 
 @csrf_exempt
 def sentry_webhook(request):
-    expected = hmac.new(
-        key=settings.SENTRY_CLIENT_SECRET.encode("utf-8"),
-        msg=request.body,
-        digestmod=sha256,
-    ).hexdigest()
-    body = json.loads(request.body)
-
-    if (
-        "Sentry-Hook-Signature" not in request.headers
-        or expected != request.headers["Sentry-Hook-Signature"]
-    ):
-        return HttpResponse(status=400)
+    secret = settings.SENTRY_CLIENT_SECRET
     url = settings.GOOGLECHAT_WEBHOOK_URL
-    if "issue" not in body["data"]:
+    if not secret or not url:
+        # Webhook non configuré (variables SENTRY_CLIENT_SECRET et GOOGLECHAT_WEBHOOK_URL)
+        return HttpResponse(status=404)
+
+    # La signature est vérifiée avant toute lecture du contenu
+    expected = hmac.new(
+        key=secret.encode("utf-8"), msg=request.body, digestmod=sha256
+    ).hexdigest()
+    received = request.headers.get("Sentry-Hook-Signature", "")
+    if not hmac.compare_digest(expected.encode("utf-8"), received.encode("utf-8")):
         return HttpResponse(status=400)
-    r = requests.post(url, json=generate_json_from_issue(body))
+
+    try:
+        body = json.loads(request.body)
+        if "issue" not in body["data"]:
+            return HttpResponse(status=400)
+        message = generate_json_from_issue(body)
+    except (ValueError, KeyError, TypeError):
+        return HttpResponse(status=400)
+
+    try:
+        r = requests.post(url, json=message, timeout=10)
+    except requests.RequestException:
+        return HttpResponse(status=502)
     return HttpResponse(status=r.status_code, content=r.text)
 
 

@@ -4,13 +4,16 @@ import logging
 
 import stripe
 from django.conf import settings
+from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import redirect
 from django.urls import reverse
 from django.utils import timezone
 from django.utils.timezone import make_aware
+from django.utils.translation import gettext as _
 from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.http import require_POST
 from django.views.generic import DetailView
 from django.views.generic.base import TemplateView
 
@@ -40,6 +43,21 @@ class StructurePaymentView(UserPassesTestMixin, LoginRequiredMixin, DetailView):
                     args=[self.get_object().first_subscriptionOption.pk],
                 )
             )
+        # Paiement en ligne désactivé (pas de clé Stripe) : la page de paiement
+        # resterait bloquée sur « Chargement ». L'offre attend la validation de
+        # l'équipe Mixity, comme les autres offres.
+        if not settings.STRIPE_PUBLIC_KEY:
+            messages.info(
+                request,
+                _(
+                    "Votre demande a bien été enregistrée. L'équipe Mixity va "
+                    "activer votre offre et vous prévenir par e-mail."
+                ),
+            )
+            main_entity = self.get_object().get_main_entity
+            if main_entity:
+                return redirect(reverse("home", args=[main_entity.slug]))
+            return redirect(reverse("home"))
         return super().dispatch(request, *args, **kwargs)
 
     def test_func(self):
@@ -66,7 +84,8 @@ class StructureCreateCheckoutSession(
     @csrf_exempt
     def get(self, request, *args, **kwargs):
         if request.method == "GET":
-            domain_url = f"{request.scheme}://{request.META['HTTP_HOST']}/payments/{self.get_object().id}/"
+            # get_host() valide l'en-tête Host (ALLOWED_HOSTS), contrairement à request.META['HTTP_HOST']
+            domain_url = f"{request.scheme}://{request.get_host()}/payments/{self.get_object().id}/"
             checkout_session = CheckoutSession.objects.filter(
                 subscriptionOption=self.get_object().first_subscriptionOption
             ).first()
@@ -145,11 +164,14 @@ def update_subscription(subscription):
 
 
 @csrf_exempt
+@require_POST
 def stripe_webhook(request):
     stripe.api_key = settings.STRIPE_SECRET_KEY
     endpoint_secret = settings.STRIPE_ENDPOINT_SECRET
     payload = request.body
-    sig_header = request.META["HTTP_STRIPE_SIGNATURE"]
+    sig_header = request.META.get("HTTP_STRIPE_SIGNATURE")
+    if not sig_header:
+        return HttpResponse(status=400)
     event = None
 
     try:
@@ -164,24 +186,37 @@ def stripe_webhook(request):
         return HttpResponse(status=400)
 
     if "payment_intent" in event["data"]["object"]:
-        checkout_session = CheckoutSession.objects.get(
+        checkout_session = CheckoutSession.objects.filter(
             payment_intent=event["data"]["object"]["payment_intent"]
-        )
+        ).first()
     elif "id" in event["data"]["object"]:
         if event["data"]["object"]["object"] == "checkout.session":
-            checkout_session = CheckoutSession.objects.get(
+            checkout_session = CheckoutSession.objects.filter(
                 checkout_id=event["data"]["object"]["id"]
-            )
+            ).first()
         elif event["data"]["object"]["object"] == "payment_intent":
-            checkout_session = CheckoutSession.objects.get(
+            checkout_session = CheckoutSession.objects.filter(
                 payment_intent=event["data"]["object"]["id"]
-            )
+            ).first()
         else:
             return HttpResponse(status=200)
     else:
         return HttpResponse(status=200)
 
+    # Session inconnue : on répond 200, sinon Stripe réessaie indéfiniment.
+    if checkout_session is None:
+        logger.warning("Webhook Stripe : session inconnue pour l'événement %s", event["type"])
+        return HttpResponse(status=200)
+
     subscription = checkout_session.subscription
+    if subscription is None:
+        # Limite connue (point PAY-1) : la session de paiement est enregistrée avec une option
+        # d'abonnement et non avec un abonnement, l'activation automatique n'est donc pas possible.
+        logger.error(
+            "Webhook Stripe : la session %s n'est liée à aucun abonnement, rien n'est activé.",
+            checkout_session.pk,
+        )
+        return HttpResponse(status=200)
 
     # Handle the checkout.session.completed event
     if event["type"] == "checkout.session.completed":

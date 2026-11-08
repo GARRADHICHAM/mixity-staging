@@ -26,7 +26,7 @@ function ElearningsList() {
 			.then((response) => response.json())
 			.then((data) => {
 				const domain = data;
-				setEnvironmentUrl(`https://${domain}/`);
+				setEnvironmentUrl(`${window.location.protocol}//${domain}/`);
 			})
 			.then(() => {
 				fetchElearningsList();

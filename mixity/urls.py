@@ -70,6 +70,9 @@ urlpatterns = [
         csrf_exempt(NamsorApiUsageView.as_view()),
         name="namsor_api_usage",
     ),
+    # Les webhooks doivent être déclarés AVANT "<slug:slug>/", qui intercepte tout chemin d'un seul mot.
+    path("sentry-webhook/", sentry_webhook, name="sentry_webhook"),
+    path("logentries-webhook/", logentries_webhook, name="logentries-webhook"),
     path("<slug:slug>/", DashboardHome.as_view(), name="home"),
     path(
         "google-sheets-data-check/",
@@ -81,17 +84,18 @@ urlpatterns = [
         csrf_exempt(QuestionTypeGeneratorView.as_view()),
         name="question_type_generator",
     ),
-    path("sentry-webhook/", sentry_webhook, name="sentry_webhook"),
-    path("logentries-webhook/", logentries_webhook, name="logentries-webhook"),
 ]
 
 
+if settings.DEBUG:
+    urlpatterns += [
+        path("theme/", include("theme.urls", namespace="theme")),
+    ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+# La barre de débogage est facultative (voir mixity/settings/dev.py, variable DEBUG_TOOLBAR)
 if settings.DEBUG and "debug_toolbar" in settings.INSTALLED_APPS:
     import debug_toolbar
 
-    urlpatterns += [
-        path("__debug__/", include(debug_toolbar.urls)),
-        path("theme/", include("theme.urls", namespace="theme")),
-    ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    urlpatterns += [path("__debug__/", include(debug_toolbar.urls))]
 
 admin.site.site_header = "mixity"

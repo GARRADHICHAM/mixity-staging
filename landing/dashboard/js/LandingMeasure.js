@@ -1,6 +1,8 @@
 import React, { Component, useState } from 'react';
+import Loading from '../../../mixity/dashboard/js/includes/Loading';
 import { Breadcrumb } from 'react-bootstrap';
 import Header from '../../../mixity/dashboard/js/includes/Header';
+import { openMarketingPage } from './marketing';
 
 import Background from '../../../mixity/static/img/background/bg_header.svg';
 
@@ -48,12 +50,13 @@ class LandingMeasure extends Component {
 					<div className="d-flex flex-row align-items-center" style={{ whiteSpace: 'nowrap' }}>
 						<button
 							style={{ borderRadius: '6px', backgroundColor: '#FFFFFF', border: '2px solid', padding: '4px 12px 4px 12px', marginRight: '12px' }}
-							onClick={() => (window.location.href = '/360/')}
+							onClick={() => openMarketingPage('measure360')}
 						>
 							{gettext("Qu'est ce que 360 DEI ?")}
 						</button>
 						<button
 							style={{ borderRadius: '6px', backgroundColor: '#FFFFFF', border: '2px solid', padding: '4px 12px 4px 12px', marginRight: '12px' }}
+						onClick={() => openMarketingPage('example')}
 						>
 							{gettext('Voir un exemple')}
 						</button>
@@ -66,7 +69,7 @@ class LandingMeasure extends Component {
 								color: '#FFFFFF',
 								padding: '4px 12px 4px 12px',
 							}}
-							onClick={() => (window.location.href = '/contact/')}
+							onClick={() => openMarketingPage('demo')}
 						>
 							{gettext('Demander une demo')}
 						</button>
@@ -105,7 +108,7 @@ class LandingMeasure extends Component {
 												padding: '4px 12px 4px 12px',
 												marginRight: '12px',
 											}}
-											onClick={() => (window.location.href = '/360/')}
+											onClick={() => openMarketingPage('diag')}
 										>
 											{gettext("Qu'est-ce que Mixity Diag ?")}
 										</button>
@@ -117,6 +120,7 @@ class LandingMeasure extends Component {
 												padding: '4px 12px 4px 12px',
 												marginRight: '12px',
 											}}
+										onClick={() => openMarketingPage('example')}
 										>
 											{gettext('Voir un exemple')}
 										</button>
@@ -156,7 +160,7 @@ class LandingMeasure extends Component {
 												padding: '4px 12px 4px 12px',
 												marginRight: '12px',
 											}}
-											onClick={() => (window.location.href = '/360/')}
+											onClick={() => openMarketingPage('human')}
 										>
 											{gettext("Qu'est-ce que Mixity Human ?")}
 										</button>
@@ -168,6 +172,7 @@ class LandingMeasure extends Component {
 												padding: '4px 12px 4px 12px',
 												marginRight: '12px',
 											}}
+										onClick={() => openMarketingPage('example')}
 										>
 											{gettext('Voir un exemple')}
 										</button>
@@ -209,9 +214,7 @@ class LandingMeasure extends Component {
 				</div>
 			</div>
 		) : (
-			<h4 className="d-flex justify-content-center align-items-middle" style={{ marginTop: '40%' }}>
-				{this.state.placeholder}
-			</h4>
+			<Loading message={this.state.placeholder} />
 		);
 	}
 }

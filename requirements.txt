@@ -89,6 +89,8 @@ hubspot-api-client~=4.0.6
 # Jobs
 rq~=1.16.2
 django_rq~=2.10.2
+# redis-py 6+ impose un délai de 5 s aux connexions : le worker RQ 1.16 s'arrête
+redis~=5.2.1
 
 # ORM damage control
 django-seal~=1.4.4

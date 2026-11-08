@@ -153,8 +153,8 @@ class DashboardRegisterConfirmedRedirectView(RedirectView):
 
 
 class DashboardRegisterStartView(
-    TemplateView,
     LoginRequiredMixin,
+    TemplateView,
 ):
     template_name = "accounts/register_start.html"
 

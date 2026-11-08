@@ -1,6 +1,8 @@
 import React, { Component, useState } from 'react';
+import Loading from '../../../mixity/dashboard/js/includes/Loading';
 import { Breadcrumb } from 'react-bootstrap';
 import Header from '../../../mixity/dashboard/js/includes/Header';
+import { openMarketingPage } from './marketing';
 
 class LandingSolver extends Component {
 	constructor(props) {
@@ -53,7 +55,7 @@ class LandingSolver extends Component {
 								color: '#FFFFFF',
 								padding: '4px 12px 4px 12px',
 							}}
-							onClick={() => (window.location.href = '/contact/')}
+							onClick={() => (solver_create_url ? (window.location.href = solver_create_url) : openMarketingPage('partners'))}
 						>
 							{gettext("S'inscrire")}
 						</button>
@@ -114,9 +116,7 @@ class LandingSolver extends Component {
 				</div>
 			</div>
 		) : (
-			<h4 className="d-flex justify-content-center align-items-middle" style={{ marginTop: '40%' }}>
-				{this.state.placeholder}
-			</h4>
+			<Loading message={this.state.placeholder} />
 		);
 	}
 }

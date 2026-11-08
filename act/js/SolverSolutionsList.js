@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Loading from '../../mixity/dashboard/js/includes/Loading';
 import { Breadcrumb, Card, Form, Modal } from 'react-bootstrap';
 import { Editor } from '@tinymce/tinymce-react';
 import Header from '../../mixity/dashboard/js/includes/Header';
@@ -89,7 +90,7 @@ class SolverSolutions extends Component {
 				this.setState(
 					() => {
 						return {
-							url: 'https://' + data,
+							url: window.location.protocol + '//' + data,
 						};
 					},
 					() => {
@@ -1508,7 +1509,7 @@ class SolverSolutions extends Component {
 				</div>
 			)
 		) : (
-			<h4 className="d-flex justify-content-center align-items-middle">{this.state.placeholder}</h4>
+			<Loading message={this.state.placeholder} />
 		);
 	}
 }

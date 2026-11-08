@@ -1,5 +1,6 @@
 import json
 import csv
+import logging
 import re
 from collections import defaultdict
 
@@ -35,6 +36,7 @@ from django.utils.translation import get_language, activate
 from rest_framework.decorators import action
 from django.db.models import Q
 
+from accounts.permissions import has_structure_access
 from accounts.mails import (
     send_mail_evaluation_started,
     send_invitation_mail,
@@ -198,6 +200,9 @@ def generate_collaborator_filters(
                 human_criteria_choices__id__in=criteria.choice_ids
             )
     return queryset
+
+
+logger = logging.getLogger(__name__)
 
 
 class EntityTree(LoginRequiredMixin, UserPassesTestMixin, APIView):
@@ -1459,8 +1464,16 @@ class ApiSubscriptionOption(APIView):
     def get(self, request, *args, **kwargs):
         eval_id = self.kwargs.get("evaluation_pk")
         try:
-            evaluation = Evaluation.objects.get(id=eval_id)
+            evaluation = Evaluation.objects.select_related(
+                "entity__entity_level__structure"
+            ).get(id=eval_id)
         except Evaluation.DoesNotExist:
+            return Response({"detail": "Not found."}, status=status.HTTP_404_NOT_FOUND)
+
+        # Seuls les membres de l'entreprise de l'évaluation (et l'équipe Mixity) y ont accès
+        if evaluation.entity is None or not has_structure_access(
+            request.user, evaluation.entity.entity_level.structure
+        ):
             return Response({"detail": "Not found."}, status=status.HTTP_404_NOT_FOUND)
 
         subscription_option = evaluation.get_option
@@ -1480,13 +1493,16 @@ class ApiSubscriptionPack(APIView):
 
     def get(self, request, *args, **kwargs):
         structure_id = self.kwargs.get("structure_id")
-        try:
-            subscription_pack = (
-                SubscriptionPack.objects.filter(structure_id=structure_id)
-                .order_by("-start_date")
-                .first()
-            )
-        except SubscriptionPack.DoesNotExist():
+        structure = Structure.objects.filter(pk=structure_id).first()
+        # 404 aussi pour une entreprise à laquelle l'utilisateur n'appartient pas : on ne révèle rien
+        if structure is None or not has_structure_access(request.user, structure):
+            return Response({"detail": "Not found."}, status=status.HTTP_404_NOT_FOUND)
+        subscription_pack = (
+            SubscriptionPack.objects.filter(structure_id=structure_id)
+            .order_by("-start_date")
+            .first()
+        )
+        if subscription_pack is None:
             return Response({"detail": "Not found."}, status=status.HTTP_404_NOT_FOUND)
 
         serializer = self.serializer_class(subscription_pack)
@@ -2435,17 +2451,27 @@ class ApiIndicators(
                 .prefetch_related("question__subquestions")
                 .first()
             )
-            if evaluation.is_human or evaluation.is_scan:
-                current_indicator.scores_json = current_indicator.get_json(
-                    evaluation=evaluation,
-                    answer=current_answer,
-                    queryset=collaborators_queryset,
+            # Un indicateur mal paramétré dans l'admin (params vide ou JSON invalide)
+            # ne doit pas faire échouer toute la page : il est ignoré et signalé.
+            try:
+                if evaluation.is_human or evaluation.is_scan:
+                    current_indicator.scores_json = current_indicator.get_json(
+                        evaluation=evaluation,
+                        answer=current_answer,
+                        queryset=collaborators_queryset,
+                    )
+                else:
+                    current_indicator.scores_json = current_indicator.get_json(
+                        evaluation=evaluation,
+                        answer=current_answer,
+                    )
+            except (KeyError, ValueError):
+                logger.warning(
+                    "Indicateur %s mal paramétré, ignoré (params=%r)",
+                    current_indicator.id,
+                    current_indicator.params,
                 )
-            else:
-                current_indicator.scores_json = current_indicator.get_json(
-                    evaluation=evaluation,
-                    answer=current_answer,
-                )
+                continue
             if question.perimeter:
                 current_indicator.scores_json["perimeter"] = question.perimeter
             results.append(current_indicator)

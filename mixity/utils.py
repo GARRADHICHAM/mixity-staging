@@ -78,10 +78,13 @@ class encryption:
         encoded_email = fernet.encrypt(email.encode())
         return base64.urlsafe_b64encode(encoded_email).decode()
 
-    def decrypt_data(self, encoded_email):
+    def decrypt_data(self, encoded_email, ttl=None):
+        """ttl : durée de validité du jeton en secondes (None = n'expire jamais)."""
         key_bytes = settings.EMAIL_ENCRYPTION_KEY.encode()
         fernet = Fernet(key_bytes)
-        decoded_email = fernet.decrypt(base64.urlsafe_b64decode(encoded_email.encode()))
+        decoded_email = fernet.decrypt(
+            base64.urlsafe_b64decode(encoded_email.encode()), ttl=ttl
+        )
         return decoded_email.decode()
 
 

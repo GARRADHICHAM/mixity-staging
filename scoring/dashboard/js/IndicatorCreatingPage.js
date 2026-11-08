@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import Loading from '../../../mixity/dashboard/js/includes/Loading';
 import { Breadcrumb, Card, Form, Button, Container, Row, Col } from 'react-bootstrap';
 import Header from '../../../mixity/dashboard/js/includes/Header';
 import './includes/stylesheet/autocomplete.css';
@@ -869,9 +870,7 @@ class IndicatorCreatingPage extends Component {
 			</>
 		) : (
 			<>
-				<h4 className="d-flex justify-content-center" style={{ marginTop: '40%' }}>
-					{this.state.placeholder}
-				</h4>
+				<Loading message={this.state.placeholder} />
 			</>
 		);
 	}

@@ -1,3 +1,5 @@
+import logging
+
 import django_heroku
 from .base import *  # noqa
 import sentry_sdk
@@ -17,10 +19,15 @@ if ENVIRONMENT_NAME.lower() == "staging":
     if DEBUG:
         INSTALLED_APPS += ("debug_toolbar",)
         MIDDLEWARE = ("debug_toolbar.middleware.DebugToolbarMiddleware",) + MIDDLEWARE
-        DEBUG_TOOLBAR_CONFIG = {"SHOW_TOOLBAR_CALLBACK": lambda x: True}
+        # La barre de débogage expose requêtes SQL et réglages : réservée à l'équipe (staff).
+        DEBUG_TOOLBAR_CONFIG = {
+            "SHOW_TOOLBAR_CALLBACK": lambda request: request.user.is_authenticated
+            and request.user.is_staff
+        }
 else:
     ENVIRONMENT_COLOR = "Red"
-    ENVIRONMENT_DOMAIN = "www.app.mixity.io"
+    # Domaine des liens envoyés par e-mail ("www.app.mixity.io" n'existe pas dans le DNS).
+    ENVIRONMENT_DOMAIN = os.environ.get("ENVIRONMENT_DOMAIN", "app.mixity.io")
     DEBUG = False
 
 SENTRY_TRACE_SAMPLE_RATE = float(os.getenv("SENTRY_TRACE_SAMPLE_RATE", 0.2))
@@ -41,7 +48,7 @@ SECURE_CONTENT_TYPE_NOSNIFF = True
 SECURE_BROWSER_XSS_FILTER = True
 X_FRAME_OPTIONS = "DENY"
 CSRF_COOKIE_HTTPONLY = True
-ALLOWED_HOSTS = ["www.app.mixity.io"]
+# ALLOWED_HOSTS : voir plus bas, après django_heroku (qui l'écrase)
 BASICAUTH_USERNAME = os.getenv("BASICAUTH_USERNAME")
 BASICAUTH_PASSWORD = os.getenv("BASICAUTH_PASSWORD")
 # if BASICAUTH_USERNAME and BASICAUTH_PASSWORD:
@@ -60,6 +67,26 @@ MEDIA_ACCEL_REDIRECT = False
 # Activate Django-Heroku.
 django_heroku.settings(locals())
 
+# django_heroku impose ALLOWED_HOSTS = ["*"] : l'en-tête Host n'est alors plus validé, et les liens
+# des e-mails (réinitialisation de mot de passe, invitations) sont construits à partir de cet en-tête.
+# On rétablit une liste explicite. Pour ajouter un domaine sans modifier le code, renseigner la
+# variable d'environnement ALLOWED_HOSTS (domaines séparés par des virgules).
+ALLOWED_HOSTS = [
+    "app.mixity.io",
+    "www.app.mixity.io",
+    "staging.mixity.io",
+    ".herokuapp.com",
+] + [host.strip() for host in os.environ.get("ALLOWED_HOSTS", "").split(",") if host.strip()]
+
+# Démarrer avec les valeurs publiques du dépôt est dangereux : on le signale (journaux et Sentry).
+for _name, _public_value in PUBLIC_DEFAULT_SECRETS.items():
+    if globals()[_name] == _public_value:
+        logging.getLogger(__name__).critical(
+            "%s utilise la valeur publique du dépôt : renseigner la variable d'environnement %s.",
+            _name,
+            _name,
+        )
+
 # Mails
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST = "pro2.mail.ovh.net"
@@ -71,7 +98,7 @@ EMAIL_USE_TLS = True
 # Medias
 CLOUDINARY_URL = os.getenv("CLOUDINARY_URL")
 MEDIA_URL = "/media/"
-DEFAULT_FILE_STORAGE = "cloudinary_storage.storage.MediaCloudinaryStorage"
+DEFAULT_FILE_STORAGE = "mixity.storage.FlatCloudinaryStorage"
 
 # analytics
 GOOGLE_ANALYTICS_KEY = os.environ.get("GOOGLE_ANALYTICS_KEY")

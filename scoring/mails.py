@@ -136,12 +136,16 @@ def send_evaluation_published_public_mail(user, request, evaluation):
 
 
 def alert_evaluation_created_mail(user, request, evaluation):
+    # Les évaluations récentes passent par les options d'abonnement et n'ont plus de "subscription"
+    subscription = evaluation.subscription
     html_content = render_to_string(
         "mails/alert_evaluation_created.html",
         {
             "user": user,
             "workforce": evaluation.entity.entity_level.structure.workforce,
-            "subscription_type": evaluation.subscription.subscription_type,
+            "subscription_type": subscription.subscription_type
+            if subscription
+            else evaluation.sheet.type.name,
             "evaluation": evaluation,
             "evaluation_url": request.build_absolute_uri(
                 reverse("admin:scoring_evaluation_change", args=[evaluation.id])

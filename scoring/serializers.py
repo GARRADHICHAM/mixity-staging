@@ -331,7 +331,7 @@ class IndicatorSerializer(serializers.ModelSerializer):
     def get_scores_json(self, instance):
         try:
             return instance.scores_json
-        except:
+        except Exception:
             return None
 
     class Meta:

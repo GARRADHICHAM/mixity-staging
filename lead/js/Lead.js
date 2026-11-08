@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Loading from '../../mixity/dashboard/js/includes/Loading';
 import { Breadcrumb, Modal, Form } from 'react-bootstrap';
 import Header from '../../mixity/dashboard/js/includes/Header';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
@@ -76,7 +77,7 @@ class Lead extends Component {
 				this.setState(
 					() => {
 						return {
-							url: 'https://' + data,
+							url: window.location.protocol + '//' + data,
 						};
 					},
 					() => {
@@ -258,6 +259,8 @@ class Lead extends Component {
 
 	/* Make request to create a list of objectives thanks to aims on evaluations */
 	aimsToObjectiveApiRequest() {
+		// Seuls les objectifs recommandés pas encore repris sont ajoutés : rien n'est écrasé ni dupliqué.
+		const previousCount = this.state.objectives.length;
 		fetch(this.state.url + '/api/aims_to_objectives/')
 			.then((response) => {
 				if (response.status > 400) {
@@ -273,10 +276,15 @@ class Lead extends Component {
 						action.showKpi = false;
 					});
 				});
+				const added = data.length - previousCount;
 				this.setState(() => {
 					return {
 						objectives: data,
 						objectivesLoaded: true,
+						aimsToObjectivesMessage:
+							added > 0
+								? interpolate(ngettext('%s objectif ajouté au plan d\'action.', '%s objectifs ajoutés au plan d\'action.', added), [added])
+								: gettext("Aucun nouvel objectif à ajouter : les objectifs recommandés de vos évaluations sont déjà dans le plan d'action."),
 					};
 				});
 			});
@@ -1821,6 +1829,11 @@ class Lead extends Component {
 								</button>
 							)}
 						</div>
+						{this.state.aimsToObjectivesMessage && (
+							<div className="mx-3 mb-2 text-end" style={{ fontSize: '14px', color: '#5A5C78' }}>
+								{this.state.aimsToObjectivesMessage}
+							</div>
+						)}
 						<nav className="m-3 tab-menu">
 							<div className="nav nav-tabs d-flex justify-content-start" id="nav-tab" role="tablist">
 								{this.state.categories.map((category) => {
@@ -2118,7 +2131,7 @@ class Lead extends Component {
 				</div>
 			)
 		) : (
-			<h4 className="d-flex justify-content-center align-items-middle">{this.state.placeholder}</h4>
+			<Loading message={this.state.placeholder} />
 		);
 	}
 }

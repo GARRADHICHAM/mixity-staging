@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Loading from '../../mixity/dashboard/js/includes/Loading';
 import { Breadcrumb, Card, Modal, Form } from 'react-bootstrap';
 import Header from '../../mixity/dashboard/js/includes/Header';
 
@@ -60,7 +61,7 @@ class BestPractices extends Component {
 				this.setState(
 					() => {
 						return {
-							url: 'https://' + data,
+							url: window.location.protocol + '//' + data,
 						};
 					},
 					() => {
@@ -974,7 +975,7 @@ class BestPractices extends Component {
 				</div>
 			)
 		) : (
-			<h4 className="d-flex justify-content-center align-items-middle">{this.state.placeholder}</h4>
+			<Loading message={this.state.placeholder} />
 		);
 	}
 }

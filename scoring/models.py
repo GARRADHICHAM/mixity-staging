@@ -25,9 +25,8 @@ from constance import config as constanceconfig
 from django.conf import settings
 from django.contrib import messages
 from django.contrib.postgres.fields import ArrayField
-from django.db.models import JSONField, When, Case, OuterRef, FloatField
+from django.db.models import JSONField, When, Case, OuterRef, FloatField, Exists
 from django.core.exceptions import ImproperlyConfigured
-from django.core.files.storage import FileSystemStorage
 from django.core.signing import Signer
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
@@ -75,14 +74,16 @@ from subscriptions.models import SubscriptionPack, SubscriptionOption, Product
 from scoring.mails import alert_admin_computing
 
 try:
-    from cloudinary_storage.storage import RawMediaCloudinaryStorage
+    from mixity.storage import FlatRawCloudinaryStorage
 
-    class RawStorage(RawMediaCloudinaryStorage):
+    class RawStorage(FlatRawCloudinaryStorage):
         pass
 
 except ImproperlyConfigured:
 
-    class RawStorage(FileSystemStorage):
+    from mixity.storage_dev import LocalOrCloudinaryRawStorage
+
+    class RawStorage(LocalOrCloudinaryRawStorage):
         pass
 
 
@@ -165,7 +166,7 @@ def header_filtered_sheet(
 
     filter_title = ""
     ws_col_index = 2
-    for key, value in selected_filters["collab_filters"].items():
+    for key, value in selected_filters.get("collab_filters", {}).items():
         if value:
             # Filter label
             for v in value:
@@ -173,7 +174,7 @@ def header_filtered_sheet(
                 ws.cell(row=ws_index, column=ws_col_index).value = str(_(v["label"]))
                 ws_col_index += 1
                 filter_title += str(_(v["label"])) + ", "
-    for key, value in selected_filters["collab_human_criteria"].items():
+    for key, value in selected_filters.get("collab_human_criteria", {}).items():
         # Human filter label
         if value:
             # human Filter choices
@@ -648,6 +649,21 @@ class CountryData(models.Model):
 
     def __str__(self):
         return str(self.country) + " - " + str(self.year)
+
+
+def count_collaborators_with_answers(collaborators):
+    """
+    Nombre de collaborateurs (distincts) qui ont au moins une réponse.
+
+    EXISTS à la place d'une jointure avec GROUP BY / HAVING sur toutes les réponses : même résultat,
+    nettement plus rapide sur les évaluations qui comptent beaucoup de collaborateurs et de réponses
+    (cette valeur est calculée pour chaque évaluation affichée sur le tableau de bord).
+    """
+    return (
+        collaborators.filter(Exists(Answer.objects.filter(collaborator=OuterRef("pk"))))
+        .distinct()
+        .count()
+    )
 
 
 class QuestionSheetType(models.Model):
@@ -2933,11 +2949,7 @@ class Evaluation(models.Model):
 
     @cached_property
     def answer_count(self):
-        return (
-            self.collaborators.annotate(num_answers=Count("answers"))
-            .filter(num_answers__gt=0)
-            .count()
-        )
+        return count_collaborators_with_answers(self.collaborators)
 
     @property
     def collaborator_end_url(self):
@@ -2965,7 +2977,7 @@ class Evaluation(models.Model):
     def get_general_analysis(self):
         try:
             return self.general_analysis
-        except:
+        except Exception:
             return None
 
     @property
@@ -5997,9 +6009,7 @@ class Evaluation(models.Model):
                 + "\n"
             )
 
-        faviconUrl = "https://www.app.mixity.io/static/favicon.ico"
-
-        footprintFile = footprint.split("/")[-1]
+        faviconUrl = "https://app.mixity.io/static/favicon.ico"
 
         template = f"""
             <!DOCTYPE html>
@@ -6026,7 +6036,7 @@ class Evaluation(models.Model):
                             <div style="margin-bottom: 2rem;">
                                 <div style="display: flex; justify-content: space-between; align-items: start;">
                                     <div style="display: flex; align-items: center;">
-                                        <img src="https://www.app.mixity.io/static/icon/{productSlug}.svg" alt="arrow" style="width: 20px;">
+                                        <img src="https://app.mixity.io/static/icon/{productSlug}.svg" alt="arrow" style="width: 20px;">
                                         <h1 style="font-weight: 500; font-size: 16px; margin-left: 6px; line-height: 20px;">Mixity {productName}</h1>
                                     </div>
                                     <div style="text-align: right;">
@@ -6039,7 +6049,7 @@ class Evaluation(models.Model):
                                         {global_scores}
                                     </div>
                                     <div style="width: 50%; padding-left: 16px;">
-                                        <img src="https://www.app.mixity.io/mediafiles/media/footprints/{footprintFile}" alt="footprint" width="100%">
+                                        <img src="{footprint}" alt="footprint" width="100%">
                                     </div>
                                 </div>
                             </div>
@@ -6743,13 +6753,7 @@ class Evaluation(models.Model):
         return answers.count()
 
     def get_filtered_collaborators_count(self, collaborators):
-        return (
-            collaborators.annotate(num_answers=Count("answers"))
-            .filter(
-                num_answers__gt=0,
-            )
-            .count()
-        )
+        return count_collaborators_with_answers(collaborators)
 
     @cached_property
     def is_the_last_diag(self):
@@ -7427,7 +7431,7 @@ class Collaborator(models.Model):
     def get_user(self):
         try:
             return self.user
-        except:
+        except Exception:
             return None
 
     def get_is_lgbt_display(self):

@@ -151,7 +151,7 @@ class HomeTest(TestCaseMixin, TestCase):
         self.get_page(
             "home",
             args=[self.e.slug],
-            nb_requests=38,
+            nb_requests=37,
             code=200,
         )
 

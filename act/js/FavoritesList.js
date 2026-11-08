@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import Loading from '../../mixity/dashboard/js/includes/Loading';
+import { useDefaultLogo, useDefaultSolutionImage } from '../../mixity/dashboard/js/includes/imageFallback';
 import { Breadcrumb, Card, Form } from 'react-bootstrap';
 import Header from '../../mixity/dashboard/js/includes/Header';
 
@@ -50,7 +52,7 @@ class Favorites extends Component {
 				this.setState(
 					() => {
 						return {
-							url: 'https://' + data,
+							url: window.location.protocol + '//' + data,
 						};
 					},
 					() => {
@@ -405,6 +407,7 @@ class Favorites extends Component {
 										? this.state.detailedSolution.photo + '?text=Image cap'
 										: '/static/solvers_catalog/solution.jpg?text=Image cap'
 								}
+								onError={useDefaultSolutionImage}
 							/>
 							<Card.Body className="px-0 py-2">
 								<div className="d-flex flex-wrap mb-2">
@@ -513,6 +516,7 @@ class Favorites extends Component {
 												this.state.solvers.find((solver) => solver.pk === this.state.detailedSolution.solver).structure.logo +
 												'?text=Image cap'
 											}
+											onError={useDefaultLogo}
 										/>
 									)}
 								</div>
@@ -629,6 +633,7 @@ class Favorites extends Component {
 												src={
 													solution.photo ? solution.photo + '?text=Image cap' : '/static/solvers_catalog/solution.jpg?text=Image cap'
 												}
+												onError={useDefaultSolutionImage}
 											/>
 											<Card.Body
 												className="px-4 pt-2 pb-0"
@@ -689,6 +694,7 @@ class Favorites extends Component {
 															this.state.solvers.find((solver) => solver.pk === solution.solver).structure.logo +
 															'?text=Image cap'
 														}
+														onError={useDefaultLogo}
 													/>
 												)}
 											</Card.Footer>
@@ -717,7 +723,7 @@ class Favorites extends Component {
 				</div>
 			)
 		) : (
-			<h4 className="d-flex justify-content-center align-items-middle">{this.state.placeholder}</h4>
+			<Loading message={this.state.placeholder} />
 		);
 	}
 }

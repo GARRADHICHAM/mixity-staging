@@ -261,7 +261,7 @@ class ADPIndicatorAdapter:
                             instance.data["data"][key1][key2][year]["hired"]
                             + instance.data["data"][key1][key2][year]["exited"]
                         )
-                    except:
+                    except Exception:
                         calcul = instance.data["data"][key1][key2][year]["hired"]
                     if (
                         str(int(year) - 1)

@@ -87,6 +87,10 @@ class DashboardLandingSolverView(
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        # Le bouton « S'inscrire » ouvre le formulaire Devenir solutionneur de la structure.
+        structure = self.entity.entity_level.structure if self.entity else None
+        if structure:
+            context["solver_create_url"] = reverse("dashboard:solver:create", args=[structure.slug])
         return context
 
     def test_func(self):

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Loading from './includes/Loading';
 import { Breadcrumb, Modal } from 'react-bootstrap';
 import Header from '../../../mixity/dashboard/js/includes/Header';
 import NamsorIndicator from '../../../theme/src/js/indicators/NamsorIndicator';
@@ -447,7 +448,7 @@ class NameAnalyzerComponent extends Component {
 				</Modal>
 			</div>
 		) : (
-			<h4 className="d-flex justify-content-center align-items-middle">{this.state.placeholder}</h4>
+			<Loading message={this.state.placeholder} />
 		);
 	}
 }

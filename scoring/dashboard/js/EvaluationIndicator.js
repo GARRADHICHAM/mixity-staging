@@ -11,6 +11,14 @@ import PieChart from './includes/PieChart';
 import LineChart from './includes/LineChart';
 import MultipleBarChart from './includes/MultipleBarChart';
 
+// Donnée absente (liste vide, null ou chaîne vide) : même message pour tous les types de graphique.
+const NOT_AVAILABLE = gettext("Cette donnée n'est pas disponible");
+const hasIndicatorData = (values) =>
+	[]
+		.concat(values ?? [])
+		.flat(Infinity)
+		.some((v) => v !== null && v !== undefined && v !== '' && !(typeof v === 'number' && isNaN(v)));
+
 class AssessIndicators extends Component {
 	constructor(props) {
 		super(props);
@@ -91,10 +99,12 @@ class AssessIndicators extends Component {
 			if (this.props.json.display_params.size === 2) width = '97%';
 			if (this.state.indicatorList[this.props.json.indicator_type]) {
 				title = this.props.json.label ? this.props.json.label : this.props.json.title;
-				componentContent = (
+				componentContent = hasIndicatorData(this.props.json.values) ? (
 					<div className="d-flex justify-content-center flex-wrap w-100 flex-grow-1">
 						{this.state.indicatorList[this.props.json.indicator_type](this.props.json)}
 					</div>
+				) : (
+					<p className="text-center text-muted w-100 my-4">{NOT_AVAILABLE}</p>
 				);
 			} else {
 				title = this.props.json.label ? this.props.json.label : this.props.json.title;

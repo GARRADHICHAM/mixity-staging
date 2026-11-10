@@ -575,6 +575,34 @@ Chaque point vérifié dans Chromium (compte `admin@mixity.io`, entité `demo-mi
 
 Bundles recompilés et copiés : `actsolutions`, `actfavorites`, `actbestpracticesmanagement`, `actfavoritebestpractices`, `dashboardhome`, `lead`, `overviewlead`, `dashboardlandingsolver`.
 
+## Retours de Mathieu sur le staging (mail du 10/11/2026), traités le 10/11/2026
+
+### STG-8. Bouton « PDF » des résultats : lien Cloudinary cassé
+- **Cause** : le bouton pointait directement vers le fichier `pdf_sheet` stocké sur Cloudinary (ex. `pdf_zukymc.pdf`, évaluation 149 « 2021-Mai » de Demo Mixity 360), qui n'existe plus. Le moteur de régénération existant ne pouvait pas fonctionner hors Docker : il appelle l'hôte `webpack` (`get_webpack_ip`), et sa page `/<slug>/<produit>/assess/pdf/` était masquée par la route `assess/<version>/` (« pdf » lu comme une version → erreur 500).
+- **Changement** :
+  - Le bouton passe par `scoring/evaluation/<pk>/pdf-sheet/<langue>/` (`EvaluationPdfSheetView`). Si le fichier stocké répond, redirection vers lui ; sinon un job `regenerate_pdf_sheet_with_job` imprime la page de résultats avec Chromium (menu et boutons masqués), enregistre le nouveau PDF sur l'évaluation et l'envoie par mail. Le message « Préparation d'export… » s'affiche comme pour l'Excel. Les clics suivants ouvrent directement le nouveau fichier.
+  - Le worker joint l'application via `PDF_RENDER_BASE_URL` (vide = adresse du site ; en local `http://web:8000/`).
+  - Route `assess/pdf/` placée avant `assess/<version>/` dans `mixity/dashboard/urls.py`.
+- **Vérification** : clic PDF sur l'évaluation 149 → message, job OK en ~13 s, mail reçu avec le PDF joint, nouveau fichier enregistré, 2e clic → redirection vers le fichier. Tests ajoutés : `scoring/test_pdf_sheet.py` (4 tests).
+
+### STG-9. Export Excel : message affiché mais pas de mail reçu
+- **Constat** : en local, toute la chaîne fonctionne (clic → job RQ → fichier → mail reçu dans MailHog). Le code n'est pas en cause. Sur Heroku, à vérifier :
+  1. le dyno `worker` doit être démarré (`heroku ps:scale worker=1`), sinon les jobs restent en file ;
+  2. `EMAIL_HOST_PASSWORD` doit être défini (OVH, support@mixity.io) ;
+  3. le mail part à l'adresse du compte connecté : avec `admin@mixity.io`, il arrive dans cette boîte.
+- Même remarque pour le PDF régénéré (STG-8) : il passe par le même worker et le même envoi de mail. Chromium doit aussi être disponible sur le worker : `playwright install chromium` dans la phase `release` du `Procfile` n'est pas conservé sur les autres dynos Heroku. Un buildpack Playwright est nécessaire si la génération échoue.
+
+### STG-10. Indicateurs sans donnée : affichage incohérent
+- **Cause** : seuls 3 types de graphique (GapChart, ScanCircularChart, TextChart) affichaient « Cette donnée n'est pas disponible », et seulement quand la valeur manquait dans la liste. Une valeur vide (`[]`, `null`, `""`) ou les 7 autres types donnaient un cadre vide.
+- **Changement** : contrôle unique dans `scoring/dashboard/js/EvaluationIndicator.js`. Sans aucune valeur, tous les types affichent le même message.
+- **Vérification** : Human 2021-Juillet de Demo Mixity 360 → « Répartition des répondants par Exemple » (valeurs `[]`) affiche le message au lieu d'un cadre vide ; les 37 autres graphiques sont inchangés, aucune erreur JS.
+- **Reste** : les indicateurs du Diag sont dessinés par ~40 gabarits Django (`scoring/templates/includes/indicators/`), non modifiés faute d'exemple précis. Exemples demandés à Mathieu.
+
+### Constat sans changement de code : « Liked par les emplo » et « percentage of women »
+- Ce sont deux indicateurs personnalisés saisis à la main sur Demo Mixity 360 (ActionKpi 87 du 27/04/2023 et 16 du 28/03/2023), pas des libellés de l'application. À renommer ou supprimer dans l'admin : Lead → Action kpis.
+
+Bundles recompilés et copiés : `assessdashboardhomecomponents`, `assessdashboardhomePDF`.
+
 <!-- SUIVANT -->
 
 (Les corrections suivantes sont ajoutées ci-dessus, avant ce repère, au fur et à mesure.)

@@ -40,7 +40,11 @@ from django.views.generic.base import TemplateResponseMixin
 from django_filters import FilterSet
 from django_filters.views import FilterView
 
-from django.core.files.base import ContentFile
+from django.core.files.base import ContentFile, File
+from tempfile import NamedTemporaryFile
+
+import requests
+from playwright.sync_api import sync_playwright
 from django.http import (
     JsonResponse,
     HttpResponse,
@@ -169,6 +173,85 @@ def export_pdf_with_job(
 
     else:
         logger.warning("Evaluation not found !")
+
+
+def pdf_sheet_available(pdf_sheet):
+    """Le PDF stocké (Cloudinary) est-il encore téléchargeable ?"""
+    if not pdf_sheet:
+        return False
+    if not pdf_sheet.url.startswith("http"):  # stockage local (développement)
+        return pdf_sheet.storage.exists(pdf_sheet.name)
+    try:
+        response = requests.head(pdf_sheet.url, timeout=5, allow_redirects=True)
+    except requests.RequestException:
+        return False
+    return response.status_code == 200
+
+
+# Masqués dans le PDF : menu latéral, en-tête et boutons d'action.
+PDF_HIDDEN_CSS = (
+    "#dashboard_sider, header, nav.navbar, .assess_secondary_btn, .assess_white_btn,"
+    " .dropdown, #crisp-chatbox, .crisp-client {display: none !important;}"
+)
+
+
+@job("default")
+def regenerate_pdf_sheet_with_job(evaluation_id, language, base_url, session_key, email):
+    """
+    Régénère le PDF des résultats quand le fichier stocké a disparu : la page de résultats
+    est imprimée avec Chromium, enregistrée sur l'évaluation puis envoyée par mail.
+    """
+    evaluation = Evaluation.objects.get(pk=evaluation_id)
+    activate(language)
+    product = "human" if evaluation.is_human else "diag"
+    url = base_url.rstrip("/") + reverse(
+        "dashboard:dashboard_assess",
+        args=(evaluation.entity.slug, product, evaluation.display_version_slugified),
+    )
+    with NamedTemporaryFile(prefix="Summary_", suffix=".pdf", delete=False) as tmp:
+        filepath = tmp.name
+    with sync_playwright() as p:
+        browser = p.chromium.launch()
+        context = browser.new_context(
+            ignore_https_errors=True, viewport={"width": 1440, "height": 1000}
+        )
+        context.add_cookies(
+            [
+                {"name": settings.SESSION_COOKIE_NAME, "value": session_key, "url": base_url},
+                {"name": settings.LANGUAGE_COOKIE_NAME, "value": language, "url": base_url},
+            ]
+        )
+        page = context.new_page()
+        page.goto(url, wait_until="load", timeout=120000)
+        page.wait_for_timeout(3000)
+        page.add_style_tag(content=PDF_HIDDEN_CSS)
+        page.emulate_media(media="screen")
+        height = page.evaluate("document.documentElement.scrollHeight")
+        page.pdf(
+            path=filepath,
+            width="1440px",
+            height=f"{height + 50}px",
+            print_background=True,
+        )
+        browser.close()
+
+    with open(filepath, "rb") as file:
+        evaluation.pdf_sheet.save("pdf.pdf", File(file))
+    html_content = render_to_string(
+        "mails/evaluation_questions_sheet_export.html",
+        {"evaluation": evaluation, "with_filters": False},
+    )
+    structure_name = evaluation.entity.name
+    stamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+    with open(filepath, "rb") as file:
+        subject = _("Votre récapitulatif {} du : {}")
+        send(
+            subject.format(structure_name, stamp),
+            [email],
+            html_content,
+            [(f"Summary_{structure_name}_{stamp}.pdf", file, "application/pdf")],
+        )
+    os.remove(filepath)
 
 
 @job("default")
@@ -667,6 +750,44 @@ class EvaluationDiagExcelSheetDownload(LoginRequiredMixin, View):
                 "status": "error",
                 "message": _("Evaluation not found"),
             }
+        )
+
+
+class EvaluationPdfSheetView(LoginRequiredMixin, View):
+    """
+    Bouton « PDF » des résultats : renvoie le fichier stocké s'il existe encore,
+    sinon le régénère (worker) et l'envoie par mail au lieu d'afficher un lien cassé.
+    """
+
+    def get(self, request, *args, **kwargs):
+        evaluation = get_object_or_404(Evaluation, pk=self.kwargs["pk"])
+        if not request.user.test_func_rights(evaluation.entity):
+            return HttpResponseNotFound()
+        language = self.kwargs["language_code"]
+        pdf_sheet = getattr(evaluation, f"pdf_sheet_{language}", None)
+        if pdf_sheet_available(pdf_sheet):
+            return HttpResponseRedirect(pdf_sheet.url)
+
+        regenerate_pdf_sheet_with_job.delay(
+            evaluation.id,
+            language,
+            settings.PDF_RENDER_BASE_URL or request.build_absolute_uri("/"),
+            request.session.session_key,
+            request.user.email,
+        )
+        messages.success(
+            request,
+            _(
+                "Préparation d'export du récapitulatif, le résultat vous sera envoyé à l'adresse: %s"
+            )
+            % request.user.email,
+        )
+        product = "human" if evaluation.is_human else "diag"
+        return HttpResponseRedirect(
+            reverse(
+                "dashboard:dashboard_assess",
+                args=(evaluation.entity.slug, product, evaluation.display_version_slugified),
+            )
         )
 
 

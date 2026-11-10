@@ -46,6 +46,12 @@ urlpatterns = [
         DashboardCreateIndicatorView.as_view(),
         name="dashboard_create_indicator",
     ),
+    # Avant la route <version> : sinon "pdf" est pris pour une version (erreur 500).
+    path(
+        "<slug:slug>/<slug:product>/assess/pdf/",
+        DashboardAssessView_PDF.as_view(),
+        name="dashboard_assess_pdf",
+    ),
     path(
         "<slug:slug>/<slug:product>/assess/<str:version>/",
         DashboardAssessTestView.as_view(),
@@ -55,11 +61,6 @@ urlpatterns = [
         "<slug:slug>/<slug:product>/survey/",
         EvaluationSurveyView.as_view(),
         name="evaluation_survey",
-    ),
-    path(
-        "<slug:slug>/<slug:product>/assess/pdf/",
-        DashboardAssessView_PDF.as_view(),
-        name="dashboard_assess_pdf",
     ),
     path(
         "<slug:slug>/<slug:product>/assess/<str:version>/api/url/",

@@ -178,3 +178,6 @@ if ADP_PRIVATE_KEY:
     ADP_PRIVATE_KEY = tempfile.NamedTemporaryFile(delete=False)
     ADP_PRIVATE_KEY.write(ADP_PRIVATE_KEY_STR)
     ADP_PRIVATE_KEY.close()
+
+# En local, le worker joint l'application via le conteneur web.
+PDF_RENDER_BASE_URL = os.environ.get("PDF_RENDER_BASE_URL", "http://web:8000/")

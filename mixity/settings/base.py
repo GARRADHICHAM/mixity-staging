@@ -50,6 +50,10 @@ EMAIL_ENCRYPTION_KEY = os.environ.get(
     "EMAIL_ENCRYPTION_KEY", PUBLIC_DEFAULT_SECRETS["EMAIL_ENCRYPTION_KEY"]
 )
 
+# Adresse à laquelle le worker joint l'application pour régénérer un PDF de résultats
+# (vide : adresse du site utilisée par le client).
+PDF_RENDER_BASE_URL = os.environ.get("PDF_RENDER_BASE_URL", "")
+
 ALLOWED_HOSTS = ["mixity.herokuapp.com"]
 USE_X_FORWARDED_HOST = True
 

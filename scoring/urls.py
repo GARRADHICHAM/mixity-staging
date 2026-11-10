@@ -2,6 +2,7 @@ from django.urls import path
 
 from scoring.charts import StructureFootPrint
 from scoring.views import (
+    EvaluationPdfSheetView,
     EvaluationConfirm,
     EvaluationCreation,
     EvaluationFill,
@@ -78,6 +79,11 @@ urlpatterns = [
         "evaluation/<int:pk>/download_sheet/<str:language_code>/",
         EvaluationSheetDownloadView.as_view(),
         name="sheet_download_i18n",
+    ),
+    path(
+        "evaluation/<int:pk>/pdf-sheet/<str:language_code>/",
+        EvaluationPdfSheetView.as_view(),
+        name="pdf_sheet_download",
     ),
     path(
         "evaluation/<int:pk>/react_diag_filtered_excel/",

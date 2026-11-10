@@ -13,8 +13,8 @@
         {% define evaluation|getattribute:attribute as pdf_sheet %}
         {% if pdf_sheet %}
         <li>
-            <a target="_blank" style="cursor: pointer;" class="dropdown-item"
-               href="{{ pdf_sheet.url }}">
+            <a style="cursor: pointer;" class="dropdown-item"
+               href="{% url 'pdf_sheet_download' pk=evaluation.pk language_code=language.code %}">
                 <span class="icon-flag-{{ language.code }}"></span>
                 {{ language.name_local|capfirst }} ({{ language.code|title }})
             </a>
